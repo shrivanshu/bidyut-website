@@ -8,6 +8,7 @@ import EducationNews from './Component/EducationNews';
 import EN1 from './Component/EN1';
 import Header from './Component/Header';
 import Clock from './Component/Clock';
+import TestimonialSection from './Component/TestimonialSection';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <OfferingsCarousel />
       <Clock />
       <EducationNews />
+      <TestimonialSection />
       <EducationStream />
       <Footer />
 
