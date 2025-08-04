@@ -9,24 +9,26 @@ import Header from './Component/Header';
 import Clock from './Component/Clock';
 import TestimonialSection from './Component/TestimonialSection';
 import TrustedPartners from './Component/TrustedPartners';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 
 
 function App() {
   return (
-    <div className="App bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Header />
-      <HeroSection />
-      <OfferingsCarousel />
-      <Clock />
-      <EducationNews />
-      <LmsSection/>
-      <TrustedPartners />
-      <TestimonialSection />
-      <EducationStream />
-      <Footer />
-
-    </div>
+    <ThemeProvider>
+      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+        <Header />
+        <HeroSection />
+        <OfferingsCarousel />
+        <Clock />
+        <EducationNews />
+        <LmsSection/>
+        <TrustedPartners />
+        <TestimonialSection />
+        <EducationStream />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

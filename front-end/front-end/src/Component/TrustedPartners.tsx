@@ -194,12 +194,12 @@ export default function PartnerLogos() {
   }
 
   return (
-    <section className="bg-white text-black py-16 px-4 md:py-24 md:px-6 lg:py-32">
+    <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
           Our <span className="text-[#4CAF50]">Trusted</span> Partners
         </h2>
-        <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-12">
+        <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-12 text-gray-700 dark:text-gray-300 transition-colors duration-300">
           We are proud to collaborate with industry-leading organizations that share our vision and values. Their
           continued trust and support help us deliver excellence every step of the way.
         </p>
@@ -215,7 +215,7 @@ export default function PartnerLogos() {
               {column.map((logo, logoIndex) => (
                 <div
                   key={logoIndex}
-                  className="w-16 h-16 rounded-full bg-white flex items-center justify-center border-[1px] overflow-hidden border-gray-300 border-solid shadow-md drop-shadow-2xl"
+                  className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center border-[1px] overflow-hidden border-gray-300 dark:border-gray-600 border-solid shadow-md drop-shadow-2xl transition-colors duration-300"
                 >
                   <img
                     src={logo.src || "/placeholder.svg"}

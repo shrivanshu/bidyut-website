@@ -84,9 +84,9 @@ const HeroSection: React.FC = () => {
         }}
       >
         <div
+          className="text-white dark:text-gray-100 transition-colors duration-300"
           style={{
             backgroundColor: "transparent",
-            color: "#ffffff",
             fontWeight: 600,
             fontSize: "16px",
             padding: "6px 16px",

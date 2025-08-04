@@ -25,7 +25,6 @@ export default function EducationStream() {
     overflowX: "hidden",
     overflowY: "auto",
     fontFamily: "'Poppins', sans-serif",
-    backgroundColor: "#F9F9FA",
     padding: "20px 0px 26px 0px",
     boxSizing: "border-box",
   };
@@ -50,7 +49,6 @@ export default function EducationStream() {
     display: "flex",
     gap: "1rem",
     marginBottom: 6,
-    color: "#131313",
   };
 
   const streamStyle: React.CSSProperties = {
@@ -59,7 +57,6 @@ export default function EducationStream() {
   };
 
   const educationStyle: React.CSSProperties = {
-    color: "#131313",
     fontWeight: 600,
   };
 
@@ -71,7 +68,6 @@ export default function EducationStream() {
     lineHeight: 1.34,
     letterSpacing: "0%",
     textAlign: "center",
-    color: "rgba(0,0,0,0.44)",
     maxWidth: 980,
     width: "100%",
     marginBottom: 6,
@@ -133,7 +129,6 @@ export default function EducationStream() {
     transform: "translateY(-50%)",
     width: 692,
     height: 327,
-    background: "rgba(10, 207, 131, 0.36)",
     borderRadius: 10,
     display: "flex",
     flexDirection: "row",
@@ -156,7 +151,6 @@ export default function EducationStream() {
     opacity: hovered ? 1 : 0.49,
     cursor: "pointer",
     border: hovered ? "2px solid #11d59b" : "2px solid #F3F4F3",
-    background: "#e6eaea",
     boxShadow: hovered ? "0 6px 18px #11d59b88" : "0 1.5px 6px #0002",
     filter: hovered ? "brightness(1.1)" : "brightness(0.85)",
     transition:
@@ -204,7 +198,10 @@ export default function EducationStream() {
             />
           </div>
         </div>
-        <div style={thumbnailPanelStyle}>
+        <div 
+          style={thumbnailPanelStyle}
+          className="bg-[rgba(10,207,131,0.36)] dark:bg-[rgba(10,207,131,0.2)] transition-colors duration-300"
+        >
           {videoOptions.map(({ src, thumbnail }, index) => (
             <video
               key={src}
