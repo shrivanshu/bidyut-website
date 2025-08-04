@@ -16,8 +16,8 @@ function App() {
       <HeroSection />
       <OfferingsCarousel />
       <EducationNews />
-      <EducationStream />
       <TestimonialSection />
+      <EducationStream />
       <Footer />
 
     </div>
