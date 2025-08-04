@@ -21,10 +21,10 @@ function App() {
       <OfferingsCarousel />
       <Clock />
       <EducationNews />
+      <LmsSection/>
       <TrustedPartners />
       <TestimonialSection />
       <EducationStream />
-      <LmsSection/>
       <Footer />
 
     </div>
