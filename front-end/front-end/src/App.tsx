@@ -5,12 +5,20 @@ import OfferingsCarousel from './Component/OurOfferings';
 import Footer from './Component/Footer';
 import EducationStream from './Component/EducationStream';
 import LmsSection from './Component/lmsSection';
+import EducationNews from './Component/EducationNews';
+import EN1 from './Component/EN1';
+import TestimonialSection from './Component/TestimonialSection';
+import { testimonialData, Testimonial } from './Component/testimonials';
+
+
 
 function App() {
   return (
     <div className="App">
       <HeroSection />
       <OfferingsCarousel />
+      <EducationNews />
+      <TestimonialSection />
       <EducationStream />
       <LmsSection/>
       <Footer />
