@@ -180,14 +180,14 @@ export default function EducationStream() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="bg-[#F9F9FA] dark:bg-gray-900 transition-colors duration-300" style={{...containerStyle, backgroundColor: 'transparent'}}>
       <div style={headingSection}>
-        <div style={headingStyle}>
+        <div style={headingStyle} className="text-[#131313] dark:text-white">
           <span style={streamStyle}>STREAM</span>
-          <span style={educationStyle}>Education</span>
+          <span style={educationStyle} className="text-[#131313] dark:text-white">Education</span>
         </div>
       </div>
-      <div style={subheadingStyle}>
+      <div style={subheadingStyle} className="text-[rgba(0,0,0,0.44)] dark:text-gray-400">
         STREAM Education blends Science, Technology, Robotics, Engineering, Arts,
         and Math to spark creativity and real-world problem-solving in learners
       </div>

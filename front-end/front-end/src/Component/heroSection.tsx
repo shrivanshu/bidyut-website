@@ -39,8 +39,10 @@ const HeroSection: React.FC = () => {
         playsInline
       />
 
+
       {/* Overlay */}
       <div
+        className="bg-white dark:bg-gray-900 transition-colors duration-300"
         style={{
           position: "absolute",
           top: 0,
@@ -55,6 +57,7 @@ const HeroSection: React.FC = () => {
 
       {/* Content */}
       <div
+        className="text-black dark:text-white transition-colors duration-300"
         style={{
           maxWidth: "900px",
           color: "#000000",
