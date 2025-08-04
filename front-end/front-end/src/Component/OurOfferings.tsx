@@ -185,14 +185,14 @@ export default function OfferingsCarousel() {
             return (
               <div
                 key={displayIndex} // Use the actual index from the offerings array as key
-                className={`absolute top-1/2 transition-all duration-700 ease-in-out flex justify-center ${styles.widthClass}`}
+                className={`absolute top-50 transition-all duration-700 ease-in-out backface-hidden flex justify-center ${styles.widthClass}`}
                 style={{
                   left: styles.left,
                   transform: styles.transform,
                   zIndex: styles.zIndex,
                   filter: styles.filter,
                   opacity: styles.opacity,
-                  transformOrigin: styles.transformOrigin,
+                  transformOrigin: styles.transformOrigin
                 }}
               >
                 <div className="bg-white rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center h-[450px] w-[470px] gap-6">
