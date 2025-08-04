@@ -6,6 +6,9 @@ import Footer from './Component/Footer';
 import EducationStream from './Component/EducationStream';
 import EducationNews from './Component/EducationNews';
 import EN1 from './Component/EN1';
+import TestimonialSection from './Component/TestimonialSection';
+import { testimonialData, Testimonial } from './Component/testimonials';
+
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
       <OfferingsCarousel />
       <EducationNews />
       <EducationStream />
+      <TestimonialSection />
       <Footer />
 
     </div>
