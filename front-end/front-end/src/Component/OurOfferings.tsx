@@ -167,16 +167,16 @@ export default function OfferingsCarousel() {
   const displayedCardRelativePositions = [-3,-2, -1, 0, 1, 2,3]
 
   return (
-    <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center ">
+    <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className=" text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 ">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
           Our <span className="text-[#2ecc71]">Offerings</span>
         </h2>
         <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
           Discover how Bidyut is transforming education and industry through innovative robotics solutions
         </p>
         <div
-          className="relative flex justify-center items-center h-[700px] bg-[#cff5ea] w-full curved-box">
+          className="relative flex justify-center items-center h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box">
           {displayedCardRelativePositions.map((relativePos) => {
             // Calculate the actual index in the offerings array, handling wrap-around
             const displayIndex = (currentIndex + relativePos + len) % len
@@ -195,7 +195,7 @@ export default function OfferingsCarousel() {
                   transformOrigin: styles.transformOrigin
                 }}
               >
-                <div className="bg-white rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center h-[450px] w-[470px] gap-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center h-[450px] w-[470px] gap-6 transition-colors duration-300">
                   <div className="relative w-full h-80 rounded-md overflow-hidden">
                     <img
                       src={offering.image || "/placeholder.svg"}
@@ -205,8 +205,8 @@ export default function OfferingsCarousel() {
                       className="rounded-md absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{offering.title}</h3>
-                  <p className="text-gray-600 text-sm">{offering.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{offering.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{offering.description}</p>
                 </div>
               </div>
             )

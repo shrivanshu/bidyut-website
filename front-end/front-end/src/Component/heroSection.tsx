@@ -3,12 +3,14 @@ import React from "react";
 const HeroSection: React.FC = () => {
   return (
     <section 
+      className="bg-white dark:bg-gray-900 transition-colors duration-300"
       style={{ 
         position: "relative", 
         width: "100%", 
         height: "100vh", 
         fontFamily: "'Poppins', sans-serif", 
-        overflow: "hidden" 
+        overflow: "hidden",
+        backgroundColor: "transparent"
       }}
     >
       {/* Google Font */}
@@ -27,7 +29,7 @@ const HeroSection: React.FC = () => {
           top: 0,
           left: 0,
           zIndex: -2,
-        }}
+        }} 
         src="/robo-dance.mp4"
         autoPlay
         loop
@@ -35,15 +37,16 @@ const HeroSection: React.FC = () => {
         playsInline
       />
 
+
       {/* Overlay */}
       <div
+        className="bg-white dark:bg-gray-900 transition-colors duration-300"
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "#ffffff",
           opacity: 0.5,
           zIndex: -1,
         }}
@@ -51,11 +54,11 @@ const HeroSection: React.FC = () => {
 
       {/* Content */}
       <div
+        className="text-black dark:text-white transition-colors duration-300"
         style={{
           position: "relative",
           maxWidth: "900px",
           padding: "80px 0px 80px 80px",
-          color: "#000000",
           textAlign: "left",
           display: "flex",
           flexDirection: "column",
@@ -64,8 +67,8 @@ const HeroSection: React.FC = () => {
         }}
       >
         <div
+          className="bg-white dark:bg-gray-800 transition-colors duration-300"
           style={{
-            background: "white",
             color: "#0acf83",
             fontWeight: 600,
             fontSize: "16px",
@@ -81,6 +84,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         <h1
+          className="text-black dark:text-white transition-colors duration-300"
           style={{
             fontSize: "64px",
             fontWeight: 600,
@@ -90,13 +94,13 @@ const HeroSection: React.FC = () => {
           }}
         >
           <span style={{ color: "#0acf83" }}>Think Limitless</span> Learn <br />
-          <span style={{ color: "#000000" }}>Beyond Boundaries</span>
+          <span className="text-black dark:text-white">Beyond Boundaries</span>
         </h1>
 
         <p
+          className="text-black/70 dark:text-white/70 transition-colors duration-300"
           style={{
             fontSize: "16px",
-            color: "rgba(0, 0, 0, 0.7)",
             maxWidth: "640px",
             lineHeight: 1.8,
             textAlign: "justify",

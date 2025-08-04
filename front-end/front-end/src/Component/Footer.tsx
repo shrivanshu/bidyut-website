@@ -99,7 +99,7 @@ export default function Footer() {
   }
 
   return (
-    <footer ref={footerRef} className="bg-gray-100 px-8 py-16 relative overflow-hidden">
+    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-900 px-8 py-16 relative overflow-hidden transition-colors duration-300">
       {/* Scroll-based Animated Green Dot */}
       <div 
         ref={dotRef}
@@ -114,21 +114,21 @@ export default function Footer() {
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Bidyut Technologies Section */}
-          <div className="bg-white rounded-2xl border-2 border-green-400 p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-black mb-4">Bidyut Technologies</h3>
-            <p className="text-gray-700 text-sm leading-relaxed">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Bidyut Technologies</h3>
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
               Leading provider of advanced robotics and technology solutions for educational institutions. Empowering
               the next generation through innovative STEM education and cutting-edge research.
             </p>
           </div>
 
           {/* Quick Links Section */}
-          <div className="bg-white rounded-2xl border-2 border-green-400 p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-black mb-4">Quick Links</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Quick Links</h3>
             <ul className="space-y-3">
               {["Home", "About US", "School", "Robots", "Contact", "Gallery"].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium">
+                  <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors text-sm font-medium">
                     {link}
                   </a>
                 </li>
@@ -137,53 +137,53 @@ export default function Footer() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="bg-white rounded-2xl border-2 border-green-400 p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-black mb-4">Contact Information</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Contact Information</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black text-sm">Address</p>
-                  <p className="text-gray-700 text-xs">901 Clifton Corporate Park,</p>
-                  <p className="text-gray-700 text-xs">11/6, AB Road, Sector A, Slice...</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">Address</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">901 Clifton Corporate Park,</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">11/6, AB Road, Sector A, Slice...</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black text-sm">Phone</p>
-                  <p className="text-gray-700 text-xs">+1 (555) 123-4567</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">Phone</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">+1 (555) 123-4567</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black text-sm">Email</p>
-                  <p className="text-gray-700 text-xs">info@bidyut.com</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">Email</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyut.com</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Newsletter Section */}
-          <div className="bg-white rounded-2xl border-2 border-green-400 p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-black mb-4">Newsletter</h3>
-            <p className="text-gray-700 text-sm mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Newsletter</h3>
+            <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
               Stay informed about our latest innovations, educational programs, and technology updates.
             </p>
             <div className="space-y-3">
               <input
                 type="email"
                 placeholder="Enter Your Email Address"
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all"
+                className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all"
               />
               <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg transition-all font-medium text-sm shadow-md hover:shadow-lg transform hover:scale-105">
                 Subscribe to Newsletter
@@ -197,17 +197,17 @@ export default function Footer() {
           {[Instagram, Facebook, Twitter].map((Icon, index) => (
             <div
               key={index}
-              className="w-12 h-12 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center hover:border-green-400 hover:shadow-md transition-all cursor-pointer transform hover:scale-110"
+              className="w-12 h-12 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center hover:border-green-400 hover:shadow-md transition-all cursor-pointer transform hover:scale-110"
             >
-              <Icon className="w-6 h-6 text-gray-600 hover:text-green-500 transition-colors" />
+              <Icon className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-green-500 transition-colors" />
             </div>
           ))}
         </div>
 
         {/* Bottom Copyright Section */}
-        <div className="bg-white rounded-2xl border-2 border-gray-300 p-6 mb-8 shadow-lg">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 p-6 mb-8 shadow-lg transition-colors duration-300">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-gray-700">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
               <span className="font-medium">© 2025 Bidyut Technologies. All rights reserved.</span>
               <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
                 Privacy Policy
@@ -219,13 +219,13 @@ export default function Footer() {
                 Cookie Policy
               </a>
             </div>
-            <span className="text-sm text-gray-700 font-medium">Built with Excellence</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Built with Excellence</span>
           </div>
         </div>
 
         {/* Large Company Name with Dot Positioning */}
         <div className="text-center relative">
-          <div className=" text-4xl md:text-5xl lg:text-6xl font-bold text-gray-400 tracking-wider relative inline-block select-none">
+          <div className=" text-4xl md:text-5xl lg:text-6xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none">
             <span>B</span>
             <span ref={iLetterRef} className="relative inline-block">
               <span className="relative">
