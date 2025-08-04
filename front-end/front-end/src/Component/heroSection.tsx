@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
           left: 0,
           zIndex: -2,
         }}
-        src="/Robo Dance.mp4"
+        src="/robo-dance.mp4"
         autoPlay
         loop
         muted
