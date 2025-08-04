@@ -8,6 +8,7 @@ import EducationNews from './Component/EducationNews';
 import EN1 from './Component/EN1';
 import TestimonialSection from './Component/TestimonialSection';
 import { testimonialData, Testimonial } from './Component/testimonials';
+import TrustedPartners from './Component/TrustedPartners';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <HeroSection />
       <OfferingsCarousel />
       <EducationNews />
+      <TrustedPartners />
       <TestimonialSection />
       <EducationStream />
       <Footer />
