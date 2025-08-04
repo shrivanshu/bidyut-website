@@ -127,10 +127,18 @@ export default function Header() {
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className="bg-green-600 hover:bg-green-700 text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors"
+                className="relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
                 aria-label="Toggle theme"
               >
-                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                <div className="relative">
+                  {isDark ? (
+                    <Sun className="h-5 w-5 transition-transform duration-300 rotate-0" />
+                  ) : (
+                    <Moon className="h-5 w-5 transition-transform duration-300 rotate-0" />
+                  )}
+                </div>
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-500 opacity-0 hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
               </button>
 
               {/* Mobile menu button */}

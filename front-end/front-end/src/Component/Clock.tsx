@@ -46,21 +46,21 @@ const Clock: React.FC = () => {
   const currentMinute = currentTime.getMinutes();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-6 transition-colors duration-300">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Main Title */}
         <div className="space-y-2">
-          <h1 className="text-5xl font-bold text-gray-800 leading-tight">
+          <h1 className="text-5xl font-bold text-gray-800 dark:text-white leading-tight font-['Poppins'] transition-colors duration-300">
             Celebrating Bonds Through Bots –
           </h1>
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl font-bold font-['Poppins']">
             <span className="text-emerald-500">Friendship Day</span>{" "}
-            <span className="text-gray-800">Special!</span>
+            <span className="text-gray-800 dark:text-white transition-colors duration-300">Special!</span>
           </h2>
         </div>
 
         {/* Subtitle */}
-        <p className="text-gray-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed font-['Poppins'] transition-colors duration-300">
           This Friendship Day, discover how robots are helping us build deeper
           human connections — from social companion bots to AI-powered
           communication tools. Let's celebrate the friendships that inspire us
@@ -86,8 +86,8 @@ const Clock: React.FC = () => {
                 return (
                   <div
                     key={i}
-                    className={`absolute w-1 h-4 ${
-                      isCurrentHour ? "bg-white" : "bg-gray-800"
+                    className={`absolute w-1 h-4 transition-colors duration-300 ${
+                      isCurrentHour ? "bg-white" : "bg-gray-800 dark:bg-gray-200"
                     }`}
                     style={{
                       left: "50%",
@@ -105,8 +105,8 @@ const Clock: React.FC = () => {
                   return (
                     <div
                       key={`minute-${i}`}
-                      className={`absolute -mb-1 w-0.5 h-2 ${
-                        isCurrentMinute ? "bg-white" : "bg-gray-700"
+                      className={`absolute -mb-1 w-0.5 h-2 transition-colors duration-300 ${
+                        isCurrentMinute ? "bg-white" : "bg-gray-700 dark:bg-gray-300"
                       }`}
                       style={{
                         left: "50%",
@@ -129,8 +129,8 @@ const Clock: React.FC = () => {
                 return (
                   <span
                     key={i}
-                    className={`absolute font-semibold text-lg ${
-                      isCurrentHour ? "text-white" : "text-gray-800"
+                    className={`absolute font-semibold text-lg font-['Poppins'] transition-colors duration-300 ${
+                      isCurrentHour ? "text-white" : "text-gray-800 dark:text-gray-200"
                     }`}
                     style={{
                       top: "50%",
@@ -145,7 +145,7 @@ const Clock: React.FC = () => {
             </div>
 
             {/* Center date */}
-            <div className="absolute px-8 py-4 rounded-xl text-white font-bold text-2xl tracking-wide bg-white bg-opacity-10 backdrop-blur-sm shadow-[inset_-4px_-4px_8px_rgba(255,255,255,0.2),inset_4px_4px_10px_rgba(0,0,0,0.25)]">
+            <div className="absolute px-8 py-4 rounded-xl text-white font-bold text-2xl tracking-wide bg-white bg-opacity-10 backdrop-blur-sm shadow-[inset_-4px_-4px_8px_rgba(255,255,255,0.2),inset_4px_4px_10px_rgba(0,0,0,0.25)] font-['Poppins']">
               {currentDate}
             </div>
           </div>

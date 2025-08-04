@@ -49,7 +49,6 @@ const HeroSection: React.FC = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "#ffffff",
           opacity: 0.3,
           zIndex: -1,
         }}
@@ -60,7 +59,6 @@ const HeroSection: React.FC = () => {
         className="text-black dark:text-white transition-colors duration-300"
         style={{
           maxWidth: "900px",
-          color: "#000000",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -68,6 +66,7 @@ const HeroSection: React.FC = () => {
         }}
       >
         <div
+  className="font-['Poppins']"
   style={{
     backgroundColor: "transparent",
     color: "#ffffff",
@@ -85,6 +84,7 @@ const HeroSection: React.FC = () => {
 
 
  <h1
+  className="font-['Poppins']"
   style={{
     fontSize: "64px",
     fontWeight: 600,
@@ -105,7 +105,7 @@ const HeroSection: React.FC = () => {
 
 
 <p
-  className="paragraph-text"
+  className="paragraph-text font-['Poppins']"
   style={{
     color: "#ffffff",
     fontSize: "16px",
@@ -123,7 +123,7 @@ const HeroSection: React.FC = () => {
 
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
-  <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-2 px-6 rounded">
+  <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-2 px-6 rounded font-['Poppins'] transition-all duration-300">
     Schedule A demo Call
   </button>
 </div>

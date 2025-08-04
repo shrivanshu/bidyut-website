@@ -50,25 +50,25 @@ const TestimonialSection: React.FC = () => {
   const centerCardData = testimonials[CENTER_INDEX];
 
   return (
-    <section className="relative w-full bg-white py-16 lg:py-20 px-4 flex flex-col items-center font-sans overflow-hidden">
+    <section className="relative w-full bg-white dark:bg-gray-900 py-16 lg:py-20 px-4 flex flex-col items-center font-['Poppins'] overflow-hidden transition-colors duration-300">
       {/* Background Vertical Bars (Desktop Only) */}
       <div className="absolute inset-0 w-full h-full hidden lg:grid grid-cols-8 pointer-events-none">
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
-        <div className="border-r border-gray-200/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
+        <div className="border-r border-gray-200/70 dark:border-gray-700/70"></div>
         <div></div>
       </div>
 
       {/* Header */}
       <div className="text-center mb-12 relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white transition-colors duration-300">
           What Our <span className="text-green-500">Partners</span> Say
         </h2>
-        <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto text-sm md:text-base transition-colors duration-300">
           Discover how Bidyut is transforming education and industry through innovative robotics solutions
         </p>
       </div>
@@ -83,16 +83,16 @@ const TestimonialSection: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white p-6 rounded-2xl shadow-xl w-full flex flex-col items-center text-center"
+            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl w-full flex flex-col items-center text-center transition-colors duration-300"
           >
-            <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-white ring-offset-2">
+            <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-white dark:ring-gray-600 ring-offset-2 dark:ring-offset-gray-800">
               <img src={centerCardData.image} alt={centerCardData.name} className="w-full h-full object-cover" />
             </div>
-            <h3 className="font-bold text-lg text-gray-800">{centerCardData.name}</h3>
-            <p className="text-sm text-gray-600">{centerCardData.title}</p>
-            <p className="text-sm text-gray-500 mb-4">{centerCardData.company}</p>
-            <span className="text-5xl text-gray-300 leading-none">”</span>
-            <blockquote className="text-sm text-gray-700 italic">
+            <h3 className="font-bold text-lg text-gray-800 dark:text-white transition-colors duration-300">{centerCardData.name}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{centerCardData.title}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">{centerCardData.company}</p>
+            <span className="text-5xl text-gray-300 dark:text-gray-600 leading-none transition-colors duration-300">”</span>
+            <blockquote className="text-sm text-gray-700 dark:text-gray-300 italic transition-colors duration-300">
               "{centerCardData.quote}"
             </blockquote>
           </motion.div>
@@ -100,7 +100,7 @@ const TestimonialSection: React.FC = () => {
 
         {/* Horizontal Scroller for Thumbnails */}
         <div className="w-full mt-8">
-            <p className="text-center font-semibold text-gray-500 text-sm mb-3">TAP TO VIEW OTHERS</p>
+            <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">TAP TO VIEW OTHERS</p>
             <div className="flex overflow-x-auto space-x-4 pb-4 pt-2 -mx-4 px-4">
                  {testimonials.map((testimonial, index) => {
                      if (index === CENTER_INDEX) return null;
@@ -149,15 +149,15 @@ const TestimonialSection: React.FC = () => {
             whileHover={{ scale: 1.05, zIndex: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
-            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full h-full flex flex-col items-center text-center">
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 ring-2 ring-white ring-offset-2">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl w-full h-full flex flex-col items-center text-center transition-colors duration-300">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 ring-2 ring-white dark:ring-gray-600 ring-offset-2 dark:ring-offset-gray-800">
                 <img src={centerCardData.image} alt={centerCardData.name} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold text-lg text-gray-800">{centerCardData.name}</h3>
-              <p className="text-sm text-gray-600">{centerCardData.title}</p>
-              <p className="text-sm text-gray-500 mb-4">{centerCardData.company}</p>
-              <span className="text-6xl text-gray-300 leading-none">”</span>
-              <blockquote className="text-sm text-gray-700 italic max-w-xs">
+              <h3 className="font-bold text-lg text-gray-800 dark:text-white transition-colors duration-300">{centerCardData.name}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{centerCardData.title}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">{centerCardData.company}</p>
+              <span className="text-6xl text-gray-300 dark:text-gray-600 leading-none transition-colors duration-300">”</span>
+              <blockquote className="text-sm text-gray-700 dark:text-gray-300 italic max-w-xs transition-colors duration-300">
                 "{centerCardData.quote}"
               </blockquote>
             </div>
