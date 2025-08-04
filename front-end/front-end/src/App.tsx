@@ -8,6 +8,8 @@ import EducationNews from './Component/EducationNews';
 import Header from './Component/Header';
 import Clock from './Component/Clock';
 import TestimonialSection from './Component/TestimonialSection';
+import TrustedPartners from './Component/TrustedPartners';
+
 
 
 function App() {
@@ -18,9 +20,10 @@ function App() {
       <OfferingsCarousel />
       <Clock />
       <EducationNews />
+      <LmsSection/>
+      <TrustedPartners />
       <TestimonialSection />
       <EducationStream />
-      <LmsSection/>
       <Footer />
 
     </div>
