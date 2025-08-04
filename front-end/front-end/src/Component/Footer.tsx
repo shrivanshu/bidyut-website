@@ -54,8 +54,8 @@ export default function Footer() {
   const getDotStyle = (): CSSProperties => {
     if (!showAnimation) return { opacity: 0 }
 
-    const initialSize = 80
-    const finalSize = 16
+    const initialSize = 200
+    const finalSize = 15
     const size = initialSize - (initialSize - finalSize) * Math.pow(scrollProgress, 0.8)
 
     // Default positions (center of screen)
@@ -63,7 +63,7 @@ export default function Footer() {
     let currentY = 50
 
     // Only calculate final position if we're near the end of animation
-    if (scrollProgress > 0.5 && iLetterRef.current) {
+    if (scrollProgress > 0.4 && iLetterRef.current) {
       const iRect = iLetterRef.current.getBoundingClientRect()
       const windowWidth = window.innerWidth
       const windowHeight = window.innerHeight
@@ -229,7 +229,7 @@ export default function Footer() {
             <span>B</span>
             <span ref={iLetterRef} className="relative inline-block">
               <span className="relative">
-                i
+                l
                 <div
                   className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full transition-all duration-500 ${
                     scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
