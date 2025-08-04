@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -72,7 +71,7 @@ const getCardStyles = (position: number): CardStyle => {
     case 0: // Center card
       return {
         left: "50%",
-        transform: "translateX(-50%) scale(1) skewY(0deg)", // No skew when centered
+        transform: "translateX(-50%) scaleY(1) scaleX(1) skewY(0deg)", // No skew when centered
         zIndex: 20,
         filter: "blur(0px)", // No blur
         opacity: 1,
@@ -82,9 +81,9 @@ const getCardStyles = (position: number): CardStyle => {
     case -1: // Inner left: skew towards center (top leans right, bottom leans left)
       return {
         left: "50%",
-        transform: "translateX(calc(-50% - 23vw)) scaleY(1.05) rotateY(40deg)", // Skew top right
+        transform: "translateX(calc(-50% - 27vw)) scaleY(1.15) scaleX(0.85) rotateY(40deg)", // Skew top right
         zIndex: 15,
-        filter: "blur(0px)",
+        filter: "blur(0.5px)",
         opacity: 0.9,
         widthClass: "w-[250px] md:w-[350px] lg:w-[450px]",
         transformOrigin: "center center",
@@ -92,9 +91,9 @@ const getCardStyles = (position: number): CardStyle => {
     case 1: // Inner right: skew towards center (top leans left, bottom leans right)
       return {
         left: "50%",
-        transform: "translateX(calc(-50% + 23vw)) scaleY(1.05) rotateY(-40deg)", // Skew top left
+        transform: "translateX(calc(-50% + 27vw)) scaleY(1.15) scaleX(0.85) rotateY(-40deg)", // Skew top left
         zIndex: 15,
-        filter: "blur(0px)",
+        filter: "blur(0.5px)",
         opacity: 0.9,
         widthClass: "w-[250px] md:w-[350px] lg:w-[450px]",
         transformOrigin: "center center",
@@ -102,7 +101,7 @@ const getCardStyles = (position: number): CardStyle => {
     case -2: // Outer left: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% - 42vw)) scaleY(1.1) rotateY(50deg)", // Skew top more right
+        transform: "translateX(calc(-50% - 44vw)) scaleY(1.25) scaleX(0.8) rotateY(50deg)", // Skew top more right
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
@@ -122,7 +121,7 @@ const getCardStyles = (position: number): CardStyle => {
     case 2: // Outer right: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% + 42vw)) scaleY(1.1) rotateY(-50deg)", // Skew top more left
+        transform: "translateX(calc(-50% + 44vw)) scaleY(1.25) scaleX(0.8) rotateY(-50deg)", // Skew top more left
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
@@ -168,7 +167,7 @@ export default function OfferingsCarousel() {
   const displayedCardRelativePositions = [-3,-2, -1, 0, 1, 2,3]
 
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-32 overflow-hidden flex flex-col justify-center items-center ">
+    <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center ">
       <div className=" text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 ">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
           Our <span className="text-[#2ecc71]">Offerings</span>
@@ -177,7 +176,7 @@ export default function OfferingsCarousel() {
           Discover how Bidyut is transforming education and industry through innovative robotics solutions
         </p>
         <div
-          className="relative flex justify-center items-center h-[525px] bg-[#e0f7fa] w-full curved-box">
+          className="relative flex justify-center items-center h-[700px] bg-[#cff5ea] w-full curved-box">
           {displayedCardRelativePositions.map((relativePos) => {
             // Calculate the actual index in the offerings array, handling wrap-around
             const displayIndex = (currentIndex + relativePos + len) % len
@@ -186,7 +185,7 @@ export default function OfferingsCarousel() {
             return (
               <div
                 key={displayIndex} // Use the actual index from the offerings array as key
-                className={`absolute top-50 transition-all duration-700 ease-in-out backface-hidden flex justify-center ${styles.widthClass}`}
+                className={`absolute top-1/2 transition-all duration-700 ease-in-out flex justify-center ${styles.widthClass}`}
                 style={{
                   left: styles.left,
                   transform: styles.transform,
@@ -196,7 +195,7 @@ export default function OfferingsCarousel() {
                   transformOrigin: styles.transformOrigin,
                 }}
               >
-                <div className="bg-white rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center max-h-96 max-w-96 gap-6">
+                <div className="bg-white rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center h-[450px] w-[470px] gap-6">
                   <div className="relative w-full h-80 rounded-md overflow-hidden">
                     <img
                       src={offering.image || "/placeholder.svg"}
