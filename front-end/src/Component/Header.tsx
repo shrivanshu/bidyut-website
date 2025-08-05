@@ -76,7 +76,7 @@ export default function Header() {
                 </div>
               </div>
               <a
-                href="/Contactpage"
+                href="/Contact"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
                 Contact
