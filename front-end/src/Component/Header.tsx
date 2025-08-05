@@ -88,7 +88,7 @@ export default function Header() {
                 Career
               </a>
               <a
-                href="#"
+                href="/gallery"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
                 Gallery
@@ -169,7 +169,7 @@ export default function Header() {
                 Career
               </a>
               <a
-                href="#"
+                href="/gallery"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
                 Gallery

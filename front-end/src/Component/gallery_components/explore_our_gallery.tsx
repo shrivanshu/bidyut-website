@@ -2,8 +2,10 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
+import { useTheme } from "../../contexts/ThemeContext"
 
-export default function GallerySection() {
+export default function ExploreOurGallery() {
+  const { isDark } = useTheme();
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
@@ -54,13 +56,13 @@ export default function GallerySection() {
     visible: { opacity: 1, y: 0 },
   }
 
-  // Common style for all image boxes
+  // Common style for all image boxes with theme support
   const imageBoxStyle: React.CSSProperties = {
     position: "relative",
     overflow: "hidden",
     borderRadius: "8px",
-    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-    transition: "transform 0.3s ease",
+    boxShadow: isDark ? "0 4px 6px rgba(0,0,0,0.3)" : "0 4px 6px rgba(0,0,0,0.1)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
     width: "100%",
     height: "192px", // consistent height
   }
@@ -73,10 +75,10 @@ export default function GallerySection() {
   }
 
   return (
-    <section style={{ background: "#fff", padding: "4rem 1.5rem" }}>
-      <h2 style={{ textAlign: "center", fontSize: "2.25rem", fontWeight: "bold", marginBottom: "3rem" }}>
-        <span style={{ color: "#00D084" }}>Explore</span>{" "}
-        <span style={{ color: "#212121" }}>Our Gallery</span>
+    <section className={`py-16 px-6 transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+      <h2 className={`text-center text-4xl font-bold mb-12 transition-colors duration-300`}>
+        <span className="text-green-500">Explore</span>{" "}
+        <span className={isDark ? 'text-white' : 'text-gray-900'}>Our Gallery</span>
       </h2>
 
       <motion.div

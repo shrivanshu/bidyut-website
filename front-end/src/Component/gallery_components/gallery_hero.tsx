@@ -1,139 +1,140 @@
-import React from "react";
+"use client"
 
-const gallery_hero: React.FC = () => {
+import React from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "../../contexts/ThemeContext";
+
+const GalleryHero: React.FC = () => {
+  const { isDark } = useTheme();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+    },
+    hover: {
+      scale: 1.05,
+    },
+  };
   return (
-    <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
+    <section className="relative h-screen overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          top: 0,
-          left: 0,
-          zIndex: 0,
-        }}
+        className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="/robott.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
 
+      {/* Dark overlay for better text readability */}
+      <div className={`absolute inset-0 z-10 ${isDark ? 'bg-black/60' : 'bg-black/40'} transition-colors duration-300`} />
+
       {/* Content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          textAlign: "center",
-          color: "white",
-          padding: "0 20px",
-        }}
+      <motion.div
+        className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
-        {/* Heading */}
-        <h1
-          style={{
-            fontSize: "3.5rem",
-            fontWeight: "bold",
-            background: "linear-gradient(90deg, #00D084, #00E6A8)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            marginBottom: "0.25rem",
-          }}
+        {/* Main Heading */}
+        <motion.h1
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2"
+          variants={itemVariants}
         >
-          Inspiring
-        </h1>
-        <h2
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: 600,
-            marginBottom: "1.5rem",
-          }}
+          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+            Inspiring
+          </span>
+        </motion.h1>
+
+        <motion.h2
+          className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-6"
+          variants={itemVariants}
         >
           Innovation Through Tech
-        </h2>
+        </motion.h2>
 
         {/* Paragraph */}
-        <p
-          style={{
-            maxWidth: "850px",
-            fontSize: "1.05rem",
-            fontWeight: 400,
-            lineHeight: 1.6,
-            marginBottom: "3rem",
-          }}
+        <motion.p
+          className="max-w-4xl text-base sm:text-lg text-gray-100 leading-relaxed mb-8 px-4"
+          variants={itemVariants}
         >
-          For over 12 years, <strong>Bidyut Innovation</strong> has been
+          For over 12 years, <span className="font-semibold text-green-400">Bidyut Innovation</span> has been
           revolutionizing robotics education across India. We’ve empowered{" "}
-          <strong>45,000+ students</strong> and transformed{" "}
-          <strong>30+ schools</strong> with cutting-edge technology and
+          <span className="font-semibold text-green-400">45,000+ students</span> and transformed{" "}
+          <span className="font-semibold text-green-400">30+ schools</span> with cutting-edge technology and
           hands-on learning experiences.
-        </p>
+        </motion.p>
 
-        {/* Buttons */}
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem", // Increased spacing between buttons
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
+        {/* Action Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6"
+          variants={itemVariants}
         >
-          <button
-            style={{
-              backgroundColor: "#00D084",
-              color: "white",
-              padding: "0.9rem 2rem",
-              borderRadius: "6px",
-              border: "none",
-              fontWeight: 600,
-              fontSize: "1rem",
-              cursor: "pointer",
-              transition: "background-color 0.3s ease",
-            }}
-            onMouseOver={(e) =>
-              ((e.target as HTMLButtonElement).style.backgroundColor = "#00b874")
-            }
-            onMouseOut={(e) =>
-              ((e.target as HTMLButtonElement).style.backgroundColor = "#00D084")
-            }
+          <motion.button
+            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap={{ scale: 0.95 }}
           >
             Explore Program
-          </button>
-          <button
-            style={{
-              backgroundColor: "transparent",
-              color: "#00D084",
-              padding: "0.9rem 2rem",
-              borderRadius: "6px",
-              border: "2px solid #00D084",
-              fontWeight: 600,
-              fontSize: "1rem",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-            }}
-            onMouseOver={(e) => {
-              (e.target as HTMLButtonElement).style.backgroundColor = "#00D084";
-              (e.target as HTMLButtonElement).style.color = "white";
-            }}
-            onMouseOut={(e) => {
-              (e.target as HTMLButtonElement).style.backgroundColor = "transparent";
-              (e.target as HTMLButtonElement).style.color = "#00D084";
-            }}
+          </motion.button>
+
+          <motion.button
+            className="bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap={{ scale: 0.95 }}
           >
             Partner With Us
-          </button>
-        </div>
-      </div>
-    </div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+      >
+        <motion.div
+          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <motion.div
+            className="w-1 h-3 bg-white/70 rounded-full mt-2"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
 
-export default gallery_hero;
+export default GalleryHero;

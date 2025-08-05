@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useRef } from "react"
 import { useInView } from "framer-motion"
+import { useTheme } from "../../contexts/ThemeContext"
 
 // Gallery image data (replace with your own)
 const galleryImages = [
@@ -30,23 +31,24 @@ const itemVariants = {
   visible: { opacity: 1, scale: 1, y: 0 },
 }
 
-export default function KnowUsMoreSection() {
+export default function KnowUsMore() {
+  const { isDark } = useTheme();
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
 
   return (
     <section
       ref={sectionRef}
-      className="bg-gray-50 py-16 px-4 flex flex-col items-center justify-center"
+      className={`py-16 px-4 flex flex-col items-center justify-center transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}
     >
       {/* Heading */}
       <div className="text-center max-w-3xl mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-          <span className="text-[#00C853]">Know </span>
-          <span className="text-[#00C853]">Us </span>
-          <span className="text-gray-900">More</span>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight transition-colors duration-300">
+          <span className="text-green-500">Know </span>
+          <span className="text-green-500">Us </span>
+          <span className={isDark ? 'text-white' : 'text-gray-900'}>More</span>
         </h2>
-        <p className="mt-4 text-gray-600 text-lg">
+        <p className={`mt-4 text-lg transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
           Discover The Heart And Soul Of Bidyut Innovation – Our Mission, Our Team, And Our Vision
           For Transforming Education Through Technology.
         </p>
@@ -65,7 +67,9 @@ export default function KnowUsMoreSection() {
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl group cursor-pointer bg-white"
+            className={`relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl group cursor-pointer transition-all duration-300 ${
+              isDark ? 'bg-gray-700 hover:shadow-green-500/20' : 'bg-white'
+            }`}
           >
             <motion.img
               src={src}
