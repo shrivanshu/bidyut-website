@@ -5,15 +5,17 @@ export default function Component() {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300">
-            Advanced <span className="text-[#28C76F] font-bold">Learning Management</span> System
-          </h1>
-          <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-3 max-w-2xl mx-auto font-['Poppins'] transition-colors duration-300">
-            Discover our LMS platform designed to revolutionize education.
-          </p>
-        </div>
+{/* Header Section */}
+<div className="flex flex-col items-center justify-center text-center mb-12">
+  <h1 className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300">
+    Advanced <span className="text-[#28C76F] font-bold">Learning Management</span> System
+  </h1>
+  <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-2xl font-['Poppins'] transition-colors duration-300">
+    Discover our LMS platform designed to revolutionize education.
+  </p>
+</div>
+
+
 
         {/* Main Content Section */}
         <div className="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-16">

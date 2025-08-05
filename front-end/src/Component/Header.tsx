@@ -29,13 +29,13 @@ export default function Header() {
             {/* Navigation Menu - Hidden on mobile */}
             <nav className="hidden md:flex items-center space-x-8">
               <a
-                href="#"
+                href="/"
                 className="text-gray-900 dark:text-white font-medium border-b-2 border-green-600 pb-1 hover:text-green-600 transition-colors"
               >
                 Home
               </a>
               <a
-                href="#"
+                href="/about"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
                 About US
@@ -135,13 +135,13 @@ export default function Header() {
           >
             <nav className="flex flex-col space-y-3">
               <a
-                href="#"
+                href="/"
                 className="text-gray-900 dark:text-white font-medium border-l-4 border-green-600 pl-3 hover:text-green-600 transition-colors"
               >
                 Home
               </a>
               <a
-                href="#"
+                href="/about"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
                 About US
