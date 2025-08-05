@@ -1,4 +1,4 @@
-// src/App.tsx
+
 import HeroSection from '../Component/home_components/heroSection';
 import OfferingsCarousel from '../Component/home_components/OurOfferings';
 import Footer from '../Component/Footer';
@@ -13,7 +13,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 
 
 
-function App() {
+function Home_page() {
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
@@ -32,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home_page;
