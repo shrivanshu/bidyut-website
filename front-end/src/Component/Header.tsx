@@ -35,7 +35,7 @@ export default function Header() {
                 Home
               </a>
               <a
-                href="#"
+                href="/about"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
                 About US
@@ -141,7 +141,7 @@ export default function Header() {
                 Home
               </a>
               <a
-                href="#"
+                href="/about"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
                 About US
