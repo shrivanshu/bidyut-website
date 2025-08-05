@@ -50,65 +50,123 @@ export default function Footer() {
     }
   }, [])
 
-  // Calculate dot position and size based on scroll progress
+  // Calculate banner/dot position and style based on scroll progress
   const getDotStyle = (): CSSProperties => {
     if (!showAnimation) return { opacity: 0 }
 
-    const initialSize = 200
-    const finalSize = 15
-    const size = initialSize - (initialSize - finalSize) * Math.pow(scrollProgress, 0.8)
+    // Animation phases:
+    // 0.0 - 0.4: Grey banner at top of footer
+    // 0.4 - 0.7: Transform color and shape
+    // 0.7 - 1.0: Move to 'i' position
 
-    // Default positions (center of screen)
-    let currentX = 50
+    // Banner dimensions and positioning  
+    const initialWidth = Math.min(window.innerWidth * 0.8, 1500) // 80% of screen width, max 800px to match footer content
+    const initialHeight = 120
+    const finalSize = 18
+
+    // Smooth easing functions
+    const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
+    const easeInOutQuint = (t: number) => 
+      t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
+
+    // Color transition: grey to green with smooth gradient
+    const colorProgress = Math.max(0, Math.min(1, (scrollProgress - 0.25) / 0.4))
+    const easedColorProgress = easeInOutQuint(colorProgress)
+    
+    // Enhanced color transition from grey-500 to green-500
+    const greyValue = Math.round(107 - (107 - 34) * easedColorProgress) // From grey-500 to green-500
+    const greenValue = Math.round(114 + (197 - 114) * easedColorProgress)
+    const blueValue = Math.round(111 + (94 - 111) * easedColorProgress)
+    
+    // Shape transition: rectangle to circle with smooth morphing
+    const shapeProgress = Math.max(0, Math.min(1, (scrollProgress - 0.4) / 0.3))
+    const easedShapeProgress = easeOutQuart(shapeProgress)
+    
+    const currentWidth = initialWidth - (initialWidth - finalSize) * easedShapeProgress
+    const currentHeight = initialHeight - (initialHeight - finalSize) * easedShapeProgress
+    const borderRadius = Math.min(currentWidth, currentHeight) * 0.5 * easedShapeProgress + 16 * (1 - easedShapeProgress)
+
+    // Calculate footer position for initial banner placement
+    let currentX = 50 // Always center horizontally initially
     let currentY = 50
 
-    // Only calculate final position if we're near the end of animation
-    if (scrollProgress > 0.4 && iLetterRef.current) {
+    if (footerRef.current) {
+      const footerRect = footerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Initial position: in the dedicated banner space
+      const initialY = ((footerRect.top + 50) / windowHeight) * 100 // 50px from footer top (in dedicated space)
+      currentY = initialY
+    }
+
+    // Move to 'i' position in final phase
+    if (scrollProgress > 0.7 && iLetterRef.current && footerRef.current) {
       const iRect = iLetterRef.current.getBoundingClientRect()
+      const footerRect = footerRef.current.getBoundingClientRect()
       const windowWidth = window.innerWidth
       const windowHeight = window.innerHeight
 
       const finalX = ((iRect.left + iRect.width / 2) / windowWidth) * 100
-      const finalY = ((iRect.top - 20) / windowHeight) * 100 // 20px above the "i"
+      const finalY = ((iRect.top - 22) / windowHeight) * 100 // 22px above the "i" dot
+      const initialY = ((footerRect.top + 50) / windowHeight) * 100
 
-      // Smooth easing function
-      const easeInOutCubic = (t: number) => 
-        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-      
-      // Only start moving toward the "i" after progress reaches 0.5
-      const moveProgress = Math.max(0, (scrollProgress - 0.5) * 2)
-      const easedProgress = easeInOutCubic(moveProgress)
+      const moveProgress = Math.max(0, Math.min(1, (scrollProgress - 0.7) / 0.25))
+      const easedMoveProgress = easeInOutQuint(moveProgress)
 
-      currentX = 50 + (finalX - 50) * easedProgress
-      currentY = 50 + (finalY - 50) * easedProgress
+      currentX = 50 + (finalX - 50) * easedMoveProgress
+      currentY = initialY + (finalY - initialY) * easedMoveProgress
     }
 
+    // Enhanced visual effects with interactive elements
+    const glowIntensity = Math.max(0, (scrollProgress - 0.3) * 2)
+    const shadowBlur = Math.max(currentWidth, currentHeight) / 3
+    const scaleEffect = 1 + Math.sin(scrollProgress * Math.PI * 2) * 0.02 // Subtle breathing effect
+    const rotationEffect = scrollProgress > 0.6 ? (scrollProgress - 0.6) * 720 : 0 // Double rotation during movement for more dramatic effect
+    
     return {
       position: 'fixed' as const,
       left: `${currentX}%`,
       top: `${currentY}%`,
-      width: `${size}px`,
-      height: `${size}px`,
-      transform: 'translate(-50%, -50%)',
-      opacity: scrollProgress < 0.95 ? 1 : 0,
+      width: `${currentWidth}px`,
+      height: `${currentHeight}px`,
+      backgroundColor: `rgb(${greyValue}, ${greenValue}, ${blueValue})`,
+      borderRadius: `${borderRadius}px`,
+      transform: `translate(-50%, -50%) scale(${scaleEffect}) rotate(${rotationEffect}deg)`,
+      opacity: scrollProgress < 0.98 ? Math.max(0.85, 1 - scrollProgress * 0.1) : 0,
       zIndex: 1000,
       transition: 'none',
-      boxShadow: `0 0 ${size / 4}px rgba(34, 197, 94, 0.6)`,
+      boxShadow: scrollProgress > 0.4 
+        ? `0 0 ${shadowBlur}px rgba(34, 197, 94, ${0.5 + glowIntensity * 0.5}), 
+           0 0 ${shadowBlur * 2}px rgba(34, 197, 94, ${0.3 + glowIntensity * 0.3}),
+           0 0 ${shadowBlur * 4}px rgba(34, 197, 94, ${0.1 + glowIntensity * 0.2})` 
+        : `0 12px 40px rgba(0, 0, 0, 0.15), 
+           0 4px 12px rgba(0, 0, 0, 0.1),
+           inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
       pointerEvents: 'none' as const,
+      filter: scrollProgress > 0.5 
+        ? `blur(${Math.max(0, (scrollProgress - 0.9) * 20)}px) saturate(${1 + scrollProgress * 0.3})` 
+        : `saturate(${0.8 + scrollProgress * 0.4})`,
+      background: scrollProgress > 0.3 
+        ? `linear-gradient(135deg, rgb(${greyValue}, ${greenValue}, ${blueValue}) 0%, rgb(${Math.max(0, greyValue - 20)}, ${Math.min(255, greenValue + 30)}, ${Math.max(0, blueValue - 10)}) 100%)`
+        : `linear-gradient(135deg, rgb(${greyValue}, ${greenValue}, ${blueValue}) 0%, rgb(${Math.max(0, greyValue - 10)}, ${Math.max(0, greenValue - 10)}, ${Math.max(0, blueValue - 10)}) 100%)`,
     }
   }
 
   return (
-    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-900 px-8 py-16 relative overflow-hidden transition-colors duration-300">
-      {/* Scroll-based Animated Green Dot */}
-      <div 
-        ref={dotRef}
-        className="bg-green-500 rounded-full pointer-events-none" 
-        style={{
-          ...getDotStyle(),
-          animation: showAnimation ? 'pulse-subtle 2s ease-in-out infinite' : 'none'
-        }} 
-      />
+    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-900 px-8 pt-32 pb-16 relative overflow-hidden transition-colors duration-300">
+      {/* Dedicated Banner Space */}
+      <div className="absolute top-0 left-0 right-0 h-32 flex items-center justify-center pointer-events-none">
+        {/* Animated Banner to Dot */}
+        <div 
+          ref={dotRef}
+          className="pointer-events-none" 
+          style={{
+            ...getDotStyle(),
+            animation: showAnimation && scrollProgress > 0.6 ? 'glow-pulse-interactive 2.5s ease-in-out infinite' : 
+                      showAnimation && scrollProgress > 0.2 ? 'shimmer-effect 3s ease-in-out infinite' : 'none'
+          }} 
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Grid */}
@@ -223,21 +281,21 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Large Company Name with Dot Positioning */}
-        <div className="text-center relative">
-          <div className=" text-4xl md:text-5xl lg:text-6xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none">
+        {/* Large Company Name with Dot Positioning - Maximum Width */}
+        <div className="text-center relative w-full px-1">
+          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none w-full">
             <span>B</span>
             <span ref={iLetterRef} className="relative inline-block">
               <span className="relative">
-                l
+                i
                 <div
                   className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full transition-all duration-500 ${
                     scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
                   }`}
                   style={{
                     top: "-0.3em",
-                    boxShadow: "0 0 8px rgba(34, 197, 94, 0.8)",
-                    animation: scrollProgress >= 0.95 ? 'bounce-gentle 2s ease-in-out infinite' : 'none'
+                    boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
+                    animation: scrollProgress >= 0.95 ? 'float-gentle 3s ease-in-out infinite' : 'none'
                   }}
                 />
               </span>
@@ -257,6 +315,47 @@ export default function Footer() {
           }
         }
 
+        @keyframes glow-pulse {
+          0%, 100% {
+            filter: brightness(1) drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            filter: brightness(1.2) drop-shadow(0 0 16px rgba(34, 197, 94, 0.7));
+            transform: translate(-50%, -50%) scale(1.05);
+          }
+        }
+
+        @keyframes glow-pulse-interactive {
+          0%, 100% {
+            filter: brightness(1) drop-shadow(0 0 12px rgba(34, 197, 94, 0.6)) saturate(1.2);
+            transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          }
+          25% {
+            filter: brightness(1.3) drop-shadow(0 0 20px rgba(34, 197, 94, 0.8)) saturate(1.4);
+            transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
+          }
+          50% {
+            filter: brightness(1.1) drop-shadow(0 0 24px rgba(34, 197, 94, 0.9)) saturate(1.6);
+            transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+          }
+          75% {
+            filter: brightness(1.25) drop-shadow(0 0 18px rgba(34, 197, 94, 0.7)) saturate(1.3);
+            transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
+          }
+        }
+
+        @keyframes shimmer-effect {
+          0%, 100% {
+            background-position: -100% 0;
+            opacity: 0.9;
+          }
+          50% {
+            background-position: 200% 0;
+            opacity: 1;
+          }
+        }
+
         @keyframes bounce-gentle {
           0%, 100% {
             transform: translateX(-50%) translateY(0);
@@ -266,12 +365,29 @@ export default function Footer() {
           }
         }
 
+        @keyframes float-gentle {
+          0%, 100% {
+            transform: translateX(-50%) translateY(-50%) translateZ(0);
+          }
+          50% {
+            transform: translateX(-50%) translateY(-50%) translateZ(0) translateY(-3px);
+          }
+        }
+
         .animate-pulse-subtle {
           animation: pulse-subtle 2s ease-in-out infinite;
         }
 
+        .animate-glow-pulse {
+          animation: glow-pulse 2.5s ease-in-out infinite;
+        }
+
         .animate-bounce-gentle {
           animation: bounce-gentle 2s ease-in-out infinite;
+        }
+
+        .animate-float-gentle {
+          animation: float-gentle 3s ease-in-out infinite;
         }
       `}</style>
     </footer>
