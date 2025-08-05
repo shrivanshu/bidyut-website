@@ -2,8 +2,8 @@
 import Footer from '../Component/Footer';
 import Header from '../Component/Header';
 import { ThemeProvider } from '../contexts/ThemeContext';
-import Static from '../Component/Static';
-import Gallery from '../Component/Gallery';
+import Static from '../Component/about_components/Static';
+import Gallery from '../Component/about_components/Gallery';
 
 
 
