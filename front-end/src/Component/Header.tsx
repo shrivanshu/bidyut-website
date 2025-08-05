@@ -19,7 +19,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-                
+                   
               <div className="flex items-center">
                 <div className="text-2xl font-bold text-green-600">BIDYUT</div>
                 <div className="ml-1 text-sm text-gray-600 dark:text-gray-400 font-medium">INNOVATION</div>
@@ -76,7 +76,7 @@ export default function Header() {
                 </div>
               </div>
               <a
-                href="#"
+                href="/Contactpage"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
                 Contact
