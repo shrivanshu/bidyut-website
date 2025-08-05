@@ -1,14 +1,14 @@
 // src/App.tsx
-import HeroSection from './Component/home_page/heroSection';
-import OfferingsCarousel from './Component/home_page/OurOfferings';
+import HeroSection from './Component/home_components/heroSection';
+import OfferingsCarousel from './Component/home_components/OurOfferings';
 import Footer from './Component/Footer';
-import EducationStream from './Component/home_page/EducationStream';
-import LmsSection from './Component/home_page/lmsSection';
-import EducationNews from './Component/home_page/EducationNews';
+import EducationStream from './Component/home_components/EducationStream';
+import LmsSection from './Component/home_components/lmsSection';
+import EducationNews from './Component/home_components/EducationNews';
 import Header from './Component/Header';
-import Clock from './Component/home_page/Clock';
-import TestimonialSection from './Component/home_page/TestimonialSection';
-import TrustedPartners from './Component/home_page/TrustedPartners';
+import Clock from './Component/home_components/Clock';
+import TestimonialSection from './Component/home_components/TestimonialSection';
+import TrustedPartners from './Component/home_components/TrustedPartners';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 
