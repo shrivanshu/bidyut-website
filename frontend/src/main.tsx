@@ -9,13 +9,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
@@ -32,6 +27,4 @@ root.render(
       </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>
-);  
-
-reportWebVitals();
+);
