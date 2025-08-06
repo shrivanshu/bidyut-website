@@ -1,6 +1,9 @@
 import React from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const Static = () => {
+  const { t } = useLanguage();
+  
   return (
     <div>
       <div className="min-h-screen bg-white">
@@ -9,19 +12,16 @@ const Static = () => {
           <div className="text-center mb-16">
             <div className="flex flex-col">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-snug sm:leading-relaxed md:leading-snug text-gray-800 mb-6">
-              Bidyut Focuses on{" "}
-              <span className="text-emerald-400">Educating Students </span>
+              {t('bidyutFocuses')} {" "}
+              <span className="text-emerald-400">{t('educatingStudents')} </span>
               <br className="hidden sm:block" />
-              to act with Integrity in an increasingly
+              {t('actWithIntegrity')}
               <br className="hidden sm:block " />
-              <span className="text-emerald-400 "> digital world</span>
+              <span className="text-emerald-400 "> {t('digitalWorld')}</span>
             </h1>
             </div>
             <p className="text-[#0A254070] text-base sm:text-lg max-w-6xl mx-auto leading-relaxed">
-              Bidyut's trajectory is to bring the future of education to your
-              doorsteps. We are on a mission to uplift the education system of
-              India by developing the world's most advanced Coding and Robotics
-              education for the children of our country.
+              {t('aboutDescription')}
             </p>
           </div>
 
@@ -38,12 +38,10 @@ const Static = () => {
               </div>
               <div className="text-center md:text-center pt-4  md:pt-32 pb-12 sm:pb-20 md:pb-36">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 mb-4  ">
-                  Our Mission
+                  {t('ourMission')}
                 </h2>
                 <p className="text-gray-400 text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">
-                  To create the most compelling education company of the 21st
-                  century by driving students towards conceptual,
-                  technological & fun-based learning.
+                  {t('missionStatement')}
                 </p>
               </div>
             </div>
@@ -52,12 +50,10 @@ const Static = () => {
             <div className="space-y-8 flex flex-col items-center md:items-start">
               <div className="text-center md:text-center  order-2 md:order-1 pt-8 md:pt-44 pb-12 sm:pb-20 md:pb-36">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 mb-4 sm:mb-3">
-                  Our Vision
+                  {t('ourVision')}
                 </h2>
                 <p className="text-gray-400 text-base   sm:text-xl md:text-2xl font-semibold leading-relaxed">
-                  To prepare every child for a technological and challenging
-                  world ahead by fostering innovation through personalized
-                  learning experiences.
+                  {t('visionStatement')}
                 </p>
               </div>
               <div className="relative w-full sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[520px] order-1 md:order-2">

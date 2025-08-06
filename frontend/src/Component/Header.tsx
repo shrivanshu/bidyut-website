@@ -1,20 +1,39 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, Sun, Moon, Menu, X } from "lucide-react"
+import { ChevronDown, Sun, Moon, Menu, X, Globe } from "lucide-react"
 import { useTheme } from "../contexts/ThemeContext"
+import { useLanguage } from "../contexts/LanguageContext"
+import { useNavigation } from "../contexts/NavigationContext"
 
 export default function Header() {
   const { isDark, toggleTheme } = useTheme()
+  const { currentLanguage, changeLanguage, t } = useLanguage()
+  const { currentPath } = useNavigation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
+  const toggleLanguageDropdown = () => {
+    setIsLanguageDropdownOpen(!isLanguageDropdownOpen)
+  }
+
+  const isActive = (path: string) => {
+    return currentPath === path
+  }
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
+    { code: 'bn', name: 'বাংলা', flag: '🇧🇩' }
+  ]
+
   return (
     <>
-      <header className="w-full bg-white dark:bg-gray-900 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors">
+      <header className="w-full bg-white dark:bg-gray-900 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors relative z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -30,76 +49,130 @@ export default function Header() {
             <nav className="hidden md:flex items-center space-x-8">
               <a
                 href="/"
-                className="text-gray-900 dark:text-white font-medium border-b-2 border-green-600 pb-1 hover:text-green-600 transition-colors"
+                className={`font-medium pb-1 transition-colors ${
+                  isActive('/') 
+                    ? 'text-gray-900 dark:text-white border-b-2 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Home
+                {t('home')}
               </a>
               <a
-                href="/about"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
+                href="/About"
+                className={`font-medium pb-1 transition-colors ${
+                  isActive('/About') 
+                    ? 'text-gray-900 dark:text-white border-b-2 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                About US
+                {t('aboutUs')}
               </a>
               <a
                 href="#"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
-                School
+                {t('school')}
               </a>
               <div className="relative group">
                 <button className="flex items-center text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium">
-                  Robot's
+                  {t('robots')}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-                {/* Dropdown menu */}
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {/* Dropdown menu with higher z-index */}
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[9999]">
                   <div className="py-2">
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600"
                     >
-                      Robot Development
+                      {t('robotDevelopment')}
                     </a>
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600"
                     >
-                      AI Solutions
+                      {t('aiSolutions')}
                     </a>
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600"
                     >
-                      Automation
+                      {t('automation')}
                     </a>
                   </div>
                 </div>
               </div>
               <a
                 href="/Contact"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
+                className={`font-medium pb-1 transition-colors ${
+                  isActive('/Contact') 
+                    ? 'text-gray-900 dark:text-white border-b-2 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Contact
+                {t('contact')}
               </a>
               <a
                 href="#"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
               >
-                Career
+                {t('career')}
               </a>
               <a
-                href="/gallery"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium"
+                href="/Gallery"
+                className={`font-medium pb-1 transition-colors ${
+                  isActive('/Gallery') 
+                    ? 'text-gray-900 dark:text-white border-b-2 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Gallery
+                {t('gallery')}
               </a>
             </nav>
 
             {/* Right side buttons */}
             <div className="flex items-center space-x-2 md:space-x-3">
               <button className="hidden sm:inline-flex bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
-                Login To LMS
+                {t('loginToLms')}
               </button>
+
+              {/* Language Toggle Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={toggleLanguageDropdown}
+                  className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
+                  aria-label="Toggle language"
+                >
+                  <Globe className="h-5 w-5" />
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
+                </button>
+                
+                {/* Language Dropdown */}
+                {isLanguageDropdownOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 z-[9999]">
+                    <div className="py-2">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => {
+                            changeLanguage(lang.code as 'en' | 'hi' | 'bn')
+                            setIsLanguageDropdownOpen(false)
+                          }}
+                          className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors ${
+                            currentLanguage === lang.code
+                              ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400'
+                              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          }`}
+                        >
+                          <span>{lang.flag}</span>
+                          <span>{lang.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Theme Toggle Button */}
               <button
@@ -136,51 +209,93 @@ export default function Header() {
             <nav className="flex flex-col space-y-3">
               <a
                 href="/"
-                className="text-gray-900 dark:text-white font-medium border-l-4 border-green-600 pl-3 hover:text-green-600 transition-colors"
+                className={`font-medium pl-3 transition-colors ${
+                  isActive('/') 
+                    ? 'text-gray-900 dark:text-white border-l-4 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Home
+                {t('home')}
               </a>
               <a
-                href="/about"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
+                href="/About"
+                className={`font-medium pl-3 transition-colors ${
+                  isActive('/About') 
+                    ? 'text-gray-900 dark:text-white border-l-4 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                About US
+                {t('aboutUs')}
               </a>
               <a
                 href="#"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
-                School
+                {t('school')}
               </a>
               <button className="flex items-center text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3 text-left">
-                Robot's
+                {t('robots')}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               <a
-                href="#"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
+                href="/Contact"
+                className={`font-medium pl-3 transition-colors ${
+                  isActive('/Contact') 
+                    ? 'text-gray-900 dark:text-white border-l-4 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Contact
+                {t('contact')}
               </a>
               <a
                 href="#"
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
-                Career
+                {t('career')}
               </a>
               <a
-                href="/gallery"
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
+                href="/Gallery"
+                className={`font-medium pl-3 transition-colors ${
+                  isActive('/Gallery') 
+                    ? 'text-gray-900 dark:text-white border-l-4 border-green-600' 
+                    : 'text-gray-700 dark:text-gray-300 hover:text-green-600'
+                }`}
               >
-                Gallery
+                {t('gallery')}
               </a>
               <button className="bg-green-600 hover:bg-green-700 text-white mx-3 mt-2 py-2 px-4 rounded-md font-medium transition-colors">
-                Login To LMS
+                {t('loginToLms')}
               </button>
+              
+              {/* Mobile Language Selector */}
+              <div className="mx-3 mt-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Language / भाषा / ভাষা
+                </label>
+                <select
+                  value={currentLanguage}
+                  onChange={(e) => changeLanguage(e.target.value as 'en' | 'hi' | 'bn')}
+                  className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  {languages.map((lang) => (
+                    <option key={lang.code} value={lang.code}>
+                      {lang.flag} {lang.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </nav>
           </div>
         </div>
       </header>
+      
+      {/* Backdrop to close dropdowns when clicking outside */}
+      {isLanguageDropdownOpen && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setIsLanguageDropdownOpen(false)}
+        />
+      )}
     </>
   )
 }

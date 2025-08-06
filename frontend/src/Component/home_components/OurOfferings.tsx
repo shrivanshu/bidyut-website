@@ -1,57 +1,51 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useLanguage } from "../../contexts/LanguageContext"
 // import Image from "next/image"
 
 interface Offering {
   image: string
-  title: string
-  description: string
+  titleKey: string
+  descriptionKey: string
 }
 
 // Define the offerings data with distinct placeholder images
 const offerings: Offering[] = [
   {
     image: "https://image.slidesdocs.com/responsive-images/background/3d-rendering-of-ai-robot-computing-with-urban-landscape-in-the-powerpoint-background_7de53013b7__960_540.jpg",
-    title: "Collaborative Learning Spaces",
-    description:
-      "Connect with peers worldwide in virtual study rooms where you can share resources, discuss concepts, and solve problems together.",
+    titleKey: "collaborativeLearning",
+    descriptionKey: "collaborativeLearningDesc",
   },
   {
     image: "https://tse4.mm.bing.net/th/id/OIP.a4lnSyRZqSjtnROwkCREBQHaFE?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    title: "Smart Progress Tracking",
-    description:
-      "Monitor your learning journey with detailed analytics and insights that help you identify strengths and areas for improvement.",
+    titleKey: "smartProgress",
+    descriptionKey: "smartProgressDesc",
   },
   {
     image: "https://tse3.mm.bing.net/th/id/OIP.crDgRkCNEchst1MEOnDR0wHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    title: "Interactive Workshops",
-    description:
-      "Engage in hands-on workshops led by experts to deepen your understanding and apply theoretical knowledge to real-world scenarios.",
+    titleKey: "interactiveWorkshops",
+    descriptionKey: "interactiveWorkshopsDesc",
   },
   {
     image: "https://ai-techpark.com/wp-content/uploads/2022/08/CardinalOps-960x540.jpg",
-    title: "Robotics Simulation Labs",
-    description:
-      "Practice and experiment with robotics in a safe, virtual environment before deploying your solutions in the physical world.",
+    titleKey: "roboticsLabs",
+    descriptionKey: "roboticsLabsDesc",
   },
   {
     image: "https://static.vecteezy.com/system/resources/thumbnails/035/580/504/small_2x/ai-generated-artificial-intelligence-robot-thinking-modern-concept-free-photo.jpg",
-    title: "Personalized Mentorship",
-    description:
-      "Receive one-on-one guidance from industry professionals to accelerate your growth and achieve your career goals.",
+    titleKey: "personalizedMentorship",
+    descriptionKey: "personalizedMentorshipDesc",
   },
   {
     image: "https://static.vecteezy.com/system/resources/thumbnails/035/580/504/small_2x/ai-generated-artificial-intelligence-robot-thinking-modern-concept-free-photo.jpg",
-    title: "Personalized Mentorship",
-    description:
-      "Receive one-on-one guidance from industry professionals to accelerate your growth and achieve your career goals.",
+    titleKey: "personalizedMentorship",
+    descriptionKey: "personalizedMentorshipDesc",
   },
   {
     image: "https://static.vecteezy.com/system/resources/thumbnails/035/580/504/small_2x/ai-generated-artificial-intelligence-robot-thinking-modern-concept-free-photo.jpg",
-    title: "Personalized Mentorship",
-    description:
-      "Receive one-on-one guidance from industry professionals to accelerate your growth and achieve your career goals.",
+    titleKey: "personalizedMentorship",
+    descriptionKey: "personalizedMentorshipDesc",
   },
 ]
 
@@ -155,6 +149,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
 }
 
 export default function OfferingsCarousel() {
+  const { t } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null)
@@ -216,13 +211,13 @@ export default function OfferingsCarousel() {
     <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 px-4">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
-          Our <span className="text-[#2ecc71]">Offerings</span>
+          {t('ourOfferings').split(' ')[0]} <span className="text-[#2ecc71]">{t('ourOfferings').split(' ')[1]}</span>
         </h2>
         <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 max-w-4xl mb-2">
-          Discover how Bidyut is transforming education and industry through innovative robotics solutions
+          {t('offeringsSubtitle')}
         </p>
         <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">
-          Click on any card to explore • Hover for details • Auto-scrolling pauses on interaction
+          {t('offeringsInteractionHint')}
         </p>
         <div
           className="relative flex justify-center items-center h-[600px] md:h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box overflow-hidden"
@@ -261,7 +256,7 @@ export default function OfferingsCarousel() {
                   <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
                     <img
                       src={offering.image || "/placeholder.svg"}
-                      alt={offering.title}
+                      alt={t(offering.titleKey)}
                       width={300}
                       height={300}
                       className={`rounded-lg absolute inset-0 w-full h-full object-cover transition-transform duration-300 ${
@@ -280,10 +275,10 @@ export default function OfferingsCarousel() {
                   </div>
                   <h3 className={`font-semibold mb-2 text-gray-900 dark:text-white transition-all duration-300 ${
                     relativePos === 0 ? 'text-xl' : 'text-lg'
-                  }`}>{offering.title}</h3>
+                  }`}>{t(offering.titleKey)}</h3>
                   <p className={`text-gray-600 dark:text-gray-300 transition-all duration-300 ${
                     relativePos === 0 ? 'text-sm' : 'text-xs'
-                  }`}>{offering.description}</p>
+                  }`}>{t(offering.descriptionKey)}</p>
                 </div>
               </div>
             )

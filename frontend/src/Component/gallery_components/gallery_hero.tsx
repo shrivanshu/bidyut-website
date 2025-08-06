@@ -1,11 +1,13 @@
-"use client"
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const GalleryHero: React.FC = () => {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,6 +38,7 @@ const GalleryHero: React.FC = () => {
       scale: 1.05,
     },
   };
+
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Background Video */}
@@ -66,7 +69,7 @@ const GalleryHero: React.FC = () => {
           variants={itemVariants}
         >
           <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-            Inspiring
+            {t('inspiring')}
           </span>
         </motion.h1>
 
@@ -74,7 +77,7 @@ const GalleryHero: React.FC = () => {
           className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-6"
           variants={itemVariants}
         >
-          Innovation Through Tech
+          {t('galleryInnovationTech')}
         </motion.h2>
 
         {/* Paragraph */}
@@ -82,11 +85,7 @@ const GalleryHero: React.FC = () => {
           className="max-w-4xl text-base sm:text-lg text-gray-100 leading-relaxed mb-8 px-4"
           variants={itemVariants}
         >
-          For over 12 years, <span className="font-semibold text-green-400">Bidyut Innovation</span> has been
-          revolutionizing robotics education across India. We’ve empowered{" "}
-          <span className="font-semibold text-green-400">45,000+ students</span> and transformed{" "}
-          <span className="font-semibold text-green-400">30+ schools</span> with cutting-edge technology and
-          hands-on learning experiences.
+          {t('galleryHeroDescription')}
         </motion.p>
 
         {/* Action Buttons */}
@@ -100,7 +99,7 @@ const GalleryHero: React.FC = () => {
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
           >
-            Explore Program
+            {t('exploreProgram')}
           </motion.button>
 
           <motion.button
@@ -109,7 +108,7 @@ const GalleryHero: React.FC = () => {
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
           >
-            Partner With Us
+            {t('partnerWithUs')}
           </motion.button>
         </motion.div>
       </motion.div>

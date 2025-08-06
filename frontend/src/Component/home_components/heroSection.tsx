@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const HeroSection: React.FC = () => {
+  const { t } = useLanguage();
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videos = ["/robott.mp4", "/robot.mp4", "/robo-main.mp4"];
 
@@ -25,6 +27,7 @@ const HeroSection: React.FC = () => {
         alignItems: "center",
         textAlign: "center",
         padding: "0 20px",
+        zIndex: 1, // Lower z-index than header
       }}
     >
       <link
@@ -96,7 +99,7 @@ const HeroSection: React.FC = () => {
             letterSpacing: "0.3px",
           }}
         >
-          Learn Robotics. Build the Future.
+          {t('learnRobotics')}
         </div>
 
         <h1
@@ -109,13 +112,13 @@ const HeroSection: React.FC = () => {
             textShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <span style={{ color: "#0acf83" }}>Think Limitless</span>{" "}
+          <span style={{ color: "#0acf83" }}>{t('thinkLimitless')}</span>{" "}
           <span style={{ color: "#ffffff", textShadow: "0 2px 4px rgba(0, 0, 0, 0.4)" }}>
-            Learn
+            {t('learn')}
           </span>{" "}
           <br />
           <span style={{ color: "#ffffff", textShadow: "0 2px 4px rgba(0, 0, 0, 0.4)" }}>
-            Beyond Boundaries
+            {t('beyondBoundaries')}
           </span>
         </h1>
 
@@ -132,14 +135,12 @@ const HeroSection: React.FC = () => {
             textShadow: "0 1.5px 3px rgba(0, 0, 0, 0.4)",
           }}
         >
-          At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI,
-          coding, and STEAM. Discover a new way to build, program, and solve real-world challenges
-          with creativity.
+          {t('heroDescription')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
           <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            Schedule A Demo Call
+            {t('scheduleDemoCall')}
           </button>
         </div>
       </div>

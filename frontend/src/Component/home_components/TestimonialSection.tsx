@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonialData, type Testimonial } from './testimonials';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // Helper to shuffle an array
 const shuffleArray = (array: Testimonial[]) => {
@@ -41,6 +42,7 @@ const gridPositions = [
 const CENTER_INDEX = 5; // Center position in the grid
 
 const TestimonialSection: React.FC = () => {
+  const { t } = useLanguage();
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
@@ -87,10 +89,10 @@ const TestimonialSection: React.FC = () => {
       {/* Header - matching image exactly */}
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
-          What Our <span className="text-emerald-500">Partners</span> Say
+          {t('whatOurPartnersSay').split(' ')[0]} {t('whatOurPartnersSay').split(' ')[1]} <span className="text-emerald-500">{t('whatOurPartnersSay').split(' ').slice(2).join(' ')}</span>
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          Discover how Bidyut is transforming education and industry through innovative robotics solutions
+          {t('partnersTestimonialDescription')}
         </p>
       </div>
 
@@ -125,7 +127,7 @@ const TestimonialSection: React.FC = () => {
 
         {/* Horizontal Scroller for Thumbnails */}
         <div className="w-full mt-8">
-          <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">TAP TO VIEW OTHERS</p>
+          <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">{t('tapToViewOthers')}</p>
           <div className="flex overflow-x-auto space-x-4 pb-4 pt-2 -mx-4 px-4">
             {testimonials.map((testimonial, index) => {
               if (index === CENTER_INDEX) return null;

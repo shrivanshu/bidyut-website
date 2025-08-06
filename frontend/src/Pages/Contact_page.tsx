@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import Header from '../Component/Header'; 
 import Footer from '../Component/Footer';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Contactpage() {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,7 +55,7 @@ export default function Contactpage() {
                 }`}
                 variants={itemVariants}
               >
-                Connect With Us. Build the Future.
+                {t('connectWithUs')}
               </motion.div>
 
               <motion.h1
@@ -62,10 +64,10 @@ export default function Contactpage() {
                 }`}
                 variants={itemVariants}
               >
-                <span className="text-green-500">Get in Touch</span>{" "}
-                <span>Let's</span>
+                <span className="text-green-500">{t('getInTouch')}</span>{" "}
+                <span>{t('letsBuildSomethingGreat').split(' ').slice(0, 1).join(' ')}</span>
                 <br />
-                <span>Build Something Great</span>
+                <span>{t('letsBuildSomethingGreat').split(' ').slice(1).join(' ')}</span>
               </motion.h1>
 
               <motion.p
@@ -74,9 +76,7 @@ export default function Contactpage() {
                 }`}
                 variants={itemVariants}
               >
-                At Bidyut, we go beyond conversations — offering collaborative solutions powered by innovation,
-                creativity, and expertise. Discover a new way to connect, collaborate, and solve real-world challenges
-                with purpose.
+                {t('contactDescription')}
               </motion.p>
 
             </div>
@@ -101,7 +101,7 @@ export default function Contactpage() {
                 <h2 className={`text-3xl sm:text-4xl font-bold leading-tight transition-colors duration-300 ${
                   isDark ? 'text-white' : 'text-gray-900'
                 }`}>
-                  Let's Talk About Your Project
+                  {t('letsTalkAboutProject')}
                 </h2>
                 
                 <form className="space-y-6">
@@ -112,12 +112,12 @@ export default function Contactpage() {
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}
                     >
-                      Name
+                      {t('name')}
                     </label>
                     <input
                       id="name"
                       type="text"
-                      placeholder="Your full name"
+                      placeholder={t('yourFullName')}
                       className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                         isDark 
                           ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -133,12 +133,12 @@ export default function Contactpage() {
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}
                     >
-                      Email Address
+                      {t('emailAddress')}
                     </label>
                     <input
                       id="email"
                       type="email"
-                      placeholder="We'll get back to you here"
+                      placeholder={t('wellGetBackToYou')}
                       className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                         isDark 
                           ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -154,12 +154,12 @@ export default function Contactpage() {
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}
                     >
-                      Company Name
+                      {t('companyName')}
                     </label>
                     <input
                       id="company"
                       type="text"
-                      placeholder="Let us know who you represent"
+                      placeholder={t('letUsKnowWhoYouRepresent')}
                       className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                         isDark 
                           ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -175,12 +175,12 @@ export default function Contactpage() {
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}
                     >
-                      Subject
+                      {t('subject')}
                     </label>
                     <input
                       id="subject"
                       type="text"
-                      placeholder="What's this about?"
+                      placeholder={t('whatsThisAbout')}
                       className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                         isDark 
                           ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -196,12 +196,12 @@ export default function Contactpage() {
                         isDark ? 'text-gray-300' : 'text-gray-700'
                       }`}
                     >
-                      Message
+                      {t('message')}
                     </label>
                     <textarea
                       id="message"
                       rows={6}
-                      placeholder="Tell us how we can help"
+                      placeholder={t('tellUsHowWeCanHelp')}
                       className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none ${
                         isDark 
                           ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -216,7 +216,7 @@ export default function Contactpage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Send Message
+                    {t('sendMessage')}
                   </motion.button>
                 </form>
               </motion.div>
@@ -226,7 +226,7 @@ export default function Contactpage() {
                 <h2 className={`text-3xl sm:text-4xl font-bold leading-tight transition-colors duration-300 ${
                   isDark ? 'text-white' : 'text-gray-900'
                 }`}>
-                  Prefer a Direct Approach?
+                  {t('preferDirectApproach')}
                 </h2>
                 
                 <div className="space-y-6">
@@ -243,7 +243,7 @@ export default function Contactpage() {
                       <p className={`text-sm font-medium transition-colors duration-300 ${
                         isDark ? 'text-gray-300' : 'text-gray-600'
                       }`}>
-                        Phone
+                        {t('phoneLabel')}
                       </p>
                       <p className={`text-lg font-semibold transition-colors duration-300 ${
                         isDark ? 'text-white' : 'text-gray-900'
@@ -266,7 +266,7 @@ export default function Contactpage() {
                       <p className={`text-sm font-medium transition-colors duration-300 ${
                         isDark ? 'text-gray-300' : 'text-gray-600'
                       }`}>
-                        Email
+                        {t('emailLabel')}
                       </p>
                       <p className={`text-lg font-semibold transition-colors duration-300 ${
                         isDark ? 'text-white' : 'text-gray-900'
@@ -289,12 +289,12 @@ export default function Contactpage() {
                       <p className={`text-sm font-medium transition-colors duration-300 ${
                         isDark ? 'text-gray-300' : 'text-gray-600'
                       }`}>
-                        Working Hours
+                        {t('workingHours')}
                       </p>
                       <p className={`text-lg font-semibold transition-colors duration-300 ${
                         isDark ? 'text-white' : 'text-gray-900'
                       }`}>
-                        Mon - Fri, 9AM - 6PM (IST)
+                        {t('workingHoursTime')}
                       </p>
                     </div>
                   </motion.div>
@@ -312,12 +312,12 @@ export default function Contactpage() {
                     <p className={`text-sm font-medium transition-colors duration-300 ${
                       isDark ? 'text-white' : 'text-gray-900'
                     }`}>
-                      Easy Access
+                      {t('easyAccess')}
                     </p>
                     <p className={`text-xs transition-colors duration-300 ${
                       isDark ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      Well Connected
+                      {t('wellConnected')}
                     </p>
                   </motion.div>
                   
@@ -331,12 +331,12 @@ export default function Contactpage() {
                     <p className={`text-sm font-medium transition-colors duration-300 ${
                       isDark ? 'text-white' : 'text-gray-900'
                     }`}>
-                      Open 24/7
+                      {t('open24_7')}
                     </p>
                     <p className={`text-xs transition-colors duration-300 ${
                       isDark ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      Always Available
+                      {t('alwaysAvailable')}
                     </p>
                   </motion.div>
                   
@@ -350,12 +350,12 @@ export default function Contactpage() {
                     <p className={`text-sm font-medium transition-colors duration-300 ${
                       isDark ? 'text-white' : 'text-gray-900'
                     }`}>
-                      Prime Location
+                      {t('primeLocation')}
                     </p>
                     <p className={`text-xs transition-colors duration-300 ${
                       isDark ? 'text-gray-400' : 'text-gray-600'
                     }`}>
-                      City Center
+                      {t('cityCenter')}
                     </p>
                   </motion.div>
                 </div>
@@ -388,7 +388,7 @@ export default function Contactpage() {
                     <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${
                       isDark ? 'text-white' : 'text-gray-900'
                     }`}>
-                      Visit Our Office
+                      {t('visitOurOffice')}
                     </h3>
                     <div className="flex items-start gap-3 mb-4">
                       <MapPin className={`w-5 h-5 flex-shrink-0 mt-1 transition-colors duration-300 ${
@@ -411,7 +411,7 @@ export default function Contactpage() {
                         className={`flex items-center gap-2 text-green-500 hover:text-green-600 font-medium transition-colors duration-300`}
                         whileHover={{ x: 5 }}
                       >
-                        Get Directions
+                        {t('getDirections')}
                         <ArrowRight className="w-4 h-4" />
                       </motion.a>
                       <motion.button 
@@ -435,7 +435,7 @@ export default function Contactpage() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        Navigate
+                        {t('navigate')}
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                         </svg>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 type VideoOption = {
   src: string;
@@ -7,40 +8,41 @@ type VideoOption = {
   description: string;
 };
 
-const videoOptions = [
-  {
-    src: "/robo-main.mp4",
-    thumbnail: "/robo-main.mp4",
-    title: "Robo Main",
-    description: "Main robotic demonstration video"
-  },
-  {
-    src: "/robo-dance.mp4",
-    thumbnail: "/robo-dance.mp4",
-    title: "Robo Dance",
-    description: "Robotic dance performance"
-  },
-  {
-    src: "/robo-dance2.mp4",
-    thumbnail: "/robo-dance2.mp4",
-    title: "Robo Dance 2",
-    description: "Second robotic dance sequence"
-  },
-  {
-    src: "/robo-dance3.mp4",
-    thumbnail: "/robo-dance3.mp4",
-    title: "Robo Dance 3",
-    description: "Advanced robotic movements"
-  },
-  {
-    src: "/robo-dance5.mp4",
-    thumbnail: "/robo-dance5.mp4",
-    title: "Robo Dance 5",
-    description: "Final robotic performance"
-  },
-];
-
 export default function EducationStream() {
+  const { t } = useLanguage();
+  
+  const videoOptions = [
+    {
+      src: "/robo-main.mp4",
+      thumbnail: "/robo-main.mp4",
+      title: t('roboMain'),
+      description: t('roboMainDescription')
+    },
+    {
+      src: "/robo-dance.mp4",
+      thumbnail: "/robo-dance.mp4",
+      title: t('roboDance'),
+      description: t('roboDanceDescription')
+    },
+    {
+      src: "/robo-dance2.mp4",
+      thumbnail: "/robo-dance2.mp4",
+      title: t('roboDance2'),
+      description: t('roboDance2Description')
+    },
+    {
+      src: "/robo-dance3.mp4",
+      thumbnail: "/robo-dance3.mp4",
+      title: t('roboDance3'),
+      description: t('roboDance3Description')
+    },
+    {
+      src: "/robo-dance5.mp4",
+      thumbnail: "/robo-dance5.mp4",
+      title: t('roboDance5'),
+      description: t('roboDance5Description')
+    },
+  ];
   const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -284,13 +286,12 @@ export default function EducationStream() {
     <div className="bg-[#F9F9FA] dark:bg-gray-900 transition-colors duration-300" style={{ ...containerStyle, backgroundColor: 'transparent' }}>
       <div style={headingSection}>
         <div style={headingStyle} className="text-[#131313] dark:text-white">
-          <span style={streamStyle}>STREAM</span>
+          <span style={streamStyle}>{t('stream')}</span>
           <span style={educationStyle} className="text-[#131313] dark:text-white">Education</span>
         </div>
       </div>
       <div style={subheadingStyle} className="text-[rgba(0,0,0,0.44)] dark:text-gray-400">
-        STREAM Education blends Science, Technology, Robotics, Engineering, Arts,
-        and Math to spark creativity and real-world problem-solving in learners
+        {t('streamEducationDescription')}
       </div>
       <div style={videoCardWrapper}>
         <div style={gradientBorderStyle}>

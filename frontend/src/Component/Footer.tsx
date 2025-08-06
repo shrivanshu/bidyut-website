@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
 import { Instagram, Facebook, Twitter } from "lucide-react"
+import { useLanguage } from "../contexts/LanguageContext"
 
 export default function Footer() {
+  const { t } = useLanguage()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [showAnimation, setShowAnimation] = useState(false)
   const footerRef = useRef<HTMLDivElement>(null)
@@ -173,21 +175,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Bidyut Technologies Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Bidyut Technologies</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('bidyutTechnologies')}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-              Leading provider of advanced robotics and technology solutions for educational institutions. Empowering
-              the next generation through innovative STEM education and cutting-edge research.
+              {t('footerDescription')}
             </p>
           </div>
 
           {/* Quick Links Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-3">
-              {["Home", "About US", "School", "Robots", "Contact", "Gallery"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors text-sm font-medium">
-                    {link}
+              {[
+                { key: 'home', href: '/' },
+                { key: 'aboutUs', href: '/About' },
+                { key: 'school', href: '#' },
+                { key: 'robots', href: '#' },
+                { key: 'contact', href: '/Contact' },
+                { key: 'gallery', href: '/Gallery' }
+              ].map((link) => (
+                <li key={link.key}>
+                  <a href={link.href} className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors text-sm font-medium">
+                    {t(link.key)}
                   </a>
                 </li>
               ))}
@@ -196,14 +204,14 @@ export default function Footer() {
 
           {/* Contact Information Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Contact Information</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('contactInformation')}</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
                   <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">Address</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">{t('address')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">901 Clifton Corporate Park,</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">11/6, AB Road, Sector A, Slice...</p>
                 </div>
@@ -214,7 +222,7 @@ export default function Footer() {
                   <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">Phone</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">{t('phone')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">+1 (555) 123-4567</p>
                 </div>
               </div>
@@ -224,7 +232,7 @@ export default function Footer() {
                   <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">Email</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">{t('email')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyut.com</p>
                 </div>
               </div>
@@ -233,18 +241,18 @@ export default function Footer() {
 
           {/* Newsletter Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">Newsletter</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('newsletter')}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
-              Stay informed about our latest innovations, educational programs, and technology updates.
+              {t('newsletterDescription')}
             </p>
             <div className="space-y-3">
               <input
                 type="email"
-                placeholder="Enter Your Email Address"
+                placeholder={t('enterEmail')}
                 className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all"
               />
               <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg transition-all font-medium text-sm shadow-md hover:shadow-lg transform hover:scale-105">
-                Subscribe to Newsletter
+                {t('subscribeNewsletter')}
               </button>
             </div>
           </div>
@@ -266,18 +274,18 @@ export default function Footer() {
         <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 p-6 mb-8 shadow-lg transition-colors duration-300">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <span className="font-medium">© 2025 Bidyut Technologies. All rights reserved.</span>
+              <span className="font-medium">{t('allRightsReserved')}</span>
               <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                Privacy Policy
+                {t('privacyPolicy')}
               </a>
               <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                Terms of Service
+                {t('termsOfService')}
               </a>
               <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                Cookie Policy
+                {t('cookiePolicy')}
               </a>
             </div>
-            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Built with Excellence</span>
+            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{t('builtWithExcellence')}</span>
           </div>
         </div>
 

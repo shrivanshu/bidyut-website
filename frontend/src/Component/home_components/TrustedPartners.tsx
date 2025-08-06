@@ -2,6 +2,7 @@
 
 // import Image from "next/image"
 import { useState } from "react"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 const TrustedPartners = [
   [
@@ -163,6 +164,7 @@ const TrustedPartners = [
 ]
 
 export default function PartnerLogos() {
+  const { t } = useLanguage();
   const [hoveredColumnIndex, setHoveredColumnIndex] = useState<number | null>(null)
 
   // Function to calculate the scale of each column based on its distance from the hovered column
@@ -197,11 +199,10 @@ export default function PartnerLogos() {
     <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-          Our <span className="text-[#4CAF50]">Trusted</span> Partners
+          {t('trustedPartners').split(' ')[0]} <span className="text-[#4CAF50]">{t('trustedPartners').split(' ')[1]}</span> {t('trustedPartners').split(' ').slice(2).join(' ')}
         </h2>
         <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-12 text-gray-700 dark:text-gray-300 transition-colors duration-300">
-          We are proud to collaborate with industry-leading organizations that share our vision and values. Their
-          continued trust and support help us deliver excellence every step of the way.
+          {t('partnersDescription')}
         </p>
         <div className="flex gap-2 sm:gap-4 md:gap-8 justify-center items-center overflow-hidden drop-shadow-md flex-wrap lg:flex-nowrap px-2">
           {TrustedPartners.map((column, columnIndex) => (

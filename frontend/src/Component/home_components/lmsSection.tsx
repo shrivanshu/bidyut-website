@@ -1,6 +1,9 @@
 import { Brain, Bot as Robot } from "lucide-react"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 export default function Component() {
+  const { t } = useLanguage()
+  
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
@@ -8,10 +11,10 @@ export default function Component() {
 {/* Header Section */}
 <div className="flex flex-col items-center justify-center text-center mb-12">
   <h1 className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300">
-    Advanced <span className="text-[#28C76F] font-bold">Learning Management</span> System
+    {t('advancedLms')}
   </h1>
   <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-2xl font-['Poppins'] transition-colors duration-300">
-    Discover our LMS platform designed to revolutionize education.
+    {t('lmsSubtitle')}
   </p>
 </div>
 
@@ -23,16 +26,13 @@ export default function Component() {
           {/* Left Column */}
           <div className="flex-1 lg:w-1/2 text-center lg:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 font-['Poppins'] transition-colors duration-300">
-              <span className="text-[#28C76F] font-semibold">Bidyut</span> Smart LMS
+              <span className="text-[#28C76F] font-semibold">{t('bidyutSmartLms').split(' ')[0]}</span> {t('bidyutSmartLms').split(' ').slice(1).join(' ')}
             </h2>
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
-              Bidyut LMS offers interactive lessons in Robotics, Coding, and AI with
-              gamified learning for school students. Teachers can easily assign tasks
-              and track progress in real-time. Accessible anytime, it ensures smooth
-              and secure learning in class or at home.
+              {t('lmsDescription')}
             </p>
             <button className="bg-[#28C76F] hover:bg-[#24B064] text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins']">
-              Login to LMS
+              {t('loginToLms')}
             </button>
           </div>
 

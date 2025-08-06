@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import EN1 from './EN1';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const EducationNews: React.FC = () => {
+  const { t } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrollRef2 = useRef<HTMLDivElement>(null);
 
@@ -190,10 +192,10 @@ const EducationNews: React.FC = () => {
       {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Latest Robotics & <span className="text-green-500">Education News</span>
+            {t('latestNews').split(' & ')[0]} & <span className="text-green-500">{t('latestNews').split(' & ')[1]}</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Stay updated with the latest innovation in robotics and education technology
+            {t('stayUpdated')}
           </p>
         </div>
 

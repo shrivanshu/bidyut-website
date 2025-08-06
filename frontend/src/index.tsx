@@ -7,6 +7,8 @@ import Gallery from './Pages/Gallery_page';
 import Contactpage from './Pages/Contact_page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { NavigationProvider } from './contexts/NavigationContext';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -16,14 +18,18 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/Contact" element={<Contactpage />} />
-        </Routes>
-      </BrowserRouter>
+      <LanguageProvider>
+        <BrowserRouter>
+          <NavigationProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Gallery" element={<Gallery />} />
+              <Route path="/Contact" element={<Contactpage />} />
+            </Routes>
+          </NavigationProvider>
+        </BrowserRouter>
+      </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>
 );  
