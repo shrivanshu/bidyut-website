@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { gsap } from "gsap"
+import { useTheme } from "../../contexts/ThemeContext"
 
 // Define image data for the gallery with descriptive placeholder queries
 const initialImages = [
@@ -28,6 +29,7 @@ const initialImages = [
 ]
 
 export default function AboutHeroSection() {
+  const { isDark } = useTheme()
   const mainImageContainerRef = useRef<HTMLDivElement>(null)
   // Use an object for thumbnail slot refs, keyed by their fixed slot name (e.g., 'thumb1', 'thumb2', 'thumb3')
   const thumbnailSlotRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
@@ -62,14 +64,31 @@ export default function AboutHeroSection() {
       { opacity: 1, x: 0, duration: 0.8, stagger: 0.2 },
       "<0.2",
     )
-    // Animate the green decorative squares
+    // Animate the green decorative squares with enhanced effects
     tl.fromTo(
       [greenSquareTopRef.current, greenSquareBottomRef.current],
-      { opacity: 0, scale: 0 },
-      { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1 },
+      { opacity: 0, scale: 0, rotation: 180 },
+      { opacity: 1, scale: 1, rotation: 0, duration: 0.6, stagger: 0.1 },
       "<0.3",
     )
   }, [])
+
+  // Theme change animation effect
+  useEffect(() => {
+    if (isDark) {
+      gsap.to([greenSquareTopRef.current, greenSquareBottomRef.current], {
+        boxShadow: "0 0 20px rgba(34, 197, 94, 0.3)",
+        duration: 0.3,
+        ease: "power2.out"
+      })
+    } else {
+      gsap.to([greenSquareTopRef.current, greenSquareBottomRef.current], {
+        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+        duration: 0.3,
+        ease: "power2.out"
+      })
+    }
+  }, [isDark])
 
   // Function to handle thumbnail clicks and swap images with animation
   const handleThumbnailClick = (clickedImageId: string, clickedSlotKey: string) => {
@@ -164,16 +183,16 @@ export default function AboutHeroSection() {
   const currentMainImage = getImageById(imageSlotMap.main)
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-12 px-4 md:px-8 lg:px-16 bg-white overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center py-12 px-4 md:px-8 lg:px-16 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
       {/* Green decorative squares - positioned absolutely */}
       <div
         ref={greenSquareTopRef}
-        className="absolute top-60 md:top-10 sm:right-10 w-24 h-24 bg-[#0ACF83] rounded-lg shadow-lg"
+        className="absolute top-60 md:top-10 sm:right-10 w-24 h-24 bg-[#0ACF83] dark:bg-green-500 rounded-lg shadow-lg dark:shadow-green-500/20 transition-colors duration-300"
         aria-hidden="true"
       />
       <div
         ref={greenSquareBottomRef}
-        className="absolute bottom-0 right-80 w-24 h-24 bg-[#0ACF83] rounded-lg shadow-lg  sm:z-0"
+        className="absolute bottom-0 right-80 w-24 h-24 bg-[#0ACF83] dark:bg-green-500 rounded-lg shadow-lg dark:shadow-green-500/20 sm:z-0 transition-colors duration-300"
         aria-hidden="true"
       />
       <div className="w-full px-0 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
@@ -181,11 +200,11 @@ export default function AboutHeroSection() {
 
        {/* Left content section */}
 <div className="flex flex-col gap-4 text-left items-start px-2 lg:pl-0">
-  <h2 className="text-5xl md:text-6xl font-bold text-gray-900">
-    About <span className="text-[#0ACF83]">Us</span>
+  <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+    About <span className="text-[#0ACF83] dark:text-green-400">Us</span>
   </h2>
-  <h3 className="text-xl md:text-2xl font-semibold text-gray-700">Shaping Tomorrow's Technology</h3>
-<p className="text-gray-600 leading-relaxed max-w-3xl">
+  <h3 className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">Shaping Tomorrow's Technology</h3>
+<p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl transition-colors duration-300">
   Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting
   the future of automation with solutions that enhance human capabilities rather than replace them.
 </p>
@@ -196,7 +215,7 @@ export default function AboutHeroSection() {
           {/* Main image container (fixed slot) */}
           <div
             ref={mainImageContainerRef}
-            className="absolute w-[250px] h-[375px] md:w-[350px] md:h-[400px] rounded-xl overflow-hidden shadow-xl border border-gray-200 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute w-[250px] h-[375px] md:w-[350px] md:h-[400px] rounded-xl overflow-hidden shadow-xl dark:shadow-2xl border border-gray-200 dark:border-gray-700 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
           >
             <img
               src={currentMainImage?.src || "/placeholder.svg"}
@@ -226,7 +245,7 @@ export default function AboutHeroSection() {
                     thumbnailSlotRefs.current[slotKey] = el
                   }}
                   // Removed transition-transform to avoid conflict with GSAP
-                  className={`absolute rounded-lg overflow-hidden shadow-md border border-gray-200 cursor-pointer hover:scale-105 duration-200 ease-in-out ${positionClasses} w-20 h-20 md:w-28 md:h-28`}
+                  className={`absolute rounded-lg overflow-hidden shadow-md dark:shadow-lg border border-gray-200 dark:border-gray-600 cursor-pointer hover:scale-105 duration-200 ease-in-out transition-all ${positionClasses} w-20 h-20 md:w-28 md:h-28`}
                   onClick={() => handleThumbnailClick(image?.id || "", slotKey)} // Pass image ID and slot key
                 >
                   <img src={image?.src || "/placeholder.svg"} alt={image?.alt} className="object-cover w-full h-full" />
