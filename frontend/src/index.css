@@ -39,6 +39,29 @@ html, body {
   max-width: 100% !important;
 }
 
+/* Hide scrollbar utility class */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Custom hover scale utilities */
+.hover\:scale-102:hover {
+  transform: scale(1.02) translateY(-0.25rem);
+}
+
+.group-hover\:scale-103 {
+  transform: scale(1.03);
+}
+
+.group:hover .group-hover\:scale-103 {
+  transform: scale(1.03);
+}
+
 /* Dark mode scrollbar styling */
 .dark ::-webkit-scrollbar {
   width: 8px;
