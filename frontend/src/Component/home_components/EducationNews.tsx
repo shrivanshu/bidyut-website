@@ -103,45 +103,84 @@ const EducationNews: React.FC = () => {
     let scrollAmount2 = 0;
     const scrollStep = 1;
     const scrollDelay = 30;
+    let isUserScrolling = false;
+    let isUserScrolling2 = false;
 
     const autoScroll = () => {
-      scrollAmount += scrollStep;
-      scrollAmount2 += scrollStep;
-      scrollContainer.scrollLeft = scrollAmount;
-      scrollContainer2.scrollLeft = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollAmount2;
+      if (!isUserScrolling) {
+        scrollAmount += scrollStep;
+        scrollContainer.scrollLeft = scrollAmount;
 
-      // Reset scroll when reaching the end
-      if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-        scrollAmount = 0;
+        // Reset scroll when reaching the end
+        if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+          scrollAmount = 0;
+        }
       }
-      if (scrollAmount2 >= scrollContainer2.scrollWidth - scrollContainer2.clientWidth) {
-        scrollAmount2 = 0;
+
+      if (!isUserScrolling2) {
+        scrollAmount2 += scrollStep;
+        scrollContainer2.scrollLeft = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollAmount2;
+
+        // Reset scroll when reaching the end
+        if (scrollAmount2 >= scrollContainer2.scrollWidth - scrollContainer2.clientWidth) {
+          scrollAmount2 = 0;
+        }
       }
     };
 
     const intervalId = setInterval(autoScroll, scrollDelay);
 
-    // Pause scrolling on hover
+    // Pause scrolling on hover and manual scroll
     let currentIntervalId = intervalId;
+    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout2: NodeJS.Timeout;
     
-    const handleMouseEnter = () => clearInterval(currentIntervalId);
+    const handleMouseEnter = () => {
+      isUserScrolling = true;
+      isUserScrolling2 = true;
+    };
+    
     const handleMouseLeave = () => {
-      clearInterval(currentIntervalId);
-      currentIntervalId = setInterval(autoScroll, scrollDelay);
+      isUserScrolling = false;
+      isUserScrolling2 = false;
+    };
+
+    const handleScroll = () => {
+      isUserScrolling = true;
+      scrollAmount = scrollContainer.scrollLeft;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+      }, 2000);
+    };
+
+    const handleScroll2 = () => {
+      isUserScrolling2 = true;
+      scrollAmount2 = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollContainer2.scrollLeft;
+      clearTimeout(scrollTimeout2);
+      scrollTimeout2 = setTimeout(() => {
+        isUserScrolling2 = false;
+      }, 2000);
     };
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer.addEventListener('scroll', handleScroll);
 
     scrollContainer2.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer2.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer2.addEventListener('scroll', handleScroll2);
     
     return () => {
       clearInterval(currentIntervalId);
+      clearTimeout(scrollTimeout);
+      clearTimeout(scrollTimeout2);
       scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
       scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+      scrollContainer.removeEventListener('scroll', handleScroll);
       scrollContainer2.removeEventListener('mouseenter', handleMouseEnter);
       scrollContainer2.removeEventListener('mouseleave', handleMouseLeave);
+      scrollContainer2.removeEventListener('scroll', handleScroll2);
     };
   }, []);
 
@@ -160,7 +199,7 @@ const EducationNews: React.FC = () => {
 
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden pb-4 relative"
+          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
         >
           {/* Duplicate reviews for seamless infinite scroll */}
@@ -179,7 +218,7 @@ const EducationNews: React.FC = () => {
         {/* Second row of reviews scrolling in opposite direction */}
         <div 
           ref={scrollRef2}
-          className="flex gap-6 overflow-x-hidden pb-4 relative mt-6"
+          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
         >
           {/* Duplicate reviews for seamless infinite scroll */}

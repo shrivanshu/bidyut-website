@@ -6,7 +6,7 @@ import EducationStream from '../Component/home_components/EducationStream';
 import LmsSection from '../Component/home_components/lmsSection';
 import EducationNews from '../Component/home_components/EducationNews';
 import Header from '../Component/Header';
-import Clock from '../Component/home_components/Clock';
+// import Clock from '../Component/home_components/Clock';
 import TestimonialSection from '../Component/home_components/TestimonialSection';
 import TrustedPartners from '../Component/home_components/TrustedPartners';
 import { ThemeProvider } from '../contexts/ThemeContext';
@@ -20,7 +20,7 @@ function Home_page() {
         <Header />
         <HeroSection />
         <OfferingsCarousel />
-        <Clock />
+        {/* <Clock /> */}
         <EducationNews />
         <LmsSection/>
         <TrustedPartners />
