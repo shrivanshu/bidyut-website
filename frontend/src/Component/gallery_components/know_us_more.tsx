@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 // Gallery image data with actual high-quality images
 const galleryImages = [
@@ -79,6 +80,7 @@ const overlayVariants = {
 
 export default function KnowUsMore() {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -105,9 +107,9 @@ export default function KnowUsMore() {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-bold tracking-tight transition-colors duration-300 mb-6"
         >
-          <span className="text-green-400 drop-shadow-lg">Know </span>
-          <span className="text-green-500 drop-shadow-lg">Us </span>
-          <span className={`${isDark ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>More</span>
+          <span className="text-green-400 drop-shadow-lg">{t('knowUsMore').split(' ')[0]} </span>
+          <span className="text-green-500 drop-shadow-lg">{t('knowUsMore').split(' ')[1]} </span>
+          <span className={`${isDark ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>{t('knowUsMore').split(' ')[2]}</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -117,8 +119,7 @@ export default function KnowUsMore() {
             isDark ? 'text-gray-300' : 'text-gray-600'
           }`}
         >
-          Discover The Heart And Soul Of Bidyut Innovation – Our Mission, Our Team, And Our Vision
-          For Transforming Education Through Technology.
+          {t('discoverHeart')}
         </motion.p>
 
         {/* Category Filter */}
@@ -140,7 +141,7 @@ export default function KnowUsMore() {
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {t(category)}
             </button>
           ))}
         </motion.div>
@@ -245,20 +246,20 @@ export default function KnowUsMore() {
         className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl w-full"
       >
         {[
-          { number: "50+", label: "Projects Completed" },
-          { number: "25+", label: "Team Members" },
-          { number: "100+", label: "Happy Clients" },
-          { number: "5+", label: "Years Experience" },
+          { numberKey: "projectsCompleted", labelKey: "projectsCompleted" },
+          { numberKey: "teamMembers", labelKey: "teamMembers" },
+          { numberKey: "happyClients", labelKey: "happyClients" },
+          { numberKey: "yearsExperience", labelKey: "yearsExperience" },
         ].map((stat, index) => (
           <div key={index} className="text-center">
             <motion.div 
               className="text-3xl md:text-4xl font-bold text-green-500 mb-2"
               whileHover={{ scale: 1.1 }}
             >
-              {stat.number}
+              {["50+", "25+", "100+", "5+"][index]}
             </motion.div>
             <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {stat.label}
+              {t(stat.labelKey)}
             </div>
           </div>
         ))}

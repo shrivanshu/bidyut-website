@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Language = 'en' | 'hi' | 'bn';
+type Language = 'en' | 'hi' | 'ur' | 'bn' | 'ja';
 
 interface LanguageContextType {
   currentLanguage: Language;
   changeLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  getLanguageName: (lang: Language) => string;
 }
 
 const translations = {
@@ -124,8 +125,6 @@ const translations = {
     quickLinks: 'Quick Links',
     contactInformation: 'Contact Information',
     address: 'Address',
-    phone: 'Phone',
-    email: 'Email',
     newsletter: 'Newsletter',
     newsletterDescription: 'Stay informed about our latest innovations, educational programs, and technology updates.',
     enterEmail: 'Enter Your Email Address',
@@ -304,8 +303,6 @@ const translations = {
     quickLinks: 'त्वरित लिंक',
     contactInformation: 'संपर्क जानकारी',
     address: 'पता',
-    phone: 'फोन',
-    email: 'ईमेल',
     newsletter: 'न्यूज़लेटर',
     newsletterDescription: 'हमारे नवीनतम नवाचार, शैक्षिक कार्यक्रम और प्रौद्योगिकी अपडेट के बारे में सूचित रहें।',
     enterEmail: 'अपना ईमेल पता दर्ज करें',
@@ -484,8 +481,6 @@ const translations = {
     quickLinks: 'দ্রুত লিঙ্ক',
     contactInformation: 'যোগাযোগের তথ্য',
     address: 'ঠিকানা',
-    phone: 'ফোন',
-    email: 'ইমেইল',
     newsletter: 'নিউজলেটার',
     newsletterDescription: 'আমাদের সর্বশেষ উদ্ভাবন, শিক্ষামূলক প্রোগ্রাম এবং প্রযুক্তি আপডেট সম্পর্কে অবগত থাকুন।',
     enterEmail: 'আপনার ইমেইল ঠিকানা প্রবেশ করান',
@@ -544,6 +539,362 @@ const translations = {
     schoolsTransformed: '৩০+ স্কুল',
     exploreProgram: 'প্রোগ্রাম দেখুন',
     partnerWithUs: 'আমাদের সাথে অংশীদারিত্ব করুন'
+  },
+  ur: {
+    // Header
+    home: 'گھر',
+    aboutUs: 'ہمارے بارے میں',
+    school: 'اسکول',
+    robots: 'روبوٹ',
+    contact: 'رابطہ',
+    career: 'کیریئر',
+    gallery: 'گیلری',
+    loginToLms: 'LMS میں لاگ ان کریں',
+    
+    // Robot dropdown
+    robotDevelopment: 'روبوٹ ڈیولپمنٹ',
+    aiSolutions: 'AI حل',
+    automation: 'خودکار',
+    
+    // Hero section
+    learnRobotics: 'روبوٹکس سیکھیں۔ مستقبل بنائیں۔',
+    thinkLimitless: 'لامحدود سوچیں',
+    learn: 'سیکھیں',
+    beyondBoundaries: 'حدود سے آگے',
+    heroDescription: 'بدیوت میں، ہم نصابی کتابوں سے آگے جاتے ہیں — AI، کوڈنگ اور STEAM کے ذریعے عملی روبوٹکس تعلیم فراہم کرتے ہیں۔ تخلیقیت کے ساتھ بنانے، پروگرام کرنے اور حقیقی دنیا کے چیلنجز حل کرنے کا نیا طریقہ دریافت کریں۔',
+    scheduleDemoCall: 'ڈیمو کال کا شیڈول بنائیں',
+    
+    // Offerings
+    ourOfferings: 'ہماری خدمات',
+    offeringsSubtitle: 'دریافت کریں کہ بدیوت کیسے جدید روبوٹکس حل کے ذریعے تعلیم اور صنعت میں تبدیلی لا رہا ہے',
+    offeringsInteractionHint: 'دریافت کے لیے کسی بھی کارڈ پر کلک کریں • تفصیلات کے لیے ہوور کریں • انٹرایکشن پر آٹو سکرولنگ رک جاتا ہے',
+    collaborativeLearning: 'تعاونی سیکھنے کی جگہیں',
+    collaborativeLearningDesc: 'ورچوئل اسٹڈی رومز میں دنیا بھر کے ساتھیوں سے جڑیں جہاں آپ وسائل شیئر کر سکتے ہیں، تصورات پر بحث کر سکتے ہیں، اور مسائل کا حل کر سکتے ہیں۔',
+    smartProgress: 'اسمارٹ پیش قدمی ٹریکنگ',
+    smartProgressDesc: 'تفصیلی تجزیات اور بصیرت کے ساتھ اپنے سیکھنے کے سفر کی نگرانی کریں جو آپ کو اپنی طاقتوں اور بہتری کے علاقوں کی شناخت میں مدد کرتا ہے۔',
+    interactiveWorkshops: 'انٹرایکٹو ورکشاپس',
+    interactiveWorkshopsDesc: 'ماہرین کی قیادت میں ہاتھوں سے کام کرنے والے ورکشاپس میں حصہ لیں تاکہ آپ کی سمجھ کو گہرا بنایا جا سکے اور نظریاتی علم کو حقیقی حالات میں لاگو کیا جا سکے۔',
+    roboticsLabs: 'روبوٹکس سمولیشن لیبز',
+    roboticsLabsDesc: 'جسمانی دنیا میں اپنے حل تعین کرنے سے پہلے محفوظ، ورچوئل ماحول میں روبوٹکس کی مشق اور تجربہ کریں۔',
+    personalizedMentorship: 'ذاتی رہنمائی',
+    personalizedMentorshipDesc: 'اپنی ترقی کو تیز کرنے اور اپنے کریئر کے اہداف حاصل کرنے کے لیے صنعت کے پیشہ ور افراد سے ایک-پر-ایک رہنمائی حاصل کریں۔',
+    
+    // LMS Section
+    advancedLms: 'ایڈوانسڈ لرننگ منیجمنٹ سسٹم',
+    lmsSubtitle: 'ہمارا LMS پلیٹ فارم دریافت کریں جو تعلیم میں انقلاب لانے کے لیے ڈیزائن کیا گیا ہے۔',
+    bidyutSmartLms: 'بدیوت اسمارٹ LMS',
+    lmsDescription: 'بدیوت LMS اسکول کے طلباء کے لیے گیمفائیڈ لرننگ کے ساتھ روبوٹکس، کوڈنگ اور AI میں انٹرایکٹو اسباق فراہم کرتا ہے۔ اساتذہ آسانی سے کام تفویض کر سکتے ہیں اور حقیقی وقت میں پیش قدمی کو ٹریک کر سکتے ہیں۔',
+    personalizedLearningPaths: 'ذاتی سیکھنے کے راستے',
+    aiDrivenSystem: 'AI-چلنے والا سسٹم سیکھنے کی طرز کی بنیاد پر حسب ضرورت سفر بناتا ہے۔',
+    roboticsLabSimulation: 'روبوٹکس لیب سمولیشن',
+    practiceVirtual: 'فوری فیڈ بیک کے ساتھ روبوٹ بنانے اور پروگرامنگ کی ورچوئل مشق کریں۔',
+    
+    // Education Stream
+    streamEducation: 'STREAM تعلیم',
+    stream: 'STREAM',
+    streamEducationDescription: 'STREAM تعلیم سائنس، ٹیکنالوجی، روبوٹکس، انجینئرنگ، آرٹس، اور ریاضی کو ملاتی ہے تاکہ سیکھنے والوں میں تخلیقیت اور حقیقی دنیا کے مسئلے حل کرنے کی چنگاری جلائی جا سکے',
+    roboMain: 'روبو مین',
+    roboMainDescription: 'اصل روبوٹک مظاہرہ ویڈیو',
+    roboDance: 'روبو ڈانس',
+    roboDanceDescription: 'روبوٹک رقص کا مظاہرہ',
+    roboDance2: 'روبو ڈانس 2',
+    roboDance2Description: 'دوسرا روبوٹک رقص سلسلہ',
+    roboDance3: 'روبو ڈانس 3',
+    roboDance3Description: 'جدید روبوٹک حرکات',
+    roboDance5: 'روبو ڈانس 5',
+    roboDance5Description: 'آخری روبوٹک کارکردگی',
+    
+    // Testimonials
+    whatOurPartnersSay: 'ہمارے شراکت دار کیا کہتے ہیں',
+    partnersTestimonialDescription: 'دریافت کریں کہ بدیوت جدید روبوٹکس حل کے ذریعے تعلیم اور صنعت میں کیسے تبدیلی لا رہا ہے',
+
+    // Education News
+    latestNews: 'تازہ ترین روبوٹکس اور تعلیمی خبریں',
+    stayUpdated: 'روبوٹکس اور تعلیمی ٹیکنالوجی میں جدید ترین نوویت کے ساتھ اپ ڈیٹ رہیں',
+    
+    // Trusted Partners
+    trustedPartners: 'قابل اعتماد شراکت دار',
+    partnersDescription: 'ہمیں ان صنعت کی قائدانہ تنظیموں کے ساتھ تعاون پر فخر ہے جو ہماری نقطہ نظر اور اقدار کو شیئر کرتی ہیں۔ ان کا مسلسل اعتماد اور حمایت ہر قدم پر بہترین کارکردگی فراہم کرنے میں ہماری مدد کرتا ہے۔',
+    
+    // Testimonials
+    whatPartnersSay: 'ہمارے شراکت دار کیا کہتے ہیں',
+    testimonialsSubtitle: 'دریافت کریں کہ بدیوت جدید روبوٹکس حل کے ذریعے تعلیم اور صنعت میں کیسے تبدیلی لا رہا ہے',
+    tapToViewOthers: 'دوسروں کو دیکھنے کے لیے ٹیپ کریں',
+    
+    // About Page - Static Section
+    bidyutFocuses: 'بدیوت فوکس کرتا ہے',
+    educatingStudents: 'طلباء کی تعلیم پر',
+    actWithIntegrity: 'تیزی سے بڑھتی',
+    digitalWorld: 'ڈیجیٹل دنیا میں دیانتداری سے کام کرنے کے لیے',
+    aboutDescription: 'بدیوت کا راستہ تعلیم کا مستقبل آپ کے دروازے تک لانا ہے۔ ہم اپنے ملک کے بچوں کے لیے دنیا کی سب سے جدید کوڈنگ اور روبوٹکس تعلیم تیار کر کے بھارت کے تعلیمی نظام کو بلند کرنے کے مشن پر ہیں۔',
+    ourMission: 'ہمارا مشن',
+    missionStatement: '21ویں صدی کی سب سے متاثر کن تعلیمی کمپنی بنانا اور طلباء کو تصوراتی، تکنیکی اور تفریحی سیکھنے کی طرف راغب کرنا۔',
+    ourVision: 'ہماری نقطہ نظر',
+    visionStatement: 'ذاتی سیکھنے کے تجربات کے ذریعے نئے پن کو فروغ دے کر ہر بچے کو آگے کی تکنیکی اور چیلنج بھری دنیا کے لیے تیار کرنا۔',
+    
+    // Gallery Page
+    knowUsMore: 'ہمیں مزید جانیں',
+    discoverHeart: 'بدیوت انوویشن کے دل اور روح کو دریافت کریں – ہمارا مشن، ہماری ٹیم، اور ٹیکنالوجی کے ذریعے تعلیم تبدیل کرنے کے لیے ہمارا نقطہ نظر۔',
+    awardWinning: 'ایوارڈ یافتہ',
+    digitalInnovation: 'ڈیجیٹل انوویشن',
+    celebratingJourney: 'ٹیکنالوجی اور تعلیم کے میدان میں نئے پن، بہتری اور اثر کے ہمارے سفر کا جشن منانا۔',
+    nationalRoboticsAward: 'قومی روبوٹکس انوویشن ایوارڈ',
+    roboticsAwardDesc: 'STEM تعلیم اور روبوٹکس نئے پن میں شاندار تعاون کے لیے تسلیم شدہ',
+    globalYouthEmpowerment: 'عالمی نوجوان بااختیار بنانے کا اعتراف',
+    youthEmpowermentDesc: 'محروم برادریوں کے لیے پیشگام ٹیکنالوجی تعلیم',
+    edtechExcellence: 'EdTech بہترین سرٹیفکیٹ',
+    edtechExcellenceDesc: 'بھارت میں اعلیٰ درجہ کا تعلیمی ٹیکنالوجی فراہم کنندہ',
+    inspiringGallery: 'متاثر کن گیلری',
+    innovationThroughTech: 'ٹیکنالوجی کے ذریعے انوویشن',
+    galleryDescription: '12 سال سے زیادہ، بدیوت انوویشن پورے بھارت میں روبوٹکس تعلیم میں انقلاب لا رہا ہے۔ ہم نے جدید ٹیکنالوجی اور عملی سیکھنے کے تجربات کے ساتھ 45,000+ طلباء کو بااختیار بنایا ہے اور 30+ اسکولوں کو تبدیل کیا ہے۔',
+    exploreOurGallery: 'ہماری گیلری دیکھیں',
+    projectsCompleted: 'مکمل پروجیکٹس',
+    teamMembers: 'ٹیم ممبرز',
+    happyClients: 'خوش کلائنٹس',
+    yearsExperience: 'سال کا تجربہ',
+    
+    // Footer
+    bidyutTechnologies: 'بدیوت ٹیکنالوجیز',
+    footerDescription: 'تعلیمی اداروں کے لیے جدید روبوٹکس اور ٹیکنالوجی حل کا معروف فراہم کنندہ۔ نئے پن والی STEM تعلیم اور جدید تحقیق کے ذریعے اگلی نسل کو بااختیار بنانا۔',
+    quickLinks: 'فوری لنکس',
+    contactInformation: 'رابطہ کی معلومات',
+    address: 'پتہ',
+    newsletter: 'نیوز لیٹر',
+    newsletterDescription: 'ہماری تازہ ترین نئے پن، تعلیمی پروگرامز اور ٹیکنالوجی اپ ڈیٹس کے بارے میں باخبر رہیں۔',
+    enterEmail: 'اپنا ای میل ایڈریس داخل کریں',
+    subscribeNewsletter: 'نیوز لیٹر سبسکرائب کریں',
+    allRightsReserved: '© 2025 بدیوت ٹیکنالوجیز۔ تمام حقوق محفوظ ہیں۔',
+    privacyPolicy: 'پرائیویسی پالیسی',
+    termsOfService: 'سروس کی شرائط',
+    cookiePolicy: 'کوکی پالیسی',
+    builtWithExcellence: 'بہتری کے ساتھ بنایا گیا',
+    
+    // Categories (for filters)
+    all: 'سب',
+    workspace: 'ورک اسپیس',
+    technology: 'ٹیکنالوجی',
+    education: 'تعلیم',
+    team: 'ٹیم',
+    
+    // Contact Page
+    connectWithUs: 'ہم سے جڑیں۔ مستقبل بنائیں۔',
+    getInTouch: 'رابطہ کریں',
+    letsBuildSomethingGreat: 'آئیے کچھ شاندار بنائیں',
+    contactDescription: 'بدیوت میں، ہم بات چیت سے آگے جاتے ہیں — نئے پن، تخلیقیت اور مہارت کے ذریعے تعاونی حل فراہم کرتے ہیں۔ مقصد کے ساتھ جڑنے، تعاون کرنے اور حقیقی دنیا کے چیلنجز حل کرنے کا نیا طریقہ دریافت کریں۔',
+    letsTalkAboutProject: 'آئیے آپ کے پروجیکٹ کے بارے میں بات کریں',
+    name: 'نام',
+    yourFullName: 'آپ کا پورا نام',
+    emailAddress: 'ای میل ایڈریس',
+    wellGetBackToYou: 'ہم آپ سے یہاں رابطہ کریں گے',
+    companyName: 'کمپنی کا نام',
+    letUsKnowWhoYouRepresent: 'ہمیں بتائیں کہ آپ کس کی نمائندگی کرتے ہیں',
+    subject: 'موضوع',
+    whatsThisAbout: 'یہ کس بارے میں ہے؟',
+    message: 'پیغام',
+    tellUsHowWeCanHelp: 'ہمیں بتائیں کہ ہم کیسے مدد کر سکتے ہیں',
+    sendMessage: 'پیغام بھیجیں',
+    preferDirectApproach: 'براہ راست رابطہ ترجیح دیتے ہیں؟',
+    phoneLabel: 'فون',
+    emailLabel: 'ای میل',
+    workingHours: 'کام کے اوقات',
+    workingHoursTime: 'سوم - جمعہ، صبح 9 - شام 6 (IST)',
+    easyAccess: 'آسان رسائی',
+    wellConnected: 'بہتر طریقے سے جڑا ہوا',
+    open24_7: '24/7 کھلا',
+    alwaysAvailable: 'ہمیشہ دستیاب',
+    primeLocation: 'اہم مقام',
+    cityCenter: 'شہر کا مرکز',
+    visitOurOffice: 'ہمارے دفتر آئیں',
+    getDirections: 'سمت کے لیے رہنمائی حاصل کریں',
+    navigate: 'نیویگیٹ کریں',
+    
+    // Gallery Hero
+    inspiring: 'متاثر کن',
+    galleryInnovationTech: 'ٹیکنالوجی کے ذریعے انوویشن',
+    galleryHeroDescription: '12 سال سے زیادہ، بدیوت انوویشن پورے بھارت میں روبوٹکس تعلیم میں انقلاب لا رہا ہے۔ ہم نے جدید ٹیکنالوجی اور عملی سیکھنے کے تجربات کے ساتھ 45,000+ طلباء کو بااختیار بنایا ہے اور 30+ اسکولوں کو تبدیل کیا ہے۔',
+    bidyutInnovation: 'بدیوت انوویشن',
+    studentsEmpowered: '45,000+ طلباء',
+    schoolsTransformed: '30+ اسکولز',
+    exploreProgram: 'پروگرام دیکھیں',
+    partnerWithUs: 'ہمارے ساتھ شراکت کریں'
+  },
+  ja: {
+    // Header
+    home: 'ホーム',
+    aboutUs: '私たちについて',
+    school: 'スクール',
+    robots: 'ロボット',
+    contact: 'お問い合わせ',
+    career: 'キャリア',
+    gallery: 'ギャラリー',
+    loginToLms: 'LMSにログイン',
+    
+    // Robot dropdown
+    robotDevelopment: 'ロボット開発',
+    aiSolutions: 'AIソリューション',
+    automation: '自動化',
+    
+    // Hero section
+    learnRobotics: 'ロボティクスを学ぶ。未来を築く。',
+    thinkLimitless: '無限に考える',
+    learn: '学ぶ',
+    beyondBoundaries: '境界を超えて',
+    heroDescription: 'Bidyutでは、教科書を超えて — AI、コーディング、STEAMによる実践的なロボティクス学習を提供します。創造性とともに構築、プログラム、現実世界の課題解決の新しい方法を発見してください。',
+    scheduleDemoCall: 'デモコールを予約',
+    
+    // Offerings
+    ourOfferings: '私たちのサービス',
+    offeringsSubtitle: 'Bidyutが革新的なロボティクスソリューションを通じて教育と産業をどのように変革しているかを発見してください',
+    offeringsInteractionHint: '探索するには任意のカードをクリック • 詳細はホバー • インタラクションで自動スクロールが一時停止',
+    collaborativeLearning: '協力的学習スペース',
+    collaborativeLearningDesc: '仮想スタディルームで世界中の仲間とつながり、リソースを共有し、概念について話し合い、一緒に問題を解決できます。',
+    smartProgress: 'スマート進捗追跡',
+    smartProgressDesc: '詳細な分析と洞察でご自身の学習旅程を監視し、強みと改善領域を特定するのに役立ちます。',
+    interactiveWorkshops: 'インタラクティブワークショップ',
+    interactiveWorkshopsDesc: '専門家主導のハンズオンワークショップに参加し、理解を深め、理論的知識を現実世界のシナリオに適用できます。',
+    roboticsLabs: 'ロボティクスシミュレーションラボ',
+    roboticsLabsDesc: '物理的世界でソリューションを展開する前に、安全な仮想環境でロボティクスを練習し実験します。',
+    personalizedMentorship: 'パーソナライズドメンターシップ',
+    personalizedMentorshipDesc: '成長を加速し、キャリア目標を達成するために、業界専門家からの1対1の指導を受けます。',
+    
+    // LMS Section
+    advancedLms: '高度学習管理システム',
+    lmsSubtitle: '教育に革命をもたらすために設計されたLMSプラットフォームを発見してください。',
+    bidyutSmartLms: 'Bidyut Smart LMS',
+    lmsDescription: 'Bidyut LMSは、学校の生徒向けにゲーミフィケーションされた学習でロボティクス、コーディング、AIのインタラクティブレッスンを提供します。教師は簡単にタスクを割り当て、リアルタイムで進捗を追跡できます。',
+    personalizedLearningPaths: 'パーソナライズド学習パス',
+    aiDrivenSystem: 'AI駆動システムが学習スタイルに基づいてカスタマイズされた旅程を作成します。',
+    roboticsLabSimulation: 'ロボティクスラボシミュレーション',
+    practiceVirtual: '即座のフィードバックでロボットの構築とプログラミングを仮想練習します。',
+    
+    // Education Stream
+    streamEducation: 'STREAM教育',
+    stream: 'STREAM',
+    streamEducationDescription: 'STREAM教育は、科学、技術、ロボティクス、工学、芸術、数学を融合し、学習者の創造性と現実世界での問題解決の火花を点火します',
+    roboMain: 'ロボメイン',
+    roboMainDescription: 'メインロボティクデモンストレーションビデオ',
+    roboDance: 'ロボダンス',
+    roboDanceDescription: 'ロボティクダンスパフォーマンス',
+    roboDance2: 'ロボダンス2',
+    roboDance2Description: '第二のロボティクダンスシーケンス',
+    roboDance3: 'ロボダンス3',
+    roboDance3Description: '高度なロボティック動作',
+    roboDance5: 'ロボダンス5',
+    roboDance5Description: '最終ロボティクパフォーマンス',
+    
+    // Testimonials
+    whatOurPartnersSay: 'パートナーの声',
+    partnersTestimonialDescription: 'Bidyutが革新的なロボティクスソリューションを通じて教育と産業をどのように変革しているかを発見してください',
+
+    // Education News
+    latestNews: '最新ロボティクス・教育ニュース',
+    stayUpdated: 'ロボティクスと教育技術の最新イノベーションで最新情報を入手',
+    
+    // Trusted Partners
+    trustedPartners: '信頼できるパートナー',
+    partnersDescription: '私たちのビジョンと価値観を共有する業界をリードする組織との協力を誇りに思います。彼らの継続的な信頼とサポートが、あらゆる段階で優秀さを提供するのに役立ちます。',
+    
+    // Testimonials
+    whatPartnersSay: 'パートナーが言うこと',
+    testimonialsSubtitle: 'Bidyutが革新的なロボティクスソリューションを通じて教育と産業をどのように変革しているかを発見してください',
+    tapToViewOthers: '他を見るためにタップ',
+    
+    // About Page - Static Section
+    bidyutFocuses: 'Bidyutは焦点を当てる',
+    educatingStudents: '学生を教育することに',
+    actWithIntegrity: 'ますます',
+    digitalWorld: 'デジタル世界で誠実に行動するために',
+    aboutDescription: 'Bidyutの軌道は、教育の未来をあなたの玄関先にもたらすことです。私たちは、わが国の子どもたちのために世界で最も先進的なコーディングとロボティクス教育を開発することにより、インドの教育システムを向上させる使命にあります。',
+    ourMission: '私たちのミッション',
+    missionStatement: '21世紀で最も魅力的な教育会社を作り、学生を概念的、技術的、楽しい学習に向けて駆動すること。',
+    ourVision: '私たちのビジョン',
+    visionStatement: 'パーソナライズされた学習体験を通じてイノベーションを促進することにより、すべての子どもを技術的で挑戦的な世界に備える。',
+    
+    // Gallery Page
+    knowUsMore: 'もっと私たちを知る',
+    discoverHeart: 'Bidyut Innovationの心と魂を発見してください – 私たちのミッション、私たちのチーム、そして技術を通じて教育を変革するための私たちのビジョン。',
+    awardWinning: '受賞歴',
+    digitalInnovation: 'デジタルイノベーション',
+    celebratingJourney: '技術と教育分野でのイノベーション、優秀さ、影響の私たちの旅を祝う。',
+    nationalRoboticsAward: '国立ロボティクスイノベーション賞',
+    roboticsAwardDesc: 'STEM教育とロボティクスイノベーションへの優れた貢献で認められました',
+    globalYouthEmpowerment: 'グローバル青少年エンパワーメント認定',
+    youthEmpowermentDesc: '恵まれないコミュニティのための先駆的技術教育',
+    edtechExcellence: 'EdTech優秀証明書',
+    edtechExcellenceDesc: 'インドでトップレートの教育技術プロバイダー',
+    inspiringGallery: '感動的なギャラリー',
+    innovationThroughTech: '技術を通じたイノベーション',
+    galleryDescription: '12年以上にわたり、Bidyut Innovationはインド全土でロボティクス教育に革命をもたらしています。最先端技術と実践的学習体験で45,000+の学生を力づけ、30+の学校を変革しました。',
+    exploreOurGallery: '私たちのギャラリーを探索',
+    projectsCompleted: '完了プロジェクト',
+    teamMembers: 'チームメンバー',
+    happyClients: '満足クライアント',
+    yearsExperience: '年の経験',
+    
+    // Footer
+    bidyutTechnologies: 'Bidyut Technologies',
+    footerDescription: '教育機関向けの先進ロボティクスと技術ソリューションの主要プロバイダー。革新的なSTEM教育と最先端研究を通じて次世代をエンパワーしています。',
+    quickLinks: 'クイックリンク',
+    contactInformation: '連絡先情報',
+    address: '住所',
+    newsletter: 'ニューズレター',
+    newsletterDescription: '私たちの最新イノベーション、教育プログラム、技術アップデートについて最新情報を入手してください。',
+    enterEmail: 'メールアドレスを入力してください',
+    subscribeNewsletter: 'ニューズレターを購読',
+    allRightsReserved: '© 2025 Bidyut Technologies. 全著作権所有。',
+    privacyPolicy: 'プライバシーポリシー',
+    termsOfService: 'サービス利用規約',
+    cookiePolicy: 'クッキーポリシー',
+    builtWithExcellence: '優秀さで構築',
+    
+    // Categories (for filters)
+    all: 'すべて',
+    workspace: 'ワークスペース',
+    technology: '技術',
+    education: '教育',
+    team: 'チーム',
+    
+    // Contact Page
+    connectWithUs: '私たちと繋がろう。未来を築こう。',
+    getInTouch: 'お問い合わせ',
+    letsBuildSomethingGreat: '一緒に素晴らしいものを作りましょう',
+    contactDescription: 'Bidyutでは、会話を超えて — イノベーション、創造性、専門知識によって駆動される協力的ソリューションを提供します。目的を持って接続し、協力し、現実世界の課題を解決する新しい方法を発見してください。',
+    letsTalkAboutProject: 'あなたのプロジェクトについて話しましょう',
+    name: '名前',
+    yourFullName: 'フルネーム',
+    emailAddress: 'メールアドレス',
+    wellGetBackToYou: 'ここでご連絡いたします',
+    companyName: '会社名',
+    letUsKnowWhoYouRepresent: 'どちらを代表されているかお知らせください',
+    subject: '件名',
+    whatsThisAbout: 'これは何についてですか？',
+    message: 'メッセージ',
+    tellUsHowWeCanHelp: 'どのようにお手伝いできるかお聞かせください',
+    sendMessage: 'メッセージを送信',
+    preferDirectApproach: '直接的なアプローチをお好みですか？',
+    phoneLabel: '電話',
+    emailLabel: 'Eメール',
+    workingHours: '営業時間',
+    workingHoursTime: '月 - 金、午前9時 - 午後6時 (IST)',
+    easyAccess: '簡単アクセス',
+    wellConnected: 'よく接続されている',
+    open24_7: '24/7オープン',
+    alwaysAvailable: 'いつでも利用可能',
+    primeLocation: 'プライムロケーション',
+    cityCenter: '市中心部',
+    visitOurOffice: '私たちのオフィスを訪問',
+    getDirections: '道順を取得',
+    navigate: 'ナビゲート',
+    
+    // Gallery Hero
+    inspiring: '感動的な',
+    galleryInnovationTech: '技術を通じたイノベーション',
+    galleryHeroDescription: '12年以上にわたり、Bidyut Innovationはインド全土でロボティクス教育に革命をもたらしています。最先端技術と実践的学習体験で45,000+の学生をエンパワーし、30+の学校を変革しました。',
+    bidyutInnovation: 'Bidyut Innovation',
+    studentsEmpowered: '45,000+学生',
+    schoolsTransformed: '30+学校',
+    exploreProgram: 'プログラムを探索',
+    partnerWithUs: '私たちとパートナーシップを組む'
   }
 };
 
@@ -567,7 +918,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   useEffect(() => {
     // Check for saved language preference or default to English
     const savedLanguage = localStorage.getItem("language") as Language;
-    if (savedLanguage && ['en', 'hi', 'bn'].includes(savedLanguage)) {
+    if (savedLanguage && ['en', 'hi', 'ur', 'bn', 'ja'].includes(savedLanguage)) {
       setCurrentLanguage(savedLanguage);
     }
   }, []);
@@ -581,8 +932,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     return translations[currentLanguage][key as keyof typeof translations['en']] || key;
   };
 
+  const getLanguageName = (lang: Language): string => {
+    const languageNames = {
+      en: 'English',
+      hi: 'हिंदी',
+      ur: 'اردو',
+      bn: 'বাংলা',
+      ja: '日本語'
+    };
+    return languageNames[lang];
+  };
+
   return (
-    <LanguageContext.Provider value={{ currentLanguage, changeLanguage, t }}>
+    <LanguageContext.Provider value={{ currentLanguage, changeLanguage, t, getLanguageName }}>
       {children}
     </LanguageContext.Provider>
   );

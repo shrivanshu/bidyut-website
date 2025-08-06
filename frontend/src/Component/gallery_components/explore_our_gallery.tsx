@@ -2,9 +2,11 @@
 import { motion, useInView, useAnimationControls, Reorder } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 
 export default function ExploreOurGallery() {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -84,11 +86,11 @@ export default function ExploreOurGallery() {
   const imageBoxStyle: React.CSSProperties = {
     position: "relative",
     overflow: "hidden",
-    borderRadius: "8px",
-    boxShadow: isDark ? "0 4px 6px rgba(0,0,0,0.3)" : "0 4px 6px rgba(0,0,0,0.1)",
+    borderRadius: "12px",
+    boxShadow: isDark ? "0 8px 25px rgba(0,0,0,0.3)" : "0 8px 25px rgba(0,0,0,0.1)",
     transition: "transform 0.3s ease, box-shadow 0.3s ease, ring 0.3s ease",
     width: "100%",
-    height: "192px", // consistent height
+    height: "200px", // Slightly increased height for better aspect ratio
   }
   const imageStyle: React.CSSProperties = {
     width: "100%",
@@ -116,11 +118,12 @@ export default function ExploreOurGallery() {
   };
 
   return (
-    <section className={`py-16 px-6 transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-      <h2 className={`text-center text-3xl sm:text-4xl font-bold mb-12 transition-colors duration-300`}>
-        <span className="text-green-500">Explore</span>{" "}
-        <span className={isDark ? 'text-white' : 'text-gray-900'}>Our Gallery</span>
-      </h2>
+    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className="max-w-7xl mx-auto">
+        <h2 className={`text-center text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 lg:mb-16 transition-colors duration-300`}>
+          <span className="text-green-500">{t('exploreOurGallery').split(' ')[0]}</span>{" "}
+          <span className={isDark ? 'text-white' : 'text-gray-900'}>{t('exploreOurGallery').split(' ').slice(1).join(' ')}</span>
+        </h2>
       <motion.div
         ref={sectionRef}
         style={{
@@ -139,7 +142,7 @@ export default function ExploreOurGallery() {
           as="div" // Render as a div
           values={topRowImagesState}
           onReorder={setTopRowImagesState}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"
         >
           {topRowImagesState.map((image) => (
             <Reorder.Item
@@ -157,23 +160,22 @@ export default function ExploreOurGallery() {
 
         {/* Carousel - remains non-draggable */}
         <div
-          style={{ position: "relative", overflow: "hidden", width: "100%", padding: "1rem 0" }}
+          className="relative overflow-hidden w-full py-4 sm:py-6 lg:py-8"
           onMouseEnter={handleCarouselMouseEnter} // Pause on hover
           onMouseLeave={handleCarouselMouseLeave} // Resume on leave
         >
           <motion.div
             ref={carouselRef}
-            style={{ display: "flex", gap: "1rem" }}
+            className="flex gap-3 sm:gap-4 lg:gap-6"
             animate={carouselControls}
           >
             {duplicatedCarouselImages.map((image, index) => (
               <motion.div
                 key={`carousel-${index}`}
-                className="group"
+                className="group flex-shrink-0"
                 style={{
                   ...imageBoxStyle,
-                  flexShrink: 0,
-                  width: "256px", // fixed width for carousel
+                  width: window.innerWidth < 640 ? "200px" : window.innerWidth < 1024 ? "220px" : "256px", // responsive width
                 }}
                 whileHover={{ scale: 1.15, zIndex: 10 }} // Pop-up effect
               >
@@ -188,7 +190,7 @@ export default function ExploreOurGallery() {
           as="div" // Render as a div
           values={bottomRowImagesState}
           onReorder={setBottomRowImagesState}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"
         >
           {bottomRowImagesState.map((image) => (
             <Reorder.Item
@@ -204,6 +206,7 @@ export default function ExploreOurGallery() {
           ))}
         </Reorder.Group>
       </motion.div>
+      </div>
     </section>
   )
 }

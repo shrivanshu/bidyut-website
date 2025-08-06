@@ -75,10 +75,10 @@ export default function Component() {
                 >
                   <div className="flex items-center mb-2">
                     <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
-                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Personalized Learning Paths</h3>
+                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">{t('personalizedLearningPaths')}</h3>
                   </div>
                   <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    AI-driven system creates customized journeys based on learning style.
+                    {t('aiDrivenSystem')}
                   </p>
                 </div>
 
@@ -92,10 +92,10 @@ export default function Component() {
                 >
                   <div className="flex items-center mb-2">
                     <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
-                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Robotics Lab Simulation</h3>
+                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">{t('roboticsLabSimulation')}</h3>
                   </div>
                   <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    Virtual robotics lab where students design and program robots in 3D.
+                    {t('practiceVirtual')}
                   </p>
                 </div>
               </div>
@@ -107,20 +107,20 @@ export default function Component() {
                 <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center mb-3">
                     <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
-                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Personalized Learning Paths</h3>
+                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">{t('personalizedLearningPaths')}</h3>
                   </div>
                   <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    AI-driven system creates customized journeys based on learning style.
+                    {t('aiDrivenSystem')}
                   </p>
                 </div>
 
                 <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center mb-3">
                     <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
-                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Robotics Lab Simulation</h3>
+                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">{t('roboticsLabSimulation')}</h3>
                   </div>
                   <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    Virtual robotics lab where students design and program robots in 3D.
+                    {t('practiceVirtual')}
                   </p>
                 </div>
               </div>

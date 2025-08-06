@@ -8,7 +8,7 @@ import { useNavigation } from "../contexts/NavigationContext"
 
 export default function Header() {
   const { isDark, toggleTheme } = useTheme()
-  const { currentLanguage, changeLanguage, t } = useLanguage()
+    const { currentLanguage, changeLanguage, t } = useLanguage()
   const { currentPath } = useNavigation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
@@ -28,8 +28,10 @@ export default function Header() {
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-    { code: 'bn', name: 'বাংলা', flag: '🇧🇩' }
-  ]
+    { code: 'ur', name: 'اردو', flag: '🇵🇰' },
+    { code: 'bn', name: 'বাংলা', flag: '🇧🇩' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' }
+  ] as const
 
   return (
     <>
@@ -150,13 +152,13 @@ export default function Header() {
                 
                 {/* Language Dropdown */}
                 {isLanguageDropdownOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 z-[9999]">
+                  <div className="absolute top-full right-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 z-[9999] max-h-64 overflow-y-auto">
                     <div className="py-2">
                       {languages.map((lang) => (
                         <button
                           key={lang.code}
                           onClick={() => {
-                            changeLanguage(lang.code as 'en' | 'hi' | 'bn')
+                            changeLanguage(lang.code)
                             setIsLanguageDropdownOpen(false)
                           }}
                           className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors ${
@@ -165,8 +167,8 @@ export default function Header() {
                               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                           }`}
                         >
-                          <span>{lang.flag}</span>
-                          <span>{lang.name}</span>
+                          <span className="text-base">{lang.flag}</span>
+                          <span className="font-medium">{lang.name}</span>
                         </button>
                       ))}
                     </div>
@@ -270,11 +272,11 @@ export default function Header() {
               {/* Mobile Language Selector */}
               <div className="mx-3 mt-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Language / भाषा / ভাষা
+                  Language / भाषा / اردو / ভাষা / 言語
                 </label>
                 <select
                   value={currentLanguage}
-                  onChange={(e) => changeLanguage(e.target.value as 'en' | 'hi' | 'bn')}
+                  onChange={(e) => changeLanguage(e.target.value as 'en' | 'hi' | 'ur' | 'bn' | 'ja')}
                   className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   {languages.map((lang) => (
