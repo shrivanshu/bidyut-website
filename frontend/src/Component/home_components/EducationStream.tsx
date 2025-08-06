@@ -114,7 +114,7 @@ export default function EducationStream() {
 
   const containerStyle: React.CSSProperties = {
     position: "relative",
-    width: "100vw",
+    width: "100%",
     minHeight: "100vh",
     overflowX: "hidden",
     overflowY: "auto",
@@ -337,7 +337,8 @@ export default function EducationStream() {
         @media (max-width: 1366px) {
           div[style*="width: 692px"] {
             position: static !important;
-            width: 97vw !important;
+            width: calc(100% - 20px) !important;
+            max-width: 97% !important;
             height: auto !important;
             margin: 30px auto 0 auto !important;
             flex-direction: row !important;
@@ -353,7 +354,8 @@ export default function EducationStream() {
             background: transparent !important;
           }
           div[style*="width: 1085px"] {
-            width: 96vw !important;
+            width: calc(100% - 40px) !important;
+            max-width: 96% !important;
             margin-left: 0 !important;
             height: auto !important;
           }
@@ -374,7 +376,7 @@ export default function EducationStream() {
 
         @media (max-width: 600px) {
           div[style*="max-width: 997px"] {
-            max-width: 90vw !important;
+            max-width: calc(100% - 20px) !important;
           }
           div[style*="font-size: 64px"] {
             font-size: 36px !important;

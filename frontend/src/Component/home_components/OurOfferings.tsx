@@ -75,67 +75,67 @@ const getCardStyles = (position: number): CardStyle => {
         zIndex: 20,
         filter: "blur(0px)", // No blur
         opacity: 1,
-        widthClass: "w-[300px] md:w-[400px] lg:w-[500px]",
+        widthClass: "w-[280px] md:w-[380px] lg:w-[480px]",
         transformOrigin: "center center",
       }
     case -1: // Inner left: skew towards center (top leans right, bottom leans left)
       return {
         left: "50%",
-        transform: "translateX(calc(-50% - 27vw)) scaleY(1.15) scaleX(0.85) rotateY(40deg)", // Skew top right
+        transform: "translateX(calc(-50% - min(25vw, 300px))) scaleY(1.15) scaleX(0.85) rotateY(40deg)", // Skew top right
         zIndex: 15,
         filter: "blur(0.5px)",
         opacity: 0.9,
-        widthClass: "w-[250px] md:w-[350px] lg:w-[450px]",
+        widthClass: "w-[230px] md:w-[330px] lg:w-[430px]",
         transformOrigin: "center center",
       }
     case 1: // Inner right: skew towards center (top leans left, bottom leans right)
       return {
         left: "50%",
-        transform: "translateX(calc(-50% + 27vw)) scaleY(1.15) scaleX(0.85) rotateY(-40deg)", // Skew top left
+        transform: "translateX(calc(-50% + min(25vw, 300px))) scaleY(1.15) scaleX(0.85) rotateY(-40deg)", // Skew top left
         zIndex: 15,
         filter: "blur(0.5px)",
         opacity: 0.9,
-        widthClass: "w-[250px] md:w-[350px] lg:w-[450px]",
+        widthClass: "w-[230px] md:w-[330px] lg:w-[430px]",
         transformOrigin: "center center",
       }
     case -2: // Outer left: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% - 44vw)) scaleY(1.25) scaleX(0.8) rotateY(50deg)", // Skew top more right
+        transform: "translateX(calc(-50% - min(40vw, 480px))) scaleY(1.25) scaleX(0.8) rotateY(50deg)", // Skew top more right
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
-        widthClass: "w-[200px] md:w-[300px] lg:w-[400px]",
+        widthClass: "w-[180px] md:w-[280px] lg:w-[380px]",
         transformOrigin: "center center",
       }
       case -3: // Outer left: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% - 64vw)) scaleY(1.1) rotateY(50deg)", // Skew top more right
+        transform: "translateX(calc(-50% - min(55vw, 660px))) scaleY(1.1) rotateY(50deg)", // Skew top more right
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
-        widthClass: "w-[200px] md:w-[300px] lg:w-[400px]",
+        widthClass: "w-[180px] md:w-[280px] lg:w-[380px]",
         transformOrigin: "center center",
       }
     case 2: // Outer right: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% + 44vw)) scaleY(1.25) scaleX(0.8) rotateY(-50deg)", // Skew top more left
+        transform: "translateX(calc(-50% + min(40vw, 480px))) scaleY(1.25) scaleX(0.8) rotateY(-50deg)", // Skew top more left
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
-        widthClass: "w-[200px] md:w-[300px] lg:w-[400px]",
+        widthClass: "w-[180px] md:w-[280px] lg:w-[380px]",
         transformOrigin: "center center",
       }
     case 3: // Outer right: skew more towards center
       return {
         left: "50%",
-        transform: "translateX(calc(-50% + 62vw)) scaleY(1.1) rotateY(-50deg)", // Skew top more left
+        transform: "translateX(calc(-50% + min(55vw, 660px))) scaleY(1.1) rotateY(-50deg)", // Skew top more left
         zIndex: 10,
         filter: "blur(1px)",
         opacity: 0.7,
-        widthClass: "w-[200px] md:w-[300px] lg:w-[400px]",
+        widthClass: "w-[180px] md:w-[280px] lg:w-[380px]",
         transformOrigin: "center center",
       }
     default:
@@ -168,15 +168,15 @@ export default function OfferingsCarousel() {
 
   return (
     <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className=" text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 ">
+      <div className="text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 px-4">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
           Our <span className="text-[#2ecc71]">Offerings</span>
         </h2>
-        <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+        <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 max-w-4xl">
           Discover how Bidyut is transforming education and industry through innovative robotics solutions
         </p>
         <div
-          className="relative flex justify-center items-center h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box">
+          className="relative flex justify-center items-center h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box overflow-hidden">
           {displayedCardRelativePositions.map((relativePos) => {
             // Calculate the actual index in the offerings array, handling wrap-around
             const displayIndex = (currentIndex + relativePos + len) % len
@@ -195,7 +195,7 @@ export default function OfferingsCarousel() {
                   transformOrigin: styles.transformOrigin
                 }}
               >
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg py-8 px-6 flex flex-col items-center text-center h-[450px] w-[470px] gap-6 transition-colors duration-300">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg py-6 px-4 flex flex-col items-center text-center h-[450px] max-w-[470px] w-full gap-4 transition-colors duration-300">
                   <div className="relative w-full h-80 rounded-md overflow-hidden">
                     <img
                       src={offering.image || "/placeholder.svg"}

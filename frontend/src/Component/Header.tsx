@@ -96,7 +96,7 @@ export default function Header() {
             </nav>
 
             {/* Right side buttons */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 md:space-x-3">
               <button className="hidden sm:inline-flex bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors">
                 Login To LMS
               </button>

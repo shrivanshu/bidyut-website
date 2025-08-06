@@ -16,7 +16,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 function Home_page() {
   return (
     <ThemeProvider>
-      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden">
         <Header />
         <HeroSection />
         <OfferingsCarousel />

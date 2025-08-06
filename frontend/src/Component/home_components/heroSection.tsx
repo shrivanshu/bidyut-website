@@ -100,6 +100,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
           style={{
             fontSize: "64px",
             fontWeight: 600,
@@ -137,8 +138,8 @@ const HeroSection: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
-          <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-2 px-6 rounded">
-            Schedule A demo Call
+          <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+            Schedule A Demo Call
           </button>
         </div>
       </div>
@@ -165,18 +166,16 @@ const HeroSection: React.FC = () => {
         {`
           @media (max-width: 768px) {
             .paragraph-text {
-              text-align: justify !important;
+              text-align: center !important;
               padding: 0 20px;
               font-size: 14px !important;
               line-height: 1.8 !important;
             }
           }
           @media (max-width: 480px) {
-            h1 {
-              font-size: 28px !important;
-            }
-            p {
-              font-size: 14px !important;
+            .paragraph-text {
+              font-size: 13px !important;
+              padding: 0 16px;
             }
           }
         `}

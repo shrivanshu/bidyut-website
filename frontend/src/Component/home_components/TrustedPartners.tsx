@@ -194,7 +194,7 @@ export default function PartnerLogos() {
   }
 
   return (
-    <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300">
+    <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
           Our <span className="text-[#4CAF50]">Trusted</span> Partners
@@ -203,7 +203,7 @@ export default function PartnerLogos() {
           We are proud to collaborate with industry-leading organizations that share our vision and values. Their
           continued trust and support help us deliver excellence every step of the way.
         </p>
-        <div className="flex gap-8 justify-evenly items-center overflow-y-visible overflow-x-scroll md:overflow-x-visible drop-shadow-md">
+        <div className="flex gap-2 sm:gap-4 md:gap-8 justify-center items-center overflow-hidden drop-shadow-md flex-wrap lg:flex-nowrap px-2">
           {TrustedPartners.map((column, columnIndex) => (
             <div
               key={columnIndex}
@@ -215,7 +215,7 @@ export default function PartnerLogos() {
               {column.map((logo, logoIndex) => (
                 <div
                   key={logoIndex}
-                  className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center border-[1px] overflow-hidden border-gray-300 dark:border-gray-600 border-solid shadow-md drop-shadow-2xl transition-colors duration-300"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center border-[1px] overflow-hidden border-gray-300 dark:border-gray-600 border-solid shadow-md drop-shadow-2xl transition-colors duration-300"
                 >
                   <img
                     src={logo.src || "/placeholder.svg"}

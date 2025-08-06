@@ -32,8 +32,8 @@ const awards = [
 // Card position presets - responsive positioning
 const cardPositions = [
   { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 3 },   // center
-  { x: 280, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // right
-  { x: -280, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // left
+  { x: 250, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // right
+  { x: -250, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // left
 ]
 
 // Mobile card positions
@@ -67,7 +67,7 @@ export default function AwardWinning() {
   }, [])
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
@@ -101,7 +101,7 @@ export default function AwardWinning() {
               return (
                 <motion.div
                   key={award.id}
-                  className={`absolute ${isMobile ? 'w-80 max-w-[90vw]' : 'w-72 sm:w-80 lg:w-84'}`}
+                  className={`absolute ${isMobile ? 'w-80 max-w-[90%]' : 'w-72 sm:w-80 lg:w-84'}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ x, y, scale, opacity }}
                   transition={{ type: "spring", stiffness: 120, damping: 15 }}
