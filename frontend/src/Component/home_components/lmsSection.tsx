@@ -21,7 +21,7 @@ export default function Component() {
 
 
         {/* Main Content Section */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-16">
+        <div className="flex flex-col xl:flex-row items-center xl:items-start gap-8 lg:gap-12 xl:gap-16">
           
           {/* Left Column */}
           <div className="flex-1 lg:w-1/2 text-center lg:text-left">
@@ -37,62 +37,95 @@ export default function Component() {
           </div>
 
           {/* Right Column */}
-          <div className="flex-1 lg:w-1/2 relative flex justify-center lg:justify-end items-center h-[450px] md:h-[550px] lg:h-[650px] w-full">
+          <div className="flex-1 xl:w-1/2 relative order-1 xl:order-2 w-full">
             
-            {/* Large Background Gradient Tint */}
-            <div
-              className="absolute w-[160%] h-[160%] rounded-full blur-[140px] opacity-70 -z-10"
-              style={{
-                background: "radial-gradient(circle at center, rgba(40,199,111,0.4) 0%, rgba(40,199,111,0.05) 60%, transparent 100%)",
-              }}
-            ></div>
+            {/* Container for image and cards */}
+            <div className="relative flex justify-center items-center min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
+              
+              {/* Background Gradient */}
+              <div
+                className="absolute w-full h-full rounded-full blur-[100px] lg:blur-[140px] opacity-50 lg:opacity-70"
+                style={{
+                  background: "radial-gradient(circle at center, rgba(40,199,111,0.3) 0%, rgba(40,199,111,0.05) 60%, transparent 100%)",
+                }}
+              ></div>
 
-            {/* Laptop Image with Strong Glow */}
-            <img
-              src="/Rectangle.svg"
-              alt="Laptop displaying LMS interface"
-              className="absolute w-full max-w-[1350px] h-auto object-contain z-10"
-              style={{
-                filter: "drop-shadow(0 0 250px rgba(40, 199, 111, 0.7)) saturate(1.5)",
-                transform: "rotate(-10deg) translateY(-10px) translateX(40px)",
-              }}
-            />
-
-            {/* Personalized Learning Paths */}
-            <div
-              className="absolute bg-white dark:bg-gray-800 p-5 rounded-xl shadow-xl z-20 w-[260px] md:w-[300px] transition-colors duration-300"
-              style={{
-                bottom: "5%",
-                left: "-8%",
-                opacity: "0.95",
-              }}
-            >
-              <div className="flex items-center mb-2">
-                <Brain className="w-6 h-6 text-[#28C76F] mr-2" />
-                <h3 className="text-md font-semibold text-[#28C76F] font-['Poppins']">Personalized Learning Paths</h3>
+              {/* Laptop Image */}
+              <div className="relative w-full max-w-[90%] sm:max-w-[95%] md:max-w-[90%] lg:max-w-[550px] xl:max-w-[650px]">
+                <img
+                  src="/Rectangle.svg"
+                  alt="Laptop displaying LMS interface"
+                  className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
+                  style={{
+                    filter: "drop-shadow(0 0 250px rgba(16, 247, 120, 0.4)) saturate(0.9)",
+                    transform: "rotate(-5deg)",
+                  }}
+                />
               </div>
-              <p className="text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] transition-colors duration-300">
-                AI-driven system creates customized journeys based on learning style.
-              </p>
+
+              {/* Feature Cards - Desktop */}
+              <div className="hidden lg:block">
+                <div
+                  className="absolute bg-white dark:bg-gray-800 p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                  style={{
+                    bottom: "-5%",
+                    left: "-8%",
+                    opacity:"0.9",
+                  }}
+                >
+                  <div className="flex items-center mb-2">
+                    <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
+                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Personalized Learning Paths</h3>
+                  </div>
+                  <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                    AI-driven system creates customized journeys based on learning style.
+                  </p>
+                </div>
+
+                <div
+                  className="absolute bg-white dark:bg-gray-800 p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                  style={{
+                    bottom: "8%",
+                    right: "5%",
+                    opacity:"0.9",
+                  }}
+                >
+                  <div className="flex items-center mb-2">
+                    <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
+                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Robotics Lab Simulation</h3>
+                  </div>
+                  <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                    Virtual robotics lab where students design and program robots in 3D.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Robotics Lab Simulation */}
-            <div
-              className="absolute bg-white dark:bg-gray-800 p-5 rounded-xl shadow-xl z-20 w-[260px] md:w-[300px] transition-colors duration-300"
-              style={{
-                bottom: "22%",
-                right: "-6%",
-                opacity: "0.95",
-              }}
-            >
-              <div className="flex items-center mb-2">
-                <Robot className="w-6 h-6 text-[#28C76F] mr-2" />
-                <h3 className="text-md font-semibold text-[#28C76F] font-['Poppins']">Robotics Lab Simulation</h3>
+            {/* Feature Cards - Mobile/Tablet */}
+            <div className="lg:hidden relative -mt-12 sm:-mt-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <div className="flex items-center mb-3">
+                    <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
+                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Personalized Learning Paths</h3>
+                  </div>
+                  <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                    AI-driven system creates customized journeys based on learning style.
+                  </p>
+                </div>
+
+                <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <div className="flex items-center mb-3">
+                    <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
+                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">Robotics Lab Simulation</h3>
+                  </div>
+                  <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                    Virtual robotics lab where students design and program robots in 3D.
+                  </p>
+                </div>
               </div>
-              <p className="text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] transition-colors duration-300">
-                Virtual robotics lab where students design and program robots in 3D.
-              </p>
             </div>
+
           </div>
         </div>
       </div>
