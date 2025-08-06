@@ -55,13 +55,16 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-12">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Gallery Title */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
             Bidyut's Gallery
           </h1>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Explore our journey through these captivating moments of innovation and learning
+          </p>
         </div>
 
         {/* Gallery Grid */}
@@ -69,7 +72,7 @@ const Gallery = () => {
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden  group ${image.className}`}
+              className={`relative overflow-hidden rounded-lg shadow-md dark:shadow-gray-800/50 group ${image.className}`}
             >
               <img
                 src={image.src}
@@ -77,6 +80,9 @@ const Gallery = () => {
                 className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white text-sm font-medium">{image.alt}</p>
+              </div>
             </div>
           ))}
         </div>
