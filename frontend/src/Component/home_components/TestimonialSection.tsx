@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonialData, type Testimonial } from './testimonials';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
 // Helper to shuffle an array
 const shuffleArray = (array: Testimonial[]) => {

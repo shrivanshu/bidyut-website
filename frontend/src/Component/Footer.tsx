@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
 import { Instagram, Facebook, Twitter } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function Footer() {
   const { t } = useLanguage()

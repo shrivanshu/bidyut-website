@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
-import { useLanguage } from "../../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 export default function AwardWinning() {
   const { isDark } = useTheme()

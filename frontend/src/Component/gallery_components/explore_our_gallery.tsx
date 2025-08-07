@@ -2,7 +2,7 @@
 import { motion, useInView, useAnimationControls, Reorder } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
-import { useLanguage } from "../../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 export default function ExploreOurGallery() {
   const { isDark } = useTheme();

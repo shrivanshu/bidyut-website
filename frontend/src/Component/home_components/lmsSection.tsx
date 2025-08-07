@@ -1,5 +1,5 @@
 import { Brain, Bot as Robot } from "lucide-react"
-import { useLanguage } from "../../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 export default function Component() {
   const { t } = useLanguage()

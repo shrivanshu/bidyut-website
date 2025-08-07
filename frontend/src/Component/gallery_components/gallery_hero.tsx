@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
-import { useLanguage } from "../../contexts/LanguageContext";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const GalleryHero: React.FC = () => {
   const { isDark } = useTheme();

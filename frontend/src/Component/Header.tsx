@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { ChevronDown, Sun, Moon, Menu, X, Globe } from "lucide-react"
 import { useTheme } from "../contexts/ThemeContext"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useNavigation } from "../contexts/NavigationContext"
 
 export default function Header() {
   const { isDark, toggleTheme } = useTheme()
-    const { currentLanguage, changeLanguage, t } = useLanguage()
+  const { currentLanguage, changeLanguage, t, getSupportedLanguages } = useLanguage()
   const { currentPath } = useNavigation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
@@ -25,13 +25,7 @@ export default function Header() {
     return currentPath === path
   }
 
-  const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-    { code: 'ur', name: 'اردو', flag: '🇵🇰' },
-    { code: 'bn', name: 'বাংলা', flag: '🇧🇩' },
-    { code: 'ja', name: '日本語', flag: '🇯🇵' }
-  ] as const
+  const languages = getSupportedLanguages()
 
   return (
     <>
@@ -272,11 +266,11 @@ export default function Header() {
               {/* Mobile Language Selector */}
               <div className="mx-3 mt-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Language / भाषा / اردو / ভাষা / 言語
+                  Select Language
                 </label>
                 <select
                   value={currentLanguage}
-                  onChange={(e) => changeLanguage(e.target.value as 'en' | 'hi' | 'ur' | 'bn' | 'ja')}
+                  onChange={(e) => changeLanguage(e.target.value as any)}
                   className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   {languages.map((lang) => (

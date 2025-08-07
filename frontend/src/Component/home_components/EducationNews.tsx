@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EN1 from './EN1';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
 const EducationNews: React.FC = () => {
   const { t } = useLanguage();

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 import { useTheme } from "../../contexts/ThemeContext"
-import { useLanguage } from "../../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 // Gallery image data with actual high-quality images
 const galleryImages = [

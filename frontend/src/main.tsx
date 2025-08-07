@@ -7,7 +7,7 @@ import Gallery from './Pages/Gallery_page';
 import Contactpage from './Pages/Contact_page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { LanguageProvider } from './contexts/LanguageContext';
+import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

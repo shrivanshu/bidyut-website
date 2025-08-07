@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Header from '../Component/Header'; 
 import Footer from '../Component/Footer';
 import { useTheme } from '../contexts/ThemeContext';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../contexts/OptimizedLanguageContext';
 
 export default function Contactpage() {
   const { isDark } = useTheme();
