@@ -196,16 +196,14 @@ export default function PartnerLogos() {
   }
 
   return (
-    <section className="relative w-full bg-white dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
-      <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
-            {t('trustedPartners').split(' ')[0]} <span className="text-emerald-500">{t('trustedPartners').split(' ')[1]}</span> {t('trustedPartners').split(' ').slice(2).join(' ')}
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-            {t('partnersDescription')}
-          </p>
-        </div>
+    <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
+          {t('trustedPartners').split(' ')[0]} <span className="text-[#4CAF50]">{t('trustedPartners').split(' ')[1]}</span> {t('trustedPartners').split(' ').slice(2).join(' ')}
+        </h2>
+        <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-12 text-gray-700 dark:text-gray-300 transition-colors duration-300">
+          {t('partnersDescription')}
+        </p>
         <div className="flex gap-2 sm:gap-4 md:gap-8 justify-center items-center overflow-hidden drop-shadow-md flex-wrap lg:flex-nowrap px-2">
           {TrustedPartners.map((column, columnIndex) => (
             <div
