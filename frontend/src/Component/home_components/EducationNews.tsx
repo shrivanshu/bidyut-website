@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import EN1 from './EN1';
 import { useLanguage } from '../../contexts/OptimizedLanguageContext';
+import { Clock } from 'lucide-react';
 
 const EducationNews: React.FC = () => {
   const { t } = useLanguage();
@@ -187,55 +188,80 @@ const EducationNews: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8  w-screen  overflow-hidden">
-      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('latestNews').split(' & ')[0]} & <span className="text-green-500">{t('latestNews').split(' & ')[1]}</span>
+    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
+            {t('latestNews').split(' & ')[0]} & <span className="text-emerald-500">{t('latestNews').split(' & ')[1]}</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
             {t('stayUpdated')}
           </p>
         </div>
 
-        <div 
-          ref={scrollRef}
-          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          {/* Duplicate reviews for seamless infinite scroll */}
-          {[...reviews, ...reviews].map((review, index) => (
-            <EN1
-              key={index}
-              platform={review.platform}
-              timestamp={review.timestamp}
-              title={review.title}
-              content={review.content}
-              author={review.author}
-            />
-          ))}
-        </div>
+        <div className="w-full overflow-hidden relative">
+          {/* Clockwise rotating clock for first row */}
+          <div className="absolute top-2 left-4 z-10">
+            <Clock className="w-6 h-6 text-emerald-500 animate-spin" style={{ animationDuration: '8s' }} />
+          </div>
+          
+          <div 
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {/* Duplicate reviews for seamless infinite scroll */}
+            {[...reviews, ...reviews].map((review, index) => (
+              <div key={index} className="flex-shrink-0">
+                <EN1
+                  platform={review.platform}
+                  timestamp={review.timestamp}
+                  title={review.title}
+                  content={review.content}
+                  author={review.author}
+                />
+              </div>
+            ))}
+          </div>
 
-        {/* Second row of reviews scrolling in opposite direction */}
-        <div 
-          ref={scrollRef2}
-          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          {/* Duplicate reviews for seamless infinite scroll */}
-          {[...reviewsRow2, ...reviewsRow2].map((review, index) => (
-            <EN1
-              key={`row2-${index}`}
-              platform={review.platform}
-              timestamp={review.timestamp}
-              title={review.title}
-              content={review.content}
-              author={review.author}
-            />
-          ))}
+          {/* Anti-clockwise rotating clock for second row */}
+          <div className="absolute top-[calc(50%+1.5rem)] left-4 z-10">
+            <Clock className="w-6 h-6 text-emerald-500" style={{ 
+              animation: 'spin 8s linear infinite reverse'
+            }} />
+          </div>
+
+          {/* Second row of reviews scrolling in opposite direction */}
+          <div 
+            ref={scrollRef2}
+            className="flex gap-4 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {/* Duplicate reviews for seamless infinite scroll */}
+            {[...reviewsRow2, ...reviewsRow2].map((review, index) => (
+              <div key={`row2-${index}`} className="flex-shrink-0">
+                <EN1
+                  platform={review.platform}
+                  timestamp={review.timestamp}
+                  title={review.title}
+                  content={review.content}
+                  author={review.author}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

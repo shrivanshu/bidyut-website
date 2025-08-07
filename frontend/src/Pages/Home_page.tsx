@@ -18,14 +18,16 @@ function Home_page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden">
         <Header />
-        <HeroSection />
-        <OfferingsCarousel />
-        {/* <Clock /> */}
-        <EducationNews />
-        <LmsSection/>
-        <TrustedPartners />
-        <TestimonialSection />
-        <EducationStream />
+        <main className="w-full overflow-x-hidden">
+          <HeroSection />
+          <OfferingsCarousel />
+          {/* <Clock /> */}
+          <EducationNews />
+          <LmsSection/>
+          <TrustedPartners />
+          <TestimonialSection />
+          <EducationStream />
+        </main>
         <Footer />
       </div>
     </ThemeProvider>

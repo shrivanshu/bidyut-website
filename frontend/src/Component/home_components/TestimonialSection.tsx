@@ -128,7 +128,7 @@ const TestimonialSection: React.FC = () => {
         {/* Horizontal Scroller for Thumbnails */}
         <div className="w-full mt-8">
           <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">{t('tapToViewOthers')}</p>
-          <div className="flex overflow-x-auto space-x-4 pb-4 pt-2 -mx-4 px-4">
+          <div className="flex overflow-x-auto space-x-4 pb-4 pt-2 -mx-4 px-4 scrollbar-hide">
             {testimonials.map((testimonial, index) => {
               if (index === CENTER_INDEX) return null;
               return (
@@ -221,6 +221,16 @@ const TestimonialSection: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
