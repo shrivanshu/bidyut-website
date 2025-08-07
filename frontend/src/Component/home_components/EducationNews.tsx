@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EN1 from './EN1';
 import { useLanguage } from '../../contexts/OptimizedLanguageContext';
-import { Clock } from 'lucide-react';
 
 const EducationNews: React.FC = () => {
   const { t } = useLanguage();
@@ -102,95 +101,45 @@ const EducationNews: React.FC = () => {
     const scrollContainer2 = scrollRef2.current;
     if (!scrollContainer || !scrollContainer2) return;
 
-    let scrollAmount = 0;
+    let scrollAmount1 = 0;
     let scrollAmount2 = 0;
-    const scrollStep = 1;
-    const scrollDelay = 30;
-    let isUserScrolling = false;
-    let isUserScrolling2 = false;
+    const scrollStep = 2; // Increased speed for better visibility
+    const scrollDelay = 20; // Smoother animation
 
     const autoScroll = () => {
-      if (!isUserScrolling) {
-        scrollAmount += scrollStep;
-        scrollContainer.scrollLeft = scrollAmount;
+      // First row - Clockwise (left to right)
+      scrollAmount1 += scrollStep;
+      scrollContainer.scrollLeft = scrollAmount1;
 
-        // Reset scroll when reaching the end
-        if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-          scrollAmount = 0;
-        }
+      // Reset scroll when reaching 1/3 of the way (since we have 3 copies)
+      if (scrollAmount1 >= (scrollContainer.scrollWidth / 3)) {
+        scrollAmount1 = 0;
+        scrollContainer.scrollLeft = 0;
       }
 
-      if (!isUserScrolling2) {
-        scrollAmount2 += scrollStep;
-        scrollContainer2.scrollLeft = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollAmount2;
+      // Second row - Anti-clockwise (right to left)
+      scrollAmount2 += scrollStep;
+      const maxScroll2 = scrollContainer2.scrollWidth - scrollContainer2.clientWidth;
+      scrollContainer2.scrollLeft = maxScroll2 - scrollAmount2;
 
-        // Reset scroll when reaching the end
-        if (scrollAmount2 >= scrollContainer2.scrollWidth - scrollContainer2.clientWidth) {
-          scrollAmount2 = 0;
-        }
+      // Reset scroll when reaching 1/3 of the way (since we have 3 copies)
+      if (scrollAmount2 >= (scrollContainer2.scrollWidth / 3)) {
+        scrollAmount2 = 0;
+        scrollContainer2.scrollLeft = maxScroll2;
       }
     };
 
     const intervalId = setInterval(autoScroll, scrollDelay);
-
-    // Pause scrolling on hover and manual scroll
-    let currentIntervalId = intervalId;
-    let scrollTimeout: NodeJS.Timeout;
-    let scrollTimeout2: NodeJS.Timeout;
-    
-    const handleMouseEnter = () => {
-      isUserScrolling = true;
-      isUserScrolling2 = true;
-    };
-    
-    const handleMouseLeave = () => {
-      isUserScrolling = false;
-      isUserScrolling2 = false;
-    };
-
-    const handleScroll = () => {
-      isUserScrolling = true;
-      scrollAmount = scrollContainer.scrollLeft;
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isUserScrolling = false;
-      }, 2000);
-    };
-
-    const handleScroll2 = () => {
-      isUserScrolling2 = true;
-      scrollAmount2 = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollContainer2.scrollLeft;
-      clearTimeout(scrollTimeout2);
-      scrollTimeout2 = setTimeout(() => {
-        isUserScrolling2 = false;
-      }, 2000);
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-    scrollContainer.addEventListener('scroll', handleScroll);
-
-    scrollContainer2.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer2.addEventListener('mouseleave', handleMouseLeave);
-    scrollContainer2.addEventListener('scroll', handleScroll2);
     
     return () => {
-      clearInterval(currentIntervalId);
-      clearTimeout(scrollTimeout);
-      clearTimeout(scrollTimeout2);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-      scrollContainer.removeEventListener('scroll', handleScroll);
-      scrollContainer2.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer2.removeEventListener('mouseleave', handleMouseLeave);
-      scrollContainer2.removeEventListener('scroll', handleScroll2);
+      clearInterval(intervalId);
     };
   }, []);
 
   return (
-    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
-      <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
+    <section className="relative w-full h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center font-sans overflow-hidden transition-colors duration-300">
+      <div className="relative z-10 w-full h-full flex flex-col">
+        <div className="text-center py-8 relative z-10">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
             {t('latestNews').split(' & ')[0]} & <span className="text-emerald-500">{t('latestNews').split(' & ')[1]}</span>
           </h2>
@@ -199,19 +148,15 @@ const EducationNews: React.FC = () => {
           </p>
         </div>
 
-        <div className="w-full overflow-hidden relative">
-          {/* Clockwise rotating clock for first row */}
-          <div className="absolute top-2 left-4 z-10">
-            <Clock className="w-6 h-6 text-emerald-500 animate-spin" style={{ animationDuration: '8s' }} />
-          </div>
-          
+        <div className="flex-1 w-full overflow-hidden flex flex-col justify-center">
+          {/* First row - Clockwise movement (left to right) */}
           <div 
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
+            className="flex gap-6 overflow-x-auto overflow-y-hidden py-8 relative scrollbar-hide"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {/* Duplicate reviews for seamless infinite scroll */}
-            {[...reviews, ...reviews].map((review, index) => (
+            {/* Triple the reviews for seamless infinite scroll */}
+            {[...reviews, ...reviews, ...reviews].map((review, index) => (
               <div key={index} className="flex-shrink-0">
                 <EN1
                   platform={review.platform}
@@ -224,21 +169,14 @@ const EducationNews: React.FC = () => {
             ))}
           </div>
 
-          {/* Anti-clockwise rotating clock for second row */}
-          <div className="absolute top-[calc(50%+1.5rem)] left-4 z-10">
-            <Clock className="w-6 h-6 text-emerald-500" style={{ 
-              animation: 'spin 8s linear infinite reverse'
-            }} />
-          </div>
-
-          {/* Second row of reviews scrolling in opposite direction */}
+          {/* Second row - Anti-clockwise movement (right to left) */}
           <div 
             ref={scrollRef2}
-            className="flex gap-4 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
+            className="flex gap-6 overflow-x-auto overflow-y-hidden py-8 relative scrollbar-hide"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {/* Duplicate reviews for seamless infinite scroll */}
-            {[...reviewsRow2, ...reviewsRow2].map((review, index) => (
+            {/* Triple the reviews for seamless infinite scroll */}
+            {[...reviewsRow2, ...reviewsRow2, ...reviewsRow2].map((review, index) => (
               <div key={`row2-${index}`} className="flex-shrink-0">
                 <EN1
                   platform={review.platform}
@@ -260,6 +198,12 @@ const EducationNews: React.FC = () => {
         }
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
+        }
+        
+        /* Ensure smooth scrolling performance */
+        .scrollbar-hide {
+          will-change: scroll-position;
+          transform: translateZ(0);
         }
       `}</style>
     </section>
