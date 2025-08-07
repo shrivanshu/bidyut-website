@@ -44,29 +44,24 @@ export default function EducationStream() {
     },
   ];
   const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
   const thumbnailPanelRef = useRef<HTMLDivElement>(null);
   const rotationInterval = useRef<number | null>(null);
 
   const handleVideoClick = (video: VideoOption, index: number) => {
-    let selectedVideo = video;
-    let scrollIndex = index;
-
-    if (index === 0) {
-      const lastIndex = videoOptions.length - 1;
-      selectedVideo = videoOptions[lastIndex];
-      scrollIndex = lastIndex;
-    }
-
-    setActiveVideo(selectedVideo);
+    setActiveVideo(video);
+    setCurrentVideoIndex(index);
     setAutoRotate(false);
 
+    // Resume auto-rotation after 10 seconds
     setTimeout(() => setAutoRotate(true), 10000);
 
+    // Scroll to the selected thumbnail
     if (thumbnailPanelRef.current) {
       const thumbWidth = 270 + 18;
-      const scrollPosition = scrollIndex * thumbWidth - (thumbnailPanelRef.current.clientWidth / 2 - thumbWidth / 2);
+      const scrollPosition = index * thumbWidth - (thumbnailPanelRef.current.clientWidth / 2 - thumbWidth / 2);
       thumbnailPanelRef.current.scrollTo({
         left: scrollPosition,
         behavior: 'smooth'
@@ -77,18 +72,25 @@ export default function EducationStream() {
   useEffect(() => {
     if (autoRotate) {
       rotationInterval.current = window.setInterval(() => {
-        const currentIndex = videoOptions.findIndex(v => v.src === activeVideo.src);
-        const nextIndex = (currentIndex + 1) % videoOptions.length;
-        setActiveVideo(videoOptions[nextIndex]);
+        setCurrentVideoIndex(prevIndex => {
+          // Move to next video in clockwise order (0 -> 1 -> 2 -> 3 -> 4 -> 0)
+          const nextIndex = (prevIndex + 1) % videoOptions.length;
+          const nextVideo = videoOptions[nextIndex];
+          
+          setActiveVideo(nextVideo);
 
-        if (thumbnailPanelRef.current) {
-          const thumbWidth = 270 + 18;
-          const scrollPosition = nextIndex * thumbWidth - (thumbnailPanelRef.current.clientWidth / 2 - thumbWidth / 2);
-          thumbnailPanelRef.current.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-        }
+          // Scroll to the next thumbnail
+          if (thumbnailPanelRef.current) {
+            const thumbWidth = 270 + 18;
+            const scrollPosition = nextIndex * thumbWidth - (thumbnailPanelRef.current.clientWidth / 2 - thumbWidth / 2);
+            thumbnailPanelRef.current.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+          }
+
+          return nextIndex;
+        });
       }, 5000);
     }
 
@@ -97,7 +99,7 @@ export default function EducationStream() {
         clearInterval(rotationInterval.current);
       }
     };
-  }, [autoRotate, activeVideo]);
+  }, [autoRotate, videoOptions]);
 
   const handleMouseOver = (
     e: React.SyntheticEvent<HTMLVideoElement>,
@@ -146,6 +148,9 @@ export default function EducationStream() {
     gap: "1rem",
     marginBottom: 6,
     color: "#131313",
+    textAlign: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
   };
 
   const streamStyle: React.CSSProperties = {
@@ -178,10 +183,12 @@ export default function EducationStream() {
 
   const videoCardWrapper: React.CSSProperties = {
     position: "relative",
-    width: 1085,
-    height: 761,
+    width: 1031, // Decreased by 5% (1085 * 0.95 = 1030.75, rounded to 1031)
+    height: 723, // Decreased by 5% (761 * 0.95 = 722.95, rounded to 723)
     marginTop: 60,
     marginBottom: 0,
+    marginLeft: 0, // Shifted to left
+    marginRight: "auto",
     display: "block",
     zIndex: 1,
   };
@@ -190,8 +197,8 @@ export default function EducationStream() {
     position: "absolute",
     top: 0,
     left: 0,
-    width: 1085,
-    height: 761,
+    width: 1031, // Decreased by 5%
+    height: 723, // Decreased by 5%
     borderRadius: 11,
     padding: 1,
     background: "linear-gradient(90deg, #0ACF83 0%, #015031 100%)",
@@ -245,7 +252,7 @@ export default function EducationStream() {
   const thumbnailPanelStyle: React.CSSProperties = {
     position: "absolute",
     top: "50%",
-    right: -500,
+    right: -446, // Adjusted position to account for smaller main card (original -500 + 54px adjustment)
     transform: "translateY(-50%)",
     width: 692,
     height: 327,
@@ -283,49 +290,105 @@ export default function EducationStream() {
   });
 
   return (
-    <div className="bg-[#F9F9FA] dark:bg-gray-900 transition-colors duration-300" style={{ ...containerStyle, backgroundColor: 'transparent' }}>
-      <div style={headingSection}>
-        <div style={headingStyle} className="text-[#131313] dark:text-white">
-          <span style={streamStyle}>{t('stream')}</span>
-          <span style={educationStyle} className="text-[#131313] dark:text-white">Education</span>
-        </div>
+    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+      {/* Header */}
+      <div className="text-center mb-16 relative z-10 max-w-4xl">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
+          <span className="text-emerald-500">{t('stream')}</span> <span className="text-gray-800 dark:text-white">Education</span>
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
+          {t('streamEducationDescription')}
+        </p>
       </div>
-      <div style={subheadingStyle} className="text-[rgba(0,0,0,0.44)] dark:text-gray-400">
-        {t('streamEducationDescription')}
-      </div>
-      <div style={videoCardWrapper}>
-        <div style={gradientBorderStyle}>
-          <div style={videoContainerStyle}>
-            <video
-              style={videoStyle}
-              src={activeVideo.src}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-            <div style={videoInfoStyle}>
-              <div style={videoTitleStyle}>{activeVideo.title}</div>
-              <div style={videoDescStyle}>{activeVideo.description}</div>
+
+      {/* ===== MOBILE LAYOUT ===== */}
+      <div className="w-full max-w-md lg:hidden flex flex-col items-center z-10">
+        {/* Main Video Card */}
+        <div className="relative w-full aspect-video mb-6">
+          <div className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-emerald-500 to-emerald-700">
+            <div className="relative w-full h-full bg-black rounded-xl overflow-hidden">
+              <video
+                className="w-full h-full object-cover"
+                src={activeVideo.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                <h3 className="text-white font-bold text-lg mb-1">{activeVideo.title}</h3>
+                <p className="text-white/90 text-sm">{activeVideo.description}</p>
+              </div>
             </div>
           </div>
         </div>
-        <div style={thumbnailPanelStyle} ref={thumbnailPanelRef}>
-          {videoOptions.map((video, index) => (
-            <video
-              key={video.src}
-              src={video.thumbnail}
-              muted
-              loop
-              onClick={() => handleVideoClick(video, index)}
-              onMouseOver={(e) => handleMouseOver(e, index)}
-              onMouseOut={handleMouseOut}
-              style={thumbVideoStyle(hoveredIndex === index, video.src === activeVideo.src)}
-              playsInline
-            />
-          ))}
+
+        {/* Horizontal Scroller for Video Thumbnails */}
+        <div className="w-full">
+          <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">Tap to view other videos</p>
+          <div className="flex overflow-x-auto space-x-3 pb-4 pt-2 -mx-4 px-4">
+            {videoOptions.map((video, index) => (
+              <div
+                key={video.src}
+                onClick={() => handleVideoClick(video, index)}
+                className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden shadow-md cursor-pointer border-2 transition-all duration-300 ${
+                  index === currentVideoIndex 
+                    ? 'border-emerald-500 ring-2 ring-emerald-200' 
+                    : 'border-transparent hover:border-emerald-300'
+                }`}
+              >
+                <video
+                  src={video.thumbnail}
+                  muted
+                  loop
+                  className="w-full h-full object-cover"
+                  playsInline
+                  onMouseOver={(e) => e.currentTarget.play()}
+                  onMouseOut={(e) => e.currentTarget.pause()}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* ===== DESKTOP LAYOUT ===== */}
+      <div className="hidden lg:block relative w-full z-10">
+        <div style={videoCardWrapper}>
+          <div style={gradientBorderStyle}>
+            <div style={videoContainerStyle}>
+              <video
+                style={videoStyle}
+                src={activeVideo.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              <div style={videoInfoStyle}>
+                <div style={videoTitleStyle}>{activeVideo.title}</div>
+                <div style={videoDescStyle}>{activeVideo.description}</div>
+              </div>
+            </div>
+          </div>
+          <div style={thumbnailPanelStyle} ref={thumbnailPanelRef}>
+            {videoOptions.map((video, index) => (
+              <video
+                key={video.src}
+                src={video.thumbnail}
+                muted
+                loop
+                onClick={() => handleVideoClick(video, index)}
+                onMouseOver={(e) => handleMouseOver(e, index)}
+                onMouseOut={handleMouseOut}
+                style={thumbVideoStyle(hoveredIndex === index, index === currentVideoIndex)}
+                playsInline
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
       <style>{`
         div[style*="overflow-x: auto"]::-webkit-scrollbar {
           display: none;
@@ -334,59 +397,7 @@ export default function EducationStream() {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-
-        @media (max-width: 1366px) {
-          div[style*="width: 692px"] {
-            position: static !important;
-            width: calc(100% - 20px) !important;
-            max-width: 97% !important;
-            height: auto !important;
-            margin: 30px auto 0 auto !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            padding: 12px 16px !important;
-            box-shadow: 0 4px 16px rgba(80, 90, 90, 0.1) !important;
-            border-radius: 10px !important;
-            overflow-x: auto !important;
-            overflow-y: hidden !important;
-            transform: none !important;
-            right: auto !important;
-            top: auto !important;
-            background: transparent !important;
-          }
-          div[style*="width: 1085px"] {
-            width: calc(100% - 40px) !important;
-            max-width: 96% !important;
-            margin-left: 0 !important;
-            height: auto !important;
-          }
-          div[style*="max-width: 997px"] {
-            max-width: 100% !important;
-            padding: 0 10px !important;
-          }
-          div[style*="position: absolute"][style*="bottom: 0"] {
-            padding: 15px !important;
-          }
-          div[style*="font-size: 24px"] {
-            font-size: 18px !important;
-          }
-          div[style*="font-size: 16px"] {
-            font-size: 14px !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          div[style*="max-width: 997px"] {
-            max-width: calc(100% - 20px) !important;
-          }
-          div[style*="font-size: 64px"] {
-            font-size: 36px !important;
-          }
-          video {
-            border-radius: 8px !important;
-          }
-        }
       `}</style>
-    </div>
+    </section>
   );
 }
