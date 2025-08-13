@@ -78,6 +78,12 @@ export default function Header() {
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[9999]">
                   <div className="py-2">
                     <a
+                      href="/Robot_page"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600"
+                    >
+                      Robot Showcase
+                    </a>
+                    <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-green-600"
                     >
@@ -228,6 +234,12 @@ export default function Header() {
                 className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
               >
                 {t('school')}
+              </a>
+              <a
+                href="/Robot_page"
+                className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3"
+              >
+                Robot Showcase
               </a>
               <button className="flex items-center text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors font-medium pl-3 text-left">
                 {t('robots')}

@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { useTheme } from "../../contexts/ThemeContext"
 
 interface RobotSpec {
   id: string
@@ -164,22 +165,6 @@ const Select = ({
   return (
     <div className="relative">
       {children}
-      {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-blue-200 rounded-xl shadow-lg z-50">
-          {robotSpecs.map((spec) => (
-            <div
-              key={spec.id}
-              className="px-4 py-3 hover:bg-blue-50 cursor-pointer transition-colors first:rounded-t-xl last:rounded-b-xl"
-              onClick={() => {
-                onValueChange(spec.id)
-                setIsOpen(false)
-              }}
-            >
-              {spec.name}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   )
 }
@@ -224,6 +209,7 @@ const Button = ({
 )
 
 export default function RobotShowcase() {
+  const { isDark } = useTheme()
   const [selectedVariant, setSelectedVariant] = useState("g1-basic")
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -238,19 +224,6 @@ export default function RobotShowcase() {
         setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length)
       }, 5000) // 5 seconds
       return () => clearInterval(interval)
-    }
-  }, [isGalleryOpen, currentSpec.gallery.length])
-
-  // Keyboard navigation
-  useEffect(() => {
-    if (isGalleryOpen) {
-      const handleKeyPress = (e: KeyboardEvent) => {
-        if (e.key === 'ArrowRight') nextImage()
-        if (e.key === 'ArrowLeft') prevImage()
-        if (e.key === 'Escape') closeGallery()
-      }
-      window.addEventListener('keydown', handleKeyPress)
-      return () => window.removeEventListener('keydown', handleKeyPress)
     }
   }, [isGalleryOpen, currentSpec.gallery.length])
 
@@ -271,30 +244,43 @@ export default function RobotShowcase() {
     setIsGalleryOpen(false)
   }
 
+  // Keyboard navigation
+  useEffect(() => {
+    if (isGalleryOpen) {
+      const handleKeyPress = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight') nextImage()
+        if (e.key === 'ArrowLeft') prevImage()
+        if (e.key === 'Escape') closeGallery()
+      }
+      window.addEventListener('keydown', handleKeyPress)
+      return () => window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [isGalleryOpen, currentSpec.gallery.length])
+
   // Reset image index when variant changes
   useEffect(() => {
     setCurrentImageIndex(0)
   }, [selectedVariant])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="w-full px-6 py-16 md:px-12 lg:px-16">
         {/* Header Dropdown */}
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
             <SelectTrigger
-              className="w-full bg-white border-2 border-blue-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-4 flex items-center justify-between text-lg"
+              className="w-full bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
-              <ChevronDown className="h-5 w-5 opacity-50" />
+              <ChevronDown className="h-5 w-5 opacity-50 dark:opacity-70" />
             </SelectTrigger>
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-blue-200 rounded-xl shadow-xl z-50">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50">
                 {robotSpecs.map((spec) => (
                   <div
                     key={spec.id}
-                    className="px-6 py-4 hover:bg-blue-50/70 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 hover:text-gray-900"
+                    className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
                     onClick={() => {
                       setSelectedVariant(spec.id)
                       setIsDropdownOpen(false)
@@ -311,26 +297,26 @@ export default function RobotShowcase() {
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left Section - Product Info */}
-          <div className="space-y-8 p-8 bg-gray-50/30 rounded-2xl">
+          <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">{currentSpec.name}</h1>
-              <h2 className="text-2xl text-gray-600 font-medium">Technical Specifications</h2>
-              <p className="text-gray-700 leading-relaxed text-lg max-w-2xl">{currentSpec.description}</p>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{currentSpec.name}</h1>
+              <h2 className="text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{currentSpec.description}</p>
             </div>
 
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Order Now
             </Button>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800">Gallery</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
               <div className="flex gap-3 flex-wrap">
                 {currentSpec.gallery.map((media, index) => (
                   <button
                     key={index}
                     onClick={() => openGallery(index)}
-                    className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 hover:scale-105 transition-transform duration-200 border-2 border-gray-200 hover:border-emerald-400"
+                    className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 hover:scale-105 transition-transform duration-200 border-2 border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500"
                   >
                     {media.endsWith('.mp4') ? (
                       <video
@@ -384,7 +370,7 @@ export default function RobotShowcase() {
                         y1={startY}
                         x2={endX}
                         y2={endY}
-                        stroke="#10b981"
+                        stroke="#059669"
                         strokeWidth="2"
                         className="transition-all duration-300"
                       />
@@ -393,7 +379,7 @@ export default function RobotShowcase() {
                         cx={startX}
                         cy={startY}
                         r="4"
-                        fill="#10b981"
+                        fill="#059669"
                         className="transition-all duration-300"
                       />
                       {/* End dot */}
@@ -401,7 +387,7 @@ export default function RobotShowcase() {
                         cx={endX}
                         cy={endY}
                         r="4"
-                        fill="#10b981"
+                        fill="#059669"
                         className="transition-all duration-300"
                       />
                     </g>
@@ -425,13 +411,15 @@ export default function RobotShowcase() {
                   <div className="text-left max-w-[120px]">
                     <div
                       className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                        hoveredFeature === index ? "text-emerald-600" : "text-gray-900"
+                        hoveredFeature === index 
+                          ? "text-green-600 dark:text-green-400" 
+                          : "text-gray-900 dark:text-gray-100"
                       }`}
                     >
                       {feature.label}
                     </div>
                     <div 
-                      className={`text-xs text-gray-600 leading-tight transition-opacity ${
+                      className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
                         hoveredFeature === index ? "opacity-100" : "opacity-70"
                       }`}
                     >
@@ -447,12 +435,12 @@ export default function RobotShowcase() {
 
       {/* Full Screen Gallery Modal */}
       {isGalleryOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center p-4">
             {/* Close Button */}
             <button
               onClick={closeGallery}
-              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors"
+              className="absolute top-4 right-4 z-10 bg-green-600/30 hover:bg-green-600/50 rounded-full p-2 transition-colors backdrop-blur-sm"
             >
               <X size={24} className="text-white" />
             </button>
@@ -460,7 +448,7 @@ export default function RobotShowcase() {
             {/* Previous Arrow */}
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-green-600/30 hover:bg-green-600/50 rounded-full p-3 transition-colors backdrop-blur-sm"
             >
               <ChevronLeft size={32} className="text-white" />
             </button>
@@ -468,7 +456,7 @@ export default function RobotShowcase() {
             {/* Next Arrow */}
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-green-600/30 hover:bg-green-600/50 rounded-full p-3 transition-colors backdrop-blur-sm"
             >
               <ChevronRight size={32} className="text-white" />
             </button>
@@ -493,7 +481,7 @@ export default function RobotShowcase() {
             </div>
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 rounded-full px-4 py-2">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600/30 backdrop-blur-sm rounded-full px-4 py-2">
               <span className="text-white text-sm font-medium">
                 {currentImageIndex + 1} / {currentSpec.gallery.length}
               </span>
@@ -506,7 +494,7 @@ export default function RobotShowcase() {
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${
-                    currentImageIndex === index ? 'border-emerald-400' : 'border-white/30 hover:border-white/60'
+                    currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
                   }`}
                 >
                   {media.endsWith('.mp4') ? (

@@ -1,11 +1,13 @@
 
-
 import React from 'react';
-import robotImgSrc from '/media/Robot_Fighting.svg'; // Make sure this path is correct
+import { useTheme } from '../../contexts/ThemeContext';
+import robotImgSrc from '/media/Robot_Details.svg'; // Make sure this path is correct
 
 const RobotClassroom: React.FC = ({ onContactClick }) => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white min-h-screen flex items-center justify-center p-6">
+    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Image first on mobile */}
         <div className="flex justify-center md:order-1 order-1 h-full">
@@ -21,15 +23,15 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               Ready to revolutionize{' '}
 
              
-              <span className="text-emerald-500   ">your classroom?</span>
+              <span className="text-green-600 dark:text-green-400">your classroom?</span>
 
               
             </h1>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-lg mx-auto md:mx-0">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
               Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
             </p>
           </div>
@@ -37,7 +39,7 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
           <div className="pt-4">
             <button 
               onClick={onContactClick}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-500/20"
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
             >
               Contact Sales Team
             </button>
