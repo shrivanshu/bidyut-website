@@ -1,0 +1,53 @@
+
+
+import React from 'react';
+import robotImgSrc from '/media/Robot_Fighting.svg'; // Make sure this path is correct
+
+const RobotClassroom: React.FC = ({ onContactClick }) => {
+  return (
+    <div className="bg-gradient-to-br from-gray-50 to-white min-h-screen flex items-center justify-center p-6">
+      <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Image first on mobile */}
+        <div className="flex justify-center md:order-1 order-1 h-full">
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img 
+              src={robotImgSrc} 
+              alt="Educational Robot"
+              className="w-full h-full object-contain max-h-[80vh]"
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
+          <div className="space-y-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Ready to revolutionize{' '}
+
+             
+              <span className="text-emerald-500   ">your classroom?</span>
+
+              
+            </h1>
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-lg mx-auto md:mx-0">
+              Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
+            </p>
+          </div>
+
+          <div className="pt-4">
+            <button 
+              onClick={onContactClick}
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-500/20"
+            >
+              Contact Sales Team
+            </button>
+          </div>
+
+         
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RobotClassroom;
