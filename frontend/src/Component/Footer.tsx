@@ -9,6 +9,7 @@ export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
+  const iDotTargetRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let animationFrameId: number | null = null
@@ -62,9 +63,9 @@ export default function Footer() {
     // 0.7 - 1.0: Move to 'i' position
 
     // Banner dimensions and positioning  
-    const initialWidth = Math.min(window.innerWidth * 0.8, 1500) // 80% of screen width, max 800px to match footer content
-    const initialHeight = 120
-    const finalSize = 18
+    const initialWidth = Math.min(window.innerWidth * 0.95, 2000) // 95% of screen width, wider banner
+    const initialHeight = 110 // pehle 72 tha, ab bada kar diya
+    const finalSize = 16
 
     // Smooth easing functions
     const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
@@ -88,42 +89,43 @@ export default function Footer() {
     const currentHeight = initialHeight - (initialHeight - finalSize) * easedShapeProgress
     const borderRadius = Math.min(currentWidth, currentHeight) * 0.5 * easedShapeProgress + 16 * (1 - easedShapeProgress)
 
-    // Calculate footer position for initial banner placement
-    let currentX = 50 // Always center horizontally initially
-    let currentY = 50
-
-    if (footerRef.current) {
-      const footerRect = footerRef.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      
-      // Initial position: in the dedicated banner space
-      const initialY = ((footerRect.top + 50) / windowHeight) * 100 // 50px from footer top (in dedicated space)
-      currentY = initialY
-    }
+    // Default position
+    let currentX = 50 // %
+    let currentY = 50 // %
 
     // Move to 'i' position in final phase
-    if (scrollProgress > 0.7 && iLetterRef.current && footerRef.current) {
+    if (scrollProgress > 0.95 && iLetterRef.current) {
       const iRect = iLetterRef.current.getBoundingClientRect()
-      const footerRect = footerRef.current.getBoundingClientRect()
       const windowWidth = window.innerWidth
       const windowHeight = window.innerHeight
 
-      const finalX = ((iRect.left + iRect.width / 2) / windowWidth) * 100
-      const finalY = ((iRect.top - 22) / windowHeight) * 100 // 22px above the "i" dot
-      const initialY = ((footerRect.top + 50) / windowHeight) * 100
+      // Center of the "i" dot
+      currentX = iRect.left + iRect.width / 2
+      currentY = iRect.top + iRect.height * 0.18 // Adjust multiplier for exact dot position
 
-      const moveProgress = Math.max(0, Math.min(1, (scrollProgress - 0.7) / 0.25))
-      const easedMoveProgress = easeInOutQuint(moveProgress)
-
-      currentX = 50 + (finalX - 50) * easedMoveProgress
-      currentY = initialY + (finalY - initialY) * easedMoveProgress
+      return {
+        position: 'fixed',
+        left: `${currentX}px`,
+        top: `${currentY}px`,
+        width: `${finalSize}px`,
+        height: `${finalSize}px`,
+        backgroundColor: `rgb(${greyValue}, ${greenValue}, ${blueValue})`,
+        borderRadius: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: 1,
+        zIndex: 1000,
+        boxShadow: `0 0 24px rgba(34, 197, 94, 0.7)`,
+        pointerEvents: 'none',
+        transition: 'none',
+        animation: 'float-gentle 3s ease-in-out infinite'
+      }
     }
 
     // Enhanced visual effects with interactive elements
     const glowIntensity = Math.max(0, (scrollProgress - 0.3) * 2)
     const shadowBlur = Math.max(currentWidth, currentHeight) / 3
-    const scaleEffect = 1 + Math.sin(scrollProgress * Math.PI * 2) * 0.02 // Subtle breathing effect
-    const rotationEffect = scrollProgress > 0.6 ? (scrollProgress - 0.6) * 720 : 0 // Double rotation during movement for more dramatic effect
+    const scaleEffect = 1 + Math.sin(scrollProgress * Math.PI * 2) * 0.015 // Slightly subtler breathing
+    const rotationEffect = scrollProgress > 0.6 ? (scrollProgress - 0.6) * 240 : 0 // Less aggressive rotation for elegance
     
     return {
       position: 'fixed' as const,
@@ -155,7 +157,7 @@ export default function Footer() {
   }
 
   return (
-    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-900 px-8 pt-32 pb-16 relative overflow-hidden transition-colors duration-300">
+    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-800 px-8 pt-36 pb-16 relative overflow-hidden transition-colors duration-300">
       {/* Dedicated Banner Space */}
       <div className="absolute top-0 left-0 right-0 h-32 flex items-center justify-center pointer-events-none">
         {/* Animated Banner to Dot */}
@@ -301,7 +303,7 @@ export default function Footer() {
                     scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
                   }`}
                   style={{
-                    top: "-0.3em",
+                    top: "0.4em", // yahan value badhao, jitna niche chahiye utna
                     boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
                     animation: scrollProgress >= 0.95 ? 'float-gentle 3s ease-in-out infinite' : 'none'
                   }}
