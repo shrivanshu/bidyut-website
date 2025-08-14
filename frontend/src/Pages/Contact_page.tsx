@@ -1,4 +1,5 @@
-import { Phone, Mail, Clock, MapPin, ArrowRight, Navigation } from "lucide-react";
+import React, { useState } from "react";
+import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from '../Component/Header'; 
 import Footer from '../Component/Footer';
@@ -8,25 +9,7 @@ import { useLanguage } from '../contexts/OptimizedLanguageContext';
 export default function Contactpage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  };
+  const [activeForm, setActiveForm] = useState("contact"); // 'contact' or 'careers'
 
   return (
     <div className={`flex flex-col min-h-screen transition-colors duration-300 ${
@@ -34,334 +17,242 @@ export default function Contactpage() {
     }`}>
       <Header />
       
-      <main className="flex-1 pt-20">
+      <main className="flex-1 ">
         {/* Hero Section */}
-        <motion.section 
-          className={`w-full py-16 md:py-24 lg:py-32 transition-colors duration-300 ${
-            isDark ? 'bg-gray-900' : 'bg-white'
-          }`}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center text-center space-y-8">
-              
-              <motion.div
-                className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${
-                  isDark 
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                    : 'bg-green-50 text-green-700 border border-green-200'
-                }`}
-                variants={itemVariants}
-              >
-                {t('connectWithUs')}
-              </motion.div>
+         <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.6 }}
+  >
+     <div>
+          <div className="min-h-screen p-20" style={{ backgroundColor: "#E4EEFC" }}>
+            <div
+              className="max-w-7xl mx-auto"
+              style={{ backgroundColor: "#E4EEFC" }}
+            >
+              {/* Main Content Container */}
+              <div className="grid grid-cols-1  lg:grid-cols-2 gap-8 mb-12">
+                {/* Left Side - Contact Information */}
+                <div style={{ backgroundColor: "#E4EEFC" }}>
+                  <h1 className="text-5xl font-medium text-gray-900 mb-6">
+                    Contact Us
+                  </h1>
+                  <p className="text-gray-600 mb-4 text-lg">
+Let’s power up your innovation journey together                    <br />
+From idea to innovation — Bidyut makes it happen.                  </p>
+    
+                  <div className="space-y-4 mb-12">
+                    <div className="flex items-center text-gray-700">
+                      <Mail className="w-5 h-5 mr-3" />
+                      <span> info@bidyut.com</span>
+                    </div>
+                    <div className="flex items-center text-gray-700">
+                      <Phone className="w-5 h-5 mr-3" />
+                      <span>+91 (731) 123-4567</span>
+                    </div>
+                    {/* <div className="rounded-md inline-block underline">
+                      <span className="font-medium">Customer Support</span>
+                    </div> */}
+                  </div>
+    
+                  {/* Support Categories */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-3">
+                        Customer Support
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        Our support team is available around the clock to address
+                        any concerns or queries you may have.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-3">
+                        Feedback and Suggestions
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        We value your feedback and are continuously working to
+                        improve Snappy. Your input is crucial in shaping the future
+                        of Snappy.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-3">
+                        Media Inquiries
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        For media-related questions or press inquiries, please
+                        contact us at media@snappyapp.com.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+    
+                {/* Right Side - Form */}
+                {/* <div className="bg-white rounded-3xl shadow-sm p-8"> */}
+<div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-[120%] max-w-xl mx-auto self-center">
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div>
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+        {activeForm === "contact" ? "Get in Touch" : "Careers"}
+      </h2>
+      <p className="text-gray-500 mt-1 text-sm sm:text-base">
+        {activeForm === "contact" ? "You can reach us anytime" : "Join our amazing team"}
+      </p>
+    </div>
 
-              <motion.h1
-                className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight transition-colors duration-300 ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}
-                variants={itemVariants}
-              >
-                <span className="text-green-500">{t('getInTouch')}</span>{" "}
-                <span>{t('letsBuildSomethingGreat').split(' ').slice(0, 1).join(' ')}</span>
-                <br />
-                <span>{t('letsBuildSomethingGreat').split(' ').slice(1).join(' ')}</span>
-              </motion.h1>
+    {/* Toggle Switch */}
+    <div className="flex bg-gray-100 rounded-lg p-1">
+      <button
+        onClick={() => setActiveForm("contact")}
+        className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+          activeForm === "contact"
+            ? "bg-white text-gray-900 shadow-sm"
+            : "text-gray-500 hover:text-gray-700"
+        }`}
+      >
+        Contact
+      </button>
+      <button
+        onClick={() => setActiveForm("careers")}
+        className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+          activeForm === "careers"
+            ? "bg-white text-gray-900 shadow-sm"
+            : "text-gray-500 hover:text-gray-700"
+        }`}
+      >
+        Careers
+      </button>
+    </div>
+  </div>
 
-              <motion.p
-                className={`max-w-4xl text-lg sm:text-xl leading-relaxed transition-colors duration-300 ${
-                  isDark ? 'text-gray-300' : 'text-gray-600'
-                }`}
-                variants={itemVariants}
-              >
-                {t('contactDescription')}
-              </motion.p>
+  {/* Contact Form */}
+  {activeForm === "contact" && (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <input
+          type="text"
+          placeholder="First name"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        />
+        <input
+          type="text"
+          placeholder="Last name"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        />
+      </div>
 
+      <input
+        type="email"
+        placeholder="Your email"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+      />
+
+      <div className="flex flex-col sm:flex-row">
+        <select className="px-4 py-3 border border-gray-200 rounded-t-4xl sm:rounded-l-4xl sm:rounded-t-none bg-white text-gray-700 outline-none focus:ring-2 focus:ring-blue-500">
+          <option>+91</option>
+          <option>+1</option>
+          <option>+44</option>
+          <option>+62</option>
+        </select>
+        <input
+          type="tel"
+          placeholder="Phone number"
+          className="flex-1 px-4 py-3 border border-t-0 sm:border-t border-l-0 border-gray-200 rounded-b-4xl sm:rounded-r-4xl sm:rounded-b-none focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        />
+      </div>
+
+      <textarea
+        placeholder="How can we help?"
+        rows={4}
+        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+      ></textarea>
+
+      <button
+        type="button"
+        className="w-full bg-blue-600 text-white py-3 rounded-3xl font-medium hover:bg-blue-700 transition-colors"
+        onClick={() => alert("Form submitted!")}
+      >
+        Submit
+      </button>
+
+      <p className="text-xs text-gray-500 text-center">
+        By contacting us, you agree to our{" "}
+        <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and{" "}
+        <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
+      </p>
+    </div>
+  )}
+
+  {/* Careers Form */}
+  {activeForm === "careers" && (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input
+          type="text"
+          placeholder="First name"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        />
+        <input
+          type="text"
+          placeholder="Last name"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        />
+      </div>
+
+      <input
+        type="email"
+        placeholder="Your email"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+      />
+
+      <input
+        type="text"
+        placeholder="Position you're applying for"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+      />
+
+      <select className="w-full px-4 py-3 border border-gray-200 rounded-4xl bg-white text-gray-700 outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Years of experience</option>
+        <option value="0-1">0-1 years</option>
+        <option value="2-3">2-3 years</option>
+        <option value="4-5">4-5 years</option>
+        <option value="5+">5+ years</option>
+      </select>
+
+      <textarea
+        placeholder="Tell us about yourself and why you want to join Bidyut"
+        rows={4}
+        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+      ></textarea>
+
+      <button
+        type="button"
+        className="w-full bg-blue-600 text-white py-3 rounded-4xl font-medium hover:bg-blue-700 transition-colors"
+        onClick={() => alert("Application submitted!")}
+      >
+        Apply Now
+      </button>
+
+      <p className="text-xs text-gray-500 text-center">
+        By applying, you agree to our{" "}
+        <a href="#" className="text-black hover:underline">Terms of Service</a> and{" "}
+        <a href="#" className="text-black hover:underline">Privacy Policy</a>
+      </p>
+    </div>
+  )}
+</div>
+
+              </div>
             </div>
+    
           </div>
-        </motion.section>
-
-        {/* Contact Form and Info Section */}
-        <motion.section 
-          className={`w-full py-16 md:py-24 lg:py-32 transition-colors duration-300 ${
-            isDark ? 'bg-gray-800' : 'bg-gray-50'
-          }`}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-              
-              {/* Left Column: Contact Form */}
-              <motion.div className="space-y-8" variants={itemVariants}>
-                <h2 className={`text-3xl sm:text-4xl font-bold leading-tight transition-colors duration-300 ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {t('letsTalkAboutProject')}
-                </h2>
-                
-                <form className="space-y-6">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}
-                    >
-                      {t('name')}
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      placeholder={t('yourFullName')}
-                      className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
-                        isDark 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}
-                    >
-                      {t('emailAddress')}
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder={t('wellGetBackToYou')}
-                      className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
-                        isDark 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="company"
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}
-                    >
-                      {t('companyName')}
-                    </label>
-                    <input
-                      id="company"
-                      type="text"
-                      placeholder={t('letUsKnowWhoYouRepresent')}
-                      className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
-                        isDark 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="subject"
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}
-                    >
-                      {t('subject')}
-                    </label>
-                    <input
-                      id="subject"
-                      type="text"
-                      placeholder={t('whatsThisAbout')}
-                      className={`w-full h-12 px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
-                        isDark 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="message"
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-700'
-                      }`}
-                    >
-                      {t('message')}
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={6}
-                      placeholder={t('tellUsHowWeCanHelp')}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none ${
-                        isDark 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                    />
-                  </div>
-                  
-                  <motion.button
-                    type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {t('sendMessage')}
-                  </motion.button>
-                </form>
-              </motion.div>
-
-              {/* Right Column: Contact Info and Map */}
-              <motion.div className="space-y-8" variants={itemVariants}>
-                <h2 className={`text-3xl sm:text-4xl font-bold leading-tight transition-colors duration-300 ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}>
-                  {t('preferDirectApproach')}
-                </h2>
-                
-                <div className="space-y-6">
-                  <motion.div 
-                    className={`flex items-center gap-4 p-4 rounded-lg transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {t('phoneLabel')}
-                      </p>
-                      <p className={`text-lg font-semibold transition-colors duration-300 ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        +91 (731) 123-4567
-                      </p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className={`flex items-center gap-4 p-4 rounded-lg transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {t('emailLabel')}
-                      </p>
-                      <p className={`text-lg font-semibold transition-colors duration-300 ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        info@bidyut.com
-                      </p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className={`flex items-center gap-4 p-4 rounded-lg transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className={`text-sm font-medium transition-colors duration-300 ${
-                        isDark ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        {t('workingHours')}
-                      </p>
-                      <p className={`text-lg font-semibold transition-colors duration-300 ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {t('workingHoursTime')}
-                      </p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Location Features */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                  <motion.div 
-                    className={`p-4 rounded-xl text-center transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Navigation className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                    <p className={`text-sm font-medium transition-colors duration-300 ${
-                      isDark ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {t('easyAccess')}
-                    </p>
-                    <p className={`text-xs transition-colors duration-300 ${
-                      isDark ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      {t('wellConnected')}
-                    </p>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className={`p-4 rounded-xl text-center transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Clock className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                    <p className={`text-sm font-medium transition-colors duration-300 ${
-                      isDark ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {t('open24_7')}
-                    </p>
-                    <p className={`text-xs transition-colors duration-300 ${
-                      isDark ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      {t('alwaysAvailable')}
-                    </p>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className={`p-4 rounded-xl text-center transition-colors duration-300 ${
-                      isDark ? 'bg-gray-700' : 'bg-white'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <MapPin className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                    <p className={`text-sm font-medium transition-colors duration-300 ${
-                      isDark ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {t('primeLocation')}
-                    </p>
-                    <p className={`text-xs transition-colors duration-300 ${
-                      isDark ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      {t('cityCenter')}
-                    </p>
-                  </motion.div>
-                </div>
-
-                {/* Interactive Map */}
-                <motion.div 
+    
+          {/* Map */}
+          <div className=" p-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              {/* Map Section */}
+              <motion.div 
                   className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-xl"
                   whileHover={{ scale: 1.01 }}
                 >
@@ -382,7 +273,7 @@ export default function Contactpage() {
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none`} />
                   
                   {/* Office Information Overlay */}
-                  <div className={`absolute bottom-0 left-0 right-0 p-6 transition-colors duration-300 ${
+                  {/*<div className={`absolute bottom-0 left-0 right-0 p-6 transition-colors duration-300 ${
                     isDark ? 'bg-gray-900/95' : 'bg-white/95'
                   } backdrop-blur-sm`}>
                     <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${
@@ -441,12 +332,45 @@ export default function Contactpage() {
                         </svg>
                       </motion.button>
                     </div>
-                  </div>
+                  </div>*/}
                 </motion.div>
-              </motion.div>
+    
+              {/* Location Details */}
+              <div className="space-y-6">
+                <div>
+                  <p className="text-gray-600 text-sm font-medium mb-2">
+                    Our Location
+                  </p>
+                  <h2
+  className={`text-3xl font-bold mb-8 ${
+    isDark ? "text-white" : "text-gray-900"
+  }`}
+>
+  Connecting Near and Far
+</h2>
+</div>
+
+<div>
+  <h3
+    className={`text-lg font-semibold mb-4 ${
+      isDark ? "text-white" : "text-gray-900"
+    }`}
+  >
+    Bidyut Innovation 
+  </h3>
+                  <div className="space-y-1 text-gray-700">
+                    {/* <p className="font-medium">Bidyut Innovation</p> */}
+                    <p>901 Clifton Corporate Park,</p>
+                    <p>11/6, AB Road, Sector A, Slice 6,</p>
+                    <p>Aranya Nagar, Vijay Nagar,</p>
+                    <p>Indore, Madhya Pradesh 452010</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </div>
+  </motion.div>
       </main>
       
       <Footer />
