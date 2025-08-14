@@ -1,7 +1,9 @@
 "use client"
 
+
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
+import GalleryText from '../../Text_Animation/GalleryText';
 
 interface ImageItem {
   id: number
@@ -126,8 +128,8 @@ const generateBaseImages = (): ImageItem[] => {
 const generateInfiniteImages = (
   dragX: number,
   dragY: number,
-  viewportWidth: number,
-  viewportHeight: number,
+  // viewportWidth: number,
+  // viewportHeight: number,
 ): ImageItem[] => {
   const baseImages = generateBaseImages()
   const tileSize = 6400 // Size of one tile (8x8 grid with 800px spacing)
@@ -140,7 +142,7 @@ const generateInfiniteImages = (
   // Render 3x3 grid of tiles around the current position for seamless infinite scrolling
   for (let tileY = centerTileY - 1; tileY <= centerTileY + 1; tileY++) {
     for (let tileX = centerTileX - 1; tileX <= centerTileX + 1; tileX++) {
-      baseImages.forEach((image, index) => {
+  baseImages.forEach((image) => {
         infiniteImages.push({
           ...image,
           // id: `${tileX}-${tileY}-${image.id}`,
@@ -213,14 +215,12 @@ export default function InteractiveGallery() {
   const currentDragX = dragX.get()
   const currentDragY = dragY.get()
   const infiniteImages = generateInfiniteImages(
-    currentDragX,
-    currentDragY,
-    window?.innerWidth || 1920,
-    window?.innerHeight || 1080,
+  currentDragX,
+  currentDragY
   )
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-10 w-64 h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
         <div className="absolute bottom-20 right-10 w-48 h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>
@@ -248,13 +248,20 @@ export default function InteractiveGallery() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-6xl lg:text-8xl font-light leading-none tracking-tight">
-                Explore
-                <br />
-                <span className="text-zinc-400">Our</span>
-                <br />
-                Gallery
-              </h1>
+              <div style={{position: 'relative', height: '120px'}}>
+                <GalleryText
+                  text="Explore Our Gallery"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#222222"
+                  strokeColor="#ff0000"
+                  minFontSize={48}
+                />
+              </div>
 
               <div className="max-w-md space-y-6">
                 <p className="text-zinc-400 leading-relaxed text-lg">
@@ -306,7 +313,7 @@ export default function InteractiveGallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-zinc-900 z-50 overflow-hidden"
+            className="fixed inset-0 bg-gray-900 z-50 overflow-hidden"
             style={{
               transform: "translate3d(0,0,0)",
               backfaceVisibility: "hidden",
@@ -321,9 +328,22 @@ export default function InteractiveGallery() {
             </button>
 
             <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
-              <h2 className="text-2xl font-light tracking-wide">Infinite Gallery</h2>
+              <div style={{position: 'relative', height: '60px'}}>
+                <GalleryText
+                  text="Infinite Gallery"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={24}
+                />
+              </div>
               <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                Drag to navigate • Infinite space with seamless tiling
+                Drag to View • Infinite space with seamless tiling
               </p>
             </div>
 
@@ -332,7 +352,7 @@ export default function InteractiveGallery() {
               drag
               dragElastic={0.05}
               dragMomentum={true}
-              onDrag={(event, info) => {
+              onDrag={(_event: any, info: { offset: { x: number; y: number } }) => {
                 dragX.set(info.offset.x)
                 dragY.set(info.offset.y)
               }}
@@ -496,7 +516,20 @@ export default function InteractiveGallery() {
                           className="absolute -bottom-16 left-0 right-0 text-center pointer-events-none opacity-0 group-hover:opacity-100 bg-black/70 backdrop-blur-sm px-3 py-2 mx-2 border border-white/10"
                           transition={{ duration: 0.3 }}
                         >
-                          <h3 className="text-xs font-medium text-white tracking-wide">{image.title}</h3>
+                          <div style={{position: 'relative', height: '32px'}}>
+                            <GalleryText
+                              text={image.title}
+                              flex={true}
+                              alpha={false}
+                              stroke={false}
+                              width={true}
+                              weight={true}
+                              italic={true}
+                              textColor="#ffffff"
+                              strokeColor="#ff0000"
+                              minFontSize={14}
+                            />
+                          </div>
                           <p className="text-xs text-zinc-300 mt-1 opacity-70">{image.alt}</p>
                         </motion.div>
                       </div>

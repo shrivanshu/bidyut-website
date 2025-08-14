@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
+import HomeHeroText from '../../Text_Animation/HomeHeroText';
 
 type VideoOption = {
   src: string;
@@ -294,7 +295,16 @@ export default function EducationStream() {
       {/* Header */}
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
-          <span className="text-emerald-500">{t('stream')}</span> <span className="text-gray-800 dark:text-white">Education</span>
+          <HomeHeroText
+            text={[`${t('stream')} Education`]}
+            highlight={{ text: t('stream'), color: '#10b981' }}
+            typingSpeed={40}
+            pauseDuration={0}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300"
+            startOnVisible={true}
+          />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
           {t('streamEducationDescription')}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EN1 from './EN1';
+import HomeHeroText from '../../Text_Animation/HomeHeroText';
 import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
 const EducationNews: React.FC = () => {
@@ -192,7 +193,16 @@ const EducationNews: React.FC = () => {
       {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('latestNews').split(' & ')[0]} & <span className="text-green-500">{t('latestNews').split(' & ')[1]}</span>
+            <HomeHeroText
+              text={[`${t('latestNews').split(' & ')[0]} & ${t('latestNews').split(' & ')[1]}`]}
+              highlight={{ text: t('latestNews').split(' & ')[1], color: '#22c55e' }}
+              typingSpeed={40}
+              pauseDuration={0}
+              showCursor={true}
+              cursorCharacter="|"
+              className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+              startOnVisible={true}
+            />
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             {t('stayUpdated')}

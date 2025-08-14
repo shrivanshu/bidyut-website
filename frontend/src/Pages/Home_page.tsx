@@ -9,8 +9,8 @@ import Header from '../Component/Header';
 // import Clock from '../Component/home_components/Clock';
 import TestimonialSection from '../Component/home_components/TestimonialSection';
 import TrustedPartners from '../Component/home_components/TrustedPartners';
+import TrustedPartners21 from '../Component/home_components/TrustedPartners21';
 import { ThemeProvider } from '../contexts/ThemeContext';
-
 
 
 function Home_page() {
@@ -24,6 +24,7 @@ function Home_page() {
         <EducationNews />
         <LmsSection/>
         <TrustedPartners />
+        <TrustedPartners21 />
         <TestimonialSection />
         <EducationStream />
         <Footer />

@@ -1,18 +1,34 @@
 import { Brain, Bot as Robot } from "lucide-react"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
+import SplitText from "../../Text_Animation/LSMtext"
 
 export default function Component() {
   const { t } = useLanguage()
-  
+
+  const handleAnimationComplete = () => {
+    console.log('All letters have animated!');
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
 {/* Header Section */}
 <div className="flex flex-col items-center justify-center text-center mb-12">
-  <h1 className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300">
-    {t('advancedLms')}
-  </h1>
+  <SplitText
+    text={t('advancedLms')}
+    className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
+    delay={100}
+    duration={0.6}
+    ease="power3.out"
+    splitType="chars"
+    from={{ opacity: 0, y: 40 }}
+    to={{ opacity: 1, y: 0 }}
+    threshold={0.1}
+    rootMargin="-100px"
+    textAlign="center"
+    onLetterAnimationComplete={handleAnimationComplete}
+  />
   <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-2xl font-['Poppins'] transition-colors duration-300">
     {t('lmsSubtitle')}
   </p>
