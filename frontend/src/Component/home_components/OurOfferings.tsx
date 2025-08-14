@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import HomeHeroText from '../../Text_Animation/HomeHeroText';
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 // import Image from "next/image"
 
@@ -211,7 +212,17 @@ export default function OfferingsCarousel() {
     <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 px-4">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
-          {t('ourOfferings').split(' ')[0]} <span className="text-[#2ecc71]">{t('ourOfferings').split(' ')[1]}</span>
+          <HomeHeroText
+            text={[`${t('ourOfferings').split(' ')[0]} ${t('ourOfferings').split(' ')[1]}`]}
+            highlight={{ text: t('ourOfferings').split(' ')[1], color: '#2ecc71' }}
+            typingSpeed={40}
+            pauseDuration={0}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white"
+            startOnVisible={true}
+            startOnVisible={true}
+          />
         </h2>
         <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 max-w-4xl mb-2">
           {t('offeringsSubtitle')}
@@ -275,7 +286,20 @@ export default function OfferingsCarousel() {
                   </div>
                   <h3 className={`font-semibold mb-2 text-gray-900 dark:text-white transition-all duration-300 ${
                     relativePos === 0 ? 'text-xl' : 'text-lg'
-                  }`}>{t(offering.titleKey)}</h3>
+                  }`}>
+                    <HomeHeroText
+                      text={[t(offering.titleKey)]}
+                      typingSpeed={40}
+                      pauseDuration={0}
+                      showCursor={true}
+                      cursorCharacter="|"
+                      className={`font-semibold mb-2 text-gray-900 dark:text-white transition-all duration-300 ${
+                        relativePos === 0 ? 'text-xl' : 'text-lg'
+                      }`}
+                      startOnVisible={true}
+                      startOnVisible={true}
+                    />
+                  </h3>
                   <p className={`text-gray-600 dark:text-gray-300 transition-all duration-300 ${
                     relativePos === 0 ? 'text-sm' : 'text-xs'
                   }`}>{t(offering.descriptionKey)}</p>
