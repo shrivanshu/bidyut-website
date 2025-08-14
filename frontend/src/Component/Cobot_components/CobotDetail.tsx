@@ -1,13 +1,16 @@
 
-import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
-import robotImgSrc from '/media/Cobot_true.svg'; // Make sure this path is correct
 
-const CobotClassroom: React.FC = ({ onContactClick }) => {
+interface CobotClassroomProps {
+  onContactClick?: () => void;
+}
+
+const robotImgSrc = '/media/Cobot_true.svg';
+
+const CobotClassroom = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark } = useTheme();
-  
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
+    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Image first on mobile */}
         <div className="flex justify-center md:order-1 order-1 h-full">
@@ -21,15 +24,10 @@ const CobotClassroom: React.FC = ({ onContactClick }) => {
         </div>
 
         {/* Content */}
-        <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
+        <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           <div className="space-y-4">
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              Ready to revolutionize{' '}
-
-             
-              <span className="text-green-600 dark:text-green-400">your classroom?</span>
-
-              
+              Ready to revolutionize <span className="text-green-600 dark:text-green-400">your classroom?</span>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
               Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
@@ -44,8 +42,6 @@ const CobotClassroom: React.FC = ({ onContactClick }) => {
               Contact Sales Team
             </button>
           </div>
-
-         
         </div>
       </div>
     </div>
