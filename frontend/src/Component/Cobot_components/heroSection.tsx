@@ -1,21 +1,26 @@
+import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
+
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-4 py-16">
+    <section className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-4 py-16 relative">
+      {/* Target Cursor Effect */}
+      <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
+
       {/* Top tagline */}
       <div className="text-center font-poppins mb-8">
-        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide">Learn Robotics. Build the Future.</p>
+        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
       </div>
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
-        <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight">
+        <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
           Think Limitless. Learn Beyond Boundaries
         </h1>
       </div>
 
       {/* Description paragraph */}
       <div className="text-center max-w-5xl">
-        <p className="text-[#00000070] text-sm md:text-lg  dark:text-gray-400 font-poppins font-semibold leading-relaxed">
+        <p className="text-[#00000070] text-sm md:text-lg  dark:text-gray-400 font-poppins font-semibold leading-relaxed cursor-target">
           At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
           Discover a new way to build, program, and solve real-world challenges with creativity.
         </p>
@@ -49,17 +54,15 @@ export default function HeroSection() {
     Quadruped
   </h2>
 
-  {/* Bottom description */}
-  <div className="max-w-5xl mx-auto mt-4 px-4">
-    <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed">
-      Select from a range of high-performance educational robots designed for hands-on learning. 
-      Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
-      for secondary development and real-time demonstrations.
-    </p>
-  </div>
-</div>
-
-
+        {/* Bottom description */}
+        <div className="max-w-5xl mx-auto mt-4 px-4">
+          <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target">
+            Select from a range of high-performance educational robots designed for hands-on learning. 
+            Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
+            for secondary development and real-time demonstrations.
+          </p>
+        </div>
+      </div>
     </section>
   )
 }

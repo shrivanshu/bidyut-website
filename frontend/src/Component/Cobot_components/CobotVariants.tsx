@@ -230,63 +230,63 @@ const Button = ({
   </button>
 )
 
-export default function RobotShowcase() {
-  const { isDark } = useTheme()
-  const [selectedVariant, setSelectedVariant] = useState("g1-basic")
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
+function RobotShowcase() {
+  const { isDark } = useTheme();
+  const [selectedVariant, setSelectedVariant] = useState("g1-basic");
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0];
 
   // Auto-slide functionality
   useEffect(() => {
     if (isGalleryOpen) {
       const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length)
-      }, 5000) // 5 seconds
-      return () => clearInterval(interval)
+        setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length);
+      }, 5000); // 5 seconds
+      return () => clearInterval(interval);
     }
-  }, [isGalleryOpen, currentSpec.gallery.length])
+  }, [isGalleryOpen, currentSpec.gallery.length]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length)
-  }
+    setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length);
+  };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + currentSpec.gallery.length) % currentSpec.gallery.length)
-  }
+    setCurrentImageIndex((prev) => (prev - 1 + currentSpec.gallery.length) % currentSpec.gallery.length);
+  };
 
   const openGallery = (index: number) => {
-    setCurrentImageIndex(index)
-    setIsGalleryOpen(true)
-  }
+    setCurrentImageIndex(index);
+    setIsGalleryOpen(true);
+  };
 
   const closeGallery = () => {
-    setIsGalleryOpen(false)
-  }
+    setIsGalleryOpen(false);
+  };
 
   // Keyboard navigation
   useEffect(() => {
     if (isGalleryOpen) {
       const handleKeyPress = (e: KeyboardEvent) => {
-        if (e.key === 'ArrowRight') nextImage()
-        if (e.key === 'ArrowLeft') prevImage()
-        if (e.key === 'Escape') closeGallery()
-      }
-      window.addEventListener('keydown', handleKeyPress)
-      return () => window.removeEventListener('keydown', handleKeyPress)
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'Escape') closeGallery();
+      };
+      window.addEventListener('keydown', handleKeyPress);
+      return () => window.removeEventListener('keydown', handleKeyPress);
     }
-  }, [isGalleryOpen, currentSpec.gallery.length])
+  }, [isGalleryOpen, currentSpec.gallery.length]);
 
   // Reset image index when variant changes
   useEffect(() => {
-    setCurrentImageIndex(0)
-  }, [selectedVariant])
+    setCurrentImageIndex(0);
+  }, [selectedVariant]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="w-full px-6 py-16 md:px-12 lg:px-16">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+      <div className="w-full px-6 py-16 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
         {/* Header Dropdown */}
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
@@ -304,8 +304,8 @@ export default function RobotShowcase() {
                     key={spec.id}
                     className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
                     onClick={() => {
-                      setSelectedVariant(spec.id)
-                      setIsDropdownOpen(false)
+                      setSelectedVariant(spec.id);
+                      setIsDropdownOpen(false);
                     }}
                   >
                     {spec.name}
@@ -317,9 +317,9 @@ export default function RobotShowcase() {
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           {/* Left Section - Product Info */}
-          <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
             <div className="space-y-6">
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{currentSpec.name}</h1>
               <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">Technical Specifications</h2>
@@ -380,10 +380,10 @@ export default function RobotShowcase() {
                 {currentSpec.features.map((feature, index) => {
                   if (hoveredFeature !== index) return null;
                   
-                  const startX = feature.position.left
-                  const startY = feature.position.top
-                  const endX = feature.targetPoint.x
-                  const endY = feature.targetPoint.y
+                  const startX = feature.position.left;
+                  const startY = feature.position.top;
+                  const endX = feature.targetPoint.x;
+                  const endY = feature.targetPoint.y;
 
                   return (
                     <g key={index}>
@@ -413,7 +413,7 @@ export default function RobotShowcase() {
                         className="transition-all duration-300"
                       />
                     </g>
-                  )
+                  );
                 })}
               </svg>
 
@@ -540,5 +540,7 @@ export default function RobotShowcase() {
         </div>
       )}
     </div>
-  )
+  );
 }
+
+export default RobotShowcase;
