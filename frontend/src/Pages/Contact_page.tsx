@@ -41,13 +41,19 @@ export default function Contactpage() {
         </p>
 
         <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
-          <div className="flex items-center dark:text-gray-400 text-gray-700">
-            <Mail className="w-5 h-5 mr-3" />
-            <span>info@bidyut.com</span>
-          </div>
+         <div className="flex items-start flex-col dark:text-gray-400 text-gray-700">
+  <div className="flex items-center">
+    <Mail className="w-5 h-5 mr-3 mt-1" />
+    <div className="flex flex-col">
+      <span>info@bidyutrobotics.com</span>
+      <span>rahul@bidyutrobotics.com</span>
+    </div>
+  </div>
+</div>
+
           <div className="flex items-center dark:text-gray-400 text-gray-700">
             <Phone className="w-5 h-5 mr-3" />
-            <span>+91 (731) 123-4567</span>
+            <span>+91 9370782979</span>
           </div>
         </div>
 
@@ -74,7 +80,7 @@ export default function Contactpage() {
               Media Inquiries
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-              For media-related questions or press inquiries, please contact us at info@bidyut.com.
+              For media-related questions or press inquiries, please contact us at info@bidyutrobotics.com .
             </p>
           </div>
         </div>
