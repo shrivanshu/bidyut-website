@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HeroHeading from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const HeroSection: React.FC = () => {
@@ -102,7 +103,7 @@ const HeroSection: React.FC = () => {
           {t('learnRobotics')}
         </div>
 
-        <h1
+        <div
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
           style={{
             fontSize: "64px",
@@ -110,17 +111,18 @@ const HeroSection: React.FC = () => {
             lineHeight: 1.2,
             margin: "0 0 20px 0",
             textShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "transparent",
           }}
         >
-          <span style={{ color: "#0acf83" }}>{t('thinkLimitless')}</span>{" "}
-          <span style={{ color: "#ffffff", textShadow: "0 2px 4px rgba(0, 0, 0, 0.4)" }}>
-            {t('learn')}
-          </span>{" "}
-          <br />
-          <span style={{ color: "#ffffff", textShadow: "0 2px 4px rgba(0, 0, 0, 0.4)" }}>
-            {t('beyondBoundaries')}
-          </span>
-        </h1>
+          <HeroHeading
+            text={["Think Limitless Learn Beyond Boundaries"]}
+            typingSpeed={40}
+            pauseDuration={0}
+            showCursor={true}
+            cursorCharacter="|"
+            highlight={{ text: "Think Limitless", color: "#0acf83" }}
+          />
+        </div>
 
         <p
           className="paragraph-text"
@@ -138,11 +140,7 @@ const HeroSection: React.FC = () => {
           {t('heroDescription')}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
-          <button className="bg-[#00C76F] hover:bg-[#00b964] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            {t('scheduleDemoCall')}
-          </button>
-        </div>
+        {/* End main content container */}
       </div>
 
       {/* Navigation Dots */}
