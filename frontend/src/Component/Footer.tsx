@@ -177,7 +177,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Bidyut Technologies Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('bidyutTechnologies')}</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('BidyutTechnologies')}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
               {t('footerDescription')}
             </p>
@@ -215,7 +215,9 @@ export default function Footer() {
                 <div>
                   <p className="font-semibold text-black dark:text-white text-sm">{t('address')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">901 Clifton Corporate Park,</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">11/6, AB Road, Sector A, Slice...</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">11/6, AB Road, Sector A, Slice 6</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">Aranya Nagar,VijayNagar, Indore,Madhya Pradesh,</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">pin code – 452010</p>
                 </div>
               </div>
 
@@ -225,7 +227,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-semibold text-black dark:text-white text-sm">{t('phone')}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">+1 (555) 123-4567</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">+91 9370782979</p>
                 </div>
               </div>
 
@@ -235,7 +237,8 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-semibold text-black dark:text-white text-sm">{t('email')}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyut.com</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyutrobotics.com</p>
+                   <p className="text-gray-700 dark:text-gray-300 text-xs">rahul@bidyutrobotis.com</p>
                 </div>
               </div>
             </div>
@@ -276,7 +279,7 @@ export default function Footer() {
         <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 p-6 mb-8 shadow-lg transition-colors duration-300">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <span className="font-medium">{t('allRightsReserved')}</span>
+              <span className="font-medium">Copyright © 2024 All Right Reserved</span>
               <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
                 {t('privacyPolicy')}
               </a>
