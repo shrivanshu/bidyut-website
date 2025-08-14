@@ -3,6 +3,7 @@ import Header from '../Component/Header';
 import HeroSectionRobot from '../Component/robot_components/HeroSectionRobot';
 import RobotVariants from '../Component/robot_components/RobotVariants';
 import RobotDetail from '../Component/robot_components/RobotDetail';
+import Table from '../Component/Table';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
 function Robot_page() {
@@ -13,6 +14,7 @@ function Robot_page() {
         <HeroSectionRobot />
         <RobotVariants/>
         <RobotDetail/>
+        <Table/>
         <Footer />
       </div>
     </ThemeProvider>
