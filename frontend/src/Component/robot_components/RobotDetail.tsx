@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
-import robotImgSrc from '/media/Robot_Details.svg'; // Make sure this path is correct
+import robotImgSrc from '/media/Robot_Details.svg'; 
 
 const RobotClassroom: React.FC = ({ onContactClick }) => {
   const { isDark } = useTheme();

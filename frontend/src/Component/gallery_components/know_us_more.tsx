@@ -3,8 +3,10 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
+
 import { useTheme } from "../../contexts/ThemeContext"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
+import GalleryText from '../../Text_Animation/GalleryText';
 
 // Gallery image data with actual high-quality images
 const galleryImages = [
@@ -198,9 +200,20 @@ export default function KnowUsMore() {
                       exit="hidden"
                       className="absolute inset-0 flex flex-col justify-end p-6"
                     >
-                      <h3 className="text-white text-xl font-bold mb-2">
-                        {image.title}
-                      </h3>
+                      <div style={{position: 'relative', height: '40px', marginBottom: '8px'}}>
+                        <GalleryText
+                          text={image.title}
+                          flex={true}
+                          alpha={false}
+                          stroke={false}
+                          width={true}
+                          weight={true}
+                          italic={true}
+                          textColor="#ffffff"
+                          strokeColor="#ff0000"
+                          minFontSize={18}
+                        />
+                      </div>
                       <div className="flex items-center justify-between">
                         <span className="text-green-400 text-sm font-medium capitalize px-3 py-1 bg-black/40 rounded-full backdrop-blur-sm">
                           {image.category}

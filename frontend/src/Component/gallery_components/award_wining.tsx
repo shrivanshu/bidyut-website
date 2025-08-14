@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
+import GalleryText from '../../Text_Animation/GalleryText'
 export default function AwardWinning() {
   const { isDark } = useTheme()
   const { t } = useLanguage()
@@ -170,9 +171,20 @@ export default function AwardWinning() {
                     </div>
                     {/* Content */}
                     <div className="p-6 sm:p-7 lg:p-8 flex flex-col flex-grow text-center">
-                      <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4 leading-tight transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-800'}`}>
-                        {t(award.titleKey)}
-                      </h3>
+                      <div style={{position: 'relative', height: '80px'}}>
+                        <GalleryText
+                          text={t(award.titleKey)}
+                          flex={true}
+                          alpha={false}
+                          stroke={false}
+                          width={true}
+                          weight={true}
+                          italic={true}
+                          textColor={isDark ? '#ffffff' : '#222222'}
+                          strokeColor="#ff0000"
+                          minFontSize={28}
+                        />
+                      </div>
                       <p className={`text-sm sm:text-base leading-relaxed flex-grow mb-4 sm:mb-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {t(award.descriptionKey)}
                       </p>
