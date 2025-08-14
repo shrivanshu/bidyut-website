@@ -220,7 +220,7 @@ export default function InteractiveGallery() {
   )
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-10 w-64 h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
         <div className="absolute bottom-20 right-10 w-48 h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>
@@ -306,7 +306,7 @@ export default function InteractiveGallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-zinc-900 z-50 overflow-hidden"
+            className="fixed inset-0 bg-gray-900 z-50 overflow-hidden"
             style={{
               transform: "translate3d(0,0,0)",
               backfaceVisibility: "hidden",
@@ -323,7 +323,7 @@ export default function InteractiveGallery() {
             <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
               <h2 className="text-2xl font-light tracking-wide">Infinite Gallery</h2>
               <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                Drag to navigate • Infinite space with seamless tiling
+                Drag to View • Infinite space with seamless tiling
               </p>
             </div>
 
