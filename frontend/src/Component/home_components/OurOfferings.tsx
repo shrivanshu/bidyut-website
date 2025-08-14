@@ -221,7 +221,6 @@ export default function OfferingsCarousel() {
             cursorCharacter="|"
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white"
             startOnVisible={true}
-            startOnVisible={true}
           />
         </h2>
         <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 max-w-4xl mb-2">
@@ -296,7 +295,6 @@ export default function OfferingsCarousel() {
                       className={`font-semibold mb-2 text-gray-900 dark:text-white transition-all duration-300 ${
                         relativePos === 0 ? 'text-xl' : 'text-lg'
                       }`}
-                      startOnVisible={true}
                       startOnVisible={true}
                     />
                   </h3>
