@@ -7,6 +7,7 @@ import Gallery from './Pages/Gallery_page';
 import Contactpage from './Pages/Contact_page';
 import Robotpage from './Pages/Robot_page';
 import Cobotpage from './Pages/Cobot_page';
+import Robotdetailpage from './Pages/Robot_detail_page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Contact" element={<Contactpage />} />
               <Route path="/Robot" element={<Robotpage />} />
               <Route path="/Cobot" element={<Cobotpage />} />
+              <Route path="/Robot/:id" element={<Robotdetailpage />} />
             </Routes>
           </NavigationProvider>
         </BrowserRouter>
