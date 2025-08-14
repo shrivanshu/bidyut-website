@@ -3,6 +3,7 @@
 // import Image from "next/image"
 import { useState } from "react"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
+import HomeHeroText from '../../Text_Animation/HomeHeroText';
 
 const TrustedPartners = [
   [
@@ -199,7 +200,16 @@ export default function PartnerLogos() {
     <section className="bg-white dark:bg-gray-900 text-black dark:text-white py-16 px-4 md:py-24 md:px-6 lg:py-32 transition-colors duration-300 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-          {t('trustedPartners').split(' ')[0]} <span className="text-[#4CAF50]">{t('trustedPartners').split(' ')[1]}</span> {t('trustedPartners').split(' ').slice(2).join(' ')}
+          <HomeHeroText
+            text={[`${t('trustedPartners').split(' ')[0]} ${t('trustedPartners').split(' ')[1]} ${t('trustedPartners').split(' ').slice(2).join(' ')}`]}
+            highlight={{ text: t('trustedPartners').split(' ')[1], color: '#4CAF50' }}
+            typingSpeed={40}
+            pauseDuration={0}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-gray-900 dark:text-white transition-colors duration-300"
+            startOnVisible={true}
+          />
         </h2>
         <p className="max-w-3xl mx-auto text-center text-lg md:text-xl mb-12 text-gray-700 dark:text-gray-300 transition-colors duration-300">
           {t('partnersDescription')}
