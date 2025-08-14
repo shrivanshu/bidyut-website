@@ -12,44 +12,44 @@ const EducationNews: React.FC = () => {
     {
       platform: 'linkedin' as const,
       timestamp: '08:10 PM | 01 Aug 2025',
-      title: 'Young Innovators Build AI-Powered Robot for Campus Safety',
-      content: 'A team of high school students created an AI-enabled robot designed to monitor school corridors and identify unusual behavior. The project won accolades at the National STEAM Fair and is now being considered for implementation in educational institutions nationwide.',
-      author: 'Tech Innovation Hub'
+      title: 'Bidyut Launches Advanced Robotics Lab for Schools',
+      content: 'Bidyut unveils a robotics lab to give students hands-on coding and tech skills for the future.',
+      author: 'Bidyut Team'
     },
     {
       platform: 'twitter' as const,
       timestamp: '08:10 PM | 01 Aug 2025',
-      title: 'Robotics Championship 2025: Students Gear Up to Compete',
-      content: 'Thousands of students from across the country will battle it out with self-built robots at the upcoming RoboChamp 2025. The competition aims to promote STEM education and innovation among young minds.',
-      author: 'RoboChamp Official'
+      title: 'Bidyut Innovation Expands EdTech Reach',
+      content: 'Now in more cities, Bidyut’s robotics courses boost creativity and STEM learning in schools.',
+      author: 'Bidyut Media'
     },
     {
       platform: 'twitter' as const,
       timestamp: '08:10 PM | 01 Aug 2025',
-      title: 'Girls in Tech: All-Girl Robotics Team Wins National Recognition',
-      content: 'An all-girl robotics team from Pune bagged first place in the National Robo Skills Competition with their autonomous delivery robot. The team broke stereotypes and inspired more girls to pursue STEM careers.',
-      author: 'Girls in STEM'
+      title: '	AI-Powered Robots Transforming Education',
+      content: 'AI robots are making STEM learning interactive, fun, and teamwork-focused.',
+      author: 'Tech Insights Desk'
     },
     {
       platform: 'linkedin' as const,
       timestamp: '08:10 PM | 01 Aug 2025',
-      title: 'Revolutionary Educational Robot Transforms Learning Experience',
-      content: 'A breakthrough in educational technology has emerged with the development of an interactive robot that adapts to individual learning styles. Early trials show 40% improvement in student engagement and comprehension rates.',
-      author: 'EduTech Innovations'
+      title: 'Humanoid Teachers Enter Classrooms',
+      content: 'Schools adopt humanoid robots to support teaching and personalize lessons.',
+      author: 'EdTech Research Team'
     },
     {
       platform: 'twitter' as const,
       timestamp: '07:45 PM | 01 Aug 2025',
-      title: 'AI-Powered Teaching Assistant Debuts in Classrooms',
-      content: 'Schools are now implementing AI teaching assistants that can answer student questions, provide personalized feedback, and help teachers manage classroom activities more effectively.',
-      author: 'Future Classroom'
+      title: 'Robotics to be a Core Subject by 2030',
+      content: 'Countries plan to make robotics mandatory in school curriculums.',
+      author: 'Innovation Weekly Staff'
     },
     {
       platform: 'linkedin' as const,
       timestamp: '07:30 PM | 01 Aug 2025',
-      title: 'Student-Built Drone Wins International Competition',
-      content: 'A team of engineering students developed an autonomous drone capable of search and rescue operations. Their innovation secured first place at the Global Robotics Challenge 2025.',
-      author: 'Engineering Excellence'
+      title: 'Drone Technology in STEM Education',
+      content: 'Schools teach drone programming to bring physics and coding to life.',
+      author: 'STEM Education Bureau'
     }
   ];
 
@@ -57,44 +57,44 @@ const EducationNews: React.FC = () => {
     {
       platform: 'twitter' as const,
       timestamp: '07:15 PM | 01 Aug 2025',
-      title: 'Smart Classroom Technology Revolutionizes Remote Learning',
-      content: 'New interactive whiteboards with AI integration are helping teachers create more engaging virtual lessons. Students report 60% better retention rates with this technology.',
-      author: 'EdTech Today'
+      title: 'Collaborative Robots Enhance Lab Experiences',
+      content: 'Cobots join school labs, helping students with safe, precise tasks.',
+      author: 'Robotics Lab Network'
     },
     {
       platform: 'linkedin' as const,
       timestamp: '07:00 PM | 01 Aug 2025',
-      title: 'Coding Bootcamp for Kids Sees Record Enrollment',
-      content: 'Summer coding programs for children aged 8-16 are experiencing unprecedented demand. Parents are investing in their children\'s digital literacy and programming skills.',
-      author: 'Code Academy Kids'
+      title: 'Virtual Robotics Competitions Rise in Popularity',
+      content: 'Students code and compete with robots in virtual arenas.',
+      author: 'GET Newsroom'
     },
     {
       platform: 'twitter' as const,
       timestamp: '06:45 PM | 01 Aug 2025',
-      title: 'Virtual Reality Transforms Science Education',
-      content: 'Students can now explore the human body, visit ancient civilizations, and conduct virtual chemistry experiments through immersive VR technology in classrooms.',
-      author: 'VR Education Hub'
+      title: '      timestamLow-Cost Robotics Kits for Rural Schools',
+      content: 'Affordable robotics kits bring STEM to rural students.',
+      author: 'Robotics World Team'
     },
     {
       platform: 'linkedin' as const,
       timestamp: '06:30 PM | 01 Aug 2025',
-      title: 'Robotics Club Builds Assistive Technology for Disabled Students',
-      content: 'High school robotics team develops innovative assistive devices to help students with disabilities participate more fully in classroom activities and sports.',
-      author: 'Inclusive Tech Initiative'
+      title: 'AI Tutors for Personalized Learning',
+      content: 'AI tutors in robotics tailor lessons for every student.',
+      author: 'AI Hub Editorial'
     },
     {
       platform: 'twitter' as const,
       timestamp: '06:15 PM | 01 Aug 2025',
-      title: '3D Printing Lab Opens in Elementary School',
-      content: 'Young students are learning design thinking and engineering principles through hands-on 3D printing projects, creating everything from toys to practical classroom tools.',
-      author: 'Maker Education'
+      title: 'Robotics Clubs Foster Teamwork and Innovation',
+      content: 'Clubs inspire problem-solving and innovation from a young age.',
+      author: 'SCT Editorial Board'
     },
     {
       platform: 'linkedin' as const,
       timestamp: '06:00 PM | 01 Aug 2025',
-      title: 'AI Tutoring System Shows Promising Results',
-      content: 'Personalized AI tutoring platforms are helping students improve their math and science scores by adapting to individual learning patterns and providing targeted support.',
-      author: 'AI Learning Solutions'
+      title: 'Educational Robots Reach Special Needs Classrooms',
+      content: 'Robots assist teachers with tailored learning for special needs students.',
+      author: 'Future Tech Asia Writers'
     }
   ];
   useEffect(() => {

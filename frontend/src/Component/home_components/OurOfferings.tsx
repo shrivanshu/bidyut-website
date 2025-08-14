@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import HomeHeroText from '../../Text_Animation/HomeHeroText';
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
-// import Image from "next/image"
 
 interface Offering {
   image: string
@@ -11,7 +10,6 @@ interface Offering {
   descriptionKey: string
 }
 
-// Define the offerings data with distinct placeholder images
 const offerings: Offering[] = [
   {
     image: "https://image.slidesdocs.com/responsive-images/background/3d-rendering-of-ai-robot-computing-with-urban-landscape-in-the-powerpoint-background_7de53013b7__960_540.jpg",
@@ -50,7 +48,6 @@ const offerings: Offering[] = [
   },
 ]
 
-// Define styles for each card position (relative to the center card)
 interface CardStyle {
   left: string
   transform: string
@@ -66,17 +63,17 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
   const hoverZIndex = isHovered ? 25 : 0;
   
   switch (position) {
-    case 0: // Center card
+    case 0:
       return {
         left: "50%",
-        transform: `translateX(-50%) scaleY(${1.0 * hoverScale}) scaleX(${1.0 * hoverScale}) skewY(0deg)`, // Normal center card
+        transform: `translateX(-50%) scaleY(${1.0 * hoverScale}) scaleX(${1.0 * hoverScale}) skewY(0deg)`,
         zIndex: 20 + hoverZIndex,
         filter: "blur(0px) drop-shadow(0 8px 20px rgba(0,0,0,0.12))",
         opacity: 1,
-        widthClass: "w-[240px] md:w-[280px] lg:w-[320px]", // Smaller sizes
+        widthClass: "w-[240px] md:w-[280px] lg:w-[320px]",
         transformOrigin: "center center",
       }
-    case -1: // Inner left
+    case -1:
       return {
         left: "50%",
         transform: `translateX(calc(-50% - min(22vw, 220px))) scaleY(${0.85 * hoverScale}) scaleX(${0.85 * hoverScale}) rotateY(35deg)`,
@@ -86,7 +83,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
         widthClass: "w-[200px] md:w-[240px] lg:w-[280px]",
         transformOrigin: "center center",
       }
-    case 1: // Inner right
+    case 1:
       return {
         left: "50%",
         transform: `translateX(calc(-50% + min(22vw, 220px))) scaleY(${0.85 * hoverScale}) scaleX(${0.85 * hoverScale}) rotateY(-35deg)`,
@@ -96,7 +93,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
         widthClass: "w-[200px] md:w-[240px] lg:w-[280px]",
         transformOrigin: "center center",
       }
-    case -2: // Outer left
+    case -2:
       return {
         left: "50%",
         transform: `translateX(calc(-50% - min(38vw, 380px))) scaleY(${0.7 * hoverScale}) scaleX(${0.7 * hoverScale}) rotateY(45deg)`,
@@ -106,7 +103,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
         widthClass: "w-[160px] md:w-[200px] lg:w-[240px]",
         transformOrigin: "center center",
       }
-    case -3: // Far left
+    case -3:
       return {
         left: "50%",
         transform: `translateX(calc(-50% - min(50vw, 500px))) scaleY(${0.55 * hoverScale}) scaleX(${0.55 * hoverScale}) rotateY(50deg)`,
@@ -116,7 +113,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
         widthClass: "w-[120px] md:w-[160px] lg:w-[200px]",
         transformOrigin: "center center",
       }
-    case 2: // Outer right
+    case 2:
       return {
         left: "50%",
         transform: `translateX(calc(-50% + min(38vw, 380px))) scaleY(${0.7 * hoverScale}) scaleX(${0.7 * hoverScale}) rotateY(-45deg)`,
@@ -126,7 +123,7 @@ const getCardStyles = (position: number, isHovered: boolean = false): CardStyle 
         widthClass: "w-[160px] md:w-[200px] lg:w-[240px]",
         transformOrigin: "center center",
       }
-    case 3: // Far right
+    case 3:
       return {
         left: "50%",
         transform: `translateX(calc(-50% + min(50vw, 500px))) scaleY(${0.55 * hoverScale}) scaleX(${0.55 * hoverScale}) rotateY(-50deg)`,
@@ -158,36 +155,27 @@ export default function OfferingsCarousel() {
   const [isPaused, setIsPaused] = useState(false)
   const len = offerings.length
 
-  // Auto-scroll effect with better control
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
-    
     if (!isHovered && !isTransitioning && !isPaused) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % len)
-      }, 3500) // Consistent timing for all devices
+      }, 3500)
     }
-    
     return () => {
-      if (interval) {
-        clearInterval(interval)
-      }
+      if (interval) clearInterval(interval)
     }
   }, [len, isHovered, isTransitioning, isPaused])
 
   const handleCardClick = (relativePos: number) => {
     if (relativePos !== 0 && !isTransitioning) {
       setIsTransitioning(true)
-      setIsPaused(true) // Pause auto-scroll during manual interaction
-      
-      // Calculate the new index to center the clicked card
+      setIsPaused(true)
       const newIndex = (currentIndex + relativePos + len) % len
       setCurrentIndex(newIndex)
-      
-      // Reset states after animation completes
       setTimeout(() => {
         setIsTransitioning(false)
-        setIsPaused(false) // Resume auto-scroll
+        setIsPaused(false)
       }, 800)
     }
   }
@@ -197,7 +185,6 @@ export default function OfferingsCarousel() {
       setIsTransitioning(true)
       setIsPaused(true)
       setCurrentIndex(index)
-      
       setTimeout(() => {
         setIsTransitioning(false)
         setIsPaused(false)
@@ -205,8 +192,7 @@ export default function OfferingsCarousel() {
     }
   }
 
-  // Define the relative positions for the 5 displayed cards
-  const displayedCardRelativePositions = [-3,-2, -1, 0, 1, 2,3]
+  const displayedCardRelativePositions = [-3, -2, -1, 0, 1, 2, 3]
 
   return (
     <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -221,15 +207,16 @@ export default function OfferingsCarousel() {
             cursorCharacter="|"
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white"
             startOnVisible={true}
-            startOnVisible={true}
           />
         </h2>
-        <p className="mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 max-w-4xl mb-2">
-          {t('offeringsSubtitle')}
+        <p className="max-w-7xl mx-auto text-center text-lg leading-relaxed text-gray-500">
+          At Bidyut, we advance learning with robotics and coding platforms in line with the New Education Policy. Our Robotic Labs give students hands-on, STREAM-based education to boost creativity, problem-solving, and tech skills for the future.
         </p>
+
+
         <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">
-          {t('offeringsInteractionHint')}
-        </p>
+          Explore our offerings and see how each initiative transforms learning.
+          </p>
         <div
           className="relative flex justify-center items-center h-[600px] md:h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
@@ -239,7 +226,6 @@ export default function OfferingsCarousel() {
           }}
         >
           {displayedCardRelativePositions.map((relativePos) => {
-            // Calculate the actual index in the offerings array, handling wrap-around
             const displayIndex = (currentIndex + relativePos + len) % len
             const offering = offerings[displayIndex]
             const isCardHovered = hoveredCardIndex === relativePos
@@ -247,7 +233,7 @@ export default function OfferingsCarousel() {
             
             return (
               <div
-                key={displayIndex} // Use the actual index from the offerings array as key
+                key={displayIndex}
                 className={`absolute top-50 transition-all duration-700 ease-in-out backface-hidden flex justify-center ${styles.widthClass} ${relativePos !== 0 ? 'cursor-pointer hover:cursor-pointer' : ''}`}
                 style={{
                   left: styles.left,
@@ -297,7 +283,6 @@ export default function OfferingsCarousel() {
                         relativePos === 0 ? 'text-xl' : 'text-lg'
                       }`}
                       startOnVisible={true}
-                      startOnVisible={true}
                     />
                   </h3>
                   <p className={`text-gray-600 dark:text-gray-300 transition-all duration-300 ${
@@ -308,7 +293,6 @@ export default function OfferingsCarousel() {
             )
           })}
           
-          {/* Navigation indicators */}
           <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
             {offerings.map((_, index) => (
               <button
@@ -325,7 +309,6 @@ export default function OfferingsCarousel() {
         </div>
       </div>
       
-      {/* Custom styles for better performance and animations */}
       <style>{`
         .backface-hidden {
           backface-visibility: hidden;
@@ -333,20 +316,15 @@ export default function OfferingsCarousel() {
           transform-style: preserve-3d;
           -webkit-transform-style: preserve-3d;
         }
-        
         @media (prefers-reduced-motion: reduce) {
           .transition-all {
             transition: none !important;
           }
         }
-        
-        /* 3D perspective for better depth */
         .curved-box {
           perspective: 1200px;
           -webkit-perspective: 1200px;
         }
-        
-        /* Smooth GPU acceleration */
         .absolute {
           will-change: transform, opacity, filter;
         }

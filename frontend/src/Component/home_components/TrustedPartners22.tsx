@@ -18,10 +18,9 @@ export function TrustedPartners22() {
   // Improve texture quality
   [colorMap, normalMap, specularMap, cloudsMap].forEach(map => {
     map.anisotropy = 16;
-    map.encoding = THREE.sRGBEncoding;
+    map.colorSpace = THREE.SRGBColorSpace;
   });
   
-  cloudsMap.transparent = true;
   cloudsMap.wrapS = cloudsMap.wrapT = THREE.RepeatWrapping;
 
   useFrame((_, delta) => {
@@ -61,20 +60,6 @@ export function TrustedPartners22() {
           alphaMap={cloudsMap}
           specular={new THREE.Color(0x111111)}
           shininess={2}
-        />
-      </mesh>
-
-      {/* Enhanced atmospheric glow */}
-      <mesh scale={1.1}>
-        <sphereGeometry args={[1, 64, 64]} />
-        <meshStandardMaterial
-          color={new THREE.Color("#88c3f0")}
-          transparent
-          opacity={0.25}
-          blending={THREE.AdditiveBlending}
-          side={THREE.BackSide}
-          roughness={0.9}
-          metalness={0.1}
         />
       </mesh>
 

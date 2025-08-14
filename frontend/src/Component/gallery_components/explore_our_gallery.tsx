@@ -1,7 +1,10 @@
 "use client"
 
+
 import { useState, useRef } from "react"
+import { useTheme } from "../../contexts/ThemeContext"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
+import GalleryText from '../../Text_Animation/GalleryText';
 
 interface ImageItem {
   id: number
@@ -126,8 +129,8 @@ const generateBaseImages = (): ImageItem[] => {
 const generateInfiniteImages = (
   dragX: number,
   dragY: number,
-  viewportWidth: number,
-  viewportHeight: number,
+  // viewportWidth: number,
+  // viewportHeight: number,
 ): ImageItem[] => {
   const baseImages = generateBaseImages()
   const tileSize = 6400 // Size of one tile (8x8 grid with 800px spacing)
@@ -140,7 +143,7 @@ const generateInfiniteImages = (
   // Render 3x3 grid of tiles around the current position for seamless infinite scrolling
   for (let tileY = centerTileY - 1; tileY <= centerTileY + 1; tileY++) {
     for (let tileX = centerTileX - 1; tileX <= centerTileX + 1; tileX++) {
-      baseImages.forEach((image, index) => {
+  baseImages.forEach((image) => {
         infiniteImages.push({
           ...image,
           // id: `${tileX}-${tileY}-${image.id}`,
@@ -213,14 +216,13 @@ export default function InteractiveGallery() {
   const currentDragX = dragX.get()
   const currentDragY = dragY.get()
   const infiniteImages = generateInfiniteImages(
-    currentDragX,
-    currentDragY,
-    window?.innerWidth || 1920,
-    window?.innerHeight || 1080,
+  currentDragX,
+  currentDragY
   )
 
+  const { isDark, toggleTheme } = useTheme();
   return (
-    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}> 
       <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-10 w-64 h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
         <div className="absolute bottom-20 right-10 w-48 h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>
@@ -228,43 +230,57 @@ export default function InteractiveGallery() {
         <div className="absolute top-1/3 right-1/3 w-40 h-40 border border-zinc-600/30 -rotate-30 backdrop-blur-sm"></div>
       </div>
 
-      <header className="absolute top-6 left-6 z-50">
-        <div className="w-12 h-12 bg-white shadow-lg flex items-center justify-center backdrop-blur-sm">
-          <div className="w-6 h-6 bg-zinc-900 transform rotate-45"></div>
+      <header className="absolute top-6 left-6 z-50 flex items-center gap-4">
+        <div className={`w-12 h-12 shadow-lg flex items-center justify-center backdrop-blur-sm ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+          <div className={`w-6 h-6 transform rotate-45 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
         </div>
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className={`px-4 py-2 rounded-full font-semibold shadow transition-colors duration-300 ${isDark ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}`}
+        >
+          {isDark ? 'Light Mode' : 'Dark Mode'}
+        </button>
       </header>
 
       <nav className="absolute top-6 right-6 z-50">
-        <button className="w-12 h-12 bg-white text-zinc-900 flex items-center justify-center shadow-lg backdrop-blur-sm hover:bg-zinc-100 transition-colors">
+        <button className={`w-12 h-12 flex items-center justify-center shadow-lg backdrop-blur-sm transition-colors ${isDark ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-white text-zinc-900 hover:bg-zinc-100'}`}>
           <div className="space-y-1">
-            <div className="w-4 h-0.5 bg-zinc-900"></div>
-            <div className="w-4 h-0.5 bg-zinc-900"></div>
-            <div className="w-4 h-0.5 bg-zinc-900"></div>
+            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
+            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
+            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
           </div>
         </button>
       </nav>
 
-      <div className="relative z-10 h-screen flex items-center">
+      <div className="relative z-10 min-h-[80vh] flex items-center justify-center">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-6xl lg:text-8xl font-light leading-none tracking-tight">
-                Explore
-                <br />
-                <span className="text-zinc-400">Our</span>
-                <br />
-                Gallery
-              </h1>
+              <div style={{position: 'relative', height: '120px'}}>
+                <GalleryText
+                  text="Explore Our Gallery"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor={isDark ? '#ffffff' : '#222222'}
+                  strokeColor="#ff0000"
+                  minFontSize={48}
+                />
+              </div>
 
-              <div className="max-w-md space-y-6">
-                <p className="text-zinc-400 leading-relaxed text-lg">
+              <div className={`max-w-md space-y-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="leading-relaxed text-lg">
                   Discover our architectural vision through an interactive experience. Each image tells a story of
                   innovation, creativity, and thoughtful design.
                 </p>
 
                 <button
                   onClick={handleExploreClick}
-                  className="inline-flex items-center gap-3 text-sm tracking-wider border-b-2 border-zinc-600 pb-2 hover:border-white transition-all duration-300 group"
+                  className={`inline-flex items-center gap-3 text-sm tracking-wider border-b-2 pb-2 transition-all duration-300 group ${isDark ? 'border-green-400 hover:border-white' : 'border-green-600 hover:border-gray-900'}`}
                 >
                   <span className="transform group-hover:translate-x-1 transition-transform">→</span>
                   <span>Explore Gallery</span>
@@ -274,11 +290,11 @@ export default function InteractiveGallery() {
 
             <div className="relative">
               <div className="relative w-full max-w-lg mx-auto">
-                <div className="absolute -top-8 -left-8 w-32 h-48 bg-gradient-to-br from-amber-600 to-amber-700 opacity-80 shadow-xl"></div>
-                <div className="absolute -bottom-8 -right-8 w-32 h-48 bg-gradient-to-br from-amber-700 to-amber-800 opacity-60 shadow-xl"></div>
-                <div className="absolute top-4 right-4 w-24 h-32 bg-gradient-to-br from-green-800 to-green-900 opacity-70 shadow-xl"></div>
+                <div className={`absolute -top-8 -left-8 w-32 h-48 opacity-80 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-900 to-green-800' : 'bg-gradient-to-br from-amber-600 to-amber-700'}`}></div>
+                <div className={`absolute -bottom-8 -right-8 w-32 h-48 opacity-60 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-800 to-green-900' : 'bg-gradient-to-br from-amber-700 to-amber-800'}`}></div>
+                <div className={`absolute top-4 right-4 w-24 h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-700 to-green-900' : 'bg-gradient-to-br from-green-800 to-green-900'}`}></div>
 
-                <div className="relative bg-zinc-800 p-6 shadow-2xl border border-zinc-700/50">
+                <div className={`relative p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.png"
                     alt="Gallery Preview"
@@ -287,7 +303,7 @@ export default function InteractiveGallery() {
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                     <button
                       onClick={handleExploreClick}
-                      className="bg-black bg-opacity-80 text-white px-8 py-3 text-sm tracking-wider hover:bg-opacity-95 transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20"
+                      className={`px-8 py-3 text-sm tracking-wider transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20 ${isDark ? 'bg-black bg-opacity-80 text-white hover:bg-opacity-95' : 'bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-95'}`}
                     >
                       • EXPLORE
                     </button>
@@ -321,7 +337,20 @@ export default function InteractiveGallery() {
             </button>
 
             <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
-              <h2 className="text-2xl font-light tracking-wide">Infinite Gallery</h2>
+              <div style={{position: 'relative', height: '60px'}}>
+                <GalleryText
+                  text="Infinite Gallery"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={24}
+                />
+              </div>
               <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
                 Drag to View • Infinite space with seamless tiling
               </p>
@@ -332,7 +361,7 @@ export default function InteractiveGallery() {
               drag
               dragElastic={0.05}
               dragMomentum={true}
-              onDrag={(event, info) => {
+              onDrag={(_event: any, info: { offset: { x: number; y: number } }) => {
                 dragX.set(info.offset.x)
                 dragY.set(info.offset.y)
               }}
@@ -496,7 +525,20 @@ export default function InteractiveGallery() {
                           className="absolute -bottom-16 left-0 right-0 text-center pointer-events-none opacity-0 group-hover:opacity-100 bg-black/70 backdrop-blur-sm px-3 py-2 mx-2 border border-white/10"
                           transition={{ duration: 0.3 }}
                         >
-                          <h3 className="text-xs font-medium text-white tracking-wide">{image.title}</h3>
+                          <div style={{position: 'relative', height: '32px'}}>
+                            <GalleryText
+                              text={image.title}
+                              flex={true}
+                              alpha={false}
+                              stroke={false}
+                              width={true}
+                              weight={true}
+                              italic={true}
+                              textColor="#ffffff"
+                              strokeColor="#ff0000"
+                              minFontSize={14}
+                            />
+                          </div>
                           <p className="text-xs text-zinc-300 mt-1 opacity-70">{image.alt}</p>
                         </motion.div>
                       </div>
