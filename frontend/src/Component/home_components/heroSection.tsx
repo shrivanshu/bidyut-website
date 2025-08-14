@@ -59,21 +59,20 @@ const HeroSection: React.FC = () => {
         />
       ))}
 
-{/* Overlay */}
-<div
-  className="bg-white dark:bg-gray-900 transition-colors duration-300"
-  style={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "#ffffff",
-    opacity: 0.2, // ← updated from 0.05 to 0.5
-    zIndex: 1,
-  }}
-/>
-
+      {/* Overlay */}
+      <div
+        className="bg-white dark:bg-gray-900 transition-colors duration-300"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#ffffff",
+          opacity: 0.2, // ← updated from 0.05 to 0.5
+          zIndex: 1,
+        }}
+      />
 
       {/* Content */}
       <div
@@ -137,7 +136,7 @@ const HeroSection: React.FC = () => {
             textShadow: "0 1.5px 3px rgba(0, 0, 0, 0.4)",
           }}
         >
-          {t('heroDescription')}
+          Bidyut is the country's most advance Robotic Edtech Company, catering schools and students in their quest for holistic development.
         </p>
 
         {/* End main content container */}
