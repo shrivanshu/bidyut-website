@@ -25,105 +25,96 @@ export default function Contactpage() {
     transition={{ duration: 0.6 }}
   >
      <div>
-          <div className="min-h-screen p-20" style={{ backgroundColor: "#E4EEFC" }}>
-            <div
-              className="max-w-7xl mx-auto"
-              style={{ backgroundColor: "#E4EEFC" }}
-            >
-              {/* Main Content Container */}
-              <div className="grid grid-cols-1  lg:grid-cols-2 gap-8 mb-12">
-                {/* Left Side - Contact Information */}
-                <div style={{ backgroundColor: "#E4EEFC" }}>
-                  <h1 className="text-5xl font-medium text-gray-900 mb-6">
-                    Contact Us
-                  </h1>
-                  <p className="text-gray-600 mb-4 text-lg">
-Let’s power up your innovation journey together                    <br />
-From idea to innovation — Bidyut makes it happen.                  </p>
-    
-                  <div className="space-y-4 mb-12">
-                    <div className="flex items-center text-gray-700">
-                      <Mail className="w-5 h-5 mr-3" />
-                      <span> info@bidyut.com</span>
-                    </div>
-                    <div className="flex items-center text-gray-700">
-                      <Phone className="w-5 h-5 mr-3" />
-                      <span>+91 (731) 123-4567</span>
-                    </div>
-                    {/* <div className="rounded-md inline-block underline">
-                      <span className="font-medium">Customer Support</span>
-                    </div> */}
-                  </div>
-    
-                  {/* Support Categories */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">
-                        Customer Support
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Our support team is available around the clock to address
-                        any concerns or queries you may have.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">
-                        Feedback and Suggestions
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        We value your feedback and are continuously working to
-                        improve. Your input is crucial in shaping the future.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">
-                        Media Inquiries
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        For media-related questions or press inquiries, please
-                        contact us at info@bidyut.com.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-    
-                {/* Right Side - Form */}
-                {/* <div className="bg-white rounded-3xl shadow-sm p-8"> */}
-<div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-[120%] max-w-xl mx-auto self-center">
-  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-    <div>
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-        {activeForm === "contact" ? "Get in Touch" : "Careers"}
-      </h2>
-      <p className="text-gray-500 mt-1 text-sm sm:text-base">
-        {activeForm === "contact" ? "You can reach us anytime" : "Join our amazing team"}
-      </p>
-    </div>
+         <div className="min-h-screen px-4 sm:px-8 lg:px-20 dark:bg-gray-900 bg-[#E4EEFC] py-12" >
+  <div className="max-w-7xl mx-auto">
+    {/* Main Content Container */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
+      {/* Left Side - Contact Information */}
+      <div>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white mb-4 sm:mb-6">
+          Contact Us
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-6 text-base sm:text-lg leading-relaxed">
+          Let’s power up your innovation journey together  
+          <br />
+          From idea to innovation — Bidyut makes it happen.
+        </p>
 
-    {/* Toggle Switch */}
-    <div className="flex bg-gray-100 rounded-lg p-1">
-      <button
-        onClick={() => setActiveForm("contact")}
-        className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
-          activeForm === "contact"
-            ? "bg-white text-gray-900 shadow-sm"
-            : "text-gray-500 hover:text-gray-700"
-        }`}
-      >
-        Contact
-      </button>
-      <button
-        onClick={() => setActiveForm("careers")}
-        className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
-          activeForm === "careers"
-            ? "bg-white text-gray-900 shadow-sm"
-            : "text-gray-500 hover:text-gray-700"
-        }`}
-      >
-        Careers
-      </button>
-    </div>
-  </div>
+        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+          <div className="flex items-center dark:text-gray-400 text-gray-700">
+            <Mail className="w-5 h-5 mr-3" />
+            <span>info@bidyut.com</span>
+          </div>
+          <div className="flex items-center dark:text-gray-400 text-gray-700">
+            <Phone className="w-5 h-5 mr-3" />
+            <span>+91 (731) 123-4567</span>
+          </div>
+        </div>
+
+        {/* Support Categories */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h3 className="font-semibold dark:text-gray-100 text-gray-900 mb-2 sm:mb-3">
+              Customer Support
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              Our support team is available around the clock to address any concerns or queries you may have.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold dark:text-gray-100 text-gray-900 mb-2 sm:mb-3">
+              Feedback and Suggestions
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              We value your feedback and are continuously working to improve. Your input is crucial in shaping the future.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold dark:text-gray-100 text-gray-900 mb-2 sm:mb-3">
+              Media Inquiries
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              For media-related questions or press inquiries, please contact us at info@bidyut.com.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-full max-w-xl mx-auto self-center">
+        {/* Header + Toggle */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <div>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+              {activeForm === "contact" ? "Get in Touch" : "Careers"}
+            </h2>
+            <p className="text-gray-500 mt-1 text-sm sm:text-base">
+              {activeForm === "contact" ? "You can reach us anytime" : "Join our amazing team"}
+            </p>
+          </div>
+          <div className="flex bg-gray-200 justify-around rounded-lg p-1">
+            <button
+              onClick={() => setActiveForm("contact")}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                activeForm === "contact"
+                  ? "bg-white text-gray-900 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Contact
+            </button>
+            <button
+              onClick={() => setActiveForm("careers")}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                activeForm === "careers"
+                  ? "bg-white text-gray-900 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Careers
+            </button>
+          </div>
+        </div>
 
   {/* Contact Form */}
   {activeForm === "contact" && (
@@ -227,7 +218,7 @@ From idea to innovation — Bidyut makes it happen.                  </p>
 
       <button
         type="button"
-        className="w-full bg-blue-600 text-white py-3 rounded-4xl font-medium hover:bg-blue-700 transition-colors"
+        className="w-full bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition-colors"
         onClick={() => alert("Application submitted!")}
       >
         Apply Now
@@ -337,7 +328,7 @@ From idea to innovation — Bidyut makes it happen.                  </p>
               {/* Location Details */}
               <div className="space-y-6">
                 <div>
-                  <p className="text-gray-600 text-sm font-medium mb-2">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-2">
                     Our Location
                   </p>
                   <h2
@@ -357,7 +348,7 @@ From idea to innovation — Bidyut makes it happen.                  </p>
   >
     Bidyut Innovation 
   </h3>
-                  <div className="space-y-1 text-gray-700">
+                  <div className="space-y-1 dark:text-gray-400 text-gray-700">
                     {/* <p className="font-medium">Bidyut Innovation</p> */}
                     <p>901 Clifton Corporate Park,</p>
                     <p>11/6, AB Road, Sector A, Slice 6,</p>

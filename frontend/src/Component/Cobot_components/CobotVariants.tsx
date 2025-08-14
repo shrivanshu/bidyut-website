@@ -291,7 +291,7 @@ export default function RobotShowcase() {
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
             <SelectTrigger
-              className="w-full bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
+              className="w-full bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
@@ -322,11 +322,11 @@ export default function RobotShowcase() {
           <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{currentSpec.name}</h1>
-              <h2 className="text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{currentSpec.description}</p>
+              <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">Technical Specifications</h2>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{currentSpec.description}</p>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-6 md:px-10 py-2 md:py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Order Now
             </Button>
 

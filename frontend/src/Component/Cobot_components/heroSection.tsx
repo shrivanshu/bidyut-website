@@ -40,18 +40,7 @@ export default function HeroSection() {
       <div className="mb-8 text-center">
   {/* Gradient Heading */}
   <h2
-    className="
-      text-5xl 
-      sm:text-6xl 
-      md:text-8xl 
-      lg:text-9xl 
-      xl:text-[12rem] 
-      font-semibold 
-      leading-none 
-      text-transparent 
-      bg-clip-text 
-      -mb-3 sm:-mb-4 md:-mb-5
-    "
+    className="text-6xl  md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5"
     style={{
       backgroundImage:
         "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
