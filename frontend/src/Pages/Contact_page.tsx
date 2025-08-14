@@ -72,8 +72,7 @@ From idea to innovation — Bidyut makes it happen.                  </p>
                       </h3>
                       <p className="text-gray-600 text-sm">
                         We value your feedback and are continuously working to
-                        improve Snappy. Your input is crucial in shaping the future
-                        of Snappy.
+                        improve. Your input is crucial in shaping the future.
                       </p>
                     </div>
                     <div>
@@ -82,7 +81,7 @@ From idea to innovation — Bidyut makes it happen.                  </p>
                       </h3>
                       <p className="text-gray-600 text-sm">
                         For media-related questions or press inquiries, please
-                        contact us at media@snappyapp.com.
+                        contact us at info@bidyut.com.
                       </p>
                     </div>
                   </div>
