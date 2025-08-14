@@ -9,6 +9,87 @@ import GalleryText from '../../Text_Animation/GalleryText'
 export default function AwardWinning() {
   const { isDark } = useTheme()
   const { t } = useLanguage()
+
+  // Cursor-driven wave: animate letters based on mouse position
+  const [cursorIndex, setCursorIndex] = useState<number | null>(null)
+  const falloff = 3
+  const [scrollEnergy, setScrollEnergy] = useState(0) // grows with wheel, decays over time
+  const maxAmplitude = 22
+
+  // Decay energy smoothly
+  useEffect(() => {
+    if (scrollEnergy <= 0) return
+    let raf: number
+    const decay = () => {
+      setScrollEnergy((prev) => {
+        const next = prev - 0.8 // decay rate per frame (~48px/s at 60fps)
+        return next > 0 ? next : 0
+      })
+      raf = requestAnimationFrame(decay)
+    }
+    raf = requestAnimationFrame(decay)
+    return () => cancelAnimationFrame(raf)
+  }, [scrollEnergy])
+
+  const renderInteractiveWavy = (textLeft: string, textRight: string, isDarkMode: boolean) => {
+    const total = (textLeft + ' ' + textRight).length
+    return (
+      <motion.h1
+        className="cursor-pointer select-none text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight transition-colors duration-300 mb-4 sm:mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        onMouseMove={(e) => {
+          const el = e.currentTarget
+          const rect = el.getBoundingClientRect()
+          const x = e.clientX - rect.left
+          const charW = rect.width / total
+          const idx = Math.max(0, Math.min(total - 1, Math.floor(x / Math.max(1, charW))))
+          setCursorIndex(idx)
+        }}
+        onWheel={(e) => {
+          // Increase energy based on how much user scrolls over the heading
+          const magnitude = Math.min(30, Math.abs(e.deltaY) * 0.2)
+          setScrollEnergy((prev) => Math.min(maxAmplitude, prev + magnitude))
+        }}
+        onMouseLeave={() => setCursorIndex(null)}
+      >
+        {/* Left gradient words, letter by letter */}
+        {(textLeft).split("").map((ch, i) => {
+          const amplitude = scrollEnergy // only bounce when scrolled
+          const offset = cursorIndex === null ? 0 : Math.max(0, amplitude - Math.abs(i - cursorIndex) * falloff)
+          return (
+            <motion.span
+              key={`L-${i}-${ch}`}
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 will-change-transform drop-shadow-sm"
+              animate={{ y: -offset }}
+              transition={{ type: 'spring', stiffness: 700, damping: 20 }}
+            >
+              {ch === ' ' ? '\u00A0' : ch}
+            </motion.span>
+          )
+        })}
+        {/* space between parts */}
+        <motion.span aria-hidden className="inline-block" animate={{ y: cursorIndex === null ? 0 : -Math.max(0, scrollEnergy - Math.abs(textLeft.length - cursorIndex) * falloff) }} transition={{ type: 'spring', stiffness: 700, damping: 20 }}> </motion.span>
+        {/* Right words */}
+        {(textRight).split("").map((ch, j) => {
+          const i = textLeft.length + 1 + j
+          const amplitude = scrollEnergy
+          const offset = cursorIndex === null ? 0 : Math.max(0, amplitude - Math.abs(i - cursorIndex) * falloff)
+          return (
+            <motion.span
+              key={`R-${j}-${ch}`}
+              className={`inline-block will-change-transform ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+              animate={{ y: -offset }}
+              transition={{ type: 'spring', stiffness: 700, damping: 20 }}
+            >
+              {ch === ' ' ? '\u00A0' : ch}
+            </motion.span>
+          )
+        })}
+      </motion.h1>
+    )
+  }
   
   // Awards data with translation keys
   const awards = [
@@ -90,20 +171,13 @@ export default function AwardWinning() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight transition-colors duration-300 mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">{t('awardWinning')}</span>{" "}
-            <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>{t('digitalInnovation')}</span>
-          </motion.h1>
+          {renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)}
           <motion.p
-            className={`text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+            className={`cursor-pointer select-none text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ y: -4, scale: 1.01, transition: { type: 'spring', stiffness: 600, damping: 16 } }}
           >
             {t('celebratingJourney')}
           </motion.p>

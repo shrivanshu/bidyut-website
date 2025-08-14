@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
 interface RobotSpec {
@@ -19,6 +19,66 @@ interface RobotSpec {
     targetPoint: { x: string; y: string }
   }[]
 }
+
+// Robot search data with images
+const robotSearchData = [
+  {
+    id: "edu-bot-1",
+    name: "EduBot Alpha",
+    image: "/media/Robot_Details.svg",
+    category: "Educational",
+    description: "Perfect for STEM learning"
+  },
+  {
+    id: "edu-bot-2", 
+    name: "EduBot Beta",
+    image: "/media/Robot_Details.svg",
+    category: "Educational",
+    description: "Advanced AI capabilities"
+  },
+  {
+    id: "service-bot-1",
+    name: "ServiceBot Pro",
+    image: "/media/Robot_Details.svg", 
+    category: "Service",
+    description: "Professional service robot"
+  },
+  {
+    id: "companion-bot-1",
+    name: "CompanionBot",
+    image: "/media/Robot_Details.svg",
+    category: "Companion", 
+    description: "Personal assistant robot"
+  },
+  {
+    id: "industrial-bot-1",
+    name: "IndustrialBot X1",
+    image: "/media/Robot_Details.svg",
+    category: "Industrial",
+    description: "Heavy-duty industrial robot"
+  },
+  {
+    id: "security-bot-1",
+    name: "SecurityBot Guardian",
+    image: "/media/Robot_Details.svg",
+    category: "Security",
+    description: "Advanced security monitoring"
+  },
+  {
+    id: "cleaning-bot-1",
+    name: "CleanBot Elite",
+    image: "/media/Robot_Details.svg",
+    category: "Cleaning",
+    description: "Autonomous cleaning solution"
+  },
+  {
+    id: "research-bot-1",
+    name: "ResearchBot Lab",
+    image: "/media/Robot_Details.svg",
+    category: "Research",
+    description: "Laboratory research assistant"
+  }
+]
 
 const robotSpecs: RobotSpec[] = [
   {
@@ -152,16 +212,12 @@ const robotSpecs: RobotSpec[] = [
 ]
 
 const Select = ({
-  value,
-  onValueChange,
   children,
 }: {
   value: string
   onValueChange: (value: string) => void
   children: React.ReactNode
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
   return (
     <div className="relative">
       {children}
@@ -215,7 +271,23 @@ export default function RobotShowcase() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedRobot, setSelectedRobot] = useState<typeof robotSearchData[0] | null>(null)
+  
+  // Drag scroll state for robot images
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  
   const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
+
+  // Filter robots based on search query
+  const filteredRobots = robotSearchData.filter(robot =>
+    robot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    robot.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    robot.description.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
   // Auto-slide functionality
   useEffect(() => {
@@ -265,6 +337,138 @@ export default function RobotShowcase() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="w-full px-6 py-16 md:px-12 lg:px-16">
+        {/* Search Button Section */}
+        <div className="w-full max-w-4xl mx-auto mb-8">
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
+            >
+              <Search className="h-6 w-6" />
+              Search Robots
+            </button>
+          </div>
+        </div>
+
+        {/* Search Section - Scrollable Robot Images */}
+        {isSearchOpen && (
+          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-gray-800/50 rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+            {/* Search Input */}
+            <div className="mb-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search robots by name, category, or description..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300"
+                />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+
+            {/* Scrollable Robot Images - Single Line */}
+            <div 
+              className="overflow-x-auto scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-700 pb-2 cursor-grab active:cursor-grabbing select-none"
+              style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
+              onWheel={(e) => {
+                e.preventDefault()
+                const container = e.currentTarget
+                container.scrollLeft += e.deltaY
+              }}
+              onMouseDown={(e) => {
+                setIsDragging(true)
+                setStartX(e.pageX - e.currentTarget.offsetLeft)
+                setScrollLeft(e.currentTarget.scrollLeft)
+                e.currentTarget.style.cursor = 'grabbing'
+              }}
+              onMouseLeave={() => {
+                setIsDragging(false)
+              }}
+              onMouseUp={(e) => {
+                setIsDragging(false)
+                e.currentTarget.style.cursor = 'grab'
+              }}
+              onMouseMove={(e) => {
+                if (!isDragging) return
+                e.preventDefault()
+                const x = e.pageX - e.currentTarget.offsetLeft
+                const walk = (x - startX) * 2 // Scroll speed multiplier
+                e.currentTarget.scrollLeft = scrollLeft - walk
+              }}
+            >
+              <div className="flex gap-6 min-w-max">
+                {filteredRobots.map((robot) => (
+                  <div
+                    key={robot.id}
+                    onClick={() => setSelectedRobot(robot)}
+                    onMouseDown={(e) => e.stopPropagation()} // Prevent drag on cards
+                    className="group cursor-pointer bg-white dark:bg-gray-700 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500 flex-shrink-0 w-64"
+                  >
+                    <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-600">
+                      <img
+                        src={robot.image}
+                        alt={robot.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1 truncate">
+                      {robot.name}
+                    </h3>
+                    <p className="text-xs text-green-600 dark:text-green-400 font-medium mb-1">
+                      {robot.category}
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {robot.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              
+              {filteredRobots.length === 0 && (
+                <div className="text-center py-12">
+                  <div className="text-gray-400 dark:text-gray-500 text-lg">
+                    No robots found matching your search.
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
+                    Try different keywords or browse all robots.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Selected Robot Display */}
+            {selectedRobot && (
+              <div className="mt-6 p-6 bg-white dark:bg-gray-700 rounded-xl border-2 border-green-200 dark:border-green-600">
+                <div className="flex items-start gap-4">
+                  <img
+                    src={selectedRobot.image}
+                    alt={selectedRobot.name}
+                    className="w-24 h-24 object-cover rounded-lg"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {selectedRobot.name}
+                    </h3>
+                    <p className={`font-medium mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>
+                      {selectedRobot.category}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {selectedRobot.description}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRobot(null)}
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Header Dropdown */}
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>

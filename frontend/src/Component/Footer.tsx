@@ -226,7 +226,7 @@ export default function Footer() {
                   <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">{t('phone')}</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">{t('Phone')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">+91 9370782979</p>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function Footer() {
                   <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
                 </div>
                 <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">{t('email')}</p>
+                  <p className="font-semibold text-black dark:text-white text-sm">{t('Email')}</p>
                   <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyutrobotics.com</p>
                    <p className="text-gray-700 dark:text-gray-300 text-xs">rahul@bidyutrobotis.com</p>
                 </div>
@@ -313,7 +313,8 @@ export default function Footer() {
                 />
               </span>
             </span>
-            <span>dyut Technologies</span>
+            <span>dyut Innovation
+            </span>
           </div>
         </div>
       </div>
