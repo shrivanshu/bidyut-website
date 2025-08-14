@@ -22,41 +22,41 @@ interface RobotSpec {
 
 const robotSpecs: RobotSpec[] = [
   {
-    id: "g1-basic",
-    name: "G1 Basic",
+    id: "go2-basic",
+    name: "Go2 Basic",
     description:
-      "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.1 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to x, making it perfect for dynamic educational demonstrations.",
+      "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.4 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to, making it perfect for dynamic educational demonstrations.",
     gallery: [
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg", 
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg"
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg", 
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
     ],
     features: [
       {
         label: "Depth Camera",
-        detail: "Intel Realsense D435",
+        detail: "Image Resolution D435",
         position: { top: "10%", left: "85%" },
         lineDirection: "left",
         targetPoint: { x: "51%", y: "15%" },
       },
       {
-        label: "3D LiDAR",
-        detail: "LD06/HDL32E",
+        label: "3D LIDAR",
+        detail: "OLED Module",
         position: { top: "25%", left: "8%" },
         lineDirection: "right",
         targetPoint: { x: "49%", y: "8%" },
       },
       {
-        label: "Simple Arm Control",
-        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        label: "Single leg degrees of freedom",
+        detail: "Hip-2 Head-2 Ankle-2",
         position: { top: "45%", left: "2%" },
         lineDirection: "right",
         targetPoint: { x: "41%", y: "35%" },
       },
       {
-        label: "Quick Release Battery",
+        label: "Extra large quick release battery",
         detail: "Provides lasting power",
         position: { top: "30%", left: "90%" },
         lineDirection: "left",
@@ -64,89 +64,111 @@ const robotSpecs: RobotSpec[] = [
       },
       {
         label: "Core Motion Module",
-        detail: "Max Torque: 125 Nm",
+        detail: "Maximum Torque up to 200 Nm",
         position: { top: "85%", left: "5%" },
         lineDirection: "right",
         targetPoint: { x: "44%", y: "67%" },
-      },
-      {
-        label: "Hollow Joint Wiring",
-        detail: "No external cables",
-        position: { top: "50%", left: "95%" },
-        lineDirection: "left",
-        targetPoint: { x: "61%", y: "45%" },
-      },
-      {
-        label: "Leg Control System",
-        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
-        position: { top: "70%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "56%", y: "67%" },
-      },
+      }
     ],
   },
   {
-    id: "g2-pro",
-    name: "G2 Pro",
+    id: "go2-pro",
+    name: "Go2 Pro",
     description:
-      "Advanced humanoid robot with enhanced AI capabilities and improved mobility. Features upgraded sensors and extended battery life for professional applications.",
+      "Advanced educational robot with enhanced capabilities and improved mobility. Features high-precision sensors, extended battery life, and advanced motion control for professional applications.",
     gallery: [
-      "/media/Robot_Details.svg",
-      "/robot.mp4",
-      "/robo-dance5.mp4",
-      "/robott.mp4",
-      "/robo-main.mp4"
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
     ],
     features: [
       {
-        label: "Advanced Depth Camera",
-        detail: "Intel Realsense D455",
+        label: "Depth Camera",
+        detail: "Image Resolution D455 Pro",
         position: { top: "12%", left: "88%" },
         lineDirection: "left",
         targetPoint: { x: "55%", y: "18%" },
       },
       {
-        label: "High Resolution LiDAR",
-        detail: "Velodyne VLP-16",
+        label: "3D LIDAR",
+        detail: "Advanced OLED Module",
         position: { top: "28%", left: "5%" },
         lineDirection: "right",
         targetPoint: { x: "52%", y: "12%" },
       },
       {
-        label: "Enhanced Arm Control",
-        detail: "Shoulder: 3 | Elbow: 2 | Wrist: 3",
+        label: "Single leg degrees of freedom",
+        detail: "Hip-3 Head-3 Ankle-3",
         position: { top: "42%", left: "1%" },
         lineDirection: "right",
         targetPoint: { x: "45%", y: "35%" },
       },
       {
-        label: "Extended Battery Pack",
-        detail: "Double capacity system",
+        label: "Extra large quick release battery",
+        detail: "Extended capacity system",
         position: { top: "32%", left: "92%" },
         lineDirection: "left",
         targetPoint: { x: "58%", y: "40%" },
       },
       {
-        label: "Pro Motion Module",
-        detail: "Max Torque: 200 Nm",
+        label: "Core Motion Module",
+        detail: "Maximum Torque up to 250 Nm",
         position: { top: "82%", left: "8%" },
         lineDirection: "right",
         targetPoint: { x: "48%", y: "60%" },
+      }
+    ],
+  },
+  {
+    id: "go2-enterprise",
+    name: "Go2 Enterprise",
+    description:
+      "Enterprise-grade educational robot with state-of-the-art features. Includes advanced AI processing, enhanced sensors, maximum battery efficiency, and premium motion control for institutional applications.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Image Resolution D455 Enterprise",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
       },
       {
-        label: "Wireless Communication",
-        detail: "5G and WiFi 6E",
-        position: { top: "52%", left: "96%" },
-        lineDirection: "left",
-        targetPoint: { x: "52%", y: "70%" },
+        label: "3D LIDAR",
+        detail: "Premium OLED Module",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
       },
       {
-        label: "Advanced Leg Control",
-        detail: "Hip: 4 | Knee: 3 | Ankle: 3",
-        position: { top: "72%", left: "90%" },
-        lineDirection: "left",
-        targetPoint: { x: "48%", y: "82%" },
+        label: "Single leg degrees of freedom",
+        detail: "Hip-4 Head-4 Ankle-4",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
       },
+      {
+        label: "Extra large quick release battery",
+        detail: "Maximum capacity system",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Maximum Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      }
     ],
   },
 ]
