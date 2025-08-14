@@ -8,7 +8,7 @@ import EducationNews from '../Component/home_components/EducationNews';
 import Header from '../Component/Header';
 // import Clock from '../Component/home_components/Clock';
 import TestimonialSection from '../Component/home_components/TestimonialSection';
-import TrustedPartners from '../Component/home_components/TrustedPartners';
+// import TrustedPartners from '../Component/home_components/TrustedPartners';
 import TrustedPartners21 from '../Component/home_components/TrustedPartners21';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
@@ -23,7 +23,7 @@ function Home_page() {
         {/* <Clock /> */}
         <EducationNews />
         <LmsSection/>
-        <TrustedPartners />
+        {/* <TrustedPartners /> */}
         <TrustedPartners21 />
         <TestimonialSection />
         <EducationStream />

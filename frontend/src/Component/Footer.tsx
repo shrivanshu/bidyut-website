@@ -310,7 +310,8 @@ export default function Footer() {
                 />
               </span>
             </span>
-            <span>dyut Technologies</span>
+            <span>dyut Innovation
+            </span>
           </div>
         </div>
       </div>
