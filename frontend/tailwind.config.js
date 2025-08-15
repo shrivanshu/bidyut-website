@@ -12,18 +12,42 @@ export default {
         'sans': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
       },
       colors: {
-        // Custom colors for consistent theming
+        // Custom green-based color palette
         primary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+          50: '#f7f8f7',
+          100: '#eef0ed',
+          200: '#dde2da',
+          300: '#c2cbbf',
+          400: '#9EBC8A', // Light green
+          500: '#73946B', // Medium green
+          600: '#537D5D', // Dark green
+          700: '#456750',
+          800: '#3a5542',
+          900: '#2f4437',
+        },
+        accent: {
+          50: '#fefef7',
+          100: '#fcfcef',
+          200: '#f8f7d7',
+          300: '#f2f0bf',
+          400: '#e8e58f',
+          500: '#D2D0A0', // Light cream/beige
+          600: '#bdba90',
+          700: '#9e9b78',
+          800: '#7f7c60',
+          900: '#67654e',
+        },
+        green: {
+          50: '#f7f8f7',
+          100: '#eef0ed',
+          200: '#dde2da',
+          300: '#c2cbbf',
+          400: '#9EBC8A',
+          500: '#73946B',
+          600: '#537D5D',
+          700: '#456750',
+          800: '#3a5542',
+          900: '#2f4437',
         },
       },
       transitionProperty: {

@@ -14,10 +14,10 @@ const HeroSection = () => {
           <div className="flex items-baseline">
             <span className="text-[48px] font-bold text-black drop-shadow-sm cursor-target">Think</span>
             <span className="text-[48px] font-normal text-black ml-2 drop-shadow-sm cursor-target">Limitless</span>
-            <span className="text-[48px] font-bold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">Learn</span>
+            <span className="text-[48px] font-bold text-[#9EBC8A] ml-2 drop-shadow-sm cursor-target">Learn</span>
           </div>
           <div className="flex items-baseline">
-            <span className="text-[48px] font-bold text-[#00ffa3] drop-shadow-sm cursor-target">Beyond</span>
+            <span className="text-[48px] font-bold text-[#9EBC8A] drop-shadow-sm cursor-target">Beyond</span>
             <span className="text-[48px] font-bold text-black ml-2 drop-shadow-sm cursor-target">Boundaries</span>
           </div>
         </div>
@@ -48,7 +48,7 @@ const HeroSection = () => {
         <div className="max-w-[1440px] mx-auto px-6 relative h-full">
           {/* G1 Label - Smaller and higher */}
           <div className="absolute left-0 top-0">
-            <span className="text-[100px] md:text-[120px] lg:text-[140px] font-bold text-[#00ffa3] leading-none opacity-70 drop-shadow-lg cursor-target" style={{ letterSpacing: '-0.05em' }}>
+            <span className="text-[100px] md:text-[120px] lg:text-[140px] font-bold text-[#9EBC8A] leading-none opacity-70 drop-shadow-lg cursor-target" style={{ letterSpacing: '-0.05em' }}>
               G1
             </span>
           </div>
@@ -74,7 +74,7 @@ const HeroSection = () => {
       <div className="absolute bottom-[5%] left-0 right-0 z-20 text-center px-6">
         <div className="max-w-[1440px] mx-auto">
           <h2 className="text-[60px] md:text-[80px] lg:text-[100px] font-bold mb-4 leading-none">
-            <span className="bg-gradient-to-b from-[#00ffa3] via-[#00ffa3]/50 to-transparent bg-clip-text text-transparent drop-shadow-lg cursor-target">
+            <span className="bg-gradient-to-b from-[#9EBC8A] via-[#9EBC8A]/50 to-transparent bg-clip-text text-transparent drop-shadow-lg cursor-target">
               Humanoid
             </span>
           </h2>

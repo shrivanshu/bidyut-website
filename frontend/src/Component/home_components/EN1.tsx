@@ -12,7 +12,7 @@ const EN1: React.FC<ReviewCardProps> = ({ platform, timestamp, title, content, a
   const PlatformIcon = () => {
     if (platform === 'linkedin') {
       return (
-        <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+        <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
           <span className="text-white font-bold text-sm">in</span>
         </div>
       );

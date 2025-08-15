@@ -104,7 +104,7 @@ useEffect(() => {
 
   return (
     <div className="relative flex items-center justify-center min-h-[600px] w-full overflow-hidden bg-white dark:bg-gray-900 py-12 md:py-24 lg:py-32 transition-colors duration-300">
-      <div className="absolute right-0 bottom-[-77px] h-1/2 w-full -translate-y-1/2 bg-[#0acf83] z-0" />
+      <div className="absolute right-0 bottom-[-77px] h-1/2 w-full -translate-y-1/2 bg-[#73946B] z-0" />
 
       {/* Video Section */}
       <div
@@ -147,7 +147,7 @@ useEffect(() => {
               max={duration}
               value={currentTime}
               onChange={handleSeek}
-              className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-[#0acf83]"
+              className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-[#73946B]"
               aria-label="Video progress"
             />
             <div className="flex items-center justify-between mt-2 text-white">
@@ -178,7 +178,7 @@ useEffect(() => {
                   step="0.01"
                   value={isMuted ? 0 : volume}
                   onChange={handleVolumeChange}
-                  className="w-24 h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-[#0acf83]"
+                  className="w-24 h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-[#73946B]"
                   aria-label="Volume control"
                 />
               </div>
@@ -191,7 +191,7 @@ useEffect(() => {
       <button
         onClick={() => setActiveTab("what-we-do")}
         className={`absolute left-[20%] top-[15%] sm:translate-x-[-100%] sm:translate-y-[-70%] rounded-xl px-4 sm:px-8 py-2 sm:py-10 font-semibold shadow-md transition-all duration-300 whitespace-nowrap z-20 text-lg sm:text-3xl
-        ${activeTab === "what-we-do" ? "bg-[#0acf83] text-white" : "bg-[#0acf83] text-white hover:bg-emerald-600"}
+        ${activeTab === "what-we-do" ? "bg-[#73946B] text-white" : "bg-[#73946B] text-white hover:bg-green-600"}
         md:left-[20%] md:top-[20%] lg:left-[25%] lg:top-[20%]`}
       >
         What we do ?
@@ -207,7 +207,7 @@ useEffect(() => {
       <button
         onClick={() => setActiveTab("where-we-are")}
         className={`absolute right-[15%] top-1/2 -translate-y-1/2 translate-x-[100%] rounded-xl px-4 sm:px-8 py-2 sm:py-10 text-lg sm:text-3xl font-semibold shadow-md transition-all duration-300 whitespace-nowrap z-20
-        ${activeTab === "where-we-are" ? "bg-emerald-600 text-white" : "bg-[#0acf83] text-white hover:bg-emerald-600"}
+        ${activeTab === "where-we-are" ? "bg-green-600 text-white" : "bg-[#73946B] text-white hover:bg-green-600"}
         md:right-[20%] lg:right-[25%]`}
       >
         Where we are?

@@ -290,9 +290,9 @@ export default function InteractiveGallery() {
 
             <div className="relative">
               <div className="relative w-full max-w-lg mx-auto">
-                <div className={`absolute -top-8 -left-8 w-32 h-48 opacity-80 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-900 to-green-800' : 'bg-gradient-to-br from-amber-600 to-amber-700'}`}></div>
-                <div className={`absolute -bottom-8 -right-8 w-32 h-48 opacity-60 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-800 to-green-900' : 'bg-gradient-to-br from-amber-700 to-amber-800'}`}></div>
-                <div className={`absolute top-4 right-4 w-24 h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-700 to-green-900' : 'bg-gradient-to-br from-green-800 to-green-900'}`}></div>
+                <div className={`absolute -top-8 -left-8 w-32 h-48 opacity-80 shadow-xl ${isDark ? 'bg-gradient-to-br from-blue-900 to-blue-800' : 'bg-gradient-to-br from-amber-600 to-amber-700'}`}></div>
+                <div className={`absolute -bottom-8 -right-8 w-32 h-48 opacity-60 shadow-xl ${isDark ? 'bg-gradient-to-br from-blue-800 to-blue-900' : 'bg-gradient-to-br from-amber-700 to-amber-800'}`}></div>
+                <div className={`absolute top-4 right-4 w-24 h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-blue-700 to-blue-900' : 'bg-gradient-to-br from-blue-800 to-blue-900'}`}></div>
 
                 <div className={`relative p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
                   <img

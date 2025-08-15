@@ -96,7 +96,7 @@ export default function AwardWinning() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">{t('awardWinning')}</span>{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600">{t('awardWinning')}</span>{" "}
             <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>{t('digitalInnovation')}</span>
           </motion.h1>
           <motion.p
@@ -188,7 +188,7 @@ export default function AwardWinning() {
                       <p className={`text-sm sm:text-base leading-relaxed flex-grow mb-4 sm:mb-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {t(award.descriptionKey)}
                       </p>
-                      <div className={`inline-flex items-center justify-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-300 ${isDark ? 'bg-green-900/30 text-green-400 border border-green-800' : 'bg-green-50 text-green-700 border border-green-200'}`}>
+                      <div className={`inline-flex items-center justify-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-300 ${isDark ? 'bg-blue-900/30 text-green-400 border border-green-800' : 'bg-blue-50 text-blue-700 border border-green-200'}`}>
                         {award.year}
                       </div>
                     </div>
@@ -206,7 +206,7 @@ export default function AwardWinning() {
               <button
                 key={index}
                 onClick={() => setDisplayOrder([index, (index + 1) % 3, (index + 2) % 3])}
-                className={`w-3 h-3 rounded-full transition-colors ${displayOrder[0] === index ? 'bg-green-500' : (isDark ? 'bg-gray-600' : 'bg-gray-300')}`}
+                className={`w-3 h-3 rounded-full transition-colors ${displayOrder[0] === index ? 'bg-primary-500' : (isDark ? 'bg-gray-600' : 'bg-gray-300')}`}
                 aria-label={`Go to award ${index + 1}`}
               />
             ))}

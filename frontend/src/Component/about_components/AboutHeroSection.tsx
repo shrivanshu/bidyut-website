@@ -187,12 +187,12 @@ export default function AboutHeroSection() {
       {/* Green decorative squares - positioned absolutely */}
       <div
         ref={greenSquareTopRef}
-        className="absolute top-60 md:top-10 sm:right-10 w-24 h-24 bg-[#0ACF83] dark:bg-green-500 rounded-lg shadow-lg dark:shadow-green-500/20 transition-colors duration-300"
+        className="absolute top-60 md:top-10 sm:right-10 w-24 h-24 bg-[#73946B] dark:bg-primary-500 rounded-lg shadow-lg dark:shadow-blue-500/20 transition-colors duration-300"
         aria-hidden="true"
       />
       <div
         ref={greenSquareBottomRef}
-        className="absolute bottom-0 right-80 w-24 h-24 bg-[#0ACF83] dark:bg-green-500 rounded-lg shadow-lg dark:shadow-green-500/20 sm:z-0 transition-colors duration-300"
+        className="absolute bottom-0 right-80 w-24 h-24 bg-[#73946B] dark:bg-primary-500 rounded-lg shadow-lg dark:shadow-blue-500/20 sm:z-0 transition-colors duration-300"
         aria-hidden="true"
       />
       <div className="w-full px-0 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
@@ -201,7 +201,7 @@ export default function AboutHeroSection() {
        {/* Left content section */}
 <div className="flex flex-col gap-4 text-left items-start px-2 lg:pl-0">
   <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
-    About <span className="text-[#0ACF83] dark:text-green-400">Us</span>
+    About <span className="text-[#73946B] dark:text-green-400">Us</span>
   </h2>
   <h3 className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">Shaping Tomorrow's Technology</h3>
 <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl transition-colors duration-300">

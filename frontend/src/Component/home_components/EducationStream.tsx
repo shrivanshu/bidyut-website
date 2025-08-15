@@ -148,19 +148,19 @@ export default function EducationStream() {
     display: "flex",
     gap: "1rem",
     marginBottom: 6,
-    color: "#131313",
+    color: "#537D5D",
     textAlign: "center",
     flexWrap: "wrap",
     justifyContent: "center",
   };
 
   const streamStyle: React.CSSProperties = {
-    color: "#11d59b",
+    color: "#73946B",
     fontWeight: 600,
   };
 
   const educationStyle: React.CSSProperties = {
-    color: "#131313",
+    color: "#537D5D",
     fontWeight: 600,
   };
 
@@ -202,7 +202,7 @@ export default function EducationStream() {
     height: 723, // Decreased by 5%
     borderRadius: 11,
     padding: 1,
-    background: "linear-gradient(90deg, #0ACF83 0%, #015031 100%)",
+    background: "linear-gradient(90deg, #73946B 0%, #537D5D 100%)",
     boxShadow: "0 0 20px rgba(0,0,0,0.10)",
     boxSizing: "border-box",
     opacity: 1,
@@ -279,7 +279,7 @@ export default function EducationStream() {
     borderRadius: 10,
     opacity: isActive ? 1 : (hovered ? 1 : 0.8),
     cursor: "pointer",
-    border: isActive ? "2px solid #11d59b" : (hovered ? "2px solid #11d59b" : "2px solid rgba(255,255,255,0.2)"),
+    border: isActive ? "2px solid #73946B" : (hovered ? "2px solid #73946B" : "2px solid rgba(255,255,255,0.2)"),
     background: "#111",
     boxShadow: isActive ? "0 6px 18px rgba(17, 213, 155, 0.8)" : (hovered ? "0 6px 18px rgba(17, 213, 155, 0.5)" : "0 4px 8px rgba(0,0,0,0.3)"),
     filter: isActive ? "brightness(1.2)" : (hovered ? "brightness(1.1)" : "brightness(0.9)"),
@@ -297,7 +297,7 @@ export default function EducationStream() {
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
           <HomeHeroText
             text={[`${t('stream')} Education`]}
-            highlight={{ text: t('stream'), color: '#10b981' }}
+            highlight={{ text: t('stream'), color: '#73946B' }}
             typingSpeed={40}
             pauseDuration={0}
             showCursor={true}
@@ -315,7 +315,7 @@ export default function EducationStream() {
       <div className="w-full max-w-md lg:hidden flex flex-col items-center z-10">
         {/* Main Video Card */}
         <div className="relative w-full aspect-video mb-6">
-          <div className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-emerald-500 to-emerald-700">
+          <div className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-blue-500 to-blue-700">
             <div className="relative w-full h-full bg-black rounded-xl overflow-hidden">
               <video
                 className="w-full h-full object-cover"
@@ -343,8 +343,8 @@ export default function EducationStream() {
                 onClick={() => handleVideoClick(video, index)}
                 className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden shadow-md cursor-pointer border-2 transition-all duration-300 ${
                   index === currentVideoIndex 
-                    ? 'border-emerald-500 ring-2 ring-emerald-200' 
-                    : 'border-transparent hover:border-emerald-300'
+                    ? 'border-green-500 ring-2 ring-blue-200' 
+                    : 'border-transparent hover:border-green-300'
                 }`}
               >
                 <video

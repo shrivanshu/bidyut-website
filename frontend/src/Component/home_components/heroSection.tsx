@@ -119,7 +119,7 @@ const HeroSection: React.FC = () => {
             pauseDuration={0}
             showCursor={true}
             cursorCharacter="|"
-            highlight={{ text: "Think Limitless", color: "#0acf83" }}
+            highlight={{ text: "Think Limitless", color: "#73946B" }}
           />
         </div>
 
@@ -186,7 +186,7 @@ const HeroSection: React.FC = () => {
 const dotStyle = (active = false) => ({
   width: "12px",
   height: "12px",
-  backgroundColor: active ? "#0acf83" : "#d1d5db",
+  backgroundColor: active ? "#73946B" : "#d1d5db",
   borderRadius: "50%",
   transition: "background-color 0.3s ease",
 });

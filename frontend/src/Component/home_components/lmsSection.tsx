@@ -10,7 +10,7 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-[#537D5D] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -40,12 +40,12 @@ export default function Component() {
           {/* Left Column */}
           <div className="flex-1 lg:w-1/2 text-center lg:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 font-['Poppins'] transition-colors duration-300">
-              <span className="text-[#28C76F] font-semibold">Bidyut</span> Innovation LMS
+              <span className="text-green-500 font-semibold">Bidyut</span> Innovation LMS
             </h2>
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
               Bidyut LMS brings robotics, coding, and AI to life with hands-on and gamified lessons. Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
             </p>
-            <button className="bg-[#28C76F] hover:bg-[#24B064] text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins']">
+            <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins']">
               Login to LMS
             </button>
           </div>
@@ -88,8 +88,8 @@ export default function Component() {
                   }}
                 >
                   <div className="flex items-center mb-2">
-                    <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
-                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                    <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-green-500 mr-2 flex-shrink-0" />
+                    <h3 className="text-sm xl:text-md font-semibold text-green-500 font-['Poppins'] leading-tight">
                       Personalized Learning Paths
                     </h3>
                   </div>
@@ -107,8 +107,8 @@ export default function Component() {
                   }}
                 >
                   <div className="flex items-center mb-2">
-                    <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
-                    <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                    <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-green-500 mr-2 flex-shrink-0" />
+                    <h3 className="text-sm xl:text-md font-semibold text-green-500 font-['Poppins'] leading-tight">
                       Robotics Lab Simulation
                     </h3>
                   </div>
@@ -124,8 +124,8 @@ export default function Component() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center mb-3">
-                    <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
-                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                    <Brain className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-sm md:text-md font-semibold text-green-500 font-['Poppins'] leading-tight">
                       Personalized Learning Paths
                     </h3>
                   </div>
@@ -136,8 +136,8 @@ export default function Component() {
 
                 <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center mb-3">
-                    <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
-                    <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                    <Robot className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-sm md:text-md font-semibold text-green-500 font-['Poppins'] leading-tight">
                       Robotics Lab Simulation
                     </h3>
                   </div>

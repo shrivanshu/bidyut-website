@@ -342,7 +342,7 @@ export default function RobotShowcase() {
           <div className="flex justify-center">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
+              className="bg-green-600 hover:bg-green-700 dark:bg-primary-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
             >
               <Search className="h-6 w-6" />
               Search Robots
@@ -508,7 +508,7 @@ export default function RobotShowcase() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{currentSpec.description}</p>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-green-600 hover:bg-green-700 dark:bg-primary-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Order Now
             </Button>
 
@@ -574,7 +574,7 @@ export default function RobotShowcase() {
                         y1={startY}
                         x2={endX}
                         y2={endY}
-                        stroke="#059669"
+                        stroke="#537D5D"
                         strokeWidth="2"
                         className="transition-all duration-300"
                       />
@@ -583,7 +583,7 @@ export default function RobotShowcase() {
                         cx={startX}
                         cy={startY}
                         r="4"
-                        fill="#059669"
+                        fill="#537D5D"
                         className="transition-all duration-300"
                       />
                       {/* End dot */}
@@ -591,7 +591,7 @@ export default function RobotShowcase() {
                         cx={endX}
                         cy={endY}
                         r="4"
-                        fill="#059669"
+                        fill="#537D5D"
                         className="transition-all duration-300"
                       />
                     </g>

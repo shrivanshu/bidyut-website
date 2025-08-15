@@ -367,7 +367,7 @@ const RoboticsComparisonChart: React.FC = () => {
                   onClick={() => setSelectedModel(spec.model)}
                   className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                     selectedModel === spec.model
-                      ? "bg-blue-600 text-white"
+                      ? "bg-green-600 text-white"
                       : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                   }`}
                 >
@@ -391,7 +391,7 @@ const RoboticsComparisonChart: React.FC = () => {
           <div className="space-y-4">
             {allGroups.map((group, groupIndex) => (
               <div key={groupIndex} className="bg-gray-900 rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-3 text-blue-400 border-b border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-3 text-green-400 border-b border-gray-700 pb-2">
                   {group.title}
                 </h3>
                 <div className="space-y-3">

@@ -25,7 +25,7 @@ export default function Contactpage() {
     transition={{ duration: 0.6 }}
   >
      <div>
-         <div className="min-h-screen px-4 sm:px-8 lg:px-20 dark:bg-gray-900 bg-[#E4EEFC] py-12" >
+         <div className="min-h-screen px-4 sm:px-8 lg:px-20 dark:bg-gray-900 bg-[#D2D0A0] py-12" >
   <div className="max-w-7xl mx-auto">
     {/* Main Content Container */}
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
@@ -129,23 +129,23 @@ export default function Contactpage() {
         <input
           type="text"
           placeholder="First name"
-          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
         />
         <input
           type="text"
           placeholder="Last name"
-          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
         />
       </div>
 
       <input
         type="email"
         placeholder="Your email"
-        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
       />
 
       <div className="flex flex-col sm:flex-row">
-        <select className="px-4 py-3 border border-gray-200 rounded-t-4xl sm:rounded-l-4xl sm:rounded-t-none bg-white text-gray-700 outline-none focus:ring-2 focus:ring-blue-500">
+        <select className="px-4 py-3 border border-gray-200 rounded-t-4xl sm:rounded-l-4xl sm:rounded-t-none bg-white text-gray-700 outline-none focus:ring-2 focus:ring-green-500">
           <option>+91</option>
           <option>+1</option>
           <option>+44</option>
@@ -154,19 +154,19 @@ export default function Contactpage() {
         <input
           type="tel"
           placeholder="Phone number"
-          className="flex-1 px-4 py-3 border border-t-0 sm:border-t border-l-0 border-gray-200 rounded-b-4xl sm:rounded-r-4xl sm:rounded-b-none focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="flex-1 px-4 py-3 border border-t-0 sm:border-t border-l-0 border-gray-200 rounded-b-4xl sm:rounded-r-4xl sm:rounded-b-none focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
         />
       </div>
 
       <textarea
         placeholder="How can we help?"
         rows={4}
-        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none resize-none"
       ></textarea>
 
       <button
         type="button"
-        className="w-full bg-blue-600 text-white py-3 rounded-3xl font-medium hover:bg-blue-700 transition-colors"
+        className="w-full bg-green-600 text-white py-3 rounded-3xl font-medium hover:bg-green-700 transition-colors"
         onClick={() => alert("Form submitted!")}
       >
         Submit
@@ -174,8 +174,8 @@ export default function Contactpage() {
 
       <p className="text-xs text-gray-500 text-center">
         By contacting us, you agree to our{" "}
-        <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and{" "}
-        <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
+        <a href="#" className="text-green-600 hover:underline">Terms of Service</a> and{" "}
+        <a href="#" className="text-green-600 hover:underline">Privacy Policy</a>
       </p>
     </div>
   )}
@@ -187,28 +187,28 @@ export default function Contactpage() {
         <input
           type="text"
           placeholder="First name"
-          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
         />
         <input
           type="text"
           placeholder="Last name"
-          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
         />
       </div>
 
       <input
         type="email"
         placeholder="Your email"
-        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
       />
 
       <input
         type="text"
         placeholder="Position you're applying for"
-        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        className="w-full px-4 py-3 border border-gray-200 rounded-4xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
       />
 
-      <select className="w-full px-4 py-3 border border-gray-200 rounded-4xl bg-white text-gray-700 outline-none focus:ring-2 focus:ring-blue-500">
+      <select className="w-full px-4 py-3 border border-gray-200 rounded-4xl bg-white text-gray-700 outline-none focus:ring-2 focus:ring-green-500">
         <option value="">Years of experience</option>
         <option value="0-1">0-1 years</option>
         <option value="2-3">2-3 years</option>
@@ -219,7 +219,7 @@ export default function Contactpage() {
       <textarea
         placeholder="Tell us about yourself and why you want to join Bidyut"
         rows={4}
-        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none resize-none"
       ></textarea>
 
       <button
@@ -316,8 +316,8 @@ export default function Contactpage() {
                         }}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                           isDark 
-                            ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/30' 
-                            : 'bg-green-50 text-green-700 hover:bg-green-100 border border-green-200'
+                            ? 'bg-primary-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/30' 
+                            : 'bg-blue-50 text-blue-700 hover:bg-green-100 border border-green-200'
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

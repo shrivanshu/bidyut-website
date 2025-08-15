@@ -108,7 +108,7 @@ export default function OurJourney() {
   }, [selectedYear, yearsData])
 
   return (
-    <div className="relative flex  items-center justify-center  px-4 py-0 bottom-[-150px] z-0" style={{background : 'linear-gradient(to top,#0ACF83 30%,transparent 60%)'}}>
+    <div className="relative flex  items-center justify-center  px-4 py-0 bottom-[-150px] z-0" style={{background : 'linear-gradient(to top,#73946B 30%,transparent 60%)'}}>
       <div
         className="relative"
         style={{
@@ -151,7 +151,7 @@ export default function OurJourney() {
               >
                 <span
                   className={`text-xl font-bold transition-colors duration-300 ${
-                    selectedYear === data.year ? "text-[#0acf83]" : "text-black"
+                    selectedYear === data.year ? "text-[#73946B]" : "text-black"
                   }`}
                 >
                   {data.year}

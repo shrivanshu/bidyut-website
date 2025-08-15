@@ -72,14 +72,14 @@ export default function Footer() {
     const easeInOutQuint = (t: number) => 
       t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
 
-    // Color transition: grey to green with smooth gradient
+    // Color transition: grey to dark green with smooth gradient (#537D5D)
     const colorProgress = Math.max(0, Math.min(1, (scrollProgress - 0.25) / 0.4))
     const easedColorProgress = easeInOutQuint(colorProgress)
     
-    // Enhanced color transition from grey-500 to green-500
-    const greyValue = Math.round(107 - (107 - 34) * easedColorProgress) // From grey-500 to green-500
-    const greenValue = Math.round(114 + (197 - 114) * easedColorProgress)
-    const blueValue = Math.round(111 + (94 - 111) * easedColorProgress)
+    // Enhanced color transition from grey-500 to dark green (#537D5D: 83, 125, 93)
+    const greyValue = Math.round(107 - (107 - 83) * easedColorProgress)   // R: grey-500 (107) to dark green (83)
+    const greenValue = Math.round(114 + (125 - 114) * easedColorProgress) // G: grey-500 (114) to dark green (125)
+    const blueValue = Math.round(111 - (111 - 93) * easedColorProgress)   // B: grey-500 (111) to dark green (93)
     
     // Shape transition: rectangle to circle with smooth morphing
     const shapeProgress = Math.max(0, Math.min(1, (scrollProgress - 0.4) / 0.3))
@@ -256,7 +256,7 @@ export default function Footer() {
                 placeholder={t('enterEmail')}
                 className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all"
               />
-              <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg transition-all font-medium text-sm shadow-md hover:shadow-lg transform hover:scale-105">
+              <button className="w-full bg-accent-500 hover:bg-accent-600 text-green-900 py-2.5 px-4 rounded-lg transition-all font-medium text-sm shadow-md hover:shadow-lg transform hover:scale-105">
                 {t('subscribeNewsletter')}
               </button>
             </div>
@@ -302,12 +302,12 @@ export default function Footer() {
               <span className="relative">
                 i
                 <div
-                  className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full transition-all duration-500 ${
+                  className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full transition-all duration-500 ${
                     scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
                   }`}
                   style={{
                     top: "0.4em", // yahan value badhao, jitna niche chahiye utna
-                    boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
+                    boxShadow: "0 0 12px rgba(83, 125, 93, 0.8), 0 0 24px rgba(83, 125, 93, 0.4)",
                     animation: scrollProgress >= 0.95 ? 'float-gentle 3s ease-in-out infinite' : 'none'
                   }}
                 />

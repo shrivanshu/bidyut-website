@@ -157,7 +157,7 @@ export default function Header() {
                           }}
                           className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors ${
                             currentLanguage === lang.code
-                              ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400'
+                              ? 'bg-blue-50 dark:bg-blue-900/20 text-green-600 dark:text-green-400'
                               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                           }`}
                         >
@@ -173,7 +173,7 @@ export default function Header() {
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className="relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
+                className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
                 aria-label="Toggle theme"
               >
                 <div className="relative">
@@ -184,7 +184,7 @@ export default function Header() {
                   )}
                 </div>
                 {/* Glow effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-500 opacity-0 hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
               </button>
 
               {/* Mobile menu button */}

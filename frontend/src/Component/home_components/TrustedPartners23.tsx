@@ -11,7 +11,7 @@ export function Globe3D() {
         <Environment preset="dawn" />
         <ambientLight intensity={0.4} color="#ffffff" />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#ffffff" />
-        <pointLight position={[-10, -10, -5]} intensity={0.6} color="#22c55e" />
+        <pointLight position={[-10, -10, -5]} intensity={0.6} color="#537D5D" />
         <pointLight position={[5, -5, 10]} intensity={0.4} color="#3b82f6" />
 
         <TrustedPartners22 />

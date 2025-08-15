@@ -195,7 +195,7 @@ const EducationNews: React.FC = () => {
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             <HomeHeroText
               text={[`${t('latestNews').split(' & ')[0]} & ${t('latestNews').split(' & ')[1]}`]}
-              highlight={{ text: t('latestNews').split(' & ')[1], color: '#22c55e' }}
+              highlight={{ text: t('latestNews').split(' & ')[1], color: '#537D5D' }}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={true}

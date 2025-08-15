@@ -88,12 +88,12 @@ html, body {
 }
 
 .scrollbar-thumb-green-500::-webkit-scrollbar-thumb {
-  background: rgb(34 197 94);
+  background: #537D5D; /* Dark green */
   border-radius: 3px;
 }
 
 .scrollbar-thumb-green-500::-webkit-scrollbar-thumb:hover {
-  background: rgb(22 163 74);
+  background: #73946B; /* Medium green */
 }
 
 .scrollbar-track-gray-200::-webkit-scrollbar-track {

@@ -15,7 +15,7 @@ export default function TrustedPartners21() {
         {/* Header Section */}
         <div className="text-center mb-8">
           <h1 className={`text-4xl md:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-6 transition-colors duration-300`}>
-            Our <span className="text-emerald-500">Trusted</span> Partners
+            Our <span className="text-green-500">Trusted</span> Partners
           </h1>
           <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto text-lg leading-relaxed transition-colors duration-300`}>
             We are proud to collaborate with industry-leading organizations that share our vision and values. Their
@@ -29,8 +29,8 @@ export default function TrustedPartners21() {
   <div className="relative w-full h-[40vw] max-h-[560px]">
     <div className="absolute inset-0 pointer-events-none">
       {[
-        { name: "edutech", color: "bg-blue-50 text-blue-600 border-blue-200" },
-        { name: "UMS", color: "bg-green-50 text-green-600 border-green-200" },
+        { name: "edutech", color: "bg-blue-50 text-green-600 border-green-200" },
+        { name: "UMS", color: "bg-blue-50 text-green-600 border-green-200" },
         { name: "ACG", color: "bg-red-50 text-red-600 border-red-200" },
         { name: "ASK", color: "bg-purple-50 text-purple-600 border-purple-200" },
         { name: "edutech", color: "bg-orange-50 text-orange-600 border-orange-200" },
@@ -39,7 +39,7 @@ export default function TrustedPartners21() {
         { name: "edutech", color: "bg-indigo-50 text-indigo-600 border-indigo-200" },
         { name: "UMS", color: "bg-cyan-50 text-cyan-600 border-cyan-200" },
         { name: "ACG", color: "bg-yellow-50 text-yellow-600 border-yellow-200" },
-        { name: "ASK", color: "bg-emerald-50 text-emerald-600 border-emerald-200" },
+        { name: "ASK", color: "bg-blue-50 text-green-600 border-green-200" },
         { name: "UMS", color: "bg-rose-50 text-rose-600 border-rose-200" }
       ].map((partner, i) => {
         const totalLogos = 12;
@@ -73,7 +73,7 @@ export default function TrustedPartners21() {
       {[
         { name: "edutech", color: "bg-violet-50 text-violet-600 border-violet-200" },
         { name: "ACG", color: "bg-amber-50 text-amber-600 border-amber-200" },
-        { name: "UMS", color: "bg-lime-50 text-lime-600 border-lime-200" },
+        { name: "UMS", color: "bg-blue-50 text-green-600 border-green-200" },
         { name: "ASK", color: "bg-sky-50 text-sky-600 border-sky-200" },
         { name: "edutech", color: "bg-slate-50 text-slate-600 border-slate-200" },
         { name: "ACG", color: "bg-gray-50 text-gray-600 border-gray-200" },
@@ -81,8 +81,8 @@ export default function TrustedPartners21() {
         { name: "edutech", color: "bg-neutral-50 text-neutral-600 border-neutral-200" },
         { name: "ASK", color: "bg-stone-50 text-stone-600 border-stone-200" },
         { name: "ACG", color: "bg-red-50 text-red-500 border-red-200" },
-        { name: "UMS", color: "bg-blue-50 text-blue-500 border-blue-200" },
-        { name: "edutech", color: "bg-green-50 text-green-500 border-green-200" },
+        { name: "UMS", color: "bg-blue-50 text-green-500 border-green-200" },
+        { name: "edutech", color: "bg-blue-50 text-green-500 border-green-200" },
         { name: "ASK", color: "bg-purple-50 text-purple-500 border-purple-200" },
         { name: "ACG", color: "bg-orange-50 text-orange-500 border-orange-200" },
         { name: "UMS", color: "bg-teal-50 text-teal-500 border-teal-200" },
@@ -119,12 +119,12 @@ export default function TrustedPartners21() {
       {[
         { name: "ACG", color: "bg-indigo-50 text-indigo-500 border-indigo-200" },
         { name: "edutech", color: "bg-cyan-50 text-cyan-500 border-cyan-200" },
-        { name: "UMS", color: "bg-emerald-50 text-emerald-500 border-emerald-200" },
+        { name: "UMS", color: "bg-blue-50 text-green-500 border-green-200" },
         { name: "ASK", color: "bg-yellow-50 text-yellow-500 border-yellow-200" },
         { name: "ACG", color: "bg-rose-50 text-rose-500 border-rose-200" },
         { name: "edutech", color: "bg-violet-50 text-violet-500 border-violet-200" },
         { name: "UMS", color: "bg-amber-50 text-amber-500 border-amber-200" },
-        { name: "ASK", color: "bg-lime-50 text-lime-500 border-lime-200" },
+        { name: "ASK", color: "bg-blue-50 text-green-500 border-green-200" },
         { name: "ACG", color: "bg-sky-50 text-sky-500 border-sky-200" },
         { name: "edutech", color: "bg-slate-50 text-slate-500 border-slate-200" },
         { name: "UMS", color: "bg-gray-50 text-gray-500 border-gray-200" },
@@ -132,8 +132,8 @@ export default function TrustedPartners21() {
         { name: "ACG", color: "bg-neutral-50 text-neutral-500 border-neutral-200" },
         { name: "edutech", color: "bg-stone-50 text-stone-500 border-stone-200" },
         { name: "UMS", color: "bg-red-50 text-red-400 border-red-200" },
-        { name: "ASK", color: "bg-blue-50 text-blue-400 border-blue-200" },
-        { name: "ACG", color: "bg-green-50 text-green-400 border-green-200" },
+        { name: "ASK", color: "bg-blue-50 text-green-400 border-green-200" },
+        { name: "ACG", color: "bg-blue-50 text-green-400 border-green-200" },
         { name: "edutech", color: "bg-purple-50 text-purple-400 border-purple-200" },
         { name: "UMS", color: "bg-orange-50 text-orange-400 border-orange-200" },
         { name: "ASK", color: "bg-teal-50 text-teal-400 border-teal-200" }
@@ -222,7 +222,7 @@ export default function TrustedPartners21() {
                 <pointLight 
                   position={[-10, -10, -5]} 
                   intensity={isDark ? 0.4 : 0.6} 
-                  color="#22c55e" 
+                  color="#537D5D" 
                 />
                 <pointLight 
                   position={[5, -5, 10]} 

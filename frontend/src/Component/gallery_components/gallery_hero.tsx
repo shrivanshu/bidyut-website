@@ -68,7 +68,7 @@ const GalleryHero: React.FC = () => {
           className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2"
           variants={itemVariants}
         >
-          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
             {t('inspiring')}
           </span>
         </motion.h1>
@@ -94,7 +94,7 @@ const GalleryHero: React.FC = () => {
           variants={itemVariants}
         >
           <motion.button
-            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="bg-primary-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             variants={buttonVariants}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}

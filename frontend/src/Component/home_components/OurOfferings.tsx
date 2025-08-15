@@ -200,7 +200,7 @@ export default function OfferingsCarousel() {
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
           <HomeHeroText
             text={[`${t('ourOfferings').split(' ')[0]} ${t('ourOfferings').split(' ')[1]}`]}
-            highlight={{ text: t('ourOfferings').split(' ')[1], color: '#2ecc71' }}
+            highlight={{ text: t('ourOfferings').split(' ')[1], color: '#73946B' }}
             typingSpeed={40}
             pauseDuration={0}
             showCursor={true}
@@ -248,7 +248,7 @@ export default function OfferingsCarousel() {
                 onMouseLeave={() => setHoveredCardIndex(null)}
               >
                 <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-xl py-6 px-3 flex flex-col items-center text-center h-[420px] md:h-[480px] max-w-[400px] w-full gap-4 transition-all duration-300 ${
-                  relativePos === 0 ? 'ring-2 ring-[#2ecc71] ring-opacity-50' : ''
+                  relativePos === 0 ? 'ring-2 ring-[#73946B] ring-opacity-50' : ''
                 } ${isCardHovered ? 'shadow-2xl transform scale-105' : ''}`}>
                   <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
                     <img
@@ -263,7 +263,7 @@ export default function OfferingsCarousel() {
                     {relativePos !== 0 && (
                       <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 rounded-lg flex items-center justify-center">
                         <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 rounded-full p-2">
-                          <svg className="w-6 h-6 text-[#2ecc71]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6 text-[#73946B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         </div>
@@ -299,7 +299,7 @@ export default function OfferingsCarousel() {
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-[#2ecc71] scale-125' 
+                    ? 'bg-[#73946B] scale-125' 
                     : 'bg-white bg-opacity-50 hover:bg-opacity-75'
                 }`}
                 onClick={() => handleIndicatorClick(index)}

@@ -54,7 +54,7 @@ const Clock: React.FC = () => {
             Celebrating Bonds Through Bots –
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold font-['Poppins']">
-            <span className="text-emerald-500">Friendship Day</span>{" "}
+            <span className="text-green-500">Friendship Day</span>{" "}
             <span className="text-gray-800 dark:text-white transition-colors duration-300">Special!</span>
           </h2>
         </div>
@@ -72,7 +72,7 @@ const Clock: React.FC = () => {
           <div
             className="relative w-80 h-80 rounded-full shadow-2xl flex items-center justify-center"
             style={{
-              background: "radial-gradient(circle at 40% 30%, #6ee7b7, #10b981, #065f46)",
+              background: "radial-gradient(circle at 40% 30%, #9EBC8A, #73946B, #537D5D)",
               boxShadow:
                 "inset 0 15px 30px rgba(0,0,0,0.5), inset 0 -10px 20px rgba(255,255,255,0.1), 0 0 40px rgba(16,185,129,2), 0 0 80px rgba(16,185,129,1)",
             }}

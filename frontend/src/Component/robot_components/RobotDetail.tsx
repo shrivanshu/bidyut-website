@@ -39,7 +39,7 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
           <div className="pt-4">
             <button 
               onClick={onContactClick}
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
+              className="bg-green-600 hover:bg-green-700 dark:bg-primary-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
             >
               Contact Sales Team
             </button>

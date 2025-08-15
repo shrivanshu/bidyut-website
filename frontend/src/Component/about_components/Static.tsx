@@ -11,11 +11,11 @@ const Static = () => {
           <div className="text-center mb-16">
             <div className="flex flex-col mt-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-snug sm:leading-relaxed md:leading-snug text-gray-800 dark:text-white mb-6">
-                {t('bidyutFocuses')} <span className="text-emerald-400">{t('educatingStudents')} </span>
+                {t('bidyutFocuses')} <span className="text-green-400">{t('educatingStudents')} </span>
                 <br className="hidden sm:block" />
                 {t('actWithIntegrity')}
                 <br className="hidden sm:block " />
-                <span className="text-emerald-400"> {t('digitalWorld')}</span>
+                <span className="text-green-400"> {t('digitalWorld')}</span>
               </h1>
             </div>
             <p className="text-[#0A254070] dark:text-gray-300 text-base sm:text-lg max-w-6xl mx-auto leading-relaxed">
@@ -35,7 +35,7 @@ const Static = () => {
                 />
               </div>
               <div className="text-center md:text-center pt-4 md:pt-32 pb-12 sm:pb-20 md:pb-36">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400 mb-4">
                   {t('ourMission')}
                 </h2>
                 <p className="text-gray-400 dark:text-gray-300 text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">
@@ -47,7 +47,7 @@ const Static = () => {
             {/* Our Vision */}
             <div className="space-y-8 flex flex-col items-center md:items-start">
               <div className="text-center md:text-center order-2 md:order-1 pt-8 md:pt-44 pb-12 sm:pb-20 md:pb-36">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-400 mb-4 sm:mb-3">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400 mb-4 sm:mb-3">
                   {t('ourVision')}
                 </h2>
                 <p className="text-gray-400 dark:text-gray-300 text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">

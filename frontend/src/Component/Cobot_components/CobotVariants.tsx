@@ -326,7 +326,7 @@ function RobotShowcase() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{currentSpec.description}</p>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-6 md:px-10 py-2 md:py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-green-600 hover:bg-green-700 dark:bg-primary-500 dark:hover:bg-green-600 text-white px-6 md:px-10 py-2 md:py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Order Now
             </Button>
 
@@ -392,7 +392,7 @@ function RobotShowcase() {
                         y1={startY}
                         x2={endX}
                         y2={endY}
-                        stroke="#059669"
+                        stroke="#537D5D"
                         strokeWidth="2"
                         className="transition-all duration-300"
                       />
@@ -401,7 +401,7 @@ function RobotShowcase() {
                         cx={startX}
                         cy={startY}
                         r="4"
-                        fill="#059669"
+                        fill="#537D5D"
                         className="transition-all duration-300"
                       />
                       {/* End dot */}
@@ -409,7 +409,7 @@ function RobotShowcase() {
                         cx={endX}
                         cy={endY}
                         r="4"
-                        fill="#059669"
+                        fill="#537D5D"
                         className="transition-all duration-300"
                       />
                     </g>
