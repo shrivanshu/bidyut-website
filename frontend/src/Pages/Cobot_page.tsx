@@ -1,4 +1,4 @@
-import Footer from '../Component/Footer';
+import Footer from '../Component/FooterUnanimated';
 import Header from '../Component/Header';
 import CobotVariants from '../Component/Cobot_components/CobotVariants';
 import CobotDetail from '../Component/Cobot_components/CobotDetail';
