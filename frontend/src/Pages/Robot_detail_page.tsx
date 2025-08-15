@@ -1,4 +1,4 @@
-import Footer from '../Component/Footer';
+import Footer from '../Component/FooterUnanimated';
 import Header from '../Component/Header';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import RoboticsComparisonChart from '../Component/Table';

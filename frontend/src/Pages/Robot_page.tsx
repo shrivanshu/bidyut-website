@@ -1,4 +1,4 @@
-import Footer from '../Component/Footer';
+import Footer from '../Component/FooterUnanimated';
 import Header from '../Component/Header';
 import HeroSectionRobot from '../Component/robot_components/HeroSectionRobot';
 import RobotVariants from '../Component/robot_components/RobotVariants';
