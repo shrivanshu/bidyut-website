@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Footer from '../Component/Footer';
+import Footer from '../Component/FooterUnanimated';
 import Header from '../Component/Header';
 import GalleryHero from '../Component/gallery_components/gallery_hero';
 import ExploreOurGallery from '../Component/gallery_components/explore_our_gallery';

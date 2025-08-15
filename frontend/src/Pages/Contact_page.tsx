@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from '../Component/Header'; 
-import Footer from '../Component/Footer';
+import Footer from '../Component/FooterUnanimated';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/OptimizedLanguageContext';
 

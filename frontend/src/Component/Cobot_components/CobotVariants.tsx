@@ -20,62 +20,201 @@ interface RobotSpec {
   }[]
 }
 
+// Dummy cobot search data
+const cobotSearchData = [
+  {
+    id: "GO2 AIR",
+    name: "GO2 AIR",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
+    specId: "go2-basic",
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+  },
+  {
+    id: "GO2 PRO",
+    name: "GO2 PRO",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
+    specId: "go2-pro",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance2.mp4", "/robo-dance3.mp4"],
+  },
+  {
+    id: "GO2 EDU U1",
+    name: "GO2 EDU U1",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U2",
+    name: "GO2 EDU U2",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U3",
+    name: "GO2 EDU U3",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U4",
+    name: "GO2 EDU U4",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U1",
+    name: "GO2-W U1",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U2",
+    name: "GO2-W U2",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U3",
+    name: "GO2-W U3",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U4",
+    name: "GO2-W U4",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U5",
+    name: "GO2-W U5",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U1",
+    name: "GO2 ENT-U1",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U2",
+    name: "GO2 ENT-U2",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U3",
+    name: "GO2 ENT-U3",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U4",
+    name: "GO2 ENT-U4",
+    image: "/media/Cobot_true.svg",
+    category: "Service",
+    description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+]
+
 const robotSpecs: RobotSpec[] = [
   {
     id: "go2-basic",
     name: "Go2 Basic",
     description:
-      "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.4 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to, making it perfect for dynamic educational demonstrations.",
+      "Dummy description for Go2 Basic cobot. Compact, lightweight, and ideal for entry-level collaborative tasks.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg", 
+      "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
     features: [
       {
-        label: "Depth Camera",
-        detail: "Image Resolution D435",
+        label: "Vision Sensor",
+        detail: "Basic camera module",
         position: { top: "10%", left: "85%" },
         lineDirection: "left",
         targetPoint: { x: "51%", y: "15%" },
       },
       {
-        label: "3D LIDAR",
-        detail: "OLED Module",
+        label: "LIDAR",
+        detail: "Entry-level LIDAR",
         position: { top: "25%", left: "8%" },
         lineDirection: "right",
         targetPoint: { x: "49%", y: "8%" },
       },
       {
-        label: "Single leg degrees of freedom",
-        detail: "Hip-2 Head-2 Ankle-2",
+        label: "Arm Control",
+        detail: "2 DOF arm",
         position: { top: "45%", left: "2%" },
         lineDirection: "right",
         targetPoint: { x: "41%", y: "35%" },
       },
       {
-        label: "Extra large quick release battery",
-        detail: "Provides lasting power",
+        label: "Battery",
+        detail: "Standard battery pack",
         position: { top: "30%", left: "90%" },
         lineDirection: "left",
         targetPoint: { x: "55%", y: "30%" },
       },
       {
-        label: "Core Motion Module",
-        detail: "Maximum Torque up to 200 Nm",
+        label: "Motion Module",
+        detail: "Torque up to 100 Nm",
         position: { top: "85%", left: "5%" },
         lineDirection: "right",
         targetPoint: { x: "44%", y: "67%" },
-      }
+      },
     ],
   },
   {
     id: "go2-pro",
     name: "Go2 Pro",
     description:
-      "Advanced educational robot with enhanced capabilities and improved mobility. Features high-precision sensors, extended battery life, and advanced motion control for professional applications.",
+      "Dummy description for Go2 Pro cobot. Enhanced sensors and battery for professional collaborative tasks.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -85,47 +224,47 @@ const robotSpecs: RobotSpec[] = [
     ],
     features: [
       {
-        label: "Depth Camera",
-        detail: "Image Resolution D455 Pro",
+        label: "Vision Sensor",
+        detail: "Pro camera module",
         position: { top: "12%", left: "88%" },
         lineDirection: "left",
         targetPoint: { x: "55%", y: "18%" },
       },
       {
-        label: "3D LIDAR",
-        detail: "Advanced OLED Module",
+        label: "LIDAR",
+        detail: "Pro LIDAR",
         position: { top: "28%", left: "5%" },
         lineDirection: "right",
         targetPoint: { x: "52%", y: "12%" },
       },
       {
-        label: "Single leg degrees of freedom",
-        detail: "Hip-3 Head-3 Ankle-3",
+        label: "Arm Control",
+        detail: "3 DOF arm",
         position: { top: "42%", left: "1%" },
         lineDirection: "right",
         targetPoint: { x: "45%", y: "35%" },
       },
       {
-        label: "Extra large quick release battery",
-        detail: "Extended capacity system",
+        label: "Battery",
+        detail: "Pro battery pack",
         position: { top: "32%", left: "92%" },
         lineDirection: "left",
         targetPoint: { x: "58%", y: "40%" },
       },
       {
-        label: "Core Motion Module",
-        detail: "Maximum Torque up to 250 Nm",
+        label: "Motion Module",
+        detail: "Torque up to 200 Nm",
         position: { top: "82%", left: "8%" },
         lineDirection: "right",
         targetPoint: { x: "48%", y: "60%" },
-      }
+      },
     ],
   },
   {
     id: "go2-enterprise",
     name: "Go2 Enterprise",
     description:
-      "Enterprise-grade educational robot with state-of-the-art features. Includes advanced AI processing, enhanced sensors, maximum battery efficiency, and premium motion control for institutional applications.",
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -135,40 +274,40 @@ const robotSpecs: RobotSpec[] = [
     ],
     features: [
       {
-        label: "Depth Camera",
-        detail: "Image Resolution D455 Enterprise",
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
         position: { top: "12%", left: "88%" },
         lineDirection: "left",
         targetPoint: { x: "55%", y: "18%" },
       },
       {
-        label: "3D LIDAR",
-        detail: "Premium OLED Module",
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
         position: { top: "28%", left: "5%" },
         lineDirection: "right",
         targetPoint: { x: "52%", y: "12%" },
       },
       {
-        label: "Single leg degrees of freedom",
-        detail: "Hip-4 Head-4 Ankle-4",
+        label: "Arm Control",
+        detail: "4 DOF arm",
         position: { top: "42%", left: "1%" },
         lineDirection: "right",
         targetPoint: { x: "45%", y: "35%" },
       },
       {
-        label: "Extra large quick release battery",
-        detail: "Maximum capacity system",
+        label: "Battery",
+        detail: "Enterprise battery pack",
         position: { top: "32%", left: "92%" },
         lineDirection: "left",
         targetPoint: { x: "58%", y: "40%" },
       },
       {
-        label: "Core Motion Module",
-        detail: "Maximum Torque up to 300 Nm",
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
         position: { top: "82%", left: "8%" },
         lineDirection: "right",
         targetPoint: { x: "48%", y: "60%" },
-      }
+      },
     ],
   },
 ]
@@ -232,29 +371,49 @@ const Button = ({
 
 function RobotShowcase() {
   const { isDark } = useTheme();
-  const [selectedVariant, setSelectedVariant] = useState("g1-basic");
+  const [selectedVariant, setSelectedVariant] = useState("go2-basic");
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0];
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);
+
+  // Drag scroll state for cobot images
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const currentSpec = robotSpecs.find((spec) => spec.id === (selectedCobot?.specId || selectedVariant)) || robotSpecs[0];
+  // Derive display data from either selected search item or current variant
+  const displayName = selectedCobot?.name ?? currentSpec.name;
+  const displayDescription = selectedCobot?.description ?? currentSpec.description;
+  const displayGallery = selectedCobot?.gallery?.length ? selectedCobot.gallery : currentSpec.gallery;
+
+  // Filter cobots based on search query
+  const filteredCobots = cobotSearchData.filter(cobot =>
+    cobot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    cobot.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    cobot.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Auto-slide functionality
   useEffect(() => {
     if (isGalleryOpen) {
       const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length);
+        setCurrentImageIndex((prev) => (prev + 1) % displayGallery.length);
       }, 5000); // 5 seconds
       return () => clearInterval(interval);
     }
-  }, [isGalleryOpen, currentSpec.gallery.length]);
+  }, [isGalleryOpen, displayGallery.length]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length);
+    setCurrentImageIndex((prev) => (prev + 1) % displayGallery.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + currentSpec.gallery.length) % currentSpec.gallery.length);
+    setCurrentImageIndex((prev) => (prev - 1 + displayGallery.length) % displayGallery.length);
   };
 
   const openGallery = (index: number) => {
@@ -277,17 +436,154 @@ function RobotShowcase() {
       window.addEventListener('keydown', handleKeyPress);
       return () => window.removeEventListener('keydown', handleKeyPress);
     }
-  }, [isGalleryOpen, currentSpec.gallery.length]);
+  }, [isGalleryOpen, displayGallery.length]);
 
-  // Reset image index when variant changes
+  // Reset image index when variant changes or selected cobot changes
   useEffect(() => {
     setCurrentImageIndex(0);
-  }, [selectedVariant]);
+  }, [selectedVariant, selectedCobot]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
       <div className="w-full px-6 py-16 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
-        {/* Header Dropdown */}
+        {/* Search Button Section */}
+        <div className="w-full max-w-4xl mx-auto mb-8">
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
+            >
+              Search Cobots
+            </button>
+          </div>
+        </div>
+
+        {/* Search Section - Scrollable Cobot Images */}
+        {isSearchOpen && (
+          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-gray-800/50 rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+            {/* Search Input */}
+            <div className="mb-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search cobots by name, category, or description..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300"
+                />
+                {/* Add a search icon if desired */}
+              </div>
+            </div>
+
+            {/* Scrollable Cobot Images - Single Line */}
+            <div 
+              className="overflow-x-auto scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-700 pb-2 cursor-grab active:cursor-grabbing select-none"
+              style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
+              onWheel={(e) => {
+                e.preventDefault();
+                const container = e.currentTarget;
+                container.scrollLeft += e.deltaY;
+              }}
+              onMouseDown={(e) => {
+                setIsDragging(true);
+                setStartX(e.pageX - e.currentTarget.offsetLeft);
+                setScrollLeft(e.currentTarget.scrollLeft);
+                e.currentTarget.style.cursor = 'grabbing';
+              }}
+              onMouseLeave={() => {
+                setIsDragging(false);
+              }}
+              onMouseUp={(e) => {
+                setIsDragging(false);
+                e.currentTarget.style.cursor = 'grab';
+              }}
+              onMouseMove={(e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - e.currentTarget.offsetLeft;
+                const walk = (x - startX) * 2;
+                e.currentTarget.scrollLeft = scrollLeft - walk;
+              }}
+            >
+              <div className="flex gap-6 min-w-max">
+                {filteredCobots.map((cobot) => (
+                  <div
+                    key={cobot.id}
+                    onClick={() => {
+                      setSelectedCobot(cobot);
+                      if (cobot.specId) setSelectedVariant(cobot.specId);
+                      // Ensure details scroll into view for mobile
+                      const detailsSection = document.getElementById('cobot-details');
+                      detailsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    className="group cursor-pointer bg-white dark:bg-gray-700 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500 flex-shrink-0 w-64"
+                  >
+                    <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-600">
+                      <img
+                        src={cobot.image}
+                        alt={cobot.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1 truncate">
+                      {cobot.name}
+                    </h3>
+                    <p className="text-xs text-green-600 dark:text-green-400 font-medium mb-1">
+                      {cobot.category}
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {cobot.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {filteredCobots.length === 0 && (
+                <div className="text-center py-12">
+                  <div className="text-gray-400 dark:text-gray-500 text-lg">
+                    No cobots found matching your search.
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
+                    Try different keywords or browse all cobots.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Selected Cobot Display */}
+            {selectedCobot && (
+              <div className="mt-6 p-6 bg-white dark:bg-gray-700 rounded-xl border-2 border-green-200 dark:border-green-600">
+                <div className="flex items-start gap-4">
+                  <img
+                    src={selectedCobot.image}
+                    alt={selectedCobot.name}
+                    className="w-24 h-24 object-cover rounded-lg"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                      {selectedCobot.name}
+                    </h3>
+                    <p className={`font-medium mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>
+                      {selectedCobot.category}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {selectedCobot.description}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedCobot(null)}
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/*
+        Header Dropdown
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
             <SelectTrigger
@@ -305,6 +601,7 @@ function RobotShowcase() {
                     className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
                     onClick={() => {
                       setSelectedVariant(spec.id);
+                      setSelectedCobot(null);
                       setIsDropdownOpen(false);
                     }}
                   >
@@ -315,15 +612,16 @@ function RobotShowcase() {
             )}
           </Select>
         </div>
+        */}
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left Section - Product Info */}
-          <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+          <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{currentSpec.name}</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{displayName}</h1>
               <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">Technical Specifications</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{currentSpec.description}</p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
             <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-6 md:px-10 py-2 md:py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -334,7 +632,7 @@ function RobotShowcase() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
               <div className="flex gap-3 flex-wrap">
-                {currentSpec.gallery.map((media, index) => (
+                {displayGallery.map((media, index) => (
                   <button
                     key={index}
                     onClick={() => openGallery(index)}
@@ -350,7 +648,7 @@ function RobotShowcase() {
                     ) : (
                       <img
                         src={media}
-                        alt={`${currentSpec.name} view ${index + 1}`}
+                        alt={`${displayName} view ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     )}
@@ -370,7 +668,7 @@ function RobotShowcase() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
                   src="/media/Cobot_true.svg"
-                  alt={currentSpec.name}
+                  alt={displayName}
                   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />
               </div>
@@ -485,9 +783,9 @@ function RobotShowcase() {
 
             {/* Media Display */}
             <div className="w-full h-full flex items-center justify-center">
-              {currentSpec.gallery[currentImageIndex]?.endsWith('.mp4') ? (
+              {displayGallery[currentImageIndex]?.endsWith('.mp4') ? (
                 <video
-                  src={currentSpec.gallery[currentImageIndex]}
+                  src={displayGallery[currentImageIndex]}
                   controls
                   autoPlay
                   loop
@@ -495,8 +793,8 @@ function RobotShowcase() {
                 />
               ) : (
                 <img
-                  src={currentSpec.gallery[currentImageIndex]}
-                  alt={`${currentSpec.name} view ${currentImageIndex + 1}`}
+                  src={displayGallery[currentImageIndex]}
+                  alt={`${displayName} view ${currentImageIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                 />
               )}
@@ -505,13 +803,13 @@ function RobotShowcase() {
             {/* Image Counter */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600/30 backdrop-blur-sm rounded-full px-4 py-2">
               <span className="text-white text-sm font-medium">
-                {currentImageIndex + 1} / {currentSpec.gallery.length}
+                {currentImageIndex + 1} / {displayGallery.length}
               </span>
             </div>
 
             {/* Thumbnail Navigation */}
             <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {currentSpec.gallery.map((media, index) => (
+              {displayGallery.map((media, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
