@@ -14,7 +14,7 @@ export default function HeroSection() {
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
-          Think Limitless. Learn Beyond Boundaries
+          Thynk Limitless. Learn Beyond Boundaries
         </h1>
       </div>
 
