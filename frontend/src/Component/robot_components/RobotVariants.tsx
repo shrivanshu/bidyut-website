@@ -20,63 +20,79 @@ interface RobotSpec {
   }[]
 }
 
-// Robot search data with images
+// Robot search data with images (mapped to spec variants)
 const robotSearchData = [
   {
     id: "edu-bot-1",
     name: "EduBot Alpha",
     image: "/media/Robot_Details.svg",
     category: "Educational",
-    description: "Perfect for STEM learning"
+    description: "Alpha unit for classrooms with quick-swap modules.",
+    specId: "g1-basic",
+    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-dance5.mp4"],
   },
   {
     id: "edu-bot-2", 
     name: "EduBot Beta",
     image: "/media/Robot_Details.svg",
     category: "Educational",
-    description: "Advanced AI capabilities"
+    description: "Beta model focused on AI projects and coding camps.",
+    specId: "g1-basic",
+    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4", "/robott.mp4"],
   },
   {
     id: "service-bot-1",
     name: "ServiceBot Pro",
     image: "/media/Robot_Details.svg", 
     category: "Service",
-    description: "Professional service robot"
+    description: "Built for reception, delivery and kiosk assistance.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-main.mp4"],
   },
   {
     id: "companion-bot-1",
     name: "CompanionBot",
     image: "/media/Robot_Details.svg",
     category: "Companion", 
-    description: "Personal assistant robot"
+    description: "Social companion with voice, vision and music modes.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robott.mp4"],
   },
   {
     id: "industrial-bot-1",
     name: "IndustrialBot X1",
     image: "/media/Robot_Details.svg",
     category: "Industrial",
-    description: "Heavy-duty industrial robot"
+    description: "Rugged automation for factories and warehouses.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robot.mp4"],
   },
   {
     id: "security-bot-1",
     name: "SecurityBot Guardian",
     image: "/media/Robot_Details.svg",
     category: "Security",
-    description: "Advanced security monitoring"
+    description: "Patrol, detect and alert with 24/7 monitoring.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robott.mp4"],
   },
   {
     id: "cleaning-bot-1",
     name: "CleanBot Elite",
     image: "/media/Robot_Details.svg",
     category: "Cleaning",
-    description: "Autonomous cleaning solution"
+    description: "Autonomous sweeping, mopping and spot cleaning.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4"],
   },
   {
     id: "research-bot-1",
     name: "ResearchBot Lab",
     image: "/media/Robot_Details.svg",
     category: "Research",
-    description: "Laboratory research assistant"
+    description: "Lab-ready platform for rapid prototyping.",
+    specId: "g2-pro",
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
   }
 ]
 
@@ -273,7 +289,7 @@ export default function RobotShowcase() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedRobot, setSelectedRobot] = useState<typeof robotSearchData[0] | null>(null)
+  const [selectedRobot, setSelectedRobot] = useState<(typeof robotSearchData[0]) | null>(null)
   
   // Drag scroll state for robot images
   const [isDragging, setIsDragging] = useState(false)
@@ -281,6 +297,10 @@ export default function RobotShowcase() {
   const [scrollLeft, setScrollLeft] = useState(0)
   
   const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
+  // Derive display data from either selected search item or current variant
+  const displayName = selectedRobot?.name ?? currentSpec.name
+  const displayDescription = selectedRobot?.description ?? currentSpec.description
+  const displayGallery = (selectedRobot as any)?.gallery?.length ? (selectedRobot as any).gallery : currentSpec.gallery
 
   // Filter robots based on search query
   const filteredRobots = robotSearchData.filter(robot =>
@@ -293,18 +313,18 @@ export default function RobotShowcase() {
   useEffect(() => {
     if (isGalleryOpen) {
       const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length)
+        setCurrentImageIndex((prev) => (prev + 1) % displayGallery.length)
       }, 5000) // 5 seconds
       return () => clearInterval(interval)
     }
-  }, [isGalleryOpen, currentSpec.gallery.length])
+  }, [isGalleryOpen, displayGallery.length])
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentSpec.gallery.length)
+    setCurrentImageIndex((prev) => (prev + 1) % displayGallery.length)
   }
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + currentSpec.gallery.length) % currentSpec.gallery.length)
+    setCurrentImageIndex((prev) => (prev - 1 + displayGallery.length) % displayGallery.length)
   }
 
   const openGallery = (index: number) => {
@@ -327,7 +347,7 @@ export default function RobotShowcase() {
       window.addEventListener('keydown', handleKeyPress)
       return () => window.removeEventListener('keydown', handleKeyPress)
     }
-  }, [isGalleryOpen, currentSpec.gallery.length])
+  }, [isGalleryOpen, displayGallery.length])
 
   // Reset image index when variant changes
   useEffect(() => {
@@ -401,7 +421,15 @@ export default function RobotShowcase() {
                 {filteredRobots.map((robot) => (
                   <div
                     key={robot.id}
-                    onClick={() => setSelectedRobot(robot)}
+                    onClick={() => {
+                      setSelectedRobot(robot)
+                      if ((robot as any).specId) {
+                        setSelectedVariant((robot as any).specId)
+                      }
+                      // Ensure details scroll into view for mobile
+                      const detailsSection = document.getElementById('robot-details')
+                      detailsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }}
                     onMouseDown={(e) => e.stopPropagation()} // Prevent drag on cards
                     className="group cursor-pointer bg-white dark:bg-gray-700 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500 flex-shrink-0 w-64"
                   >
@@ -501,11 +529,11 @@ export default function RobotShowcase() {
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left Section - Product Info */}
-          <div className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div id="robot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{currentSpec.name}</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{displayName}</h1>
               <h2 className="text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{currentSpec.description}</p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
             <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -516,7 +544,7 @@ export default function RobotShowcase() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
               <div className="flex gap-3 flex-wrap">
-                {currentSpec.gallery.map((media, index) => (
+                {displayGallery.map((media, index) => (
                   <button
                     key={index}
                     onClick={() => openGallery(index)}
@@ -532,7 +560,7 @@ export default function RobotShowcase() {
                     ) : (
                       <img
                         src={media}
-                        alt={`${currentSpec.name} view ${index + 1}`}
+                        alt={`${displayName} view ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     )}
@@ -667,9 +695,9 @@ export default function RobotShowcase() {
 
             {/* Media Display */}
             <div className="w-full h-full flex items-center justify-center">
-              {currentSpec.gallery[currentImageIndex]?.endsWith('.mp4') ? (
+              {displayGallery[currentImageIndex]?.endsWith('.mp4') ? (
                 <video
-                  src={currentSpec.gallery[currentImageIndex]}
+                  src={displayGallery[currentImageIndex]}
                   controls
                   autoPlay
                   loop
@@ -677,8 +705,8 @@ export default function RobotShowcase() {
                 />
               ) : (
                 <img
-                  src={currentSpec.gallery[currentImageIndex]}
-                  alt={`${currentSpec.name} view ${currentImageIndex + 1}`}
+                  src={displayGallery[currentImageIndex]}
+                  alt={`${displayName} view ${currentImageIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                 />
               )}
@@ -693,7 +721,7 @@ export default function RobotShowcase() {
 
             {/* Thumbnail Navigation */}
             <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {currentSpec.gallery.map((media, index) => (
+              {displayGallery.map((media, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
