@@ -9,7 +9,7 @@ const HeroSection = () => {
       />
 
       {/* Split Header Text - Above the image */}
-      <div className="absolute top-[10%] left-0 right-0 z-20 px-6">
+      <div className="absolute top-[10%] left-0 right-0 z-20 px-14">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
           <div className="flex items-baseline">
             <span className="text-[48px] font-bold text-black drop-shadow-sm cursor-target">Think</span>
@@ -24,9 +24,9 @@ const HeroSection = () => {
       </div>
 
       {/* Robot Image - Reduced size for better spacing */}
-      <div className="absolute top-[15%] left-0 right-0 z-10 flex items-center justify-center h-[50%]">
+      <div className="absolute top-[5%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
         <img 
-          src="/media/video.svg" 
+          src="/media/robot1.gif" 
           alt="Humanoid Robot" 
           className="w-[100%] h-full object-contain"
         />
