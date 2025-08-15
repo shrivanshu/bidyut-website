@@ -23,8 +23,8 @@ interface RobotSpec {
 // Dummy cobot search data
 const cobotSearchData = [
   {
-    id: "cobot-1",
-    name: "Cobot Alpha",
+    id: "GO2 AIR",
+    name: "GO2 AIR",
     image: "/media/Cobot_true.svg",
     category: "Educational",
     description: "Alpha cobot for collaborative learning and STEM projects.",
@@ -32,8 +32,8 @@ const cobotSearchData = [
     gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
   },
   {
-    id: "cobot-2",
-    name: "Cobot Beta",
+    id: "GO2 PRO",
+    name: "GO2 PRO",
     image: "/media/Cobot_true.svg",
     category: "Service",
     description: "Beta cobot for service automation and kiosk support.",
@@ -41,8 +41,107 @@ const cobotSearchData = [
     gallery: ["/media/Cobot_true.svg", "/robo-dance2.mp4", "/robo-dance3.mp4"],
   },
   {
-    id: "cobot-3",
-    name: "Cobot Gamma",
+    id: "GO2 EDU U1",
+    name: "GO2 EDU U1",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U2",
+    name: "GO2 EDU U2",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U3",
+    name: "GO2 EDU U3",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 EDU U4",
+    name: "GO2 EDU U4",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U1",
+    name: "GO2-W U1",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U2",
+    name: "GO2-W U2",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U3",
+    name: "GO2-W U3",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2-W U4",
+    name: "GO2-W U4",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U1",
+    name: "GO2 ENT-U1",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U2",
+    name: "GO2 ENT-U2",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U3",
+    name: "GO2 ENT-U3",
+    image: "/media/Cobot_true.svg",
+    category: "Industrial",
+    description: "Gamma cobot for industrial automation and safety.",
+    specId: "go2-enterprise",
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+  },
+  {
+    id: "GO2 ENT-U4",
+    name: "GO2 ENT-U4",
     image: "/media/Cobot_true.svg",
     category: "Industrial",
     description: "Gamma cobot for industrial automation and safety.",
@@ -474,7 +573,8 @@ function RobotShowcase() {
           </div>
         )}
 
-        {/* Header Dropdown */}
+        {/*
+        Header Dropdown
         <div className="w-full max-w-4xl mx-auto mb-20">
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
             <SelectTrigger
@@ -503,6 +603,7 @@ function RobotShowcase() {
             )}
           </Select>
         </div>
+        */}
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
