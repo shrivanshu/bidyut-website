@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 import HomeHeroText from '../../Text_Animation/HomeHeroText';
@@ -14,37 +15,37 @@ export default function EducationStream() {
   
   const videoOptions = [
     {
-      src: "/robo-main.mp4",
+      src: "/media/gif1.gif",
       thumbnail: "/robo-main.mp4",
       title: t('roboMain'),
       description: t('roboMainDescription')
     },
     {
-      src: "/robo-dance.mp4",
+      src: "/media/gif2.gif",
       thumbnail: "/robo-dance.mp4",
       title: t('roboDance'),
       description: t('roboDanceDescription')
     },
     {
-      src: "/robo-dance2.mp4",
+      src: "/media/gif3.gif",
       thumbnail: "/robo-dance2.mp4",
       title: t('roboDance2'),
       description: t('roboDance2Description')
     },
     {
-      src: "/robo-dance3.mp4",
+      src: "/media/gif4.gif",
       thumbnail: "/robo-dance3.mp4",
       title: t('roboDance3'),
       description: t('roboDance3Description')
     },
     {
-      src: "/robo-dance5.mp4",
+      src: "/media/gif5.gif",
       thumbnail: "/robo-dance5.mp4",
       title: t('roboDance5'),
       description: t('roboDance5Description')
     },
   ];
-  const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
+  const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0].src);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -291,7 +292,7 @@ export default function EducationStream() {
   });
 
   return (
-    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-gray-50 dark:bg-black py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
       {/* Header */}
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
@@ -317,13 +318,13 @@ export default function EducationStream() {
         <div className="relative w-full aspect-video mb-6">
           <div className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-emerald-500 to-emerald-700">
             <div className="relative w-full h-full bg-black rounded-xl overflow-hidden">
-              <video
+              <img
                 className="w-full h-full object-cover"
                 src={activeVideo.src}
-                autoPlay
-                muted
-                loop
-                playsInline
+                // autoPlay
+                // muted
+                // loop
+                // playsInline
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                 <h3 className="text-white font-bold text-lg mb-1">{activeVideo.title}</h3>
@@ -347,14 +348,14 @@ export default function EducationStream() {
                     : 'border-transparent hover:border-emerald-300'
                 }`}
               >
-                <video
+                <img
                   src={video.thumbnail}
-                  muted
-                  loop
+                  // muted
+                  // loop
                   className="w-full h-full object-cover"
-                  playsInline
-                  onMouseOver={(e) => e.currentTarget.play()}
-                  onMouseOut={(e) => e.currentTarget.pause()}
+                  // playsInline
+                  // onMouseOver={(e) => e.currentTarget.play()}
+                  // onMouseOut={(e) => e.currentTarget.pause()}
                 />
               </div>
             ))}
@@ -367,13 +368,9 @@ export default function EducationStream() {
         <div style={videoCardWrapper}>
           <div style={gradientBorderStyle}>
             <div style={videoContainerStyle}>
-              <video
-                style={videoStyle}
+              <img
                 src={activeVideo.src}
-                autoPlay
-                muted
-                loop
-                playsInline
+                className="w-full h-full object-fill"
               />
               <div style={videoInfoStyle}>
                 <div style={videoTitleStyle}>{activeVideo.title}</div>
@@ -381,18 +378,19 @@ export default function EducationStream() {
               </div>
             </div>
           </div>
-          <div style={thumbnailPanelStyle} ref={thumbnailPanelRef}>
+          <div style={thumbnailPanelStyle} ref={thumbnailPanelRef} className="w-full h-full object-cover">
             {videoOptions.map((video, index) => (
-              <video
+              <img
                 key={video.src}
-                src={video.thumbnail}
-                muted
-                loop
+                src={video.src}
+                className="w-full h-full object-cover"
+                // muted
+                // loop
                 onClick={() => handleVideoClick(video, index)}
-                onMouseOver={(e) => handleMouseOver(e, index)}
-                onMouseOut={handleMouseOut}
+                // onMouseOver={(e) => handleMouseOver(e, index)}
+                // onMouseOut={handleMouseOut}
                 style={thumbVideoStyle(hoveredIndex === index, index === currentVideoIndex)}
-                playsInline
+                // playsInline
               />
             ))}
           </div>

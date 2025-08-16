@@ -10,7 +10,7 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
         {/* Header Section */}
