@@ -252,7 +252,7 @@ export default function KnowUsMore() {
       </motion.div>
 
       {/* Stats Section */}
-      <motion.div 
+      {/* <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.6 }}
@@ -276,7 +276,7 @@ export default function KnowUsMore() {
             </div>
           </div>
         ))}
-      </motion.div>
+      </motion.div> */}
     </section>
   )
 }
