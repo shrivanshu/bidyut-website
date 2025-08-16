@@ -154,10 +154,10 @@ export default function TrustedPartnersSection() {
   }
 
   return (
-    <section className="min-h-screen bg-white flex flex-col items-center justify-center py-20">
+    <section className="min-h-screen bg-white dark:bg-black flex flex-col items-center justify-center py-20">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
-          Our <span className="text-gray-900">Trusted</span> Partners
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Our <span className="text-gray-900 dark:text-gray-300">Trusted</span> Partners
         </h2>
         <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
           We collaborate with industry-leading organizations that share our vision and values.

@@ -41,7 +41,7 @@ export default function Header() {
               { href: "/About", label: t("aboutUs") },
               { href: "#", label: t("school") },
               { href: "/Contact", label: t("contact") },
-              { href: "#", label: t("career") },
+              // { href: "#", label: t("career") },
               { href: "/Gallery", label: t("gallery") },
             ].map((item) => (
               <a
@@ -67,9 +67,8 @@ export default function Header() {
                 <div className="py-2">
                   {[
                     { href: "/Robot_page", label: "Robot Showcase" },
-                    { href: "#", label: t("robotDevelopment") },
-                    { href: "#", label: t("aiSolutions") },
-                    { href: "#", label: t("automation") },
+                    { href: "/cobot", label: t("Quadruped Showcase") },
+              
                   ].map((link) => (
                     <a
                       key={link.href}
@@ -159,7 +158,6 @@ export default function Header() {
             { href: "#", label: t("school") },
             { href: "/Robot_page", label: "Robot Showcase" },
             { href: "/Contact", label: t("contact") },
-            { href: "#", label: t("career") },
             { href: "/Gallery", label: t("gallery") },
           ].map((item) => (
             <a

@@ -1,254 +1,373 @@
 "use client"
 
-import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Environment } from "@react-three/drei"
-import { TrustedPartners22 } from "./TrustedPartners22"
-import { useTheme } from "../../contexts/ThemeContext"
+import { useRef, useState, Suspense } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
+import { OrbitControls, Html } from "@react-three/drei"
+import { motion, AnimatePresence } from "framer-motion"
+import { BufferGeometry, BufferAttribute } from "three"
+import { X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function TrustedPartners21() {
-  const { isDark } = useTheme()
+// Partner data with coordinates (latitude, longitude converted to 3D sphere coordinates)
+const partners = [
+  {
+    id: 1,
+    name: "Google",
+    tag: "Cloud Partner",
+    position: [0.8, 0.5, 0.3], // North America
+    description: "Strategic cloud infrastructure partnership providing scalable solutions worldwide.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#4285F4",
+  },
+  {
+    id: 2,
+    name: "Microsoft",
+    tag: "Azure Partner",
+    position: [-0.6, 0.4, 0.7], // Europe
+    description: "Enterprise solutions and Azure cloud services integration partner.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#00A4EF",
+  },
+  {
+    id: 3,
+    name: "Amazon",
+    tag: "AWS Partner",
+    position: [0.2, -0.3, -0.9], // South America
+    description: "Advanced AWS consulting and implementation services partnership.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#FF9900",
+  },
+  {
+    id: 4,
+    name: "Salesforce",
+    tag: "CRM Partner",
+    position: [-0.7, 0.2, -0.6], // Asia
+    description: "Customer relationship management and automation solutions partner.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#00A1E0",
+  },
+  {
+    id: 5,
+    name: "Oracle",
+    tag: "Database Partner",
+    position: [0.9, -0.2, 0.4], // Australia
+    description: "Enterprise database solutions and cloud infrastructure partnership.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#F80000",
+  },
+  {
+    id: 6,
+    name: "IBM",
+    tag: "AI Partner",
+    position: [-0.3, 0.8, 0.5], // Africa
+    description: "Artificial intelligence and machine learning solutions partnership.",
+    logo: "/placeholder.svg?height=60&width=60",
+    color: "#1261FE",
+  },
+]
+
+// Connection lines between partners
+const connections = [
+  [0, 1], // Google to Microsoft
+  [1, 3], // Microsoft to Salesforce
+  [2, 4], // Amazon to Oracle
+  [3, 5], // Salesforce to IBM
+  [0, 2], // Google to Amazon
+  [4, 5], // Oracle to IBM
+]
+
+// Earth component
+function Earth() {
+  const meshRef = useRef<any>()
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.005
+    }
+  })
 
   return (
-    <div className={`w-full min-h-screen ${isDark ? 'bg-gray-900' : 'bg-white'} relative overflow-hidden transition-colors duration-300`}>
-      {/* Main Content */}
-      <div className="relative z-10 px-6 py-8">
-        {/* Header Section */}
-        <div className="text-center mb-8">
-          <h1 className={`text-4xl md:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-6 transition-colors duration-300`}>
-            Our <span className="text-emerald-500">Trusted</span> Partners
-          </h1>
-          <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto text-lg leading-relaxed transition-colors duration-300`}>
-            We are proud to collaborate with industry-leading organizations that share our vision and values. Their
-            continued trust and support help us deliver excellence every step of the way.
-          </p>
+    <mesh ref={meshRef}>
+      <sphereGeometry args={[2, 64, 64]} />
+      <meshStandardMaterial color="#1e40af" roughness={0.8} metalness={0.2} transparent opacity={0.9} />
+      {/* Wireframe overlay for Earth grid */}
+      <mesh>
+        <sphereGeometry args={[2.01, 32, 32]} />
+        <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.3} />
+      </mesh>
+    </mesh>
+  )
+}
+
+// Partner pin component
+function PartnerPin({
+  partner,
+  onClick,
+  isHovered,
+  onHover,
+}: {
+  partner: (typeof partners)[0]
+  onClick: () => void
+  isHovered: boolean
+  onHover: (hovered: boolean) => void
+}) {
+  const meshRef = useRef<any>()
+  const [hovered, setHovered] = useState(false)
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      const scale = hovered || isHovered ? 1.5 : 1
+      meshRef.current.scale.lerp({ x: scale, y: scale, z: scale }, 0.1)
+
+      // Floating animation
+      meshRef.current.position.y = partner.position[1] + Math.sin(state.clock.elapsedTime * 2) * 0.1
+    }
+  })
+
+  return (
+    <group
+      position={[partner.position[0] * 2.2, partner.position[1] * 2.2, partner.position[2] * 2.2]}
+      onClick={onClick}
+      onPointerOver={() => {
+        setHovered(true)
+        onHover(true)
+      }}
+      onPointerOut={() => {
+        setHovered(false)
+        onHover(false)
+      }}
+    >
+      {/* Glowing base */}
+      <mesh ref={meshRef}>
+        <cylinderGeometry args={[0.1, 0.1, 0.3]} />
+        <meshStandardMaterial
+          color={partner.color}
+          emissive={partner.color}
+          emissiveIntensity={hovered || isHovered ? 0.5 : 0.2}
+        />
+      </mesh>
+
+      {/* Pulsing ring */}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.15, 0.2]} />
+        <meshBasicMaterial color={partner.color} transparent opacity={hovered || isHovered ? 0.8 : 0.4} />
+      </mesh>
+
+      {/* Floating card */}
+      <Html
+        position={[0, 0.5, 0]}
+        center
+        style={{
+          pointerEvents: "none",
+          transform: scale(${hovered || isHovered ? 1.2 : 1}),
+          transition: "transform 0.2s ease",
+        }}
+      >
+        <div className="bg-black/80 backdrop-blur-sm rounded-lg p-2 text-white text-xs whitespace-nowrap border border-white/20">
+          <div className="font-semibold">{partner.name}</div>
+          <div className="text-gray-300">{partner.tag}</div>
         </div>
+      </Html>
+    </group>
+  )
+}
 
-       {/* COMMENTED OUT - Logos arranged in circles around the 3D globe like the reference image */}
-{/* 
-<section className="bg-transparent py-8 relative">
-  <div className="relative w-full h-[40vw] max-h-[560px]">
-    <div className="absolute inset-0 pointer-events-none">
-      {[
-        { name: "edutech", color: "bg-blue-50 text-blue-600 border-blue-200" },
-        { name: "UMS", color: "bg-green-50 text-green-600 border-green-200" },
-        { name: "ACG", color: "bg-red-50 text-red-600 border-red-200" },
-        { name: "ASK", color: "bg-purple-50 text-purple-600 border-purple-200" },
-        { name: "edutech", color: "bg-orange-50 text-orange-600 border-orange-200" },
-        { name: "UMS", color: "bg-teal-50 text-teal-600 border-teal-200" },
-        { name: "ACG", color: "bg-pink-50 text-pink-600 border-pink-200" },
-        { name: "edutech", color: "bg-indigo-50 text-indigo-600 border-indigo-200" },
-        { name: "UMS", color: "bg-cyan-50 text-cyan-600 border-cyan-200" },
-        { name: "ACG", color: "bg-yellow-50 text-yellow-600 border-yellow-200" },
-        { name: "ASK", color: "bg-emerald-50 text-emerald-600 border-emerald-200" },
-        { name: "UMS", color: "bg-rose-50 text-rose-600 border-rose-200" }
-      ].map((partner, i) => {
-        const totalLogos = 12;
-        const angle = (i / totalLogos) * Math.PI * 2;
-        const radius = 28;
-        const centerX = 50;
-        const centerY = 50;
-        
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius * 0.75;
-        
-        return (
-          <div
-            key={`inner-${i}`}
-            className={`absolute w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all duration-300 pointer-events-auto cursor-pointer transform hover:scale-110 ${partner.color}`}
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: `translate(-50%, -50%)`,
-              animation: `float-orbit 8s ease-in-out infinite ${i * 0.15}s`,
-              zIndex: 10
-            }}
-          >
-            <div className="text-xs md:text-sm font-bold text-center">
-              {partner.name}
-            </div>
-          </div>
-        );
-      })}
+// Connection lines component
+function ConnectionLines() {
+  const linesRef = useRef<any>()
 
-      {[
-        { name: "edutech", color: "bg-violet-50 text-violet-600 border-violet-200" },
-        { name: "ACG", color: "bg-amber-50 text-amber-600 border-amber-200" },
-        { name: "UMS", color: "bg-lime-50 text-lime-600 border-lime-200" },
-        { name: "ASK", color: "bg-sky-50 text-sky-600 border-sky-200" },
-        { name: "edutech", color: "bg-slate-50 text-slate-600 border-slate-200" },
-        { name: "ACG", color: "bg-gray-50 text-gray-600 border-gray-200" },
-        { name: "UMS", color: "bg-zinc-50 text-zinc-600 border-zinc-200" },
-        { name: "edutech", color: "bg-neutral-50 text-neutral-600 border-neutral-200" },
-        { name: "ASK", color: "bg-stone-50 text-stone-600 border-stone-200" },
-        { name: "ACG", color: "bg-red-50 text-red-500 border-red-200" },
-        { name: "UMS", color: "bg-blue-50 text-blue-500 border-blue-200" },
-        { name: "edutech", color: "bg-green-50 text-green-500 border-green-200" },
-        { name: "ASK", color: "bg-purple-50 text-purple-500 border-purple-200" },
-        { name: "ACG", color: "bg-orange-50 text-orange-500 border-orange-200" },
-        { name: "UMS", color: "bg-teal-50 text-teal-500 border-teal-200" },
-        { name: "edutech", color: "bg-pink-50 text-pink-500 border-pink-200" }
-      ].map((partner, i) => {
-        const totalLogos = 16;
-        const angle = (i / totalLogos) * Math.PI * 2;
-        const radius = 42;
-        const centerX = 50;
-        const centerY = 50;
-        
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius * 0.75;
-        
-        return (
-          <div
-            key={`middle-${i}`}
-            className={`absolute w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 pointer-events-auto cursor-pointer transform hover:scale-105 ${partner.color}`}
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: `translate(-50%, -50%)`,
-              animation: `float-orbit 10s ease-in-out infinite ${i * 0.12}s`,
-              zIndex: 9
-            }}
-          >
-            <div className="text-xs md:text-sm font-bold text-center">
-              {partner.name}
-            </div>
-          </div>
-        );
-      })}
-
-      {[
-        { name: "ACG", color: "bg-indigo-50 text-indigo-500 border-indigo-200" },
-        { name: "edutech", color: "bg-cyan-50 text-cyan-500 border-cyan-200" },
-        { name: "UMS", color: "bg-emerald-50 text-emerald-500 border-emerald-200" },
-        { name: "ASK", color: "bg-yellow-50 text-yellow-500 border-yellow-200" },
-        { name: "ACG", color: "bg-rose-50 text-rose-500 border-rose-200" },
-        { name: "edutech", color: "bg-violet-50 text-violet-500 border-violet-200" },
-        { name: "UMS", color: "bg-amber-50 text-amber-500 border-amber-200" },
-        { name: "ASK", color: "bg-lime-50 text-lime-500 border-lime-200" },
-        { name: "ACG", color: "bg-sky-50 text-sky-500 border-sky-200" },
-        { name: "edutech", color: "bg-slate-50 text-slate-500 border-slate-200" },
-        { name: "UMS", color: "bg-gray-50 text-gray-500 border-gray-200" },
-        { name: "ASK", color: "bg-zinc-50 text-zinc-500 border-zinc-200" },
-        { name: "ACG", color: "bg-neutral-50 text-neutral-500 border-neutral-200" },
-        { name: "edutech", color: "bg-stone-50 text-stone-500 border-stone-200" },
-        { name: "UMS", color: "bg-red-50 text-red-400 border-red-200" },
-        { name: "ASK", color: "bg-blue-50 text-blue-400 border-blue-200" },
-        { name: "ACG", color: "bg-green-50 text-green-400 border-green-200" },
-        { name: "edutech", color: "bg-purple-50 text-purple-400 border-purple-200" },
-        { name: "UMS", color: "bg-orange-50 text-orange-400 border-orange-200" },
-        { name: "ASK", color: "bg-teal-50 text-teal-400 border-teal-200" }
-      ].map((partner, i) => {
-        const totalLogos = 20;
-        const angle = (i / totalLogos) * Math.PI * 2;
-        const radius = 55;
-        const centerX = 50;
-        const centerY = 50;
-        
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius * 0.75;
-        
-        if (x < 5 || x > 95 || y < 5 || y > 95) return null;
-        
-        return (
-          <div
-            key={`outer-${i}`}
-            className={`absolute w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full shadow flex items-center justify-center hover:shadow-md transition-all duration-300 pointer-events-auto cursor-pointer transform hover:scale-105 ${partner.color}`}
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: `translate(-50%, -50%)`,
-              animation: `float-orbit 12s ease-in-out infinite ${i * 0.1}s`,
-              zIndex: 8
-            }}
-          >
-            <div className="text-xs font-bold text-center">
-              {partner.name}
-            </div>
-          </div>
-        );
-      }).filter(Boolean)}
-    </div>
-  </div>
-
-  <style>{`
-    @keyframes float-orbit {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      }
+  useFrame((state) => {
+    if (linesRef.current) {
+      linesRef.current.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime) * 0.2
     }
-    
-    @media (max-width: 768px) {
-      .floating-logo {
-        width: 3rem !important;
-        height: 3rem !important;
-      }
+  })
+
+  const points: number[] = []
+
+  connections.forEach(([startIdx, endIdx]) => {
+    const start = partners[startIdx].position
+    const end = partners[endIdx].position
+
+    // Create curved line between points
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20
+      const height = Math.sin(t * Math.PI) * 0.5 + 2.2
+
+      const x = start[0] * (1 - t) + end[0] * t
+      const y = start[1] * (1 - t) + end[1] * t
+      const z = start[2] * (1 - t) + end[2] * t
+
+      const length = Math.sqrt(x * x + y * y + z * z)
+      points.push((x / length) * height, (y / length) * height, (z / length) * height)
     }
-    
-    @media (max-width: 640px) {
-      .floating-logo {
-        width: 2.5rem !important;
-        height: 2.5rem !important;
-      }
+  })
+
+  const geometry = new BufferGeometry()
+  geometry.setAttribute("position", new BufferAttribute(new Float32Array(points), 3))
+
+  return (
+    <line ref={linesRef}>
+      <bufferGeometry attach="geometry" {...geometry} />
+      <lineBasicMaterial attach="material" color="#60a5fa" transparent opacity={0.5} />
+    </line>
+  )
+}
+
+// Stars background
+function Stars() {
+  const starsRef = useRef<any>()
+
+  useFrame(() => {
+    if (starsRef.current) {
+      starsRef.current.rotation.y += 0.0005
     }
-  `}</style>
-</section>
-*/}
+  })
 
+  const starPositions = new Float32Array(1000 * 3)
+  for (let i = 0; i < 1000; i++) {
+    starPositions[i * 3] = (Math.random() - 0.5) * 100
+    starPositions[i * 3 + 1] = (Math.random() - 0.5) * 100
+    starPositions[i * 3 + 2] = (Math.random() - 0.5) * 100
+  }
 
+  return (
+    <points ref={starsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={1000} array={starPositions} itemSize={3} />
+      </bufferGeometry>
+      <pointsMaterial size={0.1} color="#ffffff" transparent opacity={0.6} />
+    </points>
+  )
+}
 
+// Main component
+export default function TrustedPartnersShowcase() {
+  const [selectedPartner, setSelectedPartner] = useState<(typeof partners)[0] | null>(null)
+  const [hoveredPartner, setHoveredPartner] = useState<number | null>(null)
 
-        {/* Globe Section - Centered and properly spaced */}
-        <div className="w-full flex justify-center relative mt-8">
-          <div className="relative w-full h-[50vw] max-h-[600px] overflow-hidden">
-            {/* Container for the full globe - positioned to show hemisphere */}
-            <div className="absolute -bottom-[50vw] max-bottom-[-600px] left-1/2 transform -translate-x-1/2 w-[100vw] h-[100vw] max-w-[1200px] max-h-[1200px]">
-              <Canvas
-                camera={{ position: [0, 0, 6], fov: 60 }}
-                gl={{ antialias: true, alpha: true }}
-                style={{ width: "100%", height: "100%" }}
-              >
-                <Environment preset={isDark ? "night" : "dawn"} />
-                <ambientLight intensity={isDark ? 0.3 : 0.4} color="#ffffff" />
-                <directionalLight 
-                  position={[10, 10, 5]} 
-                  intensity={isDark ? 1.2 : 1.5} 
-                  color="#ffffff" 
-                />
-                <pointLight 
-                  position={[-10, -10, -5]} 
-                  intensity={isDark ? 0.4 : 0.6} 
-                  color="#22c55e" 
-                />
-                <pointLight 
-                  position={[5, -5, 10]} 
-                  intensity={isDark ? 0.3 : 0.4} 
-                  color="#3b82f6" 
-                />
+  return (
+    <div className="relative w-full h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-black overflow-hidden">
+      {/* Animated title */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10"
+      >
+        <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
+          Our Trusted{" "}
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Global Partners
+          </motion.span>
+        </h1>
+      </motion.div>
 
-                <TrustedPartners22 />
+      {/* 3D Canvas */}
+      <Canvas camera={{ position: [0, 0, 8], fov: 60 }} style={{ background: "transparent" }}>
+        <Suspense fallback={null}>
+          <ambientLight intensity={0.3} />
+          <pointLight position={[10, 10, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4f46e5" />
 
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={false}
-                  enableRotate
-                  enableDamping
-                  dampingFactor={0.08}
-                  autoRotate={true}
-                  autoRotateSpeed={0.5}
-                  rotateSpeed={0.6}
-                  minPolarAngle={0.2}
-                  maxPolarAngle={Math.PI - 0.2}
-                />
-              </Canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+          <Stars />
+          <Earth />
+          <ConnectionLines />
+
+          {partners.map((partner, index) => (
+            <PartnerPin
+              key={partner.id}
+              partner={partner}
+              onClick={() => setSelectedPartner(partner)}
+              isHovered={hoveredPartner === partner.id}
+              onHover={(hovered) => setHoveredPartner(hovered ? partner.id : null)}
+            />
+          ))}
+
+          <OrbitControls
+            enableZoom={true}
+            enablePan={false}
+            minDistance={5}
+            maxDistance={15}
+            autoRotate
+            autoRotateSpeed={0.5}
+          />
+        </Suspense>
+      </Canvas>
+
+      {/* Partner Modal */}
+      <AnimatePresence>
+        {selectedPartner && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedPartner(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Card className="w-full max-w-md bg-slate-900/90 border-slate-700 text-white">
+                <CardHeader className="relative">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-2 top-2 text-white hover:bg-slate-800"
+                    onClick={() => setSelectedPartner(null)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={selectedPartner.logo || "/placeholder.svg"}
+                      alt={selectedPartner.name}
+                      className="w-16 h-16 rounded-lg"
+                    />
+                    <div>
+                      <CardTitle className="text-xl">{selectedPartner.name}</CardTitle>
+                      <CardDescription className="text-blue-400">{selectedPartner.tag}</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 leading-relaxed">{selectedPartner.description}</p>
+                  <div className="mt-4 flex gap-2">
+                    <Button className="flex-1" style={{ backgroundColor: selectedPartner.color }}>
+                      Learn More
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-slate-600 text-white hover:bg-slate-800 bg-transparent"
+                    >
+                      Contact
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Instructions */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center text-white/70 z-10"
+      >
+        <p className="text-sm">Click on partner pins to learn more • Drag to rotate • Scroll to zoom</p>
+      </motion.div>
     </div>
   )
 }
