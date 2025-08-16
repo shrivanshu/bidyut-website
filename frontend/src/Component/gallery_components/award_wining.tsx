@@ -39,7 +39,7 @@ export default function AwardWinning() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        onMouseMove={(e) => {
+  onMouseMove={(e: React.MouseEvent<HTMLHeadingElement>) => {
           const el = e.currentTarget
           const rect = el.getBoundingClientRect()
           const x = e.clientX - rect.left
@@ -47,7 +47,7 @@ export default function AwardWinning() {
           const idx = Math.max(0, Math.min(total - 1, Math.floor(x / Math.max(1, charW))))
           setCursorIndex(idx)
         }}
-        onWheel={(e) => {
+  onWheel={(e: React.WheelEvent<HTMLHeadingElement>) => {
           // Increase energy based on how much user scrolls over the heading
           const magnitude = Math.min(30, Math.abs(e.deltaY) * 0.2)
           setScrollEnergy((prev) => Math.min(maxAmplitude, prev + magnitude))
@@ -95,60 +95,42 @@ export default function AwardWinning() {
   const awards = [
     {
       id: 1,
-      imageSrc: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
-      title: "Best Tech Startup",
-      description: "Recognized for outstanding innovation and rapid growth in the technology sector.",
-      year: "2025",
-    },
-    {
-      id: 2,
-      imageSrc: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800&q=80",
-      title: "Excellence in Design",
-      description: "Awarded for exceptional product design and user experience.",
-      year: "2024",
-    },
-    {
-      id: 3,
-      imageSrc: "https://images.unsplash.com/photo-1465101178521-c1a4c8a0f8f3?auto=format&fit=crop&w=800&q=80",
-      title: "Community Leadership",
-      description: "Honored for impactful community engagement and leadership.",
+      imageSrc: "https://plus.unsplash.com/premium_photo-1754254828698-12c96f89d7a2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      titleKey: "nationalRoboticsAward",
+      descriptionKey: "roboticsAwardDesc",
       year: "2023",
     },
     {
-      id: 4,
-      imageSrc: "https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=800&q=80",
-      title: "Sustainability Champion",
-      description: "Recognized for commitment to sustainable practices and green technology.",
-      year: "2022",
-    },
-    {
-      id: 5,
-      imageSrc: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
-      title: "Innovation in Education",
-      description: "Awarded for pioneering educational technology and learning solutions.",
+      id: 2,
+      imageSrc: "https://images.unsplash.com/photo-1754079132799-c766676cda0a?q=80&w=1236&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      titleKey: "globalYouthEmpowerment",
+      descriptionKey: "youthEmpowermentDesc",
       year: "2021",
     },
+    {
+      id: 3,
+      imageSrc: "https://plus.unsplash.com/premium_photo-1720132000141-a405eff592e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      titleKey: "edtechExcellence",
+      descriptionKey: "edtechExcellenceDesc",
+      year: "2022",
+    },
   ]
 
-  // Card position presets - responsive positioning for 5 cards
+  // Card position presets - responsive positioning
   const cardPositions = [
-    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 5 }, // center
-    { x: 220, y: 10, scale: 0.95, opacity: 0.8, zIndex: 4 }, // right 1
-    { x: 400, y: 30, scale: 0.85, opacity: 0.5, zIndex: 3 }, // right 2
-    { x: -220, y: 10, scale: 0.95, opacity: 0.8, zIndex: 4 }, // left 1
-    { x: -400, y: 30, scale: 0.85, opacity: 0.5, zIndex: 3 }, // left 2
+    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 3 }, // center
+    { x: 200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // right
+    { x: -200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // left
   ]
 
-  // Mobile card positions for 5 cards
+  // Mobile card positions
   const mobileCardPositions = [
-    { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 5 }, // center only
-    { x: 0, y: 200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
-    { x: 0, y: -200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
+    { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 3 }, // center only
     { x: 0, y: 200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
     { x: 0, y: -200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
   ]
 
-  const [displayOrder, setDisplayOrder] = useState([0, 1, 2, 3, 4])
+  const [displayOrder, setDisplayOrder] = useState([0, 1, 2])
   const [isMobile, setIsMobile] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
@@ -165,10 +147,11 @@ export default function AwardWinning() {
   // Auto-rotate every 3 seconds
   useEffect(() => {
     if (isMobile) return // Disable auto-rotation on mobile
+    
     let interval: NodeJS.Timeout
     if (!isHovering) {
       interval = setInterval(() => {
-        setDisplayOrder((prev) => [prev[1], prev[2], prev[3], prev[4], prev[0]])
+        setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
       }, 3000)
     }
     return () => clearInterval(interval)
@@ -176,11 +159,11 @@ export default function AwardWinning() {
 
   // Manual navigation
   const goNext = () => {
-    setDisplayOrder((prev) => [prev[1], prev[2], prev[3], prev[4], prev[0]])
+    setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
   }
 
   const goPrev = () => {
-    setDisplayOrder((prev) => [prev[4], prev[0], prev[1], prev[2], prev[3]])
+    setDisplayOrder((prev) => [prev[2], prev[0], prev[1]])
   }
 
   return (
@@ -226,16 +209,15 @@ export default function AwardWinning() {
             </>
           )}
 
-          <div className={`relative ${isMobile ? 'h-[340px]' : 'h-[370px] lg:h-[430px]'} w-full flex items-center justify-center overflow-hidden`}>
+          <div className={`relative ${isMobile ? 'h-[330px]' : 'h-[360px] lg:h-[420px]'} w-full flex items-center justify-center overflow-hidden`}>
             {awards.map((award, originalIndex) => {
               const posIndex = displayOrder.indexOf(originalIndex)
-              if (posIndex === -1) return null // not visible
               const positions = isMobile ? mobileCardPositions : cardPositions
               const { x, y, scale, opacity, zIndex } = positions[posIndex]
               return (
                 <motion.div
                   key={award.id}
-                  className={`absolute ${isMobile ? 'w-64 max-w-[90vw]' : 'w-56 sm:w-64 lg:w-72'} ${posIndex === 0 ? 'shadow-2xl border-green-500/40' : ''}`}
+                  className={`absolute ${isMobile ? 'w-64 max-w-[90vw]' : 'w-56 sm:w-64 lg:w-72'}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ x, y, scale, opacity }}
                   transition={{ type: "spring", stiffness: 120, damping: 15 }}
@@ -246,27 +228,25 @@ export default function AwardWinning() {
                     zIndex,
                     originX: 0.5,
                     originY: 0.5,
-                    filter: posIndex === 0 ? 'drop-shadow(0 8px 32px rgba(34,197,94,0.15))' : '',
                   }}
                 >
                   {/* Card */}
-                  <div className={`rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border-2 transition-all duration-300 hover:shadow-2xl ${isDark ? 'bg-gray-800 border-gray-700 hover:border-green-500/30' : 'bg-white border-gray-100 hover:border-green-500/20'}`}> 
+                  <div className={`rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border-2 transition-all duration-300 hover:shadow-2xl ${isDark ? 'bg-gray-800 border-gray-700 hover:border-green-500/30' : 'bg-white border-gray-100 hover:border-green-500/20'}`}>
                     {/* Image */}
                     <div className="relative w-full h-36 sm:h-40 lg:h-44 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                       <img
                         src={award.imageSrc}
-                        alt={award.title}
+                        alt={t(award.titleKey)}
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         loading="lazy"
-                        style={{borderRadius: '16px 16px 0 0'}}
                       />
                     </div>
                     {/* Content */}
                     <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow text-center">
                       <div style={{position: 'relative', height: '60px'}}>
                         <GalleryText
-                          text={award.title}
+                          text={t(award.titleKey)}
                           flex={true}
                           alpha={false}
                           stroke={false}
@@ -279,7 +259,7 @@ export default function AwardWinning() {
                         />
                       </div>
                       <p className={`text-xs sm:text-sm leading-relaxed flex-grow mb-3 sm:mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                        {award.description}
+                        {t(award.descriptionKey)}
                       </p>
                       <div className={`inline-flex items-center justify-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-300 ${isDark ? 'bg-green-900/30 text-green-400 border border-green-800' : 'bg-green-50 text-green-700 border border-green-200'}`}>
                         {award.year}
@@ -298,13 +278,7 @@ export default function AwardWinning() {
             {awards.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setDisplayOrder([
-                  index,
-                  (index + 1) % 5,
-                  (index + 2) % 5,
-                  (index + 3) % 5,
-                  (index + 4) % 5,
-                ])}
+                onClick={() => setDisplayOrder([index, (index + 1) % 3, (index + 2) % 3])}
                 className={`w-3 h-3 rounded-full transition-colors ${displayOrder[0] === index ? 'bg-green-500' : (isDark ? 'bg-gray-600' : 'bg-gray-300')}`}
                 aria-label={`Go to award ${index + 1}`}
               />
