@@ -162,69 +162,447 @@ const robotSpecs: RobotSpec[] = [
     ],
   },
   {
-    id: "g2-pro",
-    name: "G2 Pro",
-    description:
-      "Advanced humanoid robot with enhanced AI capabilities and improved mobility. Features upgraded sensors and extended battery life for professional applications.",
+    id: "g1-EDU-U1",
+    name: "G1 EDU U1",
+    description:"The Unitree G1 EDU U1 has the same features as G1 Basic with unique upgrades for better performance.",
     gallery: [
       "/media/Robot_Details.svg",
-      "/robot.mp4",
-      "/robo-dance5.mp4",
-      "/robott.mp4",
-      "/robo-main.mp4"
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
     ],
     features: [
       {
-        label: "Advanced Depth Camera",
-        detail: "Intel Realsense D455",
-        position: { top: "12%", left: "88%" },
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
         lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
+        targetPoint: { x: "51%", y: "15%" },
       },
       {
-        label: "High Resolution LiDAR",
-        detail: "Velodyne VLP-16",
-        position: { top: "28%", left: "5%" },
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
         lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
+        targetPoint: { x: "49%", y: "8%" },
       },
       {
-        label: "Enhanced Arm Control",
-        detail: "Shoulder: 3 | Elbow: 2 | Wrist: 3",
-        position: { top: "42%", left: "1%" },
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
         lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
+        targetPoint: { x: "41%", y: "35%" },
       },
       {
-        label: "Extended Battery Pack",
-        detail: "Double capacity system",
-        position: { top: "32%", left: "92%" },
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
         lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
+        targetPoint: { x: "55%", y: "30%" },
       },
       {
-        label: "Pro Motion Module",
-        detail: "Max Torque: 200 Nm",
-        position: { top: "82%", left: "8%" },
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
         lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
+        targetPoint: { x: "44%", y: "67%" },
       },
       {
-        label: "Wireless Communication",
-        detail: "5G and WiFi 6E",
-        position: { top: "52%", left: "96%" },
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
         lineDirection: "left",
-        targetPoint: { x: "52%", y: "70%" },
+        targetPoint: { x: "61%", y: "45%" },
       },
       {
-        label: "Advanced Leg Control",
-        detail: "Hip: 4 | Knee: 3 | Ankle: 3",
-        position: { top: "72%", left: "90%" },
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
         lineDirection: "left",
-        targetPoint: { x: "48%", y: "82%" },
+        targetPoint: { x: "56%", y: "67%" },
       },
     ],
   },
+  {
+    id: "g1-EDU-U2",
+    name: "G1 EDU U2",
+    description:"The Unitree G1 EDU U2 has the same features as G1 EDU U1 with unique upgrades for better performance.",
+    gallery: [
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
+        lineDirection: "left",
+        targetPoint: { x: "51%", y: "15%" },
+      },
+      {
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "49%", y: "8%" },
+      },
+      {
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
+        lineDirection: "right",
+        targetPoint: { x: "41%", y: "35%" },
+      },
+      {
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "30%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "44%", y: "67%" },
+      },
+      {
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
+        lineDirection: "left",
+        targetPoint: { x: "61%", y: "45%" },
+      },
+      {
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "56%", y: "67%" },
+      },
+    ],
+  },
+  {
+    id: "g1-EDU-U3",
+    name: "G1 EDU U3",
+    description:"The Unitree G1 EDU U3 has the same features as G1 EDU U2 with unique upgrades for better performance.",
+    gallery: [
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
+        lineDirection: "left",
+        targetPoint: { x: "51%", y: "15%" },
+      },
+      {
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "49%", y: "8%" },
+      },
+      {
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
+        lineDirection: "right",
+        targetPoint: { x: "41%", y: "35%" },
+      },
+      {
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "30%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "44%", y: "67%" },
+      },
+      {
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
+        lineDirection: "left",
+        targetPoint: { x: "61%", y: "45%" },
+      },
+      {
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "56%", y: "67%" },
+      },
+    ],
+  },
+  {
+    id: "g1-EDU-U4",
+    name: "G1 EDU U4",
+    description:"The Unitree G1 EDU U4 has the same features as G1 EDU U3 with unique upgrades for better performance.",
+    gallery: [
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
+        lineDirection: "left",
+        targetPoint: { x: "51%", y: "15%" },
+      },
+      {
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "49%", y: "8%" },
+      },
+      {
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
+        lineDirection: "right",
+        targetPoint: { x: "41%", y: "35%" },
+      },
+      {
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "30%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "44%", y: "67%" },
+      },
+      {
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
+        lineDirection: "left",
+        targetPoint: { x: "61%", y: "45%" },
+      },
+      {
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "56%", y: "67%" },
+      },
+    ],
+  },
+  {
+    id: "g1-EDU-U5",
+    name: "G1 EDU U5",
+    description:"The Unitree G1 EDU U5 has the same features as G1 EDU U4 with unique upgrades for better performance.",
+    gallery: [
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
+        lineDirection: "left",
+        targetPoint: { x: "51%", y: "15%" },
+      },
+      {
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "49%", y: "8%" },
+      },
+      {
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
+        lineDirection: "right",
+        targetPoint: { x: "41%", y: "35%" },
+      },
+      {
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "30%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "44%", y: "67%" },
+      },
+      {
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
+        lineDirection: "left",
+        targetPoint: { x: "61%", y: "45%" },
+      },
+      {
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "56%", y: "67%" },
+      },
+    ],
+  },
+  {
+    id: "g1-EDU-U6",
+    name: "G1 EDU U6",
+    description:"The Unitree G1 EDU U6 has the same features as G1 EDU U5 with unique upgrades for better performance.",
+    gallery: [
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg", 
+      "/media/Robot_Details.svg",
+      "/media/Robot_Details.svg"
+    ],
+    features: [
+      {
+        label: "Depth Camera",
+        detail: "Intel Realsense D435",
+        position: { top: "10%", left: "85%" },
+        lineDirection: "left",
+        targetPoint: { x: "51%", y: "15%" },
+      },
+      {
+        label: "3D LiDAR",
+        detail: "LD06/HDL32E",
+        position: { top: "25%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "49%", y: "8%" },
+      },
+      {
+        label: "Simple Arm Control",
+        detail: "Shoulder: 2 | Elbow: 2 | Wrist: 2",
+        position: { top: "45%", left: "2%" },
+        lineDirection: "right",
+        targetPoint: { x: "41%", y: "35%" },
+      },
+      {
+        label: "Quick Release Battery",
+        detail: "Provides lasting power",
+        position: { top: "30%", left: "90%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "30%" },
+      },
+      {
+        label: "Core Motion Module",
+        detail: "Max Torque: 125 Nm",
+        position: { top: "85%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "44%", y: "67%" },
+      },
+      {
+        label: "Hollow Joint Wiring",
+        detail: "No external cables",
+        position: { top: "50%", left: "95%" },
+        lineDirection: "left",
+        targetPoint: { x: "61%", y: "45%" },
+      },
+      {
+        label: "Leg Control System",
+        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
+        position: { top: "70%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "56%", y: "67%" },
+      },
+    ],
+  },
+  // {
+  //   id: "g2-pro",
+  //   name: "G2 Pro",
+  //   description:
+  //     "Advanced humanoid robot with enhanced AI capabilities and improved mobility. Features upgraded sensors and extended battery life for professional applications.",
+  //   gallery: [
+  //     "/media/Robot_Details.svg",
+  //     "/robot.mp4",
+  //     "/robo-dance5.mp4",
+  //     "/robott.mp4",
+  //     "/robo-main.mp4"
+  //   ],
+  //   features: [
+  //     {
+  //       label: "Advanced Depth Camera",
+  //       detail: "Intel Realsense D455",
+  //       position: { top: "12%", left: "88%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "55%", y: "18%" },
+  //     },
+  //     {
+  //       label: "High Resolution LiDAR",
+  //       detail: "Velodyne VLP-16",
+  //       position: { top: "28%", left: "5%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "52%", y: "12%" },
+  //     },
+  //     {
+  //       label: "Enhanced Arm Control",
+  //       detail: "Shoulder: 3 | Elbow: 2 | Wrist: 3",
+  //       position: { top: "42%", left: "1%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "45%", y: "35%" },
+  //     },
+  //     {
+  //       label: "Extended Battery Pack",
+  //       detail: "Double capacity system",
+  //       position: { top: "32%", left: "92%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "58%", y: "40%" },
+  //     },
+  //     {
+  //       label: "Pro Motion Module",
+  //       detail: "Max Torque: 200 Nm",
+  //       position: { top: "82%", left: "8%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "48%", y: "60%" },
+  //     },
+  //     {
+  //       label: "Wireless Communication",
+  //       detail: "5G and WiFi 6E",
+  //       position: { top: "52%", left: "96%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "52%", y: "70%" },
+  //     },
+  //     {
+  //       label: "Advanced Leg Control",
+  //       detail: "Hip: 4 | Knee: 3 | Ankle: 3",
+  //       position: { top: "72%", left: "90%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "48%", y: "82%" },
+  //     },
+  //   ],
+  // },
 ]
 
 const Select = ({
@@ -355,10 +733,11 @@ export default function RobotShowcase() {
   }, [selectedVariant])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    // <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <div className="w-full px-6 py-16 md:px-12 lg:px-16">
         {/* Search Button Section */}
-        <div className="w-full max-w-4xl mx-auto mb-8">
+        {/* <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-center">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -368,7 +747,7 @@ export default function RobotShowcase() {
               Search Robots
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Search Section - Scrollable Robot Images */}
         {isSearchOpen && (
@@ -531,12 +910,12 @@ export default function RobotShowcase() {
           {/* Left Section - Product Info */}
           <div id="robot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{displayName}</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight">{displayName}</h1>
               <h2 className="text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-10 py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Order Now
             </Button>
 
