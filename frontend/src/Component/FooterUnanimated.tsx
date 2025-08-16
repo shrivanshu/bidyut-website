@@ -7,13 +7,13 @@ export default function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-800 px-8 pt-16 pb-16 relative overflow-hidden transition-colors duration-300">
+    <footer className="bg-gray-100 dark:bg-black px-8 pt-16 pb-16 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Bidyut Technologies Section */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("BidyutTechnologies")}</h3>
+            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("Bidyut Technologies")}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t("footerDescription")}</p>
           </div>
 

@@ -231,7 +231,7 @@ export default function InteractiveGallery() {
 
   const { isDark, toggleTheme } = useTheme();
   return (
-    <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}> 
+    <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}> 
       <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-10 w-64 h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
         <div className="absolute bottom-20 right-10 w-48 h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>

@@ -54,7 +54,7 @@ const GalleryHero: React.FC = () => {
       </video>
 
       {/* Dark overlay for better text readability */}
-      <div className={`absolute inset-0 z-10 ${isDark ? 'bg-black/60' : 'bg-black/40'} transition-colors duration-300`} />
+      <div className={`absolute inset-0 z-10 ${isDark ? 'bg-black' : 'bg-black/40'} transition-colors duration-300`} />
 
       {/* Content */}
       <motion.div
