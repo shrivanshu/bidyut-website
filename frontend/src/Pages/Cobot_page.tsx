@@ -3,7 +3,7 @@ import Header from '../Component/Header';
 import CobotVariants from '../Component/Cobot_components/CobotVariants';
 import CobotDetail from '../Component/Cobot_components/CobotDetail';
 import { ThemeProvider } from '../contexts/ThemeContext';
-import HeroSection from '@/Component/Cobot_components/heroSection';
+import HeroSection from '../Component/Cobot_components/heroSection';
 
 function Cobot_page() {
   return (

@@ -5,7 +5,7 @@ import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videos = ["/robott.mp4", "/robot.mp4", "/robo-main.mp4"];
+  const videos = ["/herorobo1.mp4", "/herorobot2.mp4", "/robo-main.mp4"];
 
   useEffect(() => {
     const interval = setInterval(() => {
