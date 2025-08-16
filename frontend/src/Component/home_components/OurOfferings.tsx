@@ -195,7 +195,7 @@ export default function OfferingsCarousel() {
   const displayedCardRelativePositions = [-3, -2, -1, 0, 1, 2, 3]
 
   return (
-    <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="relative w-full py-12 overflow-hidden flex flex-col justify-center items-center bg-white dark:bg-black transition-colors duration-300">
       <div className="text-center relative z-10 w-full flex flex-col justify-center items-center gap-4 px-4">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">
           <HomeHeroText
@@ -213,12 +213,11 @@ export default function OfferingsCarousel() {
           At Bidyut, we advance learning with robotics and coding platforms in line with the New Education Policy. Our Robotic Labs give students hands-on, STREAM-based education to boost creativity, problem-solving, and tech skills for the future.
         </p>
 
-
         <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">
           Explore our offerings and see how each initiative transforms learning.
           </p>
         <div
-          className="relative flex justify-center items-center h-[600px] md:h-[700px] bg-[#cff5ea] dark:bg-gray-800 w-full curved-box overflow-hidden"
+          className="relative flex justify-center items-center h-[600px] md:h-[700px] bg-[#cff5ea] dark:bg- w-full curved-box overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => {
             setIsHovered(false)
@@ -247,7 +246,7 @@ export default function OfferingsCarousel() {
                 onMouseEnter={() => setHoveredCardIndex(relativePos)}
                 onMouseLeave={() => setHoveredCardIndex(null)}
               >
-                <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-xl py-6 px-3 flex flex-col items-center text-center h-[420px] md:h-[480px] max-w-[400px] w-full gap-4 transition-all duration-300 ${
+                <div className={`bg-white dark:bg-black rounded-xl shadow-xl py-6 px-3 flex flex-col items-center text-center h-[420px] md:h-[480px] max-w-[400px] w-full gap-4 transition-all duration-300 ${
                   relativePos === 0 ? 'ring-2 ring-[#2ecc71] ring-opacity-50' : ''
                 } ${isCardHovered ? 'shadow-2xl transform scale-105' : ''}`}>
                   <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
