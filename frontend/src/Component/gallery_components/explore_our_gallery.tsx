@@ -1,10 +1,15 @@
 "use client"
 
 
-import { useState, useRef } from "react"
+import { useState, useRef, useMemo } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 import GalleryText from '../../Text_Animation/GalleryText';
+
+
+const gridSpacing = 500 // Balanced spacing for filled look
+const rows = 4 // Fewer images for performance
+const cols = 4
 
 interface ImageItem {
   id: number
@@ -18,10 +23,10 @@ interface ImageItem {
 
 const generateBaseImages = (): ImageItem[] => {
   const images = []
-  const gridSpacing = 800 // Equal distance between images
-  const rows = 8
-  const cols = 8
-  const centerOffset = ((rows - 1) * gridSpacing) / 2
+  const gridSpacing = 500 // Match main gridSpacing
+  const rows = 4
+  const cols = 4
+  const centerOffset = ((cols - 1) * gridSpacing) / 2
 
   const imageData = [
     { alt: "Modern Architecture", title: "Contemporary Design" },
@@ -99,24 +104,21 @@ const generateBaseImages = (): ImageItem[] => {
       const x = col * gridSpacing - centerOffset
       const y = row * gridSpacing - centerOffset
 
-      // Add slight random variation to avoid perfect grid monotony
-      const randomOffsetX = (Math.random() - 0.5) * 100
-      const randomOffsetY = (Math.random() - 0.5) * 100
-
+      // Remove random offset for strict grid, pick size based on grid
       const sizes = ["small", "medium", "large"] as const
-      const size = sizes[Math.floor(Math.random() * sizes.length)]
-
+      // Alternate sizes for visual interest, but avoid overlap
+      const size = sizes[(row + col) % sizes.length]
       images.push({
         id: imageIndex + 1,
-        src: `/placeholder.svg?height=${size === "small" ? 300 : size === "medium" ? 400 : 500}&width=${size === "small" ? 450 : size === "medium" ? 600 : 750}&query=${encodeURIComponent(imageData[imageIndex].alt)}`,
+        src: `/placeholder.svg?height=${size === "small" ? 210 : size === "medium" ? 270 : 330}&width=${size === "small" ? 280 : size === "medium" ? 360 : 440}&query=${encodeURIComponent(imageData[imageIndex].alt)}`,
         alt: imageData[imageIndex].alt,
         title: imageData[imageIndex].title,
         size,
         position: {
-          x: x + randomOffsetX,
-          y: y + randomOffsetY,
+          x: x,
+          y: y,
         },
-        depth: 0.6 + Math.random() * 0.4, // Random depth between 0.6 and 1.0
+        depth: 0.7 + Math.random() * 0.3, // Slight random depth
       })
 
       imageIndex++
@@ -129,43 +131,46 @@ const generateBaseImages = (): ImageItem[] => {
 const generateInfiniteImages = (
   dragX: number,
   dragY: number,
-  // viewportWidth: number,
-  // viewportHeight: number,
+  gridSpacing: number,
+  rows: number,
+  cols: number
 ): ImageItem[] => {
+  // Memoize base images for performance
   const baseImages = generateBaseImages()
-  const tileSize = 6400 // Size of one tile (8x8 grid with 800px spacing)
+  const tileSizeX = gridSpacing * cols
+  const tileSizeY = gridSpacing * rows
   const infiniteImages: ImageItem[] = []
 
   // Calculate which tiles are visible based on current drag position
-  const centerTileX = Math.floor(-dragX / tileSize)
-  const centerTileY = Math.floor(-dragY / tileSize)
+  const centerTileX = Math.floor(-dragX / tileSizeX)
+  const centerTileY = Math.floor(-dragY / tileSizeY)
 
-  // Render 3x3 grid of tiles around the current position for seamless infinite scrolling
-  for (let tileY = centerTileY - 1; tileY <= centerTileY + 1; tileY++) {
-    for (let tileX = centerTileX - 1; tileX <= centerTileX + 1; tileX++) {
-  baseImages.forEach((image) => {
+  // Only render 2x2 grid of tiles for performance
+  for (let tileY = centerTileY; tileY <= centerTileY + 1; tileY++) {
+    for (let tileX = centerTileX; tileX <= centerTileX + 1; tileX++) {
+      baseImages.forEach((image) => {
         infiniteImages.push({
           ...image,
-          // id: `${tileX}-${tileY}-${image.id}`,
           position: {
-            x: image.position.x + tileX * tileSize,
-            y: image.position.y + tileY * tileSize,
+            x: image.position.x + tileX * tileSizeX,
+            y: image.position.y + tileY * tileSizeY,
           },
         })
       })
     }
   }
 
-  return infiniteImages
+  // Limit number of images rendered for performance
+  return infiniteImages.slice(0, 32)
 }
 
 export default function InteractiveGallery() {
   const [isExpanded, setIsExpanded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-
   const dragX = useMotionValue(0)
   const dragY = useMotionValue(0)
 
+  // Memoize transforms for performance
   const backgroundX1 = useTransform(dragX, [-20000, 20000], [-1000, 1000])
   const backgroundY1 = useTransform(dragY, [-20000, 20000], [-1000, 1000])
   const backgroundX2 = useTransform(dragX, [-20000, 20000], [-600, 600])
@@ -178,27 +183,28 @@ export default function InteractiveGallery() {
   const sceneX = dragX
   const sceneY = dragY
 
-  const backgroundSpringX1 = useSpring(backgroundX1, { stiffness: 80, damping: 25, mass: 1.2 })
-  const backgroundSpringY1 = useSpring(backgroundY1, { stiffness: 80, damping: 25, mass: 1.2 })
-  const backgroundSpringX2 = useSpring(backgroundX2, { stiffness: 120, damping: 20, mass: 1 })
-  const backgroundSpringY2 = useSpring(backgroundY2, { stiffness: 120, damping: 20, mass: 1 })
-  const backgroundSpringX3 = useSpring(backgroundX3, { stiffness: 160, damping: 18, mass: 0.8 })
-  const backgroundSpringY3 = useSpring(backgroundY3, { stiffness: 160, damping: 18, mass: 0.8 })
-  const backgroundSpringX4 = useSpring(backgroundX4, { stiffness: 200, damping: 15, mass: 0.6 })
-  const backgroundSpringY4 = useSpring(backgroundY4, { stiffness: 200, damping: 15, mass: 0.6 })
+  const backgroundSpringX1 = useSpring(backgroundX1, { stiffness: 40, damping: 30, mass: 1 })
+  const backgroundSpringY1 = useSpring(backgroundY1, { stiffness: 40, damping: 30, mass: 1 })
+  const backgroundSpringX2 = useSpring(backgroundX2, { stiffness: 60, damping: 25, mass: 0.8 })
+  const backgroundSpringY2 = useSpring(backgroundY2, { stiffness: 60, damping: 25, mass: 0.8 })
+  const backgroundSpringX3 = useSpring(backgroundX3, { stiffness: 80, damping: 22, mass: 0.6 })
+  const backgroundSpringY3 = useSpring(backgroundY3, { stiffness: 80, damping: 22, mass: 0.6 })
+  const backgroundSpringX4 = useSpring(backgroundX4, { stiffness: 100, damping: 18, mass: 0.5 })
+  const backgroundSpringY4 = useSpring(backgroundY4, { stiffness: 100, damping: 18, mass: 0.5 })
 
-  const sceneSpringX = useSpring(sceneX, { stiffness: 100, damping: 30, mass: 1.5 })
-  const sceneSpringY = useSpring(sceneY, { stiffness: 100, damping: 30, mass: 1.5 })
+  const sceneSpringX = useSpring(sceneX, { stiffness: 60, damping: 35, mass: 1 })
+  const sceneSpringY = useSpring(sceneY, { stiffness: 60, damping: 35, mass: 1 })
 
-  const handleExploreClick = () => {
-    setIsExpanded(true)
-  }
-
-  const handleCloseGallery = () => {
-    setIsExpanded(false)
-    dragX.set(0)
-    dragY.set(0)
-  }
+  // Memoize image generation for performance
+  const infiniteImages = useMemo(() => {
+    return generateInfiniteImages(
+      dragX.get(),
+      dragY.get(),
+      gridSpacing,
+      rows,
+      cols
+    )
+  }, [dragX.get(), dragY.get()])
 
   const getImageDimensions = (size: "small" | "medium" | "large") => {
     switch (size) {
@@ -213,12 +219,15 @@ export default function InteractiveGallery() {
     }
   }
 
-  const currentDragX = dragX.get()
-  const currentDragY = dragY.get()
-  const infiniteImages = generateInfiniteImages(
-  currentDragX,
-  currentDragY
-  )
+  // Always allow closing gallery
+  const handleExploreClick = () => {
+    setIsExpanded(true)
+  }
+  const handleCloseGallery = () => {
+    setIsExpanded(false)
+    dragX.set(0)
+    dragY.set(0)
+  }
 
   const { isDark, toggleTheme } = useTheme();
   return (
@@ -329,9 +338,11 @@ export default function InteractiveGallery() {
               perspective: "1000px",
             }}
           >
+            {/* Always on top, pointer-events-auto */}
             <button
               onClick={handleCloseGallery}
-              className="absolute top-6 right-6 z-60 w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm"
+              className="absolute top-6 right-6 z-[100] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm pointer-events-auto"
+              style={{ pointerEvents: 'auto' }}
             >
               ✕
             </button>
@@ -357,7 +368,7 @@ export default function InteractiveGallery() {
             </div>
 
             <motion.div
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+              className="fixed inset-0 w-full h-full cursor-grab active:cursor-grabbing z-50"
               drag
               dragElastic={0.05}
               dragMomentum={true}
@@ -369,6 +380,7 @@ export default function InteractiveGallery() {
               style={{
                 transform: "translate3d(0,0,0)",
                 backfaceVisibility: "hidden",
+                pointerEvents: 'auto',
               }}
             >
               {/* --- MOVING GRID BACKGROUND --- */}
@@ -466,31 +478,30 @@ export default function InteractiveGallery() {
                   willChange: "transform",
                 }}
               >
-                {infiniteImages.map((image, index) => {
+                {infiniteImages.map((image: ImageItem, index: number) => {
                   const dimensions = getImageDimensions(image.size)
-
                   return (
                     <motion.div
-                      key={image.id}
+                      key={image.id + '-' + index}
                       className="absolute pointer-events-auto select-none"
                       initial={{
                         x: image.position.x,
                         y: image.position.y,
-                        scale: 0,
+                        scale: 0.9,
                         opacity: 0,
-                        rotateZ: Math.random() * 6 - 3,
+                        rotateZ: 0,
                       }}
                       animate={{
                         scale: 1,
                         opacity: 1,
-                        rotateZ: Math.random() * 3 - 1.5,
+                        rotateZ: 0,
                       }}
                       transition={{
                         type: "spring",
-                        stiffness: 400,
-                        damping: 35,
-                        delay: index * 0.005, // Reduced delay for infinite images
-                        duration: 0.8,
+                        stiffness: 120,
+                        damping: 20,
+                        delay: 0,
+                        duration: 0.5,
                       }}
                       style={{
                         transform: "translate3d(0,0,0)",
@@ -503,27 +514,26 @@ export default function InteractiveGallery() {
                         <motion.img
                           src={image.src || "/placeholder.svg"}
                           alt={image.alt}
-                          className="object-cover transition-all duration-500 select-none border border-white/10 cursor-pointer"
+                          className="object-cover transition-all duration-300 select-none border border-white/10 cursor-pointer"
                           style={{
                             width: dimensions.width,
                             height: dimensions.height,
                             filter: `brightness(${0.9 + image.depth * 0.1}) saturate(${0.98 + image.depth * 0.02}) contrast(${1.02 + image.depth * 0.03})`,
-                            boxShadow: `0 ${15 + image.depth * 20}px ${30 + image.depth * 35}px rgba(0,0,0,${0.4 + image.depth * 0.2}), 0 0 0 1px rgba(255,255,255,0.08)`,
+                            boxShadow: `0 ${10 + image.depth * 10}px ${20 + image.depth * 20}px rgba(0,0,0,${0.3 + image.depth * 0.1}), 0 0 0 1px rgba(255,255,255,0.08)`,
                             borderRadius: "6px",
                           }}
                           draggable={false}
                           whileHover={{
-                            scale: 1.06,
+                            scale: 1.04,
                             rotateZ: 0,
                             filter: "brightness(1.1) saturate(1.05) contrast(1.05)",
-                            boxShadow: `0 ${25 + image.depth * 30}px ${50 + image.depth * 50}px rgba(0,0,0,${0.5 + image.depth * 0.3}), 0 0 0 2px rgba(255,255,255,0.15)`,
-                            transition: { duration: 0.3, ease: "easeOut" },
+                            boxShadow: `0 ${15 + image.depth * 15}px ${30 + image.depth * 30}px rgba(0,0,0,${0.4 + image.depth * 0.2}), 0 0 0 2px rgba(255,255,255,0.15)`,
+                            transition: { duration: 0.2, ease: "easeOut" },
                           }}
                         />
-
                         <motion.div
                           className="absolute -bottom-16 left-0 right-0 text-center pointer-events-none opacity-0 group-hover:opacity-100 bg-black/70 backdrop-blur-sm px-3 py-2 mx-2 border border-white/10"
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                         >
                           <div style={{position: 'relative', height: '32px'}}>
                             <GalleryText
