@@ -98,7 +98,7 @@ export default function KnowUsMore() {
     <section
       ref={sectionRef}
       className={`py-20 px-4 flex flex-col items-center justify-center transition-colors duration-300 ${
-        isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+        isDark ? 'bg-black' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
       }`}
     >
       {/* Enhanced Heading */}
