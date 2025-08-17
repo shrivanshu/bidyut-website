@@ -7,7 +7,8 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
   const { isDark } = useTheme();
   
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
+    // <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
+    <div className="bg-white dark:bg-black min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Image first on mobile */}
         <div className="flex justify-center md:order-1 order-1 h-full">
