@@ -444,9 +444,11 @@ function RobotShowcase() {
   }, [selectedVariant, selectedCobot]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}> 
+      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}></div>
       <div className="w-full px-6 py-16 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
-        {/* Search Button Section */}
+        {/*
+        Search Button Section
         <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-center">
             <button
@@ -457,10 +459,11 @@ function RobotShowcase() {
             </button>
           </div>
         </div>
+        */}
 
         {/* Search Section - Scrollable Cobot Images */}
         {isSearchOpen && (
-          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-gray-800/50 rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-black rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             {/* Search Input */}
             <div className="mb-6">
               <div className="relative">
@@ -582,42 +585,40 @@ function RobotShowcase() {
           </div>
         )}
 
-        {/*
-        Header Dropdown
-        <div className="w-full max-w-4xl mx-auto mb-20">
-          <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-            <SelectTrigger
-              className="w-full bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
-              <ChevronDown className="h-5 w-5 opacity-50 dark:opacity-70" />
-            </SelectTrigger>
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50">
-                {robotSpecs.map((spec) => (
-                  <div
-                    key={spec.id}
-                    className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
-                    onClick={() => {
-                      setSelectedVariant(spec.id);
-                      setSelectedCobot(null);
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    {spec.name}
-                  </div>
-                ))}
-              </div>
-            )}
-          </Select>
-        </div>
-        */}
+{/* Header Dropdown */}
+<div className="w-full max-w-4xl mx-auto mb-10">
+  <Select value={selectedVariant} onValueChange={setSelectedVariant}>
+    <SelectTrigger
+      className="w-full bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-lg text-gray-900 dark:text-white"
+      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+    >
+      <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+      <ChevronDown className="h-5 w-5 opacity-50 dark:opacity-70" />
+    </SelectTrigger>
+    {isDropdownOpen && (
+      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50">
+        {robotSpecs.map((spec) => (
+          <div
+            key={spec.id}
+            className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
+            onClick={() => {
+              setSelectedVariant(spec.id);
+              setSelectedCobot(null);
+              setIsDropdownOpen(false);
+            }}
+          >
+            {spec.name}
+          </div>
+        ))}
+      </div>
+    )}
+  </Select>
+</div>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left Section - Product Info */}
-          <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-black rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{displayName}</h1>
               <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">Technical Specifications</h2>

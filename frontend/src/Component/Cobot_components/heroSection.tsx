@@ -2,13 +2,13 @@ import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-4 py-16 relative">
+    <section className="min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 py-16 relative">
       {/* Target Cursor Effect */}
       <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
 
-      {/* Top tagline */}
-      <div className="text-center font-poppins mb-8">
-        <p className="text-sm md:text-xl font-semibold text-[#0acf83] dark:text-[#0acf83] tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
+  {/* Top tagline */}
+  <div className="text-center font-poppins mb-8 pt-12">
+        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
       </div>
 
       {/* Main headline */}
@@ -19,7 +19,7 @@ export default function HeroSection() {
       </div>
 
       {/* Description paragraph */}
-      <div className="text-center max-w-5xl">
+      <div className="text-center max-w-5hexl">
         <p className="text-[#00000070] text-sm md:text-lg  dark:text-gray-400 font-poppins font-semibold leading-relaxed cursor-target">
           At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
           Discover a new way to build, program, and solve real-world challenges with creativity.
@@ -29,15 +29,11 @@ export default function HeroSection() {
       {/* Video container */}
       <div className="mb-16 w-full max-w-6xl">
         <div className="relative aspect-video rounded-lg overflow-hidden ">
-          <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-            <source src="/robo-dance5.mp4" type="video/mp4" />
-            {/* Fallback image if video doesn't load */}
-            <img
-              src="/placeholder.svg?height=400&width=600"
-              alt="Robotics demonstration"
-              className="w-full h-full object-cover"
-            />
-          </video>
+          <img
+            src="/quadruped.gif"
+            alt="Robotics demonstration"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
