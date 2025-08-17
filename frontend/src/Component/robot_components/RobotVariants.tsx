@@ -960,7 +960,7 @@ export default function RobotShowcase() {
                 <img
                   src="/media/Robot_Details.svg"
                   alt={currentSpec.name}
-                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />
               </div>
 
