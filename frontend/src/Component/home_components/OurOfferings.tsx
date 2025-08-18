@@ -11,11 +11,11 @@ interface Offering {
 }
 
 const offerings: Offering[] = [
-  { image: "https://image.slidesdocs.com/responsive-images/background/3d-rendering-of-ai-robot-computing-with-urban-landscape-in-the-powerpoint-background_7de53013b7__960_540.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
-  { image: "https://tse4.mm.bing.net/th/id/OIP.a4lnSyRZqSjtnROwkCREBQHaFE", titleKey: "smartProgress", descriptionKey: "smartProgressDesc" },
-  { image: "https://tse3.mm.bing.net/th/id/OIP.crDgRkCNEchst1MEOnDR0wHaE8", titleKey: "interactiveWorkshops", descriptionKey: "interactiveWorkshopsDesc" },
-  { image: "https://ai-techpark.com/wp-content/uploads/2022/08/CardinalOps-960x540.jpg", titleKey: "roboticsLabs", descriptionKey: "roboticsLabsDesc" },
-  { image: "https://static.vecteezy.com/system/resources/thumbnails/035/580/504/small_2x/ai-generated-artificial-intelligence-robot-thinking-modern-concept-free-photo.jpg", titleKey: "personalizedMentorship", descriptionKey: "personalizedMentorshipDesc" }
+  { image: "/public/OurOfferingImages/AiCard.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
+  { image: "public/OurOfferingImages/Collabrativeimage.jpg", titleKey: "Collabration", descriptionKey: "collabrationDesc" },
+  { image: "public/OurOfferingImages/Learningexpi.jpg", titleKey: "Learningexpi", descriptionKey: "learningexpisDesc" },
+  { image: "public/OurOfferingImages/Smartprogess.jpg", titleKey: "ProgressTracking", descriptionKey: "ProgressTrackingDesc" },
+  { image: "public/OurOfferingImages/Ai2.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" }
 ]
 
 
@@ -168,45 +168,53 @@ export default function OfferingsSection() {
               )
             })}
 
-            {/* Controls */}
-            <div className="pointer-events-auto">
+            
+          </div>
+
+          {/* Controls below - arrows on far left/right, dots centered */}
+          <div className="mt-8 flex items-center justify-between gap-4">
+            <div className="flex-1 flex justify-start">
               <button
                 onClick={prev}
                 aria-label="Previous"
-                className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
+                className="h-10 w-10 rounded-full bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
               >
                 <svg viewBox="0 0 24 24" className="mx-auto h-5 w-5 text-gray-800 dark:text-white">
                   <path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
+            </div>
+
+            <div className="flex-1 flex justify-center">
+              <div className="flex items-center gap-2">
+                {offerings.map((_, i) => {
+                  const active = i === index
+                  return (
+                    <button
+                      key={i}
+                      aria-label={`Go to ${i + 1}`}
+                      onClick={() => goTo(i)}
+                      className={[
+                        "h-2.5 rounded-full transition-all",
+                        active ? "w-8 bg-emerald-500" : "w-2.5 bg-gray-300 dark:bg-white/20 hover:bg-gray-400 dark:hover:bg-white/30",
+                      ].join(" ")}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="flex-1 flex justify-end">
               <button
                 onClick={next}
                 aria-label="Next"
-                className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
+                className="h-10 w-10 rounded-full bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
               >
                 <svg viewBox="0 0 24 24" className="mx-auto h-5 w-5 text-gray-800 dark:text-white">
                   <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
             </div>
-          </div>
-
-          {/* Dots */}
-          <div className="mt-6 flex justify-center gap-2">
-            {offerings.map((_, i) => {
-              const active = i === index
-              return (
-                <button
-                  key={i}
-                  aria-label={`Go to ${i + 1}`}
-                  onClick={() => goTo(i)}
-                  className={[
-                    "h-2.5 rounded-full transition-all",
-                    active ? "w-8 bg-emerald-500" : "w-2.5 bg-gray-300 dark:bg-white/20 hover:bg-gray-400 dark:hover:bg-white/30",
-                  ].join(" ")}
-                />
-              )
-            })}
           </div>
         </div>
       </div>

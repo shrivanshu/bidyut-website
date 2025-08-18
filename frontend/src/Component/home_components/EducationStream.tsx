@@ -343,7 +343,7 @@ export default function EducationStream() {
         {/* Horizontal Scroller for Video Thumbnails */}
         <div className="w-full">
           <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">Tap to view other videos</p>
-          <div className="flex overflow-x-auto space-x-3 pb-4 pt-2 -mx-4 px-4">
+          <div className="flex overflow-x-auto scrollbar-hide space-x-3 pb-4 pt-2 -mx-4 px-4">
             {videoOptions.map((video, index) => (
               <div
                 key={video.src}

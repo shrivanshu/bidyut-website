@@ -605,7 +605,7 @@ export default function RobotShowcase() {
 
             {/* Scrollable Robot Images - Single Line */}
             <div 
-              className="overflow-x-auto scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-700 pb-2 cursor-grab active:cursor-grabbing select-none"
+              className="overflow-x-auto scrollbar-hide pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
                 e.preventDefault()
