@@ -1,4 +1,67 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
+
+// Animated Banner Component
+function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number, iLetterRef: React.RefObject<HTMLSpanElement> }) {
+  // Banner is blank, only color
+
+  // Banner position logic
+  // Morphing logic
+  let morph = 0;
+  if (scrollProgress > 0.3 && scrollProgress < 0.95) {
+    morph = (scrollProgress - 0.3) / 0.65; // 0 to 1, starts earlier
+  } else if (scrollProgress >= 0.95) {
+    morph = 1;
+  }
+
+  // Initial banner size
+  const initialWidth = 1600;
+  const initialHeight = 180;
+  const dotSize = 28;
+  const dotBorderRadius = 16;
+
+  // Interpolate size and border-radius
+  const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize;
+  const height = morph < 1 ? initialHeight - (initialHeight - dotSize) * morph : dotSize;
+  const borderRadius = morph < 1 ? 40 + (dotBorderRadius - 40) * morph + (width/2 - dotBorderRadius) * morph : dotBorderRadius;
+
+  let bannerStyle: CSSProperties = {
+    position: 'fixed',
+    left: '42%',
+    top: scrollProgress < 0.95 ? '2%' : undefined,
+    transform: morph < 1 ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
+    width,
+    height,
+    background: 'linear-gradient(90deg, #e0e7ec 0%, #34d399 100%)',
+    boxShadow: morph < 1 ? '0 12px 48px rgba(34,197,94,0.18)' : '0 0 32px rgba(34,197,94,0.22)',
+    borderRadius,
+    zIndex: 1001,
+    overflow: 'hidden',
+    border: '1px solid #34d399',
+    opacity: scrollProgress > 0.98 ? 0 : 1,
+    transition: 'all 0.7s cubic-bezier(.4,2,.3,1)',
+  };
+  // Move banner to 'i' when scrollProgress > 0.95
+  if (scrollProgress > 0.95 && iLetterRef.current) {
+    const iRect = iLetterRef.current.getBoundingClientRect();
+    bannerStyle = {
+      ...bannerStyle,
+      position: 'fixed',
+      left: iRect.left + iRect.width / 2,
+      top: iRect.top + iRect.height * 0.56, // land a bit lower on the 'i'
+      transform: 'translate(-50%, -50%)',
+      width: dotSize,
+      height: dotSize,
+      borderRadius: dotBorderRadius,
+      opacity: 1,
+  boxShadow: '0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)',
+  animation: 'glow-pulse-interactive 2.5s ease-in-out infinite',
+  transition: 'all 1.2s cubic-bezier(.4,2,.3,1)',
+    };
+  }
+  return (
+    <div style={bannerStyle}></div>
+  );
+}
 import { Instagram, Facebook, Twitter } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
@@ -8,7 +71,7 @@ export default function Footer() {
   const [showAnimation, setShowAnimation] = useState(false)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
-  const dotRef = useRef<HTMLDivElement>(null)
+  // Removed dotRef, not needed
 
   useEffect(() => {
     let animationFrameId: number | null = null
@@ -46,126 +109,14 @@ export default function Footer() {
     }
   }, [])
 
-  const getDotStyle = (): CSSProperties => {
-    if (!showAnimation) return { opacity: 0 }
-
-    // Phases: 0–0.4 banner, 0.4–0.7 morph, 0.7–1 travel
-    const initialWidth = Math.min(window.innerWidth * 0.95, 2000)
-    const initialHeight = 110
-    const finalSize = 16
-
-    const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
-    const easeInOutQuint = (t: number) =>
-      t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
-
-    const colorProgress = Math.max(0, Math.min(1, (scrollProgress - 0.25) / 0.4))
-    const easedColorProgress = easeInOutQuint(colorProgress)
-
-    // Neutral gray -> emerald/cyan neon
-    const r = Math.round(95 - (95 - 34) * easedColorProgress)
-    const g = Math.round(115 + (210 - 115) * easedColorProgress)
-    const b = Math.round(115 + (160 - 115) * easedColorProgress)
-
-    const shapeProgress = Math.max(0, Math.min(1, (scrollProgress - 0.4) / 0.3))
-    const easedShapeProgress = easeOutQuart(shapeProgress)
-
-    const currentWidth = initialWidth - (initialWidth - finalSize) * easedShapeProgress
-    const currentHeight = initialHeight - (initialHeight - finalSize) * easedShapeProgress
-    const borderRadius =
-      Math.min(currentWidth, currentHeight) * 0.5 * easedShapeProgress +
-      16 * (1 - easedShapeProgress)
-
-    // Centered by default (banner region)
-    let currentX = 50
-    let currentY = 50
-
-    // Snap to i-dot when near completion
-    if (scrollProgress > 0.95 && iLetterRef.current) {
-      const iRect = iLetterRef.current.getBoundingClientRect()
-      const targetX = iRect.left + iRect.width / 2
-      const targetY = iRect.top + iRect.height * 0.18
-
-      return {
-        position: "fixed",
-        left: `${targetX}px`,
-        top: `${targetY}px`,
-        width: `${finalSize}px`,
-        height: `${finalSize}px`,
-        backgroundColor: `rgb(${r}, ${g}, ${b})`,
-        borderRadius: "50%",
-        transform: "translate(-50%, -50%)",
-        opacity: 1,
-        zIndex: 1000,
-        boxShadow: "0 0 22px rgba(34, 197, 94, 0.55)",
-        pointerEvents: "none",
-        transition: "none",
-        animation: "float-gentle 3s ease-in-out infinite",
-      }
-    }
-
-    const glowIntensity = Math.max(0, (scrollProgress - 0.3) * 2)
-    const shadowBlur = Math.max(currentWidth, currentHeight) / 3
-    const scaleEffect = 1 + Math.sin(scrollProgress * Math.PI * 2) * 0.012
-    const rotationEffect = scrollProgress > 0.6 ? (scrollProgress - 0.6) * 220 : 0
-
-    return {
-      position: "fixed",
-      left: `${currentX}%`,
-      top: `${currentY}%`,
-      width: `${currentWidth}px`,
-      height: `${currentHeight}px`,
-      background:
-        scrollProgress > 0.3
-          ? `linear-gradient(135deg, rgba(${r},${g},${b},0.95), rgba(${Math.max(
-            0,
-            r - 15
-          )}, ${Math.min(255, g + 25)}, ${Math.max(0, b - 10)}, 0.9))`
-          : `linear-gradient(135deg, rgba(${r},${g},${b},0.8), rgba(${Math.max(
-            0,
-            r - 10
-          )}, ${Math.max(0, g - 10)}, ${Math.max(0, b - 10)}, 0.75))`,
-      borderRadius: `${borderRadius}px`,
-      transform: `translate(-50%, -50%) scale(${scaleEffect}) rotate(${rotationEffect}deg)`,
-      opacity: scrollProgress < 0.98 ? Math.max(0.85, 1 - scrollProgress * 0.1) : 0,
-      zIndex: 1000,
-      transition: "none",
-      boxShadow:
-        scrollProgress > 0.4
-          ? `0 0 ${shadowBlur}px rgba(34, 197, 94, ${0.42 + glowIntensity * 0.45}),
-             0 0 ${shadowBlur * 2}px rgba(34, 197, 94, ${0.22 + glowIntensity * 0.3}),
-             0 0 ${shadowBlur * 4}px rgba(34, 197, 94, ${0.1 + glowIntensity * 0.2})`
-          : `0 14px 46px rgba(0,0,0,0.18),
-             0 6px 18px rgba(0,0,0,0.12),
-             inset 0 1px 0 rgba(255,255,255,0.06)`,
-      pointerEvents: "none",
-      filter:
-        scrollProgress > 0.5
-          ? `blur(${Math.max(0, (scrollProgress - 0.9) * 18)}px) saturate(${1 + scrollProgress * 0.28})`
-          : `saturate(${0.85 + scrollProgress * 0.35})`,
-    }
-  }
+  // Removed getDotStyle, not needed
 
   return (
     <footer
       ref={footerRef}
-      className="relative px-8 pt-44 pb-20 overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
+      className="relative px-8 pt-44  overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
     >
-        {/* Animated Banner to Dot */}
-        <div className="absolute top-0 left-0 right-0 h-36 flex items-center justify-center pointer-events-none">
-          <div
-            ref={dotRef}
-            className="pointer-events-none"
-            style={{
-              ...getDotStyle(),
-              animation:
-                showAnimation && scrollProgress > 0.6
-                  ? "glow-pulse-interactive 2.5s ease-in-out infinite"
-                  : showAnimation && scrollProgress > 0.2
-                    ? "shimmer-effect 3s ease-in-out infinite"
-                    : "none",
-            }}
-          />
-        </div>
+  <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
 
         <div className="max-w-7xl mx-auto">
           {/* Grid */}
@@ -291,23 +242,12 @@ export default function Footer() {
           </div>
 
           {/* Brand with i target */}
-          <div className="text-center relative w-full px-1">
-            <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none w-full">
+          <div className="flex justify-center items-center w-full ">
+            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', maxWidth: '100vw', width: '100%', lineHeight: 1.05}}>
               <span>B</span>
-              <span ref={iLetterRef} className="relative inline-block">
-                <span className="relative">
-                  i
-                  <div
-                    className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full transition-all duration-500 ${
-                      scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      top: "0.4em",
-                      boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
-                      animation: scrollProgress >= 0.95 ? 'float-gentle 3s ease-in-out infinite' : 'none'
-                    }}
-                  />
-                </span>
+              <span ref={iLetterRef} className="relative inline-block w-10 h-10 ">
+                i
+                 
               </span>
               <span>dyut Innovation</span>
             </div>

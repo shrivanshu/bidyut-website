@@ -50,7 +50,7 @@ export default function FooterUnanimated() {
   return (
     <footer
       ref={footerRef}
-      className="relative px-8 pt-16 pb-12 overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
+      className="relative px-8 pt-16 pb-0 overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
     >
       {/* Removed animated banner/dot above */}
       <div className="max-w-7xl mx-auto">
@@ -177,16 +177,17 @@ export default function FooterUnanimated() {
           </div>
 
           {/* Brand with i target (dot only on i, always visible) */}
-          <div className="text-center relative w-full px-1">
-            <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none w-full">
-              <span>B</span>
+            <div className="flex justify-center items-center w-full ">
+            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', maxWidth: '100vw', width: '100%', lineHeight: 1.05}}>
+                <span>B</span>
               <span ref={iLetterRef} className="relative inline-block">
                 <span className="relative">
                   i
                   <div
-                    className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full opacity-100"
+                    className="absolute left-2/3 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full opacity-100"
                     style={{
-                      top: "0.4em",
+                      top: "0.35em",
+                      left: "42%",
                       boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
                       animation: 'float-gentle 3s ease-in-out infinite'
                     }}
