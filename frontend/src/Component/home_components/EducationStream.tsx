@@ -15,7 +15,7 @@ export default function EducationStream() {
   
   const videoOptions = [
     {
-      src: "/Science.mp4",
+      src: "public/StreamEducation/68a303e03b06b707826511.gif",
       thumbnail: "/Science.mp4",
       title: t('science'),
       description: t('scienceDescription')
