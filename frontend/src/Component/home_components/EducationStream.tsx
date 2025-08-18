@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 import HomeHeroText from '../../Text_Animation/HomeHeroText';
@@ -14,15 +15,15 @@ export default function EducationStream() {
   
   const videoOptions = [
     {
-      src: "/robo-main.mp4",
-      thumbnail: "/robo-main.mp4",
-      title: t('roboMain'),
-      description: t('roboMainDescription')
+      src: "/Science.mp4",
+      thumbnail: "/Science.mp4",
+      title: t('science'),
+      description: t('scienceDescription')
     },
     {
       src: "/robo-dance.mp4",
       thumbnail: "/robo-dance.mp4",
-      title: t('roboDance'),
+      title: t('educationTechnology'),
       description: t('roboDanceDescription')
     },
     {
@@ -42,6 +43,12 @@ export default function EducationStream() {
       thumbnail: "/robo-dance5.mp4",
       title: t('roboDance5'),
       description: t('roboDance5Description')
+    },
+    {
+      src: "/robo-main.mp4",
+      thumbnail: "/robo-main.mp4",
+      title: t('roboMain'),
+      description: t('roboMainDescription')
     },
   ];
   const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
@@ -184,8 +191,8 @@ export default function EducationStream() {
 
   const videoCardWrapper: React.CSSProperties = {
     position: "relative",
-    width: 1031, // Decreased by 5% (1085 * 0.95 = 1030.75, rounded to 1031)
-    height: 723, // Decreased by 5% (761 * 0.95 = 722.95, rounded to 723)
+    width: 800, // Reduced from 1031 to 800
+    height: 560, // Reduced from 723 to 560 (maintaining aspect ratio)
     marginTop: 60,
     marginBottom: 0,
     marginLeft: 0, // Shifted to left
@@ -198,8 +205,8 @@ export default function EducationStream() {
     position: "absolute",
     top: 0,
     left: 0,
-    width: 1031, // Decreased by 5%
-    height: 723, // Decreased by 5%
+    width: 800, // Reduced from 1031 to 800
+    height: 560, // Reduced from 723 to 560
     borderRadius: 11,
     padding: 1,
     background: "linear-gradient(90deg, #0ACF83 0%, #015031 100%)",
@@ -253,10 +260,10 @@ export default function EducationStream() {
   const thumbnailPanelStyle: React.CSSProperties = {
     position: "absolute",
     top: "50%",
-    right: -446, // Adjusted position to account for smaller main card (original -500 + 54px adjustment)
+    right: -400, // Adjusted position to account for smaller main card
     transform: "translateY(-50%)",
-    width: 692,
-    height: 327,
+    width: 600, // Reduced from 692 to 600
+    height: 280, // Reduced from 327 to 280
     borderRadius: 10,
     display: "flex",
     flexDirection: "row",
@@ -273,8 +280,8 @@ export default function EducationStream() {
   };
 
   const thumbVideoStyle = (hovered: boolean, isActive: boolean): React.CSSProperties => ({
-    width: 270,
-    height: 327,
+    width: 230, // Reduced from 270 to 230
+    height: 280, // Reduced from 327 to 280
     objectFit: "cover",
     borderRadius: 10,
     opacity: isActive ? 1 : (hovered ? 1 : 0.8),
@@ -291,7 +298,7 @@ export default function EducationStream() {
   });
 
   return (
-    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-gray-50 dark:bg-black py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
       {/* Header */}
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
@@ -317,13 +324,13 @@ export default function EducationStream() {
         <div className="relative w-full aspect-video mb-6">
           <div className="absolute inset-0 rounded-2xl p-1 bg-gradient-to-r from-emerald-500 to-emerald-700">
             <div className="relative w-full h-full bg-black rounded-xl overflow-hidden">
-              <video
+              <img
                 className="w-full h-full object-cover"
                 src={activeVideo.src}
-                autoPlay
-                muted
-                loop
-                playsInline
+                // autoPlay
+                // muted
+                // loop
+                // playsInline
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                 <h3 className="text-white font-bold text-lg mb-1">{activeVideo.title}</h3>
@@ -353,8 +360,7 @@ export default function EducationStream() {
                   loop
                   className="w-full h-full object-cover"
                   playsInline
-                  onMouseOver={(e) => e.currentTarget.play()}
-                  onMouseOut={(e) => e.currentTarget.pause()}
+                  controls={false}
                 />
               </div>
             ))}
@@ -368,12 +374,13 @@ export default function EducationStream() {
           <div style={gradientBorderStyle}>
             <div style={videoContainerStyle}>
               <video
-                style={videoStyle}
                 src={activeVideo.src}
+                className="w-full h-full object-fill"
                 autoPlay
                 muted
                 loop
                 playsInline
+                controls={false}
               />
               <div style={videoInfoStyle}>
                 <div style={videoTitleStyle}>{activeVideo.title}</div>
@@ -381,11 +388,12 @@ export default function EducationStream() {
               </div>
             </div>
           </div>
-          <div style={thumbnailPanelStyle} ref={thumbnailPanelRef}>
+          <div style={thumbnailPanelStyle} ref={thumbnailPanelRef} className="w-full h-full object-cover">
             {videoOptions.map((video, index) => (
               <video
                 key={video.src}
-                src={video.thumbnail}
+                src={video.src}
+                className="w-full h-full object-cover"
                 muted
                 loop
                 onClick={() => handleVideoClick(video, index)}
@@ -393,6 +401,7 @@ export default function EducationStream() {
                 onMouseOut={handleMouseOut}
                 style={thumbVideoStyle(hoveredIndex === index, index === currentVideoIndex)}
                 playsInline
+                controls={false}
               />
             ))}
           </div>

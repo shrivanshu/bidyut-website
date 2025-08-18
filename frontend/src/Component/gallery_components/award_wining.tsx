@@ -39,7 +39,7 @@ export default function AwardWinning() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        onMouseMove={(e) => {
+  onMouseMove={(e: React.MouseEvent<HTMLHeadingElement>) => {
           const el = e.currentTarget
           const rect = el.getBoundingClientRect()
           const x = e.clientX - rect.left
@@ -47,7 +47,7 @@ export default function AwardWinning() {
           const idx = Math.max(0, Math.min(total - 1, Math.floor(x / Math.max(1, charW))))
           setCursorIndex(idx)
         }}
-        onWheel={(e) => {
+  onWheel={(e: React.WheelEvent<HTMLHeadingElement>) => {
           // Increase energy based on how much user scrolls over the heading
           const magnitude = Math.min(30, Math.abs(e.deltaY) * 0.2)
           setScrollEnergy((prev) => Math.min(maxAmplitude, prev + magnitude))
@@ -167,7 +167,7 @@ export default function AwardWinning() {
   }
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-gradient-to-b from-gray-800 to-gray-900' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
+    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
@@ -209,16 +209,15 @@ export default function AwardWinning() {
             </>
           )}
 
-          <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[450px] lg:h-[500px]'} w-full flex items-center justify-center overflow-hidden`}>
+          <div className={`relative ${isMobile ? 'h-[330px]' : 'h-[360px] lg:h-[420px]'} w-full flex items-center justify-center overflow-hidden`}>
             {awards.map((award, originalIndex) => {
               const posIndex = displayOrder.indexOf(originalIndex)
               const positions = isMobile ? mobileCardPositions : cardPositions
               const { x, y, scale, opacity, zIndex } = positions[posIndex]
-              
               return (
                 <motion.div
                   key={award.id}
-                  className={`absolute ${isMobile ? 'w-80 max-w-[90vw]' : 'w-72 sm:w-80 lg:w-96'}`}
+                  className={`absolute ${isMobile ? 'w-64 max-w-[90vw]' : 'w-56 sm:w-64 lg:w-72'}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ x, y, scale, opacity }}
                   transition={{ type: "spring", stiffness: 120, damping: 15 }}
@@ -234,7 +233,7 @@ export default function AwardWinning() {
                   {/* Card */}
                   <div className={`rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border-2 transition-all duration-300 hover:shadow-2xl ${isDark ? 'bg-gray-800 border-gray-700 hover:border-green-500/30' : 'bg-white border-gray-100 hover:border-green-500/20'}`}>
                     {/* Image */}
-                    <div className="relative w-full h-48 sm:h-52 lg:h-56 overflow-hidden">
+                    <div className="relative w-full h-36 sm:h-40 lg:h-44 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                       <img
                         src={award.imageSrc}
@@ -244,8 +243,8 @@ export default function AwardWinning() {
                       />
                     </div>
                     {/* Content */}
-                    <div className="p-6 sm:p-7 lg:p-8 flex flex-col flex-grow text-center">
-                      <div style={{position: 'relative', height: '80px'}}>
+                    <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow text-center">
+                      <div style={{position: 'relative', height: '60px'}}>
                         <GalleryText
                           text={t(award.titleKey)}
                           flex={true}
@@ -256,13 +255,13 @@ export default function AwardWinning() {
                           italic={true}
                           textColor={isDark ? '#ffffff' : '#222222'}
                           strokeColor="#ff0000"
-                          minFontSize={28}
+                          minFontSize={22}
                         />
                       </div>
-                      <p className={`text-sm sm:text-base leading-relaxed flex-grow mb-4 sm:mb-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <p className={`text-xs sm:text-sm leading-relaxed flex-grow mb-3 sm:mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {t(award.descriptionKey)}
                       </p>
-                      <div className={`inline-flex items-center justify-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-300 ${isDark ? 'bg-green-900/30 text-green-400 border border-green-800' : 'bg-green-50 text-green-700 border border-green-200'}`}>
+                      <div className={`inline-flex items-center justify-center px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-300 ${isDark ? 'bg-green-900/30 text-green-400 border border-green-800' : 'bg-green-50 text-green-700 border border-green-200'}`}>
                         {award.year}
                       </div>
                     </div>

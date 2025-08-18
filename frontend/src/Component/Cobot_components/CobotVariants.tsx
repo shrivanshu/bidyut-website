@@ -161,8 +161,8 @@ const cobotSearchData = [
 
 const robotSpecs: RobotSpec[] = [
   {
-    id: "go2-basic",
-    name: "Go2 Basic",
+    id: "GO2-AIR",
+    name: "GO2-AIR",
     description:
       "Dummy description for Go2 Basic cobot. Compact, lightweight, and ideal for entry-level collaborative tasks.",
     gallery: [
@@ -211,8 +211,8 @@ const robotSpecs: RobotSpec[] = [
     ],
   },
   {
-    id: "go2-pro",
-    name: "Go2 Pro",
+    id: "GO2-PRO",
+    name: "GO2-PRO",
     description:
       "Dummy description for Go2 Pro cobot. Enhanced sensors and battery for professional collaborative tasks.",
     gallery: [
@@ -261,8 +261,710 @@ const robotSpecs: RobotSpec[] = [
     ],
   },
   {
-    id: "go2-enterprise",
-    name: "Go2 Enterprise",
+    id: "GO2 EDU U1",
+    name: "GO2 EDU U1",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+   
+   {
+    id: "GO2 EDU U3",
+    name: "GO2 EDU U3",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  
+  {
+    id: "GO2 EDU U4",
+    name: "GO2 EDU U4",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-W U1",
+    name: "GO2-W U1",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+    {
+    id: "GO2-W U2",
+    name: "GO2-W U2",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-W U3",
+    name: "GO2-W U3",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-W U4",
+    name: "GO2-W U4",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2--W U5",
+    name: "GO2-W U5",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-ENT U1",
+    name: "GO2-ENT U1",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+{
+    id: "GO2-ENT U2",
+    name: "GO2-ENT U2",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+{
+    id: "GO2-ENT U3",
+    name: "GO2-ENT U3",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+{
+    id: "GO2-ENT U4",
+    name: "GO2-ENT U4",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-ENT U5",
+    name: "GO2-ENT U5",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-ENT U6",
+    name: "GO2-ENT U6",
+    description:
+      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+    features: [
+      {
+        label: "Vision Sensor",
+        detail: "Enterprise camera module",
+        position: { top: "12%", left: "88%" },
+        lineDirection: "left",
+        targetPoint: { x: "55%", y: "18%" },
+      },
+      {
+        label: "LIDAR",
+        detail: "Enterprise LIDAR",
+        position: { top: "28%", left: "5%" },
+        lineDirection: "right",
+        targetPoint: { x: "52%", y: "12%" },
+      },
+      {
+        label: "Arm Control",
+        detail: "4 DOF arm",
+        position: { top: "42%", left: "1%" },
+        lineDirection: "right",
+        targetPoint: { x: "45%", y: "35%" },
+      },
+      {
+        label: "Battery",
+        detail: "Enterprise battery pack",
+        position: { top: "32%", left: "92%" },
+        lineDirection: "left",
+        targetPoint: { x: "58%", y: "40%" },
+      },
+      {
+        label: "Motion Module",
+        detail: "Torque up to 300 Nm",
+        position: { top: "82%", left: "8%" },
+        lineDirection: "right",
+        targetPoint: { x: "48%", y: "60%" },
+      },
+    ],
+  },
+  {
+    id: "GO2-ENT U7",
+    name: "GO2-ENT U7",
     description:
       "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
     gallery: [
@@ -444,9 +1146,11 @@ function RobotShowcase() {
   }, [selectedVariant, selectedCobot]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
-      <div className="w-full px-6 py-16 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
-        {/* Search Button Section */}
+     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}> 
+     
+  <div className="w-full px-6 py-6 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+        {/*
+        Search Button Section
         <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-center">
             <button
@@ -457,10 +1161,11 @@ function RobotShowcase() {
             </button>
           </div>
         </div>
+        */}
 
         {/* Search Section - Scrollable Cobot Images */}
         {isSearchOpen && (
-          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-gray-800/50 rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div className="w-full max-w-6xl mx-auto mb-12 bg-gray-50/50 dark:bg-black rounded-2xl p-8 border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             {/* Search Input */}
             <div className="mb-6">
               <div className="relative">
@@ -582,52 +1287,54 @@ function RobotShowcase() {
           </div>
         )}
 
-        {/*
-        Header Dropdown
-        <div className="w-full max-w-4xl mx-auto mb-20">
-          <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-            <SelectTrigger
-              className="w-full bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
-              <ChevronDown className="h-5 w-5 opacity-50 dark:opacity-70" />
-            </SelectTrigger>
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50">
-                {robotSpecs.map((spec) => (
-                  <div
-                    key={spec.id}
-                    className="px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
-                    onClick={() => {
-                      setSelectedVariant(spec.id);
-                      setSelectedCobot(null);
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    {spec.name}
-                  </div>
-                ))}
-              </div>
-            )}
-          </Select>
-        </div>
-        */}
+{/* Header Dropdown */}
+<div className="w-full max-w-4xl mx-auto mb-10 relative">
+  <Select value={selectedVariant} onValueChange={setSelectedVariant}>
+    <SelectTrigger
+      className="w-full bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
+      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+    >
+      <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+      <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
+    </SelectTrigger>
+    {isDropdownOpen && (
+      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
+        {robotSpecs.map((spec) => (
+          <div
+            key={spec.id}
+            className="px-6 py-3 md:py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-sm md:text-base font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
+            onClick={() => {
+              setSelectedVariant(spec.id);
+              setSelectedCobot(null);
+              setIsDropdownOpen(false);
+            }}
+          >
+            {spec.name}
+          </div>
+        ))}
+      </div>
+    )}
+  </Select>
+</div>
+
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left Section - Product Info */}
-          <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
+          <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-black rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{displayName}</h1>
-              <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">Technical Specifications</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
+             <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+  {displayName}
+</h1>
+<h2 className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">
+  Technical Specifications
+</h2>
+<p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+  {displayDescription}
+</p>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-6 md:px-10 py-2 md:py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              Order Now
-            </Button>
-
+            
             {/* Image Gallery Selector */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>

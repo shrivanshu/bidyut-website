@@ -7,18 +7,18 @@ export default function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-800 px-8 pt-16 pb-16 relative overflow-hidden transition-colors duration-300">
+    <footer className="bg-gray-100 dark:bg-black px-8 pt-16 pb-16 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Bidyut Technologies Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+          <div className="rounded-2xl border border-white/10 bg-black/20 backdrop-blur-lg shadow-lg p-6 transition-colors duration-300">
             <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("BidyutTechnologies")}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t("footerDescription")}</p>
           </div>
 
           {/* Quick Links Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+          <div className="rounded-2xl border border-white/10 bg-black/20 backdrop-blur-lg shadow-lg p-6 transition-colors duration-300">
             <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("quickLinks")}</h3>
             <ul className="space-y-3">
               {[
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+          <div className="rounded-2xl border border-white/10 bg-black/20 backdrop-blur-lg shadow-lg p-6 transition-colors duration-300">
             <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("contactInformation")}</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
@@ -84,7 +84,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
+          <div className="rounded-2xl border border-white/10 bg-black/20 backdrop-blur-lg shadow-lg p-6 transition-colors duration-300">
             <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t("newsletter")}</h3>
             <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">{t("newsletterDescription")}</p>
             <div className="space-y-3">
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center relative w-full px-1">
-          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none w-full">
+          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none   w-full">
             B
             <span className="relative">
               l

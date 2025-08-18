@@ -97,100 +97,56 @@ const EducationNews: React.FC = () => {
       author: 'Future Tech Asia Writers'
     }
   ];
+
+
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    const scrollContainer2 = scrollRef2.current;
-    if (!scrollContainer || !scrollContainer2) return;
+    const container1 = scrollRef.current;
+    const container2 = scrollRef2.current;
+    if (!container1 || !container2) return;
 
-    let scrollAmount = 0;
-    let scrollAmount2 = 0;
-    const scrollStep = 1;
-    const scrollDelay = 30;
-    let isUserScrolling = false;
-    let isUserScrolling2 = false;
+    let speed = 1; // pixels per frame
+    let speed2 = -1; // negative = opposite direction
+    let isHovering1 = false;
+    let isHovering2 = false;
 
-    const autoScroll = () => {
-      if (!isUserScrolling) {
-        scrollAmount += scrollStep;
-        scrollContainer.scrollLeft = scrollAmount;
+    // Duplicate content for seamless loop
+    container1.innerHTML += container1.innerHTML;
+    container2.innerHTML += container2.innerHTML;
 
-        // Reset scroll when reaching the end
-        if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-          scrollAmount = 0;
+    const step = () => {
+      if (!isHovering1) {
+        container1.scrollLeft += speed;
+        if (container1.scrollLeft >= container1.scrollWidth / 2) {
+          container1.scrollLeft = 0;
         }
       }
-
-      if (!isUserScrolling2) {
-        scrollAmount2 += scrollStep;
-        scrollContainer2.scrollLeft = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollAmount2;
-
-        // Reset scroll when reaching the end
-        if (scrollAmount2 >= scrollContainer2.scrollWidth - scrollContainer2.clientWidth) {
-          scrollAmount2 = 0;
+      if (!isHovering2) {
+        container2.scrollLeft += speed2;
+        if (container2.scrollLeft <= 0) {
+          container2.scrollLeft = container2.scrollWidth / 2;
         }
       }
+      requestAnimationFrame(step);
     };
 
-    const intervalId = setInterval(autoScroll, scrollDelay);
+    container1.addEventListener("mouseenter", () => (isHovering1 = true));
+    container1.addEventListener("mouseleave", () => (isHovering1 = false));
 
-    // Pause scrolling on hover and manual scroll
-    let currentIntervalId = intervalId;
-    let scrollTimeout: NodeJS.Timeout;
-    let scrollTimeout2: NodeJS.Timeout;
-    
-    const handleMouseEnter = () => {
-      isUserScrolling = true;
-      isUserScrolling2 = true;
-    };
-    
-    const handleMouseLeave = () => {
-      isUserScrolling = false;
-      isUserScrolling2 = false;
-    };
+    container2.addEventListener("mouseenter", () => (isHovering2 = true));
+    container2.addEventListener("mouseleave", () => (isHovering2 = false));
 
-    const handleScroll = () => {
-      isUserScrolling = true;
-      scrollAmount = scrollContainer.scrollLeft;
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isUserScrolling = false;
-      }, 2000);
-    };
+    requestAnimationFrame(step);
 
-    const handleScroll2 = () => {
-      isUserScrolling2 = true;
-      scrollAmount2 = scrollContainer2.scrollWidth - scrollContainer2.clientWidth - scrollContainer2.scrollLeft;
-      clearTimeout(scrollTimeout2);
-      scrollTimeout2 = setTimeout(() => {
-        isUserScrolling2 = false;
-      }, 2000);
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-    scrollContainer.addEventListener('scroll', handleScroll);
-
-    scrollContainer2.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer2.addEventListener('mouseleave', handleMouseLeave);
-    scrollContainer2.addEventListener('scroll', handleScroll2);
-    
     return () => {
-      clearInterval(currentIntervalId);
-      clearTimeout(scrollTimeout);
-      clearTimeout(scrollTimeout2);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-      scrollContainer.removeEventListener('scroll', handleScroll);
-      scrollContainer2.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer2.removeEventListener('mouseleave', handleMouseLeave);
-      scrollContainer2.removeEventListener('scroll', handleScroll2);
+      container1.replaceChildren(...Array.from(container1.children).slice(0, container1.children.length / 2));
+      container2.replaceChildren(...Array.from(container2.children).slice(0, container2.children.length / 2));
     };
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-80 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8  w-screen  overflow-hidden">
-      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             <HomeHeroText
@@ -209,7 +165,7 @@ const EducationNews: React.FC = () => {
           </p>
         </div>
 
-        <div 
+        <div
           ref={scrollRef}
           className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
@@ -228,7 +184,7 @@ const EducationNews: React.FC = () => {
         </div>
 
         {/* Second row of reviews scrolling in opposite direction */}
-        <div 
+        <div
           ref={scrollRef2}
           className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
