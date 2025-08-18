@@ -144,7 +144,7 @@ const EducationNews: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-black transition-colors duration-300">
+    <section className="py-80 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8  w-screen  overflow-hidden">
         {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
         <div className="text-center mb-12">

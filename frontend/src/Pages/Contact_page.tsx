@@ -1,233 +1,213 @@
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
-import Header from '../Component/Header'; 
-// import Footer from '../Component/FooterUnanimated';
-import { useTheme } from '../contexts/ThemeContext';
+import Header from "../Component/Header";
+import { useTheme } from "../contexts/ThemeContext";
 
-export default function Contactpage() {
+export default function ContactPage() {
   const { isDark } = useTheme();
 
+  // Reusable theme classes
+  const bgColor = isDark ? "bg-black" : "bg-white";
+  const borderColor = isDark ? "border-gray-800" : "border-gray-200";
+  const textColor = isDark ? "text-white" : "text-gray-900";
+  const subTextColor = isDark ? "text-gray-400" : "text-gray-600";
+
+  // Motion Variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: Integrate with API or email service
+    alert("Form submitted! (hook up API/email service)");
+  };
+
   return (
-    <div className={`flex flex-col min-h-screen transition-colors duration-300 ${
-      isDark ? 'bg-gray-900' : 'bg-white'
-    }`}>
-      <Header />
-      
-      <main className="flex-1 pt-20">
-        {/* Hero Section with Team Photo Background */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+    <div className={`flex flex-col min-h-screen transition-colors duration-300 ${bgColor}`}>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <motion.section
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
           transition={{ duration: 0.6 }}
-          className="relative h-[90vh] min-h-[700px] max-h-[1000px] overflow-hidden"
+          className={`relative h-[95vh] min-h-[600px] overflow-hidden ${bgColor}`}
         >
-          {/* Team Photo Background with Responsive Loading */}
-          <picture className="absolute inset-0">
-            <source 
-              media="(max-width: 
-              450px)" 
-              srcSet="/team-photo.jpg" 
-            />
-            <source 
-              media="(max-width: 1250px)" 
-              srcSet="/team-photo.jpg" 
-            />
+          {/* Team Photo Background */}
+          <div className="absolute inset-0">
             <img
               src="/team-photo.jpg"
               alt="Bidyut Team Photo"
-              className="absolute inset-0 w-full h-full object-contain object-center"
-              style={{
-                objectPosition: "center center"
-              }}
+              className="absolute inset-0 w-full h-full object-cover rounded-b-[80px]"
+              style={{ objectPosition: "center top" }}
               loading="eager"
             />
-          </picture>
-          {/* Fallback background for better browser support */}
-          <div 
-            className="absolute inset-0 bg-contain bg-no-repeat bg-center"
-            style={{
-              backgroundImage: "url('/team-photo.jpg')",
-              backgroundPosition: "center center",
-              backgroundSize: "contain"
-            }}
-          />
-          
-          {/* Light Overlay for better text contrast while keeping team visible */}
-          <div className="absolute inset-0 bg-black/40" />
-          
-          {/* Gradient Overlay
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-blue-900/80 to-indigo-900/80" />
-           */}
+
+            {/* Fade Overlay */}
+            <div className="absolute inset-0 rounded-b-[80px] bg-gradient-to-t 
+    from-black/50 via-transparent to-transparent" />
+          </div>
+
+
+
+
+          {/* Overlay */}
+          <div className={`absolute inset-0 ${isDark ? "bg-black/40" : "bg-black/20"}`} />
+
+          {/* Header */}
+          <div className="relative z-20">
+            <Header />
+          </div>
+
           {/* Hero Content */}
-          <div className="relative z-10 flex items-end justify-center h-full pb-16">
-            <div className="text-center text-white">
-              {/* <motion.h1
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-5xl md:text-6xl font-bold mb-4"
-              >
-                Contact
-              </motion.h1> */}
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-xl md:text-2xl mb-6 text-gray-200"
+          <div className="relative z-10 flex items-center justify-center h-full">
+            <div className="text-center px-6">
+              <motion.h1
+                variants={fadeIn}
+                initial="hidden"
+                animate="show"
+                className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl"
+                style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)" }}
               >
                 Meet Our Amazing Team
-              </motion.p>
+              </motion.h1>
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: "120px" }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-                className="h-1 bg-[#00F5A0] mx-auto"
+                animate={{ width: "140px" }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="h-1 bg-[#00F5A0] mx-auto rounded-full shadow-lg"
               />
             </div>
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Main Contact Section */}
-        <div className={`py-16 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              
-              {/* Contact Form - Left Side (2/3 width) */}
-              <div className="lg:col-span-2">
-                <div className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8`}>
-                  <h2 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    CONTACT US
-                  </h2>
-                  <p className={`mb-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Let's power up your innovation journey together. From idea to innovation — Bidyut makes it happen.
-                  </p>
-
-                  <form className="space-y-6">
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Your Name"
-                        className={`w-full px-4 py-3 border-b-2 bg-transparent focus:outline-none focus:border-blue-500 transition-colors ${
-                          isDark 
-                            ? 'border-gray-600 text-white placeholder-gray-400' 
-                            : 'border-gray-300 text-gray-900 placeholder-gray-500'
-                        }`}
-                      />
-                    </div>
-
-                    <div>
-                      <input
-                        type="email"
-                        placeholder="Your Email"
-                        className={`w-full px-4 py-3 border-b-2 bg-transparent focus:outline-none focus:border-blue-500 transition-colors ${
-                          isDark 
-                            ? 'border-gray-600 text-white placeholder-gray-400' 
-                            : 'border-gray-300 text-gray-900 placeholder-gray-500'
-                        }`}
-                      />
-                    </div>
-
-                    <div>
-                      <textarea
-                        placeholder="Your Message"
-                        rows={6}
-                        className={`w-full px-4 py-3 border-b-2 bg-transparent focus:outline-none focus:border-blue-500 transition-colors resize-none ${
-                          isDark 
-                            ? 'border-gray-600 text-white placeholder-gray-400' 
-                            : 'border-gray-300 text-gray-900 placeholder-gray-500'
-                        }`}
-                      />
-                    </div>
-
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="relative bg-gradient-to-r from-[#00F5A0]/20 to-[#00D4AA]/20 hover:from-[#00F5A0]/30 hover:to-[#00D4AA]/30 backdrop-blur-lg border border-[#00F5A0]/30 hover:border-[#00F5A0]/50 text-[#00F5A0] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#00F5A0] to-[#00D4AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
-                      <span className="relative z-10">Submit</span>
-                    </motion.button>
-                  </form>
-                </div>
-              </div>
-
-              {/* Studio Info - Right Side (1/3 width) */}
-              <div className="bg-gray-800 text-white rounded-lg p-8">
-                <h3 className="text-xl font-bold mb-6">OUR STUDIO</h3>
-                <p className="text-gray-300 mb-8 text-sm">
-                  Bridging innovation and technology to create extraordinary solutions.
+        {/* Contact Section */}
+        <section className={`py-20 ${bgColor}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10">
+            {/* Contact Form */}
+            <div className="lg:col-span-2">
+              <div className={`rounded-2xl shadow-xl p-10 border ${bgColor} ${borderColor}`}>
+                <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Contact Us</h2>
+                <p className={`${subTextColor} mb-10`}>
+                  Let’s power up your innovation journey together. From idea to
+                  innovation — Bidyut makes it happen.
                 </p>
 
-                <div className="space-y-6">
-                  {/* Address */}
-                  <div className="flex items-start space-x-3">
-                    <div className="w-5 h-5 mt-1">
-                      <svg className="w-5 h-5 text-[#00F5A0]" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-[#00F5A0] mb-1">Address</h4>
-                      <p className="text-sm text-gray-300 leading-relaxed">
-                        901 Clifton Corporate Park,<br />
-                        11/6, AB Road, Sector A, Slice 6,<br />
-                        Aranya Nagar, Vijay Nagar,<br />
-                        Indore, Madhya Pradesh 452010
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="flex items-start space-x-3">
-                    <div className="w-5 h-5 mt-1">
-                      <Phone className="w-5 h-5 text-[#00F5A0]" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-[#00F5A0] mb-1">Phone</h4>
-                      <p className="text-sm text-gray-300">+91 9370782979</p>
-                    </div>
+                <form className="space-y-8" onSubmit={handleSubmit}>
+                  {/* Name */}
+                  <div className="relative">
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                      placeholder="Your Name"
+                    />
+                    <label
+                      htmlFor="name"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Your Name
+                    </label>
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-start space-x-3">
-                    <div className="w-5 h-5 mt-1">
-                      <Mail className="w-5 h-5 text-[#00F5A0]" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-[#00F5A0] mb-1">Email</h4>
-                      <p className="text-sm text-gray-300">info@bidyutrobotics.com</p>
-                      <p className="text-sm text-gray-300">rahul@bidyutrobotics.com</p>
-                    </div>
+                  <div className="relative">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                      placeholder="Your Email"
+                    />
+                    <label
+                      htmlFor="email"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Your Email
+                    </label>
                   </div>
 
-                  {/* Business Hours */}
-                  <div className="flex items-start space-x-3">
-                    <div className="w-5 h-5 mt-1">
-                      <svg className="w-5 h-5 text-[#00F5A0]" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-[#00F5A0] mb-1">Business Hours</h4>
-                      <p className="text-sm text-gray-300">Mon - Fri: 9:00am - 6:00pm</p>
-                      <p className="text-sm text-gray-300">Sat - Sun: 10:00am - 4:00pm</p>
-                    </div>
+                  {/* Message */}
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      required
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] resize-none ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                      placeholder="Your Message"
+                    />
+                    <label
+                      htmlFor="message"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Your Message
+                    </label>
                   </div>
+
+                  {/* Button */}
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative w-full bg-gradient-to-r from-[#00F5A0]/20 to-[#00D4AA]/20 hover:from-[#00F5A0]/30 hover:to-[#00D4AA]/30 backdrop-blur-lg border border-[#00F5A0]/30 hover:border-[#00F5A0]/50 text-[#00F5A0] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#00F5A0] to-[#00D4AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                    <span className="relative z-10">Send Message</span>
+                  </motion.button>
+                </form>
+              </div>
+            </div>
+
+            {/* Studio Info */}
+            <div className={`rounded-2xl p-10 shadow-xl border ${bgColor} ${textColor} ${borderColor}`}>
+              <h3 className="text-xl font-bold mb-6 text-[#00F5A0]">Our Studio</h3>
+              <p className={`${subTextColor} mb-8 text-sm`}>
+                Bridging innovation and technology to create extraordinary
+                solutions.
+              </p>
+
+              <div className={`space-y-6 text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                <div>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">Address</h4>
+                  <p>901 Clifton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
+                    <Phone className="w-4 h-4" /> Phone
+                  </h4>
+                  <p><a href="tel:+919370782979">+91 9370782979</a></p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
+                    <Mail className="w-4 h-4" /> Email
+                  </h4>
+                  <p><a href="mailto:info@bidyutrobotics.com">info@bidyutrobotics.com</a></p>
+                  <p><a href="mailto:rahul@bidyutrobotics.com">rahul@bidyutrobotics.com</a></p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">Business Hours</h4>
+                  <p>Mon - Fri: 9:00am - 6:00pm</p>
+                  <p>Sat - Sun: 10:00am - 4:00pm</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Map Section */}
-        <div className={`py-16 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+        {/* Map */}
+        <section className={`py-20 ${bgColor}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-xl"
+            <motion.div
+              className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl"
               whileHover={{ scale: 1.01 }}
             >
-              {/* Google Maps Embed */}
+              {/* Lazy load map */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.112244725711!2d75.8954432100689!3d22.76121537594634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd17098eaaab%3A0x46844082efeaf98b!2sBidyut%20Innovation%20%7C%20Robotics%20for%20Schools%2C%20Colleges%20%26%20Industries!5e0!3m2!1sen!2sin!4v1754397370428!5m2!1sen!2sin"
                 width="100%"
@@ -237,14 +217,12 @@ export default function Contactpage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Bidyut Technologies Office Location - Indore"
-                className="absolute inset-0 transition-all duration-300 hover:brightness-110"
+                className="absolute inset-0 hover:brightness-110 transition-all duration-300"
               />
             </motion.div>
           </div>
-        </div>
+        </section>
       </main>
-      
-      {/* <Footer /> */}
     </div>
   );
 }
