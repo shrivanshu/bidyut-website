@@ -16,7 +16,7 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
             <img 
               src={robotImgSrc} 
               alt="Educational Robot"
-              className="w-full h-full object-contain max-h-[80vh]"
+              className="w-full h-full object-contain  max-h-[50vh] sm:max-h-[60vh] md:max-h-[80vh]"
             />
           </div>
         </div>
@@ -40,7 +40,7 @@ const RobotClassroom: React.FC = ({ onContactClick }) => {
           <div className="pt-4">
             <button 
               onClick={onContactClick}
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold cursor-target px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
             >
               Contact Sales Team
             </button>
