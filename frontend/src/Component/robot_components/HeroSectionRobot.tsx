@@ -50,10 +50,10 @@ const HeroSection = () => {
 
         {/* Learn Robotics Text - Behind the image */}
         <div className="absolute top-[20%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]">
-          <h2 className="text-[21px] md:text-[24px] font-bold text-black mb-4 cursor-target">
+          <h2 className="text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target">
             Learn Robotics. Build the Future.
           </h2>
-          <p className="text-[16px] md:text-[17px] font-semibold leading-[1.6] text-[#00000070] cursor-target">
+          <p className="text-[16px] md:text-[17px] font-semibold leading-[1.6] text-[#00000070] dark:text-white cursor-target">
             At Bldyut, we go beyond textbooks – offering practical robotics learning powered by AI, 
             coding, and STEAM. Discover a new way to build, program, and solve real-world challenges with creativity.
           </p>
