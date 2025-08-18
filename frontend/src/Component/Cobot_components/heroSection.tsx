@@ -29,11 +29,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
         <div className="relative aspect-video rounded-lg overflow-hidden ">
-          <img
-            src="/quadruped.gif"
-            alt="Robotics demonstration"
-            className="w-full h-full object-cover"
-          />
+            <video src="/Quad.webm" autoPlay loop muted playsInline className="w-full h-full object-cover" />
         </div>
       </div>
 
