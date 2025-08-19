@@ -8,6 +8,7 @@ import Contactpage from './Pages/Contact_page';
 import Robotpage from './Pages/Robot_page';
 import Cobotpage from './Pages/Cobot_page';
 import Robotdetailpage from './Pages/Robot_detail_page';
+import SchoolPage from './Pages/SchoolPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Cobot" element={<Cobotpage />} />
               <Route path="/H1" element={<H1_page />} />
               <Route path="/Robot/:id" element={<Robotdetailpage />} />
+              <Route path="/School" element={<SchoolPage />} />
             </Routes>
           </NavigationProvider>
         </BrowserRouter>
