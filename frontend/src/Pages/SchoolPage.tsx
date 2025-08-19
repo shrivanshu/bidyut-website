@@ -35,10 +35,10 @@ function SchoolPage() {
         <SchoolHero />
 
         <Stream />
+        <BuildTogetherSection/>   
         
         <AssembleRobot/>
 
-        <BuildTogetherSection/>   
 
 
        <Footer />
