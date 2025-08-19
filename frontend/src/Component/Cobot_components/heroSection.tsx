@@ -3,8 +3,10 @@ import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 export default function HeroSection() {
   return (
   <section className="min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 pt-32 pb-16 relative">
-      {/* Target Cursor Effect */}
-      <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
+      {/* Target Cursor Effect - hidden on mobile */}
+      <div className="hidden md:block">
+        <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
+      </div>
 
       {/* Top tagline */}
       <div className="text-center font-poppins mb-8">
