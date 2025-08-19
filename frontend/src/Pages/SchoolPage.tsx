@@ -1,56 +1,31 @@
+import { useState } from 'react';
 import AssembleRobot from '@/Component/SchoolComponent/AssembleRobot';
-
 import Header from '../Component/Header';
-
 import Footer from '../Component/FooterUnanimated';
-
 import SchoolHero from '../Component/SchoolComponent/SchoolHeroSection';
-
 import {BuildTogetherSection} from '../Component/SchoolComponent/BuildTogetherSection';
-
-
-
 import Stream from '../Component/SchoolComponent/StreamSection';
-
-
-
-
-
 import { ThemeProvider } from '../contexts/ThemeContext';
 
-
-
-
-
 function SchoolPage() {
+  const [selectedGame, setSelectedGame] = useState<string>('puzzle');
+
+  const handleGameSelect = (gameId: string) => {
+    setSelectedGame(gameId);
+  };
 
   return (
-
     <ThemeProvider>
-
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
-
         <Header />
-
         <SchoolHero />
-
         <Stream />
-        <BuildTogetherSection/>   
-        
-        <AssembleRobot/>
-
-
-
-       <Footer />
-
+        <BuildTogetherSection onGameSelect={handleGameSelect} />   
+        <AssembleRobot selectedGame={selectedGame} />
+        <Footer />
       </div>
-
     </ThemeProvider>
-
-    
-
   );
-
 }
 
 
