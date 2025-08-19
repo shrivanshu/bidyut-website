@@ -167,10 +167,10 @@ export default function AwardWinning() {
   }
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-gradient-black dark' : 'bg-gradient-to-b from-gray-50 to-white'}`
+    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        {/* <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           {renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)}
           <motion.p
             className={`cursor-pointer select-none text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
@@ -181,7 +181,7 @@ export default function AwardWinning() {
           >
             {t('celebratingJourney')}
           </motion.p>
-        </div> */}
+        </div>
 
         {/* Carousel */}
         <div className="relative w-full flex items-center justify-center">
