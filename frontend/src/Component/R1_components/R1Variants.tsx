@@ -99,372 +99,87 @@ const robotSearchData = [
 ]
 
 const robotSpecs: RobotSpec[] = [
-  {
-    id: "g1-basic",
-    name: "G1 Basic",
-    description:
-      "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.1 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to 2 m/s , making it perfect for dynamic educational demonstrations.",
-    gallery: [
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg", 
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg"
-    ],
-    features: [
-      {
-        label: "Depth Camera",
-        detail: "Intel Realsense D435",
-        position: { top: "12%", left: "72%" }, // for md and up
-        positionSm: { top: "15%", left: "70%" }, // for sm screens
-        lineDirection: "right",
-        targetPoint: { x: "51%", y: "6%" },
-        targetPointSm: { x: "50%", y: "30%" }, // for sm screens
-      },
-      {
-        label: "3D LiDAR",
-        detail: "LIVOX-MID360",
-        position: { top: "25%", left: "8%" }, // for md and up
-        positionSm: { top: "30%", left: "5%" }, // for sm screens
-        lineDirection: "right",
-        targetPoint: { x: "49%", y: "8%" },
-        targetPointSm: { x: "48%", y: "30%" }, // for sm screens
-      },
-      {
-        label: "Single Arm Control",
-        detail: "Shoulder: 3 | Elbow: 2 | Wrist: 2",
-        position: { top: "45%", left: "2%" },
-        lineDirection: "right",
-        targetPoint: { x: "41%", y: "35%" },
-      },
-      {
-        label: "Quick Release Battery",
-        detail: "Provides lasting power",
-        position: { top: "30%", left: "90%" },
-        positionSm: { top: "30%", left: "70%" },
-         // for sm screens
-        lineDirection: "right",
-        targetPoint: { x: "59%", y: "28%" },
-         targetPointSm: { x: "50%", y: "30%" },
-      },
-      {
-        label: "Core Motion Module",
-        detail: "Max Torque: 120 N.m",
-        position: { top: "75%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "44%", y: "67%" },
-      },
-      {
-        label: "Hollow Joint Wiring",
-        detail: "No external cables",
-        position: { top: "50%", left: "95%" },
-        lineDirection: "left",
-        targetPoint: { x: "61%", y: "45%" },
-      },
-      {
-        label: "Leg Control System",
-        detail: "Hip: 3 | Knee: 2 | Ankle: 2",
-        position: { top: "70%", left: "88%" },
-        positionSm: { top: "70%", left: "73%" },
-        lineDirection: "right",
-        targetPoint: { x: "56%", y: "67%" },
-      },
-    ],
-  },
+ {
+  "id": "r1-basic",
+  "name": "Unitree R1",
+  "description": "The Unitree R1 is a compact full-featured humanoid robot, measuring 1210 × 357 × 190 mm and weighing about 25 kg. It features 24 degrees of freedom (expandable up to 40 for the EDU version), 6 DOF per leg, and 5 DOF per arm (3 at the shoulder and 2 at the elbow). Equipped with a humanoid binocular camera for ultra-wide-angle vision, a 4-microphone array for voice interaction, and stereo dual speakers, it is designed for dynamic educational and research applications. The R1 integrates hollow and internal wiring, a smart quick-release battery, an 8-core CPU computing module, and supports OTA upgrades, making it a versatile and powerful educational humanoid platform.",
+  "gallery": [
+    "/media/Robot_Details.svg",
+    "/media/Robot_Details.svg",
+    "/media/Robot_Details.svg",
+    "/media/Robot_Details.svg",
+    "/media/Robot_Details.svg"
+  ],
+  "features": [
+    {
+      "label": "Humanoid Binocular Camera",
+      "detail": "Ultra-wide-angle visual perception",
+      "position": { "top": "8%", "left": "5%" },
+      "positionSm": { "top": "10%", "left": "5%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "48%", "y": "6%" },
+      "targetPointSm": { "x": "48%", "y": "26%" }
+    },
+    {
+      "label": "Microphone Array",
+      "detail": "4 Mic Array",
+      "position": { "top": "22%", "left": "5%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "44%", "y": "20%" }
+    },
+    {
+      "label": "Computing Module",
+      "detail": "8-core CPU + GPU",
+      "position": { "top": "10%", "left": "92%" },
+      "lineDirection": "left",
+      "targetPoint": { "x": "60%", "y": "12%" }
+    },
+    {
+      "label": "Smart Battery",
+      "detail": "Quick-release, fast replacement",
+      "position": { "top": "28%", "left": "90%" },
+      "lineDirection": "left",
+      "targetPoint": { "x": "58%", "y": "25%" }
+    },
+    {
+      "label": "Speaker",
+      "detail": "Stereo, Dual Speakers (3W×2)",
+      "position": { "top": "35%", "left": "90%" },
+      "lineDirection": "left",
+      "targetPoint": { "x": "58%", "y": "32%" }
+    },
+    {
+      "label": "Single Arm Degrees of Freedom",
+      "detail": "Shoulder ×3 | Elbow ×2",
+      "position": { "top": "42%", "left": "5%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "42%", "y": "40%" }
+    },
+    {
+      "label": "Waist Degrees of Freedom",
+      "detail": "2 DOF",
+      "position": { "top": "55%", "left": "95%" },
+      "lineDirection": "left",
+      "targetPoint": { "x": "61%", "y": "52%" }
+    },
+    {
+      "label": "Single Leg Degrees of Freedom",
+      "detail": "6 DOF",
+      "position": { "top": "75%", "left": "90%" },
+      "lineDirection": "left",
+      "targetPoint": { "x": "56%", "y": "72%" }
+    },
+    {
+      "label": "Huge Power",
+      "detail": "Joint max torque ~2 kg·m (arm joint)",
+      "position": { "top": "85%", "left": "5%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "44%", "y": "82%" }
+    }
+  ]
+}
 
-  
-  {
-    "id": "g1-edu-u1",
-    "name": "G1 EDU U1",
-    "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "Depth Camera",
-        "detail": "Intel Realsense D435",
-        "position": { "top": "10%", "left": "85%" },
-        "positionSm": { "top": "15%", "left": "80%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "51%", "y": "6%" },
-        "targetPointSm": { "x": "50%", "y": "30%" },
-      },
-      {
-        "label": "3D LiDAR",
-        "detail": "LIVOX-MID360",
-        "position": { "top": "25%", "left": "8%" },
-        "positionSm": { "top": "30%", "left": "5%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "49%", "y": "8%" },
-        "targetPointSm": { "x": "48%", "y": "30%" },
-      },
-      {
-        "label": "Advanced Arm & Hand Control",
-        "detail": "Shoulder: 3 | Elbow: 2 | Wrist: 2 (+2 optional) | Optional 3-Fingered Dexterous Hand",
-        "position": { "top": "40%", "left": "2%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "41%", "y": "35%" }
-      },
-      {
-        "label": "Quick Release Battery",
-        "detail": "9000mAh – Provides lasting power",
-        "position": { "top": "30%", "left": "90%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "55%", "y": "30%" }
-      },
-      {
-        "label": "Core Motion Module",
-        "detail": "Max Torque: 120 N·m (Knee Joint)",
-        "position": { "top": "85%", "left": "5%" },
-                "positionSm": { "top": "75%", "left": "5%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "44%", "y": "67%" }
-      },
-      {
-        "label": "Hollow Joint Wiring",
-        "detail": "No external cables",
-        "position": { "top": "50%", "left": "95%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "61%", "y": "45%" }
-      },
-      {
-        "label": "Leg Control System",
-        "detail": "Hip: 3 | Knee: 2 | Ankle: 2",
-        "position": { "top": "70%", "left": "88%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "56%", "y": "67%" }
-      },
-      {
-        "label": "High Computing Power Module",
-        "detail": "NVIDIA Jetson Orin (optional)",
-        "position": { "top": "60%", "left": "8%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "42%", "y": "50%" }
-      }
-    ]
-  },
-  {
-    "id": "g1-edu-u2",
-    "name": "G1 EDU U2",
-    "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "Enhanced Depth Camera",
-        "detail": "Intel Realsense D455",
-        "position": { "top": "12%", "left": "84%" },
-        "positionSm": { "top": "22%", "left": "84%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "50%", "y": "18%" },
-        "targetPointSm": { "x": "50%", "y": "31%" },
-      },
-      {
-        "label": "3D LiDAR",
-        "detail": "LIVOX-MID360 + Improved Scan Range",
-        "position": { "top": "22%", "left": "10%" },
-       "positionSm": { "top": "19%", "left": "8%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "48%", "y": "10%" },
-        "targetPointSm": { "x": "48%", "y": "30%" },
-      },
-      {
-        "label": "Improved Arm & Hand System",
-        "detail": "Optional 5-Finger Hand | Higher Precision Force Control",
-        "position": { "top": "47%", "left": "5%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "40%", "y": "37%" }
-      },
-      {
-        "label": "Battery Upgrade",
-        "detail": "10,500mAh – Extended runtime",
-        "position": { "top": "32%", "left": "82%" },
-        "positionSm": { "top": "49%", "left": "82%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "57%", "y": "32%" },
-        "targetPointSm": { "x": "56%", "y": "40%" },
-      }
-    ]
-  },
-  {
-    "id": "g1-edu-u3",
-    "name": "G1 EDU U3",
-    "description": "The G1 EDU U3 introduces advanced locomotion control, upgraded vision system with multi-camera SLAM, and reinforced joints for longer durability in research environments.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "Vision System",
-        "detail": "Stereo + Depth + Wide FOV SLAM Cameras",
-        "position": { "top": "15%", "left": "88%" },
-        "positionSm": { "top": "25%", "left": "72%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "51%", "y": "17%" },
-        "targetPointSm": { "x": "51%", "y": "35%" }
-      },
-      {
-        "label": "Locomotion Upgrade",
-        "detail": "Dynamic Walking Algorithms + Terrain Adaptation",
-        "position": { "top": "65%", "left": "88%" },
-        "positionSm": { "top": "60%", "left": "74%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "58%", "y": "65%" }
-      }
-    ]
-  },
-  {
-    "id": "g1-edu-u4",
-    "name": "G1 EDU U4",
-    "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "AI Module",
-        "detail": "Integrated Jetson Orin NX",
-        "position": { "top": "68%", "left": "12%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "42%", "y": "52%" }
-      },
-      {
-        "label": "Haptic Feedback",
-        "detail": "Force & Tactile Feedback for Hands",
-        "position": { "top": "48%", "left": "4%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "39%", "y": "38%" }
-      }
-    ]
-  },
-  {
-    "id": "g1-edu-u5",
-    "name": "G1 EDU U5",
-    "description": "The G1 EDU U5 focuses on collaborative research, with voice AI, advanced gesture recognition, and improved human-robot interaction modules.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "Voice AI",
-        "detail": "Natural Language Processing Integration",
-        "position": { "top": "18%", "left": "85%" },
-        "positionSm": { "top": "32%", "left": "75%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "52%", "y": "10%" },
-        "targetPointSm": { "x": "52%", "y": "33%" }
-      },
-      {
-        "label": "Gesture Recognition",
-        "detail": "Multi-Camera Body Tracking",
-        "position": { "top": "20%", "left": "12%" },
-        "positionSm": { "top": "32%", "left": "0%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "51%", "y": "6%" },
-        "targetPointSm": { "x": "45%", "y": "36%" }
-      }
-    ]
-  },
-  {
-    "id": "g1-edu-u6",
-    "name": "G1 EDU U6",
-    "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
-    "gallery": [
-      "/media/Robot_Details_EDU.svg"
-    ],
-    "features": [
-      {
-        "label": "Hybrid AI Control",
-        "detail": "Cloud + Edge Processing for Autonomous Learning",
-        "position": { "top": "60%", "left": "8%" },
-        "positionSm": { "top": "57%", "left": "1%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "42%", "y": "55%" }
-      },
-      {
-        "label": "Safety Module",
-        "detail": "Collision Avoidance + Human Proximity Sensors",
-        "position": { "top": "72%", "left": "85%" },
-        "positionSm": { "top": "49%", "left": "80%" },
-        "lineDirection": "right",
-        "targetPoint": { "x": "59%", "y": "70%" },
-        "targetPointSm": { "x": "53%", "y": "36%" }
-      }
-    ]
-  }
-
-,
-  // {
-  //   id: "g2-pro",
-  //   name: "G2 Pro",
-  //   description:
-  //     "Advanced humanoid robot with enhanced AI capabilities and improved mobility. Features upgraded sensors and extended battery life for professional applications.",
-  //   gallery: [
-  //     "/media/Robot_Details.svg",
-  //     "/robot.mp4",
-  //     "/robo-dance5.mp4",
-  //     "/robott.mp4",
-  //     "/robo-main.mp4"
-  //   ],
-  //   features: [
-  //     {
-  //       label: "Advanced Depth Camera",
-  //       detail: "Intel Realsense D455",
-  //       position: { top: "12%", left: "88%" },
-  //       lineDirection: "left",
-  //       targetPoint: { x: "55%", y: "18%" },
-  //     },
-  //     {
-  //       label: "High Resolution LiDAR",
-  //       detail: "Velodyne VLP-16",
-  //       position: { top: "28%", left: "5%" },
-  //       lineDirection: "right",
-  //       targetPoint: { x: "52%", y: "12%" },
-  //     },
-  //     {
-  //       label: "Enhanced Arm Control",
-  //       detail: "Shoulder: 3 | Elbow: 2 | Wrist: 3",
-  //       position: { top: "42%", left: "1%" },
-  //       lineDirection: "right",
-  //       targetPoint: { x: "45%", y: "35%" },
-  //     },
-  //     {
-  //       label: "Extended Battery Pack",
-  //       detail: "Double capacity system",
-  //       position: { top: "32%", left: "92%" },
-  //       lineDirection: "left",
-  //       targetPoint: { x: "58%", y: "40%" },
-  //     },
-  //     {
-  //       label: "Pro Motion Module",
-  //       detail: "Max Torque: 200 Nm",
-  //       position: { top: "82%", left: "8%" },
-  //       lineDirection: "right",
-  //       targetPoint: { x: "48%", y: "60%" },
-  //     },
-  //     {
-  //       label: "Wireless Communication",
-  //       detail: "5G and WiFi 6E",
-  //       position: { top: "52%", left: "96%" },
-  //       lineDirection: "left",
-  //       targetPoint: { x: "52%", y: "70%" },
-  //     },
-  //     {
-  //       label: "Advanced Leg Control",
-  //       detail: "Hip: 4 | Knee: 3 | Ankle: 3",
-  //       position: { top: "72%", left: "90%" },
-  //       lineDirection: "left",
-  //       targetPoint: { x: "48%", y: "82%" },
-  //     },
-  //   ],
-  // },
+ 
 ]
 
 const Select = ({
@@ -520,7 +235,7 @@ const Button = ({
   </button>
 )
 
-export default function RobotShowcase() {
+export default function R1Variants() {
   const { isDark } = useTheme()
   const [selectedVariant, setSelectedVariant] = useState("g1-basic")
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
@@ -598,18 +313,7 @@ export default function RobotShowcase() {
     // <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <div className="w-full px-6 py-16 md:px-12 lg:px-16">
-        {/* Search Button Section */}
-        {/* <div className="w-full max-w-4xl mx-auto mb-8">
-          <div className="flex justify-center">
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
-            >
-              <Search className="h-6 w-6" />
-              Search Robots
-            </button>
-          </div>
-        </div> */}
+       
 
         {/* Search Section - Scrollable Robot Images */}
         {isSearchOpen && (
@@ -885,30 +589,31 @@ export default function RobotShowcase() {
           left: pos.left,
           transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
         }}
-        onMouseEnter={() => setHoveredFeature(index)}
-        onMouseLeave={() => setHoveredFeature(null)}
-                  >
-                    <div className="text-left max-w-[120px]">
-                      <div
-                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                          hoveredFeature === index 
-                            ? "text-green-600 dark:text-green-400" 
-                            : "text-gray-900 dark:text-gray-100"
-                        }`}
-                      >
-                        {feature.label}
-                      </div>
-                      <div 
-                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                          hoveredFeature === index ? "opacity-100" : "opacity-70"
-                        }`}
-                      >
-                        {feature.detail}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+        onMouseEnter={() => !isSmScreen && setHoveredFeature(index)}
+        onMouseLeave={() => !isSmScreen && setHoveredFeature(null)}
+        onClick={() => isSmScreen && setHoveredFeature(index)}
+      >
+        <div className="text-left max-w-[120px]">
+          <div
+            className={`text-sm font-bold mb-1 transition-colors leading-tight ${
+              hoveredFeature === index 
+                ? "text-green-600 dark:text-green-400" 
+                : "text-gray-900 dark:text-gray-100"
+            }`}
+          >
+            {feature.label}
+          </div>
+          <div 
+            className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
+              hoveredFeature === index ? "opacity-100" : "opacity-70"
+            }`}
+          >
+            {feature.detail}
+          </div>
+        </div>
+      </div>
+    );
+  })}
             </div>
           </div>
         </div>

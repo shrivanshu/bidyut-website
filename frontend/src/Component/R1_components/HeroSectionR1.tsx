@@ -1,7 +1,7 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 import React from 'react';
 
-const HeroSection = () => {
+const HeroSectionR1 = () => {
   // Detect md and up screens
   const [isMd, setIsMd] = React.useState(false);
   React.useEffect(() => {
@@ -78,7 +78,7 @@ const HeroSection = () => {
             {/* G1 Label - Smaller and higher */}
             <div className="absolute left-36 -top-16">
               <span className="text-[100px] md:text-[120px] lg:text-[290px] font-bold text-[#00ffa3] leading-none opacity-70 drop-shadow-lg cursor-target" style={{ letterSpacing: '-0.05em' }}>
-                G1
+                R1
               </span>
             </div>
 
@@ -125,4 +125,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSectionR1;
