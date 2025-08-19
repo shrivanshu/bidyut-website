@@ -39,7 +39,7 @@ export default function Header() {
             {[
               { href: "/", label: t("home") },
               { href: "/About", label: t("aboutUs") },
-              { href: "#", label: t("school") },
+              { href: "/School", label: t("school") },
               { href: "/Contact", label: t("contact") },
               // { href: "#", label: t("career") },
               { href: "/Gallery", label: t("gallery") },
