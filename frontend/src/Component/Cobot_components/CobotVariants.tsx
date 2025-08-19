@@ -173,40 +173,40 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg"
     ],
     features: [
-  {
+   {
     label: "Vision Sensor",
     detail: "1280 × 720 px camera, 120° field of view",
-    position: { top: "10%", left: "85%" },
-    lineDirection: "left",
-    targetPoint: { x: "51%", y: "15%" }
+    position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
   },
   {
     label: "LIDAR",
     detail: "4D LIDAR, 360° × 90° coverage",
-    position: { top: "25%", left: "8%" },
+    position: { top: "10%", left: "50%" },
     lineDirection: "right",
-    targetPoint: { x: "49%", y: "8%" }
+    targetPoint: { x: "15%", y: "31%" }
   },
   {
     label: "Arm Control",
     detail: "2 DOF robotic arm, payload capacity 7 kg (maximum 10 kg)",
-    position: { top: "45%", left: "2%" },
+    position: { top: "55%", left: "1%" },
     lineDirection: "right",
-    targetPoint: { x: "41%", y: "35%" }
+    targetPoint: { x: "31%", y: "51%" }
   },
   {
     label: "Battery",
     detail: "8000 mAh capacity, runtime 1–2 hours",
-    position: { top: "30%", left: "90%" },
+    position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "55%", y: "30%" }
+    targetPoint: { x: "58%", y: "36%" }
   },
   {
     label: "Motion Module",
     detail: "Torque output up to 100 Nm",
-    position: { top: "85%", left: "5%" },
+    position: { top: "75%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "44%", y: "67%" }
+    targetPoint: { x: "70%", y: "35%" }
   }
 ]
 
@@ -227,37 +227,37 @@ const robotSpecs: RobotSpec[] = [
     {
       label: "Vision Sensor",
       detail: "Camera: 1920 × 1080 px | FOV: 130°",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" }
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D LIDAR | Coverage: 360° × 90° (enhanced)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" }
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "3 DOF robotic arm | Payload: 12 kg (max. 15 kg)",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" }
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "12000 mAh | Runtime: 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" }
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Torque output up to 200 Nm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" }
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     }
   ],
   
@@ -279,37 +279,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity up to 8–10 kg",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime ~2–3 hours",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+     position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -330,37 +330,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -381,37 +381,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) + Mid-360 LiDAR for obstacle avoidance",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+     position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -432,37 +432,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "1280×720 px, 120° FOV",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D XT16 LiDAR",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+     position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "Payload 8 kg (limit ~10 kg)",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb 16 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -482,37 +482,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+     position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -532,37 +532,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+    position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -582,37 +582,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Mid-360)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -632,42 +632,42 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
   {
-    id: "GO2--W U5",
+    id: "GO2-W U5",
     name: "GO2-W U5",
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
@@ -682,44 +682,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "12%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "55%", y: "18%" },
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "12%" },
-    },
-    {
-      label: "Gimbal",
-      detail: "Dual-optical gimbal, 3-axis stabilization",
-      position: { top: "42%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "28%" },
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "52%", left: "1%" },
-      lineDirection: "right",
-      targetPoint: { x: "45%", y: "35%" },
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "32%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "40%" },
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "82%", left: "8%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "60%" },
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
     },
   ],
   },
@@ -736,42 +729,35 @@ features: [
       "/media/Cobot_true.svg"
     ],
 features: [
-    {
-      label: "Screen Remote Control",
-      detail: "Integrated display with explosion-proof design, supports full Netcom 4G network",
-      position: { top: "18%", left: "85%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "18%" },
-    },
-    {
-      label: "Communication",
-      detail: "Primary: 5.8G RC + telemetry + image/data; Backup: All-Netcom 4G",
-      position: { top: "32%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "20%" },
-    },
-    {
-      label: "Video Transmission",
-      detail: "1080P HD, latency ~180 ms, dual-channel video + network stream input",
-      position: { top: "45%", left: "3%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "30%" },
-    },
-    {
-      label: "Camera System",
-      detail: "Dual 1080P cameras (120° wide-angle) + 4 bright fill lights",
-      position: { top: "58%", left: "2%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "40%" },
-    },
-    {
-      label: "Limitations",
-      detail: "No depth camera, servo manipulator/radar not supported separately",
-      position: { top: "78%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "55%" },
-    },
-  ],
+  {
+    label: "Video Transmission",
+    detail: "1080P HD, 180 ms delay",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }   // front head area (camera/sensor)
+  },
+  {
+    label: "Depth Camera",
+    detail: "3D depth perception",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }   // head-mounted depth cam
+  },
+  {
+    label: "Remote Control",
+    detail: "Multi-functional remote",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }   // external accessory, annotated
+  },
+  {
+    label: "Communication",
+    detail: "5.8G wireless + 4G backup",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }   // mid-body communication module
+  }
+],
   },
 {
     id: "GO2-ENT U2",
@@ -785,43 +771,36 @@ features: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
- features: [
-    {
-      label: "Screen Remote Control",
-      detail: "Explosion-proof display, supports 4G network",
-      position: { top: "18%", left: "85%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "18%" },
-    },
-    {
-      label: "Communication",
-      detail: "Primary: 5.8G RC + telemetry; Backup: 4G",
-      position: { top: "32%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "20%" },
-    },
-    {
-      label: "Video Transmission",
-      detail: "1080P HD, 180ms delay, dual-channel supported",
-      position: { top: "45%", left: "3%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "30%" },
-    },
-    {
-      label: "Camera System",
-      detail: "Dual 1080P wide-angle + 4 fill lights",
-      position: { top: "58%", left: "2%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "40%" },
-    },
-    {
-      label: "Limitations",
-      detail: "No depth camera, manipulator, or radar",
-      position: { top: "78%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "55%" },
-    },
-  ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }
+  },
+  {
+    label: "Depth Camera",
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }
+  },
+  {
+    label: "Remote Control",
+    detail: "App-based control (without screen)",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }
+  },
+  {
+    label: "Communication",
+    detail: "5.8G wireless control & monitoring link",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }
+  }
+],
   },
 {
     id: "GO2-ENT U3",
@@ -835,57 +814,36 @@ features: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
- features: [
-    {
-      label: "Screen Remote",
-      detail: "Dual camera with 1080P wide-angle view",
-      position: { top: "15%", left: "85%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "15%" },
-    },
-    {
-      label: "Backup Comms",
-      detail: "5.8G + 4G dual link",
-      position: { top: "28%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "18%" },
-    },
-    {
-      label: "Video Transmission",
-      detail: "1080P HD, low latency",
-      position: { top: "40%", left: "3%" },
-      lineDirection: "right",
-      targetPoint: { x: "52%", y: "30%" },
-    },
-    {
-      label: "Searchlight",
-      detail: "30W power, 3000 lumens",
-      position: { top: "52%", left: "2%" },
-      lineDirection: "right",
-      targetPoint: { x: "48%", y: "40%" },
-    },
-    {
-      label: "Warning Lights",
-      detail: "Red/blue, multiple modes",
-      position: { top: "64%", left: "90%" },
-      lineDirection: "left",
-      targetPoint: { x: "60%", y: "42%" },
-    },
-    {
-      label: "Voice System",
-      detail: "Megaphone, playback, TTS",
-      position: { top: "76%", left: "7%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "55%" },
-    },
-    {
-      label: "Limitations",
-      detail: "No depth cam, radar or manipulator",
-      position: { top: "90%", left: "88%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "70%" },
-    }
-  ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera system with remote live streaming",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }
+  },
+  {
+    label: "Depth Camera",
+    detail: "Equipped with depth camera for 3D vision",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }
+  },
+  {
+    label: "Remote Control",
+    detail: "App + optional screen control support",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }
+  },
+  {
+    label: "Communication",
+    detail: "5.8G + 4G backup link for stability",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }
+  }
+],
   },
 {
     id: "GO2-ENT U4",
@@ -900,207 +858,37 @@ features: [
       "/media/Cobot_true.svg"
     ],
 features: [
-    {
-      label: "Screen Remote",
-      detail: "Dual camera support",
-      position: { top: "15%", left: "85%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "15%" },
-    },
-    {
-      label: "Net Gun Launcher",
-      detail: "Electric shock firing",
-      position: { top: "28%", left: "4%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "20%" },
-    },
-    {
-      label: "Material",
-      detail: "Aviation aluminum, laser aim",
-      position: { top: "40%", left: "90%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "32%" },
-    },
-    {
-      label: "Range",
-      detail: "8-10m, net area 9㎡",
-      position: { top: "54%", left: "6%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "40%" },
-    },
-    {
-      label: "Installation",
-      detail: "Quick release structure",
-      position: { top: "68%", left: "92%" },
-      lineDirection: "left",
-      targetPoint: { x: "60%", y: "50%" },
-    },
-    {
-      label: "App Control",
-      detail: "Remote control with screen",
-      position: { top: "80%", left: "5%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "65%" },
-    },
-    {
-      label: "Limitations",
-      detail: "No depth cam/radar, custom calibers",
-      position: { top: "92%", left: "90%" },
-      lineDirection: "left",
-      targetPoint: { x: "58%", y: "75%" },
-    }
-  ],
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera support with live video feed",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }    // front body/head area
   },
   {
-    id: "GO2-ENT U5",
-    name: "GO2-ENT U5",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Depth Camera",
+    detail: "Not included in ENT-U4 configuration",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }    // rear side
   },
   {
-    id: "GO2-ENT U6",
-    name: "GO2-ENT U6",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Remote Control",
+    detail: "Screen remote control via App",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }   // front underside
   },
   {
-    id: "GO2-ENT U7",
-    name: "GO2-ENT U7",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Communication",
+    detail: "App-based real-time control with display feedback",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }    // top/rear body area
+  }
+],
   },
+
 ]
 
 const Select = ({
