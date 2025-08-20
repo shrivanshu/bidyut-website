@@ -159,11 +159,11 @@ export default function StreamLanding() {
             onMouseLeave={() => setHoveredCard(null)}
             style={{ zIndex: hoveredCard === i ? 2 : 1 }}
           >
-            {/* Image */}
+            {/* Image - remove background div, add shadow only in dark mode */}
             <motion.img
               src={card.img}
               alt={card.title}
-              className="rounded-xl object-cover w-full max-w-sm sm:max-w-md md:w-[400px] shadow-lg"
+              className="rounded-xl object-cover w-full max-w-sm sm:max-w-md md:w-[400px] shadow-none dark:shadow-lg"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
