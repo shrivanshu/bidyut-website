@@ -25,20 +25,20 @@ const cobotSearchData = [
   {
     id: "GO2 AIR",
     name: "GO2 AIR",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 PRO",
     name: "GO2 PRO",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
     specId: "go2-pro",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance2.mp4", "/robo-dance3.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 EDU U1",
@@ -47,166 +47,169 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "//A2.png", "/A2.png"],
   },
   {
     id: "GO2 EDU U2",
     name: "GO2 EDU U2",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "//A2.png", "//A2.png"],
   },
   {
     id: "GO2 EDU U3",
     name: "GO2 EDU U3",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "//A2.png", "//A2.png"],
   },
   {
     id: "GO2 EDU U4",
     name: "GO2 EDU U4",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "//A2.png", "//A2.png"],
   },
   {
     id: "GO2-W U1",
     name: "GO2-W U1",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2-W U2",
     name: "GO2-W U2",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2-W U3",
     name: "GO2-W U3",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2-W U4",
     name: "GO2-W U4",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2-W U5",
     name: "GO2-W U5",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 ENT-U1",
     name: "GO2 ENT-U1",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 ENT-U2",
     name: "GO2 ENT-U2",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 ENT-U3",
     name: "GO2 ENT-U3",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
   {
     id: "GO2 ENT-U4",
     name: "GO2 ENT-U4",
-    image: "/media/Cobot_true.svg",
+    image: "/A2.png",
     category: "Service",
     description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/A2.png", "/A2.png", "/A2.png"],
   },
 ]
 
-const robotSpecs: RobotSpec[] = [
+const robotSpecs: 
+
+
+RobotSpec[] = [
   {
     id: "A2-Standard",
     name: "A2 Standard",
     description:
       "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png"
     ],
 features: [
   {
     label: "LiDAR Sensor",
     detail: "Single LiDAR for obstacle avoidance & mapping",
-    position: { top: "5%", left: "20%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "25%" }   // head/top front
+    position: { top: "1%", left: "20%" },
+    lineDirection: "left",
+    targetPoint: { x: "17%", y: "17%" }   // head/top front
   },
   {
     label: "Wide-Angle Camera",
     detail: "HD wide-angle vision, expandable to dual cameras",
-    position: { top: "15%", left: "80%" },
-    lineDirection: "left",
-    targetPoint: { x: "55%", y: "28%" }   // front face
+    position: { top: "3%", left: "40%" },
+    lineDirection: "right",
+    targetPoint: { x: "17%", y: "19%" }   // front face
   },
   {
     label: "Battery Pack",
     detail: "Dual 9000mAh batteries, 5h runtime, 20km range",
-    position: { top: "35%", left: "5%" },
+    position: { top: "5%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "40%", y: "50%" }   // side body compartment
+    targetPoint: { x: "60%", y: "35%" }   // side body compartment
   },
   {
     label: "Joint Module",
     detail: "High-torque motor joints enable stair & slope climbing",
-    position: { top: "65%", left: "90%" },
+    position: { top: "65%", left: "85%" },
     lineDirection: "left",
-    targetPoint: { x: "70%", y: "70%" }   // leg joint area
+    targetPoint: { x: "77%", y: "35%" }   // leg joint area
   },
   {
     label: "Payload Area",
     detail: "Carries up to 25kg payload (max 100kg)",
-    position: { top: "85%", left: "45%" },
-    lineDirection: "up",
-    targetPoint: { x: "50%", y: "60%" }   // back/top of robot
+    position: { top: "60%", left: "43%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "25%" }   // back/top of robot
   }
 ]
   },
@@ -217,115 +220,103 @@ features: [
     description:
       "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png"
     ],
-    features: [
-   {
-    label: "32-wire Automative-grade lidar",
-    detail: "",
-    position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
-  },
+features: [
   {
-    label: "Depth Camera",
-    detail: "",
-    position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
-  },
-  {
-    label: "High resolution Optical Camera",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
-  },
-  {
-    label: "M107 high performance joint module",
-    detail: "",
-    position: { top: "30%", left: "110%" },
+    label: "Dual LiDAR Sensors",
+    detail: "Enhanced perception with two LiDAR units for improved mapping and navigation",
+    position: { top: "1%", left: "20%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "17%", y: "17%" } 
   },
   {
-    label: "Ultra large capacity battery 45Ah (2250 Wh)",
-    detail: "",
-    position: { top: "75%", left: "45%" },
+    label: "GPS Module",
+    detail: "Integrated GPS for precise outdoor positioning and navigation",
+    position: { top: "8%", left: "74%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "58%", y: "25%" }
   },
-   
+  {
+    label: "4G Communication",
+    detail: "Seamless remote connectivity through built-in 4G module",
+    position: { top: "58%", left: "2%" },
+    lineDirection: "right",
+    targetPoint: { x: "55%", y: "33%" }
+  },
+  {
+    label: "Wireless Vector Positioning",
+    detail: "Companion module for wireless vector-based positioning support",
+    position: { top: "60%", left: "87%" },
+    lineDirection: "left",
+    targetPoint: { x: "37%", y: "19%" }
+  },
+  {
+    label: "High-Computing Dock",
+    detail: "Expansion dock increases built-in computing power to three units",
+    position: { top: "75%", left: "20%" },
+    lineDirection: "right",
+    targetPoint: { x: "68%", y: "30%" }
+  }
 ]
+
   },
   
   {
     id: "A2-W-Standard",
+    
     name: "A2-W Standard",
     description:
       "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png"
     ],
-    features: [
-   {
-    label: "32-wire Automative-grade lidar",
-    detail: "",
-    position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
-  },
+features: [
   {
-    label: "Depth Camera",
-    detail: "",
+    label: "LIDAR Sensor",
+    detail: "Single LiDAR for navigation & mapping",
     position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
-  },
-  {
-    label: "High resolution Optical Camera",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
-  },
-  {
-    label: "M107 high performance joint module",
-    detail: "",
-    position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "40%", y: "30%" }
   },
   {
-    label: "Ultra large capacity battery 45Ah (2250 Wh)",
-    detail: "",
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera (expandable to 2)",
+    position: { top: "20%", left: "20%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "25%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design for versatile terrain",
+    position: { top: "60%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "60%" }
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay 9000mAh / 18000mAh system",
     position: { top: "75%", left: "45%" },
     lineDirection: "right",
     targetPoint: { x: "70%", y: "35%" }
   },
-   {
-    label: "High power wheel motor",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "39%", y: "51%" }
-  },
   {
-    label: "Replaceable wheel foot legs",
-    detail: "",
-    position: { top: "30%", left: "110%" },
+    label: "Computing Power",
+    detail: "8-core CPU + Intel i7 dual-unit system",
+    position: { top: "40%", left: "85%" },
     lineDirection: "left",
-    targetPoint: { x: "48%", y: "36%" }
+    targetPoint: { x: "60%", y: "40%" }
   }
 ]
+
   },
 
   {
@@ -334,61 +325,47 @@ features: [
     description:
       "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png",
+      "/A2.png"
     ],
-    features: [
-   {
-    label: "32-wire Automative-grade lidar",
-    detail: "",
-    position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
-  },
+features: [
   {
-    label: "Depth Camera",
-    detail: "",
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
     position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
-  },
-  {
-    label: "High resolution Optical Camera",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
-  },
-  {
-    label: "M107 high performance joint module",
-    detail: "",
-    position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "40%", y: "30%" }
   },
   {
-    label: "Ultra large capacity battery 45Ah (2250 Wh)",
-    detail: "",
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "20%", left: "20%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "25%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "60%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "60%" }
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
     position: { top: "75%", left: "45%" },
     lineDirection: "right",
     targetPoint: { x: "70%", y: "35%" }
   },
-   {
-    label: "High power wheel motor",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "39%", y: "51%" }
-  },
   {
-    label: "Replaceable wheel foot legs",
-    detail: "",
-    position: { top: "30%", left: "110%" },
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "40%", left: "85%" },
     lineDirection: "left",
-    targetPoint: { x: "48%", y: "36%" }
+    targetPoint: { x: "60%", y: "40%" }
   }
 ]
   },
@@ -760,7 +737,7 @@ function A2Variants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src="/media/Cobot_true.svg"
+                  src="/A2.png"
                   alt={displayName}
                   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />

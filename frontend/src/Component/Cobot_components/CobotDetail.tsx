@@ -30,7 +30,7 @@ const CobotClassroom = ({ onContactClick }: CobotClassroomProps) => {
               <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
+              Join thousands of educators who are already using Unitree GO2 Edu Series robots to inspire the next generation of innovators.
             </p>
           </div>
 
