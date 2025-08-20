@@ -3,8 +3,10 @@ import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 export default function HeroSection() {
   return (
   <section className="min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 pt-32 pb-16 relative">
-      {/* Target Cursor Effect */}
-      <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
+      {/* Target Cursor Effect - hidden on mobile */}
+      <div className="hidden md:block">
+        <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
+      </div>
 
       {/* Top tagline */}
       <div className="text-center font-poppins mb-8">
@@ -29,11 +31,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
         <div className="relative aspect-video rounded-lg overflow-hidden ">
-          <img
-            src="/quadruped.gif"
-            alt="Robotics demonstration"
-            className="w-full h-full object-cover"
-          />
+            <video src="/Quad.webm" autoPlay loop muted playsInline className="w-full h-full object-cover" />
         </div>
       </div>
 
@@ -47,7 +45,7 @@ export default function HeroSection() {
         "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
     }}
   >
-    Quadruped
+    Unitree GO2
   </h2>
 
 {/* Bottom description */}

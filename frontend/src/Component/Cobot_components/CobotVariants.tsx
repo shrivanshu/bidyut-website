@@ -164,7 +164,7 @@ const robotSpecs: RobotSpec[] = [
     id: "GO2-AIR",
     name: "GO2-AIR",
     description:
-      "Dummy description for Go2 Basic cobot. Compact, lightweight, and ideal for entry-level collaborative tasks.",
+      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -173,48 +173,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg"
     ],
     features: [
-      {
-        label: "Vision Sensor",
-        detail: "Basic camera module",
-        position: { top: "10%", left: "85%" },
-        lineDirection: "left",
-        targetPoint: { x: "51%", y: "15%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Entry-level LIDAR",
-        position: { top: "25%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "49%", y: "8%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "2 DOF arm",
-        position: { top: "45%", left: "2%" },
-        lineDirection: "right",
-        targetPoint: { x: "41%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Standard battery pack",
-        position: { top: "30%", left: "90%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "30%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 100 Nm",
-        position: { top: "85%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "44%", y: "67%" },
-      },
-    ],
+   {
+    label: "Vision Sensor",
+    detail: "1280 × 720 px camera, 120° field of view",
+    position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+  },
+  {
+    label: "LIDAR",
+    detail: "4D LIDAR, 360° × 90° coverage",
+    position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+  },
+  {
+    label: "Arm Control",
+    detail: "2 DOF robotic arm, payload capacity 7 kg (maximum 10 kg)",
+    position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+  },
+  {
+    label: "Battery",
+    detail: "8000 mAh capacity, runtime 1–2 hours",
+    position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+  },
+  {
+    label: "Motion Module",
+    detail: "Torque output up to 100 Nm",
+    position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+  }
+]
+
   },
   {
     id: "GO2-PRO",
     name: "GO2-PRO",
     description:
-      "Dummy description for Go2 Pro cobot. Enhanced sensors and battery for professional collaborative tasks.",
+      "Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -222,49 +223,51 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Pro camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Pro LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "3 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Pro battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 200 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+  features: [
+    {
+      label: "Vision Sensor",
+      detail: "Camera: 1920 × 1080 px | FOV: 130°",
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D LIDAR | Coverage: 360° × 90° (enhanced)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "3 DOF robotic arm | Payload: 12 kg (max. 15 kg)",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "12000 mAh | Runtime: 2–3 h",
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Torque output up to 200 Nm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    }
+  ],
+  
   },
+  
   {
     id: "GO2 EDU U1",
     name: "GO2 EDU U1",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -272,50 +275,101 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "Payload capacity up to 8–10 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime ~2–3 hours",
+     position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
-   
-   {
+  
+  {
+    id: "GO2 EDU U2",
+    name: "GO2 EDU U2",
+    description:
+      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
+    gallery: [
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg",
+      "/media/Cobot_true.svg"
+    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "Payload capacity 8 kg (limit up to 10 kg)",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh ×1, runtime ~2–3 hours",
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
+  },
+  
+  {
     id: "GO2 EDU U3",
     name: "GO2 EDU U3",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°) + 3D Mid-360 LiDAR, Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -323,50 +377,50 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-LiDAR (360° × 90°) + Mid-360 LiDAR for obstacle avoidance",
+     position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "Payload capacity 8 kg (limit up to 10 kg)",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh ×1, runtime ~2–3 hours",
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   
   {
     id: "GO2 EDU U4",
     name: "GO2 EDU U4",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (limit ~10 kg), Maximum speed 3.7 m/s, Computing Power 100 TOPS (Jetson Orin NX 16GB), Front Camera resolution 1280 × 720 px with 120° FOV, Maximum gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D XT16 LiDAR. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -374,49 +428,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "1280×720 px, 120° FOV",
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°) + 3D XT16 LiDAR",
+     position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "Payload 8 kg (limit ~10 kg)",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+      position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 3.7 m/s, Gradient 40°, Climb 16 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   {
     id: "GO2-W U1",
     name: "GO2-W U1",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 40 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -424,49 +478,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+ features: [
+    {
+      label: "Vision Sensor",
+      detail: "RealSense D435i depth camera",
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "16 Joint Motors, Payload 3 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+     position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
     {
     id: "GO2-W U2",
     name: "GO2-W U2",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -474,49 +528,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "RealSense D435i depth camera",
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "16 Joint Motors, Payload 3 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+    position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   {
     id: "GO2-W U3",
     name: "GO2-W U3",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Technical specifications: Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Mid-360). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -524,49 +578,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+    {
+      label: "Vision Sensor",
+      detail: "RealSense D435i depth camera",
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°) + 3D LiDAR (Mid-360)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "16 Joint Motors, Payload 3 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   {
     id: "GO2-W U4",
     name: "GO2-W U4",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Hesai XT16). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -574,49 +628,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+ features: [
+    {
+      label: "Vision Sensor",
+      detail: "RealSense D435i depth camera",
+     position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "16 Joint Motors, Payload 3 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   {
-    id: "GO2--W U5",
+    id: "GO2-W U5",
     name: "GO2-W U5",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -624,49 +678,49 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+ features: [
+    {
+      label: "Vision Sensor",
+      detail: "RealSense D435i depth camera",
+      position: { top: "1%", left: "17%" },
+    lineDirection: "right",
+    targetPoint: { x: "13%", y: "35%" }
+    },
+    {
+      label: "LIDAR",
+      detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
+      position: { top: "10%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "15%", y: "31%" }
+    },
+    {
+      label: "Arm Control",
+      detail: "16 Joint Motors, Payload 3 kg",
+      position: { top: "55%", left: "1%" },
+    lineDirection: "right",
+    targetPoint: { x: "31%", y: "51%" }
+    },
+    {
+      label: "Battery",
+      detail: "15000 mAh, runtime up to 2–3 h",
+       position: { top: "30%", left: "110%" },
+    lineDirection: "left",
+    targetPoint: { x: "58%", y: "36%" }
+    },
+    {
+      label: "Motion Module",
+      detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
+      position: { top: "75%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "35%" }
+    },
+  ],
   },
   {
     id: "GO2-ENT U1",
     name: "GO2-ENT U1",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Advanced version of GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), HD video transmission (1080P, 180ms delay), and dual 1080P cameras with fill lights. Depth camera not included.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -674,49 +728,42 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "1080P HD, 180 ms delay",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }   // front head area (camera/sensor)
+  },
+  {
+    label: "Depth Camera",
+    detail: "3D depth perception",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }   // head-mounted depth cam
+  },
+  {
+    label: "Remote Control",
+    detail: "Multi-functional remote",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }   // external accessory, annotated
+  },
+  {
+    label: "Communication",
+    detail: "5.8G wireless + 4G backup",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }   // mid-body communication module
+  }
+],
   },
 {
     id: "GO2-ENT U2",
     name: "GO2-ENT U2",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Enhanced GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), low-latency 1080P video transmission, and dual wide-angle cameras with fill lights. Depth camera not included.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -724,49 +771,42 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }
+  },
+  {
+    label: "Depth Camera",
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }
+  },
+  {
+    label: "Remote Control",
+    detail: "App-based control (without screen)",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }
+  },
+  {
+    label: "Communication",
+    detail: "5.8G wireless control & monitoring link",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }
+  }
+],
   },
 {
     id: "GO2-ENT U3",
     name: "GO2-ENT U3",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "Advanced GO2 EDU with screen remote, dual comms (5.8G + 4G), 1080P low-latency video, dual wide-angle cameras, searchlight (30W, 3000lm), warning lights (red/blue), and digital voice broadcasting up to 800m. Depth camera not included.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -774,49 +814,42 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera system with remote live streaming",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }
+  },
+  {
+    label: "Depth Camera",
+    detail: "Equipped with depth camera for 3D vision",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }
+  },
+  {
+    label: "Remote Control",
+    detail: "App + optional screen control support",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }
+  },
+  {
+    label: "Communication",
+    detail: "5.8G + 4G backup link for stability",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }
+  }
+],
   },
 {
     id: "GO2-ENT U4",
     name: "GO2-ENT U4",
     description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
+      "GO2 EDU upgrade with dual cameras, capture net gun, laser-assisted aiming, and app-based control for tactical operations. Built with aviation-grade material for precision and reliability.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -824,194 +857,38 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+features: [
+  {
+    label: "Video Transmission",
+    detail: "Dual-camera support with live video feed",
+    position: { top: "68%", left: "5%" },
+    lineDirection: "right",
+    targetPoint: { x: "14%", y: "31%" }    // front body/head area
   },
   {
-    id: "GO2-ENT U5",
-    name: "GO2-ENT U5",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Depth Camera",
+    detail: "Not included in ENT-U4 configuration",
+    position: { top: "5%", left: "15%" },
+    lineDirection: "left",
+    targetPoint: { x: "14%", y: "39%" }    // rear side
   },
   {
-    id: "GO2-ENT U6",
-    name: "GO2-ENT U6",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Remote Control",
+    detail: "Screen remote control via App",
+    position: { top: "10%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "28%", y: "28%" }   // front underside
   },
   {
-    id: "GO2-ENT U7",
-    name: "GO2-ENT U7",
-    description:
-      "Dummy description for Go2 Enterprise cobot. Maximum efficiency and premium features for enterprise collaboration.",
-    gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
-    ],
-    features: [
-      {
-        label: "Vision Sensor",
-        detail: "Enterprise camera module",
-        position: { top: "12%", left: "88%" },
-        lineDirection: "left",
-        targetPoint: { x: "55%", y: "18%" },
-      },
-      {
-        label: "LIDAR",
-        detail: "Enterprise LIDAR",
-        position: { top: "28%", left: "5%" },
-        lineDirection: "right",
-        targetPoint: { x: "52%", y: "12%" },
-      },
-      {
-        label: "Arm Control",
-        detail: "4 DOF arm",
-        position: { top: "42%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "45%", y: "35%" },
-      },
-      {
-        label: "Battery",
-        detail: "Enterprise battery pack",
-        position: { top: "32%", left: "92%" },
-        lineDirection: "left",
-        targetPoint: { x: "58%", y: "40%" },
-      },
-      {
-        label: "Motion Module",
-        detail: "Torque up to 300 Nm",
-        position: { top: "82%", left: "8%" },
-        lineDirection: "right",
-        targetPoint: { x: "48%", y: "60%" },
-      },
-    ],
+    label: "Communication",
+    detail: "App-based real-time control with display feedback",
+    position: { top: "70%", left: "90%" },
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "37%" }    // top/rear body area
+  }
+],
   },
+
 ]
 
 const Select = ({
@@ -1182,7 +1059,7 @@ function RobotShowcase() {
 
             {/* Scrollable Cobot Images - Single Line */}
             <div 
-              className="overflow-x-auto scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-700 pb-2 cursor-grab active:cursor-grabbing select-none"
+              className="overflow-x-auto scrollbar-hide pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
                 e.preventDefault();
@@ -1332,6 +1209,10 @@ function RobotShowcase() {
 <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
   {displayDescription}
 </p>
+
+ <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-target">
+              Order Now
+            </Button>
             </div>
 
             
