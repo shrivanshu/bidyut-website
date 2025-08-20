@@ -33,69 +33,6 @@ const robotSearchData = [
     specId: "g1-basic",
     gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-dance5.mp4"],
   },
-  {
-    id: "edu-bot-2", 
-    name: "EduBot Beta",
-    image: "/media/Robot_Details.svg",
-    category: "Educational",
-    description: "Beta model focused on AI projects and coding camps.",
-    specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4", "/robott.mp4"],
-  },
-  {
-    id: "service-bot-1",
-    name: "ServiceBot Pro",
-    image: "/media/Robot_Details.svg", 
-    category: "Service",
-    description: "Built for reception, delivery and kiosk assistance.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-main.mp4"],
-  },
-  {
-    id: "companion-bot-1",
-    name: "CompanionBot",
-    image: "/media/Robot_Details.svg",
-    category: "Companion", 
-    description: "Social companion with voice, vision and music modes.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robott.mp4"],
-  },
-  {
-    id: "industrial-bot-1",
-    name: "IndustrialBot X1",
-    image: "/media/Robot_Details.svg",
-    category: "Industrial",
-    description: "Rugged automation for factories and warehouses.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4"],
-  },
-  {
-    id: "security-bot-1",
-    name: "SecurityBot Guardian",
-    image: "/media/Robot_Details.svg",
-    category: "Security",
-    description: "Patrol, detect and alert with 24/7 monitoring.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robott.mp4"],
-  },
-  {
-    id: "cleaning-bot-1",
-    name: "CleanBot Elite",
-    image: "/media/Robot_Details.svg",
-    category: "Cleaning",
-    description: "Autonomous sweeping, mopping and spot cleaning.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4"],
-  },
-  {
-    id: "research-bot-1",
-    name: "ResearchBot Lab",
-    image: "/media/Robot_Details.svg",
-    category: "Research",
-    description: "Lab-ready platform for rapid prototyping.",
-    specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
-  }
 ]
 
 const robotSpecs: RobotSpec[] = [
@@ -117,64 +54,74 @@ const robotSpecs: RobotSpec[] = [
       "position": { "top": "8%", "left": "5%" },
       "positionSm": { "top": "10%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "48%", "y": "6%" },
-      "targetPointSm": { "x": "48%", "y": "26%" }
+      "targetPoint": { "x": "48%", "y": "9%" },
+      "targetPointSm": { "x": "48%", "y": "32%" }
     },
     {
       "label": "Microphone Array",
       "detail": "4 Mic Array",
-      "position": { "top": "22%", "left": "5%" },
+      "position": { "top": "26%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "44%", "y": "20%" }
+      "targetPoint": { "x": "49%", "y": "17%" },
+      "targetPointSm": { "x": "49%", "y": "35%" }
     },
     {
       "label": "Computing Module",
       "detail": "8-core CPU + GPU",
       "position": { "top": "10%", "left": "92%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "60%", "y": "12%" }
+      "positionSm": { "top": "10%", "left": "72%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "55%", "y": "19%" },
+      "targetPointSm": { "x": "55%", "y": "36%" },
     },
     {
       "label": "Smart Battery",
       "detail": "Quick-release, fast replacement",
-      "position": { "top": "28%", "left": "90%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "58%", "y": "25%" }
+      "position": { "top": "22%", "left": "92%" },
+      "positionSm": { "top": "22%", "left": "72%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "58%", "y": "25%" },
+      "targetPointSm": { "x": "58%", "y": "39%" },
     },
     {
       "label": "Speaker",
       "detail": "Stereo, Dual Speakers (3W×2)",
-      "position": { "top": "35%", "left": "90%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "58%", "y": "32%" }
+      "position": { "top": "38%", "left": "76%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "55%", "y": "30%" },
+      "targetPointSm": { "x": "54%", "y": "42%" },
     },
     {
       "label": "Single Arm Degrees of Freedom",
       "detail": "Shoulder ×3 | Elbow ×2",
       "position": { "top": "42%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "42%", "y": "40%" }
+      "targetPoint": { "x": "42%", "y": "40%" },
+      "targetPointSm": { "x": "42%", "y": "45%" }
     },
     {
       "label": "Waist Degrees of Freedom",
       "detail": "2 DOF",
-      "position": { "top": "55%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "61%", "y": "52%" }
+      "position": { "top": "52%", "left": "76%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "52%", "y": "45%" }
     },
     {
       "label": "Single Leg Degrees of Freedom",
       "detail": "6 DOF",
-      "position": { "top": "75%", "left": "90%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "56%", "y": "72%" }
+      "position": { "top": "66%", "left": "76%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "62%", "y": "69%" },
+      "targetPointSm": { "x": "62%", "y": "59%" },
     },
     {
       "label": "Huge Power",
       "detail": "Joint max torque ~2 kg·m (arm joint)",
-      "position": { "top": "85%", "left": "5%" },
+      "position": { "top": "80%", "left": "5%" },
+      "positionSm": { "top": "60%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "44%", "y": "82%" }
+      "targetPoint": { "x": "45%", "y": "65%" },
+      "targetPointSm": { "x": "45%", "y": "55%" },
     }
   ]
 }
@@ -524,7 +471,7 @@ export default function R1Variants() {
   {/* Robot Image */}
   <div className="absolute inset-0 flex items-center justify-center">
     <img
-      src="/media/Robot_Details.svg"
+      src="/media/R1.png"
       alt={currentSpec.name}
       className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
     />

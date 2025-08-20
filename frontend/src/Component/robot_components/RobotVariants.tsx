@@ -116,7 +116,7 @@ const robotSpecs: RobotSpec[] = [
         label: "Depth Camera",
         detail: "Intel Realsense D435",
         position: { top: "12%", left: "72%" }, // for md and up
-        positionSm: { top: "15%", left: "70%" }, // for sm screens
+        positionSm: { top: "19%", left: "56%" }, // for sm screens
         lineDirection: "right",
         targetPoint: { x: "51%", y: "6%" },
         targetPointSm: { x: "50%", y: "30%" }, // for sm screens
@@ -151,6 +151,7 @@ const robotSpecs: RobotSpec[] = [
         label: "Core Motion Module",
         detail: "Max Torque: 120 N.m",
         position: { top: "75%", left: "5%" },
+        positionSm: { top: "65%", left: "2%" },
         lineDirection: "right",
         targetPoint: { x: "44%", y: "67%" },
       },
@@ -158,6 +159,7 @@ const robotSpecs: RobotSpec[] = [
         label: "Hollow Joint Wiring",
         detail: "No external cables",
         position: { top: "50%", left: "95%" },
+        positionSm: { top: "50%", left: "85%" },
         lineDirection: "left",
         targetPoint: { x: "61%", y: "45%" },
       },
@@ -165,7 +167,7 @@ const robotSpecs: RobotSpec[] = [
         label: "Leg Control System",
         detail: "Hip: 3 | Knee: 2 | Ankle: 2",
         position: { top: "70%", left: "88%" },
-        positionSm: { top: "70%", left: "73%" },
+        positionSm: { top: "69%", left: "70%" },
         lineDirection: "right",
         targetPoint: { x: "56%", y: "67%" },
       },
@@ -178,7 +180,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U1",
     "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg",
+      "/media/G1 EDU U1.jpg",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
@@ -191,7 +193,7 @@ const robotSpecs: RobotSpec[] = [
         "position": { "top": "10%", "left": "85%" },
         "positionSm": { "top": "15%", "left": "80%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "51%", "y": "6%" },
+        "targetPoint": { "x": "51%", "y": "12%" },
         "targetPointSm": { "x": "50%", "y": "30%" },
       },
       {
@@ -200,7 +202,7 @@ const robotSpecs: RobotSpec[] = [
         "position": { "top": "25%", "left": "8%" },
         "positionSm": { "top": "30%", "left": "5%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "49%", "y": "8%" },
+        "targetPoint": { "x": "49%", "y": "13%" },
         "targetPointSm": { "x": "48%", "y": "30%" },
       },
       {
@@ -208,41 +210,47 @@ const robotSpecs: RobotSpec[] = [
         "detail": "Shoulder: 3 | Elbow: 2 | Wrist: 2 (+2 optional) | Optional 3-Fingered Dexterous Hand",
         "position": { "top": "40%", "left": "2%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "41%", "y": "35%" }
+        "targetPoint": { "x": "43%", "y": "35%" },
+        "targetPointSm": { "x": "41%", "y": "35%" },
       },
       {
         "label": "Quick Release Battery",
         "detail": "9000mAh – Provides lasting power",
-        "position": { "top": "30%", "left": "90%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "55%", "y": "30%" }
+        "position": { "top": "30%", "left": "80%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "59%", "y": "30%" },
+        "targetPointSm": { "x": "55%", "y": "30%" },
       },
       {
         "label": "Core Motion Module",
         "detail": "Max Torque: 120 N·m (Knee Joint)",
         "position": { "top": "85%", "left": "5%" },
-                "positionSm": { "top": "75%", "left": "5%" },
+        "positionSm": { "top": "75%", "left": "5%" },
         "lineDirection": "right",
         "targetPoint": { "x": "44%", "y": "67%" }
       },
       {
         "label": "Hollow Joint Wiring",
         "detail": "No external cables",
-        "position": { "top": "50%", "left": "95%" },
+        "position": { "top": "47%", "left": "90%" },
+        "positionSm": { "top": "50%", "left": "95%" },
         "lineDirection": "left",
         "targetPoint": { "x": "61%", "y": "45%" }
       },
       {
         "label": "Leg Control System",
         "detail": "Hip: 3 | Knee: 2 | Ankle: 2",
-        "position": { "top": "70%", "left": "88%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "56%", "y": "67%" }
+        "position": { "top": "70%", "left": "80%" },
+        "positionSm": { "top": "70%", "left": "88%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "59%", "y": "67%" },
+        "targetPointSm": { "x": "56%", "y": "67%" },
       },
       {
         "label": "High Computing Power Module",
         "detail": "NVIDIA Jetson Orin (optional)",
-        "position": { "top": "60%", "left": "8%" },
+        "position": { "top": "64%", "left": "2%" },
+        "positionSm": { "top": "60%", "left": "8%" },
         "lineDirection": "right",
         "targetPoint": { "x": "42%", "y": "50%" }
       }
@@ -253,7 +261,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U2",
     "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg",
+      "/media/Robot_Details.svg",
       "/media/Robot_Details_EDU.svg"
     ],
     "features": [
@@ -298,7 +306,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U3",
     "description": "The G1 EDU U3 introduces advanced locomotion control, upgraded vision system with multi-camera SLAM, and reinforced joints for longer durability in research environments.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
@@ -325,7 +333,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U4",
     "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
@@ -349,7 +357,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U5",
     "description": "The G1 EDU U5 focuses on collaborative research, with voice AI, advanced gesture recognition, and improved human-robot interaction modules.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
@@ -377,7 +385,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U6",
     "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
@@ -820,7 +828,7 @@ export default function RobotShowcase() {
   {/* Robot Image */}
   <div className="absolute inset-0 flex items-center justify-center">
     <img
-      src="/media/Robot_Details.svg"
+  src={currentSpec.gallery[0]}
       alt={currentSpec.name}
       className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
     />

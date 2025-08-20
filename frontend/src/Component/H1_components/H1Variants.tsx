@@ -104,7 +104,7 @@ const robotSpecs: RobotSpec[] = [
   "name": "Unitree H1",
   "description": "The Unitree H1 is a full-size universal humanoid robot standing about 180 cm tall and weighing only 47 kg. Equipped with advanced 3D LiDAR and Intel RealSense depth sensing, it achieves 360° environment perception. With a moving speed of 3.3 m/s and potential mobility exceeding 5 m/s, it is among the most powerful humanoid robots in terms of speed, maneuverability, and flexibility. The H1 also features a quick-release 864 Wh battery, hollow electrical routing without external cables, and high joint torque up to 360 N·m, making it ideal for advanced research, mobility, and dynamic real-world applications.",
   "gallery": [
-    "/media/Robot_Details.svg",
+    "/media/H1.png",
     "/media/Robot_Details.svg",
     "/media/Robot_Details.svg",
     "/media/Robot_Details.svg",
@@ -115,68 +115,76 @@ const robotSpecs: RobotSpec[] = [
       "label": "3D LiDAR",
       "detail": "LIVOX-MID360",
       "position": { "top": "10%", "left": "5%" },
-      "positionSm": { "top": "12%", "left": "5%" },
+      "positionSm": { "top": "24%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "48%", "y": "8%" },
-      "targetPointSm": { "x": "48%", "y": "28%" }
+      "targetPoint": { "x": "48%", "y": "7%" },
+      "targetPointSm": { "x": "48%", "y": "32%" }
     },
     {
       "label": "Depth Camera",
       "detail": "Intel RealSense D435i",
-      "position": { "top": "12%", "left": "80%" },
-      "positionSm": { "top": "15%", "left": "80%" },
-      "lineDirection": "left",
+      "position": { "top": "12%", "left": "75%" },
+      "positionSm": { "top": "18%", "left": "57%" },
+      "lineDirection": "right",
       "targetPoint": { "x": "52%", "y": "6%" },
-      "targetPointSm": { "x": "50%", "y": "28%" }
+      "targetPointSm": { "x": "51%", "y": "30%" }
     },
     {
       "label": "Combined Shoulder Motors",
       "detail": "3D spatial degrees of freedom",
       "position": { "top": "30%", "left": "5%" },
+      "positionSm": { "top": "40%", "left": "2%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "42%", "y": "32%" }
+      "targetPoint": { "x": "42%", "y": "36%" }
     },
     {
       "label": "Single Arm Degrees of Freedom",
       "detail": "4 (expandable)",
       "position": { "top": "42%", "left": "95%" },
       "lineDirection": "left",
-      "targetPoint": { "x": "60%", "y": "35%" }
+      "targetPoint": { "x": "64%", "y": "24%" },
+      "targetPointSm": { "x": "62%", "y": "39%" },
     },
     {
       "label": "Quick Release Battery",
       "detail": "864 Wh, replaceable",
-      "position": { "top": "28%", "left": "88%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "58%", "y": "28%" }
+      "position": { "top": "27%", "left": "81%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "58%", "y": "28%" },
+      "targetPointSm": { "x": "56%", "y": "43%" },
     },
     {
       "label": "Core Motion Module",
       "detail": "Max torque at joints: 360 N·m",
       "position": { "top": "75%", "left": "5%" },
+      "positionSm": { "top": "72%", "left": "7%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "44%", "y": "68%" }
+      "targetPoint": { "x": "43%", "y": "52%" }
     },
     {
       "label": "Hollow Electrical Routing",
       "detail": "No external cables",
-      "position": { "top": "55%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "61%", "y": "48%" }
+      "position": { "top": "62%", "left": "80%" },
+      "positionSm": { "top": "59%", "left": "80%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "60%", "y": "52%" }
     },
     {
       "label": "Single Leg Degrees of Freedom",
       "detail": "Hip ×3 | Knee ×1 | Ankle ×1 = 5",
-      "position": { "top": "70%", "left": "88%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "56%", "y": "68%" }
+      "position": { "top": "79%", "left": "80%" },
+      "positionSm": { "top": "76%", "left": "67%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "67%", "y": "76%" },
+      "targetPointSm": { "x": "65%", "y": "62%" },
     },
     {
       "label": "Mobility",
       "detail": "3.3 m/s speed (potential >5 m/s)",
       "position": { "top": "60%", "left": "2%" },
+      "positionSm": { "top": "56%", "left": "2%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "42%", "y": "55%" }
+      "targetPoint": { "x": "45%", "y": "49%" }
     }
   ]
 },
@@ -185,7 +193,7 @@ const robotSpecs: RobotSpec[] = [
   "name": "Unitree H1-2",
   "description": "The Unitree H1-2 is a full-size universal humanoid robot, standing at 178 cm and weighing about 70 kg. It is equipped with Intel RealSense depth sensing and 3D LiDAR for 360° perception. Featuring 27 degrees of freedom, high torque joints (up to 360 N·m at legs and 120 N·m at arms), and a peak torque density of 189 N·m/kg, it offers exceptional power and dexterity. The H1-2 integrates hollow electrical wiring without external cables, dual encoder systems for stability, and supports optional dexterous hands and higher computing power. Designed with an ergonomic bionic shape, it balances aesthetics and high performance for advanced robotics applications.",
   "gallery": [
-    "/media/Robot_Details.svg",
+    "/media/H1 - 2.png",
     "/media/Robot_Details.svg",
     "/media/Robot_Details.svg",
     "/media/Robot_Details.svg",
@@ -195,84 +203,70 @@ const robotSpecs: RobotSpec[] = [
     {
       "label": "3D LiDAR",
       "detail": "LIVOX-MID360",
-      "position": { "top": "10%", "left": "5%" },
-      "positionSm": { "top": "12%", "left": "5%" },
+      "position": { "top": "16%", "left": "8%" },
+      "positionSm": { "top": "27%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "48%", "y": "8%" },
-      "targetPointSm": { "x": "48%", "y": "28%" }
+      "targetPoint": { "x": "49%", "y": "16%" },
+      "targetPointSm": { "x": "48%", "y": "35%" }
     },
     {
       "label": "Depth Camera",
       "detail": "Intel RealSense D435i",
-      "position": { "top": "12%", "left": "80%" },
-      "positionSm": { "top": "15%", "left": "80%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "52%", "y": "6%" },
-      "targetPointSm": { "x": "50%", "y": "28%" }
+      "position": { "top": "12%", "left": "65%" },
+      "positionSm": { "top": "22%", "left": "57%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "52%", "y": "15%" },
+      "targetPointSm": { "x": "50%", "y": "34%" }
     },
     {
       "label": "Shoulder Degrees of Freedom",
       "detail": "3 (Peak torque 120 N·m, super large load)",
-      "position": { "top": "28%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "60%", "y": "28%" }
+      "position": { "top": "24%", "left": "73%" },
+      "positionSm": { "top": "32%", "left": "73%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "60%", "y": "28%" },
+      "targetPointSm": { "x": "60%", "y": "40%" },
     },
     {
       "label": "Elbow Degrees of Freedom",
       "detail": "1 (Improves accuracy of task execution)",
-      "position": { "top": "40%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "60%", "y": "38%" }
+      "position": { "top": "50%", "left": "74%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "61%", "y": "45%" },
+      "targetPointSm": { "x": "60%", "y": "48%" },
     },
     {
       "label": "Wrist Degrees of Freedom",
       "detail": "3 (Optional dexterous hands)",
-      "position": { "top": "50%", "left": "2%" },
+      "position": { "top": "40%", "left": "2%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "42%", "y": "50%" }
+      "targetPoint": { "x": "40%", "y": "50%" }
     },
     {
-      "label": "Hollow Electrical Wiring Design",
+      "label": "Hollow Electrical Wiring ",
       "detail": "No external cables",
-      "position": { "top": "55%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "61%", "y": "52%" }
+      "position": { "top": "73%", "left": "66%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "58%", "y": "53%" }
     },
     {
       "label": "Core Sports Module",
       "detail": "Joint max torque: 360 N·m",
-      "position": { "top": "70%", "left": "5%" },
+      "position": { "top": "56%", "left": "2%" },
+      "positionSm": { "top": "60%", "left": "2%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "44%", "y": "68%" }
+      "targetPoint": { "x": "47%", "y": "55%" },
+      "targetPointSm": { "x": "47%", "y": "52%" },
     },
     {
       "label": "Single Leg Degrees of Freedom",
       "detail": "Hip ×3 | Knee ×1 | Ankle ×2 = 6",
-      "position": { "top": "75%", "left": "88%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "56%", "y": "72%" }
-    },
-    {
-      "label": "Dual Encoder",
-      "detail": "Accurate and stable, interference-free",
-      "position": { "top": "82%", "left": "10%" },
+      "position": { "top": "75%", "left": "7%" },
+      "positionSm": { "top": "73%", "left": "15%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "46%", "y": "80%" }
+      "targetPoint": { "x": "39%", "y": "77%" },
+      "targetPointSm": { "x": "39%", "y": "62%" },
     },
-    {
-      "label": "Optional Higher Computing Power",
-      "detail": "Expandable with unlimited upgrades",
-      "position": { "top": "88%", "left": "85%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "58%", "y": "85%" }
-    },
-    {
-      "label": "Ergonomic Bionic Shape",
-      "detail": "Highly technological appearance",
-      "position": { "top": "92%", "left": "50%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "50%", "y": "90%" }
-    }
   ]
 }
  
@@ -620,10 +614,10 @@ export default function H1Variants() {
   {/* Robot Image */}
   <div className="absolute inset-0 flex items-center justify-center">
     <img
-      src="/media/Robot_Details.svg"
-      alt={currentSpec.name}
-      className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-    />
+  src={currentSpec.gallery[0]}
+  alt={currentSpec.name}
+  className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+/>
   </div>
 
   {/* SVG Lines */}

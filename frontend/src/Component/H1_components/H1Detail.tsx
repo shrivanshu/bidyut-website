@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
-import robotImgSrc from '/media/Robot_Details.svg'; 
+import robotImgSrc from '/media/H1 - 2.png'; 
 
 const H1Detail: React.FC = ({ onContactClick }) => {
   const { isDark } = useTheme();

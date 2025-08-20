@@ -427,7 +427,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="AIR Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">AIR</span>
+              <span className="font-bold text-black dark:text-white text-sm">AIR</span>
             </div>
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
@@ -435,7 +435,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="PRO Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">PRO</span>
+              <span className="font-bold text-black dark:text-white text-sm">PRO</span>
             </div>
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
@@ -443,7 +443,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="EDU Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">EDU</span>
+              <span className="font-bold text-black dark:text-white text-sm">EDU</span>
             </div>
           </div>
           
