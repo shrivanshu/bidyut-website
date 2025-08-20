@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, CSSProperties } from "react"
 // Animated Banner Component
 function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number, iLetterRef: React.RefObject<HTMLSpanElement | null> }) {
   const [iPosition, setIPosition] = useState({ x: 0, y: 0 });
-
+  
   // Update i position on scroll and resize
   useEffect(() => {
     const updateIPosition = () => {
@@ -11,15 +11,26 @@ function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number
         const iRect = iLetterRef.current.getBoundingClientRect();
         const screenWidth = window.innerWidth;
         
-        // Only adjust for mobile screens, keep desktop behavior unchanged
-        if (screenWidth < 768) {
-          // Mobile adjustments with lower positioning
+        // Adjust position for different screen sizes
+        if (screenWidth < 380) { // Small mobile
           setIPosition({
             x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + (iRect.height * (screenWidth < 380 ? 45.8 : 0.8))
+            y: iRect.top + (iRect.height * 45.8)
           });
-        } else {
-          // Keep original desktop behavior
+        }
+        else if (screenWidth <= 768) { // Regular mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + (iRect.height * 6.25)
+          });
+        }
+        else if (screenWidth < 1024) { // Tablet
+          setIPosition({
+            x: iRect.left + iRect.width / 2.5,
+            y: iRect.top + (iRect.height * 1.2) // Reduced the multiplier for tablet
+          });
+        }
+        else { // Desktop
           setIPosition({
             x: iRect.left + iRect.width / 2.4,
             y: iRect.top + iRect.height * 2
@@ -52,11 +63,31 @@ function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number
   }
 
   // Initial banner size
-  const isMobileSize = typeof window !== 'undefined' && window.innerWidth < 768;
-  const initialWidth = isMobileSize ? 320 : 1600;
-  const initialHeight = isMobileSize ? 80 : 180;
-  const dotSize = isMobileSize ? 12 : 28; // Smaller dot for mobile
-  const dotBorderRadius = isMobileSize ? 8 : 16;
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
+  let initialWidth, initialHeight, dotSize, dotBorderRadius;
+
+  // Responsive size adjustments with specific tablet breakpoint at 768px
+  if (screenWidth < 640) { // Mobile small
+    initialWidth = 280;
+    initialHeight = 70;
+    dotSize = 14;
+    dotBorderRadius = 7;
+  } else if (screenWidth < 768) { // Mobile large
+    initialWidth = 320;
+    initialHeight = 80;
+    dotSize = 16;
+    dotBorderRadius = 8;
+  } else if (screenWidth < 1024) { // Tablet (768px to 1024px)
+    initialWidth = 600;
+    initialHeight = 140;
+    dotSize = 24;
+    dotBorderRadius = 12;
+  } else { // Desktop
+    initialWidth = 1600;
+    initialHeight = 180;
+    dotSize = 28;
+    dotBorderRadius = 16;
+  }
 
   // Interpolate size and border-radius
   const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize;
