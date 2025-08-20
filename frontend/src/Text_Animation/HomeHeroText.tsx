@@ -64,7 +64,7 @@ const HomeHeroText = ({
   };
 
   const getCurrentTextColor = () => {
-    if (textColors.length === 0) return "#ffffff";
+    if (textColors.length === 0) return "inherit";
     return textColors[currentTextIndex % textColors.length];
   };
 
