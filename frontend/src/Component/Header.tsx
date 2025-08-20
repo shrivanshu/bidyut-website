@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, Sun, Moon, Menu, X, Globe } from "lucide-react"
+import { ChevronDown, Sun, Moon, Menu, X, Globe, Bell } from "lucide-react"
 import { useTheme } from "../contexts/ThemeContext"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useNavigation } from "../contexts/NavigationContext"
@@ -25,14 +25,14 @@ export default function Header() {
         <div className="max-w-[90%] w-full mt-4 rounded-full bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
 
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent">
-              BIDYUT
-            </div>
-            <div className="ml-1 text-sm text-slate-400 font-medium">
-              INNOVATION
-            </div>
-          </div>
+          <a href="/" className="flex items-center group" style={{ textDecoration: "none" }}>
+            <img
+              src="/bidyut_logo_green 1.svg"
+              alt="Bidyut Logo"
+              className="h-14 w-auto mr-2 transition-transform group-hover:scale-105"
+              style={{ maxHeight: "56px" }} // h-14 = 56px
+            />
+          </a>
 
           {/* Navigation Menu (Desktop) */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -86,7 +86,23 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
             {/* Login Button */}
-            <button className="hidden sm:inline-flex bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] hover:from-[#00F5A0]/80 hover:to-[#00C6FF]/80 text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-[0_0_20px_#00F5A0] transition-all duration-300">
+            <button
+              className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] text-white px-6 py-2 rounded-full font-bold transition-all duration-200"
+              style={{
+                textShadow: "0 1px 0 #009e6e"
+              }}
+            >
+              <span
+                className="text-xl"
+                style={{
+                  transform: "rotate(-18deg) scale(0.85)",
+                  display: "inline-block",
+                  filter: "drop-shadow(0 2px 0 #B8860B) drop-shadow(0 4px 8px #FFD60088)"
+                }}
+                aria-label="bell"
+              >
+                🔔
+              </span>
               {t("loginToLms")}
             </button>
 

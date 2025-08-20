@@ -154,8 +154,7 @@ const EducationNews: React.FC = () => {
               highlight={{ text: t('latestNews').split(' & ')[1], color: '#22c55e' }}
               typingSpeed={40}
               pauseDuration={0}
-              showCursor={true}
-              cursorCharacter="|"
+              showCursor={false}
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               startOnVisible={true}
             />
