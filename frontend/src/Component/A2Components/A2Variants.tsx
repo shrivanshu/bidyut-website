@@ -161,10 +161,10 @@ const cobotSearchData = [
 
 const robotSpecs: RobotSpec[] = [
   {
-    id: "B2-Advanced",
-    name: "B2 Advanced",
+    id: "A2-Standard",
+    name: "A2 Standard",
     description:
-      "B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).",
+      "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -172,50 +172,50 @@ const robotSpecs: RobotSpec[] = [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg"
     ],
-    features: [
-   {
-    label: "32-wire Automative-grade lidar",
-    detail: "",
-    position: { top: "1%", left: "17%" },
+features: [
+  {
+    label: "LiDAR Sensor",
+    detail: "Single LiDAR for obstacle avoidance & mapping",
+    position: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "15%", y: "25%" }   // head/top front
   },
   {
-    label: "Depth Camera",
-    detail: "",
-    position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
-  },
-  {
-    label: "High resolution Optical Camera",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
-  },
-  {
-    label: "M107 high performance joint module",
-    detail: "",
-    position: { top: "30%", left: "110%" },
+    label: "Wide-Angle Camera",
+    detail: "HD wide-angle vision, expandable to dual cameras",
+    position: { top: "15%", left: "80%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "55%", y: "28%" }   // front face
   },
   {
-    label: "Ultra large capacity battery 45Ah (2250 Wh)",
-    detail: "",
-    position: { top: "75%", left: "45%" },
+    label: "Battery Pack",
+    detail: "Dual 9000mAh batteries, 5h runtime, 20km range",
+    position: { top: "35%", left: "5%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "40%", y: "50%" }   // side body compartment
+  },
+  {
+    label: "Joint Module",
+    detail: "High-torque motor joints enable stair & slope climbing",
+    position: { top: "65%", left: "90%" },
+    lineDirection: "left",
+    targetPoint: { x: "70%", y: "70%" }   // leg joint area
+  },
+  {
+    label: "Payload Area",
+    detail: "Carries up to 25kg payload (max 100kg)",
+    position: { top: "85%", left: "45%" },
+    lineDirection: "up",
+    targetPoint: { x: "50%", y: "60%" }   // back/top of robot
   }
 ]
-
   },
+  
   {
-    id: "B2-Advanced-with-3D-Lidar",
-    name: "B2 Advanced with 3D Lidar",
+    id: "A2-Pro",
+    name: "A2 Pro",
     description:
-      "B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.",
+      "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -264,10 +264,10 @@ const robotSpecs: RobotSpec[] = [
   },
   
   {
-    id: "B2-W-Basic",
-    name: "B2-W Basic",
+    id: "A2-W-Standard",
+    name: "A2-W Standard",
     description:
-      "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
+      "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
@@ -329,10 +329,10 @@ const robotSpecs: RobotSpec[] = [
   },
 
   {
-    id: "B2-W-Advanced",
-    name: "B2-W Advanced",
+    id: "A2-W-Pro",
+    name: "A2-W Pro",
     description:
-      "B2-W Advanced is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and operating range of -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops). The pack includes B2 platform, 45000 mAh battery, charger, calibrator, and protective bracket. Version: B2 Advanced with 360° Lidar.",
+      "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
     gallery: [
       "/media/Cobot_true.svg",
       "/media/Cobot_true.svg",
