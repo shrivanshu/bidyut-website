@@ -1,6 +1,6 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 
-export default function HeroSection() {
+export default function B2HeroSection() {
   return (
   <section className="min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 pt-32 pb-16 relative">
       {/* Target Cursor Effect - hidden on mobile */}
@@ -45,15 +45,16 @@ export default function HeroSection() {
         "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
     }}
   >
-    Unitree GO2
+    Unitree B2
   </h2>
 
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    Select from a range of high-performance educational robots designed for hands-on learning. 
-    Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
-    for secondary development and real-time demonstrations.
+    Unitree is a global robotics company that builds advanced quadruped robots, and the B2 is one of its flagship models. 
+    The B2 is a programmable, AI-powered robot designed for education, research, and industrial applications. It offers 
+    high computing power, AI/ML support, LiDAR integration, and strong payload capacity. The B2 comes in four variants – 
+    B2 Advanced, B2 Advanced with 3D LiDAR, B2-W Basic, and B2-W Advanced – each tailored with unique features for different use cases.
   </p>
 </div>
       </div>
