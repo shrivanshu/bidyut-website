@@ -605,7 +605,7 @@ export default function RobotShowcase() {
   return (
     // <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
-      <div className="w-full px-6 py-16 md:px-12 lg:px-16">
+      <div className="w-full px-6 py-6 md:px-12 lg:px-16">
         {/* Search Button Section */}
         {/* <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-center">
@@ -824,13 +824,13 @@ export default function RobotShowcase() {
 
           {/* Right Section - Robot Visualization */}
           <div className="relative">
-            <div className="relative h-[700px] w-full">
+            <div className="relative h-[600px] md:h-[700px] w-full">
   {/* Robot Image */}
   <div className="absolute inset-0 flex items-center justify-center">
     <img
   src={currentSpec.gallery[0]}
       alt={currentSpec.name}
-      className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+      className="h-[300px]  md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
     />
   </div>
 
