@@ -316,8 +316,7 @@ export default function EducationStream() {
             highlight={{ text: t('stream'), color: '#10b981' }}
             typingSpeed={40}
             pauseDuration={0}
-            showCursor={true}
-            cursorCharacter="|"
+            showCursor={false}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300"
             startOnVisible={true}
           />

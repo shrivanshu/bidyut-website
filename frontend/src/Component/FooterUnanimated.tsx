@@ -178,13 +178,13 @@ export default function FooterUnanimated() {
 
           {/* Brand with i target (dot only on i, always visible) */}
             <div className="flex justify-center items-center w-full ">
-            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', maxWidth: '100vw', width: '100%', lineHeight: 1.05}}>
+            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', minWidth: '100vw', width: '100%', lineHeight: 1.05}}>
                 <span>B</span>
               <span ref={iLetterRef} className="relative inline-block">
                 <span className="relative">
                   i
                   <div
-                    className="absolute left-2/3 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full opacity-100"
+                    className="absolute left-2/3 transform -translate-x-1/2 w-7 h-7 bg-green-500 rounded-full opacity-100"
                     style={{
                       top: "0.35em",
                       left: "42%",

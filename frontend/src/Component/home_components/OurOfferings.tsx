@@ -75,7 +75,7 @@ export default function OfferingsSection() {
               text={[t("ourOfferings")]}
               highlight={{ text: t("ourOfferings").split(" ").slice(1).join(" "), color: "#2ecc71" }}
               typingSpeed={40}
-              cursorCharacter="|"
+              showCursor={false}
               className="inline-block"
               startOnVisible
             />
@@ -154,14 +154,7 @@ export default function OfferingsSection() {
                       <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-4">
                         {t(item.descriptionKey)}
                       </p>
-                      <div className="mt-auto pt-4">
-                        <span className="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-sm font-medium">
-                          Learn more
-                          <svg width="16" height="16" viewBox="0 0 24 24" className="transition-transform group-hover:translate-x-0.5">
-                            <path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </span>
-                      </div>
+                      
                     </div>
                   </div>
                 </button>

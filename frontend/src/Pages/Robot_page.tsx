@@ -11,9 +11,7 @@ function Robot_page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
-        <div className=' pt-8'>
         <HeroSectionRobot />
-        </div>
         <RobotVariants/>
         <RobotDetail/>
         <Table/>

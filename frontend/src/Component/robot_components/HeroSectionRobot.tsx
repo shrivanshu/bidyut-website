@@ -1,17 +1,30 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
+import React from 'react';
+
 const HeroSection = () => {
+  // Detect md and up screens
+  const [isMd, setIsMd] = React.useState(false);
+  React.useEffect(() => {
+    const checkScreen = () => setIsMd(window.innerWidth >= 768);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
   return (
     <>
-      <div className="min-h-[120vh] bg-white dark:bg-black relative overflow-hidden">
-        {/* Custom Cursor */}
-        <Robotanimationtest 
-          spinDuration={2}
-          hideDefaultCursor={true}
-        />
+      <div className="min-h-[120vh] bg-white pt-8 dark:bg-black relative overflow-hidden">
+        {/* Custom Cursor - Only show on md and up */}
+        {isMd && (
+          <Robotanimationtest 
+            spinDuration={2}
+            hideDefaultCursor={true}
+          />
+        )}
 
         {/* Split Header Text - Above the image */}
-       <div className="absolute top-[8%] md:top-[17%] left-0 md:left-2 right-0 md:-right-12 z-20 px-4 md:px-14">
-  <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
+       <div className="absolute top-[10%] md:top-[17%] left-0 md:left-2 right-0 md:-right-12 z-20 px-4 md:px-14">
+  <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-2">
     
     {/* Left part */}
     <div className="flex flex-wrap items-baseline justify-center sm:justify-start">
@@ -40,7 +53,7 @@ const HeroSection = () => {
 
 
         {/* Robot Image - Reduced size for better spacing */}
-        <div className="absolute top-[25%] md:top-[5%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
+        <div className="absolute top-[25%] md:top-[8%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
           <img 
             src="/media/robott.gif" 
             alt="Humanoid Robot" 
@@ -60,7 +73,7 @@ const HeroSection = () => {
         </div>
 
         {/* G1 and UNITREE Labels - Better positioned */}
-        <div className="absolute top-[79%] md:top-[65%] -left-[40%] md:left-0 -right-8 md:right-0 z-15 h-[200px]">
+        <div className="absolute top-[79%] md:top-[68%] -left-[40%] md:left-0 -right-8 md:right-0 z-15 h-[200px]">
           <div className="max-w-[1440px] mx-auto px-6 relative h-full">
             {/* G1 Label - Smaller and higher */}
             <div className="absolute left-36 -top-16">

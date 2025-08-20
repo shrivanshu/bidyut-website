@@ -1,11 +1,60 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
 
 // Animated Banner Component
-function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number, iLetterRef: React.RefObject<HTMLSpanElement> }) {
-  // Banner is blank, only color
+function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number, iLetterRef: React.RefObject<HTMLSpanElement | null> }) {
+  const [iPosition, setIPosition] = useState({ x: 0, y: 0 });
+  
+  // Update i position on scroll and resize
+  useEffect(() => {
+    const updateIPosition = () => {
+      if (iLetterRef.current) {
+        const iRect = iLetterRef.current.getBoundingClientRect();
+        const screenWidth = window.innerWidth;
+        
+        // Adjust position for different screen sizes
+        if (screenWidth < 380) { // Small mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + (iRect.height * 45.8)
+          });
+        }
+        else if (screenWidth <= 768) { // Regular mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + (iRect.height * 6.25)
+          });
+        }
+        else if (screenWidth < 1024) { // Tablet
+          setIPosition({
+            x: iRect.left + iRect.width / 2.5,
+            y: iRect.top + (iRect.height * 1.2) // Reduced the multiplier for tablet
+          });
+        }
+        else { // Desktop
+          setIPosition({
+            x: iRect.left + iRect.width / 2.4,
+            y: iRect.top + iRect.height * 2
+          });
+        }
+      }
+    };
+
+    // Update position on scroll and resize
+    const handleUpdate = () => {
+      requestAnimationFrame(updateIPosition);
+    };
+
+    updateIPosition(); // Initial update
+    window.addEventListener('scroll', handleUpdate, { passive: true });
+    window.addEventListener('resize', handleUpdate);
+    
+    return () => {
+      window.removeEventListener('scroll', handleUpdate);
+      window.removeEventListener('resize', handleUpdate);
+    };
+  }, [iLetterRef, scrollProgress]);
 
   // Banner position logic
-  // Morphing logic
   let morph = 0;
   if (scrollProgress > 0.3 && scrollProgress < 0.95) {
     morph = (scrollProgress - 0.3) / 0.65; // 0 to 1, starts earlier
@@ -14,10 +63,31 @@ function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number
   }
 
   // Initial banner size
-  const initialWidth = 1600;
-  const initialHeight = 180;
-  const dotSize = 28;
-  const dotBorderRadius = 16;
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
+  let initialWidth, initialHeight, dotSize, dotBorderRadius;
+
+  // Responsive size adjustments with specific tablet breakpoint at 768px
+  if (screenWidth < 640) { // Mobile small
+    initialWidth = 280;
+    initialHeight = 70;
+    dotSize = 14;
+    dotBorderRadius = 7;
+  } else if (screenWidth < 768) { // Mobile large
+    initialWidth = 320;
+    initialHeight = 80;
+    dotSize = 16;
+    dotBorderRadius = 8;
+  } else if (screenWidth < 1024) { // Tablet (768px to 1024px)
+    initialWidth = 600;
+    initialHeight = 140;
+    dotSize = 24;
+    dotBorderRadius = 12;
+  } else { // Desktop
+    initialWidth = 1600;
+    initialHeight = 180;
+    dotSize = 28;
+    dotBorderRadius = 16;
+  }
 
   // Interpolate size and border-radius
   const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize;
@@ -40,38 +110,38 @@ function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number
     opacity: scrollProgress > 0.98 ? 0 : 1,
     transition: 'all 0.7s cubic-bezier(.4,2,.3,1)',
   };
+
   // Move banner to 'i' when scrollProgress > 0.95
-  if (scrollProgress > 0.95 && iLetterRef.current) {
-    const iRect = iLetterRef.current.getBoundingClientRect();
+  if (scrollProgress > 0.95 && iPosition.x && iPosition.y) {
     bannerStyle = {
       ...bannerStyle,
       position: 'fixed',
-      left: iRect.left + iRect.width / 2,
-      top: iRect.top + iRect.height * 0.56, // land a bit lower on the 'i'
+      left: iPosition.x,
+      top: iPosition.y,
       transform: 'translate(-50%, -50%)',
       width: dotSize,
       height: dotSize,
       borderRadius: dotBorderRadius,
       opacity: 1,
-  boxShadow: '0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)',
-  animation: 'glow-pulse-interactive 2.5s ease-in-out infinite',
-  transition: 'all 1.2s cubic-bezier(.4,2,.3,1)',
+      boxShadow: '0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)',
+      animation: 'glow-pulse-interactive 2.5s ease-in-out infinite',
+      transition: 'all 1.2s cubic-bezier(.4,2,.3,1)'
     };
   }
+
   return (
     <div style={bannerStyle}></div>
   );
 }
-import { Instagram, Facebook, Twitter } from "lucide-react"
+
+import { Instagram, Facebook, Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function Footer() {
   const { t } = useLanguage()
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [showAnimation, setShowAnimation] = useState(false)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
-  // Removed dotRef, not needed
 
   useEffect(() => {
     let animationFrameId: number | null = null
@@ -83,7 +153,6 @@ export default function Footer() {
       const windowHeight = window.innerHeight
 
       if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
-        setShowAnimation(true)
         const footerHeight = footerRect.height
         const progress = Math.min(
           1,
@@ -91,7 +160,6 @@ export default function Footer() {
         )
         setScrollProgress(progress)
       } else {
-        setShowAnimation(false)
         setScrollProgress(0)
       }
     }
@@ -108,8 +176,6 @@ export default function Footer() {
       if (animationFrameId) cancelAnimationFrame(animationFrameId)
     }
   }, [])
-
-  // Removed getDotStyle, not needed
 
   return (
     <footer
@@ -207,9 +273,16 @@ export default function Footer() {
 
           {/* Socials */}
           <div className="flex space-x-4 mb-8 justify-left">
-            {[Instagram, Facebook, Twitter].map((Icon, index) => (
-              <div
+            {[
+              { Icon: Instagram, link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt" },
+              { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
+              { Icon: Facebook, link: "#" }
+            ].map(({ Icon, link }, index) => (
+              <a
                 key={index}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
                 style={{
                   boxShadow:
@@ -218,7 +291,7 @@ export default function Footer() {
                 aria-label="social-icon"
               >
                 <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
-              </div>
+              </a>
             ))}
           </div>
 
@@ -243,9 +316,9 @@ export default function Footer() {
 
           {/* Brand with i target */}
           <div className="flex justify-center items-center w-full ">
-            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', maxWidth: '100vw', width: '100%', lineHeight: 1.05}}>
+            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', minWidth: '100vw', width: '100%', lineHeight: 1.05}}>
               <span>B</span>
-              <span ref={iLetterRef} className="relative inline-block w-10 h-10 ">
+              <span ref={iLetterRef} className="relative inline-block ">
                 i
                  
               </span>

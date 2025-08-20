@@ -15,6 +15,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
+import H1_page from './Pages/H1_page';
+import R1_page from './Pages/R1_page';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -29,6 +31,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Contact" element={<Contactpage />} />
               <Route path="/Robot" element={<Robotpage />} />
               <Route path="/Cobot" element={<Cobotpage />} />
+              <Route path="/H1" element={<H1_page />} />
+              <Route path="/R1" element={<R1_page />} />
               <Route path="/B2" element={<B2Page />} />
               <Route path="/A2" element={<A2Page />} />
               <Route path="/School" element={<SchoolPage />} />

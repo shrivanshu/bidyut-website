@@ -115,20 +115,20 @@ const robotSpecs: RobotSpec[] = [
       {
         label: "Depth Camera",
         detail: "Intel Realsense D435",
-        position: { top: "27%", left: "72%" }, // for md and up
-        positionSm: { top: "18%", left: "60%" }, // for sm screens
+        position: { top: "12%", left: "72%" }, // for md and up
+        positionSm: { top: "19%", left: "56%" }, // for sm screens
         lineDirection: "right",
-        targetPoint: { x: "51%", y: "12%" },
-        targetPointSm: { x: "60%", y: "90%" }, // for sm screens
+        targetPoint: { x: "51%", y: "6%" },
+        targetPointSm: { x: "50%", y: "30%" }, // for sm screens
       },
       {
         label: "3D LiDAR",
         detail: "LIVOX-MID360",
         position: { top: "25%", left: "8%" }, // for md and up
-        positionSm: { top: "28%", left: "20%" }, // for sm screens
+        positionSm: { top: "30%", left: "5%" }, // for sm screens
         lineDirection: "right",
         targetPoint: { x: "49%", y: "8%" },
-        targetPointSm: { x: "30%", y: "18%" }, // for sm screens
+        targetPointSm: { x: "48%", y: "30%" }, // for sm screens
       },
       {
         label: "Single Arm Control",
@@ -141,13 +141,17 @@ const robotSpecs: RobotSpec[] = [
         label: "Quick Release Battery",
         detail: "Provides lasting power",
         position: { top: "30%", left: "90%" },
+        positionSm: { top: "30%", left: "70%" },
+         // for sm screens
         lineDirection: "right",
         targetPoint: { x: "59%", y: "28%" },
+         targetPointSm: { x: "50%", y: "30%" },
       },
       {
         label: "Core Motion Module",
         detail: "Max Torque: 120 N.m",
-        position: { top: "85%", left: "5%" },
+        position: { top: "75%", left: "5%" },
+        positionSm: { top: "65%", left: "2%" },
         lineDirection: "right",
         targetPoint: { x: "44%", y: "67%" },
       },
@@ -155,6 +159,7 @@ const robotSpecs: RobotSpec[] = [
         label: "Hollow Joint Wiring",
         detail: "No external cables",
         position: { top: "50%", left: "95%" },
+        positionSm: { top: "50%", left: "85%" },
         lineDirection: "left",
         targetPoint: { x: "61%", y: "45%" },
       },
@@ -162,7 +167,8 @@ const robotSpecs: RobotSpec[] = [
         label: "Leg Control System",
         detail: "Hip: 3 | Knee: 2 | Ankle: 2",
         position: { top: "70%", left: "88%" },
-        lineDirection: "left",
+        positionSm: { top: "69%", left: "70%" },
+        lineDirection: "right",
         targetPoint: { x: "56%", y: "67%" },
       },
     ],
@@ -174,7 +180,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U1",
     "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg",
+      "/media/G1 EDU U1.jpg",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
@@ -185,55 +191,66 @@ const robotSpecs: RobotSpec[] = [
         "label": "Depth Camera",
         "detail": "Intel Realsense D435",
         "position": { "top": "10%", "left": "85%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "51%", "y": "15%" }
+        "positionSm": { "top": "15%", "left": "80%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "51%", "y": "12%" },
+        "targetPointSm": { "x": "50%", "y": "30%" },
       },
       {
         "label": "3D LiDAR",
         "detail": "LIVOX-MID360",
         "position": { "top": "25%", "left": "8%" },
+        "positionSm": { "top": "30%", "left": "5%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "49%", "y": "8%" }
+        "targetPoint": { "x": "49%", "y": "13%" },
+        "targetPointSm": { "x": "48%", "y": "30%" },
       },
       {
         "label": "Advanced Arm & Hand Control",
         "detail": "Shoulder: 3 | Elbow: 2 | Wrist: 2 (+2 optional) | Optional 3-Fingered Dexterous Hand",
         "position": { "top": "40%", "left": "2%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "41%", "y": "35%" }
+        "targetPoint": { "x": "43%", "y": "35%" },
+        "targetPointSm": { "x": "41%", "y": "35%" },
       },
       {
         "label": "Quick Release Battery",
         "detail": "9000mAh – Provides lasting power",
-        "position": { "top": "30%", "left": "90%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "55%", "y": "30%" }
+        "position": { "top": "30%", "left": "80%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "59%", "y": "30%" },
+        "targetPointSm": { "x": "55%", "y": "30%" },
       },
       {
         "label": "Core Motion Module",
         "detail": "Max Torque: 120 N·m (Knee Joint)",
         "position": { "top": "85%", "left": "5%" },
+        "positionSm": { "top": "75%", "left": "5%" },
         "lineDirection": "right",
         "targetPoint": { "x": "44%", "y": "67%" }
       },
       {
         "label": "Hollow Joint Wiring",
         "detail": "No external cables",
-        "position": { "top": "50%", "left": "95%" },
+        "position": { "top": "47%", "left": "90%" },
+        "positionSm": { "top": "50%", "left": "95%" },
         "lineDirection": "left",
         "targetPoint": { "x": "61%", "y": "45%" }
       },
       {
         "label": "Leg Control System",
         "detail": "Hip: 3 | Knee: 2 | Ankle: 2",
-        "position": { "top": "70%", "left": "88%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "56%", "y": "67%" }
+        "position": { "top": "70%", "left": "80%" },
+        "positionSm": { "top": "70%", "left": "88%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "59%", "y": "67%" },
+        "targetPointSm": { "x": "56%", "y": "67%" },
       },
       {
         "label": "High Computing Power Module",
         "detail": "NVIDIA Jetson Orin (optional)",
-        "position": { "top": "60%", "left": "8%" },
+        "position": { "top": "64%", "left": "2%" },
+        "positionSm": { "top": "60%", "left": "8%" },
         "lineDirection": "right",
         "targetPoint": { "x": "42%", "y": "50%" }
       }
@@ -244,23 +261,27 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U2",
     "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg",
+      "/media/Robot_Details.svg",
       "/media/Robot_Details_EDU.svg"
     ],
     "features": [
       {
         "label": "Enhanced Depth Camera",
         "detail": "Intel Realsense D455",
-        "position": { "top": "12%", "left": "94%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "50%", "y": "18%" }
+        "position": { "top": "12%", "left": "84%" },
+        "positionSm": { "top": "22%", "left": "84%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "50%", "y": "18%" },
+        "targetPointSm": { "x": "50%", "y": "31%" },
       },
       {
         "label": "3D LiDAR",
         "detail": "LIVOX-MID360 + Improved Scan Range",
         "position": { "top": "22%", "left": "10%" },
+       "positionSm": { "top": "19%", "left": "8%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "48%", "y": "10%" }
+        "targetPoint": { "x": "48%", "y": "10%" },
+        "targetPointSm": { "x": "48%", "y": "30%" },
       },
       {
         "label": "Improved Arm & Hand System",
@@ -272,9 +293,11 @@ const robotSpecs: RobotSpec[] = [
       {
         "label": "Battery Upgrade",
         "detail": "10,500mAh – Extended runtime",
-        "position": { "top": "32%", "left": "92%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "57%", "y": "32%" }
+        "position": { "top": "32%", "left": "82%" },
+        "positionSm": { "top": "49%", "left": "82%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "57%", "y": "32%" },
+        "targetPointSm": { "x": "56%", "y": "40%" },
       }
     ]
   },
@@ -283,21 +306,24 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U3",
     "description": "The G1 EDU U3 introduces advanced locomotion control, upgraded vision system with multi-camera SLAM, and reinforced joints for longer durability in research environments.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
         "label": "Vision System",
         "detail": "Stereo + Depth + Wide FOV SLAM Cameras",
         "position": { "top": "15%", "left": "88%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "51%", "y": "17%" }
+        "positionSm": { "top": "25%", "left": "72%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "51%", "y": "17%" },
+        "targetPointSm": { "x": "51%", "y": "35%" }
       },
       {
         "label": "Locomotion Upgrade",
         "detail": "Dynamic Walking Algorithms + Terrain Adaptation",
         "position": { "top": "65%", "left": "88%" },
-        "lineDirection": "left",
+        "positionSm": { "top": "60%", "left": "74%" },
+        "lineDirection": "right",
         "targetPoint": { "x": "58%", "y": "65%" }
       }
     ]
@@ -307,7 +333,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U4",
     "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
@@ -331,22 +357,26 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U5",
     "description": "The G1 EDU U5 focuses on collaborative research, with voice AI, advanced gesture recognition, and improved human-robot interaction modules.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
         "label": "Voice AI",
         "detail": "Natural Language Processing Integration",
-        "position": { "top": "18%", "left": "95%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "52%", "y": "20%" }
+        "position": { "top": "18%", "left": "85%" },
+        "positionSm": { "top": "32%", "left": "75%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "52%", "y": "10%" },
+        "targetPointSm": { "x": "52%", "y": "33%" }
       },
       {
         "label": "Gesture Recognition",
         "detail": "Multi-Camera Body Tracking",
         "position": { "top": "20%", "left": "12%" },
+        "positionSm": { "top": "32%", "left": "0%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "46%", "y": "12%" }
+        "targetPoint": { "x": "51%", "y": "6%" },
+        "targetPointSm": { "x": "45%", "y": "36%" }
       }
     ]
   },
@@ -355,22 +385,25 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U6",
     "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
     "gallery": [
-      "/media/Robot_Details_EDU.svg"
+      "/media/Robot_Details.svg"
     ],
     "features": [
       {
         "label": "Hybrid AI Control",
         "detail": "Cloud + Edge Processing for Autonomous Learning",
         "position": { "top": "60%", "left": "8%" },
+        "positionSm": { "top": "57%", "left": "1%" },
         "lineDirection": "right",
         "targetPoint": { "x": "42%", "y": "55%" }
       },
       {
         "label": "Safety Module",
         "detail": "Collision Avoidance + Human Proximity Sensors",
-        "position": { "top": "72%", "left": "95%" },
-        "lineDirection": "left",
-        "targetPoint": { "x": "59%", "y": "70%" }
+        "position": { "top": "72%", "left": "85%" },
+        "positionSm": { "top": "49%", "left": "80%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "59%", "y": "70%" },
+        "targetPointSm": { "x": "53%", "y": "36%" }
       }
     ]
   }
@@ -792,75 +825,76 @@ export default function RobotShowcase() {
           {/* Right Section - Robot Visualization */}
           <div className="relative">
             <div className="relative h-[700px] w-full">
-              {/* Robot Image with Animation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <img
-                  src="/media/Robot_Details.svg"
-                  alt={currentSpec.name}
-className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-                />
-              </div>
+  {/* Robot Image */}
+  <div className="absolute inset-0 flex items-center justify-center">
+    <img
+  src={currentSpec.gallery[0]}
+      alt={currentSpec.name}
+      className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+    />
+  </div>
 
-              {/* SVG Lines - Only show on hover */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-                {currentSpec.features.map((feature, index) => {
-                  if (hoveredFeature !== index) return null;
-                  
-                  const startX = feature.position.left
-                  const startY = feature.position.top
-                  const endX = feature.targetPoint.x
-                  const endY = feature.targetPoint.y
+  {/* SVG Lines */}
+  <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+    {currentSpec.features.map((feature, index) => {
+      if (hoveredFeature !== index) return null;
+      
+      // RESPONSIVE COORDINATE HANDLING
+      const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+      const startPos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+      const endPoint = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
 
-                  return (
-                    <g key={index}>
-                      <line
-                        x1={startX}
-                        y1={startY}
-                        x2={endX}
-                        y2={endY}
-                        stroke="#059669"
-                        strokeWidth="2"
-                        className="transition-all duration-300"
-                      />
-                      {/* Start dot */}
-                      <circle
-                        cx={startX}
-                        cy={startY}
-                        r="4"
-                        fill="#059669"
-                        className="transition-all duration-300"
-                      />
-                      {/* End dot */}
-                      <circle
-                        cx={endX}
-                        cy={endY}
-                        r="4"
-                        fill="#059669"
-                        className="transition-all duration-300"
-                      />
-                    </g>
-                  )
-                })}
-              </svg>
+      // Convert pixel values to percentages if needed
+      const normalizeCoord = (value: string | undefined) => {
+        if (!value) return "0%";
+        return value.includes("px") 
+          ? `${(parseInt(value) / window.innerWidth) * 100}%`
+          : value;
+      };
 
-              {/* Feature Labels */}
-              {currentSpec.features.map((feature, index) => {
-                // Responsive position for small screens
-                const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
-                const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
-                const target = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
+      return (
+        <g key={index}>
+          <line
+            x1={normalizeCoord(startPos.left)}
+            y1={normalizeCoord(startPos.top)}
+            x2={normalizeCoord(endPoint.x)}
+            y2={normalizeCoord(endPoint.y)}
+            stroke="#059669"
+            strokeWidth="2"
+          />
+          <circle
+            cx={normalizeCoord(startPos.left)}
+            cy={normalizeCoord(startPos.top)}
+            r="4"
+            fill="#059669"
+          />
+          <circle
+            cx={normalizeCoord(endPoint.x)}
+            cy={normalizeCoord(endPoint.y)}
+            r="4"
+            fill="#059669"
+          />
+        </g>
+      );
+    })}
+  </svg>
 
-                return (
-                  <div
-                    key={index}
-                    className="absolute z-10 cursor-pointer"
-                    style={{
-                      top: pos.top,
-                      left: pos.left,
-                      transform: feature.lineDirection === "left" ? "translateX(-100%)" : "translateX(0%)",
-                    }}
-                    onMouseEnter={() => setHoveredFeature(index)}
-                    onMouseLeave={() => setHoveredFeature(null)}
+  {/* Feature Labels */}
+  {currentSpec.features.map((feature, index) => {
+    const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+    const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+
+    return (
+      <div
+        key={index}
+        className="absolute z-10 cursor-pointer"
+        style={{
+          top: pos.top,
+          left: pos.left,
+          transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
+        }}
+        onMouseEnter={() => setHoveredFeature(index)}
+        onMouseLeave={() => setHoveredFeature(null)}
                   >
                     <div className="text-left max-w-[120px]">
                       <div
