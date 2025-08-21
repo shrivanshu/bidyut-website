@@ -65,19 +65,81 @@ export default function Header() {
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-black/40 backdrop-blur-md text-gray-200 rounded-lg shadow-xl border border-[#00F5A0]/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
                 <div className="py-2">
-                  {[
-                    { href: "/Robot_page", label: "Robot Showcase" },
-                    { href: "/cobot", label: t("Quadruped Showcase") },
-              
-                  ].map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0] transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {/* Humanoid */}
+                  <div className="relative group/child">
+                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                      Humanoid
+                      <ChevronRight className="h-4 w-4 ml-2" />
+                    </button>
+
+                    {/* Humanoid Submenu */}
+                    <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
+                      <div className="py-2">
+
+                        {/* Industry */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Industry
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/H1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
+                          </div>
+                        </div>
+
+                        {/* Education */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Education
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/robot" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G1</a>
+                            <a href="/R1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">R1</a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quadrupeds */}
+                  <div className="relative group/child">
+                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                      Quadrupeds
+                      <ChevronRight className="h-4 w-4 ml-2" />
+                    </button>
+
+                    {/* Quadrupeds Submenu */}
+                    <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
+                      <div className="py-2">
+
+                        {/* Industry */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Industry
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="B2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2</a>
+                            <a href="/A2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2</a>
+                          </div>
+                        </div>
+
+                        {/* Education */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Education
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="Cobot" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02</a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
