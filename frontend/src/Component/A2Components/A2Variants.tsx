@@ -15,8 +15,10 @@ interface RobotSpec {
     label: string
     detail: string
     position: { top: string; left: string }
+    positionSm?: { top: string; left: string } // Responsive position for small screens
     lineDirection: "left" | "right"
     targetPoint: { x: string; y: string }
+    targetPointSm?: { x: string; y: string } // Responsive target point for small screens
   }[]
 }
 
@@ -180,36 +182,46 @@ features: [
     label: "LiDAR Sensor",
     detail: "Single LiDAR for obstacle avoidance & mapping",
     position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" }   // head/top front
+    targetPoint: { x: "17%", y: "17%" },
+    targetPointSm: { x: "19%", y: "32%" }   // head/top front
   },
   {
     label: "Wide-Angle Camera",
     detail: "HD wide-angle vision, expandable to dual cameras",
     position: { top: "3%", left: "40%" },
+    positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" }   // front face
+    targetPoint: { x: "17%", y: "19%" },
+    targetPointSm: { x: "17%", y: "34%" }    // front face
   },
   {
     label: "Battery Pack",
     detail: "Dual 9000mAh batteries, 5h runtime, 20km range",
     position: { top: "5%", left: "90%" },
+    positionSm: { top: "22%", left: "68%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" }   // side body compartment
+    targetPoint: { x: "60%", y: "35%" },
+    targetPointSm: { x: "62%", y: "42%" }  // side body compartment
   },
   {
     label: "Joint Module",
     detail: "High-torque motor joints enable stair & slope climbing",
     position: { top: "65%", left: "85%" },
+    positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-    targetPoint: { x: "77%", y: "35%" }   // leg joint area
+    targetPoint: { x: "77%", y: "35%" },  // leg joint area
+    targetPointSm: { x: "77%", y: "42%" }
   },
   {
     label: "Payload Area",
     detail: "Carries up to 25kg payload (max 100kg)",
     position: { top: "60%", left: "43%" },
+    positionSm: { top: "75%", left: "45%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "25%" }   // back/top of robot
+    targetPoint: { x: "58%", y: "25%" },   // back/top of robot
+    targetPointSm: { x: "58%", y: "37%" }
   }
 ]
   },
@@ -231,36 +243,46 @@ features: [
     label: "Dual LiDAR Sensors",
     detail: "Enhanced perception with two LiDAR units for improved mapping and navigation",
     position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" } 
+    targetPoint: { x: "17%", y: "17%" },
+    targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "GPS Module",
     detail: "Integrated GPS for precise outdoor positioning and navigation",
     position: { top: "8%", left: "74%" },
+    positionSm: { top: "2%", left: "50%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "25%" }
+    targetPoint: { x: "58%", y: "25%" },
+    targetPointSm: { x: "60%", y: "37%" }
   },
   {
     label: "4G Communication",
     detail: "Seamless remote connectivity through built-in 4G module",
     position: { top: "58%", left: "2%" },
+    positionSm: { top: "18%", left: "66%" },
     lineDirection: "right",
-    targetPoint: { x: "55%", y: "33%" }
+    targetPoint: { x: "55%", y: "33%" },
+    targetPointSm: { x: "55%", y: "40%" }
   },
   {
     label: "Wireless Vector Positioning",
     detail: "Companion module for wireless vector-based positioning support",
     position: { top: "60%", left: "87%" },
-    lineDirection: "left",
-    targetPoint: { x: "37%", y: "19%" }
+    positionSm: { top: "78%", left: "86%" },
+    lineDirection: "right",
+    targetPoint: { x: "37%", y: "19%" },
+    targetPointSm: { x: "47%", y: "35%" }
   },
   {
     label: "High-Computing Dock",
     detail: "Expansion dock increases built-in computing power to three units",
     position: { top: "75%", left: "20%" },
+    positionSm: { top: "70%", left: "19%" },
     lineDirection: "right",
-    targetPoint: { x: "68%", y: "30%" }
+    targetPoint: { x: "68%", y: "30%" },
+    targetPointSm: { x: "69%", y: "39%" }
   }
 ]
 
@@ -284,36 +306,46 @@ features: [
     label: "LIDAR Sensor",
     detail: "Single LiDAR for navigation & mapping",
     position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" } 
+    targetPoint: { x: "17%", y: "17%" },
+    targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "Optical Camera",
     detail: "Wide-angle depth camera (expandable to 2)",
     position: { top: "3%", left: "40%" },
+    positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" }
+    targetPoint: { x: "17%", y: "19%" },
+    targetPointSm: { x: "17%", y: "34%" } 
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design for versatile terrain",
-position: { top: "65%", left: "22%" },
+    position: { top: "65%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "5%", y: "81%" }
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
   },
   {
     label: "Battery Pack",
     detail: "Dual-bay 9000mAh/18000mAh system",
     position: { top: "5%", left: "90%" },
+    positionSm: { top: "22%", left: "68%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" }
+    targetPoint: { x: "60%", y: "35%" },
+    targetPointSm: { x: "62%", y: "42%" }
   },
   {
     label: "Computing Power",
     detail: "8-core CPU + Intel i7 dual-unit system",
-    position: { top: "60%", left: "86%" },
+    position: { top: "70%", left: "83%" },
+    positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-     targetPoint: { x: "68%", y: "30%" }
+    targetPoint: { x: "55%", y: "24%" },
+    targetPointSm: { x: "57%", y: "37%" }
   }
 ]
 
@@ -336,8 +368,10 @@ features: [
     label: "LIDAR Sensor",
     detail: "Dual LiDAR sensors for enhanced mapping & navigation",
     position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" } 
+    targetPoint: { x: "17%", y: "17%" },
+    targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "Optical Camera",
@@ -357,15 +391,19 @@ features: [
     label: "Battery Pack",
     detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
     position: { top: "5%", left: "90%" },
+    positionSm: { top: "22%", left: "68%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" }
+    targetPoint: { x: "60%", y: "35%" },
+    targetPointSm: { x: "62%", y: "42%" }
   },
   {
     label: "Computing Power",
     detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
-    position: { top: "60%", left: "86%" },
+    position: { top: "70%", left: "83%" },
+    positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-     targetPoint: { x: "68%", y: "30%" }
+    targetPoint: { x: "55%", y: "24%" },
+    targetPointSm: { x: "57%", y: "37%" }
   }
 ]
   },
@@ -744,80 +782,87 @@ function A2Variants() {
               </div>
 
               {/* SVG Lines - Only show on hover */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-                {currentSpec.features.map((feature, index) => {
-                  if (hoveredFeature !== index) return null;
-                  
-                  const startX = feature.position.left;
-                  const startY = feature.position.top;
-                  const endX = feature.targetPoint.x;
-                  const endY = feature.targetPoint.y;
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+                      {currentSpec.features.map((feature, index) => {
+                        if (hoveredFeature !== index) return null;
+                        // Responsive target point logic
+                        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                        const startX = isMobile && feature.positionSm ? feature.positionSm.left : feature.position.left;
+                        const startY = isMobile && feature.positionSm ? feature.positionSm.top : feature.position.top;
+                        const endX = isMobile && feature.targetPointSm ? feature.targetPointSm.x : feature.targetPoint.x;
+                        const endY = isMobile && feature.targetPointSm ? feature.targetPointSm.y : feature.targetPoint.y;
 
-                  return (
-                    <g key={index}>
-                      <line
-                        x1={startX}
-                        y1={startY}
-                        x2={endX}
-                        y2={endY}
-                        stroke="#059669"
-                        strokeWidth="2"
-                        className="transition-all duration-300"
-                      />
-                      {/* Start dot */}
-                      <circle
-                        cx={startX}
-                        cy={startY}
-                        r="4"
-                        fill="#059669"
-                        className="transition-all duration-300"
-                      />
-                      {/* End dot */}
-                      <circle
-                        cx={endX}
-                        cy={endY}
-                        r="4"
-                        fill="#059669"
-                        className="transition-all duration-300"
-                      />
-                    </g>
-                  );
-                })}
-              </svg>
+                        return (
+                          <g key={index}>
+                            <line
+                              x1={startX}
+                              y1={startY}
+                              x2={endX}
+                              y2={endY}
+                              stroke="#059669"
+                              strokeWidth="2"
+                              className="transition-all duration-300"
+                            />
+                            {/* Start dot */}
+                            <circle
+                              cx={startX}
+                              cy={startY}
+                              r="4"
+                              fill="#059669"
+                              className="transition-all duration-300"
+                            />
+                            {/* End dot */}
+                            <circle
+                              cx={endX}
+                              cy={endY}
+                              r="4"
+                              fill="#059669"
+                              className="transition-all duration-300"
+                            />
+                          </g>
+                        );
+                      })}
+                    </svg>
 
               {/* Feature Labels */}
-              {currentSpec.features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="absolute z-10 cursor-pointer"
-                  style={{
-                    top: feature.position.top,
-                    left: feature.position.left,
-                    transform: feature.lineDirection === "left" ? "translateX(-100%)" : "translateX(0%)",
-                  }}
-                  onMouseEnter={() => setHoveredFeature(index)}
-                  onMouseLeave={() => setHoveredFeature(null)}
-                >
-                  <div className="text-left max-w-[120px]">
-                    <div
-                      className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                        hoveredFeature === index 
-                          ? "text-green-600 dark:text-green-400" 
-                          : "text-gray-900 dark:text-gray-100"
-                      }`}
-                    >
-                      {feature.label}
-                    </div>
-                    <div 
-                      className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                        hoveredFeature === index ? "opacity-100" : "opacity-70"
-                      }`}
-                    >
-                      {feature.detail}
+              {currentSpec.features.map((feature, index) => {
+                // Responsive position logic
+                const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                const top = isMobile && feature.positionSm ? feature.positionSm.top : feature.position.top;
+                const left = isMobile && feature.positionSm ? feature.positionSm.left : feature.position.left;
+                return (
+                  <div
+                    key={index}
+                    className="absolute z-10 cursor-pointer"
+                    style={{
+                      top,
+                      left,
+                      transform: feature.lineDirection === "left" ? "translateX(-100%)" : "translateX(0%)",
+                    }}
+                    onMouseEnter={() => setHoveredFeature(index)}
+                    onMouseLeave={() => setHoveredFeature(null)}
+                  >
+                    <div className="text-left max-w-[120px]">
+                      <div
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
+                          hoveredFeature === index 
+                            ? "text-green-600 dark:text-green-400" 
+                            : "text-gray-900 dark:text-gray-100"
+                        }`}
+                      >
+                        {feature.label}
+                      </div>
+                      <div 
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
+                          hoveredFeature === index ? "opacity-100" : "opacity-70"
+                        }`}
+                      >
+                        {feature.detail}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
