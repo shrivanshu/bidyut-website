@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Twitter } from "lucide-react"
+import { Instagram, Facebook, Linkedin,Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function FooterUnanimated() {
@@ -71,6 +71,7 @@ export default function FooterUnanimated() {
               <h3 className="text-lg font-bold mb-4">
                 <span className="brand-heading-gradient">{t("quickLinks")}</span>
               </h3>
+              <div className="ml-1">
               <ul className="space-y-3">
                 {[
                   { key: "home", href: "/" },
@@ -90,6 +91,7 @@ export default function FooterUnanimated() {
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
 
             {/* Contact */}
@@ -142,20 +144,31 @@ export default function FooterUnanimated() {
 
           {/* Socials */}
           <div className="flex space-x-4 mb-8 justify-left">
-            {[Instagram, Facebook, Twitter].map((Icon, index) => (
-              <div
-                key={index}
-                className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
-                style={{
-                  boxShadow:
-                    "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
-                }}
-                aria-label="social-icon"
-              >
-                <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
-              </div>
-            ))}
-          </div>
+          {[
+            {
+              Icon: Instagram,
+              link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt",
+            },
+            { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
+            { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+            { Icon: Linkedin, link: "https://www.linkedin.com/company/bidyutinnovation/" },
+          ].map(({ Icon, link }, index) => (
+            <a
+              key={index}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
+              style={{
+                boxShadow:
+                  "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
+              }}
+              aria-label="social-icon"
+            >
+              <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
+            </a>
+          ))}
+        </div>
 
           {/* Copyright */}
           <div className="glass-card theme-aware p-6 mb-10">
