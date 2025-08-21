@@ -106,10 +106,10 @@ const robotSpecs: RobotSpec[] = [
       "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.1 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to 2 m/s , making it perfect for dynamic educational demonstrations.",
     gallery: [
       "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg", 
-      "/media/Robot_Details.svg",
-      "/media/Robot_Details.svg"
+       "/media/G1+Kungfu.png",
+      "/media/g1_video.mp4",
+      "/media/g1_video1.mp4",
+      // "/media/Robot_Details.svg"
     ],
     features: [
       {
@@ -180,11 +180,11 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U1",
     "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
     "gallery": [
-      "/media/G1 EDU U1.png",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg",
-      "/media/Robot_Details_EDU.svg"
+      "/media/G1 EDU U1 .png",
+      "/media/G1+Kungfu.png",
+      "/media/g1_video.mp4",
+      "/media/g1_video1.mp4",
+      // "/media/Robot_Details_EDU.svg"
     ],
     "features": [
       {
@@ -264,7 +264,7 @@ const robotSpecs: RobotSpec[] = [
     "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
     "gallery": [
       "/media/Robot_Details.svg",
-      "/media/Robot_Details_EDU.svg"
+      "/media/G1 EDU U2.png"
     ],
     "features": [
       {
@@ -308,7 +308,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U3",
     "description": "The G1 EDU U3 introduces advanced locomotion control, upgraded vision system with multi-camera SLAM, and reinforced joints for longer durability in research environments.",
     "gallery": [
-      "/media/Robot_Details.svg"
+      "/media/Copy of G1 EDU U3 .png"
     ],
     "features": [
       {
@@ -317,7 +317,7 @@ const robotSpecs: RobotSpec[] = [
         "position": { "top": "15%", "left": "88%" },
         "positionSm": { "top": "25%", "left": "72%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "51%", "y": "17%" },
+        "targetPoint": { "x": "51%", "y": "10%" },
         "targetPointSm": { "x": "51%", "y": "35%" }
       },
       {
@@ -359,7 +359,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U5",
     "description": "The G1 EDU U5 focuses on collaborative research, with voice AI, advanced gesture recognition, and improved human-robot interaction modules.",
     "gallery": [
-      "/media/Robot_Details.svg"
+      "/media/G1 EDU U5 .png"
     ],
     "features": [
       {
@@ -387,7 +387,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U6",
     "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
     "gallery": [
-      "/media/Robot_Details.svg"
+      "/media/G1 EDU U6  (1).png"
     ],
     "features": [
       {

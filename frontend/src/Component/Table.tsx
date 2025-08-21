@@ -543,7 +543,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-green-700 transition"
                 onClick={() => setShowMoreSensors((prev) => !prev)}
               >
-                {showMoreSensors ? "Hide More" : "Show More"}
+                {showMoreSensors ? "Hide More" : "Show More Specifications"}
               </button>
             </div>
         </div>

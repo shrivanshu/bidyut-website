@@ -3,6 +3,7 @@ import Header from '../Component/Header';
 import HeroSectionH1 from '../Component/H1_components/HeroSectionH1';
 import H1Variants from '../Component/H1_components/H1Variants';
 import H1Detail from '../Component/H1_components/H1Detail';
+import H1ComparisonChart from '../Component/H1_components/H1ComparisonChart';
 import { ThemeProvider } from '../contexts/ThemeContext';
 function H1_page() {
   return (
@@ -12,6 +13,7 @@ function H1_page() {
         <HeroSectionH1 />
         <H1Variants/>
         <H1Detail/>
+        <H1ComparisonChart/>
         <Footer />
       </div>
     </ThemeProvider>
