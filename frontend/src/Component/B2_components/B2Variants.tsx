@@ -311,20 +311,7 @@ const robotSpecs: RobotSpec[] = [
     lineDirection: "right",
     targetPoint: { x: "70%", y: "35%" }
   },
-   {
-    label: "High power wheel motor",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "39%", y: "51%" }
-  },
-  {
-    label: "Replaceable wheel foot legs",
-    detail: "",
-    position: { top: "30%", left: "110%" },
-    lineDirection: "left",
-    targetPoint: { x: "48%", y: "36%" }
-  }
+
 ]
   },
 
@@ -376,20 +363,7 @@ const robotSpecs: RobotSpec[] = [
     lineDirection: "right",
     targetPoint: { x: "70%", y: "35%" }
   },
-   {
-    label: "High power wheel motor",
-    detail: "",
-    position: { top: "55%", left: "1%" },
-    lineDirection: "right",
-    targetPoint: { x: "39%", y: "51%" }
-  },
-  {
-    label: "Replaceable wheel foot legs",
-    detail: "",
-    position: { top: "30%", left: "110%" },
-    lineDirection: "left",
-    targetPoint: { x: "48%", y: "36%" }
-  }
+
 ]
   },
   
