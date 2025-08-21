@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Youtube } from "lucide-react"
+import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 // Animated Banner Component
@@ -286,6 +286,7 @@ export default function Footer() {
             },
             { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
             { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+            { Icon: Linkedin, link: "https://www.linkedin.com/company/bidyutinnovation/" },
           ].map(({ Icon, link }, index) => (
             <a
               key={index}

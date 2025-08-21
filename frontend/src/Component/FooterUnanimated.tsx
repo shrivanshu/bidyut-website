@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Twitter,Youtube } from "lucide-react"
+import { Instagram, Facebook, Linkedin,Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function FooterUnanimated() {
@@ -71,6 +71,7 @@ export default function FooterUnanimated() {
               <h3 className="text-lg font-bold mb-4">
                 <span className="brand-heading-gradient">{t("quickLinks")}</span>
               </h3>
+              <div className="ml-1">
               <ul className="space-y-3">
                 {[
                   { key: "home", href: "/" },
@@ -90,6 +91,7 @@ export default function FooterUnanimated() {
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
 
             {/* Contact */}
@@ -149,6 +151,7 @@ export default function FooterUnanimated() {
             },
             { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
             { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+            { Icon: Linkedin, link: "https://www.linkedin.com/company/bidyutinnovation/" },
           ].map(({ Icon, link }, index) => (
             <a
               key={index}
