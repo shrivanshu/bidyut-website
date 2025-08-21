@@ -11,11 +11,11 @@ interface Offering {
 }
 
 const offerings: Offering[] = [
-  { image: "/public/OurOfferingImages/AiCard.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
-  { image: "public/OurOfferingImages/Collabrativeimage.jpg", titleKey: "Collabration", descriptionKey: "collabrationDesc" },
-  { image: "public/OurOfferingImages/Learningexpi.jpg", titleKey: "Learningexpi", descriptionKey: "learningexpisDesc" },
-  { image: "public/OurOfferingImages/Smartprogess.jpg", titleKey: "ProgressTracking", descriptionKey: "ProgressTrackingDesc" },
-  { image: "public/OurOfferingImages/Ai2.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" }
+  { image: "/OurOfferingImages/AI Powered Learning Path.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
+  { image: "/OurOfferingImages/collaborativeLearning.jpg", titleKey: "Collabration", descriptionKey: "collabrationDesc" },
+  { image: "/OurOfferingImages/Immersive Learning Experiences.jpg", titleKey: "Learningexpi", descriptionKey: "learningexpisDesc" },
+  { image: "/OurOfferingImages/Smart_Progress_Tracking.jpg", titleKey: "ProgressTracking", descriptionKey: "ProgressTrackingDesc" },
+  { image: "/OurOfferingImages/Personalized Mentorship.jpg", titleKey: "personalizedMentorship", descriptionKey: "personalizedMentorshipDesc" }
 ]
 
 

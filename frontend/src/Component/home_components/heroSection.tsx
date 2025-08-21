@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import HeroHeading from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
+import { GoogleGenAI } from "@google/genai";
+
+const ai = new GoogleGenAI({ apiKey: "AIzaSyBXvyQXa7LjTNqqDkm3uvubhhkQ1A5dWZs" });
+
+const systemPrompt = "You are Buddy, an AI assistant. Help users with robotics, coding, and Bidyut Innovation programs.";
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
 function ChatBox({
@@ -15,6 +20,14 @@ function ChatBox({
   onSend: (msg: string) => void;
 }) {
   const [input, setInput] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   if (!open) return null;
   return (
     <div className="absolute bottom-16 right-2 z-50 w-80 max-w-[95vw] bg-white rounded-2xl shadow-2xl border border-[#0ACF83] flex flex-col animate-fade-in
@@ -59,6 +72,7 @@ function ChatBox({
             </div>
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
       {/* Input */}
       <form
@@ -102,15 +116,33 @@ const HeroSection: React.FC = () => {
   const videos = ["/herorobo1.mp4"];
 
   // Handle sending message
-  const handleSend = (msg: string) => {
+  const handleSend = async (msg: string) => {
     setMessages((prev) => [...prev, { from: "me", text: msg }]);
-    // Dummy bot reply (replace with real AI logic if needed)
-    setTimeout(() => {
+
+    // Prepare conversation history
+    const conversation = messages
+      .map((m) => `${m.from === "me" ? "User" : "Buddy"}: ${m.text}`)
+      .join("\n");
+
+    const fullPrompt = `${systemPrompt}\n${conversation}\nUser: ${msg}\nBuddy:`;
+
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-1.5-flash",
+        contents: fullPrompt,
+      });
+
       setMessages((prev) => [
         ...prev,
-        { from: "bot", text: "I'm just a demo bot! (Integrate your AI here.)" },
+        { from: "bot", text: response.text.trim() },
       ]);
-    }, 800);
+    } catch (error) {
+      console.error("Error generating response:", error);
+      setMessages((prev) => [
+        ...prev,
+        { from: "bot", text: "Sorry, I encountered an error. Please try again." },
+      ]);
+    }
   };
 
   return (

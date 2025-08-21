@@ -28,12 +28,12 @@ export default function A2HeroSection() {
   </p>
 </div>
 
-      {/* Video container */}
+    {/* Image container */}
   <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
-        <div className="relative aspect-video rounded-lg overflow-hidden ">
-            <video src="/Quad.webm" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-        </div>
-      </div>
+  <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
+  <img src="/A2.png" alt="Unitree A2" className="max-w-sm md:max-w-lg lg:max-w-xl h-auto object-contain" />
+    </div>
+    </div>
 
       {/* Large "Quadruped" text */}
   <div className="-mt-10 mb-4 text-center">
