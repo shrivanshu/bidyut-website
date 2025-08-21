@@ -91,11 +91,11 @@ export default function StreamLanding() {
         >
           <motion.span
             className="text-4xl sm:text-6xl font-bold text-black dark:text-white drop-shadow-lg"
-            initial={{ textShadow: "0px 0px 0px #00ff00" }}
+            initial={{ textShadow: "0px 0px 0px #1f3f1fff" }}
             animate={{ textShadow: [
-              "0px 0px 10px #00ff00",
-              "0px 0px 20px #00ff00",
-              "0px 0px 10px #00ff00"
+              "0px 0px 10px #8b9a8bff",
+              "0px 0px 20px #e6eee6ff",
+              "0px 0px 10px #7b847bff"
             ] }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
           >

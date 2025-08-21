@@ -1,3 +1,19 @@
+/* Hide vertical scrollbar for .school-section but keep scroll functionality */
+.school-section {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.school-section::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+/* Hide vertical scrollbar for body and html but keep scroll functionality */
+body, html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
