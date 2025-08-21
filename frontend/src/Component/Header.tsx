@@ -56,11 +56,10 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative font-medium transition-all duration-300 ${
-                  isActive(item.href)
-                    ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent after:w-full after:bg-gradient-to-r after:from-[#00F5A0] after:to-[#00C6FF]"
-                    : "text-gray-200 hover:bg-gradient-to-r hover:from-[#00F5A0] hover:to-[#00C6FF] hover:bg-clip-text hover:text-transparent after:w-0"
-                } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300`}
+                className={`relative font-medium transition-all duration-300 ${isActive(item.href)
+                  ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent after:w-full after:bg-gradient-to-r after:from-[#00F5A0] after:to-[#00C6FF]"
+                  : "text-gray-200 hover:bg-gradient-to-r hover:from-[#00F5A0] hover:to-[#00C6FF] hover:bg-clip-text hover:text-transparent after:w-0"
+                  } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300`}
               >
                 {item.label}
               </a>
@@ -76,7 +75,6 @@ export default function Header() {
               {/* First Level Dropdown */}
               <div className="absolute top-full left-0 mt-2 w-56 bg-black/40 backdrop-blur-md text-gray-200 rounded-lg shadow-xl border border-[#00F5A0]/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
                 <div className="py-2">
-
                   {/* Humanoid */}
                   <div className="relative group/child">
                     <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
@@ -152,7 +150,6 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -162,23 +159,16 @@ export default function Header() {
           <div className="flex items-center space-x-3">
             {/* Login Button */}
             <button
-              className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] text-white px-6 py-2 rounded-full font-bold transition-all duration-200"
-              style={{
-                textShadow: "0 1px 0 #009e6e"
-              }}
+              className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-5 py-2.5 font-semibold text-white shadow-md transition-all duration-200 group hover:shadow-lg hover:scale-105"
+              style={{ textShadow: "0 1px 0 #009e6e" }}
             >
               <span
-                className="text-xl"
-                style={{
-                  transform: "rotate(-18deg) scale(0.85)",
-                  display: "inline-block",
-                  filter: "drop-shadow(0 2px 0 #B8860B) drop-shadow(0 4px 8px #FFD60088)"
-                }}
+                className="text-lg inline-block origin-top -rotate-12 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] drop-shadow-[0_3px_6px_#FFD60088]"
                 aria-label="bell"
               >
                 🔔
               </span>
-              {t("loginToLms")}
+              <span className="text-base">{t("loginToLms")}</span>
             </button>
 
             {/* Language Button */}
@@ -200,11 +190,10 @@ export default function Header() {
                           changeLanguage(lang.code)
                           setIsLanguageDropdownOpen(false)
                         }}
-                        className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 ${
-                          currentLanguage === lang.code
-                            ? "bg-[#00F5A0]/20 text-[#00F5A0]"
-                            : "hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
-                        }`}
+                        className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 ${currentLanguage === lang.code
+                          ? "bg-[#00F5A0]/20 text-[#00F5A0]"
+                          : "hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
+                          }`}
                       >
                         <span className="text-base">{lang.flag}</span>
                         <span className="font-medium">{lang.name}</span>
@@ -238,9 +227,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-[80px] left-0 w-full bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 ${
-          isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
-        }`}
+        className={`md:hidden fixed top-[80px] left-0 w-full bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 ${isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
+          }`}
       >
         <nav className="flex flex-col space-y-4 px-3">
           {[
@@ -254,11 +242,10 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className={`font-medium transition-colors ${
-                isActive(item.href)
-                  ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
-                  : "text-gray-300 hover:text-[#00F5A0]"
-              }`}
+              className={`font-medium transition-colors ${isActive(item.href)
+                ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
+                : "text-gray-300 hover:text-[#00F5A0]"
+                }`}
             >
               {item.label}
             </a>

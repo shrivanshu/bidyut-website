@@ -1,141 +1,147 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
+import { Instagram, Facebook, Youtube } from "lucide-react"
+import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 // Animated Banner Component
-function AnimatedBanner({ scrollProgress, iLetterRef }: { scrollProgress: number, iLetterRef: React.RefObject<HTMLSpanElement | null> }) {
-  const [iPosition, setIPosition] = useState({ x: 0, y: 0 });
-  
+function AnimatedBanner({
+  scrollProgress,
+  iLetterRef,
+}: {
+  scrollProgress: number
+  iLetterRef: React.RefObject<HTMLSpanElement | null>
+}) {
+  const [iPosition, setIPosition] = useState({ x: 0, y: 0 })
+
   // Update i position on scroll and resize
   useEffect(() => {
     const updateIPosition = () => {
       if (iLetterRef.current) {
-        const iRect = iLetterRef.current.getBoundingClientRect();
-        const screenWidth = window.innerWidth;
-        
-        // Adjust position for different screen sizes
-        if (screenWidth < 380) { // Small mobile
+        const iRect = iLetterRef.current.getBoundingClientRect()
+        const screenWidth = window.innerWidth
+
+        if (screenWidth < 380) {
+          // Small mobile
           setIPosition({
             x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + (iRect.height * 45.8)
-          });
-        }
-        else if (screenWidth <= 768) { // Regular mobile
+            y: iRect.top + iRect.height * 45.8,
+          })
+        } else if (screenWidth <= 768) {
+          // Regular mobile
           setIPosition({
             x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + (iRect.height * 6.25)
-          });
-        }
-        else if (screenWidth < 1024) { // Tablet
+            y: iRect.top + iRect.height * 6.25,
+          })
+        } else if (screenWidth < 1024) {
+          // Tablet
           setIPosition({
             x: iRect.left + iRect.width / 2.5,
-            y: iRect.top + (iRect.height * 1.2) // Reduced the multiplier for tablet
-          });
-        }
-        else { // Desktop
+            y: iRect.top + iRect.height * 1.2,
+          })
+        } else {
+          // Desktop
           setIPosition({
             x: iRect.left + iRect.width / 2.4,
-            y: iRect.top + iRect.height * 2
-          });
+            y: iRect.top + iRect.height * 2,
+          })
         }
       }
-    };
+    }
 
-    // Update position on scroll and resize
     const handleUpdate = () => {
-      requestAnimationFrame(updateIPosition);
-    };
+      requestAnimationFrame(updateIPosition)
+    }
 
-    updateIPosition(); // Initial update
-    window.addEventListener('scroll', handleUpdate, { passive: true });
-    window.addEventListener('resize', handleUpdate);
-    
+    updateIPosition() // Initial
+    window.addEventListener("scroll", handleUpdate, { passive: true })
+    window.addEventListener("resize", handleUpdate)
+
     return () => {
-      window.removeEventListener('scroll', handleUpdate);
-      window.removeEventListener('resize', handleUpdate);
-    };
-  }, [iLetterRef, scrollProgress]);
+      window.removeEventListener("scroll", handleUpdate)
+      window.removeEventListener("resize", handleUpdate)
+    }
+  }, [iLetterRef, scrollProgress])
 
-  // Banner position logic
-  let morph = 0;
+  // Morphing progress
+  let morph = 0
   if (scrollProgress > 0.3 && scrollProgress < 0.95) {
-    morph = (scrollProgress - 0.3) / 0.65; // 0 to 1, starts earlier
+    morph = (scrollProgress - 0.3) / 0.65
   } else if (scrollProgress >= 0.95) {
-    morph = 1;
+    morph = 1
   }
 
-  // Initial banner size
-  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
-  let initialWidth, initialHeight, dotSize, dotBorderRadius;
+  // Sizes
+  const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920
+  let initialWidth, initialHeight, dotSize, dotBorderRadius
 
-  // Responsive size adjustments with specific tablet breakpoint at 768px
-  if (screenWidth < 640) { // Mobile small
-    initialWidth = 280;
-    initialHeight = 70;
-    dotSize = 14;
-    dotBorderRadius = 7;
-  } else if (screenWidth < 768) { // Mobile large
-    initialWidth = 320;
-    initialHeight = 80;
-    dotSize = 16;
-    dotBorderRadius = 8;
-  } else if (screenWidth < 1024) { // Tablet (768px to 1024px)
-    initialWidth = 600;
-    initialHeight = 140;
-    dotSize = 24;
-    dotBorderRadius = 12;
-  } else { // Desktop
-    initialWidth = 1600;
-    initialHeight = 180;
-    dotSize = 28;
-    dotBorderRadius = 16;
+  if (screenWidth < 640) {
+    // Small mobile
+    initialWidth = 280
+    initialHeight = 70
+    dotSize = 14
+    dotBorderRadius = 7
+  } else if (screenWidth < 768) {
+    // Large mobile
+    initialWidth = 320
+    initialHeight = 80
+    dotSize = 16
+    dotBorderRadius = 8
+  } else if (screenWidth < 1024) {
+    // Tablet
+    initialWidth = 600
+    initialHeight = 140
+    dotSize = 24
+    dotBorderRadius = 12
+  } else {
+    // Desktop
+    initialWidth = 1600
+    initialHeight = 180
+    dotSize = 28
+    dotBorderRadius = 16
   }
 
-  // Interpolate size and border-radius
-  const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize;
-  const height = morph < 1 ? initialHeight - (initialHeight - dotSize) * morph : dotSize;
-  const borderRadius = morph < 1 ? 40 + (dotBorderRadius - 40) * morph + (width/2 - dotBorderRadius) * morph : dotBorderRadius;
+  const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize
+  const height = morph < 1 ? initialHeight - (initialHeight - dotSize) * morph : dotSize
+  const borderRadius =
+    morph < 1 ? 40 + (dotBorderRadius - 40) * morph : dotBorderRadius
 
   let bannerStyle: CSSProperties = {
-    position: 'fixed',
-    left: '42%',
-    top: scrollProgress < 0.95 ? '2%' : undefined,
-    transform: morph < 1 ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
+    position: "fixed",
+    left: "50%",
+    top: scrollProgress < 0.95 ? "2%" : undefined,
+    transform: morph < 1 ? "translate(-50%, 0)" : "translate(-50%, -50%)",
     width,
     height,
-    background: 'linear-gradient(90deg, #e0e7ec 0%, #34d399 100%)',
-    boxShadow: morph < 1 ? '0 12px 48px rgba(34,197,94,0.18)' : '0 0 32px rgba(34,197,94,0.22)',
+    background: "linear-gradient(90deg, #e0e7ec 0%, #34d399 100%)",
+    boxShadow:
+      morph < 1
+        ? "0 12px 48px rgba(34,197,94,0.18)"
+        : "0 0 32px rgba(34,197,94,0.22)",
     borderRadius,
     zIndex: 1001,
-    overflow: 'hidden',
-    border: '1px solid #34d399',
-    opacity: scrollProgress > 0.98 ? 0 : 1,
-    transition: 'all 0.7s cubic-bezier(.4,2,.3,1)',
-  };
+    overflow: "hidden",
+    border: "1px solid #34d399",
+    opacity: morph < 1 ? 1 : 0, // fixed flicker
+    transition: "all 0.7s cubic-bezier(.4,2,.3,1)",
+  }
 
-  // Move banner to 'i' when scrollProgress > 0.95
   if (scrollProgress > 0.95 && iPosition.x && iPosition.y) {
     bannerStyle = {
       ...bannerStyle,
-      position: 'fixed',
       left: iPosition.x,
       top: iPosition.y,
-      transform: 'translate(-50%, -50%)',
       width: dotSize,
       height: dotSize,
       borderRadius: dotBorderRadius,
       opacity: 1,
-      boxShadow: '0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)',
-      animation: 'glow-pulse-interactive 2.5s ease-in-out infinite',
-      transition: 'all 1.2s cubic-bezier(.4,2,.3,1)'
-    };
+      boxShadow:
+        "0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)",
+      animation: "glow-pulse-interactive 2.5s ease-in-out infinite",
+      transition: "all 1.2s cubic-bezier(.4,2,.3,1)",
+    }
   }
 
-  return (
-    <div style={bannerStyle}></div>
-  );
+  return <div style={bannerStyle} aria-hidden="true"></div>
 }
-
-import { Instagram, Facebook, Youtube } from "lucide-react"
-import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -180,34 +186,35 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative px-8 pt-44  overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
+      className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 bg-white/90 dark:bg-black/95 backdrop-blur-lg border-t border-emerald-500/15"
     >
-  <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
+      <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
 
-        <div className="max-w-7xl mx-auto">
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {/* Company */}
-            <div className="glass-card theme-aware p-8">
-              <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
-              </h3>
-              <p className="body-color text-sm sm:text-base leading-relaxed">
-                {t("footerDescription")}
-              </p>
-            </div>
+      <div className="max-w-7xl mx-auto">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {/* Company */}
+          <div className="glass-card theme-aware p-8">
+            <h3 className="text-lg font-bold mb-4">
+              <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
+            </h3>
+            <p className="body-color text-sm sm:text-base leading-relaxed">
+              {t("footerDescription")}
+            </p>
+          </div>
 
-            {/* Links */}
-            <div className="glass-card theme-aware p-8">
-              <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("quickLinks")}</span>
-              </h3>
+          {/* Links */}
+          <div className="glass-card theme-aware p-8">
+            <h3 className="text-lg font-bold mb-4">
+              <span className="brand-heading-gradient">{t("quickLinks")}</span>
+            </h3>
+            <div className="ml-1">
               <ul className="space-y-3">
                 {[
                   { key: "home", href: "/" },
                   { key: "aboutUs", href: "/About" },
-                  { key: "school", href: "#" },
-                  { key: "robots", href: "#" },
+                  { key: "school", href: "/school" },
+                  { key: "robots", href: "/robot" },
                   { key: "contact", href: "/Contact" },
                   { key: "gallery", href: "/Gallery" },
                 ].map((link) => (
@@ -222,112 +229,131 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
+          </div>
 
-            {/* Contact */}
-            <div className="glass-card theme-aware p-8">
-              <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("contactInformation")}</span>
-              </h3>
-              <div className="space-y-5 text-sm sm:text-base body-color">
-                <div>
-                  <p className="font-semibold title-color">{t("address")}</p>
-                  <p>901 Clifton Corporate Park</p>
-                  <p>11/6, AB Road, Sector A, Slice 6</p>
-                  <p>Aranya Nagar, VijayNagar, Indore</p>
-                  <p>Madhya Pradesh – 452010</p>
-                </div>
-                <div>
-                  <p className="font-semibold title-color">{t("Phone")}</p>
-                  <p>+91 9370782979</p>
-                </div>
-                <div>
-                  <p className="font-semibold title-color">{t("Email")}</p>
-                  <p>info@bidyutrobotics.com</p>
-                  <p>rahul@bidyutrobotis.com</p>
-                </div>
+          {/* Contact */}
+          <div className="glass-card theme-aware p-8">
+            <h3 className="text-lg font-bold mb-4">
+              <span className="brand-heading-gradient">{t("contactInformation")}</span>
+            </h3>
+            <div className="space-y-5 text-sm sm:text-base body-color">
+              <div>
+                <p className="font-semibold title-color">{t("address")}</p>
+                <p>901 Clifton Corporate Park</p>
+                <p>11/6, AB Road, Sector A, Slice 6</p>
+                <p>Aranya Nagar, VijayNagar, Indore</p>
+                <p>Madhya Pradesh – 452010</p>
               </div>
-            </div>
-
-            {/* Newsletter */}
-            <div className="glass-card theme-aware p-8">
-              <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("newsletter")}</span>
-              </h3>
-              <p className="body-color text-sm sm:text-base mb-4">
-                {t("newsletterDescription")}
-              </p>
-              <div className="space-y-3">
-                <input
-                  type="email"
-                  placeholder={t("enterEmail")}
-                  className="w-full px-4 py-3 rounded-lg transition-all focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white/65 border border-emerald-600/25 text-gray-900 placeholder:text-gray-500 dark:bg-black/40 dark:border-emerald-500/35 dark:text-white dark:placeholder:text-gray-400 backdrop-blur-md"
-                />
-                <button
-                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-emerald-600/30"
-                >
-                  {t("subscribeNewsletter")}
-                </button>
+              <div>
+                <p className="font-semibold title-color">{t("Phone")}</p>
+                <p>+91 9370782979</p>
+              </div>
+              <div>
+                <p className="font-semibold title-color">{t("Email")}</p>
+                <p>info@bidyutrobotics.com</p>
+                <p>rahul@bidyutrobotis.com</p>
               </div>
             </div>
           </div>
 
-          {/* Socials */}
-          <div className="flex space-x-4 mb-8 justify-left">
-            {[
-              { Icon: Instagram, link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt" },
-              { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
-              { Icon: Facebook, link: "#" }
-            ].map(({ Icon, link }, index) => (
-              <a
-                key={index}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
-                style={{
-                  boxShadow:
-                    "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
-                }}
-                aria-label="social-icon"
-              >
-                <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
-              </a>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <div className="glass-card theme-aware p-6 mb-10">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                <span className="font-medium title-color">Copyright © 2024</span>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
-                  {t("privacyPolicy")}
-                </a>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
-                  {t("termsOfService")}
-                </a>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
-                  {t("cookiePolicy")}
-                </a>
-              </div>
-              <span className="muted-color">{t("builtWithExcellence")}</span>
-            </div>
-          </div>
-
-          {/* Brand with i target */}
-          <div className="flex justify-center items-center w-full ">
-            <div className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center" style={{fontSize: '8.9vw', minWidth: '100vw', width: '100%', lineHeight: 1.05}}>
-              <span>B</span>
-              <span ref={iLetterRef} className="relative inline-block ">
-                i
-                 
-              </span>
-              <span>dyut Innovation</span>
+          {/* Newsletter */}
+          <div className="glass-card theme-aware p-8">
+            <h3 className="text-lg font-bold mb-4">
+              <span className="brand-heading-gradient">{t("newsletter")}</span>
+            </h3>
+            <p className="body-color text-sm sm:text-base mb-4">
+              {t("newsletterDescription")}
+            </p>
+            <div className="space-y-3">
+              <input
+                type="email"
+                placeholder={t("enterEmail")}
+                className="w-full px-4 py-3 rounded-lg transition-all focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white/65 border border-emerald-600/25 text-gray-900 placeholder:text-gray-500 dark:bg-black/40 dark:border-emerald-500/35 dark:text-white dark:placeholder:text-gray-400 backdrop-blur-md"
+              />
+              <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-emerald-600/30">
+                {t("subscribeNewsletter")}
+              </button>
             </div>
           </div>
         </div>
 
-        <style>{`
+        {/* Socials */}
+        <div className="flex space-x-4 mb-8 justify-left">
+          {[
+            {
+              Icon: Instagram,
+              link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt",
+            },
+            { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
+            { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+          ].map(({ Icon, link }, index) => (
+            <a
+              key={index}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
+              style={{
+                boxShadow:
+                  "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
+              }}
+              aria-label="social-icon"
+            >
+              <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
+            </a>
+          ))}
+        </div>
+
+        {/* Copyright */}
+        <div className="glass-card theme-aware p-6 mb-10">
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <span className="font-medium title-color">Copyright © 2024</span>
+              <a
+                href="#"
+                className="link-color hover:text-emerald-500 transition-colors underline"
+              >
+                {t("privacyPolicy")}
+              </a>
+              <a
+                href="#"
+                className="link-color hover:text-emerald-500 transition-colors underline"
+              >
+                {t("termsOfService")}
+              </a>
+              <a
+                href="#"
+                className="link-color hover:text-emerald-500 transition-colors underline"
+              >
+                {t("cookiePolicy")}
+              </a>
+            </div>
+            <span className="muted-color">{t("builtWithExcellence")}</span>
+          </div>
+        </div>
+
+        {/* Brand with i target */}
+        <div className="flex justify-center items-center w-full">
+          <div
+            className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
+            style={{
+              fontSize: "8.9vw",
+              minWidth: "100vw",
+              width: "100%",
+              lineHeight: 1.05,
+            }}
+          >
+            <span>B</span>
+            <span ref={iLetterRef} className="relative inline-block">
+              i
+            </span>
+            <span>dyut Innovation</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Keep your style block unchanged */}
+   <style>{`
           /* Theme tokens via utility classes (light and dark) */
           .title-color { color: rgb(23, 23, 23); }
           .body-color { color: rgb(75, 85, 99); } /* gray-600 */
@@ -442,6 +468,6 @@ export default function Footer() {
             .glass-card::before { animation: none; }
           }
         `}</style>
-      </footer>
-    )
+    </footer>
+  )
 }

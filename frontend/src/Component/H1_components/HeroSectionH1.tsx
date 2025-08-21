@@ -23,7 +23,7 @@ const HeroSectionH1 = () => {
         )}
 
         {/* Split Header Text - Above the image */}
-       <div className="absolute top-[10%] md:top-[17%] left-0 md:left-2 right-0 md:-right-12 z-20 px-4 md:px-14">
+       <div className="absolute top-[11%] md:top-[17%] left-0 md:left-2 right-0 md:-right-12 z-20 px-4 md:px-14">
   <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-2">
     
     {/* Left part */}
@@ -53,7 +53,7 @@ const HeroSectionH1 = () => {
 
 
         {/* Robot Image - Reduced size for better spacing */}
-        <div className="absolute top-[25%] md:top-[8%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
+        <div className="absolute top-[25%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
           <img 
             src="/media/robott.gif" 
             alt="Humanoid Robot" 

@@ -9,7 +9,6 @@ import Robotpage from './Pages/Robot_page';
 import Cobotpage from './Pages/Cobot_page';
 import B2Page from './Pages/B2Page';
 import A2Page from './Pages/A2Page';
-import Robotdetailpage from './Pages/Robot_detail_page';
 import SchoolPage from './Pages/SchoolPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
