@@ -1,7 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, Sun, Moon, Menu, X, Globe, Bell } from "lucide-react"
+import {
+  ChevronDown,
+  ChevronRight,
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Globe,
+} from "lucide-react"
 import { useTheme } from "../contexts/ThemeContext"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useNavigation } from "../contexts/NavigationContext"
@@ -10,11 +18,13 @@ export default function Header() {
   const { isDark, toggleTheme } = useTheme()
   const { currentLanguage, changeLanguage, t, getSupportedLanguages } = useLanguage()
   const { currentPath } = useNavigation()
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
   const toggleLanguageDropdown = () => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)
+
   const isActive = (path: string) => currentPath === path
   const languages = getSupportedLanguages()
 
@@ -30,7 +40,7 @@ export default function Header() {
               src="/bidyut_logo_green 1.svg"
               alt="Bidyut Logo"
               className="h-14 w-auto mr-2 transition-transform group-hover:scale-105"
-              style={{ maxHeight: "56px" }} // h-14 = 56px
+              style={{ maxHeight: "56px" }}
             />
           </a>
 
@@ -41,7 +51,6 @@ export default function Header() {
               { href: "/About", label: t("aboutUs") },
               { href: "/School", label: t("school") },
               { href: "/Contact", label: t("contact") },
-              // { href: "#", label: t("career") },
               { href: "/Gallery", label: t("gallery") },
             ].map((item) => (
               <a
@@ -62,21 +71,85 @@ export default function Header() {
                 {t("robots")}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-black/40 backdrop-blur-md text-gray-200 rounded-lg shadow-xl border border-[#00F5A0]/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
-                <div className="py-2">
-                  {[
-                    { href: "/Robot_page", label: "Robot Showcase" },
-                    { href: "/cobot", label: t("Quadruped Showcase") },
 
-                  ].map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0] transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+              {/* First Level Dropdown */}
+              <div className="absolute top-full left-0 mt-2 w-56 bg-black/40 backdrop-blur-md text-gray-200 rounded-lg shadow-xl border border-[#00F5A0]/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
+                <div className="py-2">
+                  {/* Humanoid */}
+                  <div className="relative group/child">
+                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                      Humanoid
+                      <ChevronRight className="h-4 w-4 ml-2" />
+                    </button>
+
+                    {/* Humanoid Submenu */}
+                    <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
+                      <div className="py-2">
+
+                        {/* Industry */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Industry
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/humanoid/industry/h1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
+                          </div>
+                        </div>
+
+                        {/* Education */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Education
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/humanoid/education/g1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G1</a>
+                            <a href="/humanoid/education/r1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">R1</a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quadrupeds */}
+                  <div className="relative group/child">
+                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                      Quadrupeds
+                      <ChevronRight className="h-4 w-4 ml-2" />
+                    </button>
+
+                    {/* Quadrupeds Submenu */}
+                    <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
+                      <div className="py-2">
+
+                        {/* Industry */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Industry
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/quadrupeds/industry/b2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2</a>
+                            <a href="/quadrupeds/industry/a2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2</a>
+                          </div>
+                        </div>
+
+                        {/* Education */}
+                        <div className="relative group/sub">
+                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                            Education
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                          </button>
+                          <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
+                            <a href="/quadrupeds/education/g02" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02</a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,7 +234,7 @@ export default function Header() {
           {[
             { href: "/", label: t("home") },
             { href: "/About", label: t("aboutUs") },
-            { href: "#", label: t("school") },
+            { href: "/School", label: t("school") },
             { href: "/Robot_page", label: "Robot Showcase" },
             { href: "/Contact", label: t("contact") },
             { href: "/Gallery", label: t("gallery") },
