@@ -28,104 +28,84 @@ const generateBaseImages = (): ImageItem[] => {
   const cols = 4
   const centerOffset = ((cols - 1) * gridSpacing) / 2
 
-  const imageData = [
-    { alt: "Modern Architecture", title: "Contemporary Design" },
-    { alt: "Glass Skyscraper", title: "Urban Excellence" },
-    { alt: "Minimalist House", title: "Minimal Living" },
-    { alt: "Luxury Villa", title: "Luxury Spaces" },
-    { alt: "Sustainable Building", title: "Green Architecture" },
-    { alt: "Industrial Loft", title: "Industrial Design" },
-    { alt: "Futuristic Design", title: "Future Living" },
-    { alt: "Natural Architecture", title: "Nature Integration" },
-    { alt: "Brutalist Structure", title: "Bold Geometry" },
-    { alt: "Mediterranean Style", title: "Classic Elegance" },
-    { alt: "Zen Architecture", title: "Peaceful Spaces" },
-    { alt: "Art Deco Building", title: "Vintage Glamour" },
-    { alt: "Gothic Cathedral", title: "Sacred Geometry" },
-    { alt: "Modern Office", title: "Corporate Design" },
-    { alt: "Rooftop Garden", title: "Sky Gardens" },
-    { alt: "Penthouse View", title: "Urban Heights" },
-    { alt: "Observatory Dome", title: "Cosmic Architecture" },
-    { alt: "Underground Space", title: "Subterranean Design" },
-    { alt: "Basement Studio", title: "Hidden Spaces" },
-    { alt: "Cave Dwelling", title: "Natural Shelter" },
-    { alt: "Floating House", title: "Water Architecture" },
-    { alt: "Tree House", title: "Elevated Living" },
-    { alt: "Desert Architecture", title: "Arid Adaptation" },
-    { alt: "Arctic Building", title: "Cold Climate Design" },
-    { alt: "Space Station", title: "Orbital Architecture" },
-    { alt: "Underwater City", title: "Aquatic Urbanism" },
-    { alt: "Mountain Fortress", title: "Alpine Architecture" },
-    { alt: "Cloud City", title: "Sky Architecture" },
-    { alt: "Crystal Palace", title: "Transparent Design" },
-    { alt: "Bamboo Structure", title: "Sustainable Living" },
-    { alt: "Steel Framework", title: "Industrial Beauty" },
-    { alt: "Glass Pavilion", title: "Light Architecture" },
-    { alt: "Stone Castle", title: "Fortress Design" },
-    { alt: "Wooden Lodge", title: "Natural Materials" },
-    { alt: "Concrete Bunker", title: "Protective Spaces" },
-    { alt: "Marble Palace", title: "Luxury Architecture" },
-    { alt: "Brick Factory", title: "Industrial Heritage" },
-    { alt: "Copper Dome", title: "Metallic Elegance" },
-    { alt: "Glass Tower", title: "Vertical Living" },
-    { alt: "Stone Bridge", title: "Connecting Spaces" },
-    { alt: "Wooden Deck", title: "Outdoor Living" },
-    { alt: "Metal Sculpture", title: "Artistic Architecture" },
-    { alt: "Ceramic Tiles", title: "Decorative Design" },
-    { alt: "Fabric Canopy", title: "Flexible Structures" },
-    { alt: "Plastic Dome", title: "Modern Materials" },
-    { alt: "Composite Panel", title: "Advanced Building" },
-    { alt: "Solar Array", title: "Energy Architecture" },
-    { alt: "Wind Turbine", title: "Power Generation" },
-    { alt: "Water Feature", title: "Aquatic Elements" },
-    { alt: "Garden Wall", title: "Green Integration" },
-    { alt: "Light Installation", title: "Illuminated Design" },
-    { alt: "Sound Barrier", title: "Acoustic Architecture" },
-    { alt: "Climate Control", title: "Environmental Design" },
-    { alt: "Smart Building", title: "Intelligent Spaces" },
-    { alt: "Adaptive Structure", title: "Responsive Architecture" },
-    { alt: "Modular System", title: "Flexible Design" },
-    { alt: "Prefab Unit", title: "Efficient Construction" },
-    { alt: "Custom Build", title: "Bespoke Architecture" },
-    { alt: "Heritage Restoration", title: "Historical Preservation" },
-    { alt: "Modern Addition", title: "Contemporary Extension" },
-    { alt: "Landscape Integration", title: "Site-Specific Design" },
-    { alt: "Urban Planning", title: "City Architecture" },
-    { alt: "Rural Development", title: "Country Living" },
-    { alt: "Coastal Design", title: "Waterfront Architecture" },
-  ]
+  const galleryImages = [
+    {
+      src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
+      alt: "Educational materials and learning kits",
+      className: "row-span-1",
+    },
+    {
+      src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
+      alt: "Robotic spider construction",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
+      alt: "Student working with robotics",
+      className: "row-span-1",
+    },
+    {
+      src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
+      alt: "Wedo2.0 educational materials",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
+      alt: "Robotic vehicle construction",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
+      alt: "Robotic humanoid construction",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
+      alt: "Student programming robot",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
+      alt: "Hands-on robot building",
+      className: "row-span-2",
+    },
+    {
+      src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
+      alt: "Educational programming mat",
+      className: "row-span-1",
+    },
+    {
+      src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
+      alt: "LEGO Mindstorms robot",
+      className: "row-span-1",
+    },
+  ];
 
-  let imageIndex = 0
-
+  let imageIndex = 0;
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      if (imageIndex >= imageData.length) break
-
-      const x = col * gridSpacing - centerOffset
-      const y = row * gridSpacing - centerOffset
-
-      // Remove random offset for strict grid, pick size based on grid
-      const sizes = ["small", "medium", "large"] as const
-      // Alternate sizes for visual interest, but avoid overlap
-      const size = sizes[(row + col) % sizes.length]
+      // Cycle through galleryImages repeatedly
+      const img = galleryImages[imageIndex % galleryImages.length];
+      const x = col * gridSpacing - centerOffset;
+      const y = row * gridSpacing - centerOffset;
+      const sizes = ["small", "medium", "large"] as const;
+      const size = sizes[(row + col) % sizes.length];
       images.push({
         id: imageIndex + 1,
-        src: `/placeholder.svg?height=${size === "small" ? 210 : size === "medium" ? 270 : 330}&width=${size === "small" ? 280 : size === "medium" ? 360 : 440}&query=${encodeURIComponent(imageData[imageIndex].alt)}`,
-        alt: imageData[imageIndex].alt,
-        title: imageData[imageIndex].title,
+        src: img.src,
+        alt: img.alt,
+        title: img.alt,
         size,
         position: {
           x: x,
           y: y,
         },
-        depth: 0.7 + Math.random() * 0.3, // Slight random depth
-      })
-
-      imageIndex++
+        depth: 0.7 + Math.random() * 0.3,
+      });
+      imageIndex++;
     }
   }
-
-  return images
+  return images;
 }
 
 const generateInfiniteImages = (
@@ -229,7 +209,7 @@ export default function InteractiveGallery() {
     dragY.set(0)
   }
 
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark } = useTheme();
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}> 
       <div className="absolute inset-0 opacity-8">
@@ -239,28 +219,9 @@ export default function InteractiveGallery() {
         <div className="absolute top-1/3 right-1/3 w-40 h-40 border border-zinc-600/30 -rotate-30 backdrop-blur-sm"></div>
       </div>
 
-      <header className="absolute top-6 left-6 z-50 flex items-center gap-4">
-        <div className={`w-12 h-12 shadow-lg flex items-center justify-center backdrop-blur-sm ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
-          <div className={`w-6 h-6 transform rotate-45 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
-        </div>
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className={`px-4 py-2 rounded-full font-semibold shadow transition-colors duration-300 ${isDark ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}`}
-        >
-          {isDark ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </header>
+  {/* Removed theme toggle and header icon for gallery */}
 
-      <nav className="absolute top-6 right-6 z-50">
-        <button className={`w-12 h-12 flex items-center justify-center shadow-lg backdrop-blur-sm transition-colors ${isDark ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-white text-zinc-900 hover:bg-zinc-100'}`}>
-          <div className="space-y-1">
-            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
-            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
-            <div className={`w-4 h-0.5 ${isDark ? 'bg-white' : 'bg-zinc-900'}`}></div>
-          </div>
-        </button>
-      </nav>
+  {/* Removed hamburger menu button for gallery */}
 
       <div className="relative z-10 min-h-[80vh] flex items-center justify-center">
         <div className="container mx-auto px-6">
@@ -341,8 +302,8 @@ export default function InteractiveGallery() {
             {/* Always on top, pointer-events-auto */}
             <button
               onClick={handleCloseGallery}
-              className="absolute top-6 right-6 z-[100] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm pointer-events-auto"
-              style={{ pointerEvents: 'auto' }}
+              className="fixed top-6 right-6 z-[100] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm pointer-events-auto"
+              style={{ pointerEvents: 'auto', transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden', perspective: '1000px' }}
             >
               ✕
             </button>

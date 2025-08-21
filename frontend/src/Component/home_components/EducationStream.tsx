@@ -22,14 +22,14 @@ export default function EducationStream() {
       description: t('scienceDescription')
     },
     {
-      src: "/Technology.mp4",
-      thumbnail: "/Technology.mp4",
+      src: "/Technology1.mp4",
+      thumbnail: "/Technology1.mp4",
       title: t('Technology'),
       description: t('technologyDescription')
     },
     {
-      src: "/Reading.mp4",
-      thumbnail: "/Reading.mp4",
+      src: "/Reading1.mp4",
+      thumbnail: "/Reading1.mp4",
       title: t('Reading'),
       description: t('readingDescription')
     },

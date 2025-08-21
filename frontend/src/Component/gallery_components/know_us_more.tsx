@@ -8,54 +8,59 @@ import { useTheme } from "../../contexts/ThemeContext"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import GalleryText from '../../Text_Animation/GalleryText';
 
-// Gallery image data with actual high-quality images
+// Gallery image data with provided images, cycling through them for grid fill
 const galleryImages = [
-  { 
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&crop=center", 
-    title: "Innovation Lab", 
-    category: "workspace" 
+  {
+    src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
+    title: "Educational materials and learning kits",
+    category: "education"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&crop=center", 
-    title: "Team Collaboration", 
-    category: "team" 
+  {
+    src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
+    title: "Robotic spider construction",
+    category: "technology"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop&crop=center", 
-    title: "Creative Sessions", 
-    category: "workspace" 
+  {
+    src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
+    title: "Student working with robotics",
+    category: "team"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop&crop=center", 
-    title: "Tech Solutions", 
-    category: "technology" 
+  {
+    src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
+    title: "Wedo2.0 educational materials",
+    category: "education"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=800&h=600&fit=crop&crop=center", 
-    title: "Learning Environment", 
-    category: "education" 
+  {
+    src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
+    title: "Robotic vehicle construction",
+    category: "technology"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=800&h=600&fit=crop&crop=center", 
-    title: "Future Vision", 
-    category: "technology" 
+  {
+    src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
+    title: "Robotic humanoid construction",
+    category: "technology"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&h=600&fit=crop&crop=center", 
-    title: "Team Spirit", 
-    category: "team" 
+  {
+    src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
+    title: "Student programming robot",
+    category: "team"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center", 
-    title: "Innovation Hub", 
-    category: "workspace" 
+  {
+    src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
+    title: "Hands-on robot building",
+    category: "workspace"
   },
-  { 
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center", 
-    title: "Educational Impact", 
-    category: "education" 
+  {
+    src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
+    title: "Educational programming mat",
+    category: "education"
   },
-]
+  {
+    src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
+    title: "LEGO Mindstorms robot",
+    category: "technology"
+  },
+];
 
 // Enhanced animation settings
 const containerVariants = {

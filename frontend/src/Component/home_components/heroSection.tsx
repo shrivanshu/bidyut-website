@@ -244,4 +244,7 @@ const HeroSection: React.FC = () => {
   );
 };
 
+// Hide vertical scrollbar but keep scroll functionality
+import "../../index.css";
+
 export default HeroSection;
