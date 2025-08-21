@@ -4,7 +4,7 @@ interface CobotClassroomProps {
   onContactClick?: () => void;
 }
 
-const robotImgSrc = '/media/Cobot_true.svg';
+const robotImgSrc = '/A2.png';
 
 const A2Details = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark } = useTheme();
@@ -17,7 +17,7 @@ const A2Details = ({ onContactClick }: CobotClassroomProps) => {
             <img 
               src={robotImgSrc} 
               alt="Educational Robot"
-              className="w-full h-full object-contain max-h-[80vh]"
+              className="h-full w-auto object-contain"
             />
           </div>
         </div>
@@ -30,7 +30,7 @@ const A2Details = ({ onContactClick }: CobotClassroomProps) => {
               <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
+              Join thousands of educators who are already using Unitree A2 Series robots to inspire the next generation of innovators.
             </p>
           </div>
 
