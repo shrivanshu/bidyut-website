@@ -402,7 +402,7 @@ export default function H1Variants() {
   return (
     // <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
-      <div className="w-full px-6 py-16 md:px-12 lg:px-16">
+      <div className="w-full px-6 py-10 md:px-12 lg:px-16">
        
 
         {/* Search Section - Scrollable Robot Images */}
