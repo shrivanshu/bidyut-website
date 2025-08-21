@@ -180,7 +180,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U1",
     "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
     "gallery": [
-      "/media/G1 EDU U1.jpg",
+      "/media/G1 EDU U1.png",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
       "/media/Robot_Details_EDU.svg",
@@ -191,7 +191,7 @@ const robotSpecs: RobotSpec[] = [
         "label": "Depth Camera",
         "detail": "Intel Realsense D435",
         "position": { "top": "10%", "left": "85%" },
-        "positionSm": { "top": "15%", "left": "80%" },
+        "positionSm": { "top": "17%", "left": "63%" },
         "lineDirection": "right",
         "targetPoint": { "x": "51%", "y": "12%" },
         "targetPointSm": { "x": "50%", "y": "30%" },
@@ -200,7 +200,7 @@ const robotSpecs: RobotSpec[] = [
         "label": "3D LiDAR",
         "detail": "LIVOX-MID360",
         "position": { "top": "25%", "left": "8%" },
-        "positionSm": { "top": "30%", "left": "5%" },
+        "positionSm": { "top": "23%", "left": "9%" },
         "lineDirection": "right",
         "targetPoint": { "x": "49%", "y": "13%" },
         "targetPointSm": { "x": "48%", "y": "30%" },
@@ -209,6 +209,7 @@ const robotSpecs: RobotSpec[] = [
         "label": "Advanced Arm & Hand Control",
         "detail": "Shoulder: 3 | Elbow: 2 | Wrist: 2 (+2 optional) | Optional 3-Fingered Dexterous Hand",
         "position": { "top": "40%", "left": "2%" },
+        "positionSm": { "top": "34%", "left": "1%" },
         "lineDirection": "right",
         "targetPoint": { "x": "43%", "y": "35%" },
         "targetPointSm": { "x": "41%", "y": "35%" },
@@ -227,7 +228,8 @@ const robotSpecs: RobotSpec[] = [
         "position": { "top": "85%", "left": "5%" },
         "positionSm": { "top": "75%", "left": "5%" },
         "lineDirection": "right",
-        "targetPoint": { "x": "44%", "y": "67%" }
+        "targetPoint": { "x": "44%", "y": "67%" },
+        "targetPointSm": { "x": "42%", "y": "67%" }
       },
       {
         "label": "Hollow Joint Wiring",
@@ -241,16 +243,16 @@ const robotSpecs: RobotSpec[] = [
         "label": "Leg Control System",
         "detail": "Hip: 3 | Knee: 2 | Ankle: 2",
         "position": { "top": "70%", "left": "80%" },
-        "positionSm": { "top": "70%", "left": "88%" },
+        "positionSm": { "top": "75%", "left": "66%" },
         "lineDirection": "right",
         "targetPoint": { "x": "59%", "y": "67%" },
-        "targetPointSm": { "x": "56%", "y": "67%" },
+        "targetPointSm": { "x": "60%", "y": "67%" },
       },
       {
         "label": "High Computing Power Module",
         "detail": "NVIDIA Jetson Orin (optional)",
         "position": { "top": "64%", "left": "2%" },
-        "positionSm": { "top": "60%", "left": "8%" },
+        "positionSm": { "top": "57%", "left": "1%" },
         "lineDirection": "right",
         "targetPoint": { "x": "42%", "y": "50%" }
       }
