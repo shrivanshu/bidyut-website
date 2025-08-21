@@ -43,13 +43,13 @@ export default function EducationStream() {
       src: "/Art.mp4",
       thumbnail: "/Art.mp4",
       title: t('Art'),
-      description: t('artDescription')
+      description: t('artsDescription')
     },
     {
       src: "/Maths.mp4",
       thumbnail: "/Maths.mp4",
       title: t('Maths'),
-      description: t('MathsDescription')
+      description: t('mathematicsDescription')
     }
   ];
   const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
