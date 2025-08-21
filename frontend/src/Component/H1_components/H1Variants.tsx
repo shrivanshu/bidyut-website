@@ -105,10 +105,10 @@ const robotSpecs: RobotSpec[] = [
   "description": "The Unitree H1 is a full-size universal humanoid robot standing about 180 cm tall and weighing only 47 kg. Equipped with advanced 3D LiDAR and Intel RealSense depth sensing, it achieves 360° environment perception. With a moving speed of 3.3 m/s and potential mobility exceeding 5 m/s, it is among the most powerful humanoid robots in terms of speed, maneuverability, and flexibility. The H1 also features a quick-release 864 Wh battery, hollow electrical routing without external cables, and high joint torque up to 360 N·m, making it ideal for advanced research, mobility, and dynamic real-world applications.",
   "gallery": [
     "/media/H1.png",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg"
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg"
   ],
   "features": [
     {
@@ -194,10 +194,10 @@ const robotSpecs: RobotSpec[] = [
   "description": "The Unitree H1-2 is a full-size universal humanoid robot, standing at 178 cm and weighing about 70 kg. It is equipped with Intel RealSense depth sensing and 3D LiDAR for 360° perception. Featuring 27 degrees of freedom, high torque joints (up to 360 N·m at legs and 120 N·m at arms), and a peak torque density of 189 N·m/kg, it offers exceptional power and dexterity. The H1-2 integrates hollow electrical wiring without external cables, dual encoder systems for stability, and supports optional dexterous hands and higher computing power. Designed with an ergonomic bionic shape, it balances aesthetics and high performance for advanced robotics applications.",
   "gallery": [
     "/media/H1 - 2.png",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg",
-    "/media/Robot_Details.svg"
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg",
+    // "/media/Robot_Details.svg"
   ],
   "features": [
     {

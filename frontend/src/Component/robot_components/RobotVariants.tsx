@@ -263,7 +263,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U2",
     "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
     "gallery": [
-      "/media/Robot_Details.svg",
+      // "/media/Robot_Details.svg",
       "/media/G1 EDU U2.png"
     ],
     "features": [
@@ -335,7 +335,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U4",
     "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
     "gallery": [
-      "/media/Robot_Details.svg"
+      "/media/G1 EDU U4 .png"
     ],
     "features": [
       {
@@ -387,7 +387,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U6",
     "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
     "gallery": [
-      "/media/G1 EDU U6  (1).png"
+      "/media/G1 EDU U6 .png"
     ],
     "features": [
       {
