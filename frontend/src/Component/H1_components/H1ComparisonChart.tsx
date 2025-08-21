@@ -149,9 +149,9 @@ const H1ComparisonChart: React.FC = () => {
 
   const getImageForModel = (model: string) => {
     switch (model) {
-      case "H1": return "/media/H1_Robot.svg";
-      case "H1-2": return "/media/H1-2_Robot.svg";
-      default: return "/media/H1_Robot.svg";
+      case "H1": return "/media/H1.png";
+      case "H1-2": return "/media/H1 - 2.png";
+      default: return "/media/H1.png";
     }
   };
 
