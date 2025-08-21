@@ -283,37 +283,37 @@ features: [
   {
     label: "LIDAR Sensor",
     detail: "Single LiDAR for navigation & mapping",
-    position: { top: "10%", left: "50%" },
+    position: { top: "1%", left: "20%" },
     lineDirection: "left",
-    targetPoint: { x: "40%", y: "30%" }
+    targetPoint: { x: "17%", y: "17%" } 
   },
   {
     label: "Optical Camera",
     detail: "Wide-angle depth camera (expandable to 2)",
-    position: { top: "20%", left: "20%" },
+    position: { top: "3%", left: "40%" },
     lineDirection: "right",
-    targetPoint: { x: "35%", y: "25%" }
+    targetPoint: { x: "17%", y: "19%" }
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design for versatile terrain",
-    position: { top: "60%", left: "15%" },
+position: { top: "65%", left: "22%" },
     lineDirection: "right",
-    targetPoint: { x: "35%", y: "60%" }
+    targetPoint: { x: "5%", y: "81%" }
   },
   {
     label: "Battery Pack",
-    detail: "Dual-bay 9000mAh / 18000mAh system",
-    position: { top: "75%", left: "45%" },
+    detail: "Dual-bay 9000mAh/18000mAh system",
+    position: { top: "5%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "60%", y: "35%" }
   },
   {
     label: "Computing Power",
     detail: "8-core CPU + Intel i7 dual-unit system",
-    position: { top: "40%", left: "85%" },
+    position: { top: "60%", left: "86%" },
     lineDirection: "left",
-    targetPoint: { x: "60%", y: "40%" }
+     targetPoint: { x: "68%", y: "30%" }
   }
 ]
 
@@ -335,37 +335,37 @@ features: [
   {
     label: "LIDAR Sensor",
     detail: "Dual LiDAR sensors for enhanced mapping & navigation",
-    position: { top: "10%", left: "50%" },
+    position: { top: "1%", left: "20%" },
     lineDirection: "left",
-    targetPoint: { x: "40%", y: "30%" }
+    targetPoint: { x: "17%", y: "17%" } 
   },
   {
     label: "Optical Camera",
     detail: "Wide-angle depth camera system, expandable to dual setup",
-    position: { top: "20%", left: "20%" },
+    position: { top: "3%", left: "40%" },
     lineDirection: "right",
-    targetPoint: { x: "35%", y: "25%" }
+    targetPoint: { x: "17%", y: "19%" }
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design with improved stability & payload handling",
-    position: { top: "60%", left: "15%" },
+    position: { top: "65%", left: "22%" },
     lineDirection: "right",
-    targetPoint: { x: "35%", y: "60%" }
+    targetPoint: { x: "5%", y: "81%" }
   },
   {
     label: "Battery Pack",
     detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
-    position: { top: "75%", left: "45%" },
+    position: { top: "5%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "60%", y: "35%" }
   },
   {
     label: "Computing Power",
     detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
-    position: { top: "40%", left: "85%" },
+    position: { top: "60%", left: "86%" },
     lineDirection: "left",
-    targetPoint: { x: "60%", y: "40%" }
+     targetPoint: { x: "68%", y: "30%" }
   }
 ]
   },
