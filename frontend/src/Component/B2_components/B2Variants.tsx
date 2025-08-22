@@ -15,8 +15,10 @@ interface RobotSpec {
     label: string
     detail: string
     position: { top: string; left: string }
+    positionSm?: { top: string; left: string } // Responsive position for small screens
     lineDirection: "left" | "right"
     targetPoint: { x: string; y: string }
+    targetPointSm?: { x: string; y: string } // Responsive target point for small screens
   }[]
 }
 
@@ -177,15 +179,19 @@ const robotSpecs: RobotSpec[] = [
     label: "32-wire Automative-grade lidar",
     detail: "",
     position: { top: "1%", left: "17%" },
+    positionSm: { top: "12%", left: "10%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "13%", y: "35%" },
+    targetPointSm: { x: "13%", y: "42%" }
   },
   {
     label: "Depth Camera",
     detail: "",
     position: { top: "10%", left: "50%" },
+    positionSm: { top: "22%", left: "50%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "15%", y: "31%" },
+    targetPointSm: { x: "15%", y: "40%" }
   },
   {
     label: "High resolution Optical Camera",
@@ -744,11 +750,12 @@ function B2Variants() {
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                 {currentSpec.features.map((feature, index) => {
                   if (hoveredFeature !== index) return null;
-                  
-                  const startX = feature.position.left;
-                  const startY = feature.position.top;
-                  const endX = feature.targetPoint.x;
-                  const endY = feature.targetPoint.y;
+                  // Responsive target point logic
+                  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                  const startX = isMobile && feature.positionSm ? feature.positionSm.left : feature.position.left;
+                  const startY = isMobile && feature.positionSm ? feature.positionSm.top : feature.position.top;
+                  const endX = isMobile && feature.targetPointSm ? feature.targetPointSm.x : feature.targetPoint.x;
+                  const endY = isMobile && feature.targetPointSm ? feature.targetPointSm.y : feature.targetPoint.y;
 
                   return (
                     <g key={index}>
@@ -783,38 +790,44 @@ function B2Variants() {
               </svg>
 
               {/* Feature Labels */}
-              {currentSpec.features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="absolute z-10 cursor-pointer"
-                  style={{
-                    top: feature.position.top,
-                    left: feature.position.left,
-                    transform: feature.lineDirection === "left" ? "translateX(-100%)" : "translateX(0%)",
-                  }}
-                  onMouseEnter={() => setHoveredFeature(index)}
-                  onMouseLeave={() => setHoveredFeature(null)}
-                >
-                  <div className="text-left max-w-[120px]">
-                    <div
-                      className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                        hoveredFeature === index 
-                          ? "text-green-600 dark:text-green-400" 
-                          : "text-gray-900 dark:text-gray-100"
-                      }`}
-                    >
-                      {feature.label}
-                    </div>
-                    <div 
-                      className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                        hoveredFeature === index ? "opacity-100" : "opacity-70"
-                      }`}
-                    >
-                      {feature.detail}
+              {currentSpec.features.map((feature, index) => {
+                // Responsive position logic
+                const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                const top = isMobile && feature.positionSm ? feature.positionSm.top : feature.position.top;
+                const left = isMobile && feature.positionSm ? feature.positionSm.left : feature.position.left;
+                return (
+                  <div
+                    key={index}
+                    className="absolute z-10 cursor-pointer"
+                    style={{
+                      top,
+                      left,
+                      transform: feature.lineDirection === "left" ? "translateX(-100%)" : "translateX(0%)",
+                    }}
+                    onMouseEnter={() => setHoveredFeature(index)}
+                    onMouseLeave={() => setHoveredFeature(null)}
+                  >
+                    <div className="text-left max-w-[120px]">
+                      <div
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
+                          hoveredFeature === index 
+                            ? "text-green-600 dark:text-green-400" 
+                            : "text-gray-900 dark:text-gray-100"
+                        }`}
+                      >
+                        {feature.label}
+                      </div>
+                      <div 
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
+                          hoveredFeature === index ? "opacity-100" : "opacity-70"
+                        }`}
+                      >
+                        {feature.detail}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
