@@ -24,11 +24,19 @@ const words = ["Reading", "Engineering", "Arts", "Math", "Robotics", "Design"];
 
 const cards = [
   {
+    title: "Global Competitions",
+    subtitle: "Compete Worldwide",
+    desc: "Bidyut Innovation offers students the opportunity to showcase their skills on national and international platforms through prestigious robotics and innovation competitions. From Olympiads to hackathons and science fairs, learners experience the thrill of solving real-world problems while representing their schools and communities on a global stage. These competitions not only test technical knowledge but also encourage teamwork, creativity, and strategic thinking—essential skills for thriving in today’s competitive world.",
+    points: ["Olympiad Prep", "Hackathons", "Science Fairs"],
+    img: "/School/bidyut.png",
+    link: "https://www.youtube.com/watch?v=JaOHFiwN2uA&ab_channel=BidyutInnovation"
+  },
+  {
     title: "Robotics & AI Lab Setup",
     subtitle: "Build the Future",
     desc: "Bidyut Innovation proudly presents India’s first-of-its-kind AI & Advanced Robotics Lab, designed to transform traditional classrooms into future-ready innovation hubs. Our comprehensive, grade-wise curriculum is meticulously aligned with school textbooks and academic goals, ensuring seamless integration with the existing syllabus. The lab comes fully equipped and ready-to-use, supported by expert training for teachers, continuous technical support, and access to a powerful Learning Management System (LMS) to monitor student progress and enhance learning outcomes.",
     points: ["Arduino & Raspberry Pi", "3D Printing", "AI Integration"],
-    img: "/School/filee.png",
+    img: "/School/aii.png",
     link: "https://www.youtube.com/watch?v=KRO68_kUGw8&ab_channel=BidyutInnovation", // <-- Add your link here
   },
   {
@@ -44,7 +52,7 @@ const cards = [
     subtitle: "Level Up Your Skills",
     desc: "Bidyut Innovation introduces a dynamic Gamified Learning experience that turns education into an exciting journey of discovery and achievement. Students engage in interactive challenges, earn badges, and compete on leaderboards, fostering a spirit of healthy competition and collaboration. Our platform seamlessly integrates fun elements with core academic concepts, ensuring students stay motivated while mastering essential skills. With real-time progress tracking and personalized learning paths, every learner can advance at their own pace while enjoying the thrill of achievement.",
     points: ["Achievement System", "Peer Challenges", "Progress Tracking"],
-    img: "/School/3.png",
+    img: "/School/11.png",
     link: "https://www.youtube.com/watch?v=Uohw4ltPsTs&ab_channel=BidyutInnovation"
   },
   {
@@ -55,20 +63,13 @@ const cards = [
     img: "/School/4.svg",
     link: "https://www.youtube.com/watch?v=2q0pXoPxNfs&ab_channel=BidyutInnovation"
   },
-  {
-    title: "Global Competitions",
-    subtitle: "Compete Worldwide",
-    desc: "Bidyut Innovation offers students the opportunity to showcase their skills on national and international platforms through prestigious robotics and innovation competitions. From Olympiads to hackathons and science fairs, learners experience the thrill of solving real-world problems while representing their schools and communities on a global stage. These competitions not only test technical knowledge but also encourage teamwork, creativity, and strategic thinking—essential skills for thriving in today’s competitive world.",
-    points: ["Olympiad Prep", "Hackathons", "Science Fairs"],
-    img: "/School/bidyut.png",
-    link: "https://www.youtube.com/watch?v=JaOHFiwN2uA&ab_channel=BidyutInnovation"
-  },
+  
   {
     title: "Expert Mentorship",
     subtitle: "Learn from the Best",
     desc: "Our Expert Mentorship program connects students with industry leaders, certified educators, and experienced professionals who provide invaluable guidance throughout their learning journey. Whether it’s career counseling, one-on-one mentoring sessions, or insights into emerging technologies, our mentors help students align their academic goals with future career aspirations. This personalized support ensures learners gain both technical expertise and the confidence to succeed in higher education and beyond.",
     points: ["1-on-1 Support", "Career Guidance", "Industry Insights"],
-    img: "/School/6.svg",
+    img: "/School/hand (2).png",
     link: "https://youtu.be/KRO68_kUGw8?si=JRpAdh7rSjyuUA-Z"
   },
 ];
