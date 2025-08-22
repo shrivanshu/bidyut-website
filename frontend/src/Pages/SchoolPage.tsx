@@ -5,6 +5,7 @@ import Footer from '../Component/FooterUnanimated';
 import SchoolHero from '../Component/SchoolComponent/SchoolHeroSection';
 import {BuildTogetherSection} from '../Component/SchoolComponent/BuildTogetherSection';
 import Stream from '../Component/SchoolComponent/StreamSection';
+import RoboticLabsForSchools from '../Component/SchoolComponent/RoboticLabsForSchools';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
 function SchoolPage() {
@@ -20,6 +21,7 @@ function SchoolPage() {
         <Header />
         <SchoolHero />
         <Stream />
+        <RoboticLabsForSchools/>
         <BuildTogetherSection onGameSelect={handleGameSelect} />   
         <AssembleRobot selectedGame={selectedGame} />
         <Footer />

@@ -65,12 +65,14 @@ export default function AssembleRobot({ selectedGame = 'puzzle' }: AssembleRobot
       <div className="text-center mb-6 sm:mb-8 lg:mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
           <span className="text-[#000000] dark:text-white">Play & Learn: </span>
-          <span className="text-[#0ACF83]">{getGameTitle()}</span>
+          <span className="text-[rgb(234_179_8_/_0.5)]">{getGameTitle()}</span>
         </h1>
       </div>
 
       {/* Game Area */}
-      <div className="w-full min-h-[500px] xl:min-h-[600px] bg-[#0ACF83] dark:bg-gray-900 rounded-3xl shadow-lg p-6">
+<div className="w-full min-h-[500px] xl:min-h-[600px] max-w-[90%] mx-auto mt-4 rounded-3xl 
+    bg-yellow-500/20 backdrop-blur-lg border border-white/10 shadow-lg p-6 flex flex-col">
+
         {renderGame()}
       </div>
     </div>
@@ -174,7 +176,7 @@ function PuzzleGame() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full text-white">
+    <div className="flex flex-col items-center justify-center h-full text-black">
       <div className="flex justify-center items-center space-x-6 mb-6">
         <div className="text-center">
           <div className="text-2xl font-bold">{moves}</div>
@@ -182,13 +184,13 @@ function PuzzleGame() {
         </div>
         <button
           onClick={() => setShowOriginal(!showOriginal)}
-          className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors"
+          className="px-4 py-2 bg-white/60 text-black rounded-lg hover:bg-white/30 transition-colors"
         >
           {showOriginal ? 'Hide' : 'Show'} Original
         </button>
         <button
           onClick={initializePuzzle}
-          className="px-4 py-2 bg-white text-[#0ACF83] rounded-lg hover:bg-gray-100 transition-colors"
+          className="px-4 py-2 bg-white text-[rgb(234_179_8_/_0.5)] rounded-lg hover:bg-gray-100 transition-colors"
         >
           New Game
         </button>
@@ -209,9 +211,9 @@ function PuzzleGame() {
             {pieces.map((piece, index) => (
               <div
                 key={`${piece.id}-${index}`}
-                className={`relative w-20 h-20 border-2 rounded-lg cursor-pointer transition-all duration-200 ${
+                className={`relative w-20 h-20 border-2  rounded-lg cursor-pointer transition-all duration-200 ${
                   piece.isEmpty 
-                    ? 'bg-transparent border-dashed border-white/30' 
+                    ? 'bg-transparent border-dashed border-black/90' 
                     : 'bg-white border-gray-300 hover:border-white hover:scale-105'
                 }`}
                 style={getPieceStyle(piece)}
@@ -219,7 +221,7 @@ function PuzzleGame() {
               >
                 {piece.isEmpty && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white/50 text-xs text-center">Empty</div>
+                    <div className="text-black/50 text-xs text-center">Empty</div>
                   </div>
                 )}
               </div>
@@ -337,7 +339,7 @@ function MemoryGame() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full text-white">
+    <div className="flex flex-col items-center justify-center h-full text-black">
       <div className="flex justify-center items-center space-x-6 mb-6">
         <div className="text-center">
           <div className="text-2xl font-bold">{moves}</div>
@@ -410,9 +412,9 @@ function RobotBuilderGame() {
   const [isCompleted, setIsCompleted] = useState(false);
 
   const robotParts = {
-    head: ['/media/robot03.svg', '/media/Cobot.svg'],
-    body: ['/media/Robot_Details.svg', '/media/Cobot_true.svg'],
-    arms: ['/media/Robot_Fighting.svg', '/media/Robot_hero.svg']
+    head: ['/School/head.png', '/media/Cobot_true.svg'],
+    body: ['/media/Cobot_true.svg', '/School/body.png'],
+    arms: ['/media/arm.png', '/media/Robot_hero.svg']
   };
 
   const handlePartSelect = (partType: string, partImage: string) => {
@@ -432,7 +434,7 @@ function RobotBuilderGame() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full text-white">
+    <div className="flex flex-col items-center justify-center h-full text-black">
       <div className="flex justify-center items-center space-x-6 mb-6">
         <h3 className="text-xl font-bold">Build Your Robot!</h3>
         <button
@@ -506,7 +508,7 @@ function RobotBuilderGame() {
               </button>
               <button
                 onClick={resetBuilder}
-                className="px-6 py-3 bg-[#0ACF83] text-white rounded-lg hover:bg-[#0ACF83]/90 transition-colors"
+                className="px-6 py-3 bg-[#0ACF83] text-black rounded-lg hover:bg-[#0ACF83]/90 transition-colors"
               >
                 Build Another
               </button>
@@ -587,7 +589,7 @@ function QuizGame() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full text-white">
+    <div className="flex flex-col items-center justify-center h-full text-black">
       <div className="flex justify-center items-center space-x-6 mb-6">
         <div className="text-center">
           <div className="text-2xl font-bold">{currentQuestion + 1}/{questions.length}</div>
