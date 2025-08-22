@@ -8,6 +8,7 @@ export default function ScrollAnimationPage() {
   const [showWhiteScreen, setShowWhiteScreen] = useState(false)
   const [showAboutUs, setShowAboutUs] = useState(false)
   const [showVideoSection, setShowVideoSection] = useState(false)
+  const currentYear = new Date().getFullYear()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,18 +39,36 @@ export default function ScrollAnimationPage() {
   }, [showAboutUs])
 
   const getTransformedText = () => {
-  // Smooth counter from 0 -> 2014 based on scroll progress
+  // Smooth counter from 0000 -> current year based on scroll progress
   const maxScroll = 1500
   const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
 
-  const target = 2014
+  const target = currentYear
   const count = Math.round(progress * target)
-  const padded = String(count).padStart(4, "0")
-  return padded
+  
+  // Format as 4-digit year with leading zeros if needed
+  const yearStr = String(count).padStart(4, "0")
+  
+  return yearStr
+  }
+
+  // Get individual digits for scroll animation
+  const getDigitAnimation = (digitIndex: number) => {
+    const maxScroll = 1500
+    const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
+    
+    const target = currentYear
+    const count = Math.round(progress * target)
+    const yearStr = String(count).padStart(4, "0")
+    
+    return {
+      digit: yearStr[digitIndex] || "0",
+      transform: `translateY(${(1 - progress) * 100}px) scale(${0.8 + progress * 0.2})`
+    }
   }
 
   const getZeroZoomScale = () => {
-    if (scrollY > 1800) {
+    if (scrollY > 1800 && getTransformedText() === String(currentYear).padStart(4, "0")) {
       const zoomProgress = (scrollY - 1800) / 400
       return Math.min(zoomProgress * 30, 80)
     }
@@ -59,30 +78,32 @@ export default function ScrollAnimationPage() {
   const getMainScale = () => {
     const maxScroll = 1500
     const progress = Math.min(scrollY / maxScroll, 1)
-    return 1 + scrollY * 0.001
+    return 1 + progress * 0.5 // Smoother scaling
   }
 
   const getVideoSectionTransform = () => {
     if (!showVideoSection) return { scale: 0.1, rotate: 0, opacity: 0 }
 
-    const videoSectionStart = 3000 // Start animation when video section appears
-    const animationProgress = Math.max(0, Math.min(1, (scrollY - videoSectionStart) / 800))
+    const videoSectionStart = 3000
+    const animationProgress = Math.max(0, Math.min(1, (scrollY - videoSectionStart) / 600))
 
-    // Start small, rotate 360 degrees, then scale to normal size
-    const scale = 0.1 + animationProgress * 0.9 // Scale from 0.1 to 1
-    const rotate = animationProgress * 360 // Rotate 360 degrees
-    const opacity = Math.min(1, animationProgress * 2) // Fade in quickly
+    // Smoother animation curve
+    const easeOut = 1 - Math.pow(1 - animationProgress, 3)
+    const scale = 0.1 + easeOut * 0.9
+    const rotate = easeOut * 360
+    const opacity = Math.min(1, easeOut * 2)
 
     return { scale, rotate, opacity }
   }
 
-  // Trigger the white-screen -> About transition once the big number moves off "0000".
+  // Trigger the white-screen -> About transition once the big number reaches current year
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
   useEffect(() => {
     const transformed = getTransformedText()
-    // trigger only when counter reaches the final value
-    if (!hasTriggeredRef.current && transformed === "2014") {
+    const targetYear = String(currentYear).padStart(4, "0")
+    // trigger only when counter reaches the current year
+    if (!hasTriggeredRef.current && transformed === targetYear) {
       hasTriggeredRef.current = true
       setShowWhiteScreen(true)
       setTimeout(() => {
@@ -95,16 +116,17 @@ export default function ScrollAnimationPage() {
             window.scrollTo(0, 0)
           }
         }
-        setTimeout(() => setAboutAnimStarted(true), 60)
-      }, 500)
+        setTimeout(() => setAboutAnimStarted(true), 100)
+      }, 800)
     }
-  }, [scrollY])
+  }, [scrollY, currentYear])
 
   if (showWhiteScreen && scrollY > 2000) {
-    setTimeout(() => setShowAboutUs(true), 1000)
     return (
       <div className="bg-white min-h-screen flex items-center justify-center transition-all duration-1000 ease-out">
-        <div className="w-full h-full bg-white"></div>
+        <div className="w-full h-full bg-white flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+        </div>
       </div>
     )
   }
@@ -116,9 +138,9 @@ export default function ScrollAnimationPage() {
       <div
         className="bg-black min-h-screen relative overflow-hidden"
         style={{
-          transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.06) translateZ(0)',
+          transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
           opacity: aboutAnimStarted ? 1 : 0,
-          transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 500ms ease-out',
+          transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out',
           transformOrigin: 'center center'
         }}
       >
@@ -134,30 +156,52 @@ export default function ScrollAnimationPage() {
         />
 
         <div className="flex items-center justify-center min-h-screen px-8">
-          <div className="text-center max-w-6xl animate-in fade-in duration-1000">
-            <h1 className="text-9xl font-bold text-white mb-12 tracking-tight animate-in slide-in-from-bottom-4 duration-700">
+          <div className="text-center max-w-6xl mx-auto relative z-10">
+            {/* Main Heading */}
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tight animate-in slide-in-from-bottom-4 duration-700">
               About Us
             </h1>
-            <h2 className="text-4xl text-gray-400 mb-16 font-light animate-in slide-in-from-bottom-4 duration-700 delay-200">
+            
+            {/* Subtitle */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-400 mb-16 font-light animate-in slide-in-from-bottom-4 duration-700 delay-200">
               Shaping Tomorrow's Technology
             </h2>
-            <p className="text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto animate-in slide-in-from-bottom-4 duration-700 delay-400">
-              Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are
-              crafting the future of automation with solutions that enhance human capabilities rather than replace them.
+            
+            {/* Description Paragraph */}
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed max-w-5xl mx-auto mb-20 animate-in slide-in-from-bottom-4 duration-700 delay-400">
+              Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
             </p>
 
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 animate-in slide-in-from-bottom-4 duration-700 delay-600">
+            {/* Statistics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
+              {/* Current Year */}
               <div className="text-center">
-                <div className="text-6xl font-bold text-white mb-4">2014</div>
-                <div className="text-xl text-gray-400">Founded</div>
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  {currentYear}
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Current Year
+                </div>
               </div>
+              
+              {/* Projects */}
               <div className="text-center">
-                <div className="text-6xl font-bold text-white mb-4">100+</div>
-                <div className="text-xl text-gray-400">Projects</div>
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  100+
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Projects
+                </div>
               </div>
+              
+              {/* Happy Clients */}
               <div className="text-center">
-                <div className="text-6xl font-bold text-white mb-4">50+</div>
-                <div className="text-xl text-gray-400">Happy Clients</div>
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  50+
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Happy Clients
+                </div>
               </div>
             </div>
           </div>
@@ -185,29 +229,37 @@ export default function ScrollAnimationPage() {
     <div className="bg-black min-h-[600vh]" style={{ scrollBehavior: "smooth" }}>
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <div className="relative">
-          {scrollY > 1800 && getTransformedText() === "2014" ? (
+          {scrollY > 1800 && getTransformedText() === String(currentYear).padStart(4, "0") ? (
             <div
               className="text-[12rem] font-bold text-white font-mono tracking-wider absolute inset-0 flex items-center justify-center"
               style={{
                 transform: `scale(${getZeroZoomScale()})`,
-                transition: "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
             >
-              0
+              {String(currentYear).slice(-1)}
             </div>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div
-                className={`
-                  text-[12rem] font-bold text-white font-mono tracking-wider
-                  transition-all duration-500 cubic-bezier(0.25, 0.46, 0.45, 0.94)
-                  ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"}
-                `}
-                style={{
-                  transform: `scale(${getMainScale()})`,
-                }}
-              >
-                {getTransformedText()}
+              <div className="flex space-x-2">
+                {[0, 1, 2, 3].map((digitIndex) => {
+                  const digitData = getDigitAnimation(digitIndex)
+                  return (
+                    <div
+                      key={digitIndex}
+                      className={`
+                        text-[12rem] font-bold text-white font-mono tracking-wider
+                        transition-all duration-700 cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                        ${isVisible ? "opacity-100" : "opacity-0"}
+                      `}
+                      style={{
+                        transform: digitData.transform,
+                      }}
+                    >
+                      {digitData.digit}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           )}
