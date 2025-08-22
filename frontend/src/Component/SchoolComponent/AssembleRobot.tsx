@@ -70,7 +70,8 @@ export default function AssembleRobot({ selectedGame = 'puzzle' }: AssembleRobot
       </div>
 
       {/* Game Area */}
-      <div className="w-full min-h-[500px] xl:min-h-[600px] bg-[#0ACF83] dark:bg-gray-900 rounded-3xl shadow-lg p-6">
+<div className="w-full min-h-[500px] xl:min-h-[600px] rounded-3xl shadow-lg p-6 
+    bg-blue-700/25 dark:bg-blue-900/20 backdrop-blur-xl border border-white/20">
         {renderGame()}
       </div>
     </div>
