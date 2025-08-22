@@ -4,6 +4,7 @@ import CobotVariants from '../Component/Cobot_components/CobotVariants';
 import CobotDetail from '../Component/Cobot_components/CobotDetail';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import HeroSection from '../Component/Cobot_components/heroSection';
+import A2ComparisonChart from '../Component/Cobot_components/CobotComparisonChart';
 
 function Cobot_page() {
   return (
@@ -13,6 +14,7 @@ function Cobot_page() {
         <HeroSection/>
         <CobotVariants/>
         <CobotDetail/>
+        <A2ComparisonChart />
         <Footer />
       </div>
     </ThemeProvider>
