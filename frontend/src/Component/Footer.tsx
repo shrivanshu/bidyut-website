@@ -434,7 +434,6 @@ export default function Footer() {
             animation-duration: 4.5s;
             filter: drop-shadow(0 0 14px rgba(34,197,94,0.30));
           }
-          @keyframes spin-gradient { to { transform: rotate(360deg); } }
 
           /* Banner/dot keyframes */
           @keyframes glow-pulse-interactive {
@@ -455,14 +454,7 @@ export default function Footer() {
               transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
             }
           }
-          @keyframes shimmer-effect {
-            0%, 100% { background-position: -100% 0; opacity: 0.9; }
-            50% { background-position: 200% 0; opacity: 1; }
-          }
-          @keyframes float-gentle {
-            0%, 100% { transform: translateX(-50%) translateY(-50%) translateZ(0); }
-            50% { transform: translateX(-50%) translateY(calc(-50% - 3px)) translateZ(0); }
-          }
+      
 
           /* Reduced motion */
           @media (prefers-reduced-motion: reduce) {
