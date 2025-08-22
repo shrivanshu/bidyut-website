@@ -270,7 +270,7 @@ features: [
     label: "Wireless Vector Positioning",
     detail: "Companion module for wireless vector-based positioning support",
     position: { top: "60%", left: "87%" },
-    positionSm: { top: "78%", left: "86%" },
+    positionSm: { top: "78%", left: "76%" },
     lineDirection: "right",
     targetPoint: { x: "37%", y: "19%" },
     targetPointSm: { x: "47%", y: "35%" }
@@ -377,15 +377,19 @@ features: [
     label: "Optical Camera",
     detail: "Wide-angle depth camera system, expandable to dual setup",
     position: { top: "3%", left: "40%" },
+    positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" }
+    targetPoint: { x: "17%", y: "19%" },
+    targetPointSm: { x: "17%", y: "34%" }
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design with improved stability & payload handling",
     position: { top: "65%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "5%", y: "81%" }
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
   },
   {
     label: "Battery Pack",
