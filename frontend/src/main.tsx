@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './Pages/Home_page';
-import About from './Pages/About_page';
+import About from './Pages/Aboutpage';
 import Gallery from './Pages/Gallery_page';
 import Contactpage from './Pages/Contact_page';
 import Robotpage from './Pages/Robot_page';
