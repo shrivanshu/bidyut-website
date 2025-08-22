@@ -77,7 +77,13 @@ const HeroSection = () => {
           <div className="max-w-[1440px] mx-auto px-6 relative h-full">
             {/* G1 Label - Smaller and higher */}
             <div className="absolute left-36 -top-16">
-              <span className="text-[100px] md:text-[120px] lg:text-[290px] font-bold text-[#00ffa3] leading-none opacity-70 drop-shadow-lg cursor-target" style={{ letterSpacing: '-0.05em' }}>
+              <span 
+                className="text-[100px] md:text-[120px] lg:text-[290px] font-bold leading-none text-transparent bg-clip-text opacity-70 drop-shadow-lg cursor-target" 
+                style={{ 
+                  letterSpacing: '-0.05em',
+                  backgroundImage: "linear-gradient(180deg, #C0C0C0 50%, #000000 100%)"
+                }}
+              >
                 G1
               </span>
             </div>
@@ -85,12 +91,13 @@ const HeroSection = () => {
             {/* UNITREE Text - Smaller and repositioned */}
             <div className="absolute right-[3%] -top-56 h-[190px] flex items-center">
               <span 
-                className="text-[50px] md:text-[60px] lg:text-[97px] font-bold text-[#00000021] opacity-90 drop-shadow-lg cursor-target"
+                className="text-[50px] md:text-[60px] lg:text-[97px] font-bold text-transparent bg-clip-text opacity-90 drop-shadow-lg cursor-target"
                 style={{ 
                   writingMode: 'vertical-rl',
                   textOrientation: 'mixed',
                   transform: 'rotate(180deg)',
-                  letterSpacing: '0.1em'
+                  letterSpacing: '0.1em',
+                  backgroundImage: "linear-gradient(180deg, #C0C0C0 50%, #000000 100%)"
                 }}
               >
                 UNITREE
@@ -107,7 +114,7 @@ const HeroSection = () => {
     className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5"
     style={{
       backgroundImage:
-        "linear-gradient(180deg, #00ffa3 0%, #00ffa3 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
+        "linear-gradient(180deg, #C0C0C0 50%, #000000 100%)",
     }}
   >
     Humanoid

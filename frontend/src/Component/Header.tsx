@@ -175,7 +175,7 @@ export default function Header() {
             <div className="relative">
               <button
                 onClick={toggleLanguageDropdown}
-                className="relative bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] hover:from-[#00F5A0]/80 hover:to-[#00C6FF]/80 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
+                className="relative bg-gradient-to-r from-[#62f5008a] to-[#00C6FF] hover:from-[#00F5A0]/80 hover:to-[#00C6FF]/80 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
                 aria-label="Toggle language"
               >
                 <Globe className="h-5 w-5" />
