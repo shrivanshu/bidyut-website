@@ -1,22 +1,240 @@
 "use client"
 
+import type React from "react"
+
 import { motion } from "framer-motion"
+import { useState, useRef, useEffect } from "react"
 
 export default function TrustedPartners() {
+  const [arrowEndX, setArrowEndX] = useState(140) // End X coordinate
+  const [arrowEndY, setArrowEndY] = useState(50) // End Y coordinate
+  const [isActive, setIsActive] = useState(false)
+  const [arrowTipSize, setArrowTipSize] = useState(1) // Scale factor for arrow tip
+  const [isWaveActive, setIsWaveActive] = useState(false) // Added state to control wave animations on SVG globe
+  const arrowRef = useRef<SVGSVGElement>(null)
+  const animationFrameRef = useRef<number>()
+  const targetPositionRef = useRef({ x: 140, y: 50 })
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (isActive && arrowRef.current) {
+        const arrowRect = arrowRef.current.getBoundingClientRect()
+        const arrowStartX = arrowRect.left + (10 * arrowRect.width) / 220 // Starting point X in screen coordinates
+        const arrowStartY = arrowRect.top + (50 * arrowRect.height) / 100 // Starting point Y in screen coordinates
+
+        const deltaX = e.clientX - arrowStartX
+        const deltaY = e.clientY - arrowStartY
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+
+        const svgDistance = distance // Use actual distance without scaling or limiting
+
+        const normalizedX = deltaX / distance
+        const normalizedY = deltaY / distance
+
+        const newEndX = 10 + normalizedX * svgDistance
+        const newEndY = 50 + normalizedY * svgDistance
+
+        targetPositionRef.current = { x: newEndX, y: newEndY }
+      }
+    }
+
+    const smoothUpdate = () => {
+      if (isActive) {
+        const current = { x: arrowEndX, y: arrowEndY }
+        const target = targetPositionRef.current
+
+        const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
+        const easingFactor = 0.15 // Adjust for more/less smoothness
+
+        const newX = lerp(current.x, target.x, easingFactor)
+        const newY = lerp(current.y, target.y, easingFactor)
+
+        setArrowEndX(newX)
+        setArrowEndY(newY)
+
+        animationFrameRef.current = requestAnimationFrame(smoothUpdate)
+      }
+    }
+
+    const handleGlobalClick = (e: MouseEvent) => {
+      if (e.button !== 0) return // Only handle left clicks
+
+      if (isActive && arrowRef.current && !arrowRef.current.contains(e.target as Node)) {
+        setIsActive(false)
+        targetPositionRef.current = { x: 140, y: 50 }
+        setArrowEndX(140) // Return to original X position
+        setArrowEndY(50) // Return to original Y position
+        setArrowTipSize(1)
+      }
+    }
+
+    if (isActive) {
+      document.addEventListener("mousemove", handleGlobalMouseMove)
+      document.addEventListener("click", handleGlobalClick)
+      animationFrameRef.current = requestAnimationFrame(smoothUpdate)
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleGlobalMouseMove)
+      document.removeEventListener("click", handleGlobalClick)
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
+  }, [isActive, arrowEndX, arrowEndY])
+
+  useEffect(() => {
+    const handleGlobalMouseUp = (e: MouseEvent) => {
+      if (e.button === 0 && isWaveActive) {
+        console.log("[v0] Global mouse up - stopping wave animation")
+        setIsWaveActive(false)
+      }
+    }
+
+    if (isWaveActive) {
+      document.addEventListener("mouseup", handleGlobalMouseUp)
+    }
+
+    return () => {
+      document.removeEventListener("mouseup", handleGlobalMouseUp)
+    }
+  }, [isWaveActive])
+
+  useEffect(() => {
+    if (isActive) {
+      setArrowTipSize(1.5) // Increase tip size when active
+    } else {
+      setArrowTipSize(1) // Return to original size when inactive
+    }
+  }, [isActive])
+
+  const handleArrowClick = (e: React.MouseEvent) => {
+    if (e.button !== 0) return // Only handle left clicks (button 0)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (!isActive) {
+      setIsActive(true)
+      if (arrowRef.current) {
+        const arrowRect = arrowRef.current.getBoundingClientRect()
+        const arrowStartX = arrowRect.left + (10 * arrowRect.width) / 220
+        const arrowStartY = arrowRect.top + (50 * arrowRect.height) / 100
+
+        const deltaX = e.clientX - arrowStartX
+        const deltaY = e.clientY - arrowStartY
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+
+        const svgDistance = distance
+        const normalizedX = deltaX / distance
+        const normalizedY = deltaY / distance
+
+        const newEndX = 10 + normalizedX * svgDistance
+        const newEndY = 50 + normalizedY * svgDistance
+
+        setArrowEndX(newEndX)
+        setArrowEndY(newEndY)
+      }
+    } else {
+      setIsActive(false)
+      setArrowEndX(140) // Return to original X position
+      setArrowEndY(50) // Return to original position
+    }
+  }
+
+  const handleSvgMouseDown = (e: React.MouseEvent) => {
+    if (e.button === 0) {
+      // Only left click
+      console.log("[v0] SVG mouse down - starting wave animation")
+      setIsWaveActive(true)
+    }
+  }
+
+  const handleSvgMouseUp = (e: React.MouseEvent) => {
+    if (e.button === 0) {
+      // Only left click
+      console.log("[v0] SVG mouse up - stopping wave animation")
+      setIsWaveActive(false)
+    }
+  }
+
   return (
-    <section className="min-h-screen flex items-center justify-center p-2 sm:p-8 bg-white dark:bg-black">
+    <section className="min-h-screen flex items-center justify-center p-2 sm:p-8 bg-white dark:bg-black select-none">
+      <style >{`
+        @keyframes wave-flow {
+          0% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: 40;
+          }
+        }
+        
+        @keyframes wave-pulse {
+          0%, 100% {
+            stroke-width: 1.5;
+            opacity: 0.6;
+          }
+          50% {
+            stroke-width: 2.5;
+            opacity: 1;
+          }
+        }
+        
+        .wave-line {
+          stroke-dasharray: 8 4;
+          animation: wave-flow 3s linear infinite, wave-pulse 2s ease-in-out infinite;
+          animation-play-state: paused;
+        }
+        
+        .wave-line-slow {
+          stroke-dasharray: 12 6;
+          animation: wave-flow 4s linear infinite reverse, wave-pulse 3s ease-in-out infinite;
+          animation-play-state: paused;
+        }
+        
+        .wave-line-fast {
+          stroke-dasharray: 6 3;
+          animation: wave-flow 2s linear infinite, wave-pulse 1.5s ease-in-out infinite;
+          animation-play-state: paused;
+        }
+        
+        .wave-line-active {
+          stroke-dasharray: 8 4;
+          animation: wave-flow 3s linear infinite, wave-pulse 2s ease-in-out infinite;
+          animation-play-state: running;
+        }
+        
+        .wave-line-slow-active {
+          stroke-dasharray: 12 6;
+          animation: wave-flow 4s linear infinite reverse, wave-pulse 3s ease-in-out infinite;
+          animation-play-state: running;
+        }
+        
+        .wave-line-fast-active {
+          stroke-dasharray: 6 3;
+          animation: wave-flow 2s linear infinite, wave-pulse 1.5s ease-in-out infinite;
+          animation-play-state: running;
+        }
+      `}</style>
+
       <div className="max-w-7xl w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center">
           {/* Left Section */}
           <div className="space-y-8 relative">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: false, amount: 0.3 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
               <h1 className="text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4">Trusted Partners</h1>
               <p className="text-xl lg:text-2xl text-gray-500 dark:text-gray-300 mb-8">list of companies</p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: false, amount: 0.3 }}
               className="backdrop-blur-sm bg-gray-100 dark:bg-gray-800 border border-white/20 rounded-2xl p-8 shadow-xl"
@@ -70,27 +288,60 @@ export default function TrustedPartners() {
               transition={{ duration: 1, delay: 0.8 }}
               viewport={{ once: false, amount: 0.3 }}
               className="absolute -right-8 top-1/2 -translate-y-1/2 lg:-right-16 hidden sm:block"
+              style={{
+                transition: isActive ? "none" : "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                zIndex: isActive ? 50 : 10,
+              }}
             >
-              <svg width="150" height="100" viewBox="0 0 150 100" className="text-gray-900 dark:text-white">
+              <svg
+                ref={arrowRef}
+                width="220"
+                height="100"
+                viewBox="0 0 220 100"
+                className={`text-gray-900 dark:text-white overflow-visible transition-all duration-500 ease-out ${
+                  isActive ? "cursor-pointer scale-110 drop-shadow-lg" : "cursor-pointer hover:scale-105"
+                }`}
+                onClick={handleArrowClick}
+                onMouseDown={(e) => {
+                  if (e.button === 0) {
+                    console.log("[v0] Mouse down on arrow - left click detected")
+                  }
+                }}
+              >
                 <path
-                  d="M10 50 Q75 25 140 50"
+                  d={`M10 50 Q${(10 + arrowEndX) / 2} ${Math.min(25, arrowEndY - 25)} ${arrowEndX} ${arrowEndY}`}
                   stroke="currentColor"
-                  strokeWidth="3.125"
+                  strokeWidth={isActive ? "4" : "3.125"}
                   fill="none"
                   markerEnd="url(#arrowhead)"
+                  className="transition-all duration-300 ease-out"
+                  style={{
+                    transition: isActive ? "stroke-width 0.3s ease-out" : "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
                 />
                 <defs>
-                  <marker id="arrowhead" markerWidth="12.5" markerHeight="8.75" refX="11.25" refY="4.375" orient="auto">
-                    <polygon points="0 0, 12.5 4.375, 0 8.75" fill="currentColor" />
+                  <marker
+                    id="arrowhead"
+                    markerWidth={12.5 * arrowTipSize}
+                    markerHeight={8.75 * arrowTipSize}
+                    refX={11.25 * arrowTipSize}
+                    refY={4.375 * arrowTipSize}
+                    orient="auto"
+                    className="transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)"
+                  >
+                    <polygon
+                      points={`0 0, ${12.5 * arrowTipSize} ${4.375 * arrowTipSize}, 0 ${8.75 * arrowTipSize}`}
+                      fill="currentColor"
+                      className="transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)"
+                    />
                   </marker>
                 </defs>
               </svg>
             </motion.div>
           </div>
 
-          {/* Right Section - Globe */}
           <div className="relative flex items-center justify-center">
-            <motion.div
+             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 360 }}
               transition={{
@@ -106,7 +357,7 @@ export default function TrustedPartners() {
                 height="100%"
                 viewBox="0 0 520 520"
                 className="text-gray-300 dark:text-gray-700 w-[90vw] h-[90vw] sm:w-[520px] sm:h-[520px] md:w-[400px] md:h-[400px] lg:w-[520px] lg:h-[520px]"
-                style={{ maxWidth: '100vw', maxHeight: '100vw' }}
+                style={{ maxWidth: "100vw", maxHeight: "100vw" }}
               >
                 {/* Outer circle */}
                 <circle cx="260" cy="260" r="210" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -127,11 +378,11 @@ export default function TrustedPartners() {
                 initial={{ opacity: 1, rotate: 0 }}
                 whileInView={{ opacity: 1, rotate: -360 }}
                 transition={{
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" }
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
                 className="absolute inset-0 m-auto w-[30vw] h-[30vw] sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 z-20"
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: "none" }}
               >
                 <img src="/public/bidyut_logo_green 1.svg" alt="Center Logo" className="w-full h-full object-contain" />
               </motion.div>
@@ -172,46 +423,46 @@ export default function TrustedPartners() {
               <motion.div className="absolute right-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Apple logo */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
               </motion.div>
 
               <motion.div className="absolute bottom-[28vw] right-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Amazon logo */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9900">
-                  <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595 2.779-1.062 5.12-2.574 7.024-4.534.062-.062.11-.062.14 0 .031.062 0 .125-.093.187-2.434 2.263-5.25 4.048-8.447 5.357-3.197 1.309-6.487 1.963-9.87 1.963-4.2 0-8.26-1.025-12.18-3.075-.124-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
               </motion.div>
 
               <motion.div className="absolute bottom-[8vw] left-1/2 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Netflix logo */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#E50914">
-                  <path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L18.6 22.951c-.043-7.86-.004-15.71.002-22.95zM5.398 1.05V24c2.873-.086 5.81-.406 8.487-.606V1.05z" />
+                  <path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L7.084 22.951c-.043-7.86-.004-15.71.002-22.95zM5.398 1.05V24c2.873-.086 5.81-.406 8.487-.606V1.05z" />
                 </svg>
               </motion.div>
 
               <motion.div className="absolute bottom-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Spotify logo */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954">
-                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z" />
+                  <path d="M13.966 22.624l-1.69-4.281H7.084l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.951z" />
                 </svg>
               </motion.div>
 
               <motion.div className="absolute left-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Adobe logo */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000">
-                  <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624z" />
+                  <path d="M12 5.362L2.4 8.638v6.724L12 18.638l9.6-3.276V8.638L12 5.362zM12 0l12 4.095v15.81L12 24 0 19.905V4.095L12 0z" />
                 </svg>
               </motion.div>
 
               <motion.div className="absolute top-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
                 {/* Tesla logo */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#CC0000">
-                  <path d="M12 5.362L2.4 8.638v6.724L12 18.638l9.6-3.276V8.638L12 5.362zM12 0l12 4.095v15.81L12 24 0 19.905V4.095L12 0z" />
+                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z" />
                 </svg>
               </motion.div>
 
-              {/* Slack - Additional positions */}
+              {/* Slack */}
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
@@ -307,7 +558,7 @@ export default function TrustedPartners() {
                 className="absolute top-32 right-4 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-2.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.849.97 1.213 2.115 1.074 3.907z" />
                 </svg>
               </motion.div>
 
@@ -331,41 +582,7 @@ export default function TrustedPartners() {
                       <stop offset="100%" stopColor="#FCB045" />
                     </linearGradient>
                   </defs>
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919 1.266.058 1.644.07 4.85.07 3.204 0 3.584-.012 4.849-.07 4.358-.2 6.78 2.618 6.98 6.98.058 1.281.073 1.689.073 4.948 0 3.205.013 3.663.072 4.948.149 3.227 1.664 4.771 4.919 4.919 1.266.057 1.645.069 4.948.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.057-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </motion.div>
-
-              {/* YouTube */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 2.6 },
-                  scale: { duration: 0.5, delay: 2.6 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className="absolute top-1/3 right-12 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-              </motion.div>
-
-              {/* Discord */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 2.7 },
-                  scale: { duration: 0.5, delay: 2.7 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className="absolute bottom-1/3 left-12 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#5865F2">
-                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.756-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.076.076 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
 
@@ -382,7 +599,7 @@ export default function TrustedPartners() {
                 className="absolute top-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 14.568a5.968 5.968 0 01-11.136 0 5.968 5.968 0 010-5.136 5.968 5.968 0 0111.136 0 5.968 5.968 0 010 5.136z" />
+                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
 
@@ -399,7 +616,7 @@ export default function TrustedPartners() {
                 className="absolute bottom-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF5A5F">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
+                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
 
@@ -416,7 +633,7 @@ export default function TrustedPartners() {
                 className="absolute top-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#0061FF">
-                  <path d="M6 2l6 4 6-4-6-2zm0 6l6 4 6-4-6-2zm6 6l-6-4v6l6 4 6-4v-6z" />
+                  <path d="M6 2l6 4 6-4-6-2zm0 6l6 4 6-4h-12zm12 6l-6-4v6l6 4 6-4v-6z" />
                 </svg>
               </motion.div>
 
@@ -433,7 +650,7 @@ export default function TrustedPartners() {
                 className="absolute bottom-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#2D8CFF">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.894H6.106V7.106h11.788v9.788z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.894l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
                 </svg>
               </motion.div>
 
@@ -450,7 +667,7 @@ export default function TrustedPartners() {
                 className="absolute top-8 left-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#7AB55C">
-                  <path d="M15.337 2.136c-.168-.042-.336-.042-.504 0-1.176.294-2.184.966-2.856 1.932-.504.714-.84 1.554-.966 2.436-.378-.126-.798-.21-1.218-.21-2.394 0-4.326 1.932-4.326 4.326 0 .378.042.756.126 1.134C2.394 12.378 0 15.234 0 18.636c0 2.982 2.394 5.364 5.376 5.364h13.248C21.606 24 24 21.606 24 18.636c0-2.982-2.394-5.364-5.376-5.364-.378 0-.756.042-1.134.126-.084-.378-.126-.756-.126-1.134 0-2.394-1.932-4.326-4.326-4.326-.378 0-.756.042-1.134.126.126-.882.462-1.722.966-2.436.672-.966 1.68-1.638 2.856-1.932.168-.042.336-.042.504 0z" />
+                  <path d="M15.337 2.136c-.168-.042-.336-.042-.504 0-1.176.294-2.184.966-2.856 1.932-.504.714-.84 1.554-.966 2.436-.378-.126-.798-.21-1.218-.21-2.394 0-4.326 1.932-4.326 4.326 0 .378.042.756.126 1.134C2.394 12.378 0 15.234 0 18.636c0 2.982 2.394 5.364 5.376 5.364h13.248C21.606 24 24 21.606 24 18.636c0-2.982-2.394-5.364-5.376-5.364-.378 0-.756.042-1.134.126 0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
                 </svg>
               </motion.div>
 
@@ -535,7 +752,7 @@ export default function TrustedPartners() {
                 className="absolute right-8 bottom-2/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="#BD081C">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
             </motion.div>
