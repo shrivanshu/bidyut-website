@@ -1134,7 +1134,7 @@ function RobotShowcase() {
 
             {/* Selected Cobot Display */}
             {selectedCobot && (
-              <div className="mt-6 p-6 bg-white dark:bg-gray-700 rounded-xl border-2 border-green-200 dark:border-green-600">
+              <div className="mt-6 p-6 bg-white dark:bg-gray-700 rounded-xl border-2 border-black dark:border-gray-400">
                 <div className="flex items-start gap-4">
                   <img
                     src={selectedCobot.image}
@@ -1168,14 +1168,14 @@ function RobotShowcase() {
 <div className="w-full max-w-4xl mx-auto mb-10 relative">
   <Select value={selectedVariant} onValueChange={setSelectedVariant}>
     <SelectTrigger
-      className="w-full bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
+      className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
     >
       <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
       <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
     </SelectTrigger>
     {isDropdownOpen && (
-      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-green-200 dark:border-green-600 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
+      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
         {robotSpecs.map((spec) => (
           <div
             key={spec.id}
