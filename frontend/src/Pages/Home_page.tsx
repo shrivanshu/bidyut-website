@@ -1,36 +1,3338 @@
+import React, { useEffect, useMemo, useState, useRef,CSSProperties } from "react";
+import { motion } from "framer-motion";
+import {
+  Brain,
+  Bot as Robot,
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  ChevronDown,
+  ChevronRight,
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Globe,
+} from "lucide-react";
+import { GoogleGenAI } from "@google/genai";
+import HomeHeroText from "../Text_Animation/HomeHeroText";
+import HeroHeading from "../Text_Animation/HomeHeroText";
+import SplitText from "../Text_Animation/LSMtext";
+import { useLanguage } from "../contexts/OptimizedLanguageContext";
+import { useTheme } from "../contexts/ThemeContext";
 
-import HeroSection from '../Component/home_components/heroSection';
-import OfferingsCarousel from '../Component/home_components/OurOfferings';
-import Footer from '../Component/Footer';
-import EducationStream from '../Component/home_components/EducationStream';
-import LmsSection from '../Component/home_components/lmsSection';
-import EducationNews from '../Component/home_components/EducationNews';
-import Header from '../Component/Header';
+import EN1 from "../Component/home_components/EN1";
+
+import Header from "../Component/Header";
 // import Clock from '../Component/home_components/Clock';
-import TestimonialSection from '../Component/home_components/TestimonialSection';
-import TrustedPartners from '../Component/home_components/TrustedPartners';
-// import TrustedPartners21 from '../Component/home_components/TrustedPartners21';
-import { ThemeProvider } from '../contexts/ThemeContext';
+import { AnimatePresence } from "framer-motion";
+const ai = new GoogleGenAI({
+  apiKey: "AIzaSyBXvyQXa7LjTNqqDkm3uvubhhkQ1A5dWZs",
+});
+const systemPrompt =
+  "You are Buddy, an AI assistant. Help users with robotics, coding, and Bidyut Innovation programs.";
 
+interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  company: string;
+  quote: string;
+  image: string;
+  bgColor?: string;
+}
 
-function Home_page() {
+interface VideoOption {
+  src: string;
+  thumbnail: string;
+  title: string;
+  description: string;
+}
+
+const testimonialData: Testimonial[] = [
+  {
+    id: 1,
+    name: "Mr. Mitesh",
+    title: "Principal",
+    company: "Laurels school",
+    quote:
+      "The hands-on robotics sessions made science easy to grasp, connecting concepts to real-world uses and sparking our curiosity.",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=250",
+  },
+  {
+    id: 2,
+    name: "Mrs. Nidhi Chaudhary",
+    title: "STEM Coordinator",
+    company: "Innovate Academy",
+    quote:
+      "Their lab feels like a creative tech playground, full of interactive tools, cool gadgets, and friendly mentors.",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=250",
+    bgColor: "bg-teal-400",
+  },
+  {
+    id: 3,
+    name: "Mr. Selvin Bernardr",
+    title: "Technology Director",
+    company: "St. Vincent Pallotti School",
+    quote:
+      "The robotics lab they set up at St. Vincent Pallotti’s inspired our students to explore technology in education, healthcare, and business.",
+    image:
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=250",
+  },
+  {
+    id: 4,
+    name: "Mrs. Aruna Rao",
+    title: "Science Teacher",
+    company: "Laurels School",
+    quote:
+      "Their screenless coding tools helped our youngest students develop logic, creativity, and problem-solving from day one.",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=250",
+  },
+  {
+    id: 5,
+    name: "Aarti Naini",
+    title: "Curriculum Head",
+    company: "JG High Secondary School Mhow",
+    quote:
+      "We appreciate their focus on skill-based learning, comprehensive teacher training, and continuous support.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=250",
+  },
+  {
+    id: 6,
+    name: "Mr.Kshitij",
+    title: "Lab Supervisor",
+    company: "Carmel School Ujjain",
+    quote:
+      "With world-class resources and patient trainers, our students built a solid foundation in robotics skills.",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=250",
+  },
+  {
+    id: 7,
+    name: "Mrs. Pratibha Sharma",
+    title: "EdTech Consultant",
+    company: "EduSolutions",
+    quote:
+      "Bidyut is leading the way in educational robotics. A truly innovative and impactful solution.",
+    image:
+      "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=250",
+    bgColor: "bg-teal-400",
+  },
+  {
+    id: 8,
+    name: "Mr. Mano",
+    title: "Robotics Club Mentor",
+    company: "Medicaps",
+    quote:
+      "The robotics lab they set up at St. Vincent Pallotti’s inspired our students to explore technology in education, healthcare, and business..",
+    image:
+      "https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=250",
+    bgColor: "bg-teal-400",
+  },
+  {
+    id: 9,
+    name: "Mr. Mitesh",
+    title: "Principal",
+    company: "Laurels school",
+    quote:
+      "The hands-on robotics sessions made science easy to grasp, connecting concepts to real-world uses and sparking our curiosity.",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=250",
+  },
+  {
+    id: 10,
+    name: "Mr.Kshitij",
+    title: "Lab Supervisor",
+    company: "Carmel School Ujjain",
+    quote:
+      "With world-class resources and patient trainers, our students built a solid foundation in robotics skills.",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=250",
+  },
+  {
+    id: 11,
+    name: "Mrs. Aruna Rao",
+    title: "Science Teacher",
+    company: "Laurels School",
+    quote:
+      "Their screenless coding tools helped our youngest students develop logic, creativity, and problem-solving from day one.",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=250",
+  },
+];
+
+interface Offering {
+  image: string;
+  titleKey: string;
+  descriptionKey: string;
+}
+
+const offerings: Offering[] = [
+  {
+    image: "/OurOfferingImages/AI Powered Learning Path.jpg",
+    titleKey: "collaborativeLearning",
+    descriptionKey: "collaborativeLearningDesc",
+  },
+  {
+    image: "/OurOfferingImages/collaborativeLearning.jpg",
+    titleKey: "Collabration",
+    descriptionKey: "collabrationDesc",
+  },
+  {
+    image: "/OurOfferingImages/Immersive Learning Experiences.jpg",
+    titleKey: "Learningexpi",
+    descriptionKey: "learningexpisDesc",
+  },
+  {
+    image: "/OurOfferingImages/Smart_Progress_Tracking.jpg",
+    titleKey: "ProgressTracking",
+    descriptionKey: "ProgressTrackingDesc",
+  },
+  {
+    image: "/OurOfferingImages/Personalized Mentorship.jpg",
+    titleKey: "personalizedMentorship",
+    descriptionKey: "personalizedMentorshipDesc",
+  },
+];
+
+const reviews = [
+  {
+    platform: "linkedin" as const,
+    timestamp: "08:10 PM | 01 Aug 2025",
+    title: "Bidyut Launches Advanced Robotics Lab for Schools",
+    content:
+      "Bidyut unveils a robotics lab to give students hands-on coding and tech skills for the future.",
+    author: "Bidyut Team",
+  },
+  {
+    platform: "twitter" as const,
+    timestamp: "08:10 PM | 01 Aug 2025",
+    title: "Bidyut Innovation Expands EdTech Reach",
+    content:
+      "Now in more cities, Bidyut’s robotics courses boost creativity and STEM learning in schools.",
+    author: "Bidyut Media",
+  },
+  {
+    platform: "twitter" as const,
+    timestamp: "08:10 PM | 01 Aug 2025",
+    title: "	AI-Powered Robots Transforming Education",
+    content:
+      "AI robots are making STEM learning interactive, fun, and teamwork-focused.",
+    author: "Tech Insights Desk",
+  },
+  {
+    platform: "linkedin" as const,
+    timestamp: "08:10 PM | 01 Aug 2025",
+    title: "Humanoid Teachers Enter Classrooms",
+    content:
+      "Schools adopt humanoid robots to support teaching and personalize lessons.",
+    author: "EdTech Research Team",
+  },
+  {
+    platform: "twitter" as const,
+    timestamp: "07:45 PM | 01 Aug 2025",
+    title: "Robotics to be a Core Subject by 2030",
+    content: "Countries plan to make robotics mandatory in school curriculums.",
+    author: "Innovation Weekly Staff",
+  },
+  {
+    platform: "linkedin" as const,
+    timestamp: "07:30 PM | 01 Aug 2025",
+    title: "Drone Technology in STEM Education",
+    content:
+      "Schools teach drone programming to bring physics and coding to life.",
+    author: "STEM Education Bureau",
+  },
+];
+
+const reviewsRow2 = [
+  {
+    platform: "twitter" as const,
+    timestamp: "07:15 PM | 01 Aug 2025",
+    title: "Collaborative Robots Enhance Lab Experiences",
+    content:
+      "Cobots join school labs, helping students with safe, precise tasks.",
+    author: "Robotics Lab Network",
+  },
+  {
+    platform: "linkedin" as const,
+    timestamp: "07:00 PM | 01 Aug 2025",
+    title: "Virtual Robotics Competitions Rise in Popularity",
+    content: "Students code and compete with robots in virtual arenas.",
+    author: "GET Newsroom",
+  },
+  {
+    platform: "twitter" as const,
+    timestamp: "06:45 PM | 01 Aug 2025",
+    title: "      timestamLow-Cost Robotics Kits for Rural Schools",
+    content: "Affordable robotics kits bring STEM to rural students.",
+    author: "Robotics World Team",
+  },
+  {
+    platform: "linkedin" as const,
+    timestamp: "06:30 PM | 01 Aug 2025",
+    title: "AI Tutors for Personalized Learning",
+    content: "AI tutors in robotics tailor lessons for every student.",
+    author: "AI Hub Editorial",
+  },
+  {
+    platform: "twitter" as const,
+    timestamp: "06:15 PM | 01 Aug 2025",
+    title: "Robotics Clubs Foster Teamwork and Innovation",
+    content: "Clubs inspire problem-solving and innovation from a young age.",
+    author: "SCT Editorial Board",
+  },
+  {
+    platform: "linkedin" as const,
+    timestamp: "06:00 PM | 01 Aug 2025",
+    title: "Educational Robots Reach Special Needs Classrooms",
+    content:
+      "Robots assist teachers with tailored learning for special needs students.",
+    author: "Future Tech Asia Writers",
+  },
+];
+
+const shuffleArray = (array: Testimonial[]) => {
+  let currentIndex = array.length,
+    randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+};
+
+// Define grid positions for desktop layout matching the image exactly
+const gridPositions = [
+  // Left side cards
+  { gridArea: "1 / 1 / 3 / 3", size: "small" }, // Top left
+  { gridArea: "3 / 1 / 5 / 3", size: "small" }, // Middle left
+  { gridArea: "5 / 1 / 7 / 3", size: "small" }, // Bottom left
+
+  // Left-center cards
+  { gridArea: "1 / 3 / 3 / 5", size: "medium" }, // Top left-center
+  { gridArea: "4 / 3 / 6 / 5", size: "medium" }, // Bottom left-center
+
+  // Center card (main testimonial) - larger
+  { gridArea: "2 / 5 / 6 / 9", size: "large" }, // Center position
+
+  // Right-center cards
+  { gridArea: "1 / 9 / 3 / 11", size: "medium" }, // Top right-center
+  { gridArea: "4 / 9 / 6 / 11", size: "medium" }, // Bottom right-center
+
+  // Right side cards
+  { gridArea: "1 / 11 / 3 / 13", size: "small" }, // Top right
+  { gridArea: "3 / 11 / 5 / 13", size: "small" }, // Middle right
+  { gridArea: "5 / 11 / 7 / 13", size: "small" }, // Bottom right
+];
+
+const CENTER_INDEX = 5; // Center position in the grid
+
+// type VideoOption = {
+//   src: string;
+//   thumbnail: string;
+//   title: string;
+//   description: string;
+// };
+
+// ChatBox Component
+function ChatBox({
+  open,
+  onClose,
+  messages,
+  onSend,
+}: {
+  open: boolean;
+  onClose: () => void;
+  messages: { from: "me" | "bot"; text: string }[];
+  onSend: (msg: string) => void;
+}) {
+  const [input, setInput] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
+  if (!open) return null;
   return (
-    <ThemeProvider>
-      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden">
-        <Header />
-        <HeroSection />
-        <OfferingsCarousel />
-        {/* <Clock /> */}
-        <EducationNews />
-        <LmsSection/>
-        <TrustedPartners />
-        {/* <TrustedPartners21 /> */}
-        <TestimonialSection />
-        <EducationStream />
-        <Footer />
+    <div
+      className="absolute bottom-16 right-2 z-50 w-80 max-w-[95vw] bg-white rounded-2xl shadow-2xl border border-[#0ACF83] flex flex-col animate-fade-in
+      sm:w-80 sm:right-2
+      "
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-2 border-b bg-[#f8fefb] rounded-t-2xl">
+        <div className="flex items-center gap-2">
+          <img src="/ChatBotRobot.svg" alt="Bot" className="w-6 h-6" />
+          <span className="font-semibold text-[#0ACF83] text-base">
+            Bidyut AI
+          </span>
+        </div>
+        <button
+          onClick={onClose}
+          className="text-gray-400 hover:text-red-500 text-xl font-bold"
+        >
+          &times;
+        </button>
       </div>
-    </ThemeProvider>
+      {/* Welcome Banner */}
+      <div className="bg-[#0ACF83] text-white text-xs text-center py-1 px-2 font-medium rounded-b-lg rounded-t-none">
+        How can I help you today? Ask me anything about robotics, coding, or
+        Bidyut Innovation!
+      </div>
+      {/* Messages */}
+      <div
+        className="flex-1 px-3 py-2 overflow-y-auto bg-[#f8fefb] custom-scrollbar"
+        style={{ maxHeight: 240 }}
+      >
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            className={`mb-2 flex ${
+              msg.from === "me" ? "justify-end" : "justify-start"
+            }`}
+          >
+            <div
+              className={`px-3 py-2 rounded-2xl text-sm shadow-sm max-w-[80%] break-words ${
+                msg.from === "me"
+                  ? "bg-[#0ACF83] text-white rounded-br-md"
+                  : "bg-white text-gray-800 border border-[#e0e0e0] rounded-bl-md"
+              }`}
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {msg.text}
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+      {/* Input */}
+      <form
+        className="flex items-center border-t px-2 py-2 bg-white rounded-b-2xl"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (input.trim()) {
+            onSend(input);
+            setInput("");
+          }
+        }}
+      >
+        <input
+          type="text"
+          className="flex-1 rounded-full border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#0ACF83] transition"
+          placeholder="Type your message..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="ml-2 bg-[#0ACF83] rounded-full p-2 hover:bg-[#099e66] transition"
+        >
+          <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
+            <path d="M2 21l21-9-21-9v7l15 2-15 2z" />
+          </svg>
+        </button>
+      </form>
+    </div>
   );
 }
 
-export default Home_page;
+// Footer Component
+
+function AnimatedBanner({
+  scrollProgress,
+  iLetterRef,
+}: {
+  scrollProgress: number
+  iLetterRef: React.RefObject<HTMLSpanElement | null>
+}) {
+  const [iPosition, setIPosition] = useState({ x: 0, y: 0 })
+
+  // Update i position on scroll and resize
+  useEffect(() => {
+    const updateIPosition = () => {
+      if (iLetterRef.current) {
+        const iRect = iLetterRef.current.getBoundingClientRect()
+        const screenWidth = window.innerWidth
+
+        if (screenWidth < 380) {
+          // Small mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + iRect.height * 45.8,
+          })
+        } else if (screenWidth <= 768) {
+          // Regular mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + iRect.height * 6.25,
+          })
+        } else if (screenWidth < 1024) {
+          // Tablet
+          setIPosition({
+            x: iRect.left + iRect.width / 2.5,
+            y: iRect.top + iRect.height * 1.2,
+          })
+        } else {
+          // Desktop
+          setIPosition({
+            x: iRect.left + iRect.width / 2.4,
+            y: iRect.top + iRect.height * 2,
+          })
+        }
+      }
+    }
+
+    const handleUpdate = () => {
+      requestAnimationFrame(updateIPosition)
+    }
+
+    updateIPosition() // Initial
+    window.addEventListener("scroll", handleUpdate, { passive: true })
+    window.addEventListener("resize", handleUpdate)
+
+    return () => {
+      window.removeEventListener("scroll", handleUpdate)
+      window.removeEventListener("resize", handleUpdate)
+    }
+  }, [iLetterRef, scrollProgress])
+
+  // Morphing progress
+  let morph = 0
+  if (scrollProgress > 0.3 && scrollProgress < 0.95) {
+    morph = (scrollProgress - 0.3) / 0.65
+  } else if (scrollProgress >= 0.95) {
+    morph = 1
+  }
+
+  // Sizes
+  const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920
+  let initialWidth, initialHeight, dotSize, dotBorderRadius
+
+  if (screenWidth < 640) {
+    // Small mobile
+    initialWidth = 280
+    initialHeight = 70
+    dotSize = 14
+    dotBorderRadius = 7
+  } else if (screenWidth < 768) {
+    // Large mobile
+    initialWidth = 320
+    initialHeight = 80
+    dotSize = 16
+    dotBorderRadius = 8
+  } else if (screenWidth < 1024) {
+    // Tablet
+    initialWidth = 600
+    initialHeight = 140
+    dotSize = 24
+    dotBorderRadius = 12
+  } else {
+    // Desktop
+    initialWidth = 1600
+    initialHeight = 180
+    dotSize = 28
+    dotBorderRadius = 16
+  }
+
+  const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize
+  const height = morph < 1 ? initialHeight - (initialHeight - dotSize) * morph : dotSize
+  const borderRadius =
+    morph < 1 ? 40 + (dotBorderRadius - 40) * morph : dotBorderRadius
+
+  let bannerStyle: CSSProperties = {
+    position: "fixed",
+    left: "50%",
+    top: scrollProgress < 0.95 ? "2%" : undefined,
+    transform: morph < 1 ? "translate(-50%, 0)" : "translate(-50%, -50%)",
+    width,
+    height,
+    background: "linear-gradient(90deg, #e0e7ec 0%, #34d399 100%)",
+    boxShadow:
+      morph < 1
+        ? "0 12px 48px rgba(34,197,94,0.18)"
+        : "0 0 32px rgba(34,197,94,0.22)",
+    borderRadius,
+    zIndex: 1001,
+    overflow: "hidden",
+    border: "1px solid #34d399",
+    opacity: morph < 1 ? 1 : 0, // fixed flicker
+    transition: "all 0.7s cubic-bezier(.4,2,.3,1)",
+  }
+
+  if (scrollProgress > 0.95 && iPosition.x && iPosition.y) {
+    bannerStyle = {
+      ...bannerStyle,
+      left: iPosition.x,
+      top: iPosition.y,
+      width: dotSize,
+      height: dotSize,
+      borderRadius: dotBorderRadius,
+      opacity: 1,
+      boxShadow:
+        "0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)",
+      animation: "glow-pulse-interactive 2.5s ease-in-out infinite",
+      transition: "all 1.2s cubic-bezier(.4,2,.3,1)",
+    }
+  }
+
+  return <div style={bannerStyle} aria-hidden="true"></div>
+}
+
+
+
+
+
+
+function Home_page() {
+  // All hooks and state
+  const { t } = useLanguage();
+  const { isDark } = useTheme();
+   const [scrollProgress, setScrollProgress] = useState(0)
+  const footerRef = useRef<HTMLDivElement>(null)
+  const iLetterRef = useRef<HTMLSpanElement>(null)
+
+  // Video options definition
+  const videoOptions = [
+    {
+      src: "/Science.mp4",
+      thumbnail: "/Science.mp4",
+      title: t("science"),
+      description: t("scienceDescription"),
+    },
+    {
+      src: "/Technology1.mp4",
+      thumbnail: "/Technology1.mp4",
+      title: t("Technology"),
+      description: t("technologyDescription"),
+    },
+    {
+      src: "/Reading1.mp4",
+      thumbnail: "/Reading1.mp4",
+      title: t("Reading"),
+      description: t("readingDescription"),
+    },
+    {
+      src: "/Engineering.mp4",
+      thumbnail: "/Engineering.mp4",
+      title: t("Engineering"),
+      description: t("engineeringDescription"),
+    },
+    {
+      src: "/Art.mp4",
+      thumbnail: "/Art.mp4",
+      title: t("Art"),
+      description: t("artsDescription"),
+    },
+    {
+      src: "/Maths.mp4",
+      thumbnail: "/Maths.mp4",
+      title: t("Maths"),
+      description: t("mathematicsDescription"),
+    },
+  ];
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef2 = useRef<HTMLDivElement>(null);
+
+  // Initialize testimonials with proper structure to prevent undefined errors
+  const initialTestimonials = useMemo(() => {
+    const drSarah = testimonialData[0]; // Dr. Sarah Mitchell as default center
+    const otherTestimonials = shuffleArray([...testimonialData.slice(1)]).slice(
+      0,
+      10
+    );
+    const arrangedTestimonials = [...otherTestimonials];
+    arrangedTestimonials.splice(CENTER_INDEX, 0, drSarah);
+    return arrangedTestimonials;
+  }, []);
+
+  const [testimonials, setTestimonials] =
+    useState<Testimonial[]>(initialTestimonials);
+
+  // Hero section state
+  const [chatOpen, setChatOpen] = useState(false);
+  const [messages, setMessages] = useState<
+    { from: "me" | "bot"; text: string }[]
+  >([
+    {
+      from: "bot" as const,
+      text: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
+    },
+  ]);
+
+  // Offerings carousel state
+  const [index, setIndex] = useState(0);
+  const len = offerings.length;
+
+  // footer section state
+    useEffect(() => {
+    let animationFrameId: number | null = null
+
+    const handleScroll = () => {
+      if (!footerRef.current) return
+
+      const footerRect = footerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
+        const footerHeight = footerRect.height
+        const progress = Math.min(
+          1,
+          Math.max(0, (windowHeight - footerRect.top) / (footerHeight * 0.7))
+        )
+        setScrollProgress(progress)
+      } else {
+        setScrollProgress(0)
+      }
+    }
+
+    const throttledScroll = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+      animationFrameId = requestAnimationFrame(handleScroll)
+    }
+
+    window.addEventListener("scroll", throttledScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener("scroll", throttledScroll)
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const id = setInterval(() => setIndex((v) => (v + 1) % len), 4200);
+    return () => clearInterval(id);
+  }, [len]);
+
+  const ordered = useMemo(() => {
+    // Produce an array of indices in display order such that the center is current index,
+    // and others fan out symmetrically left/right around the curve.
+    const arr: number[] = [];
+    for (let k = 0; k < len; k++) arr.push((index + k) % len);
+    return arr;
+  }, [index, len]);
+
+  // Video section state
+  const [activeVideo, setActiveVideo] = useState<VideoOption>(videoOptions[0]);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const pillsContainerRef = useRef<HTMLDivElement>(null);
+  const rotationInterval = useRef<number | null>(null);
+
+  // Video auto-rotation effect
+  useEffect(() => {
+    if (autoRotate) {
+      rotationInterval.current = window.setInterval(() => {
+        setCurrentVideoIndex((prevIndex) => {
+          // Move to next video in clockwise order (0 -> 1 -> 2 -> 3 -> 0)
+          const nextIndex = (prevIndex + 1) % videoOptions.length;
+          const nextVideo = videoOptions[nextIndex];
+
+          setActiveVideo(nextVideo);
+
+          // Auto-scroll to the next pill
+          if (pillsContainerRef.current) {
+            const pillHeight = 96; // Updated height for larger pills
+            const containerHeight = pillsContainerRef.current.clientHeight;
+            const scrollPosition =
+              nextIndex * pillHeight - (containerHeight / 2 - pillHeight / 2);
+            pillsContainerRef.current.scrollTo({
+              top: Math.max(0, scrollPosition),
+              behavior: "smooth",
+            });
+          }
+
+          return nextIndex;
+        });
+      }, 5000);
+    }
+
+    return () => {
+      if (rotationInterval.current) {
+        clearInterval(rotationInterval.current);
+      }
+    };
+  }, [autoRotate, videoOptions]);
+
+  // Education News scrolling effect
+  useEffect(() => {
+    const container1 = scrollRef.current;
+    const container2 = scrollRef2.current;
+    if (!container1 || !container2) return;
+
+    let speed = 1; // pixels per frame
+    let speed2 = -1; // negative = opposite direction
+    let isHovering1 = false;
+    let isHovering2 = false;
+
+    // Duplicate content for seamless loop
+    container1.innerHTML += container1.innerHTML;
+    container2.innerHTML += container2.innerHTML;
+
+    const step = () => {
+      if (!isHovering1) {
+        container1.scrollLeft += speed;
+        if (container1.scrollLeft >= container1.scrollWidth / 2) {
+          container1.scrollLeft = 0;
+        }
+      }
+      if (!isHovering2) {
+        container2.scrollLeft += speed2;
+        if (container2.scrollLeft <= 0) {
+          container2.scrollLeft = container2.scrollWidth / 2;
+        }
+      }
+      requestAnimationFrame(step);
+    };
+
+    container1.addEventListener("mouseenter", () => (isHovering1 = true));
+    container1.addEventListener("mouseleave", () => (isHovering1 = false));
+
+    container2.addEventListener("mouseenter", () => (isHovering2 = true));
+    container2.addEventListener("mouseleave", () => (isHovering2 = false));
+
+    requestAnimationFrame(step);
+
+    return () => {
+      container1.replaceChildren(
+        ...Array.from(container1.children).slice(
+          0,
+          container1.children.length / 2
+        )
+      );
+      container2.replaceChildren(
+        ...Array.from(container2.children).slice(
+          0,
+          container2.children.length / 2
+        )
+      );
+    };
+  }, []);
+
+  const handleSelectTestimonial = (selectedIndex: number) => {
+    if (selectedIndex === CENTER_INDEX) return;
+
+    const newTestimonials = [...testimonials];
+    const selectedTestimonial = newTestimonials[selectedIndex];
+    const centerTestimonial = newTestimonials[CENTER_INDEX];
+
+    newTestimonials[CENTER_INDEX] = selectedTestimonial;
+    newTestimonials[selectedIndex] = centerTestimonial;
+
+    setTestimonials(newTestimonials);
+  };
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
+  const centerCardData = testimonials[CENTER_INDEX];
+
+  // Hero section chatbot handler
+  const handleSend = async (msg: string) => {
+    setMessages((prev) => [...prev, { from: "me", text: msg }]);
+
+    // Prepare conversation history
+    const conversation = messages
+      .map((m) => `${m.from === "me" ? "User" : "Buddy"}: ${m.text}`)
+      .join("\n");
+
+    const fullPrompt = `${systemPrompt}\n${conversation}\nUser: ${msg}\nBuddy:`;
+
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-1.5-flash",
+        contents: fullPrompt,
+      });
+
+      setMessages((prev) => [
+        ...prev,
+        { from: "bot", text: response.text.trim() },
+      ]);
+    } catch (error) {
+      console.error("Error generating response:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "bot",
+          text: "Sorry, I encountered an error. Please try again.",
+        },
+      ]);
+    }
+  };
+
+  const goTo = (i: number) => setIndex(i);
+  const next = () => setIndex((i) => (i + 1) % len);
+  const prev = () => setIndex((i) => (i - 1 + len) % len);
+
+  // Compute transform properties based on relative position
+  const getCardPlacement = (posFromCenter: number) => {
+    // posFromCenter: 0 = center, +/-1 next to center, etc.
+    // Tune these to get your curve “density”.
+    const baseXvw = 15; // horizontal spacing step in vw
+    const x = posFromCenter * baseXvw; // vw
+    const abs = Math.abs(posFromCenter);
+
+    // Scale falls off slightly
+    const scale = Math.max(0.55, 1 - abs * 0.1);
+
+    // Rotate towards the edges (Y-axis)
+    const rotateY = Math.max(-50, Math.min(50, -posFromCenter * 12));
+
+    // Depth layering and visual prominence
+    const zIndex = 50 - abs; // center highest
+    const opacity = Math.max(0.3, 1 - abs * 0.12);
+
+    return {
+      x,
+      scale,
+      rotateY,
+      zIndex,
+      opacity,
+    };
+  };
+
+  //   handle lms section
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
+
+  const handleVideoClick = (video: VideoOption, index: number) => {
+    setActiveVideo(video);
+    setCurrentVideoIndex(index);
+    setAutoRotate(false);
+
+    // Resume auto-rotation after 10 seconds
+    setTimeout(() => setAutoRotate(true), 10000);
+
+    // Auto-scroll to the selected pill
+    if (pillsContainerRef.current) {
+      const pillHeight = 96; // Updated height for larger pills
+      const containerHeight = pillsContainerRef.current.clientHeight;
+      const scrollPosition =
+        index * pillHeight - (containerHeight / 2 - pillHeight / 2);
+      pillsContainerRef.current.scrollTo({
+        top: Math.max(0, scrollPosition),
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMouseOver = (
+    e: React.SyntheticEvent<HTMLVideoElement>,
+    index: number
+  ) => {
+    e.currentTarget.play();
+    setHoveredIndex(index);
+    setAutoRotate(false);
+  };
+
+  const handleMouseOut = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    e.currentTarget.pause();
+    setHoveredIndex(null);
+    setAutoRotate(true);
+  };
+
+  const containerStyle: React.CSSProperties = {
+    position: "relative",
+    width: "100%",
+    minHeight: "100vh",
+    overflowX: "hidden",
+    overflowY: "auto",
+    fontFamily: "'Poppins', sans-serif",
+    backgroundColor: "#F9F9FA",
+    padding: "20px 0px 26px 0px",
+    boxSizing: "border-box",
+  };
+
+  const headingSection: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: 20,
+    fontFamily: "'Poppins', sans-serif",
+    maxWidth: 600,
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
+
+  const headingStyle: React.CSSProperties = {
+    fontWeight: 600,
+    fontSize: 64,
+    lineHeight: 1.34,
+    letterSpacing: "0%",
+    display: "flex",
+    gap: "1rem",
+    marginBottom: 6,
+    color: "#131313",
+    textAlign: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  };
+
+  const streamStyle: React.CSSProperties = {
+    color: "#11d59b",
+    fontWeight: 600,
+  };
+
+  const educationStyle: React.CSSProperties = {
+    color: "#131313",
+    fontWeight: 600,
+  };
+
+  const subheadingStyle: React.CSSProperties = {
+    marginTop: 0,
+    fontFamily: "'Poppins', sans-serif",
+    fontWeight: 600,
+    fontSize: 16,
+    lineHeight: 1.34,
+    letterSpacing: "0%",
+    textAlign: "center",
+    color: "rgba(0,0,0,0.44)",
+    maxWidth: 980,
+    width: "100%",
+    marginBottom: 6,
+    marginLeft: "auto",
+    marginRight: "auto",
+    whiteSpace: "normal",
+    overflowWrap: "break-word",
+  };
+
+  const videoCardWrapper: React.CSSProperties = {
+    position: "relative",
+    width: 800, // Reduced from 1031 to 800
+    height: 560, // Reduced from 723 to 560 (maintaining aspect ratio)
+    marginTop: 60,
+    marginBottom: 0,
+    marginLeft: 0, // Shifted to left
+    marginRight: "auto",
+    display: "block",
+    zIndex: 1,
+  };
+
+  const gradientBorderStyle: React.CSSProperties = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 800, // Reduced from 1031 to 800
+    height: 560, // Reduced from 723 to 560
+    borderRadius: 11,
+    padding: 1,
+    background: "linear-gradient(90deg, #0ACF83 0%, #015031 100%)",
+    boxShadow: "0 0 20px rgba(0,0,0,0.10)",
+    boxSizing: "border-box",
+    opacity: 1,
+    overflow: "hidden",
+    zIndex: 1,
+  };
+
+  const videoContainerStyle: React.CSSProperties = {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    borderRadius: 10,
+    background: "#111",
+    overflow: "hidden",
+    zIndex: 1,
+  };
+
+  const videoInfoStyle: React.CSSProperties = {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: "20px",
+    background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
+    color: "white",
+    zIndex: 2,
+  };
+
+  const videoTitleStyle: React.CSSProperties = {
+    fontSize: "24px",
+    fontWeight: 600,
+    marginBottom: "8px",
+  };
+
+  const videoDescStyle: React.CSSProperties = {
+    fontSize: "16px",
+    opacity: 0.9,
+  };
+
+  const videoStyle: React.CSSProperties = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    borderRadius: 10,
+    display: "block",
+  };
+
+  const thumbnailPanelStyle: React.CSSProperties = {
+    position: "absolute",
+    top: "50%",
+    right: -400, // Adjusted position to account for smaller main card
+    transform: "translateY(-50%)",
+    width: 600, // Reduced from 692 to 600
+    height: 280, // Reduced from 327 to 280
+    borderRadius: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 18,
+    opacity: 1,
+    zIndex: 3,
+    overflowX: "auto",
+    overflowY: "hidden",
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+    boxSizing: "border-box",
+    pointerEvents: "none",
+  };
+
+  const thumbVideoStyle = (
+    hovered: boolean,
+    isActive: boolean
+  ): React.CSSProperties => ({
+    width: 230, // Reduced from 270 to 230
+    height: 280, // Reduced from 327 to 280
+    objectFit: "cover",
+    borderRadius: 10,
+    opacity: isActive ? 1 : hovered ? 1 : 0.8,
+    cursor: "pointer",
+    border: isActive
+      ? "2px solid #11d59b"
+      : hovered
+      ? "2px solid #11d59b"
+      : "2px solid rgba(255,255,255,0.2)",
+    background: "#111",
+    boxShadow: isActive
+      ? "0 6px 18px rgba(17, 213, 155, 0.8)"
+      : hovered
+      ? "0 6px 18px rgba(17, 213, 155, 0.5)"
+      : "0 4px 8px rgba(0,0,0,0.3)",
+    filter: isActive
+      ? "brightness(1.2)"
+      : hovered
+      ? "brightness(1.1)"
+      : "brightness(0.9)",
+    transition: "all 0.3s ease",
+    transform: isActive ? "scale(1.05)" : hovered ? "scale(1.05)" : "scale(1)",
+    display: "block",
+    flexShrink: 0,
+    pointerEvents: "auto",
+  });
+
+  return (
+    <div
+      className={`App transition-colors duration-300 min-h-screen overflow-x-hidden ${
+        isDark
+          ? "bg-black"
+          : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+      }`}
+    >
+      <Header />
+      {/* Hero Section */}
+      <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/herorobo1.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute inset-0" />
+        <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center">
+          <div className="text-white font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md">
+            {t("learnRobotics")}
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-white drop-shadow-lg mb-6">
+            <HeroHeading
+              text={["Think Limitless Learn Beyond Boundaries"]}
+              typingSpeed={40}
+              pauseDuration={0}
+              showCursor={false}
+              highlight={{ text: "Think Limitless", color: "#0acf83" }}
+            />
+          </h1>
+          <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
+            Bidyut is the country's most advanced Robotic Edtech Company,
+            empowering schools and students in their quest for holistic
+            development.
+          </p>
+        </div>
+
+        {/* Floating Chatbot */}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+          {!chatOpen && (
+            <div className="mb-1 bg-white text-gray-800 text-xs px-2 py-1 rounded-lg shadow-md max-w-[110px] font-medium border border-[#0ACF83]">
+              <span className="font-semibold text-[#0ACF83]">
+                Hi, I'm Buddy!
+              </span>
+              <br />
+              <span>Ask me anything 🚀</span>
+            </div>
+          )}
+          {!chatOpen && (
+            <button
+              onClick={() => setChatOpen(true)}
+              className="focus:outline-none"
+              aria-label="Open Chatbot"
+            >
+              <img
+                src="/ChatBotRobot.svg"
+                alt="Chatbot Robot"
+                className="w-20 h-20 object-contain"
+                style={{ background: "transparent" }}
+              />
+            </button>
+          )}
+          <div className="relative w-full flex justify-end">
+            <ChatBox
+              open={chatOpen}
+              onClose={() => setChatOpen(false)}
+              messages={messages}
+              onSend={handleSend}
+            />
+          </div>
+        </div>
+      </section>
+      {/* <OfferingsCarousel /> */}
+
+      {/* our offerings section */}
+      <section className="relative w-full py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          {/* Heading */}
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className={`text-3xl font-bold sm:text-4xl md:text-5xl ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>
+              <HomeHeroText
+                text={[t("ourOfferings")]}
+                highlight={{
+                  text: t("ourOfferings").split(" ").slice(1).join(" "),
+                  color: "#2ecc71",
+                }}
+                typingSpeed={40}
+                showCursor={false}
+                className="inline-block"
+                startOnVisible
+              />
+            </h2>
+            <p className={`max-w-3xl mx-auto mt-4 ${
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            }`}>
+              At Bidyut, we bring robotics and coding to classrooms with
+              STREAM-aligned labs, hands-on learning, and applied
+              problem-solving to build future-ready skills.
+            </p>
+          </div>
+
+          {/* Curved carousel with all cards */}
+          <div className="relative">
+            <div
+              className="relative h-[160px] md:h-[120px] w-full overflow-visible"
+              style={{ perspective: "1400px" }}
+            >
+              {ordered.map((cardIndex, orderPos) => {
+                // Convert order position (0..len-1) to relative offset from center:
+                // We want center to be index (posFromCenter = 0).
+                // ordered[0] is the current index (center), then 1,2,3 to the right, and last few to the left visually.
+                // For symmetry, map positions > floor(len/2) to negative offsets.
+                let posFromCenter = orderPos;
+                const half = Math.floor(len / 2);
+                if (posFromCenter > half) posFromCenter = posFromCenter - len;
+
+                const { x, scale, rotateY, zIndex, opacity } =
+                  getCardPlacement(posFromCenter);
+                const isCenter = posFromCenter === 0;
+                const item = offerings[cardIndex];
+
+                return (
+                  <button
+                    key={`${cardIndex}-${orderPos}`}
+                    onClick={() => (isCenter ? next() : goTo(cardIndex))}
+                    className="group absolute top-1/2 left-1/2 -translate-y-1/2 focus:outline-none"
+                    aria-label={`View ${t(item.titleKey)}`}
+                    style={{
+                      transform: `translateX(calc(${x}vw - 50%))`,
+                      transformStyle: "preserve-3d",
+                      zIndex,
+                    }}
+                  >
+                    <div
+                      className={[
+                        "rounded-2xl overflow-hidden bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10",
+                        "shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_34px_rgba(0,0,0,0.12)]",
+                        "backdrop-blur-lg w-[240px] md:w-[300px] lg:w-[340px] h-[380px] md:h-[440px]",
+                        "transition-transform duration-500 will-change-transform",
+                        isCenter ? "ring-1 ring-emerald-500/40" : "",
+                      ].join(" ")}
+                      style={{
+                        transform: `scale(${scale}) rotateY(${rotateY}deg)`,
+                        transformOrigin: "center",
+                        opacity,
+                      }}
+                    >
+                      <div className="relative h-52 md:h-60 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={t(item.titleKey)}
+                          className="w-full h-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                        />
+                        {/* {isCenter && (
+                        <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded-full bg-emerald-500/90 text-white shadow">
+                          Featured
+                        </span>
+                      )} */}
+                        {/* Optional vignette for depth */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/[.05]" />
+                      </div>
+                      <div className="p-5 md:p-6 h-[calc(100%-15rem)] flex flex-col">
+                        <h3 className={`text-base md:text-lg font-semibold ${
+                          isDark ? 'text-white' : 'text-gray-900'
+                        }`}>
+                          {t(item.titleKey)}
+                        </h3>
+                        <p className={`mt-2 text-sm line-clamp-4 ${
+                          isDark ? 'text-gray-300' : 'text-gray-600'
+                        }`}>
+                          {t(item.descriptionKey)}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Controls below - arrows on far left/right, dots centered */}
+            <div className="mt-8 flex items-center justify-between gap-4">
+              <div className="flex-1 flex justify-start">
+                <button
+                  onClick={prev}
+                  aria-label="Previous"
+                  className="h-10 w-10 rounded-full bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className={`mx-auto h-5 w-5 ${
+                      isDark ? 'text-white' : 'text-gray-800'
+                    }`}
+                  >
+                    <path
+                      d="M15 19l-7-7 7-7"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="flex-1 flex justify-center">
+                <div className="flex items-center gap-2">
+                  {offerings.map((_, i) => {
+                    const active = i === index;
+                    return (
+                      <button
+                        key={i}
+                        aria-label={`Go to ${i + 1}`}
+                        onClick={() => goTo(i)}
+                        className={[
+                          "h-2.5 rounded-full transition-all",
+                          active
+                            ? "w-8 bg-emerald-500"
+                            : "w-2.5 bg-gray-300 dark:bg-white/20 hover:bg-gray-400 dark:hover:bg-white/30",
+                        ].join(" ")}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="flex-1 flex justify-end">
+                <button
+                  onClick={next}
+                  aria-label="Next"
+                  className="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-white/10 border border-black/5 dark:border-white/10 backdrop-blur hover:bg-white shadow transition"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className={`mx-auto h-5 w-5 ${
+                      isDark ? 'text-white' : 'text-gray-800'
+                    }`}
+                  >
+                    <path
+                      d="M9 5l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Motion reduction safety */}
+        <style>{`
+        @media (prefers-reduced-motion: reduce) {
+          .transition, .transition-all, .duration-500, .duration-700 {
+            transition: none !important;
+          }
+        }
+      `}</style>
+      </section>
+
+      {/* <Clock /> */}
+
+      {/* Education New Section  */}
+      <section className="pt-80 pb-0 transition-colors duration-300">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8  w-screen  overflow-hidden">
+          {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+          <div className="text-center mb-12">
+            <h2 className={`text-4xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>
+              <HomeHeroText
+                text={[
+                  `${t("latestNews").split(" & ")[0]} & ${
+                    t("latestNews").split(" & ")[1]
+                  }`,
+                ]}
+                highlight={{
+                  text: t("latestNews").split(" & ")[1],
+                  color: "#22c55e",
+                }}
+                typingSpeed={40}
+                pauseDuration={0}
+                showCursor={false}
+                className={`text-4xl font-bold mb-4 ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}
+                startOnVisible={true}
+              />
+            </h2>
+            <p className={`text-lg max-w-3xl mx-auto ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              {t("stayUpdated")}
+            </p>
+          </div>
+
+          <div
+            ref={scrollRef}
+            className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
+            style={{ scrollBehavior: "smooth" }}
+          >
+            {/* Duplicate reviews for seamless infinite scroll */}
+            {[...reviews, ...reviews].map((review, index) => (
+              <EN1
+                key={index}
+                platform={review.platform}
+                timestamp={review.timestamp}
+                title={review.title}
+                content={review.content}
+                author={review.author}
+              />
+            ))}
+          </div>
+
+          {/* Second row of reviews scrolling in opposite direction */}
+          <div
+            ref={scrollRef2}
+            className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
+            style={{ scrollBehavior: "smooth" }}
+          >
+            {/* Duplicate reviews for seamless infinite scroll */}
+            {[...reviewsRow2, ...reviewsRow2].map((review, index) => (
+              <EN1
+                key={`row2-${index}`}
+                platform={review.platform}
+                timestamp={review.timestamp}
+                title={review.title}
+                content={review.content}
+                author={review.author}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* lms section */}
+      <div className="min-h-screen overflow-hidden relative transition-colors duration-300">
+        <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        
+          <div className="flex flex-col items-center justify-center text-center mb-20 mt-4 pt-16">
+            <SplitText
+              text="Innovative Learning with Robotics & AI"
+              className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300 text-black dark:text-white"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+              onLetterAnimationComplete={handleAnimationComplete}
+            />
+            <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-4xl font-['Poppins'] transition-colors duration-300">
+              Empowering schools with engaging robotics, coding, and AI
+              learning.
+            </p>
+          </div>
+
+          {/* Main Content Section */}
+          <div className="flex flex-col xl:flex-row items-center xl:items-start gap-8 lg:gap-12 xl:gap-16">
+            {/* Left Column */}
+            <div className="flex-1 lg:w-1/2 text-center lg:text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 font-['Poppins'] transition-colors duration-300  text-black dark:text-white">
+                <span className="text-[#28C76F] font-semibold">Bidyut</span>{" "}
+                Innovation LMS
+              </h2>
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
+                Bidyut LMS brings robotics, coding, and AI to life with hands-on
+                and gamified lessons. Students learn by building and
+                programming, while teachers track progress in real time—anytime,
+                anywhere.
+              </p>
+              <button className="bg-[#28C76F] hover:bg-[#24B064] text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins']">
+                Login to LMS
+              </button>
+            </div>
+
+            {/* Right Column */}
+            <div className="flex-1 xl:w-1/2 relative order-1 xl:order-2 w-full">
+              {/* Container for image and cards */}
+              <div className="relative flex justify-center items-center min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
+                {/* Background Gradient */}
+                <div
+                  className="absolute w-full h-full rounded-full blur-[100px] lg:blur-[140px] opacity-50 lg:opacity-70"
+                  style={{
+                    background:
+                      "radial-gradient(circle at center, rgba(40,199,111,0.3) 0%, rgba(40,199,111,0.05) 60%, transparent 100%)",
+                  }}
+                ></div>
+
+                {/* Laptop Image */}
+                <div className="relative w-full max-w-[90%] sm:max-w-[95%] md:max-w-[90%] lg:max-w-[550px] xl:max-w-[650px]">
+                  <img
+                    src="/Rectangle.svg"
+                    alt="Laptop displaying LMS interface"
+                    className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
+                    style={{
+                      filter:
+                        "drop-shadow(0 0 250px rgba(16, 247, 120, 0.4)) saturate(0.9)",
+                      transform: "rotate(-5deg)",
+                    }}
+                  />
+                </div>
+
+                {/* Feature Cards - Desktop */}
+                <div className="hidden lg:block">
+                  <div
+                    className={`absolute p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                      isDark
+                        ? "bg-gray-800"
+                        : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+                    }`}
+                    style={{
+                      bottom: "-5%",
+                      left: "-8%",
+                      opacity: 0.9,
+                    }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
+                      <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                        Personalized Learning Paths
+                      </h3>
+                    </div>
+                    <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                      AI tailors each child’s learning path to match their
+                      unique style.
+                    </p>
+                  </div>
+
+                  <div
+                    className={`absolute p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+                      isDark
+                        ? "bg-gray-800"
+                        : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+                    }`}
+                    style={{
+                      bottom: "8%",
+                      right: "5%",
+                      opacity: 0.9,
+                    }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
+                      <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                        Robotics Lab Simulation
+                      </h3>
+                    </div>
+                    <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                      Build and code robots virtually, with real-time feedback
+                      and challenges.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Cards - Mobile/Tablet */}
+              <div className="lg:hidden relative -mt-12 sm:-mt-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                  <div className="bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center mb-3">
+                      <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
+                      <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                        Personalized Learning Paths
+                      </h3>
+                    </div>
+                    <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                      AI tailors each child’s learning path to match their
+                      unique style.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center mb-3">
+                      <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
+                      <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
+                        Robotics Lab Simulation
+                      </h3>
+                    </div>
+                    <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
+                      Build and code robots virtually, with real-time feedback
+                      and challenges.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted Parter  */}
+      <section className="min-h-screen flex items-center justify-center p-2 sm:p-8">
+        <div className="max-w-7xl w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center">
+            {/* Left Section */}
+            <div className="space-y-8 relative">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false, amount: 0.3 }}
+              >
+                <h1 className={`text-5xl lg:text-6xl font-bold mb-4 ${
+                  isDark ? 'text-white' : 'text-black'
+                }`}>
+                  Trusted Partners
+                </h1>
+                <p className="text-xl lg:text-2xl text-gray-500 dark:text-gray-300 mb-8">
+                  list of companies
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="backdrop-blur-sm bg-gray-100 dark:bg-gray-800 border border-white/20 rounded-2xl p-8 shadow-xl"
+              >
+                {/* Large placeholder bar */}
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="w-64 h-4 bg-gray-600 dark:bg-gray-200 rounded-sm mb-6"
+                />
+
+                {/* Three smaller frosted boxes */}
+                <div className="grid grid-cols-3 gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                    className="backdrop-blur-sm bg-white via-white to-purple-200 dark:bg-gray-900 border border-white/30 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className={`text-2xl font-bold ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      30+
+                    </div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200 mt-1">
+                      Partners
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="backdrop-blur-sm bg-white dark:bg-gray-900 border border-white/30 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className={`text-2xl font-bold ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      50M+
+                    </div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200 mt-1">
+                      Users
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                    className="backdrop-blur-sm bg-white dark:bg-gray-900 border border-white/30 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className={`text-2xl font-bold ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      99.9%
+                    </div>
+                    <div className="text-sm text-gray-700 dark:text-gray-200 mt-1">
+                      Uptime
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Arrow - hidden on mobile */}
+              <motion.div
+                initial={{ opacity: 0, pathLength: 0 }}
+                whileInView={{ opacity: 1, pathLength: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="absolute -right-8 top-1/2 -translate-y-1/2 lg:-right-16 hidden sm:block"
+              >
+                <svg
+                  width="150"
+                  height="100"
+                  viewBox="0 0 150 100"
+                  className={isDark ? 'text-white' : 'text-gray-900'}
+                >
+                  <path
+                    d="M10 50 Q75 25 140 50"
+                    stroke="currentColor"
+                    strokeWidth="3.125"
+                    fill="none"
+                    markerEnd="url(#arrowhead)"
+                  />
+                  <defs>
+                    <marker
+                      id="arrowhead"
+                      markerWidth="12.5"
+                      markerHeight="8.75"
+                      refX="11.25"
+                      refY="4.375"
+                      orient="auto"
+                    >
+                      <polygon
+                        points="0 0, 12.5 4.375, 0 8.75"
+                        fill="currentColor"
+                      />
+                    </marker>
+                  </defs>
+                </svg>
+              </motion.div>
+            </div>
+
+            {/* Right Section - Globe */}
+            <div className="relative flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 360 }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 0.6 },
+                  scale: { duration: 0.8, delay: 0.6 },
+                  rotate: {
+                    duration: 60,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="relative flex items-center justify-center"
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 520 520"
+                  className="text-gray-300 dark:text-gray-700 w-[90vw] h-[90vw] sm:w-[520px] sm:h-[520px] md:w-[400px] md:h-[400px] lg:w-[520px] lg:h-[520px]"
+                  style={{ maxWidth: "100vw", maxHeight: "100vw" }}
+                >
+                  {/* Outer circle */}
+                  <circle
+                    cx="260"
+                    cy="260"
+                    r="210"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+
+                  {/* Longitude lines */}
+                  <ellipse
+                    cx="260"
+                    cy="260"
+                    rx="105"
+                    ry="210"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <ellipse
+                    cx="260"
+                    cy="260"
+                    rx="55"
+                    ry="210"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <line
+                    x1="260"
+                    y1="50"
+                    x2="260"
+                    y2="470"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+
+                  {/* Latitude lines */}
+                  <ellipse
+                    cx="260"
+                    cy="260"
+                    rx="210"
+                    ry="105"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <ellipse
+                    cx="260"
+                    cy="260"
+                    rx="210"
+                    ry="55"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <line
+                    x1="50"
+                    y1="260"
+                    x2="470"
+                    y2="260"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+
+                {/* Center logo rotates in opposite direction at same speed */}
+                <motion.div
+                  initial={{ opacity: 1, rotate: 0 }}
+                  whileInView={{ opacity: 1, rotate: -360 }}
+                  transition={{
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute inset-0 m-auto w-[30vw] h-[30vw] sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 z-20"
+                  style={{ pointerEvents: "none" }}
+                >
+                  <img
+                    src="/public/bidyut_logo_green 1.svg"
+                    alt="Center Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+
+                {/* Logos - responsive size and spacing */}
+                <motion.div className="absolute top-[8vw] left-1/2 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Google logo */}
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                      fill="#4285F4"
+                    />
+                    <path
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                      fill="#34A853"
+                    />
+                    <path
+                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                      fill="#FBBC05"
+                    />
+                    <path
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                      fill="#EA4335"
+                    />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute top-[28vw] right-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Microsoft logo */}
+                  <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#F25022" d="M0 0h11.377v11.372H0z" />
+                    <path fill="#00A4EF" d="M12.623 0H24v11.372H12.623z" />
+                    <path fill="#7FBA00" d="M0 12.628h11.377V24H0z" />
+                    <path fill="#FFB900" d="M12.623 12.628H24V24H12.623z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute right-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Apple logo */}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#000000"
+                  >
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute bottom-[28vw] right-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Amazon logo */}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#FF9900"
+                  >
+                    <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595 2.779-1.062 5.12-2.574 7.024-4.534.062-.062.11-.062.14 0 .031.062 0 .125-.093.187-2.434 2.263-5.25 4.048-8.447 5.357-3.197 1.309-6.487 1.963-9.87 1.963-4.2 0-8.26-1.025-12.18-3.075-.124-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute bottom-[8vw] left-1/2 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Netflix logo */}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#E50914"
+                  >
+                    <path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L18.6 22.951c-.043-7.86-.004-15.71.002-22.95zM5.398 1.05V24c2.873-.086 5.81-.406 8.487-.606V1.05z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute bottom-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Spotify logo */}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#1DB954"
+                  >
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute left-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Adobe logo */}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#FF0000"
+                  >
+                    <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624z" />
+                  </svg>
+                </motion.div>
+
+                <motion.div className="absolute top-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10">
+                  {/* Tesla logo */}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#CC0000"
+                  >
+                    <path d="M12 5.362L2.4 8.638v6.724L12 18.638l9.6-3.276V8.638L12 5.362zM12 0l12 4.095v15.81L12 24 0 19.905V4.095L12 0z" />
+                  </svg>
+                </motion.div>
+
+                {/* Slack - Additional positions */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.0 },
+                    scale: { duration: 0.5, delay: 2.0 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-20 right-20 w-12 h-12 bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path
+                      fill="#E01E5A"
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z"
+                    />
+                    <path
+                      fill="#36C5F0"
+                      d="M6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"
+                    />
+                    <path
+                      fill="#2EB67D"
+                      d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834z"
+                    />
+                    <path
+                      fill="#ECB22E"
+                      d="M8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* GitHub */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.1 },
+                    scale: { duration: 0.5, delay: 2.1 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-20 right-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#181717"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                </motion.div>
+
+                {/* LinkedIn */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.2 },
+                    scale: { duration: 0.5, delay: 2.2 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-20 left-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#0A66C2"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </motion.div>
+
+                {/* Twitter/X */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.3 },
+                    scale: { duration: 0.5, delay: 2.3 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-20 left-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="#000000"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </motion.div>
+
+                {/* Facebook */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.4 },
+                    scale: { duration: 0.5, delay: 2.4 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-32 right-4 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="#1877F2"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </motion.div>
+
+                {/* Instagram */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.5 },
+                    scale: { duration: 0.5, delay: 2.5 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-32 left-4 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="url(#instagram-gradient)"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="instagram-gradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#833AB4" />
+                        <stop offset="50%" stopColor="#FD1D1D" />
+                        <stop offset="100%" stopColor="#FCB045" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919 1.266.058 1.644.07 4.85.07 3.204 0 3.584-.012 4.849-.07 4.358-.2 6.78 2.618 6.98 6.98.058 1.281.073 1.689.073 4.948 0 3.205.013 3.663.072 4.948.149 3.227 1.664 4.771 4.919 4.919 1.266.057 1.645.069 4.948.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.057-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </motion.div>
+
+                {/* YouTube */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.6 },
+                    scale: { duration: 0.5, delay: 2.6 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-1/3 right-12 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#FF0000"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </motion.div>
+
+                {/* Discord */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.7 },
+                    scale: { duration: 0.5, delay: 2.7 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-1/3 left-12 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#5865F2"
+                  >
+                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.756-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.076.076 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
+                  </svg>
+                </motion.div>
+
+                {/* Uber */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.8 },
+                    scale: { duration: 0.5, delay: 2.8 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#000000"
+                  >
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 14.568a5.968 5.968 0 01-11.136 0 5.968 5.968 0 010-5.136 5.968 5.968 0 0111.136 0 5.968 5.968 0 010 5.136z" />
+                  </svg>
+                </motion.div>
+
+                {/* Airbnb */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 2.9 },
+                    scale: { duration: 0.5, delay: 2.9 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#FF5A5F"
+                  >
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
+                  </svg>
+                </motion.div>
+
+                {/* Dropbox */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.0 },
+                    scale: { duration: 0.5, delay: 3.0 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#0061FF"
+                  >
+                    <path d="M6 2l6 4 6-4-6-2zm0 6l6 4 6-4-6-2zm6 6l-6-4v6l6 4 6-4v-6z" />
+                  </svg>
+                </motion.div>
+
+                {/* Zoom */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.1 },
+                    scale: { duration: 0.5, delay: 3.1 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#2D8CFF"
+                  >
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 16.894H6.106V7.106h11.788v9.788z" />
+                  </svg>
+                </motion.div>
+
+                {/* Shopify */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.2 },
+                    scale: { duration: 0.5, delay: 3.2 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-8 left-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#7AB55C"
+                  >
+                    <path d="M15.337 2.136c-.168-.042-.336-.042-.504 0-1.176.294-2.184.966-2.856 1.932-.504.714-.84 1.554-.966 2.436-.378-.126-.798-.21-1.218-.21-2.394 0-4.326 1.932-4.326 4.326 0 .378.042.756.126 1.134C2.394 12.378 0 15.234 0 18.636c0 2.982 2.394 5.364 5.376 5.364h13.248C21.606 24 24 21.606 24 18.636c0-2.982-2.394-5.364-5.376-5.364-.378 0-.756.042-1.134.126-.084-.378-.126-.756-.126-1.134 0-2.394-1.932-4.326-4.326-4.326-.378 0-.756.042-1.134.126.126-.882.462-1.722.966-2.436.672-.966 1.68-1.638 2.856-1.932.168-.042.336-.042.504 0z" />
+                  </svg>
+                </motion.div>
+
+                {/* PayPal */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.3 },
+                    scale: { duration: 0.5, delay: 3.3 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-8 right-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#00457C"
+                  >
+                    <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.849.97 1.213 2.115 1.074 3.907z" />
+                  </svg>
+                </motion.div>
+
+                {/* Stripe */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.4 },
+                    scale: { duration: 0.5, delay: 3.4 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute top-8 right-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#635BFF"
+                  >
+                    <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.274 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" />
+                  </svg>
+                </motion.div>
+
+                {/* Twitch */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.5 },
+                    scale: { duration: 0.5, delay: 3.5 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute bottom-8 left-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#9146FF"
+                  >
+                    <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
+                  </svg>
+                </motion.div>
+
+                {/* TikTok */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.6 },
+                    scale: { duration: 0.5, delay: 3.6 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute left-8 top-2/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="#000000"
+                  >
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                </motion.div>
+
+                {/* Pinterest */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -360 }}
+                  transition={{
+                    opacity: { duration: 0.5, delay: 3.7 },
+                    scale: { duration: 0.5, delay: 3.7 },
+                    rotate: {
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "linear",
+                    },
+                  }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="absolute right-8 bottom-2/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="#BD081C"
+                  >
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
+                  </svg>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <TrustedPartners21 /> */}
+
+      {/* testimonial */}
+      <section className="relative w-full py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+        {/* Background Grid Lines */}
+        <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none opacity-30 z-0">
+          <div className="w-full h-full grid grid-cols-12 gap-0">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div
+                key={i}
+                className="border-r-5 border-gray-200 dark:border-gray-700 transition-colors duration-300"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Header - matching image exactly */}
+        <div className="text-center mb-16 relative z-10 max-w-4xl">
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-800'
+          }`}>
+            <HomeHeroText
+              text={`${t("whatOurPartnersSay").split(" ")[0]} ${
+                t("whatOurPartnersSay").split(" ")[1]
+              } ${t("whatOurPartnersSay").split(" ").slice(2).join(" ")}`}
+              highlight={{
+                text: t("whatOurPartnersSay").split(" ").slice(2).join(" "),
+                color: "#10b981",
+              }}
+              typingSpeed={40}
+              pauseDuration={0}
+              showCursor={false}
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight transition-colors duration-300 ${
+                isDark ? 'text-white' : 'text-gray-800'
+              }`}
+              startOnVisible={true}
+            />
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
+            {t("partnersTestimonialDescription")}
+          </p>
+        </div>
+
+        {/* ===== MOBILE LAYOUT ===== */}
+        <div className="w-full max-w-md lg:hidden flex flex-col items-center z-10">
+          {/* Main Testimonial Card */}
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={centerCardData?.id}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl w-full flex flex-col items-center text-center transition-colors duration-300"
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-emerald-100 ring-offset-2">
+                <img
+                  src={centerCardData?.image}
+                  alt={centerCardData?.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className={`font-bold text-lg transition-colors duration-300 ${
+                isDark ? 'text-white' : 'text-gray-800'
+              }`}>
+                {centerCardData?.name}
+              </h3>
+              <p className={`text-sm transition-colors duration-300 ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                {centerCardData?.title}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">
+                {centerCardData?.company}
+              </p>
+              <span className="text-5xl text-emerald-200 dark:text-emerald-300 leading-none font-serif transition-colors duration-300">
+                "
+              </span>
+              <blockquote className="text-sm text-gray-700 dark:text-gray-300 italic leading-relaxed transition-colors duration-300">
+                {centerCardData?.quote}
+              </blockquote>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Horizontal Scroller for Thumbnails */}
+          <div className="w-full mt-8">
+            <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+              {t("tapToViewOthers")}
+            </p>
+            <div className="flex overflow-x-auto scrollbar-hide space-x-4 pb-4 pt-2 -mx-4 px-4">
+              {testimonials.map((testimonial, index) => {
+                if (index === CENTER_INDEX) return null;
+                return (
+                  <div
+                    key={testimonial.id}
+                    onClick={() => handleSelectTestimonial(index)}
+                    className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-md cursor-pointer border-2 border-transparent hover:border-emerald-500 transition-colors"
+                  >
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ===== DESKTOP LAYOUT ===== */}
+        <div className="hidden lg:block relative w-full max-w-7xl z-10">
+          <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[600px]">
+            <AnimatePresence>
+              {testimonials.map((testimonial, index) => {
+                if (index === CENTER_INDEX) return null;
+
+                const position = gridPositions[index];
+                if (!position) return null;
+
+                return (
+                  <motion.div
+                    key={`testimonial-${testimonial.id}`}
+                    layoutId={`testimonial-${testimonial.id}`}
+                    style={{ gridArea: position.gridArea }}
+                    className="relative cursor-pointer group"
+                    onClick={() => handleSelectTestimonial(index)}
+                    whileHover={{ scale: 1.05, zIndex: 20 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    {/* Hover tooltip */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <div className="bg-white px-3 py-1 rounded-lg shadow-lg">
+                        <p className="text-xs font-semibold text-gray-800">
+                          {testimonial.name}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+
+            {/* Center Testimonial Card - exactly matching the image */}
+            <motion.div
+              key={`center-${centerCardData?.id}`}
+              layoutId={`testimonial-${centerCardData?.id}`}
+              style={{ gridArea: gridPositions[CENTER_INDEX]?.gridArea }}
+              className="relative flex items-center justify-center"
+              whileHover={{ scale: 1.02, zIndex: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="bg-white p-8 rounded-3xl shadow-2xl w-full h-full flex flex-col items-center justify-center text-center relative border border-gray-100">
+                {/* Quote mark - positioned like in the image */}
+                <div className="absolute top-6 left-8">
+                  <span className="text-7xl text-emerald-200 leading-none font-serif">
+                    "
+                  </span>
+                </div>
+
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-emerald-100 relative z-10">
+                  <img
+                    src={centerCardData?.image}
+                    alt={centerCardData?.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <h3 className="font-bold text-xl text-gray-800 mb-1">
+                  {centerCardData?.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-1">
+                  {centerCardData?.title}
+                </p>
+                <p className="text-sm text-gray-500 mb-6">
+                  {centerCardData?.company}
+                </p>
+
+                <blockquote className="text-sm text-gray-700 leading-relaxed max-w-xs z-10 relative italic">
+                  {centerCardData?.quote}
+                </blockquote>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Stream Section */}
+      <section className="relative w-full py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16 relative z-10 max-w-4xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-gray-800'
+          }`}>
+            <HomeHeroText
+              text={[`${t("stream")} Education`]}
+              highlight={{ text: t("stream"), color: "#10b981" }}
+              typingSpeed={40}
+              pauseDuration={0}
+              showCursor={false}
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight transition-colors duration-300 ${
+                isDark ? 'text-white' : 'text-gray-800'
+              }`}
+              startOnVisible={true}
+            />
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
+            {t("streamEducationDescription")}
+          </p>
+        </motion.div>
+        {/* ===== MOBILE LAYOUT ===== */}
+        <div className="w-full max-w-md lg:hidden flex flex-col items-center z-10">
+          {/* Main Video Card (mobile) */}
+          <motion.div
+            className="relative w-full aspect-video mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.005 }}
+          >
+            <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] animated-border">
+              <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden">
+                <video
+                  className="absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto"
+                  src={activeVideo.src}
+                  playsInline
+                  muted
+                  controls={false}
+                  autoPlay={false}
+                  loop
+                  poster="/media/video.svg"
+                />
+                {/* subtle sheen */}
+                <div className="sheen pointer-events-none" />
+                {/* progress bar synchronized with auto-rotate */}
+                <div
+                  className={`progress-bar ${!autoRotate ? "paused" : ""}`}
+                  key={`mobile-pb-${currentVideoIndex}`}
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                  <h3 className="text-white font-bold text-xl mb-2">
+                    {activeVideo.title}
+                  </h3>
+                  <p className="text-white/90 text-sm leading-relaxed">
+                    {activeVideo.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Entity Selector Pills */}
+          <div className="w-full">
+            <p className={`text-center font-semibold text-sm mb-4 transition-colors duration-300 ${
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              Explore STREAM Education Components
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {videoOptions.map((video, index) => (
+                <motion.button
+                  key={video.src}
+                  onClick={() => handleVideoClick(video, index)}
+                  className={`p-4 rounded-full border-2 backdrop-blur-lg transition-all duration-300 text-center ${
+                    index === currentVideoIndex
+                      ? "border-[#00F5A0] bg-black/20"
+                      : "border-white/10 bg-black/20 hover:border-[#00F5A0]/30"
+                  }`}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-center justify-center h-full w-full">
+                    <div className="text-center">
+                      <h4
+                        className={`font-semibold text-sm ${
+                          index === currentVideoIndex
+                            ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent"
+                            : "text-gray-700 dark:text-gray-300"
+                        }`}
+                      >
+                        {video.title}
+                      </h4>
+                    </div>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* ===== DESKTOP LAYOUT ===== */}
+        <div className="hidden lg:block relative w-full max-w-7xl z-10">
+          <div className="grid grid-cols-12 gap-8 items-start">
+            {/* Left Side - Entity Pills */}
+            <div className="col-span-4">
+              <motion.div
+                ref={pillsContainerRef}
+                className="flex flex-col justify-start h-[600px] space-y-4 overflow-y-auto scrollbar-hide pr-2"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="mb-4 sticky top-0  dark:bg-black py-4 z-10 ">
+                  <h3 className={`text-2xl font-bold mb-2   ${
+                    isDark ? 'text-white' : 'text-gray-800'
+                  }`}>
+                    STREAM
+                  </h3>
+                  <p className={`text-sm ${
+                    isDark ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
+                    Select a component to explore
+                  </p>
+                </div>
+
+                {videoOptions.map((video, index) => (
+                  <motion.div
+                    key={video.src}
+                    className={`relative p-6 rounded-full cursor-pointer transition-all duration-500 overflow-hidden backdrop-blur-lg border ${
+                      index === currentVideoIndex
+                        ? "bg-black/20 border-white/20 transform scale-105"
+                        : "bg-black/20 border-white/10 hover:border-[#00F5A0]/30"
+                    }`}
+                    onClick={() => handleVideoClick(video, index)}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    whileHover={{
+                      scale: index === currentVideoIndex ? 1.05 : 1.1,
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="relative z-10 flex items-center justify-center h-full">
+                      <div className="text-center w-full">
+                        <h4
+                          className={`font-bold text-xl leading-tight transition-all duration-300 ${
+                            index === currentVideoIndex
+                              ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent drop-shadow-sm"
+                              : "text-gray-800 dark:text-gray-200"
+                          }`}
+                        >
+                          {video.title}
+                        </h4>
+                      </div>
+                    </div>
+
+                    {/* Progress bar for active component */}
+                    {index === currentVideoIndex && (
+                      <div
+                        className={`absolute bottom-0 left-0 right-0 h-1 bg-white/30 overflow-hidden`}
+                      >
+                        <div
+                          className={`progress-bar-pill ${
+                            !autoRotate ? "paused" : ""
+                          }`}
+                          key={`pill-pb-${currentVideoIndex}`}
+                        />
+                      </div>
+                    )}
+
+                    {/* Shimmer effect for active state */}
+                    {index === currentVideoIndex && (
+                      <div className="absolute inset-0 opacity-30">
+                        <div className="shimmer-pill" />
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right Side - Main Video Display */}
+            <div className="col-span-8">
+              <motion.div
+                className="relative aspect-video mt-32"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.005 }}
+              >
+                <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] animated-border">
+                  <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden">
+                    <video
+                      src={activeVideo.src}
+                      className="absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls={false}
+                    />
+                    {/* subtle sheen */}
+                    <div className="sheen pointer-events-none" />
+                    {/* progress bar synchronized with auto-rotate */}
+                    <div
+                      className={`progress-bar ${!autoRotate ? "paused" : ""}`}
+                      key={`desk-pb-${currentVideoIndex}`}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-white font-bold text-2xl mb-2">
+                            {activeVideo.title}
+                          </h3>
+                          <p className="text-white/90 text-base leading-relaxed max-w-2xl">
+                            {activeVideo.description}
+                          </p>
+                        </div>
+                        <div className="text-[#00F5A0] font-bold text-lg">
+                          {currentVideoIndex + 1}/{videoOptions.length}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>{" "}
+        <style>{`
+                div[style*="overflow-x: auto"]::-webkit-scrollbar {
+                  display: none;
+                }
+                div[style*="overflow-x: auto"] {
+                  -ms-overflow-style: none;
+                  scrollbar-width: none;
+                }
+        
+                /* Subtle animated gradient border */
+                .animated-border {
+                  background-size: 200% 200%;
+                  animation: ab-move 10s ease infinite;
+                  box-shadow: 0 10px 24px rgba(0,245,160,0.15), inset 0 0 10px rgba(0,245,160,0.12);
+                }
+                @keyframes ab-move {
+                  0% { background-position: 0% 50%; }
+                  50% { background-position: 100% 50%; }
+                  100% { background-position: 0% 50%; }
+                }
+        
+                /* Sheen sweep */
+                .sheen {
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 55%, transparent 100%);
+                  transform: translateX(-120%);
+                  animation: sheen-move 6s ease-in-out infinite;
+                  pointer-events: none;
+                }
+                @keyframes sheen-move {
+                  0% { transform: translateX(-120%); }
+                  50% { transform: translateX(120%); }
+                  100% { transform: translateX(120%); }
+                }
+        
+                /* Auto-rotation progress bar */
+                .progress-bar {
+                  position: absolute;
+                  left: 0;
+                  right: auto;
+                  bottom: 0;
+                  height: 3px;
+                  background: linear-gradient(90deg, #00F5A0, #00C6FF);
+                  width: 0%;
+                  animation: progress-fill 5s linear forwards;
+                }
+                .progress-bar.paused {
+                  animation-play-state: paused;
+                }
+                @keyframes progress-fill {
+                  from { width: 0%; }
+                  to { width: 100%; }
+                }
+        
+                /* Progress bar for entity cards */
+                .progress-bar-card {
+                  position: absolute;
+                  left: 0;
+                  right: auto;
+                  bottom: 0;
+                  height: 2px;
+                  background: linear-gradient(90deg, #00F5A0, #00C6FF);
+                  width: 0%;
+                  animation: progress-fill 5s linear forwards;
+                  border-radius: 0 0 10px 10px;
+                }
+                .progress-bar-card.paused {
+                  animation-play-state: paused;
+                }
+        
+                /* Progress bar for pills */
+                .progress-bar-pill {
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                  height: 100%;
+                  background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+                  width: 0%;
+                  animation: progress-fill 5s linear forwards;
+                }
+                .progress-bar-pill.paused {
+                  animation-play-state: paused;
+                }
+        
+                /* Shimmer effect for active pills */
+                .shimmer-pill {
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(
+                    110deg,
+                    transparent 0%,
+                    rgba(255,255,255,0.1) 45%,
+                    rgba(255,255,255,0.3) 50%,
+                    rgba(255,255,255,0.1) 55%,
+                    transparent 100%
+                  );
+                  transform: translateX(-120%);
+                  animation: shimmer-move 2.5s ease-in-out infinite;
+                }
+                @keyframes shimmer-move {
+                  0% { transform: translateX(-120%); }
+                  50% { transform: translateX(120%); }
+                  100% { transform: translateX(120%); }
+                }
+        
+                /* Line clamp utility */
+                .line-clamp-2 {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                }
+        
+                /* Respect reduced motion */
+                @media (prefers-reduced-motion: reduce) {
+                  .animated-border, .sheen, .progress-bar {
+                    animation: none !important;
+                  }
+                }
+        
+                /* Hide scrollbar but keep functionality */
+                .scrollbar-hide {
+                  scrollbar-width: none; /* Firefox */
+                  -ms-overflow-style: none; /* Internet Explorer 10+ */
+                }
+                .scrollbar-hide::-webkit-scrollbar {
+                  display: none; /* Safari and Chrome */
+                }
+              `}</style>
+      </section>
+      {/* Footer Component Inline */}
+      <section
+          ref={footerRef}
+          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg  border-emerald-500/15"
+        >
+          <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
+    
+          <div className="max-w-7xl mx-auto">
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+              {/* Company */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
+                </h3>
+                <p className="body-color text-sm sm:text-base leading-relaxed">
+                  {t("footerDescription")}
+                </p>
+              </div>
+    
+              {/* Links */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("quickLinks")}</span>
+                </h3>
+                <div className="ml-1">
+                  <ul className="space-y-3">
+                    {[
+                      { key: "home", href: "/" },
+                      { key: "aboutUs", href: "/About" },
+                      { key: "school", href: "/school" },
+                      { key: "robots", href: "/robot" },
+                      { key: "contact", href: "/Contact" },
+                      { key: "gallery", href: "/Gallery" },
+                    ].map((link) => (
+                      <li key={link.key}>
+                        <a
+                          href={link.href}
+                          className="link-color hover:text-emerald-500 transition-colors text-sm sm:text-base font-medium"
+                        >
+                          {t(link.key)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+    
+              {/* Contact */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("contactInformation")}</span>
+                </h3>
+                <div className="space-y-5 text-sm sm:text-base body-color">
+                  <div>
+                    <p className="font-semibold title-color">{t("address")}</p>
+                    <p>901 Clifton Corporate Park</p>
+                    <p>11/6, AB Road, Sector A, Slice 6</p>
+                    <p>Aranya Nagar, VijayNagar, Indore</p>
+                    <p>Madhya Pradesh – 452010</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold title-color">{t("Phone")}</p>
+                    <p>+91 9370782979</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold title-color">{t("Email")}</p>
+                    <p>info@bidyutrobotics.com</p>
+                    <p>rahul@bidyutrobotis.com</p>
+                  </div>
+                </div>
+              </div>
+    
+              {/* Newsletter */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("newsletter")}</span>
+                </h3>
+                <p className="body-color text-sm sm:text-base mb-4">
+                  {t("newsletterDescription")}
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder={t("enterEmail")}
+                    className="w-full px-4 py-3 rounded-lg transition-all focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white/65 border border-emerald-600/25 text-gray-900 placeholder:text-gray-500 dark:bg-black/40 dark:border-emerald-500/35 dark:text-white dark:placeholder:text-gray-400 backdrop-blur-md"
+                  />
+                  <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-emerald-600/30">
+                    {t("subscribeNewsletter")}
+                  </button>
+                </div>
+              </div>
+            </div>
+    
+            {/* Socials */}
+            <div className="flex space-x-4 mb-8 justify-left">
+              {[
+                {
+                  Icon: Instagram,
+                  link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt",
+                },
+                { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
+                { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+                { Icon: Linkedin, link: "https://www.linkedin.com/company/bidyutinnovation/" },
+              ].map(({ Icon, link }, index) => (
+                <a
+                  key={index}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
+                  style={{
+                    boxShadow:
+                      "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
+                  }}
+                  aria-label="social-icon"
+                >
+                  <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
+                </a>
+              ))}
+            </div>
+    
+            {/* Copyright */}
+            <div className="glass-card theme-aware p-6 mb-10">
+              <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <span className="font-medium title-color">Copyright © 2024</span>
+                  <a
+                    href="#"
+                    className="link-color hover:text-emerald-500 transition-colors underline"
+                  >
+                    {t("privacyPolicy")}
+                  </a>
+                  <a
+                    href="#"
+                    className="link-color hover:text-emerald-500 transition-colors underline"
+                  >
+                    {t("termsOfService")}
+                  </a>
+                  <a
+                    href="#"
+                    className="link-color hover:text-emerald-500 transition-colors underline"
+                  >
+                    {t("cookiePolicy")}
+                  </a>
+                </div>
+                <span className="muted-color">{t("builtWithExcellence")}</span>
+              </div>
+            </div>
+    
+            {/* Brand with i target */}
+            <div className="flex justify-center items-center w-full">
+              <div
+                className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
+                style={{
+                  fontSize: "8.9vw",
+                  minWidth: "100vw",
+                  width: "100%",
+                  lineHeight: 1.05,
+                }}
+              >
+                <span>B</span>
+                <span ref={iLetterRef} className="relative inline-block">
+                  i
+                </span>
+                <span>dyut Innovation</span>
+              </div>
+            </div>
+          </div>
+    
+          {/* Keep your style block unchanged */}
+       <style>{`
+              /* Theme tokens via utility classes (light and dark) */
+              .title-color { color: rgb(23, 23, 23); }
+              .body-color { color: rgb(75, 85, 99); } /* gray-600 */
+              .muted-color { color: rgb(107, 114, 128); } /* gray-500 */
+              .link-color { color: rgb(55, 65, 81); } /* gray-700 */
+    
+              .dark .title-color { color: #fff; }
+              .dark .body-color { color: rgb(209, 213, 219); } /* gray-300 */
+              .dark .muted-color { color: rgb(156, 163, 175); } /* gray-400 */
+              .dark .link-color { color: rgb(209, 213, 219); }
+    
+              .brand-heading-gradient {
+                background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #22c55e 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                filter: drop-shadow(0 0 0.25rem rgba(16,185,129,0.15));
+              }
+    
+              /* Glass card base + animated conic gradient border */
+              .glass-card {
+                position: relative;
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow:
+                  0 8px 24px rgba(0,0,0,0.12),
+                  inset 0 1px 1px rgba(255,255,255,0.06);
+              }
+              /* Light vs Dark background surfaces */
+              .theme-aware {
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(14px);
+                border: 1px solid rgba(16, 185, 129, 0.18);
+              }
+              .dark .theme-aware {
+                background: rgba(15, 15, 15, 0.55);
+                border: 1px solid rgba(34, 197, 94, 0.25);
+              }
+    
+              .glass-card::before {
+                content: "";
+                position: absolute;
+                inset: -1px;
+                border-radius: inherit;
+                padding: 1px;
+                background: conic-gradient(
+                  from 0deg,
+                  rgba(34,197,94,0.0) 0%,
+                  rgba(34,197,94,0.35) 12%,
+                  rgba(16,185,129,0.5) 24%,
+                  rgba(59,130,246,0.35) 36%,
+                  rgba(16,185,129,0.5) 48%,
+                  rgba(34,197,94,0.35) 60%,
+                  rgba(34,197,94,0.0) 72%,
+                  rgba(34,197,94,0.0) 100%
+                );
+                -webkit-mask:
+                  linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                animation: spin-gradient 6s linear infinite;
+                filter: drop-shadow(0 0 10px rgba(34,197,94,0.22));
+                pointer-events: none;
+              }
+              .glass-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                background:
+                  radial-gradient(120% 120% at 0% 0%, rgba(34,197,94,0.06), transparent 60%),
+                  radial-gradient(120% 120% at 100% 100%, rgba(16,185,129,0.05), transparent 60%);
+                pointer-events: none;
+              }
+              .glass-card:hover::before {
+                animation-duration: 4.5s;
+                filter: drop-shadow(0 0 14px rgba(34,197,94,0.30));
+              }
+    
+              /* Banner/dot keyframes */
+              @keyframes glow-pulse-interactive {
+                0%, 100% {
+                  filter: brightness(1) drop-shadow(0 0 12px rgba(34, 197, 94, 0.6)) saturate(1.2);
+                  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                }
+                25% {
+                  filter: brightness(1.3) drop-shadow(0 0 20px rgba(34, 197, 94, 0.8)) saturate(1.4);
+                  transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
+                }
+                50% {
+                  filter: brightness(1.1) drop-shadow(0 0 24px rgba(34, 197, 94, 0.9)) saturate(1.6);
+                  transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+                }
+                75% {
+                  filter: brightness(1.25) drop-shadow(0 0 18px rgba(34, 197, 94, 0.7)) saturate(1.3);
+                  transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
+                }
+              }
+          
+    
+              /* Reduced motion */
+              @media (prefers-reduced-motion: reduce) {
+                .glass-card::before { animation: none; }
+              }
+            `}</style>
+        </section>
+    </div>
+  );
+}
+
+export default Home_page

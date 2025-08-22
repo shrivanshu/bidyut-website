@@ -288,17 +288,7 @@ export default function FooterUnanimated() {
               radial-gradient(120% 120% at 100% 100%, rgba(16,185,129,0.05), transparent 60%);
             pointer-events: none;
           }
-          .glass-card:hover::before {
-            animation-duration: 4.5s;
-            filter: drop-shadow(0 0 14px rgba(34,197,94,0.30));
-          }
-          @keyframes spin-gradient { to { transform: rotate(360deg); } }
-
-          @keyframes float-gentle {
-            0%, 100% { transform: translateX(-50%) translateY(-50%) translateZ(0); }
-            50% { transform: translateX(-50%) translateY(calc(-50% - 3px)) translateZ(0); }
-          }
-
+      
           /* Reduced motion */
           @media (prefers-reduced-motion: reduce) {
             .glass-card::before { animation: none; }
