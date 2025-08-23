@@ -197,9 +197,8 @@ export default function FooterUnanimated() {
                 <span className="relative">
                   i
                   <div
-                    className="absolute left-2/3 transform -translate-x-1/2 w-7 h-7 bg-green-500 rounded-full opacity-100"
+                   className="absolute left-2/3 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-7 lg:h-7 bg-green-500 rounded-full opacity-100 dot-position"                   
                     style={{
-                      top: "0.35em",
                       left: "42%",
                       boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
                       animation: 'float-gentle 3s ease-in-out infinite'
@@ -292,6 +291,25 @@ export default function FooterUnanimated() {
           /* Reduced motion */
           @media (prefers-reduced-motion: reduce) {
             .glass-card::before { animation: none; }
+          }
+
+          .dot-position {
+            top: 0.15em;  /* mobile */
+          }
+          @media (min-width: 640px) {
+            .dot-position {
+              top: 0.18em;  /* sm */
+            }
+          }
+          @media (min-width: 768px) {
+            .dot-position {
+              top: 0.20em;  /* md */
+            }
+          }
+          @media (min-width: 1024px) {
+            .dot-position {
+              top: 0.23em;  /* lg */
+            }
           }
         `}</style>
       </footer>

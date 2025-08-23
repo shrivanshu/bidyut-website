@@ -19,31 +19,14 @@ function AnimatedBanner({
         const iRect = iLetterRef.current.getBoundingClientRect()
         const screenWidth = window.innerWidth
 
-        if (screenWidth < 380) {
-          // Small mobile
-          setIPosition({
-            x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + iRect.height * 45.8,
-          })
-        } else if (screenWidth <= 768) {
-          // Regular mobile
-          setIPosition({
-            x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + iRect.height * 6.25,
-          })
-        } else if (screenWidth < 1024) {
-          // Tablet
-          setIPosition({
-            x: iRect.left + iRect.width / 2.5,
-            y: iRect.top + iRect.height * 1.2,
-          })
-        } else {
-          // Desktop
-          setIPosition({
-            x: iRect.left + iRect.width / 2.4,
-            y: iRect.top + iRect.height * 2,
-          })
-        }
+        // Fixed ratio for vertical positioning that works across all screens
+        const baseOffset = -iRect.height * 0.2;  // Base offset from top of 'i'
+        const fontSizeRatio = Math.min(screenWidth / 1920, 1); // Scale based on screen width
+        
+        setIPosition({
+          x: iRect.left + (iRect.width * 0.42), // 42% from left
+          y: iRect.top + baseOffset * fontSizeRatio // Scale offset based on screen size
+        });
       }
     }
 
@@ -128,7 +111,7 @@ function AnimatedBanner({
     bannerStyle = {
       ...bannerStyle,
       left: iPosition.x,
-      top: iPosition.y,
+     
       width: dotSize,
       height: dotSize,
       borderRadius: dotBorderRadius,
@@ -140,7 +123,7 @@ function AnimatedBanner({
     }
   }
 
-  return <div style={bannerStyle} aria-hidden="true"></div>
+  return <div className="dot-position" style={bannerStyle} aria-hidden="true"></div>
 }
 
 export default function Footer() {
@@ -455,6 +438,26 @@ export default function Footer() {
             }
           }
       
+
+          /* Dot position responsiveness */
+          .dot-position {
+            top: 0.15em;  /* mobile */
+          }
+          @media (min-width: 640px) {
+            .dot-position {
+              top: 0.18em;  /* sm */
+            }
+          }
+          @media (min-width: 768px) {
+            .dot-position {
+              top: 0.20em;  /* md */
+            }
+          }
+          @media (min-width: 1024px) {
+            .dot-position {
+              top: 0.23em;  /* lg */
+            }
+          }
 
           /* Reduced motion */
           @media (prefers-reduced-motion: reduce) {
