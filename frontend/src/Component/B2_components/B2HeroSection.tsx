@@ -1,6 +1,6 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest';
 
-export default function B2HeroSection() {
+export default function HeroSection() {
   return (
   <section className="min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 pt-32 pb-16 relative">
       {/* Target Cursor Effect - hidden on mobile */}
@@ -29,11 +29,11 @@ export default function B2HeroSection() {
 </div>
 
       {/* Video container */}
-  <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
-        <div className="relative aspect-video rounded-lg overflow-hidden ">
-            <video src="/Quad.webm" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-        </div>
-      </div>
+  <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
+    <div className="relative aspect-video rounded-lg overflow-hidden ">
+      <img src="/media/B2 ADVANCED WITH 3D LIDAR.png" alt="B2 Advanced with 3D LIDAR" className="w-2/3 max-w-lg h-full object-contain aspect-video mx-auto" />
+    </div>
+  </div>
 
       {/* Large "Quadruped" text */}
   <div className="-mt-10 mb-4 text-center">
@@ -45,16 +45,15 @@ export default function B2HeroSection() {
         "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
     }}
   >
-    Unitree B2
+    Quadruped
   </h2>
 
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    Unitree is a global robotics company that builds advanced quadruped robots, and the B2 is one of its flagship models. 
-    The B2 is a programmable, AI-powered robot designed for education, research, and industrial applications. It offers 
-    high computing power, AI/ML support, LiDAR integration, and strong payload capacity. The B2 comes in four variants – 
-    B2 Advanced, B2 Advanced with 3D LiDAR, B2-W Basic, and B2-W Advanced – each tailored with unique features for different use cases.
+    Select from a range of high-performance educational robots designed for hands-on learning. 
+    Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
+    for secondary development and real-time demonstrations.
   </p>
 </div>
       </div>
