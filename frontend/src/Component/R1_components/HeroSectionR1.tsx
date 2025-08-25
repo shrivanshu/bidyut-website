@@ -92,16 +92,17 @@ const HeroSectionR1 = () => {
             {/* UNITREE Text - Smaller and repositioned */}
             <div className="absolute right-[3%] -top-56 h-[190px] flex items-center">
               <span 
-                className="text-[50px] md:text-[60px] lg:text-[97px] font-bold text-[#00000021] opacity-90 drop-shadow-lg cursor-target"
-                style={{ 
-                  writingMode: 'vertical-rl',
-                  textOrientation: 'mixed',
-                  transform: 'rotate(180deg)',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                UNITREE
-              </span>
+                              className="text-[50px] md:text-[60px] lg:text-[97px] font-bold text-transparent bg-clip-text opacity-90 drop-shadow-lg cursor-target"
+                              style={{ 
+                                writingMode: 'vertical-rl',
+                                textOrientation: 'mixed',
+                                transform: 'rotate(180deg)',
+                                letterSpacing: '0.1em',
+                                backgroundImage: "linear-gradient(180deg, #C0C0C0 50%, #000000 100%)"
+                              }}
+                            >
+                              UNITREE
+                            </span>
             </div>
           </div>
         </div>
