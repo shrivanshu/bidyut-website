@@ -5,9 +5,104 @@ import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useTheme } from "../contexts/ThemeContext"
 import Timeline from "../Component/Timeline"
+
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
+interface TimelineItem {
+  year: string
+  title: string
+  description: string
+}
+
+const timelineData: TimelineItem[] = [
+  {
+    year: "2014",
+    title: "2015 — The Spark of an Idea",
+    description:
+      "Long before Bidyut Innovation was officially founded, our core team was experimenting with robotics in community workshops, inspiring students through small coding camps and building early prototypes that would one day evolve into our flagship educational robots.",
+  },
+  {
+    year: "2015",
+    title: "2015 — Foundation Year",
+    description:
+      "Bidyut Innovation was officially founded with a mission to revolutionize education through technology and robotics.",
+  },
+  {
+    year: "2016",
+    title: "2016 — First Products",
+    description: "Launched our first educational robotics kits and began partnerships with local schools.",
+  },
+  {
+    year: "2017",
+    title: "2017 — Expansion",
+    description: "Expanded operations to multiple cities and introduced advanced programming curricula.",
+  },
+  {
+    year: "2018",
+    title: "2018 — Innovation Hub",
+    description: "Established our innovation hub and launched the flagship robotics competition series.",
+  },
+  {
+    year: "2019",
+    title: "2019 — Global Reach",
+    description: "Achieved international recognition and began global expansion of our educational programs.",
+  },
+]
+
+export function getVideoForYear(year: string): string {
+  switch (year) {
+    case "2014":
+      return "/robo-main.mp4";
+    case "2015":
+      return "/robott.mp4";
+    case "2016":
+      return "/robo-dance5.mp4";
+    case "2017":
+      return "/Engineering.mp4";
+    case "2018":
+      return "/Technology.mp4";
+    case "2019":
+      return "/Science.mp4";
+    default:
+      return "/robo-main.mp4";
+  }
+}
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
+
+
+  // Timeline States
+   const [currentIndex, setCurrentIndex] = useState(0)
+    const currentItem = timelineData[currentIndex]
+  
+    const goToPrevious = () => {
+      if (isTransitioning || currentIndex === 0) return
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentIndex((prev) => prev - 1)
+        setIsTransitioning(false)
+      }, 150)
+    }
+  
+    const goToNext = () => {
+      if (isTransitioning || currentIndex === timelineData.length - 1) return
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentIndex((prev) => prev + 1)
+        setIsTransitioning(false)
+      }, 150)
+    }
+  
+    const goToYear = (index: number) => {
+      if (index === currentIndex || isTransitioning) return
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentIndex(index)
+        setIsTransitioning(false)
+      }, 150)
+    }
+    // timeline
 
 
   // Hero Section States
@@ -761,8 +856,8 @@ export default function AboutPage() {
         </div>
 
         {/* Our Journey Section */}
-        <div className={`relative min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-4 py-16 transition-colors duration-500`}>
-          <div className="text-center mb-12">
+  <div className={`relative min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 py-0 transition-colors duration-500 mb-0`}>
+          <div className="text-center  ">
             <h2 className={`text-4xl md:text-5xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
               Our Journey
             </h2>
@@ -775,14 +870,23 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="relative max-w-6xl w-full">
+          <div className="relative max-w-6xl w-full m-8" style={{height: '60%', width: '50%'}}  >
             <div className={`relative ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'} rounded-lg p-6 shadow-2xl transition-colors duration-500`}>
-              <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} rounded-lg border-4 ${isDarkTheme ? 'border-gray-300' : 'border-gray-600'} overflow-hidden transition-colors duration-500`}>
-                <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'} p-8 flex items-center justify-center transition-colors duration-500`}>
-                  <div className={`w-full h-full ${isDarkTheme ? 'bg-black' : 'bg-white'} rounded transition-colors duration-500`}></div>
+              <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} rounded-lg border-4 ${isDarkTheme ? 'border-gray-300' : 'border-gray-600'} overflow-hidden transition-colors duration-500`} style={{height: '50%'}}>
+                  <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'}  flex items-center justify-center transition-colors duration-500`} style={{height: '50%'}}>
+                    <video
+                      key={currentItem.year}
+                      
+                      autoPlay
+                      loop
+                      muted
+                      className={`rounded transition-colors duration-500 object-contain`}
+                    >
+                      <source src={getVideoForYear(currentItem.year)} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
-              </div>
-              
               <div className="flex justify-center mt-4">
                 <div className={`w-32 h-6 ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'} rounded-t-lg transition-colors duration-500`}></div>
               </div>
@@ -790,11 +894,123 @@ export default function AboutPage() {
                 <div className={`w-48 h-4 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-500'} rounded-b-lg transition-colors duration-500`}></div>
               </div>
             </div>
+
+
+
           </div>
+      
+      {/* Navigation Buttons */}
+      <div className="flex items-center justify-between w-full max-w-6xl mb-2 -mt-32">
+        <div className="w-24">
+          <button
+            onClick={goToPrevious}
+            disabled={isTransitioning || currentIndex === 0}
+            className="p-3 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:border-white/20"
+            aria-label="Previous year"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
         </div>
 
-  {/* Timeline Section */}
-  <Timeline />
+        <div className="text-center flex-1">
+          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-[8rem] md:text-[12rem] font-bold leading-none`}>
+            {currentItem.year}
+          </h3>
+        </div>
+
+        <div className="w-24 flex justify-end">
+          <button
+            onClick={goToNext}
+            disabled={isTransitioning || currentIndex === timelineData.length - 1}
+            className="p-3 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:border-white/20"
+            aria-label="Next year"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+      </div>
+
+       {/* Main Timeline Content */} 
+       <div className= {`${isDarkTheme ? ' text-white' : ' text-black'} flex items-center justify-center w-full max-w-6xl mb-16 `}>
+         {/* Year Display */}
+         <div className="text-center flex-1 relative">
+           <div
+             className={`transition-all duration-700 ease-out ${
+               isTransitioning
+                 ? "transform translate-x-8 opacity-0 scale-95"
+                 : "transform translate-x-0 opacity-100 scale-100"
+             }`}
+           >
+             {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
+               {currentItem.year}
+             </div> */}
+ 
+             {/* Title */}
+             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-xl md:text-2xl font-medium mb-6 transition-all duration-700 delay-100`}>
+               {currentItem.title}
+             </h2>
+ 
+             {/* Description */}
+             <p className={`${isDarkTheme ? ' text-white' : ' text-black'} text-base md:text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-700 delay-200`}>
+               {currentItem.description}
+             </p>
+           </div>
+         </div>
+ 
+       </div>
+ 
+       {/* Timeline Progress Bar */}
+      <div className={`${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'} w-full max-w-4xl`}>
+        <div className={`${isDarkTheme ? 'text-white' : 'text-black'} relative`}>
+          {/* Progress Line */}
+          <div className={`h-0.5 w-full ${isDarkTheme ? 'bg-white/20' : 'bg-black/20'}`}></div>
+
+          {/* Active Progress */}
+          <div
+            className={`h-0.5 absolute top-0 left-0 transition-all duration-700 ease-out ${isDarkTheme ? 'bg-white' : 'bg-black'}`}
+            style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
+          ></div>
+
+          {/* Year Markers */}
+          <div className="flex justify-between items-center mt-4">
+            {timelineData.map((item, index) => (
+              <button
+                key={item.year}
+                onClick={() => goToYear(index)}
+                disabled={isTransitioning}
+                className="relative group disabled:cursor-not-allowed"
+              >
+                {/* Dot */}
+                <div
+                  className={`w-3 h-3 rounded-full transition-all duration-500 ease-out transform ${
+                    index === currentIndex
+                      ? `${isDarkTheme ? 'bg-white scale-125 shadow-lg shadow-white/50' : 'bg-black scale-125 shadow-lg shadow-black/50'}`
+                      : `${isDarkTheme ? 'bg-white/40 hover:bg-white/60 hover:scale-110' : 'bg-black/40 hover:bg-black/60 hover:scale-110'}`
+                  }`}
+                  style={{
+                    position: "absolute",
+                    top: "-22px",
+                    left: "50%",
+                    transform: `translateX(-50%) ${index === currentIndex ? "scale(1.25)" : "scale(1)"}`,
+                  }}
+                ></div>
+
+                {/* Year Label */}
+                <span
+                  className={`text-sm transition-all duration-500 ${
+                    index === currentIndex
+                      ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
+                      : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
+                  }`}
+                >
+                  {item.year}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+     </div>
 
   {/* Gallery Section */}
         <div 
@@ -868,6 +1084,7 @@ export default function AboutPage() {
             {/* Reel View */}
             {isInGallerySection && !showFullGallery && (
               <div className="flex justify-center items-center min-h-[60vh]">
+              
                 <div className="relative w-80 h-96 rounded-lg overflow-hidden shadow-2xl">
                   {galleryImages.slice(0, 3).map((image, index) => (
                     <div
