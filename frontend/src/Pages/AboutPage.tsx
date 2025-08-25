@@ -4,17 +4,20 @@ import { useState, useEffect, useRef } from "react"
 import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useTheme } from "../contexts/ThemeContext"
-
+import Timeline from "../Component/Timeline"
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
 
+
   // Hero Section States
+  
   const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [showWhiteScreen, setShowWhiteScreen] = useState(false)
   const [showAboutUs, setShowAboutUs] = useState(false)
   const currentYear = new Date().getFullYear()
+
 
   // Video Switcher States
   const [activeTab, setActiveTab] = useState("what-we-do")
@@ -44,6 +47,7 @@ export default function AboutPage() {
   const accumulatedScroll = useRef(0)
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
+  
 
   // Language context
   const { t } = useLanguage()
@@ -121,6 +125,7 @@ export default function AboutPage() {
     setTimeout(() => setIsVisible(true), 300)
 
     return () => {
+      
       window.removeEventListener("scroll", handleScroll)
       document.documentElement.style.scrollBehavior = "auto"
       document.body.style.scrollBehavior = "auto"
@@ -280,25 +285,36 @@ export default function AboutPage() {
   }, [activeTab])
 
   // Helper functions
+  // Yearwise scroll: 0000, then 2000, 2001, ..., 2025
   const getTransformedText = () => {
-    const maxScroll = 1500
-    const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
-    const target = currentYear
-    const count = Math.round(progress * target)
-    const yearStr = String(count).padStart(4, "0")
-    return yearStr
+    const minYear = 2000;
+    const maxYear = 2025;
+    const maxScroll = 1500;
+    if (scrollY < 100) return "0000";
+    const progress = Math.max(0, Math.min(1, (scrollY - 100) / (maxScroll - 100)));
+    let year = Math.floor(progress * (maxYear - minYear + 1)) + minYear;
+    if (year < minYear) return "0000";
+    if (year > maxYear) year = maxYear;
+    return String(year);
   }
 
   const getDigitAnimation = (digitIndex: number) => {
-    const maxScroll = 1500
-    const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
-    const target = currentYear
-    const count = Math.round(progress * target)
-    const yearStr = String(count).padStart(4, "0")
-
+    const minYear = 2000;
+    const maxYear = 2025;
+    const maxScroll = 1500;
+    let progress = 0;
+    if (scrollY >= 100) {
+      progress = Math.max(0, Math.min(1, (scrollY - 100) / (maxScroll - 100)));
+    }
+    let year = Math.floor(progress * (maxYear - minYear + 1)) + minYear;
+    if (year < minYear) year = 0;
+    if (year > maxYear) year = maxYear;
+    const yearStr = year === 0 ? "0000" : String(year);
+    // Clamp transform at max progress for smoothness
+    const clampedProgress = year === maxYear ? 1 : progress;
     return {
       digit: yearStr[digitIndex] || "0",
-      transform: `translateY(${(1 - progress) * 100}px) scale(${0.8 + progress * 0.2})`
+      transform: `translateY(${(1 - clampedProgress) * 100}px) scale(${0.8 + clampedProgress * 0.2})`
     }
   }
 
@@ -777,7 +793,10 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Gallery Section */}
+  {/* Timeline Section */}
+  <Timeline />
+
+  {/* Gallery Section */}
         <div 
           ref={galleryContainerRef}
           className={`min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
@@ -952,7 +971,7 @@ export default function AboutPage() {
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <div className="relative">
-          {scrollY > 1800 && getTransformedText() === String(currentYear).padStart(4, "0") ? (
+          {scrollY > 1800 && getTransformedText() === "202O" ? (
             <div
               className={`text-[12rem] font-bold ${isDarkTheme ? 'text-white' : 'text-black'} font-mono tracking-wider absolute inset-0 flex items-center justify-center transition-colors duration-500`}
               style={{
@@ -960,7 +979,7 @@ export default function AboutPage() {
                 transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 500ms ease-out",
               }}
             >
-              {String(currentYear).slice(-1)}
+              O
             </div>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center z-20">
