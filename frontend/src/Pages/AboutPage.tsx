@@ -665,7 +665,7 @@ export default function AboutPage() {
               style={{ width: "1500px", height: "280px" }}
             >
               <div className="text-center px-8">
-                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[60px]`}>
+                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[0px]`}>
                   Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
                 </h1>
               </div>
