@@ -21,14 +21,11 @@ export default function AboutPage() {
 
   // Video Switcher States
   const [activeTab, setActiveTab] = useState("what-we-do")
-  const [showControls, setShowControls] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(1)
   const [isMuted, setIsMuted] = useState(true)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isVideoInView, setIsVideoInView] = useState(false)
   const [hasVideoAnimated, setHasVideoAnimated] = useState(false)
 
   // Gallery States
@@ -42,6 +39,9 @@ export default function AboutPage() {
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoContainerRef = useRef<HTMLDivElement>(null)
+    // Video Zoom/Rotate States
+    const [videoScrollProgress, setVideoScrollProgress] = useState(0)
+    const [isVideoInView, setIsVideoInView] = useState(false)
   const galleryContainerRef = useRef<HTMLDivElement>(null)
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
   const accumulatedScroll = useRef(0)
@@ -54,9 +54,9 @@ export default function AboutPage() {
 
   // Video sources
   const videoSources: { [key: string]: string } = {
-    "what-we-do": "/robo-main.mp4",
-    "who-we-are": "robott.mp4",
-    "where-we-are": "/robo-dance5.mp4",
+    "what-we-do": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "who-we-are": "https://www.w3schools.com/html/movie.mp4",
+    "where-we-are": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
   }
 
   // Gallery images
@@ -504,7 +504,7 @@ export default function AboutPage() {
         {/* Video Switcher Section */}
         <div 
           ref={videoContainerRef}
-          className={`relative flex items-center justify-center min-h-[600px] w-full overflow-hidden ${isDarkTheme ? 'bg-black' : 'bg-white'} py-12 md:py-24 lg:py-32 transition-colors duration-500`}
+          className={`relative flex flex-col items-center justify-center min-h-[500px] w-full overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
         >
           <div
             className="absolute inset-0 opacity-10"
@@ -516,156 +516,83 @@ export default function AboutPage() {
               backgroundSize: "50px 50px",
             }}
           />
-          
-          <div className={`absolute right-0 bottom-[-77px] h-1/2 w-full -translate-y-1/2 ${isDarkTheme ? 'bg-white' : 'bg-black'} z-0 transition-colors duration-500`} />
 
-          <div
-            className={`relative z-10 w-full max-w-[1000px] rounded-xl bg-gray-800 shadow-xl overflow-hidden aspect-video transform-gpu perspective-1000 ${
-              !isVideoInView 
-                ? 'video-hidden'
-                : isVideoInView && !isTransitioning && !showControls
-                ? 'animate-scroll-entrance'
-                : isTransitioning 
-                ? 'animate-smooth-flip transition-all duration-700 ease-out' 
-                : showControls 
-                ? 'hover-rotate shadow-2xl transition-all duration-500 ease-out' 
-                : 'animate-breathe transition-all duration-500 ease-out'
-            }`}
-            onMouseEnter={() => setShowControls(true)}
-            onMouseLeave={() => setShowControls(false)}
-            style={{ 
-              transformStyle: 'preserve-3d',
-              backfaceVisibility: 'hidden'
-            }}
-          >
+          <div className="relative z-10 w-full max-w-[700px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
             <video
               key={videoSources[activeTab]}
               ref={videoRef}
               width="100%"
               height="100%"
-              preload="none"
+              preload="auto"
               loop
-              muted={isMuted}
+              muted
+              autoPlay
               playsInline
               aria-label="Video player"
               className="w-full h-full object-contain transition-all duration-500 ease-out"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onTimeUpdate={handleTimeUpdate}
-              onLoadedMetadata={handleLoadedMetadata}
-              onVolumeChange={() => {
-                if (videoRef.current) {
-                  setVolume(videoRef.current.volume)
-                  setIsMuted(videoRef.current.muted || videoRef.current.volume === 0)
-                }
-              }}
+              style={
+                (activeTab === 'who-we-are' || activeTab === 'where-we-are')
+                  ? {
+                      transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
+                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    }
+                  : {
+                      transform: 'scale(1) rotate(0deg)',
+                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    }
+              }
             >
               <source src={videoSources[activeTab]} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
-            {showControls && (
-              <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-30 transition-opacity duration-300 p-4">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-white"
-                  aria-label="Video progress"
-                />
-                <div className="flex items-center justify-between mt-2 text-white">
-                  <button
-                    onClick={togglePlayPause}
-                    className="p-2 rounded-full bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-                    aria-label={isPlaying ? "Pause video" : "Play video"}
-                  >
-                    {isPlaying ? <PauseIcon size={24} /> : <PlayIcon size={24} />}
-                  </button>
-
-                  <div className="text-sm font-mono">
-                    {formatTime(currentTime)} / {formatTime(duration)}
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={toggleMute}
-                      className="p-2 rounded-full bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-                      aria-label={isMuted ? "Unmute video" : "Mute video"}
-                    >
-                      {isMuted || volume === 0 ? <VolumeXIcon size={24} /> : <Volume2Icon size={24} />}
-                    </button>
-                    <input
-                      type="range"
-                      min="0"
-                      max="1"
-                      step="0.01"
-                      value={isMuted ? 0 : volume}
-                      onChange={handleVolumeChange}
-                      className="w-24 h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer accent-white"
-                      aria-label="Volume control"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* Buttons at video coordinates */}
+            <button
+              onClick={() => setActiveTab('who-we-are')}
+              className={`absolute top-6 left-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+              ${activeTab === 'who-we-are' 
+                ? isDarkTheme 
+                  ? 'bg-gray-100 text-gray-900 shadow-2xl scale-105' 
+                  : 'bg-gray-800 text-white shadow-2xl scale-105'
+                : isDarkTheme
+                  ? 'bg-white text-gray-900 hover:bg-gray-100'
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
+              style={{ animationDelay: '1s' }}
+            >
+              Who We Are
+            </button>
+            <button
+              onClick={() => setActiveTab('where-we-are')}
+              className={`absolute top-6 right-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+              ${activeTab === 'where-we-are' 
+                ? isDarkTheme 
+                  ? 'bg-white text-black shadow-2xl scale-105' 
+                  : 'bg-black text-white shadow-2xl scale-105'
+                : isDarkTheme
+                  ? 'bg-white text-black hover:bg-gray-100'
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
+              style={{ animationDelay: '2s' }}
+            >
+              Where We Are
+            </button>
+            <button
+              onClick={() => setActiveTab('what-we-do')}
+              className={`absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+              ${activeTab === 'what-we-do' 
+                ? isDarkTheme 
+                  ? 'bg-white text-black shadow-2xl scale-105' 
+                  : 'bg-black text-white shadow-2xl scale-105'
+                : isDarkTheme
+                  ? 'bg-white text-black hover:bg-gray-100'
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
+              style={{ animationDelay: '0s' }}
+            >
+              What We Do
+            </button>
           </div>
-
-          <div className={`absolute top-4 left-4 z-30 ${isVideoInView ? 'animate-year-scroll' : 'opacity-0'}`}>
-            <div className="bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg font-bold text-lg">
-              {currentYear}
-            </div>
-          </div>
-
-          <button
-            onClick={() => handleTabChange("what-we-do")}
-            className={`absolute left-[20%] top-[15%] sm:translate-x-[-100%] sm:translate-y-[-70%] rounded-xl px-4 sm:px-8 py-2 sm:py-10 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap z-20 text-lg sm:text-3xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-            ${activeTab === "what-we-do" 
-              ? isDarkTheme 
-                ? "bg-white text-black shadow-2xl scale-105" 
-                : "bg-black text-white shadow-2xl scale-105"
-              : isDarkTheme
-                ? "bg-white text-black hover:bg-gray-100"
-                : "bg-black text-white hover:bg-gray-800"
-            }
-            md:left-[20%] md:top-[20%] lg:left-[25%] lg:top-[20%]`}
-            style={{ animationDelay: '0s' }}
-          >
-            What We Do
-          </button>
-          <button
-            onClick={() => handleTabChange("who-we-are")}
-            className={`absolute left-[15%] bottom-[15%] translate-x-[-70%] translate-y-[-50%] rounded-xl px-4 sm:px-8 py-2 sm:py-10 text-lg sm:text-3xl font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap z-20 transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-            ${activeTab === "who-we-are" 
-              ? isDarkTheme 
-                ? "bg-gray-100 text-gray-900 shadow-2xl scale-105" 
-                : "bg-gray-800 text-white shadow-2xl scale-105"
-              : isDarkTheme
-                ? "bg-white text-gray-900 hover:bg-gray-100"
-                : "bg-black text-white hover:bg-gray-800"
-            }
-            md:left-[20%] md:bottom-[20%] lg:left-[25%] lg:bottom-[20%]`}
-            style={{ animationDelay: '1s' }}
-          >
-            Who We Are
-          </button>
-          <button
-            onClick={() => handleTabChange("where-we-are")}
-            className={`absolute right-[15%] top-1/2 -translate-y-1/2 translate-x-[100%] rounded-xl px-4 sm:px-8 py-2 sm:py-10 text-lg sm:text-3xl font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap z-20 transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-            ${activeTab === "where-we-are" 
-              ? isDarkTheme 
-                ? "bg-white text-black shadow-2xl scale-105" 
-                : "bg-black text-white shadow-2xl scale-105"
-              : isDarkTheme
-                ? "bg-white text-black hover:bg-gray-100"
-                : "bg-black text-white hover:bg-gray-800"
-            }
-            md:right-[20%] lg:right-[25%]`}
-            style={{ animationDelay: '2s' }}
-          >
-            Where We Are
-          </button>
         </div>
 
         {/* Static Content Section */}
