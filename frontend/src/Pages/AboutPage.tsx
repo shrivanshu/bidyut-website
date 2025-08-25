@@ -5,6 +5,8 @@ import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 // import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
+import FooterUnanimated from "../Component/FooterUnanimated"
+
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
@@ -17,8 +19,7 @@ export default function AboutPage() {
   const [showWhiteScreen, setShowWhiteScreen] = useState(false)
   const [showAboutUs, setShowAboutUs] = useState(false)
   const currentYear = new Date().getFullYear()
-
-
+ 
   // Video Switcher States
   const [activeTab, setActiveTab] = useState("what-we-do")
   const [isPlaying, setIsPlaying] = useState(true)
@@ -35,6 +36,12 @@ export default function AboutPage() {
   const [visibleImages, setVisibleImages] = useState<boolean[]>([])
   const [isInGallerySection, setIsInGallerySection] = useState(false)
   const [reelProgress, setReelProgress] = useState(0)
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  // Magnetic cursor for reel view
+  const [reelMouse, setReelMouse] = useState({ x: 0, y: 0 });
 
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -59,58 +66,99 @@ export default function AboutPage() {
     "where-we-are": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
   }
 
-  // Gallery images
+  // Gallery images with enhanced data
   const galleryImages = [
     {
       src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
       alt: "Educational materials and learning kits",
       className: "row-span-1",
+      category: "education",
+      story: "Comprehensive learning kits designed to spark curiosity and hands-on exploration in young minds.",
+      bgColor: "#3B82F6"
     },
     {
       src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
       alt: "Robotic spider construction",
       className: "row-span-2",
+      category: "robotics",
+      story: "Advanced robotics engineering where students build sophisticated mechanical creatures.",
+      bgColor: "#10B981"
     },
     {
       src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
       alt: "Student working with robotics",
       className: "row-span-1",
+      category: "students",
+      story: "Focused learning moments where theory meets practical application in robotics.",
+      bgColor: "#F59E0B"
     },
     {
       src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
       alt: "Wedo2.0 educational materials",
       className: "row-span-2",
+      category: "technology",
+      story: "Cutting-edge Wedo2.0 technology bringing programming concepts to life through interactive builds.",
+      bgColor: "#8B5CF6"
     },
     {
       src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
       alt: "Robotic vehicle construction",
       className: "row-span-2",
+      category: "robotics",
+      story: "Engineering marvels on wheels - students create autonomous vehicles with precision and creativity.",
+      bgColor: "#EF4444"
     },
     {
       src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
       alt: "Robotic humanoid construction",
       className: "row-span-2",
+      category: "robotics",
+      story: "The future of human-robot interaction begins with understanding humanoid mechanics.",
+      bgColor: "#06B6D4"
     },
     {
       src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
       alt: "Student programming robot",
       className: "row-span-2",
+      category: "programming",
+      story: "Code comes alive as students program their creations to move, think, and respond.",
+      bgColor: "#84CC16"
     },
     {
       src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
       alt: "Hands-on robot building",
       className: "row-span-2",
+      category: "building",
+      story: "The joy of creation - every bolt, wire, and sensor placed with purpose and passion.",
+      bgColor: "#F97316"
     },
     {
       src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
       alt: "Educational programming mat",
       className: "row-span-1",
+      category: "education",
+      story: "Interactive learning surfaces that transform abstract programming concepts into tangible experiences.",
+      bgColor: "#EC4899"
     },
     {
       src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
       alt: "LEGO Mindstorms robot",
       className: "row-span-1",
+      category: "technology",
+      story: "LEGO Mindstorms - where imagination meets engineering in perfect harmony.",
+      bgColor: "#6366F1"
     },
+  ]
+
+  // Gallery categories
+  const galleryCategories = [
+    { id: "all", name: "All", color: "#6B7280" },
+    { id: "robotics", name: "Robotics", color: "#10B981" },
+    { id: "education", name: "Education", color: "#3B82F6" },
+    { id: "students", name: "Students", color: "#F59E0B" },
+    { id: "technology", name: "Technology", color: "#8B5CF6" },
+    { id: "programming", name: "Programming", color: "#84CC16" },
+    { id: "building", name: "Building", color: "#F97316" }
   ]
 
   // Hero Section Effects
@@ -185,6 +233,34 @@ export default function AboutPage() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isInGallerySection, showFullGallery])
+
+  // Mouse tracking for magnetic cursor in reel view
+  useEffect(() => {
+    const handleReelMouseMove = (e: MouseEvent) => {
+      setReelMouse({ x: e.clientX, y: e.clientY });
+    };
+    if (isInGallerySection && !showFullGallery) {
+      window.addEventListener('mousemove', handleReelMouseMove);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleReelMouseMove);
+    };
+  }, [isInGallerySection, showFullGallery]);
+
+  // Mouse tracking for interactive effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
+    if (showFullGallery) {
+      window.addEventListener('mousemove', handleMouseMove)
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [showFullGallery])
 
   // Gallery wheel events
   useEffect(() => {
@@ -397,6 +473,24 @@ export default function AboutPage() {
     }
   }
 
+  // Gallery helper functions
+  const filteredImages = galleryImages.filter(image => 
+    selectedCategory === "all" || image.category === selectedCategory
+  )
+
+  const get3DTransform = (index: number, isHovered: boolean) => {
+    if (!isHovered) return 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'
+    
+    const randomX = (Math.random() - 0.5) * 20
+    const randomY = (Math.random() - 0.5) * 20
+    return `perspective(1000px) rotateX(${randomX}deg) rotateY(${randomY}deg) scale(1.05)`
+  }
+
+  const getBackgroundGlow = (color: string, isHovered: boolean) => {
+    if (!isHovered) return 'transparent'
+    return `${color}20`
+  }
+
   // Trigger transitions
   useEffect(() => {
     const transformed = getTransformedText()
@@ -607,7 +701,7 @@ export default function AboutPage() {
               style={{ width: "1500px", height: "280px" }}
             >
               <div className="text-center px-8">
-                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[0px]`}>
+                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[60px]`}>
                   Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
                 </h1>
               </div>
@@ -717,21 +811,66 @@ export default function AboutPage() {
         </div>
 
   {/* Timeline Section */}
-  <Timeline />
 
   {/* Gallery Section */}
         <div 
           ref={galleryContainerRef}
-          className={`min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
+          className={`min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500 relative overflow-hidden`}
+          style={{
+            background: hoveredImageIndex !== null 
+              ? `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, ${getBackgroundGlow(galleryImages[hoveredImageIndex]?.bgColor || '#000000', true)}, transparent 50%)`
+              : isDarkTheme ? '#000000' : '#ffffff'
+          }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Floating particles background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div
+                key={i}
+                className={`absolute w-2 h-2 rounded-full ${isDarkTheme ? 'bg-white' : 'bg-black'} opacity-10 animate-pulse`}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${3 + Math.random() * 4}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="text-center mb-16">
               <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
                 Bidyut's Gallery
               </h1>
-              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500`}>
+              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500 mb-8`}>
                 Explore our journey through these captivating moments of innovation and learning
               </p>
+
+              {/* Category Filter Buttons */}
+              {showFullGallery && (
+                <div className="flex flex-wrap justify-center gap-3 mb-8">
+                  {galleryCategories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
+                        selectedCategory === category.id
+                          ? 'text-white shadow-lg scale-105'
+                          : isDarkTheme 
+                            ? 'text-gray-300 bg-gray-800 hover:bg-gray-700' 
+                            : 'text-gray-700 bg-gray-200 hover:bg-gray-300'
+                      }`}
+                      style={{
+                        backgroundColor: selectedCategory === category.id ? category.color : undefined,
+                        boxShadow: selectedCategory === category.id ? `0 10px 30px ${category.color}40` : undefined
+                      }}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {isInGallerySection && !showFullGallery && (
@@ -792,43 +931,54 @@ export default function AboutPage() {
             {isInGallerySection && !showFullGallery && (
               <div className="flex justify-center items-center min-h-[60vh]">
                 <div className="relative w-80 h-96 rounded-lg overflow-hidden shadow-2xl">
-                  {galleryImages.slice(0, 3).map((image, index) => (
-                    <div
-                      key={index}
-                      className={`absolute inset-0 transition-all duration-700 ease-in-out transform
-                        ${index === currentReelIndex 
-                          ? 'translate-y-0 opacity-100 scale-100' 
-                          : index < currentReelIndex 
-                            ? '-translate-y-full opacity-0 scale-95'
-                            : 'translate-y-full opacity-0 scale-95'
-                        }`}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className={`absolute bottom-0 left-0 right-0 p-6`}>
-                        <p className={`${isDarkTheme ? 'text-white' : 'text-black'} text-lg font-medium transition-colors duration-500`}>{image.alt}</p>
+                  {galleryImages.slice(0, 3).map((image, index) => {
+                    // Calculate magnetic transform
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const dx = (reelMouse.x - centerX) / 40;
+                    const dy = (reelMouse.y - centerY) / 40;
+                    const isActive = index === currentReelIndex;
+                    return (
+                      <div
+                        key={index}
+                        className={`absolute inset-0 transition-all duration-700 ease-in-out transform
+                          ${isActive 
+                            ? 'translate-y-0 opacity-100 scale-100' 
+                            : index < currentReelIndex 
+                              ? '-translate-y-full opacity-0 scale-95'
+                              : 'translate-y-full opacity-0 scale-95'
+                          }`}
+                        style={isActive ? {
+                          transform: `translateY(0) scale(1.05) translateX(${dx * (index - 1)}px) translateY(${dy * (index - 1)}px)`,
+                          zIndex: 10
+                        } : undefined}
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className={`absolute bottom-0 left-0 right-0 p-6`}>
+                          <p className={`${isDarkTheme ? 'text-white' : 'text-black'} text-lg font-medium transition-colors duration-500`}>{image.alt}</p>
+                        </div>
+                        <div className="absolute top-4 right-4 flex flex-col space-y-2">
+                          {[0, 1, 2].map((dotIndex) => (
+                            <div
+                              key={dotIndex}
+                              className={`w-2 h-8 rounded-full transition-all duration-500 
+                                ${dotIndex === currentReelIndex 
+                                  ? isDarkTheme ? 'bg-white' : 'bg-black'
+                                  : dotIndex < currentReelIndex 
+                                    ? isDarkTheme ? 'bg-white/50' : 'bg-black/50'
+                                    : isDarkTheme ? 'bg-white/20' : 'bg-black/20'
+                                }`}
+                            />
+                          ))}
+                        </div>
                       </div>
-                      
-                      <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                        {[0, 1, 2].map((dotIndex) => (
-                          <div
-                            key={dotIndex}
-                            className={`w-2 h-8 rounded-full transition-all duration-500 
-                              ${dotIndex === currentReelIndex 
-                                ? isDarkTheme ? 'bg-white' : 'bg-black'
-                                : dotIndex < currentReelIndex 
-                                  ? isDarkTheme ? 'bg-white/50' : 'bg-black/50'
-                                  : isDarkTheme ? 'bg-white/20' : 'bg-black/20'
-                              }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -851,40 +1001,180 @@ export default function AboutPage() {
                   ${showFullGallery ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
                 `}
               >
-                {galleryImages.map((image, index) => (
+                {filteredImages.map((image, index) => (
                   <div
-                    key={index}
+                    key={`${image.category}-${index}`}
                     ref={(el) => {
-                      imageRefs.current[index] = el;
+                      const originalIndex = galleryImages.findIndex(img => img.src === image.src)
+                      imageRefs.current[originalIndex] = el;
                     }}
-                    data-index={index}
-                    className={`relative overflow-hidden rounded-lg shadow-xl group ${image.className} 
-                      transform transition-all duration-700 ease-out
-                      ${visibleImages[index] 
+                    data-index={galleryImages.findIndex(img => img.src === image.src)}
+                    className={`relative overflow-hidden rounded-xl shadow-xl group ${image.className} 
+                      cursor-pointer transition-all duration-500 ease-out
+                      ${visibleImages[galleryImages.findIndex(img => img.src === image.src)] 
                         ? 'translate-y-0 opacity-100 scale-100' 
                         : 'translate-y-8 opacity-0 scale-95'
                       }`}
                     style={{
-                      transitionDelay: `${index * 100}ms`
+                      transitionDelay: `${index * 100}ms`,
+                      transform: get3DTransform(index, hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src)),
+                      backgroundColor: getBackgroundGlow(image.bgColor, hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src))
                     }}
+                    onMouseEnter={() => setHoveredImageIndex(galleryImages.findIndex(img => img.src === image.src))}
+                    onMouseLeave={() => setHoveredImageIndex(null)}
+                    onClick={() => setSelectedImage(galleryImages.findIndex(img => img.src === image.src))}
                   >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className={`${isDarkTheme ? 'text-white' : 'text-white'} text-sm font-medium`}>{image.alt}</p>
+                    {/* Image with enhanced effects */}
+                    <div className="relative w-full h-full">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                      />
+                      
+                      {/* Gradient overlay */}
+                      <div 
+                        className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-300"
+                        style={{
+                          background: `linear-gradient(135deg, ${image.bgColor}40, transparent 70%)`
+                        }}
+                      />
+                      
+                      {/* Category badge */}
+                      <div 
+                        className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+                        style={{ backgroundColor: image.bgColor }}
+                      >
+                        {galleryCategories.find(cat => cat.id === image.category)?.name}
+                      </div>
+
+                      {/* Hover content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                        <h3 className="text-white text-sm font-bold mb-2">{image.alt}</h3>
+                        <p className="text-gray-300 text-xs leading-relaxed">{image.story}</p>
+                      </div>
+
+                      {/* Floating elements on hover */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        {hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src) && (
+                          <>
+                            {Array.from({ length: 6 }).map((_, i) => (
+                              <div
+                                key={i}
+                                className="absolute w-1 h-1 rounded-full animate-ping"
+                                style={{
+                                  backgroundColor: image.bgColor,
+                                  left: `${20 + i * 15}%`,
+                                  top: `${20 + (i % 3) * 25}%`,
+                                  animationDelay: `${i * 200}ms`,
+                                  animationDuration: '2s'
+                                }}
+                              />
+                            ))}
+                          </>
+                        )}
+                      </div>
                     </div>
-                    
-                    <div className={`absolute inset-0 border border-transparent group-hover:border-${isDarkTheme ? 'white' : 'black'}/30 rounded-lg transition-all duration-300`}></div>
+
+                    {/* 3D border effect */}
+                    <div 
+                      className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-opacity-50 transition-all duration-300"
+                      style={{
+                        borderColor: hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src) ? image.bgColor : 'transparent'
+                      }}
+                    />
                   </div>
                 ))}
               </div>
             )}
+
+            {/* Enhanced Lightbox Modal */}
+            {selectedImage !== null && (
+              <div 
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+                onClick={() => setSelectedImage(null)}
+              >
+                <div 
+                  className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close button */}
+                  <button
+                    onClick={() => setSelectedImage(null)}
+                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors duration-200 flex items-center justify-center"
+                  >
+                    ×
+                  </button>
+
+                  {/* Image */}
+                  <div className="relative">
+                    <img
+                      src={galleryImages[selectedImage].src}
+                      alt={galleryImages[selectedImage].alt}
+                      className="w-full h-auto max-h-[60vh] object-cover"
+                    />
+                    <div 
+                      className="absolute inset-0 opacity-20"
+                      style={{
+                        background: `linear-gradient(135deg, ${galleryImages[selectedImage].bgColor}, transparent 70%)`
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span 
+                        className="px-3 py-1 rounded-full text-sm font-semibold text-white"
+                        style={{ backgroundColor: galleryImages[selectedImage].bgColor }}
+                      >
+                        {galleryCategories.find(cat => cat.id === galleryImages[selectedImage].category)?.name}
+                      </span>
+                    </div>
+                    
+                    <h2 className={`text-2xl font-bold mb-4 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>
+                      {galleryImages[selectedImage].alt}
+                    </h2>
+                    
+                    <p className={`text-lg leading-relaxed ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
+                      {galleryImages[selectedImage].story}
+                    </p>
+
+                    {/* Navigation */}
+                    <div className="flex justify-between items-center mt-8">
+                      <button
+                        onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : galleryImages.length - 1)}
+                        className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
+                          isDarkTheme 
+                            ? 'bg-gray-800 text-white hover:bg-gray-700' 
+                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+                        }`}
+                      >
+                        ← Previous
+                      </button>
+                      
+                      <span className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-500'}`}>
+                        {selectedImage + 1} of {galleryImages.length}
+                      </span>
+                      
+                      <button
+                        onClick={() => setSelectedImage(selectedImage < galleryImages.length - 1 ? selectedImage + 1 : 0)}
+                        className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
+                          isDarkTheme 
+                            ? 'bg-gray-800 text-white hover:bg-gray-700' 
+                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+                        }`}
+                      >
+                        Next →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
+        <FooterUnanimated />
       </div>
     )
   }
