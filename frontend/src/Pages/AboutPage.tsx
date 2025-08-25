@@ -4,8 +4,6 @@ import { useState, useEffect, useRef } from "react"
 import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 // import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
-import Header from "../Component/Header"
-import FooterUnanimated from "../Component/FooterUnanimated"
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -910,7 +908,7 @@ export default function AboutPage() {
           </div>
       
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between w-full max-w-6xl mb-2 -mt-32">
+      <div className="flex items-center justify-between w-full max-w-6xl mb-2 -mt-32 relative z-20">
         <div className="w-24">
           <button
             onClick={goToPrevious}
@@ -922,8 +920,8 @@ export default function AboutPage() {
           </button>
         </div>
 
-        <div className="text-center flex-1">
-          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-[8rem] md:text-[12rem] font-bold leading-none`}>
+        <div className="text-center flex-1 relative z-20 mt-28">
+          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-[4rem] md:text-[6rem] font-bold leading-none relative`}>
             {currentItem.year}
           </h3>
         </div>
