@@ -3087,23 +3087,20 @@ function Home_page() {
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <span className="font-medium title-color">Copyright © 2024</span>
                   <a
-                    href="#"
+                    href="/PrivacyPolicy"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("privacyPolicy")}
                   </a>
                   <a
-                    href="#"
+                    href="/Terms&Condition"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("termsOfService")}
                   </a>
-                  <a
-                    href="#"
-                    className="link-color hover:text-emerald-500 transition-colors underline"
-                  >
-                    {t("cookiePolicy")}
-                  </a>
+                  <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  {t("Refund Policy")}
+                </a>
                 </div>
                 <span className="muted-color">{t("builtWithExcellence")}</span>
               </div>

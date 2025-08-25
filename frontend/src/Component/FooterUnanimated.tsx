@@ -175,14 +175,14 @@ export default function FooterUnanimated() {
             <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 <span className="font-medium title-color">Copyright © 2024</span>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
+                <a href="/PrivacyPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
                   {t("privacyPolicy")}
                 </a>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
+                <a href="/Terms&Condition" className="link-color hover:text-emerald-500 transition-colors underline">
                   {t("termsOfService")}
                 </a>
-                <a href="#" className="link-color hover:text-emerald-500 transition-colors underline">
-                  {t("cookiePolicy")}
+                <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  {t("Refund Policy")}
                 </a>
               </div>
               <span className="muted-color">{t("builtWithExcellence")}</span>

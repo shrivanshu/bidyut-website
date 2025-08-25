@@ -768,7 +768,9 @@ function B2Variants() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
                   src={
-                    displayName === "B2 Advanced"
+                    displayName === "B2-W Advanced"
+                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
+                      : displayName === "B2 Advanced"
                       ? "/media/B2 ADVANCED.png"
                       : displayName === "B2 Advanced with 3D Lidar"
                       ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
