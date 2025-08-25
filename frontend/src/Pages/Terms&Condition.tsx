@@ -24,9 +24,29 @@ const TermsCondition = () => {
 				<div className="w-full max-w-3xl">
 					<h1 className="text-4xl font-extrabold mb-4 text-black">Terms of Service — <span style={{ color: '#10b981' }}>Bidyut Innovation</span></h1>
 					<p className="text-sm text-gray-500 mb-8">Effective Date: August 25, 2025<br />Last Updated: August 25, 2025</p>
-					<section className="mb-8">
-						<p className="mb-2 text-gray-700 text-lg">These Terms govern your use of the Bidyut Innovation website, products, and services. By accessing or using our platform, you agree to comply with these terms.</p>
-					</section>
+								<section className="mb-8">
+									<p className="mb-2 text-gray-700 text-lg font-bold">Terms and Conditions</p>
+									<p className="mb-2 text-gray-700 text-lg">Welcome to the payment gateway of Bidyut Innovation Pvt Ltd. By using this gateway to make payments, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before proceeding.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("Payment Terms")}
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>Payments can be made via credit/debit cards, net banking, UPI, or other supported methods.</li>
+										<li>All transactions are processed in INR (Indian Rupees).</li>
+										<li>Payments must be made in full and are non-transferable unless otherwise stated.</li>
+									</ul>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("Service Terms")}
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>The payment gateway is intended only for authorized transactions related to products or services offered by Bidyut Innovation Pvt Ltd.</li>
+										<li>Misuse or unauthorized use of this platform is strictly prohibited.</li>
+									</ul>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("Transaction Security")}
+									<p className="text-gray-700">All payment transactions are encrypted and processed securely. We do not store your payment details on our servers. Please ensure you are using a secure network when making payments.</p>
+								</section>
 					<section className="mb-8">
 						{sectionTitle("1. Eligibility")}
 						<p className="text-gray-700">To use our services, you must be at least 13 years old and capable of entering into a legal agreement.</p>

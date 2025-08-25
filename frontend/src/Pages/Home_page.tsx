@@ -3098,12 +3098,9 @@ function Home_page() {
                   >
                     {t("termsOfService")}
                   </a>
-                  <a
-                    href="/CookiePolicy"
-                    className="link-color hover:text-emerald-500 transition-colors underline"
-                  >
-                    {t("cookiePolicy")}
-                  </a>
+                  <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  {t("Refund Policy")}
+                </a>
                 </div>
                 <span className="muted-color">{t("builtWithExcellence")}</span>
               </div>
