@@ -55,7 +55,7 @@ const HeroSectionR1 = () => {
         {/* Robot Image - Reduced size for better spacing */}
         <div className="absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
           <img 
-            src="/media/robott.gif" 
+            src="/media/R1.gif" 
             alt="Humanoid Robot" 
             className="w-[100%] h-full object-contain"
           />
@@ -77,9 +77,16 @@ const HeroSectionR1 = () => {
           <div className="max-w-[1440px] mx-auto px-6 relative h-full">
             {/* G1 Label - Smaller and higher */}
             <div className="absolute left-36 -top-16">
-              <span className="text-[100px] md:text-[120px] lg:text-[290px] font-bold text-[#00ffa3] leading-none opacity-70 drop-shadow-lg cursor-target" style={{ letterSpacing: '-0.05em' }}>
-                R1
-              </span>
+              <span
+  className="text-[100px] md:text-[120px] lg:text-[290px] font-bold text-transparent bg-clip-text leading-none opacity-70 drop-shadow-lg cursor-target"
+  style={{
+    letterSpacing: '-0.05em',
+    backgroundImage:
+      "linear-gradient(180deg, #ffffff 0%, #c0c0c0 40%, #3b82f6 100%)",
+  }}
+>
+  R1
+</span>
             </div>
 
             {/* UNITREE Text - Smaller and repositioned */}
@@ -104,14 +111,14 @@ const HeroSectionR1 = () => {
       <div className="text-center px-6 ">
         <div className="max-w-[1440px] mx-auto">
           <h2
-    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5"
-    style={{
-      backgroundImage:
-        "linear-gradient(180deg, #00ffa3 0%, #00ffa3 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
-    }}
-  >
-    Humanoid
-  </h2>
+  className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5"
+  style={{
+    backgroundImage:
+      "linear-gradient(180deg, #ffffff 0%, #c0c0c0 40%, #3b82f6 100%)",
+  }}
+>
+  Humanoid
+</h2>
           <div className="max-w-[980px] mx-auto">
              <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target">
       Select from a range of high-performance educational robots designed for hands-on learning. 
