@@ -4,7 +4,9 @@ import { useState, useEffect, useRef } from "react"
 import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 // import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
+import Timeline from "@/Component/Timeline"
 import Header from "../Component/Header"
+import FooterUnanimated from "../Component/FooterUnanimated"
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
@@ -48,6 +50,7 @@ export default function AboutPage() {
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
   
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   // Language context
   // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
@@ -422,190 +425,24 @@ export default function AboutPage() {
   // White screen transition
   if (showWhiteScreen && scrollY > 2000) {
     return (
-      <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} min-h-screen flex items-center justify-center transition-all duration-1000 ease-out`}>
+      <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} min-h-screen flex flex-col items-center justify-center transition-all duration-1000 ease-out`}>
         <Header />
         <div className={`w-full h-full ${isDarkTheme ? 'bg-white' : 'bg-black'} flex items-center justify-center`}>
           <div className={`animate-spin rounded-full h-32 w-32 border-b-2 ${isDarkTheme ? 'border-gray-900' : 'border-white'}`}></div>
         </div>
+        <FooterUnanimated />
       </div>
     )
   }
-
-  // Main about us sections
   if (showAboutUs || scrollY > 2400) {
     return (
       <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} transition-colors duration-500`}>
         <Header />
-        {/* Hero About Section */}
-        <div
-          className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500`}
-          style={{
-            transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
-            opacity: aboutAnimStarted ? 1 : 0,
-            transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
-            transformOrigin: 'center center'
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px),
-                linear-gradient(90deg, ${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
-
-          <div className="flex items-center justify-center min-h-screen px-8">
-            <div className="text-center max-w-6xl mx-auto relative z-10">
-              <h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
-                About Us
-              </h1>
-              
-              <h2 className={`text-3xl md:text-4xl lg:text-5xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-16 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
-                Shaping Tomorrow's Technology
-              </h2>
-              
-              <p className={`text-xl md:text-2xl lg:text-3xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-5xl mx-auto mb-20 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
-                Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    {currentYear}
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Current Year
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    100+
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Projects
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    50+
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Happy Clients
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Video Switcher Section */}
-        <div 
-          ref={videoContainerRef}
-          className={`relative flex flex-col items-center justify-center min-h-[500px] w-full overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
-        >
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px),
-                linear-gradient(90deg, ${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
-
-          <div className="relative z-10 w-full max-w-[700px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
-            <video
-              key={videoSources[activeTab]}
-              ref={videoRef}
-              width="100%"
-              height="100%"
-              preload="auto"
-              loop
-              muted
-              autoPlay
-              playsInline
-              aria-label="Video player"
-              className="w-full h-full object-contain transition-all duration-500 ease-out"
-              style={
-                (activeTab === 'who-we-are' || activeTab === 'where-we-are')
-                  ? {
-                      transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
-                  : {
-                      transform: 'scale(1) rotate(0deg)',
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
-              }
-            >
-              <source src={videoSources[activeTab]} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            {/* Buttons at video coordinates */}
-            <button
-              onClick={() => setActiveTab('who-we-are')}
-              className={`absolute top-6 left-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'who-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-gray-100 text-gray-900 shadow-2xl scale-105' 
-                  : 'bg-gray-800 text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-gray-900 hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '1s' }}
-            >
-              Who We Are
-            </button>
-            <button
-              onClick={() => setActiveTab('where-we-are')}
-              className={`absolute top-6 right-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'where-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '2s' }}
-            >
-              Where We Are
-            </button>
-            <button
-              onClick={() => setActiveTab('what-we-do')}
-              className={`absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'what-we-do' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '0s' }}
-            >
-              What We Do
-            </button>
-          </div>
-        </div>
-
-        {/* Static Content Section */}
-        <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-24 transition-colors duration-500`}>
-          <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
-            
-            {/* Main Heading Block - enlarged to better fit container */}
-            <div
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
-              style={{ width: "1500px", height: "280px" }}
-            >
+        {/* ...existing code... */}
+        <FooterUnanimated />
+      </div>
+    )
+  }
               <div className="text-center px-8">
                 <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[0px]`}>
                   Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
@@ -936,6 +773,7 @@ export default function AboutPage() {
       <div className="relative z-10 pointer-events-auto">
         {/* Placeholder sections for scroll */}
       </div>
+      <FooterUnanimated />
     </div>
   )
 }
