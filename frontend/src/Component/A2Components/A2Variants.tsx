@@ -161,9 +161,15 @@ const cobotSearchData = [
   },
 ]
 
+// Add this mapping near the top of A2Variants function
+const variantImages: Record<string, string> = {
+  "A2-Standard": "/media/A2-standard.png",
+  "A2-Pro": "/media/A2-pro.png",
+  "A2-W-Standard": "/media/A2-w.png",
+  "A2-W-Pro": "/media/A2-w-pro.png",
+};
+
 const robotSpecs: 
-
-
 RobotSpec[] = [
   {
     id: "A2-Standard",
@@ -184,16 +190,16 @@ features: [
     position: { top: "1%", left: "20%" },
     positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" },
-    targetPointSm: { x: "19%", y: "32%" }   // head/top front
+    targetPoint: { x: "12%", y: "26%" },
+targetPointSm: { x: "19%", y: "32%" }   // head/top front
   },
   {
     label: "Wide-Angle Camera",
     detail: "HD wide-angle vision, expandable to dual cameras",
-    position: { top: "3%", left: "40%" },
+    position: { top: "1%", left: "40%" },
     positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" },
+    targetPoint: { x: "16%", y: "29%" },
     targetPointSm: { x: "17%", y: "34%" }    // front face
   },
   {
@@ -202,7 +208,7 @@ features: [
     position: { top: "5%", left: "90%" },
     positionSm: { top: "22%", left: "68%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" },
+    targetPoint: { x: "60%", y: "30%" },
     targetPointSm: { x: "62%", y: "42%" }  // side body compartment
   },
   {
@@ -211,7 +217,7 @@ features: [
     position: { top: "65%", left: "85%" },
     positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-    targetPoint: { x: "77%", y: "35%" },  // leg joint area
+    targetPoint: { x: "75%", y: "25%" },  // leg joint area
     targetPointSm: { x: "77%", y: "42%" }
   },
   {
@@ -220,7 +226,7 @@ features: [
     position: { top: "60%", left: "43%" },
     positionSm: { top: "75%", left: "45%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "25%" },   // back/top of robot
+    targetPoint: { x: "50%", y: "20%" },   // back/top of robot
     targetPointSm: { x: "58%", y: "37%" }
   }
 ]
@@ -232,11 +238,11 @@ features: [
     description:
       "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
     gallery: [
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png"
+      "/media/A2-pro.png",
+      "/media/A2-pro.png",
+      "/media/A2-pro.png",
+      "/media/A2-pro.png",
+      "/media/A2-pro.png"
     ],
 features: [
   {
@@ -295,11 +301,11 @@ features: [
     description:
       "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
     gallery: [
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png"
+      "/media/A2-w.png",
+      "/media/A2-w.png",
+      "/media/A2-w.png",
+      "/media/A2-w.png",
+      "/media/A2-w.png"
     ],
 features: [
   {
@@ -357,11 +363,11 @@ features: [
     description:
       "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
     gallery: [
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png"
+      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.png"
     ],
 features: [
   {
@@ -778,11 +784,11 @@ function A2Variants() {
             <div className="relative h-[700px] w-full">
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <img
-                  src="/A2.png"
-                  alt={displayName}
-                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-                />
+<img
+  src={variantImages[currentSpec.id] || "/A2.png"}
+  alt={displayName}
+  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+/>
               </div>
 
               {/* SVG Lines - Only show on hover */}
