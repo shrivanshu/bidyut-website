@@ -177,11 +177,11 @@ RobotSpec[] = [
     description:
       "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png",
-      "/A2.png"
+      "/media/A2-standard.png",
+      "/media/A2-standard.png",
+      "/media/A2-standard.png",
+      "/media/A2-standard.png",
+      "/media/A2-standard.png"
     ],
 features: [
   {
@@ -248,46 +248,46 @@ features: [
   {
     label: "Dual LiDAR Sensors",
     detail: "Enhanced perception with two LiDAR units for improved mapping and navigation",
-    position: { top: "1%", left: "20%" },
+    position: { top: "10%", left: "20%" },
     positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" },
+    targetPoint: { x: "29%", y: "63%" },
     targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "GPS Module",
     detail: "Integrated GPS for precise outdoor positioning and navigation",
-    position: { top: "8%", left: "74%" },
+    position: { top: "8%", left: "95%" },
     positionSm: { top: "2%", left: "50%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "25%" },
+    targetPoint: { x: "45%", y: "32%" },
     targetPointSm: { x: "60%", y: "37%" }
   },
   {
     label: "4G Communication",
     detail: "Seamless remote connectivity through built-in 4G module",
-    position: { top: "58%", left: "2%" },
-    positionSm: { top: "18%", left: "66%" },
+    position: { top: "40%", left: "2%" },
+    positionSm: { top: "15%", left: "66%" },
     lineDirection: "right",
-    targetPoint: { x: "55%", y: "33%" },
+    targetPoint: { x: "60%", y: "35%" },
     targetPointSm: { x: "55%", y: "40%" }
   },
   {
     label: "Wireless Vector Positioning",
     detail: "Companion module for wireless vector-based positioning support",
-    position: { top: "60%", left: "87%" },
+    position: { top: "40%", left: "77%" },
     positionSm: { top: "78%", left: "76%" },
     lineDirection: "right",
-    targetPoint: { x: "37%", y: "19%" },
+    targetPoint: { x: "50%", y: "13%" },
     targetPointSm: { x: "47%", y: "35%" }
   },
   {
     label: "High-Computing Dock",
     detail: "Expansion dock increases built-in computing power to three units",
-    position: { top: "75%", left: "20%" },
+    position: { top: "65%", left: "90%" },
     positionSm: { top: "70%", left: "19%" },
     lineDirection: "right",
-    targetPoint: { x: "68%", y: "30%" },
+    targetPoint: { x: "50%", y: "10%" },
     targetPointSm: { x: "69%", y: "39%" }
   }
 ]
@@ -311,46 +311,46 @@ features: [
   {
     label: "LIDAR Sensor",
     detail: "Single LiDAR for navigation & mapping",
-    position: { top: "1%", left: "20%" },
-    positionSm: { top: "5%", left: "35%" }, 
+    position: { top: "5%", left: "15%" },
+    positionSm: { top: "5%", left: "30%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" },
+    targetPoint: { x: "21%", y: "22%" },
     targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "Optical Camera",
     detail: "Wide-angle depth camera (expandable to 2)",
-    position: { top: "3%", left: "40%" },
+    position: { top: "3%", left: "35%" },
     positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" },
+    targetPoint: { x: "24%", y: "25%" },
     targetPointSm: { x: "17%", y: "34%" } 
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design for versatile terrain",
-    position: { top: "65%", left: "22%" },
+    position: { top: "75%", left: "15%" },
     positionSm: { top: "79%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "5%", y: "81%" },
+    targetPoint: { x: "45%", y: "50%" },
     targetPointSm: { x: "6%", y: "67%" } 
   },
   {
     label: "Battery Pack",
     detail: "Dual-bay 9000mAh/18000mAh system",
     position: { top: "5%", left: "90%" },
-    positionSm: { top: "22%", left: "68%" },
+    positionSm: { top: "22%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" },
+    targetPoint: { x: "60%", y: "30%" },
     targetPointSm: { x: "62%", y: "42%" }
   },
   {
     label: "Computing Power",
     detail: "8-core CPU + Intel i7 dual-unit system",
-    position: { top: "70%", left: "83%" },
+    position: { top: "65%", left: "80%" },
     positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-    targetPoint: { x: "55%", y: "24%" },
+    targetPoint: { x: "65%", y: "13%" },
     targetPointSm: { x: "57%", y: "37%" }
   }
 ]
@@ -376,22 +376,22 @@ features: [
     position: { top: "1%", left: "20%" },
     positionSm: { top: "5%", left: "35%" }, 
     lineDirection: "left",
-    targetPoint: { x: "17%", y: "17%" },
+    targetPoint: { x: "30%", y: "12%" },
     targetPointSm: { x: "19%", y: "32%" } 
   },
   {
     label: "Optical Camera",
     detail: "Wide-angle depth camera system, expandable to dual setup",
-    position: { top: "3%", left: "40%" },
+    position: { top: "3%", left: "50%" },
     positionSm: { top: "5%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "17%", y: "19%" },
+    targetPoint: { x: "35%", y: "18%" },
     targetPointSm: { x: "17%", y: "34%" }
   },
   {
     label: "Wheeled Legs",
     detail: "Hybrid leg-wheel design with improved stability & payload handling",
-    position: { top: "65%", left: "22%" },
+    position: { top: "85%", left: "22%" },
     positionSm: { top: "79%", left: "15%" },
     lineDirection: "right",
     targetPoint: { x: "5%", y: "81%" },
@@ -400,19 +400,19 @@ features: [
   {
     label: "Battery Pack",
     detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
-    position: { top: "5%", left: "90%" },
+    position: { top: "12%", left: "95%" },
     positionSm: { top: "22%", left: "68%" },
     lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" },
+    targetPoint: { x: "70%", y: "30%" },
     targetPointSm: { x: "62%", y: "42%" }
   },
   {
     label: "Computing Power",
     detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
-    position: { top: "70%", left: "83%" },
+    position: { top: "90%", left: "87%" },
     positionSm: { top: "72%", left: "88%" },
     lineDirection: "left",
-    targetPoint: { x: "55%", y: "24%" },
+    targetPoint: { x: "72%", y: "23%" },
     targetPointSm: { x: "57%", y: "37%" }
   }
 ]
