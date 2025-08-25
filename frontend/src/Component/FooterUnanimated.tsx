@@ -181,8 +181,8 @@ export default function FooterUnanimated() {
                 <a href="/Terms&Condition" className="link-color hover:text-emerald-500 transition-colors underline">
                   {t("termsOfService")}
                 </a>
-                <a href="/CookiePolicy" className="link-color hover:text-emerald-500 transition-colors underline">
-                  {t("cookiePolicy")}
+                <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  {t("Refund Policy")}
                 </a>
               </div>
               <span className="muted-color">{t("builtWithExcellence")}</span>

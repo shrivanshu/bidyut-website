@@ -18,7 +18,7 @@ import H1_page from './Pages/H1_page';
 import R1_page from './Pages/R1_page';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
-import CookiePolicy from './Pages/CookiePolicy';
+import RefundPolicy from './Pages/RefundPolicy';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/School" element={<SchoolPage />} />
               <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
               <Route path="/Terms&Condition" element={<TermsCondition />} />
-              <Route path="/CookiePolicy" element={<CookiePolicy />} />
+              <Route path="/RefundPolicy" element={<RefundPolicy />} />
             </Routes>
           </NavigationProvider>
         </BrowserRouter>

@@ -23,64 +23,115 @@ const PrivacyPolicy = () => {
 			</div>
 			<main className="min-h-screen bg-white flex flex-col items-center px-4 py-8 md:px-12 lg:px-32 mt-16">
 				<div className="w-full max-w-3xl">
-					<h1 className="text-4xl font-extrabold mb-4 text-black">Privacy Policy — <span style={{ color: '#10b981' }}>Bidyut Innovation</span></h1>
-					<p className="text-sm text-gray-500 mb-8">Effective Date: August 25, 2025<br />Last Updated: August 25, 2025</p>
-					<section className="mb-8">
-						<p className="mb-2 text-gray-700 text-lg">
-							Bidyut Innovation is committed to protecting the privacy of its users, customers, and partners. This Privacy Policy explains what personal information we collect, why we collect it, how it’s used, and how you can access, update, or delete your data.
-						</p>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("1. Information We Collect")}
-						<p className="mb-2 text-gray-700">We collect various types of information to provide and improve our services, including:</p>
-						<ul className="list-disc pl-6 mb-2 text-gray-700">
-							<li className="mb-1"><span className="font-semibold text-black">Personal Information:</span> Full Name, Email Address, Phone Number, Company Name (if applicable), and any other details you voluntarily provide via forms or communication.</li>
-							<li className="mb-1"><span className="font-semibold text-black">Technical and Usage Data:</span> IP address, browser type and version, operating system and device type, pages visited and time spent, referring website or source.</li>
-							<li><span className="font-semibold text-black">Cookies and Tracking Technologies:</span> Cookies help us personalize your experience, analyze usage, and enhance performance.</li>
-						</ul>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("2. How We Use Your Information")}
-						<ul className="list-disc pl-6 text-gray-700">
-							<li>Provide and improve our robotics and automation services</li>
-							<li>Communicate with you about updates, new features, or marketing (if opted in)</li>
-							<li>Respond to your inquiries and support requests</li>
-							<li>Analyze website usage for better performance</li>
-							<li>Fulfill legal or regulatory obligations</li>
-						</ul>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("3. How We Share Your Data")}
-						<ul className="list-disc pl-6 text-gray-700">
-							<li>We do not sell or rent your data.</li>
-							<li>Your information may be shared with third-party service providers (hosting, analytics, email delivery).</li>
-							<li>Governmental or regulatory authorities if legally required.</li>
-							<li>In the case of a business merger or acquisition.</li>
-						</ul>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("4. Data Retention")}
-						<p className="text-gray-700">We retain your personal data as long as needed for our services, legal compliance, or user support.</p>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("5. Your Rights")}
-						<p className="mb-2 text-gray-700">Depending on your region (e.g., GDPR, CCPA), you may:</p>
-						<ul className="list-disc pl-6 text-gray-700">
-							<li>Access the personal data we hold about you</li>
-							<li>Request correction or deletion of your data</li>
-							<li>Withdraw consent for processing</li>
-							<li>File a complaint with a data protection authority</li>
-						</ul>
-						<p className="mt-2 text-gray-700">Contact for privacy requests: <a href="mailto:privacy@bidyutinno.com" className="text-green-600 underline">privacy@bidyutinno.com</a></p>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("6. Security Measures")}
-						<p className="text-gray-700">We implement industry-standard encryption, access control, and security protocols to safeguard your data.</p>
-					</section>
-					<section className="mb-8">
-						{sectionTitle("7. Children's Privacy")}
-						<p className="text-gray-700">Our website and services are not intended for users under the age of 13. We do not knowingly collect data from children.</p>
-					</section>
+								<h1 className="text-4xl font-extrabold mb-4 text-black">Privacy Policy — <span style={{ color: '#10b981' }}>Bidyut Innovation Pvt Ltd</span></h1>
+								<p className="text-sm text-gray-500 mb-8">Effective Date: August 25, 2025<br />Last Updated: August 25, 2025</p>
+								<section className="mb-8">
+									<p className="mb-2 text-gray-700 text-lg">
+										This Privacy Policy (the “Policy”) governs the manner in which Bidyut Innovation Pvt Ltd (“we,” “us,” “our,” or the “Platform”) collects, uses, maintains, and discloses information of its users. The Policy also describes the practices that we apply to such user information, your privacy rights, and choices regarding your information. This Policy applies to all users of the Platform (referred to as “Users,” “You,” “Your”).
+									</p>
+									<p className="mb-2 text-gray-700 text-lg">
+										By accessing and using the Platform, providing your personal information, or otherwise signifying your agreement when the option is presented, you consent to the collection, use, and disclosure of information as described in this Policy and our Terms of Use. If you do not agree with any provisions of this Policy or the Terms of Use, please do not access or use the Platform and discontinue communication with us immediately.
+									</p>
+									<p className="mb-2 text-gray-700 text-lg">
+										If any information you provide or upload violates the terms of this Policy or the Terms of Use, we may delete such information upon informing you of the same and revoke your access without incurring liability. Please read this Policy carefully prior to accessing our Platform and using any of the services or products offered. For questions, contact us at <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.
+									</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("1. Personal Information")}
+									<p className="mb-2 text-gray-700">“Personal Information” includes details that identify a User such as:</p>
+									<ul className="list-disc pl-6 mb-2 text-gray-700">
+										<li>Name</li>
+										<li>Email address</li>
+										<li>Phone number</li>
+										<li>Address</li>
+										<li>Photograph</li>
+										<li>Gender, age, and location</li>
+										<li>Any other details voluntarily shared at the time of registration or later.</li>
+									</ul>
+									<p className="mb-2 text-gray-700">“Sensitive Personal Information” includes:</p>
+									<ul className="list-disc pl-6 mb-2 text-gray-700">
+										<li>Passwords and financial data (except truncated credit/debit card details).</li>
+										<li>Government-issued identifiers (e.g., Aadhaar, driver’s license, passport).</li>
+										<li>Health data.</li>
+										<li>Information about race, ethnicity, religion, sexual identity, or political beliefs.</li>
+										<li>Other data classified as ‘sensitive personal data’ under applicable laws.</li>
+									</ul>
+									<p className="mb-2 text-gray-700">The term ‘Personal Information’ may encompass ‘Sensitive Personal Information’ when used in this Policy.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("2. Information We Collect")}
+									<ul className="list-disc pl-6 mb-2 text-gray-700">
+										<li><span className="font-semibold">a. Personal Information:</span> We collect personal information that you voluntarily provide during registration on the Platform and when using specific services or features.</li>
+										<li><span className="font-semibold">b. Non-Personal Information:</span> When you interact with the Platform, we may collect non-personal data, including browser type, language preference, device details, operating system, and Internet Service Provider (ISP).</li>
+										<li><span className="font-semibold">c. Cookies:</span> We use cookies to enhance the User experience. You can configure your browser to reject cookies, but some Platform features may not function properly.</li>
+									</ul>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("3. How We Use Your Information")}
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>Platform Access and Service Delivery: To process registrations, manage User accounts, and provide services.</li>
+										<li>Improving Platform Safety and Functionality: To prevent fraud, detect technical issues, and enhance usability.</li>
+										<li>Marketing and Communication: To send updates about services, respond to queries, or share promotional content.</li>
+									</ul>
+									<p className="mt-2 text-gray-700">We do not use your personal information for automated decision-making without explicit consent.</p>
+									<p className="mt-2 text-gray-700">For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("4. Sharing of Information")}
+									<p className="mb-2 text-gray-700">We do not sell or trade your personal information. However, we may share aggregated, non-identifiable information with:</p>
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>Business partners for analytical purposes.</li>
+										<li>Service providers assisting in delivering Platform features.</li>
+									</ul>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("5. Your Choices")}
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>Update or Delete Information: You may modify or delete your data at any time using the Platform’s account settings.</li>
+										<li>Control Communication Preferences: Opt-out of promotional emails by contacting us at <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.</li>
+									</ul>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("6. Your Rights")}
+									<ul className="list-disc pl-6 text-gray-700">
+										<li>Access: Request access to the personal data we store.</li>
+										<li>Correction: Rectify inaccuracies in your data.</li>
+										<li>Erasure: Request deletion of data (subject to legal exceptions).</li>
+										<li>Restriction: Limit the processing of your data in certain situations.</li>
+									</ul>
+									<p className="mt-2 text-gray-700">For any of these rights, contact <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("7. Data Protection")}
+									<p className="text-gray-700">We implement robust security measures to prevent unauthorized access, alteration, or destruction of your data. While we strive to protect your data, no transmission method is completely secure.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("8. Cross-Border Data Transfers")}
+									<p className="text-gray-700">Your information is stored and processed on secure servers in India (e.g., Amazon Web Services). By using our services, you consent to this transfer, including storage in countries with differing privacy laws.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("9. Retention Policy")}
+									<p className="text-gray-700">We retain your data as long as required for providing services, complying with legal obligations, and business continuity purposes.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("10. Third-Party Websites")}
+									<p className="text-gray-700">The Platform may link to third-party websites. We are not responsible for the privacy practices of these external sites. Review their policies before sharing information.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("11. Changes to this Privacy Policy")}
+									<p className="text-gray-700">We reserve the right to amend this Policy at any time. Changes will be updated on the Platform, and the effective date will reflect the latest revision.</p>
+								</section>
+								<section className="mb-8">
+									{sectionTitle("12. Grievances")}
+									<p className="text-gray-700">For grievances, queries, or rights-related issues, contact:</p>
+									<ul className="list-none pl-0 text-gray-700">
+										<li><span className="font-semibold">Rahul Shah</span></li>
+										<li>Bidyut Innovation Pvt Ltd</li>
+										<li>901, Cliffton Corporate</li>
+										<li>Phone: 9370782979</li>
+										<li>Email: <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a></li>
+									</ul>
+								</section>
 				</div>
 			</main>
 			<FooterUnanimated />
