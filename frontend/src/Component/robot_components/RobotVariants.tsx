@@ -335,7 +335,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U4",
     "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
     "gallery": [
-      "/media/Robot_Details.svg"
+      "/media/G1 EDU U4 .png"
     ],
     "features": [
       {

@@ -4,7 +4,7 @@ interface CobotClassroomProps {
   onContactClick?: () => void;
 }
 
-const robotImgSrc = '/media/Cobot_true.svg';
+const robotImgSrc = '/media/B2 ADVANCED WITH 3D LIDAR.png';
 
 const B2Details = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark } = useTheme();

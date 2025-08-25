@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
-import { useLanguage } from "../contexts/OptimizedLanguageContext"
+// import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
-import Timeline from "../Component/Timeline"
+import Header from "../Component/Header"
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
@@ -50,7 +50,7 @@ export default function AboutPage() {
   
 
   // Language context
-  const { t } = useLanguage()
+  // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
 
   // Video sources
   const videoSources: { [key: string]: string } = {
@@ -423,6 +423,7 @@ export default function AboutPage() {
   if (showWhiteScreen && scrollY > 2000) {
     return (
       <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} min-h-screen flex items-center justify-center transition-all duration-1000 ease-out`}>
+        <Header />
         <div className={`w-full h-full ${isDarkTheme ? 'bg-white' : 'bg-black'} flex items-center justify-center`}>
           <div className={`animate-spin rounded-full h-32 w-32 border-b-2 ${isDarkTheme ? 'border-gray-900' : 'border-white'}`}></div>
         </div>
@@ -434,6 +435,7 @@ export default function AboutPage() {
   if (showAboutUs || scrollY > 2400) {
     return (
       <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} transition-colors duration-500`}>
+        <Header />
         {/* Hero About Section */}
         <div
           className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500`}
@@ -596,93 +598,87 @@ export default function AboutPage() {
         </div>
 
         {/* Static Content Section */}
-        <div className={`min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-16 transition-colors duration-500`}>
-          <div className="text-center pt-16 pb-24 max-w-4xl mx-auto">
-            <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 leading-tight transition-colors duration-500`}>
-              {t('bidyutFocuses')} <span className={isDarkTheme ? 'text-white' : 'text-black'}>{t('educatingStudents')} </span>
-              <br />
-              {t('actWithIntegrity')}
-              <br />
-              <span className={isDarkTheme ? 'text-white' : 'text-black'}> {t('digitalWorld')}</span>
-            </h1>
-            <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-base sm:text-lg leading-relaxed max-w-3xl mx-auto transition-colors duration-500`}>
-              {t('aboutDescription')}
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-32">
-            <div className="relative">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div className="flex justify-center lg:justify-start relative">
-                  <div className="absolute -left-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
-                    <div className="grid grid-cols-8 gap-1">
-                      {Array.from({ length: 64 }).map((_, i) => (
-                        <div key={i} className={`w-1.5 h-1.5 ${isDarkTheme ? 'bg-gray-500' : 'bg-gray-400'} rounded-full transition-colors duration-500`}></div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <img
-                    src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png"
-                    alt="Our Vision"
-                    className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
-                  />
-                </div>
-                
-                <div className="text-center lg:text-left relative">
-                  <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
-                    {t('ourVision')}
-                  </h2>
-                  <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg leading-relaxed max-w-md transition-colors duration-500`}>
-                    {t('visionStatement')}
-                  </p>
-                  
-                  <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
-                    <div className="grid grid-cols-8 gap-1">
-                      {Array.from({ length: 64 }).map((_, i) => (
-                        <div key={i} className={`w-1.5 h-1.5 ${isDarkTheme ? 'bg-gray-500' : 'bg-gray-400'} rounded-full transition-colors duration-500`}></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+        <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-24 transition-colors duration-500`}>
+          <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
+            
+            {/* Main Heading Block - enlarged to better fit container */}
+            <div
+              className="absolute top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
+              style={{ width: "1500px", height: "280px" }}
+            >
+              <div className="text-center px-8">
+                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[0px]`}>
+                  Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
+                </h1>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div className="text-center lg:text-left order-2 lg:order-1 relative">
-                  <div className="absolute -left-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
-                    <div className="grid grid-cols-8 gap-1">
-                      {Array.from({ length: 64 }).map((_, i) => (
-                        <div key={i} className={`w-1.5 h-1.5 ${isDarkTheme ? 'bg-gray-500' : 'bg-gray-400'} rounded-full transition-colors duration-500`}></div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <h2 className={`text-3xl sm:text-4xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
-                    {t('ourMission')}
-                  </h2>
-                  <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg leading-relaxed max-w-md transition-colors duration-500`}>
-                    {t('missionStatement')}
-                  </p>
-                </div>
-                
-                <div className="flex justify-center lg:justify-end order-1 lg:order-2 relative">
-                  <img
-                    src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png"
-                    alt="Our Mission"
-                    className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
-                  />
-                  
-                  <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
-                    <div className="grid grid-cols-8 gap-1">
-                      {Array.from({ length: 64 }).map((_, i) => (
-                        <div key={i} className={`w-1.5 h-1.5 ${isDarkTheme ? 'bg-gray-500' : 'bg-gray-400'} rounded-full transition-colors duration-500`}></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            {/* Description Text - enlarged below heading */}
+            <div className="absolute top-[320px] left-1/2 transform -translate-x-1/2 w-[1320px] h-[60px] flex items-center justify-center px-4">
+              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-center text-[16px] leading-tight`}>
+                Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing like world's most advanced robotic and technological education to the children of our country.
+              </p>
+            </div>
+
+            {/* Left Decorative Dots - moved more to the left */}
+            <div className="absolute top-[380px] left-[30px] w-[180px] h-[10px] z-10">
+              <div className="grid grid-cols-10 gap-[12px] p-3">
+                {Array.from({length: 100}).map((_, i) => (
+                  <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
+                ))}
               </div>
+            </div>
+
+            {/* Vision Card - moved more to the left */}
+            <div className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30">
+              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                <img 
+                  src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
+                  alt="Our Vision" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+            </div>
+
+            {/* Vision Text - moved further to the right for more gap */}
+            <div className="absolute top-[485px] left-[840px] w-[400px]">
+              <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Vision</h2>
+              <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
+                To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
+              </p>
+            </div>
+
+            {/* Mission Text - moved more to the left */}
+            <div className="absolute top-[1000px] left-[150px] w-[400px]">
+              <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Mission</h2>
+              <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
+                To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
+              </p>
+            </div>
+
+            {/* Mission Card - aligned with Mission text */}
+            <div className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30">
+              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                <img 
+                  src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
+                  alt="Our Mission" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>    
+            </div>
+
+            {/* Right Decorative Dots - moved more to the left */}
+            <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10">
+              <div className="grid grid-cols-10 gap-[12px] p-3">
+                {Array.from({length: 100}).map((_, i) => (
+                  <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
+                ))}
+              </div>
+            </div>
+
+            {/* Container size indicator */}
+            <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 text-blue-500 text-[12px] font-mono bg-white px-2">
+              
             </div>
           </div>
         </div>
@@ -896,6 +892,7 @@ export default function AboutPage() {
   // Initial scroll-triggered hero section
   return (
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
+      <Header />
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <div className="relative">
           {scrollY > 1800 && getTransformedText() === "202O" ? (

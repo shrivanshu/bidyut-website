@@ -16,6 +16,9 @@ import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import H1_page from './Pages/H1_page';
 import R1_page from './Pages/R1_page';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import TermsCondition from './Pages/Terms&Condition';
+import RefundPolicy from './Pages/RefundPolicy';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -35,6 +38,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/B2" element={<B2Page />} />
               <Route path="/A2" element={<A2Page />} />
               <Route path="/School" element={<SchoolPage />} />
+              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+              <Route path="/Terms&Condition" element={<TermsCondition />} />
+              <Route path="/RefundPolicy" element={<RefundPolicy />} />
             </Routes>
           </NavigationProvider>
         </BrowserRouter>
