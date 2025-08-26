@@ -6,6 +6,7 @@ import SchoolHero from '../Component/SchoolComponent/SchoolHeroSection';
 import {BuildTogetherSection} from '../Component/SchoolComponent/BuildTogetherSection';
 import Stream from '../Component/SchoolComponent/StreamSection';
 import RoboticLabsForSchools from '../Component/SchoolComponent/RoboticLabsForSchools';
+import StreamLabSection from '../Component/SchoolComponent/StreamLabSection';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
 function SchoolPage() {
@@ -20,6 +21,7 @@ function SchoolPage() {
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
         <SchoolHero />
+        <StreamLabSection/>
         <Stream />
         <RoboticLabsForSchools/>
         <BuildTogetherSection onGameSelect={handleGameSelect} />   
