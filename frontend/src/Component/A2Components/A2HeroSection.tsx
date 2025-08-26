@@ -32,9 +32,9 @@ export default function A2HeroSection() {
 <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
   <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
     <img 
-      src="/media/A2-standard.png" 
+  src="/heros/a2-unscreen.gif" 
       alt="Unitree A2" 
-      className="max-w-[200px] sm:max-w-xs md:max-w-lg lg:max-w-xl h-auto object-contain" 
+  className="w-full max-w-4xl h-auto object-contain" 
     />
   </div>
 </div>

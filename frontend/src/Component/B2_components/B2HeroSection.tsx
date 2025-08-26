@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
     <div className="relative aspect-video rounded-lg overflow-hidden ">
-      <img src="/media/B2 ADVANCED WITH 3D LIDAR.png" alt="B2 Advanced with 3D LIDAR" className="w-2/3 max-w-lg h-full object-contain aspect-video mx-auto" />
+  <img src="/heros/b2-unscreen.gif" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
     </div>
   </div>
 

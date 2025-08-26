@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
         <div className="relative aspect-video rounded-lg overflow-hidden ">
-            <video src="/Quad.webm" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <img src="/heros/Go2-Hero-unscreen.gif" alt="Go2 Hero" className="w-full max-w-2xl h-full object-contain aspect-video mx-auto mt-10" />
         </div>
       </div>
 
