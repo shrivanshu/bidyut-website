@@ -102,6 +102,26 @@ export default function AboutPage() {
       }, 150)
     }
     // timeline
+    const [visionInView, setVisionInView] = useState(false);
+    const [missionInView, setMissionInView] = useState(false);
+
+    useEffect(() => {
+      const handleScrollAnim = () => {
+        const staticSection = document.getElementById('about-static-section');
+        const visionImg = document.getElementById('vision-img-container');
+        const missionImg = document.getElementById('mission-img-container');
+        if (!staticSection || !visionImg || !missionImg) return;
+        const sectionRect = staticSection.getBoundingClientRect();
+        const visionRect = visionImg.getBoundingClientRect();
+        const missionRect = missionImg.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        setVisionInView(visionRect.top < windowHeight - 100 && visionRect.bottom > 100);
+        setMissionInView(missionRect.top < windowHeight - 100 && missionRect.bottom > 100);
+      };
+      window.addEventListener('scroll', handleScrollAnim, { passive: true });
+      handleScrollAnim();
+      return () => window.removeEventListener('scroll', handleScrollAnim);
+    }, []);
   
   const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
@@ -581,36 +601,38 @@ export default function AboutPage() {
 
   // Trigger transitions
   useEffect(() => {
-    const transformed = getTransformedText()
-    const targetYear = String(currentYear).padStart(4, "0")
+    const transformed = getTransformedText();
+    const targetYear = String(currentYear).padStart(4, "0");
     if (!hasTriggeredRef.current && transformed === targetYear) {
-      hasTriggeredRef.current = true
-      setShowWhiteScreen(true)
-      setTimeout(() => {
-        setShowAboutUs(true)
-        setShowWhiteScreen(false)
-        if (typeof window !== 'undefined') {
-          try {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          } catch (e) {
-            window.scrollTo(0, 0)
-          }
+      hasTriggeredRef.current = true;
+      setShowWhiteScreen(true);
+      // Start scroll to top
+      if (typeof window !== 'undefined') {
+        try {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (e) {
+          window.scrollTo(0, 0);
         }
-        setTimeout(() => setAboutAnimStarted(true), 100)
-      }, 800)
+      }
+      // Show blank screen for 0.75s, then About Us hero section
+      setTimeout(() => {
+        setShowAboutUs(true);
+        setTimeout(() => {
+          setShowWhiteScreen(false);
+          setTimeout(() => setAboutAnimStarted(true), 50);
+        }, 300); // fade out white screen after About Us appears
+      }, 200); // blank screen duration
     }
-  }, [scrollY, currentYear])
+  }, [scrollY, currentYear]);
 
-  // White screen transition
-  if (showWhiteScreen && scrollY > 2000) {
+  // White screen transition (blank screen for a few seconds while scrolling to top)
+  if (showWhiteScreen) {
     return (
-      <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} min-h-screen flex items-center justify-center transition-all duration-1000 ease-out`}>
-        <Header />
-        <div className={`w-full h-full ${isDarkTheme ? 'bg-white' : 'bg-black'} flex items-center justify-center`}>
-          <div className={`animate-spin rounded-full h-32 w-32 border-b-2 ${isDarkTheme ? 'border-gray-900' : 'border-white'}`}></div>
-        </div>
+      <div className={`fixed inset-0 z-[9999] flex items-center justify-center min-h-screen transition-all duration-1000 ease-out ${isDarkTheme ? 'bg-white' : 'bg-black'}`}
+        style={{ opacity: showWhiteScreen ? 1 : 0, pointerEvents: 'none' }}>
+        {/* Blank screen, optionally add a subtle fade-out spinner or logo if desired */}
       </div>
-    )
+    );
   }
 
   // Main about us sections
@@ -620,13 +642,14 @@ export default function AboutPage() {
         <Header />
         {/* Hero About Section */}
         <div
-          className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500`}
-          style={{
-            transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
-            opacity: aboutAnimStarted ? 1 : 0,
-            transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
-            transformOrigin: 'center center'
-          }}
+            className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500 pt-14`}
+            style={{
+              transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
+              opacity: aboutAnimStarted ? 1 : 0,
+              transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
+              transformOrigin: 'center center',
+              // Add extra top margin to avoid header overlap
+            }}
         >
           <div
             className="absolute inset-0 opacity-10"
@@ -641,15 +664,15 @@ export default function AboutPage() {
 
           <div className="flex items-center justify-center min-h-screen px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
-              <h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
+              <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
                 About Us
               </h1>
               
-              <h2 className={`text-3xl md:text-4xl lg:text-5xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-16 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
+              <h2 className={`text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-12 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
                 Shaping Tomorrow's Technology
               </h2>
               
-              <p className={`text-xl md:text-2xl lg:text-3xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-5xl mx-auto mb-20 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
+              <p className={`text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-16 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
                 Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
               </p>
 
@@ -687,8 +710,8 @@ export default function AboutPage() {
 
         {/* Video Switcher Section */}
         <div 
-          ref={videoContainerRef}
-          className={`relative flex flex-col items-center justify-center min-h-[500px] w-full overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
+            ref={videoContainerRef}
+            className={`relative flex flex-col items-center justify-center min-h-[700px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-8 transition-colors duration-500 mx-auto`}
         >
           <div
             className="absolute inset-0 opacity-10"
@@ -701,7 +724,12 @@ export default function AboutPage() {
             }}
           />
 
-          <div className="relative z-10 w-full max-w-[700px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
+          <div className="relative z-10 w-full max-w-[900px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center" style={{ minHeight: '500px', minWidth: '700px' }}>
+            {/* Animated highlight border when in view */}
+            <div
+              className={`absolute inset-0 pointer-events-none transition-all duration-700 ease-out z-20 ${isVideoInView ? 'ring-8 ring-blue-400/40 scale-105 opacity-100' : 'ring-0 scale-100 opacity-0'}`}
+              style={{ borderRadius: '1.5rem' }}
+            />
             <video
               key={videoSources[activeTab]}
               ref={videoRef}
@@ -730,58 +758,61 @@ export default function AboutPage() {
               Your browser does not support the video tag.
             </video>
 
-            {/* Buttons at video coordinates */}
-            <button
-              onClick={() => setActiveTab('who-we-are')}
-              className={`absolute top-6 left-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'who-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-gray-100 text-gray-900 shadow-2xl scale-105' 
-                  : 'bg-gray-800 text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-gray-900 hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '1s' }}
-            >
-              Who We Are
-            </button>
-            <button
-              onClick={() => setActiveTab('where-we-are')}
-              className={`absolute top-6 right-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'where-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '2s' }}
-            >
-              Where We Are
-            </button>
-            <button
-              onClick={() => setActiveTab('what-we-do')}
-              className={`absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'what-we-do' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '0s' }}
-            >
-              What We Do
-            </button>
+            {/* Unique video tab buttons with animated indicator */}
+            <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
+              <div className="w-full flex justify-between px-8 pt-6">
+                <button
+                  onClick={() => setActiveTab('who-we-are')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'who-we-are'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-gray-900 hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '1s' }}
+                >
+                  Who We Are
+                </button>
+                <button
+                  onClick={() => setActiveTab('where-we-are')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'where-we-are'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '2s' }}
+                >
+                  Where We Are
+                </button>
+              </div>
+              <div className="w-full flex justify-center pb-6">
+                <button
+                  onClick={() => setActiveTab('what-we-do')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'what-we-do'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '0s' }}
+                >
+                  What We Do
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Static Content Section */}
-        <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-24 transition-colors duration-500`}>
-          <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
+            <div
+              className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 pt-0 pb-48 transition-colors duration-500`}
+              id="about-static-section"
+            >
+              <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
             
             {/* Main Heading Block - enlarged to better fit container */}
             <div
@@ -812,15 +843,23 @@ export default function AboutPage() {
             </div>
 
             {/* Vision Card - moved more to the left */}
-            <div className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30">
-              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                <img 
-                  src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
-                  alt="Our Vision" 
-                  className="w-full h-full object-cover" 
-                />
+              <div
+                className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30"
+                id="vision-img-container"
+                style={{
+                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                  transform: visionInView ? 'translateX(0)' : 'translateX(-120px)',
+                  opacity: visionInView ? 1 : 0
+                }}
+              >
+                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
+                  <img 
+                    src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
+                    alt="Our Vision" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
               </div>
-            </div>
 
             {/* Vision Text - moved further to the right for more gap */}
             <div className="absolute top-[485px] left-[840px] w-[400px]">
@@ -839,15 +878,23 @@ export default function AboutPage() {
             </div>
 
             {/* Mission Card - aligned with Mission text */}
-            <div className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30">
-              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                <img 
-                  src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
-                  alt="Our Mission" 
-                  className="w-full h-full object-cover" 
-                />
-              </div>    
-            </div>
+              <div
+                className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30"
+                id="mission-img-container"
+                style={{
+                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                  transform: missionInView ? 'translateX(0)' : 'translateX(120px)',
+                  opacity: missionInView ? 1 : 0
+                }}
+              >
+                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                  <img 
+                    src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
+                    alt="Our Mission" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>    
+              </div>
 
             {/* Right Decorative Dots - moved more to the left */}
             <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10">
