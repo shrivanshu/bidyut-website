@@ -123,7 +123,6 @@ export default function AboutPage() {
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(1)
   const [isMuted, setIsMuted] = useState(true)
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const [isVideoInView, setIsVideoInView] = useState(false)
   const [hasVideoAnimated, setHasVideoAnimated] = useState(false)
 
