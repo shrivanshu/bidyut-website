@@ -113,9 +113,9 @@ const HeroSection = () => {
           <h2
     className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5"
     style={{
-      backgroundImage:
-        "linear-gradient(180deg, #C0C0C0 50%, #000000 100%)",
-    }}
+    backgroundImage:
+      "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 39%, rgba(255,255,255,0.5) 87%, #FFFFFF 100%)",
+  }}
   >
     Humanoid
   </h2>
