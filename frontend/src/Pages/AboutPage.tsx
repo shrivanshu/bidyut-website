@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from "react"
 import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 // import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
-
+import Header from "../Component/Header"
+import FooterUnanimated from "@/Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface TimelineItem {
@@ -72,6 +73,7 @@ export default function AboutPage() {
   // Timeline States
    const [currentIndex, setCurrentIndex] = useState(0)
     const currentItem = timelineData[currentIndex]
+    const [isTransitioning, setIsTransitioning] = useState(false)
   
     const goToPrevious = () => {
       if (isTransitioning || currentIndex === 0) return
