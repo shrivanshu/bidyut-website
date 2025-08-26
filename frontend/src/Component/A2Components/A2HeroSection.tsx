@@ -46,9 +46,9 @@ export default function A2HeroSection() {
   <h2
     className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text mb-0"
     style={{
-      backgroundImage:
-        "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
-    }}
+    backgroundImage:
+      "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 35%, rgba(255,255,255,0.6) 87%, #FFFFFF 100%)",
+  }}
   >
     Unitree A2
   </h2>

@@ -39,14 +39,14 @@ export default function HeroSection() {
   <div className="-mt-10 mb-4 text-center">
   {/* Gradient Heading */}
   <h2
-    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text mb-0"
-    style={{
-      backgroundImage:
-        "linear-gradient(180deg, #0ACF83 0%, #0ACF83 30%, rgba(255,255,255,0.6) 85%, #FFFFFF 100%)",
-    }}
-  >
-    Unitree GO2
-  </h2>
+  className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text mb-0"
+  style={{
+    backgroundImage:
+      "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 30%, rgba(255,255,255,0.6) 87%, #FFFFFF 100%)",
+  }}
+>
+  Unitree GO2
+</h2>
 
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
