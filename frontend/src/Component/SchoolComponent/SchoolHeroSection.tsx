@@ -14,7 +14,7 @@ const VideoHeroInterface = () => {
     }
   }, [])
 
-  const handleButtonClick = (buttonText) => {
+const handleButtonClick = (buttonText: string) => {
     console.log("Button clicked:", buttonText)
     // Add your custom functionality here
   }
