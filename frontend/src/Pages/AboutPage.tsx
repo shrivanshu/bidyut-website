@@ -8,6 +8,18 @@ import Header from "../Component/Header"
 import FooterUnanimated from "@/Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
+const videoZoomStyle = `
+  @keyframes videoZoomIn {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes videoRotateZoomIn {
+    0% { transform: scale(0.7) rotate(0deg); opacity: 0; }
+    60% { transform: scale(1.15) rotate(360deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 1; }
+  } `
+
 interface TimelineItem {
   year: string
   title: string
@@ -102,6 +114,32 @@ export default function AboutPage() {
       }, 150)
     }
     // timeline
+    const [visionInView, setVisionInView] = useState(false);
+    const [missionInView, setMissionInView] = useState(false);
+    const [staticAnimated, setStaticAnimated] = useState(false);
+
+    useEffect(() => {
+      const handleScrollAnim = () => {
+        const staticSection = document.getElementById('about-static-section');
+        const visionImg = document.getElementById('vision-img-container');
+        const missionImg = document.getElementById('mission-img-container');
+        if (!staticSection || !visionImg || !missionImg) return;
+        
+        const staticRect = staticSection.getBoundingClientRect();
+        if (staticRect.top < window.innerHeight * 0.75 && !staticAnimated) {
+          setStaticAnimated(true);
+        }
+        const sectionRect = staticSection.getBoundingClientRect();
+        const visionRect = visionImg.getBoundingClientRect();
+        const missionRect = missionImg.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        setVisionInView(visionRect.top < windowHeight - 100 && visionRect.bottom > 100);
+        setMissionInView(missionRect.top < windowHeight - 100 && missionRect.bottom > 100);
+      };
+      window.addEventListener('scroll', handleScrollAnim, { passive: true });
+      handleScrollAnim();
+      return () => window.removeEventListener('scroll', handleScrollAnim);
+    }, []);
   
   const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
@@ -130,10 +168,47 @@ export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   // Magnetic cursor for reel view
   const [reelMouse, setReelMouse] = useState({ x: 0, y: 0 });
-
+const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoContainerRef = useRef<HTMLDivElement>(null)
+  // Ref for tab buttons
+  const whatWeDoBtnRef = useRef<HTMLButtonElement>(null)
+  const whoWeAreBtnRef = useRef<HTMLButtonElement>(null)
+  const whereWeAreBtnRef = useRef<HTMLButtonElement>(null)
+  // Trigger rotation animation when tab becomes active
+  useEffect(() => {
+    if (activeTab === "what-we-do" && whatWeDoBtnRef.current) {
+      const btn = whatWeDoBtnRef.current;
+      btn.classList.add("animate-button-click");
+      setTimeout(() => btn.classList.remove("animate-button-click"), 800);
+      if (videoRef.current) {
+        videoRef.current.style.animation = "none";
+        videoRef.current.offsetHeight;
+        videoRef.current.style.animation = "videoRotateZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      }
+    }
+    if (activeTab === "who-we-are" && whoWeAreBtnRef.current) {
+      const btn = whoWeAreBtnRef.current;
+      btn.classList.add("animate-button-click");
+      setTimeout(() => btn.classList.remove("animate-button-click"), 800);
+      if (videoRef.current) {
+        videoRef.current.style.animation = "none";
+        videoRef.current.offsetHeight;
+        videoRef.current.style.animation = "videoRotateZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      }
+    }
+    if (activeTab === "where-we-are" && whereWeAreBtnRef.current) {
+      const btn = whereWeAreBtnRef.current;
+      btn.classList.add("animate-button-click");
+      setTimeout(() => btn.classList.remove("animate-button-click"), 800);
+      if (videoRef.current) {
+        videoRef.current.style.animation = "none";
+        videoRef.current.offsetHeight;
+        videoRef.current.style.animation = "videoRotateZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      }
+    }
+  }, [activeTab]);
     // Video Zoom/Rotate States
     const [videoScrollProgress, setVideoScrollProgress] = useState(0)
     const [isVideoInView, setIsVideoInView] = useState(false)
@@ -581,37 +656,15 @@ export default function AboutPage() {
 
   // Trigger transitions
   useEffect(() => {
-    const transformed = getTransformedText()
-    const targetYear = String(currentYear).padStart(4, "0")
-    if (!hasTriggeredRef.current && transformed === targetYear) {
-      hasTriggeredRef.current = true
-      setShowWhiteScreen(true)
-      setTimeout(() => {
-        setShowAboutUs(true)
-        setShowWhiteScreen(false)
-        if (typeof window !== 'undefined') {
-          try {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          } catch (e) {
-            window.scrollTo(0, 0)
-          }
-        }
-        setTimeout(() => setAboutAnimStarted(true), 100)
-      }, 800)
-    }
-  }, [scrollY, currentYear])
-
-  // White screen transition
-  if (showWhiteScreen && scrollY > 2000) {
-    return (
-      <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} min-h-screen flex items-center justify-center transition-all duration-1000 ease-out`}>
-        <Header />
-        <div className={`w-full h-full ${isDarkTheme ? 'bg-white' : 'bg-black'} flex items-center justify-center`}>
-          <div className={`animate-spin rounded-full h-32 w-32 border-b-2 ${isDarkTheme ? 'border-gray-900' : 'border-white'}`}></div>
-        </div>
-      </div>
-    )
-  }
+    // Immediately show the main content, bypassing the scroll animation
+    setShowAboutUs(true);
+    // A small delay to allow the component to render before animating
+    const animTimer = setTimeout(() => setAboutAnimStarted(true), 50);
+    
+    return () => {
+      clearTimeout(animTimer);
+    };
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   // Main about us sections
   if (showAboutUs || scrollY > 2400) {
@@ -620,13 +673,14 @@ export default function AboutPage() {
         <Header />
         {/* Hero About Section */}
         <div
-          className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500`}
-          style={{
-            transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
-            opacity: aboutAnimStarted ? 1 : 0,
-            transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
-            transformOrigin: 'center center'
-          }}
+            className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500 pt-14`}
+            style={{
+              transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
+              opacity: aboutAnimStarted ? 1 : 0,
+              transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
+              transformOrigin: 'center center',
+              // Add extra top margin to avoid header overlap
+            }}
         >
           <div
             className="absolute inset-0 opacity-10"
@@ -641,15 +695,15 @@ export default function AboutPage() {
 
           <div className="flex items-center justify-center min-h-screen px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
-              <h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
+              <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
                 About Us
               </h1>
               
-              <h2 className={`text-3xl md:text-4xl lg:text-5xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-16 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
+              <h2 className={`text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-12 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
                 Shaping Tomorrow's Technology
               </h2>
               
-              <p className={`text-xl md:text-2xl lg:text-3xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-5xl mx-auto mb-20 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
+              <p className={`text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-16 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
                 Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
               </p>
 
@@ -686,102 +740,209 @@ export default function AboutPage() {
         </div>
 
         {/* Video Switcher Section */}
-        <div 
-          ref={videoContainerRef}
-          className={`relative flex flex-col items-center justify-center min-h-[500px] w-full overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500`}
+      <div
+      ref={videoContainerRef}
+      className={`relative flex flex-col items-center justify-center min-h-[700px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? "bg-black" : "bg-white"} py-8 transition-colors duration-500 mx-auto`}
+      style={{
+        transform: aboutAnimStarted ? "scale(1) translateZ(0)" : "scale(0.8) translateZ(0)",
+        opacity: aboutAnimStarted ? 1 : 0,
+        transition: "transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 200ms, opacity 800ms ease-out 200ms",
+        transformOrigin: "center center",
+        willChange: "transform, opacity",
+      }}
+    >
+      {/* Static grid of light blue squares background */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(24, 1fr)',
+            gridTemplateRows: 'repeat(12, 1fr)',
+            width: '100%',
+            height: '100%',
+            gap: '18px',
+            opacity: 0.18,
+            pointerEvents: 'none',
+          }}
         >
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `
-                linear-gradient(${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px),
-                linear-gradient(90deg, ${isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
+          {Array.from({ length: 24 * 12 }).map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: '16px',
+                height: '16px',
+                borderRadius: '4px',
+                backgroundColor: '#60A5FA', // Tailwind light blue-400
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(${isDarkTheme ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"} 1px, transparent 1px),
+            linear-gradient(90deg, ${isDarkTheme ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"} 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+      <style>{videoZoomStyle}</style>
+      <div
+        className="relative z-10 w-full max-w-[900px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center"
+        style={{ minHeight: "500px", minWidth: "700px" }}
+      >
+        {/* Enhanced animated highlight border when in view */}
+        <div
+          className={`absolute inset-0 pointer-events-none transition-all duration-1000 ease-out z-20 ${isVideoInView ? "ring-8 ring-blue-400/60 scale-110 opacity-100" : "ring-0 scale-100 opacity-0"}`}
+          style={{ borderRadius: "1.5rem" }}
+        />
+        <video
+          key={videoSources[activeTab]}
+          ref={videoRef}
+          width="100%"
+          height="100%"
+          preload="auto"
+          loop
+          muted
+          autoPlay
+          playsInline
+          aria-label="Video player"
+          className="w-full h-full object-contain"
+          style={{
+            transform: `scale(${
+              activeTab === "who-we-are" || activeTab === "where-we-are" ? 1.3 - videoScrollProgress * 0.7 : 1.1
+            }) rotate(${
+              activeTab === "who-we-are" || activeTab === "where-we-are" ? videoScrollProgress * 360 : 0
+            }deg)`,
+            transition: "transform 1800ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+            animation: "videoZoomIn 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+          }}
+        >
+          <source src={videoSources[activeTab]} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-          <div className="relative z-10 w-full max-w-[700px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
-            <video
-              key={videoSources[activeTab]}
-              ref={videoRef}
-              width="100%"
-              height="100%"
-              preload="auto"
-              loop
-              muted
-              autoPlay
-              playsInline
-              aria-label="Video player"
-              className="w-full h-full object-contain transition-all duration-500 ease-out"
-              style={
-                (activeTab === 'who-we-are' || activeTab === 'where-we-are')
-                  ? {
-                      transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
-                  : {
-                      transform: 'scale(1) rotate(0deg)',
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
-              }
-            >
-              <source src={videoSources[activeTab]} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            {/* Buttons at video coordinates */}
+        {/* Enhanced video tab buttons with zoom effects */}
+        <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
+          <div className="w-full flex justify-between px-8 pt-6">
             <button
-              onClick={() => setActiveTab('who-we-are')}
-              className={`absolute top-6 left-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'who-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-gray-100 text-gray-900 shadow-2xl scale-105' 
-                  : 'bg-gray-800 text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-gray-900 hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
+              ref={whoWeAreBtnRef}
+              onClick={(event) => {
+                if (videoRef.current) {
+                  videoRef.current.style.animation = "none"
+                  videoRef.current.offsetHeight
+                  videoRef.current.style.animation = "videoZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                }
+                const button = event.currentTarget
+                button.classList.add("animate-button-click")
+                setTimeout(() => button.classList.remove("animate-button-click"), 800)
+
+                // Add section zoom effect on button click
+                if (videoContainerRef.current) {
+                  videoContainerRef.current.classList.add("animate-section-click")
+                  setTimeout(() => videoContainerRef.current.classList.remove("animate-section-click"), 800)
+                }
+
+                setActiveTab("who-we-are")
+              }}
+              className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
+              ${
+                activeTab === "who-we-are"
+                  ? "bg-green-500 text-white shadow-2xl scale-115"
+                  : isDarkTheme
+                    ? "bg-white text-gray-900 hover:bg-gray-100"
+                    : "bg-black text-white hover:bg-gray-800"
               }`}
-              style={{ animationDelay: '1s' }}
+              style={{ animationDelay: "1s" }}
             >
               Who We Are
             </button>
             <button
-              onClick={() => setActiveTab('where-we-are')}
-              className={`absolute top-6 right-6 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'where-we-are' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
+              ref={whereWeAreBtnRef}
+              onClick={(event) => {
+                if (videoRef.current) {
+                  videoRef.current.style.animation = "none"
+                  videoRef.current.offsetHeight
+                  videoRef.current.style.animation = "videoZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                }
+                const button = event.currentTarget
+                button.classList.add("animate-button-click")
+                setTimeout(() => button.classList.remove("animate-button-click"), 800)
+
+                // Add section zoom effect on button click
+                if (videoContainerRef.current) {
+                  videoContainerRef.current.classList.add("animate-section-click")
+                  setTimeout(() => videoContainerRef.current.classList.remove("animate-section-click"), 800)
+                }
+
+                setActiveTab("where-we-are")
+              }}
+              className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
+              ${
+                activeTab === "where-we-are"
+                  ? "bg-green-500 text-white shadow-2xl scale-115"
+                  : isDarkTheme
+                    ? "bg-white text-black hover:bg-gray-100"
+                    : "bg-black text-white hover:bg-gray-800"
               }`}
-              style={{ animationDelay: '2s' }}
+              style={{ animationDelay: "2s" }}
             >
               Where We Are
             </button>
-            <button
-              onClick={() => setActiveTab('what-we-do')}
-              className={`absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
-              ${activeTab === 'what-we-do' 
-                ? isDarkTheme 
-                  ? 'bg-white text-black shadow-2xl scale-105' 
-                  : 'bg-black text-white shadow-2xl scale-105'
-                : isDarkTheme
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'bg-black text-white hover:bg-gray-800'
-              }`}
-              style={{ animationDelay: '0s' }}
-            >
-              What We Do
-            </button>
           </div>
+         <div className="w-full flex justify-center pb-6">
+  <button
+    ref={whatWeDoBtnRef}
+    onClick={(event) => {
+      if (videoRef.current) {
+        videoRef.current.style.animation = "none"; // reset animation
+        videoRef.current.offsetHeight; // reflow trick
+        videoRef.current.style.animation =
+          "videoRotateZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      }
+
+      const button = event.currentTarget;
+      button.classList.add("animate-button-click");
+      setTimeout(() => button.classList.remove("animate-button-click"), 800);
+
+      // Section zoom effect
+      if (videoContainerRef.current) {
+        videoContainerRef.current.classList.add("animate-section-click");
+        setTimeout(
+          () => videoContainerRef.current.classList.remove("animate-section-click"),
+          800
+        );
+      }
+
+      setActiveTab("what-we-do");
+    }}
+    className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
+    ${
+      activeTab === "what-we-do"
+        ? "bg-green-500 text-white shadow-2xl scale-115"
+        : isDarkTheme
+        ? "bg-white text-black hover:bg-gray-100"
+        : "bg-black text-white hover:bg-gray-800"
+    }`}
+    style={{ animationDelay: "0s" }}
+  >
+    What We Do
+  </button>
+</div>
+
         </div>
+      </div>
+    </div>
 
         {/* Static Content Section */}
-        <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-24 transition-colors duration-500`}>
-          <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
+            <div
+              className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 pt-0 pb-48 transition-colors duration-500`}
+              id="about-static-section"
+             
+            >
+              <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
             
             {/* Main Heading Block - enlarged to better fit container */}
             <div
@@ -812,18 +973,33 @@ export default function AboutPage() {
             </div>
 
             {/* Vision Card - moved more to the left */}
-            <div className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30">
-              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                <img 
-                  src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
-                  alt="Our Vision" 
-                  className="w-full h-full object-cover" 
-                />
+              <div
+                className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30"
+                id="vision-img-container"
+                style={{
+                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                  transform: visionInView ? 'translateX(0)' : 'translateX(-120px)',
+                  opacity: visionInView ? 1 : 0
+                }}
+              >
+                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
+                  <img 
+                    src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
+                    alt="Our Vision" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
               </div>
-            </div>
 
             {/* Vision Text - moved further to the right for more gap */}
-            <div className="absolute top-[485px] left-[840px] w-[400px]">
+            <div 
+              className="absolute top-[485px] left-[840px] w-[400px]"
+              style={{
+                transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                transform: visionInView ? 'translateX(0)' : 'translateX(120px)',
+                opacity: visionInView ? 1 : 0
+              }}
+            >
               <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Vision</h2>
               <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
                 To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
@@ -831,7 +1007,14 @@ export default function AboutPage() {
             </div>
 
             {/* Mission Text - moved more to the left */}
-            <div className="absolute top-[1000px] left-[150px] w-[400px]">
+            <div 
+              className="absolute top-[1000px] left-[150px] w-[400px]"
+              style={{
+                transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                transform: missionInView ? 'translateX(0)' : 'translateX(-120px)',
+                opacity: missionInView ? 1 : 0
+              }}
+            >
               <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Mission</h2>
               <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
                 To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
@@ -839,15 +1022,23 @@ export default function AboutPage() {
             </div>
 
             {/* Mission Card - aligned with Mission text */}
-            <div className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30">
-              <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                <img 
-                  src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
-                  alt="Our Mission" 
-                  className="w-full h-full object-cover" 
-                />
-              </div>    
-            </div>
+              <div
+                className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30"
+                id="mission-img-container"
+                style={{
+                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                  transform: missionInView ? 'translateX(0)' : 'translateX(120px)',
+                  opacity: missionInView ? 1 : 0
+                }}
+              >
+                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                  <img 
+                    src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
+                    alt="Our Mission" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>    
+              </div>
 
             {/* Right Decorative Dots - moved more to the left */}
             <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10">

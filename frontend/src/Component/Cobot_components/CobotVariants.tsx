@@ -182,38 +182,46 @@ const robotSpecs: RobotSpec[] = [
     label: "Vision Sensor",
     detail: "1280 × 720 px camera, 120° field of view",
     position: { top: "1%", left: "17%" },
-    positionSm: { top: "10%", left: "45%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" },
+    targetPoint: { x: "5%", y: "34%"},
     targetPointSm: { x: "15%", y: "34%" }  
   },
   {
     label: "LIDAR",
     detail: "4D LIDAR, 360° × 90° coverage",
-    position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "12%", y: "52%" },
+    targetPointSm: { x: "15%", y: "34%" }  
   },
   {
     label: "Arm Control",
     detail: "2 DOF robotic arm, payload capacity 7 kg (maximum 10 kg)",
-    position: { top: "55%", left: "1%" },
+    position: { top: "75%", left: "20%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "65%", y: "55%" },
+    targetPointSm: { x: "15%", y: "34%" }
   },
   {
     label: "Battery",
     detail: "8000 mAh capacity, runtime 1–2 hours",
-    position: { top: "30%", left: "110%" },
+    position: { top: "60%", left: "99%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "67%", y: "31%" },
+    targetPointSm: { x: "15%", y: "34%" }
   },
   {
     label: "Motion Module",
     detail: "Torque output up to 100 Nm",
-    position: { top: "75%", left: "45%" },
+    position: { top: "85%", left: "60%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "78%", y: "20%" },
+    targetPointSm: { x: "15%", y: "34%" }
   }
 ]
 
@@ -235,36 +243,46 @@ const robotSpecs: RobotSpec[] = [
       label: "Vision Sensor",
       detail: "Camera: 1920 × 1080 px | FOV: 130°",
       position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "6%", y: "30%" },
+      targetPointSm: { x: "5%", y: "34%" }
     },
     {
       label: "LIDAR",
       detail: "4D LIDAR | Coverage: 360° × 90° (enhanced)",
       position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "6%", y: "30%" },
+      targetPointSm: { x: "10%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "3 DOF robotic arm | Payload: 12 kg (max. 15 kg)",
       position: { top: "55%", left: "1%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "31%", y: "52%" },
+    targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "Battery",
       detail: "12000 mAh | Runtime: 2–3 h",
       position: { top: "30%", left: "110%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "58%", y: "36%" },
+    targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "Motion Module",
       detail: "Torque output up to 200 Nm",
       position: { top: "75%", left: "45%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "70%", y: "35%" },
+    targetPointSm: { x: "10%", y: "45%" },
     }
   ],
   
@@ -286,9 +304,11 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+      position: { top: "5%", left: "10%" },
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "15%", y: "31%" },
+      targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "LIDAR",

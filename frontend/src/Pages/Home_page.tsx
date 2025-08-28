@@ -486,6 +486,9 @@ function AnimatedBanner({
             y: iRect.top + iRect.height * 2,
           })
         }
+        
+        // Add the static dot
+      
       }
     }
 
@@ -502,6 +505,22 @@ function AnimatedBanner({
       window.removeEventListener("resize", handleUpdate)
     }
   }, [iLetterRef, scrollProgress])
+
+  // Add float-gentle animation
+  const floatGentleKeyframes = `
+    @keyframes float-gentle {
+      0%, 100% {
+        transform: translate(-50%, -50%);
+      }
+      50% {
+        transform: translate(-50%, -80%);
+      }
+    }
+  `;
+
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = floatGentleKeyframes;
+  document.head.appendChild(styleSheet);
 
   // Morphing progress
   let morph = 0
@@ -568,10 +587,19 @@ background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
   }
 
   if (scrollProgress > 0.95 && iPosition.x && iPosition.y) {
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920;
+    let bottomPosition = "1.2em";  // default for mobile
+    
+    if (screenWidth >= 1024) {
+      bottomPosition = "5.5em";  // laptop
+    } else if (screenWidth >= 768) {
+      bottomPosition = "2.7em";  // tablet
+    }
+
     bannerStyle = {
       ...bannerStyle,
       left: iPosition.x,
-      top: iPosition.y,
+      bottom: bottomPosition,
       width: dotSize,
       height: dotSize,
       borderRadius: dotBorderRadius,
@@ -3119,7 +3147,10 @@ function Home_page() {
               >
                 <span>B</span>
                 <span ref={iLetterRef} className="relative inline-block">
-                  i
+                  <span className="relative">
+                    i
+                   
+                  </span>
                 </span>
                 <span>dyut Innovation</span>
               </div>
@@ -3233,6 +3264,19 @@ function Home_page() {
               @media (prefers-reduced-motion: reduce) {
                 .glass-card::before { animation: none; }
               }
+                 .dot-position {
+            bottom: 1.2em;  /* mobile */
+          }
+          @media (min-width: 768px) {
+            .dot-position {
+              bottom: 3.8em;  /* tablet */
+            }
+          }
+          @media (min-width: 1024px) {
+            .dot-position {
+              bottom: 5.5em;  /* laptop */
+            }
+          }
             `}</style>
         </section>
     </div>

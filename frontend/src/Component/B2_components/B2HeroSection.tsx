@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
     <div className="relative aspect-video rounded-lg overflow-hidden ">
-  <img src="/heros/b2-unscreen.gif" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
+  <img src="/GO2/GO2 ENT U2.png" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
     </div>
   </div>
 
