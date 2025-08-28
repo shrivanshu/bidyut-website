@@ -956,6 +956,7 @@ const Button = ({
 )
 
 function RobotShowcase() {
+
   const { isDark } = useTheme();
   const [selectedVariant, setSelectedVariant] = useState("go2-basic");
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
@@ -965,6 +966,26 @@ function RobotShowcase() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);
+
+  // Cobot image mapping
+  const cobotImages: Record<string, string> = {
+    "GO2-AIR": "/GO2/GO2 AIR.png",
+    "GO2-PRO": "/GO2/GO2 PRO.png",
+    "GO2 EDU U1": "/GO2/GO2 EDU U1.png",
+    "GO2 EDU U2": "/GO2/GO2 EDU2.png",
+    "GO2 EDU U3": "/GO2/GO2 EDU U3.png",
+    "GO2 EDU U4": "/GO2/GO2 EDU U4.png",
+    "GO2-W U1": "/GO2/GO2-W U1.png",
+    "GO2-W U2": "/GO2/GO2-W-U2.png",
+    "GO2-W U3": "/GO2/GO2-w-u3.png",
+    "GO2-W U4": "/GO2/GO2-W-U4.png",
+    "GO2-W U5": "/GO2/GO2-W-U5.png",
+    "GO2-ENT U1": "/GO2/GO2 ENT U1.png",
+    "GO2-ENT U2": "/GO2/GO2 ENT U2.png",
+    "GO2-ENT U3": "/GO2/GO2 ENT U2.png",
+    "GO2-ENT U4": "/GO2/GO2 ENT U2.png",
+    "GO2 Edu": "/GO2/GO2 EDU.png",
+  };
 
   // Drag scroll state for cobot images
   const [isDragging, setIsDragging] = useState(false);
@@ -1262,8 +1283,8 @@ function RobotShowcase() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src="/media/Cobot_true.svg"
-                  alt={displayName}
+                  src={cobotImages[currentSpec.name] || "/GO2.png"}
+                  alt={currentSpec.name}
                   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />
               </div>
