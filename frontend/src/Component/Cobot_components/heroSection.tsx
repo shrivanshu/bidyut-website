@@ -29,11 +29,11 @@ export default function HeroSection() {
 </div>
 
       {/* Video container */}
-  <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
-        <div className="relative aspect-video rounded-lg overflow-hidden ">
-            <img src="/media/Go2-Hero-unscreen.gif"  className="w-full h-[60%] object-cover" />
-        </div>
-      </div>
+  <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
+    <div className="relative aspect-video rounded-lg overflow-hidden ">
+      <img src="/media/GO2 AIR.png" alt="GO2 Air Image" className="w-2/3 max-w-lg h-full object-contain aspect-video mx-auto" />
+    </div>
+  </div>
 
       {/* Large "Quadruped" text */}
   <div className="-mt-10 mb-4 text-center">

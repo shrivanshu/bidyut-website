@@ -23,28 +23,28 @@ const HeroSectionH1 = () => {
         )}
 
         {/* Split Header Text - Above the image */}
-       <div className="absolute top-[14%] md:top-[17%] left-0 md:left-2 right-0 md:-right-12 z-20 px-4 md:px-14">
+       <div className="absolute top-[14%] md:top-[19%] left-0 md:left-3 right-0 md:-right-7 z-20 px-4 md:px-14">
   <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-2">
     
     {/* Left part */}
     <div className="flex flex-wrap items-baseline justify-center sm:justify-start">
-      <span className="text-xl sm:text-3xl md:text-[46px] font-bold text-black dark:text-white drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[50px] font-oxanium font-semibold text-black dark:text-white drop-shadow-sm cursor-target">
         Let's
       </span>
-      <span className="text-xl sm:text-3xl md:text-[46px] font-bold text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[50px] font-oxanium font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
         Innovate
       </span>
     </div>
 
     {/* Right part */}
     <div className="flex flex-wrap items-baseline justify-center sm:justify-end">
-      <span className="text-xl sm:text-3xl md:text-[46px] font-bold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[47px] font-oxanium font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
         Learn
       </span>
-      <span className="text-xl sm:text-3xl md:text-[46px] font-bold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[47px] font-oxanium font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
         Beyond
       </span>
-      <span className="text-xl sm:text-3xl md:text-[46px] font-bold text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[47px] font-oxanium font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
         Boundaries
       </span>
     </div>
@@ -55,7 +55,7 @@ const HeroSectionH1 = () => {
         {/* Robot Image - Reduced size for better spacing */}
         <div className="absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
           <img 
-            src="/media/H1.gif" 
+            src="/media/h1_1_hero.png" 
             alt="Humanoid Robot" 
             className="w-[100%] h-full object-contain"
           />
