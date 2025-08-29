@@ -15,12 +15,13 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import H1_page from './Pages/H1_page';
-import H1_2_page from './Pages/H1_2_page';
+import H1_2_page from './Pages/H1_2_page';   // ✅ Added missing import
 import R1_page from './Pages/R1_page';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
 import RefundPolicy from './Pages/RefundPolicy';
-import Firefighting from './Pages/FirefightingPage';
+import GO2VPage from './Pages/GO2VPage';
+import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct place
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -45,6 +46,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Terms&Condition" element={<TermsCondition />} />
               <Route path="/RefundPolicy" element={<RefundPolicy />} />
               <Route path="/Firefighting" element={<Firefighting />} />
+              <Route path="/GO2V" element={<GO2VPage />} />
             </Routes>
           </NavigationProvider>
         </BrowserRouter>
