@@ -1301,11 +1301,18 @@ function Home_page() {
   });
 
   return (
+    // <div
+    //   className={`App transition-colors duration-300 min-h-screen overflow-x-hidden ${
+    //     isDark
+    //       ? "bg-black"
+    //       : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+    //   }`}
+    // >
     <div
       className={`App transition-colors duration-300 min-h-screen overflow-x-hidden ${
         isDark
           ? "bg-black"
-          : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+          : "bg-white"
       }`}
     >
       <Header />
@@ -1725,7 +1732,7 @@ function Home_page() {
                     className={`absolute p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
                       isDark
                         ? "bg-gray-800"
-                        : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+                        : "bg-white"
                     }`}
                     style={{
                       bottom: "-5%",
@@ -1749,7 +1756,7 @@ function Home_page() {
                     className={`absolute p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
                       isDark
                         ? "bg-gray-800"
-                        : "bg-gradient-to-br from-indigo-400 via-white to-purple-300"
+                        : "bg-white"
                     }`}
                     style={{
                       bottom: "8%",
@@ -1774,7 +1781,7 @@ function Home_page() {
               {/* Feature Cards - Mobile/Tablet */}
               <div className="lg:hidden relative -mt-12 sm:-mt-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                  <div className="bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                     <div className="flex items-center mb-3">
                       <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
                       <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
@@ -1787,7 +1794,7 @@ function Home_page() {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-indigo-400 via-white to-purple-300 dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                     <div className="flex items-center mb-3">
                       <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
                       <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">

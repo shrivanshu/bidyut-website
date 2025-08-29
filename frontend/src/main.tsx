@@ -15,6 +15,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import H1_page from './Pages/H1_page';
+import H1_2_page from './Pages/H1_2_page';
 import R1_page from './Pages/R1_page';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Robot" element={<Robotpage />} />
               <Route path="/Cobot" element={<Cobotpage />} />
               <Route path="/H1" element={<H1_page />} />
+              <Route path="/H1-2" element={<H1_2_page />} />
               <Route path="/R1" element={<R1_page />} />
               <Route path="/B2" element={<B2Page />} />
               <Route path="/A2" element={<A2Page />} />
