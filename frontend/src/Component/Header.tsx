@@ -50,8 +50,8 @@ export default function Header() {
               { href: "/", label: t("home") },
               { href: "/About", label: t("aboutUs") },
               { href: "/School", label: t("school") },
-              { href: "/Contact", label: t("contact") },
               { href: "/Gallery", label: t("gallery") },
+              { href: "/Contact", label: t("contact") },
             ].map((item) => (
               <a
                 key={item.href}
@@ -94,7 +94,9 @@ export default function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <a href="/H1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
+                            <a href="/H1-2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1-2</a>
                           </div>
+                          
                         </div>
 
                         {/* Education */}
