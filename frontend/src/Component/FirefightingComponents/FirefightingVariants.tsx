@@ -172,240 +172,485 @@ const variantImages: Record<string, string> = {
 const robotSpecs: 
 RobotSpec[] = [
   {
-    id: "A2-Standard",
-    name: "A2 Standard",
+    id: "B2-XF1-A",
+    name: "B2-XF1-A",
     description:
-      "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
+      "This model includes all functions of the B2 dog (without the laser SLAM kit) and features gas sensors, a 360° omnidirectional camera, a point-to-point communication module, and an industrial-grade remote control. It also comes with a 3W fill light, air transport box, and tool kit with mounting rails.",
     gallery: [
       "/media/A2-standard.png",
 
     ],
 features: [
   {
-    label: "LiDAR Sensor",
-    detail: "Single LiDAR for obstacle avoidance & mapping",
+    label: "360° Omnidirectional Camera",
+    detail: "Panoramic video monitoring",
     position: { top: "1%", left: "20%" },
-    positionSm: { top: "5%", left: "35%" }, 
+    positionSm: { top: "5%", left: "35%" },
     lineDirection: "left",
     targetPoint: { x: "12%", y: "26%" },
-targetPointSm: { x: "19%", y: "32%" }   // head/top front
+    targetPointSm: { x: "19%", y: "32%" }   // head/top front
   },
   {
-    label: "Wide-Angle Camera",
-    detail: "HD wide-angle vision, expandable to dual cameras",
-    position: { top: "1%", left: "40%" },
-    positionSm: { top: "5%", left: "45%" },
+    label: "Industrial-Grade Gas Sensors",
+    detail: "CH4, O2, CO2, H2S",
+    position: { top: "15%", left: "85%" },
+    positionSm: { top: "20%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "16%", y: "29%" },
-    targetPointSm: { x: "17%", y: "34%" }    // front face
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "36%" }   // side sensor module
   },
   {
-    label: "Battery Pack",
-    detail: "Dual 9000mAh batteries, 5h runtime, 20km range",
-    position: { top: "5%", left: "90%" },
-    positionSm: { top: "22%", left: "68%" },
-    lineDirection: "right",
-    targetPoint: { x: "60%", y: "30%" },
-    targetPointSm: { x: "62%", y: "42%" }  // side body compartment
-  },
-  {
-    label: "Joint Module",
-    detail: "High-torque motor joints enable stair & slope climbing",
-    position: { top: "65%", left: "85%" },
-    positionSm: { top: "72%", left: "88%" },
+    label: "Fill Light (3W)",
+    detail: "Dark area support",
+    position: { top: "30%", left: "10%" },
+    positionSm: { top: "40%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "75%", y: "25%" },  // leg joint area
-    targetPointSm: { x: "77%", y: "42%" }
-  },
-  {
-    label: "Payload Area",
-    detail: "Carries up to 25kg payload (max 100kg)",
-    position: { top: "60%", left: "43%" },
-    positionSm: { top: "75%", left: "45%" },
-    lineDirection: "left",
-    targetPoint: { x: "50%", y: "20%" },   // back/top of robot
-    targetPointSm: { x: "58%", y: "37%" }
+    targetPoint: { x: "18%", y: "42%" },
+    targetPointSm: { x: "24%", y: "48%" }   // near camera/sensor
   }
 ]
+
   },
   
   {
-    id: "A2-Pro",
-    name: "A2 Pro",
+    id: "B2-XF1-B",
+    name: "B2-XF1-B",
     description:
-      "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
+      "This version retains all functions of the B2-XF1-A (without mounting rails) and features a dual-optical gimbal camera. It supports audio intercom, high-resolution visible light imaging with zoom, advanced thermal imaging, and PTZ controls with wide horizontal and vertical range, presets, cruise routes, and vertical closed-loop support.",
     gallery: [
       "/media/A2-pro.png",
 
     ],
 features: [
   {
-    label: "Dual LiDAR Sensors",
-    detail: "Enhanced perception with two LiDAR units for improved mapping and navigation",
-    position: { top: "10%", left: "20%" },
-    positionSm: { top: "5%", left: "35%" }, 
+    label: "Dual-Optical Gimbal Camera",
+    detail: "Zoom & tracking",
+    position: { top: "3%", left: "45%" },        // label position
+    positionSm: { top: "6%", left: "40%" },
     lineDirection: "left",
-    targetPoint: { x: "29%", y: "63%" },
-    targetPointSm: { x: "19%", y: "32%" } 
+    targetPoint: { x: "50%", y: "8%" },          // gimbal on top front
+    targetPointSm: { x: "48%", y: "12%" }
   },
   {
-    label: "GPS Module",
-    detail: "Integrated GPS for precise outdoor positioning and navigation",
-    position: { top: "8%", left: "95%" },
-    positionSm: { top: "2%", left: "50%" },
+    label: "Thermal Imaging",
+    detail: "Infrared detection",
+    position: { top: "20%", left: "80%" },       // label position
+    positionSm: { top: "25%", left: "72%" },
     lineDirection: "right",
-    targetPoint: { x: "45%", y: "32%" },
-    targetPointSm: { x: "60%", y: "37%" }
+    targetPoint: { x: "60%", y: "20%" },         // thermal lens on gimbal
+    targetPointSm: { x: "58%", y: "25%" }
   },
   {
-    label: "4G Communication",
-    detail: "Seamless remote connectivity through built-in 4G module",
-    position: { top: "40%", left: "2%" },
-    positionSm: { top: "15%", left: "66%" },
-    lineDirection: "right",
-    targetPoint: { x: "60%", y: "35%" },
-    targetPointSm: { x: "55%", y: "40%" }
-  },
-  {
-    label: "Wireless Vector Positioning",
-    detail: "Companion module for wireless vector-based positioning support",
-    position: { top: "40%", left: "77%" },
-    positionSm: { top: "78%", left: "76%" },
-    lineDirection: "right",
-    targetPoint: { x: "50%", y: "13%" },
-    targetPointSm: { x: "47%", y: "35%" }
-  },
-  {
-    label: "High-Computing Dock",
-    detail: "Expansion dock increases built-in computing power to three units",
-    position: { top: "65%", left: "90%" },
-    positionSm: { top: "70%", left: "19%" },
-    lineDirection: "right",
-    targetPoint: { x: "50%", y: "10%" },
-    targetPointSm: { x: "69%", y: "39%" }
+    label: "Audio Intercom",
+    detail: "Mic + Speaker",
+    position: { top: "35%", left: "15%" },       // label position
+    positionSm: { top: "42%", left: "25%" },
+    lineDirection: "left",
+    targetPoint: { x: "45%", y: "32%" },         // small holes near sensor box
+    targetPointSm: { x: "48%", y: "38%" }
   }
 ]
 
   },
   
   {
-    id: "A2-W-Standard",
-    
-    name: "A2-W Standard",
+    id: "B2-XF1-C",
+    name: "B2-XF1-C",
     description:
-      "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
+      "This model provides all functions of the B2-XF1-B and comes with a quick-release toolbox for easy handling. The box is spacious and includes a fire emergency kit equipped with a smoke alarm, fire blanket, smoke mask, multi-function flashlight, and rope.",
     gallery: [
       "/media/A2-w.png",
 
     ],
 features: [
   {
-    label: "LIDAR Sensor",
-    detail: "Single LiDAR for navigation & mapping",
-    position: { top: "5%", left: "15%" },
-    positionSm: { top: "5%", left: "30%" }, 
+    label: "Quick-release Tool Box",
+    detail: "Detachable storage unit",
+    position: { top: "8%", left: "45%" },
+    positionSm: { top: "12%", left: "50%" },
+    lineDirection: "right",
+    targetPoint: { x: "50%", y: "10%" },
+    targetPointSm: { x: "55%", y: "15%" }
+  },
+  {
+    label: "Emergency Kit",
+    detail: "Fire & safety tools",
+    position: { top: "15%", left: "55%" },
+    positionSm: { top: "20%", left: "60%" },
     lineDirection: "left",
-    targetPoint: { x: "21%", y: "22%" },
-    targetPointSm: { x: "19%", y: "32%" } 
+    targetPoint: { x: "60%", y: "18%" },
+    targetPointSm: { x: "65%", y: "22%" }
   },
   {
-    label: "Optical Camera",
-    detail: "Wide-angle depth camera (expandable to 2)",
-    position: { top: "3%", left: "35%" },
-    positionSm: { top: "5%", left: "45%" },
+    label: "Robot Body Functions",
+    detail: "All B2-XF2-B features",
+    position: { top: "60%", left: "40%" },
+    positionSm: { top: "65%", left: "45%" },
     lineDirection: "right",
-    targetPoint: { x: "24%", y: "25%" },
-    targetPointSm: { x: "17%", y: "34%" } 
-  },
-  {
-    label: "Wheeled Legs",
-    detail: "Hybrid leg-wheel design for versatile terrain",
-    position: { top: "75%", left: "15%" },
-    positionSm: { top: "79%", left: "15%" },
-    lineDirection: "right",
-    targetPoint: { x: "45%", y: "50%" },
-    targetPointSm: { x: "6%", y: "67%" } 
-  },
-  {
-    label: "Battery Pack",
-    detail: "Dual-bay 9000mAh/18000mAh system",
-    position: { top: "5%", left: "90%" },
-    positionSm: { top: "22%", left: "65%" },
-    lineDirection: "right",
-    targetPoint: { x: "60%", y: "30%" },
-    targetPointSm: { x: "62%", y: "42%" }
-  },
-  {
-    label: "Computing Power",
-    detail: "8-core CPU + Intel i7 dual-unit system",
-    position: { top: "65%", left: "80%" },
-    positionSm: { top: "72%", left: "88%" },
-    lineDirection: "left",
-    targetPoint: { x: "65%", y: "13%" },
-    targetPointSm: { x: "57%", y: "37%" }
+    targetPoint: { x: "45%", y: "70%" },
+    targetPointSm: { x: "50%", y: "75%" }
   }
 ]
 
   },
 
   {
-    id: "A2-W-Pro",
-    name: "A2-W Pro",
+    id: "B2-XF1-D",
+    name: "B2-XF1-D",
     description:
-      "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
+      "This version offers all the functions of the B2-XF1-B while integrating the Z1 Pro robotic arm. The arm is fitted with a gripper and a 1080P HD camera, enabling precise manipulation and visual monitoring.",
     gallery: [
       "/media/A2-w-pro.png",
 
     ],
 features: [
   {
-    label: "LIDAR Sensor",
-    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
-    position: { top: "1%", left: "20%" },
-    positionSm: { top: "5%", left: "35%" }, 
+    label: "Robotic Arm",
+    detail: "Equipped with Z1 Pro robotic arm",
+    position: { top: "18%", left: "72%" },
+    positionSm: { top: "20%", left: "65%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "88%", y: "40%" },
+    targetPointSm: { x: "80%", y: "42%" } 
+  },
+  {
+    label: "Gripper",
+    detail: "Integrated gripper",
+    position: { top: "30%", left: "75%" },
+    positionSm: { top: "32%", left: "68%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "90%", y: "52%" },
+    targetPointSm: { x: "82%", y: "55%" } 
+  },
+  {
+    label: "Vision Camera",
+    detail: "1080P HD camera for vision support",
+    position: { top: "5%", left: "40%" },
+    positionSm: { top: "7%", left: "38%" }, 
     lineDirection: "left",
-    targetPoint: { x: "30%", y: "12%" },
-    targetPointSm: { x: "19%", y: "32%" } 
+    targetPoint: { x: "46%", y: "18%" },
+    targetPointSm: { x: "44%", y: "22%" } 
+  }
+]
+
   },
+  
   {
-    label: "Optical Camera",
-    detail: "Wide-angle depth camera system, expandable to dual setup",
-    position: { top: "3%", left: "50%" },
-    positionSm: { top: "5%", left: "45%" },
-    lineDirection: "right",
-    targetPoint: { x: "35%", y: "18%" },
-    targetPointSm: { x: "17%", y: "34%" }
-  },
+    id: "B2-XF1-E",
+    name: "B2-XF1-E",
+    description:
+      "This model contains all functions of the B2-XF1-B along with an advanced acoustic imager. It uses a 128-sensor MEMS microphone array to provide 1080p acoustic imaging with a wide frequency response, long measurement range, and gas leakage detection, making it ideal for industrial monitoring.",
+    gallery: [
+      "/media/A2-w.png",
+
+    ],
+features: [
   {
-    label: "Wheeled Legs",
-    detail: "Hybrid leg-wheel design with improved stability & payload handling",
-    position: { top: "85%", left: "22%" },
-    positionSm: { top: "79%", left: "15%" },
-    lineDirection: "right",
-    targetPoint: { x: "5%", y: "81%" },
-    targetPointSm: { x: "6%", y: "67%" } 
-  },
-  {
-    label: "Battery Pack",
-    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
-    position: { top: "12%", left: "95%" },
-    positionSm: { top: "22%", left: "68%" },
-    lineDirection: "right",
-    targetPoint: { x: "70%", y: "30%" },
-    targetPointSm: { x: "62%", y: "42%" }
-  },
-  {
-    label: "Computing Power",
-    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
-    position: { top: "90%", left: "87%" },
-    positionSm: { top: "72%", left: "88%" },
+    label: "Acoustic Imager",
+    detail: "High-precision MEMS digital microphone array with 128 sensors",
+    position: { top: "10%", left: "60%" },
+    positionSm: { top: "15%", left: "70%" },
     lineDirection: "left",
-    targetPoint: { x: "72%", y: "23%" },
-    targetPointSm: { x: "57%", y: "37%" }
+    targetPoint: { x: "75%", y: "20%" },
+    targetPointSm: { x: "65%", y: "25%" }
+  },
+  {
+    label: "HD Camera",
+    detail: "1920×1080 resolution, 5MP sensor, 60° FOV",
+    position: { top: "25%", left: "20%" },
+    positionSm: { top: "30%", left: "25%" },
+    lineDirection: "right",
+    targetPoint: { x: "30%", y: "28%" },
+    targetPointSm: { x: "28%", y: "32%" }
+  },
+  {
+    label: "Gas Leakage Detection",
+    detail: "Detects >100 sccm (0.2Mpa/2Bar) in quiet environments",
+    position: { top: "80%", left: "50%" },
+    positionSm: { top: "85%", left: "55%" },
+    lineDirection: "left",
+    targetPoint: { x: "52%", y: "78%" },
+    targetPointSm: { x: "54%", y: "82%" }
+  }
+]
+
+  },
+
+  {
+    id: "B2-XF1-F",
+    name: "B2-XF1-F",
+    description:
+      "This version includes all functions of the B2-XF1-B and adds a 3D laser mobile scanning system. With 16 laser beams, 320,000 points per second scanning speed, and 120m range with 1cm accuracy, it supports 360°×285° coverage, visual SLAM, and has a 500GB expandable SSD for efficient data storage.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "3D Laser Scanner",
+    detail: "High-speed laser scanning",
+    position: { top: "2%", left: "45%" },
+    positionSm: { top: "5%", left: "50%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "48%", y: "8%" },
+    targetPointSm: { x: "52%", y: "12%" }
+  },
+  {
+    label: "16-Laser Beam",
+    detail: "1 cm point accuracy",
+    position: { top: "12%", left: "70%" },
+    positionSm: { top: "15%", left: "65%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "60%", y: "15%" },
+    targetPointSm: { x: "62%", y: "18%" }
+  },
+  {
+    label: "SSD Storage",
+    detail: "500GB expandable memory",
+    position: { top: "55%", left: "15%" },
+    positionSm: { top: "58%", left: "20%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "40%", y: "60%" },
+    targetPointSm: { x: "42%", y: "64%" }
+  }
+]
+
+  },
+
+
+
+//Firefighter Solutions with 3D LIDAR
+
+    {
+    id: "B2-XF2-A",
+    name: "B2-XF2-A (with 3D LIDAR)",
+    description:
+      "This model includes all functions of the B2 dog with the basic laser SLAM kit. It features industrial gas sensors, a 360° omnidirectional camera, point-to-point communication, and an industrial-grade remote control with noise-cancelling headset. Extras include a 3W fill light, air transport box, and tool kit with mounting rails.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "Gas Sensors",
+    detail: "Detects CH4, O2, CO2 & H2S",
+    position: { top: "22%", left: "28%" },
+    positionSm: { top: "25%", left: "35%" },
+    lineDirection: "left",
+    targetPoint: { x: "32%", y: "30%" },
+    targetPointSm: { x: "38%", y: "36%" }
+  },
+  {
+    label: "360° Camera",
+    detail: "Panoramic vision support",
+    position: { top: "5%", left: "50%" },
+    positionSm: { top: "10%", left: "55%" },
+    lineDirection: "right",
+    targetPoint: { x: "52%", y: "12%" },
+    targetPointSm: { x: "58%", y: "18%" }
+  },
+  {
+    label: "Comm Module",
+    detail: "Point-to-point link",
+    position: { top: "40%", left: "70%" },
+    positionSm: { top: "45%", left: "75%" },
+    lineDirection: "right",
+    targetPoint: { x: "68%", y: "48%" },
+    targetPointSm: { x: "74%", y: "52%" }
   }
 ]
   },
-  
+
+
+    {
+    id: "B2-XF2-B",
+    name: "B2-XF2-B (with 3D LIDAR)",
+    description:
+      "This version retains all functions of the B2-XF2-A (without mounting rails) and adds a dual-light gimbal camera. It supports audio intercom, high-resolution visible light imaging with powerful zoom, thermal imaging, and a PTZ system with 360° rotation, cruise routes, presets, and power-off recovery.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "Dual-Light Gimbal Camera",
+    detail: "Mounted on the top-front head section",
+    position: { top: "4%", left: "55%" },
+    positionSm: { top: "6%", left: "60%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "12%" },
+    targetPointSm: { x: "62%", y: "18%" } 
+  },
+  {
+    label: "Thermal Imaging Sensor",
+    detail: "Integrated within the gimbal camera module",
+    position: { top: "12%", left: "65%" },
+    positionSm: { top: "16%", left: "68%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "66%", y: "20%" },
+    targetPointSm: { x: "70%", y: "25%" } 
+  },
+  {
+    label: "PTZ System",
+    detail: "Pan-Tilt-Zoom mechanism for full movement",
+    position: { top: "18%", left: "50%" },
+    positionSm: { top: "22%", left: "55%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "52%", y: "28%" },
+    targetPointSm: { x: "56%", y: "32%" } 
+  }
+]
+
+  },
+
+
+    {
+    id: "B2-XF2-C",
+    name: "B2-XF2-C (with 3D LIDAR)",
+    description:
+      "This model offers all functions of the B2-XF2-B and comes with a quick-release toolbox (557×350×240mm). The box includes a fire emergency kit with essentials such as a smoke alarm, fire blanket, smoke mask, flashlight, and multi-function rope.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "Quick-Release Tool Box",
+    detail: "Outer dimensions: 557×350×240 mm; Inner dimensions: 528×293×200 mm (150+50 mm).",
+    position: { top: "22%", left: "55%" },
+    positionSm: { top: "28%", left: "65%" },
+    lineDirection: "right",
+    targetPoint: { x: "48%", y: "45%" },
+    targetPointSm: { x: "58%", y: "50%" }
+  },
+  {
+    label: "Fire Emergency Kit",
+    detail: "Includes smoke alarm, fire blanket, smoke mask, multi-function flashlight, multi-function rope, etc.",
+    position: { top: "45%", left: "70%" },
+    positionSm: { top: "50%", left: "75%" },
+    lineDirection: "right",
+    targetPoint: { x: "60%", y: "55%" },
+    targetPointSm: { x: "68%", y: "60%" }
+  },
+  {
+    label: "All Functions of B2-XF2-B",
+    detail: "Inherits and supports every feature of the B2-XF2-B model.",
+    position: { top: "10%", left: "20%" },
+    positionSm: { top: "15%", left: "25%" },
+    lineDirection: "left",
+    targetPoint: { x: "38%", y: "25%" },
+    targetPointSm: { x: "30%", y: "30%" }
+  }
+]
+  },
+
+
+    {
+    id: "B2-XF2-D",
+    name: "B2-XF2-D (with 3D LIDAR)",
+    description:
+      "This version contains all functions of the B2-XF2-B and integrates the Z1 Pro robotic arm. The arm is equipped with a gripper and a 1080P HD camera, enabling precise handling with real-time visual feedback.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "Z1 Pro Robot Arm",
+    detail: "Equipped with a gripper and 1080P HD camera for manipulation & vision tasks",
+    position: { top: "8%", left: "55%" },
+    positionSm: { top: "15%", left: "70%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "65%", y: "18%" },
+    targetPointSm: { x: "60%", y: "28%" } 
+  },
+  {
+    label: "Control Tablet",
+    detail: "Handheld controller for real-time operation & monitoring",
+    position: { top: "70%", left: "10%" },
+    positionSm: { top: "80%", left: "25%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "20%", y: "82%" },
+    targetPointSm: { x: "30%", y: "88%" } 
+  }
+]
+  },
+
+
+    {
+    id: "B2-XF2-E",
+    name: "B2-XF2-E (with 3D LIDAR)",
+    description:
+      "This model includes all functions of the B2-XF2-B and an advanced acoustic imager. With 128 MEMS microphones, 1080p imaging, and a wide frequency range, it supports accurate sound detection, gas leak monitoring, and measurements up to 50m for industrial use.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "Acoustic Imager",
+    detail: "Microphone array on top for sound-based inspection & mapping",
+    position: { top: "5%", left: "65%" },
+    positionSm: { top: "10%", left: "75%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "8%" },
+    targetPointSm: { x: "52%", y: "15%" } 
+  },
+  {
+    label: "Gas Leakage Detection",
+    detail: "Integrated with the acoustic imager for real-time gas leakage sensing",
+    position: { top: "15%", left: "65%" },
+    positionSm: { top: "22%", left: "75%" }, 
+    lineDirection: "right",
+    targetPoint: { x: "58%", y: "12%" },
+    targetPointSm: { x: "52%", y: "20%" } 
+  },
+  {
+    label: "Camera Module",
+    detail: "Front-facing camera for vision and object detection",
+    position: { top: "45%", left: "10%" },
+    positionSm: { top: "55%", left: "20%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "35%", y: "50%" },
+    targetPointSm: { x: "40%", y: "58%" } 
+  }
+]
+
+  },
+
+
+    {
+    id: "B2-XF2-F",
+    name: "B2-XF2-F (with 3D LIDAR)",
+    description:
+      "This version offers all functions of the B2-XF2-B and features a 3D laser mobile scanning system. It uses 16 laser beams with 320,000 points/sec speed, 120m range, and 1cm accuracy, plus 360°×285° coverage, visual SLAM, and a 500GB expandable SSD for data storage.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "3D Laser Scanner",
+    detail: "16-beam mobile scanning system with 320,000 points/sec",
+    position: { top: "12%", left: "70%" },
+    positionSm: { top: "18%", left: "78%" },
+    lineDirection: "right",
+    targetPoint: { x: "60%", y: "15%" },
+    targetPointSm: { x: "55%", y: "22%" }
+  },
+  {
+    label: "Visual SLAM",
+    detail: "Supports real-time localization and mapping",
+    position: { top: "45%", left: "25%" },
+    positionSm: { top: "50%", left: "30%" },
+    lineDirection: "left",
+    targetPoint: { x: "35%", y: "48%" },
+    targetPointSm: { x: "40%", y: "55%" }
+  }
+]
+
+  },
+
 
 ]
 
@@ -466,7 +711,7 @@ const Button = ({
   </button>
 )
 
-function A2Variants() {
+function FirefightingVariants() {
   const { isDark } = useTheme();
   const [selectedVariant, setSelectedVariant] = useState("go2-basic");
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
@@ -954,4 +1199,4 @@ function A2Variants() {
   );
 }
 
-export default A2Variants;
+export default FirefightingVariants;
