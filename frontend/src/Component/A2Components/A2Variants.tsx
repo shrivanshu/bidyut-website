@@ -178,10 +178,7 @@ RobotSpec[] = [
       "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
       "/media/A2-standard.png",
-      "/media/A2-standard.png",
-      "/media/A2-standard.png",
-      "/media/A2-standard.png",
-      "/media/A2-standard.png"
+
     ],
 features: [
   {
@@ -239,10 +236,7 @@ targetPointSm: { x: "19%", y: "32%" }   // head/top front
       "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
     gallery: [
       "/media/A2-pro.png",
-      "/media/A2-pro.png",
-      "/media/A2-pro.png",
-      "/media/A2-pro.png",
-      "/media/A2-pro.png"
+
     ],
 features: [
   {
@@ -302,10 +296,7 @@ features: [
       "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
     gallery: [
       "/media/A2-w.png",
-      "/media/A2-w.png",
-      "/media/A2-w.png",
-      "/media/A2-w.png",
-      "/media/A2-w.png"
+
     ],
 features: [
   {
@@ -364,10 +355,7 @@ features: [
       "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
     gallery: [
       "/media/A2-w-pro.png",
-      "/media/A2-w-pro.png",
-      "/media/A2-w-pro.png",
-      "/media/A2-w-pro.png",
-      "/media/A2-w-pro.png"
+
     ],
 features: [
   {
