@@ -172,10 +172,10 @@ const variantImages: Record<string, string> = {
 const robotSpecs: 
 RobotSpec[] = [
   {
-    id: "A2-Standard",
-    name: "A2 Standard",
+    id: "B2-XF1-A",
+    name: "B2-XF1-A",
     description:
-      "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
+      "This model includes all functions of the B2 dog (without the laser SLAM kit) and features gas sensors, a 360° omnidirectional camera, a point-to-point communication module, and an industrial-grade remote control. It also comes with a 3W fill light, air transport box, and tool kit with mounting rails.",
     gallery: [
       "/media/A2-standard.png",
 
@@ -230,10 +230,10 @@ targetPointSm: { x: "19%", y: "32%" }   // head/top front
   },
   
   {
-    id: "A2-Pro",
-    name: "A2 Pro",
+    id: "B2-XF1-B",
+    name: "B2-XF1-B",
     description:
-      "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
+      "This version retains all functions of the B2-XF1-A (without mounting rails) and features a dual-optical gimbal camera. It supports audio intercom, high-resolution visible light imaging with zoom, advanced thermal imaging, and PTZ controls with wide horizontal and vertical range, presets, cruise routes, and vertical closed-loop support.",
     gallery: [
       "/media/A2-pro.png",
 
@@ -289,11 +289,10 @@ features: [
   },
   
   {
-    id: "A2-W-Standard",
-    
-    name: "A2-W Standard",
+    id: "B2-XF1-C",
+    name: "B2-XF1-C",
     description:
-      "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
+      "This model provides all functions of the B2-XF1-B and comes with a quick-release toolbox for easy handling. The box is spacious and includes a fire emergency kit equipped with a smoke alarm, fire blanket, smoke mask, multi-function flashlight, and rope.",
     gallery: [
       "/media/A2-w.png",
 
@@ -349,10 +348,10 @@ features: [
   },
 
   {
-    id: "A2-W-Pro",
-    name: "A2-W Pro",
+    id: "B2-XF1-D",
+    name: "B2-XF1-D",
     description:
-      "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
+      "This version offers all the functions of the B2-XF1-B while integrating the Z1 Pro robotic arm. The arm is fitted with a gripper and a 1080P HD camera, enabling precise manipulation and visual monitoring.",
     gallery: [
       "/media/A2-w-pro.png",
 
@@ -406,6 +405,470 @@ features: [
 ]
   },
   
+  {
+    id: "B2-XF1-E",
+    name: "B2-XF1-E",
+    description:
+      "This model contains all functions of the B2-XF1-B along with an advanced acoustic imager. It uses a 128-sensor MEMS microphone array to provide 1080p acoustic imaging with a wide frequency response, long measurement range, and gas leakage detection, making it ideal for industrial monitoring.",
+    gallery: [
+      "/media/A2-w.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Single LiDAR for navigation & mapping",
+    position: { top: "5%", left: "15%" },
+    positionSm: { top: "5%", left: "30%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "21%", y: "22%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera (expandable to 2)",
+    position: { top: "3%", left: "35%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "24%", y: "25%" },
+    targetPointSm: { x: "17%", y: "34%" } 
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design for versatile terrain",
+    position: { top: "75%", left: "15%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "45%", y: "50%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay 9000mAh/18000mAh system",
+    position: { top: "5%", left: "90%" },
+    positionSm: { top: "22%", left: "65%" },
+    lineDirection: "right",
+    targetPoint: { x: "60%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "8-core CPU + Intel i7 dual-unit system",
+    position: { top: "65%", left: "80%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "65%", y: "13%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+
+  },
+
+  {
+    id: "B2-XF1-F",
+    name: "B2-XF1-F",
+    description:
+      "This version includes all functions of the B2-XF1-B and adds a 3D laser mobile scanning system. With 16 laser beams, 320,000 points per second scanning speed, and 120m range with 1cm accuracy, it supports 360°×285° coverage, visual SLAM, and has a 500GB expandable SSD for efficient data storage.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+
+
+
+//Firefighter Solutions with 3D LIDAR
+
+    {
+    id: "B2-XF2-A",
+    name: "B2-XF2-A (with 3D LIDAR)",
+    description:
+      "This model includes all functions of the B2 dog with the basic laser SLAM kit. It features industrial gas sensors, a 360° omnidirectional camera, point-to-point communication, and an industrial-grade remote control with noise-cancelling headset. Extras include a 3W fill light, air transport box, and tool kit with mounting rails.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+    {
+    id: "B2-XF2-B",
+    name: "B2-XF2-B (with 3D LIDAR)",
+    description:
+      "This version retains all functions of the B2-XF2-A (without mounting rails) and adds a dual-light gimbal camera. It supports audio intercom, high-resolution visible light imaging with powerful zoom, thermal imaging, and a PTZ system with 360° rotation, cruise routes, presets, and power-off recovery.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+    {
+    id: "B2-XF2-C",
+    name: "B2-XF2-C (with 3D LIDAR)",
+    description:
+      "This model offers all functions of the B2-XF2-B and comes with a quick-release toolbox (557×350×240mm). The box includes a fire emergency kit with essentials such as a smoke alarm, fire blanket, smoke mask, flashlight, and multi-function rope.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+    {
+    id: "B2-XF2-D",
+    name: "B2-XF2-D (with 3D LIDAR)",
+    description:
+      "This version contains all functions of the B2-XF2-B and integrates the Z1 Pro robotic arm. The arm is equipped with a gripper and a 1080P HD camera, enabling precise handling with real-time visual feedback.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+    {
+    id: "B2-XF2-E",
+    name: "B2-XF2-E (with 3D LIDAR)",
+    description:
+      "This model includes all functions of the B2-XF2-B and an advanced acoustic imager. With 128 MEMS microphones, 1080p imaging, and a wide frequency range, it supports accurate sound detection, gas leak monitoring, and measurements up to 50m for industrial use.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+    {
+    id: "B2-XF2-F",
+    name: "B2-XF2-F (with 3D LIDAR)",
+    description:
+      "This version offers all functions of the B2-XF2-B and features a 3D laser mobile scanning system. It uses 16 laser beams with 320,000 points/sec speed, 120m range, and 1cm accuracy, plus 360°×285° coverage, visual SLAM, and a 500GB expandable SSD for data storage.",
+    gallery: [
+      "/media/A2-w-pro.png",
+
+    ],
+features: [
+  {
+    label: "LIDAR Sensor",
+    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+    position: { top: "1%", left: "20%" },
+    positionSm: { top: "5%", left: "35%" }, 
+    lineDirection: "left",
+    targetPoint: { x: "30%", y: "12%" },
+    targetPointSm: { x: "19%", y: "32%" } 
+  },
+  {
+    label: "Optical Camera",
+    detail: "Wide-angle depth camera system, expandable to dual setup",
+    position: { top: "3%", left: "50%" },
+    positionSm: { top: "5%", left: "45%" },
+    lineDirection: "right",
+    targetPoint: { x: "35%", y: "18%" },
+    targetPointSm: { x: "17%", y: "34%" }
+  },
+  {
+    label: "Wheeled Legs",
+    detail: "Hybrid leg-wheel design with improved stability & payload handling",
+    position: { top: "85%", left: "22%" },
+    positionSm: { top: "79%", left: "15%" },
+    lineDirection: "right",
+    targetPoint: { x: "5%", y: "81%" },
+    targetPointSm: { x: "6%", y: "67%" } 
+  },
+  {
+    label: "Battery Pack",
+    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+    position: { top: "12%", left: "95%" },
+    positionSm: { top: "22%", left: "68%" },
+    lineDirection: "right",
+    targetPoint: { x: "70%", y: "30%" },
+    targetPointSm: { x: "62%", y: "42%" }
+  },
+  {
+    label: "Computing Power",
+    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+    position: { top: "90%", left: "87%" },
+    positionSm: { top: "72%", left: "88%" },
+    lineDirection: "left",
+    targetPoint: { x: "72%", y: "23%" },
+    targetPointSm: { x: "57%", y: "37%" }
+  }
+]
+  },
+
 
 ]
 
