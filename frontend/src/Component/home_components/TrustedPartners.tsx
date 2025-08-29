@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from "react"
 export default function TrustedPartners() {
   const [arrowEndX, setArrowEndX] = useState(140)
   const [arrowEndY, setArrowEndY] = useState(50)
-  const [isActive, setIsActive] = useState(true) // make the arrow active by default so users can immediately move it
+  const [isActive, setIsActive] = useState(false) // make the arrow active by default so users can immediately move it
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null)
   const arrowRef = useRef<SVGSVGElement>(null)
   const animationFrameRef = useRef<number>()
