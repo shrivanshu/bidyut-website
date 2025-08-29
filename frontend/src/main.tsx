@@ -17,6 +17,9 @@ import { NavigationProvider } from './contexts/NavigationContext';
 import H1_page from './Pages/H1_page';
 import H1_2_page from './Pages/H1_2_page';
 import R1_page from './Pages/R1_page';
+import B2_Wells_Page from './Pages/B2_Wells_Page';
+import A2_Wells_Page from './Pages/A2_Wells_Page';
+import Inspection_page from './Pages/Inspection_page';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
 import RefundPolicy from './Pages/RefundPolicy';
@@ -39,6 +42,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/R1" element={<R1_page />} />
               <Route path="/B2" element={<B2Page />} />
               <Route path="/A2" element={<A2Page />} />
+              <Route path="/Inspection" element={<Inspection_page />} />
+              <Route path="/B2-W" element={<B2_Wells_Page />} />
+              <Route path="/A2-W" element={<A2_Wells_Page />} />
               <Route path="/School" element={<SchoolPage />} />
               <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
               <Route path="/Terms&Condition" element={<TermsCondition />} />
