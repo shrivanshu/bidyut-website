@@ -9,7 +9,7 @@ function H1_2_page() {
   return (
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
-        <Header />
+        <Header  />
         <HeroSectionH1_2 />
         <H1_2Variants/>
         <H1Detail/>
