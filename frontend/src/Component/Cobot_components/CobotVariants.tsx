@@ -161,6 +161,9 @@ const cobotSearchData = [
   },
 ]
 
+
+
+
 const robotSpecs: RobotSpec[] = [
   {
     id: "GO2-AIR",
@@ -168,49 +171,57 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 AIR.png",
+      "/GO2/GO2 AIR.png",
+      "/GO2/GO2 AIR.png",
+      "/GO2/GO2 AIR.png",
+      "/GO2/GO2 AIR.png"
     ],
     features: [
    {
     label: "Vision Sensor",
     detail: "1280 × 720 px camera, 120° field of view",
     position: { top: "1%", left: "17%" },
-    positionSm: { top: "10%", left: "45%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" },
+    targetPoint: { x: "5%", y: "34%"},
     targetPointSm: { x: "15%", y: "34%" }  
   },
   {
     label: "LIDAR",
     detail: "4D LIDAR, 360° × 90° coverage",
-    position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "12%", y: "52%" },
+    targetPointSm: { x: "15%", y: "34%" }  
   },
   {
     label: "Arm Control",
     detail: "2 DOF robotic arm, payload capacity 7 kg (maximum 10 kg)",
-    position: { top: "55%", left: "1%" },
+    position: { top: "75%", left: "20%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "65%", y: "55%" },
+    targetPointSm: { x: "15%", y: "34%" }
   },
   {
     label: "Battery",
     detail: "8000 mAh capacity, runtime 1–2 hours",
-    position: { top: "30%", left: "110%" },
+    position: { top: "60%", left: "99%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "67%", y: "31%" },
+    targetPointSm: { x: "15%", y: "34%" }
   },
   {
     label: "Motion Module",
     detail: "Torque output up to 100 Nm",
-    position: { top: "75%", left: "45%" },
+    position: { top: "85%", left: "60%" },
+    positionSm: { top: "5%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "78%", y: "20%" },
+    targetPointSm: { x: "15%", y: "34%" }
   }
 ]
 
@@ -221,47 +232,57 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 PRO.png",
+      "/GO2/GO2 PRO.png",
+      "/GO2/GO2 PRO.png",
+      "/GO2/GO2 PRO.png",
+      "/GO2/GO2 PRO.png"
     ],
   features: [
     {
       label: "Vision Sensor",
       detail: "Camera: 1920 × 1080 px | FOV: 130°",
       position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "6%", y: "30%" },
+      targetPointSm: { x: "5%", y: "34%" }
     },
     {
       label: "LIDAR",
       detail: "4D LIDAR | Coverage: 360° × 90° (enhanced)",
       position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "6%", y: "30%" },
+      targetPointSm: { x: "10%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "3 DOF robotic arm | Payload: 12 kg (max. 15 kg)",
       position: { top: "55%", left: "1%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "31%", y: "52%" },
+    targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "Battery",
       detail: "12000 mAh | Runtime: 2–3 h",
       position: { top: "30%", left: "110%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "58%", y: "36%" },
+    targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "Motion Module",
       detail: "Torque output up to 200 Nm",
       position: { top: "75%", left: "45%" },
+      positionSm: { top: "5%", left: "15%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "70%", y: "35%" },
+    targetPointSm: { x: "10%", y: "45%" },
     }
   ],
   
@@ -273,47 +294,49 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 EDU U1.png",
+      "/GO2/GO2 EDU U1.png",
+      "/GO2/GO2 EDU U1.png",
+      "/GO2/GO2 EDU U1.png",
+      "/GO2/GO2 EDU U1.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "10%", left: "50%" },
-    lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+      position: { top: "5%", left: "15%" },
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "13%", y: "35%" },
+      targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "15%", y: "50%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity up to 8–10 kg",
-      position: { top: "55%", left: "1%" },
+    position: { top: "65%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "56%", y: "59%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime ~2–3 hours",
-     position: { top: "30%", left: "110%" },
+     position: { top: "55%", left: "98%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "76%", y: "25%" }
     },
   ],
   },
@@ -324,47 +347,50 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 EDU2.png",
+      "/GO2/GO2 EDU2.png",
+      "/GO2/GO2 EDU2.png",
+      "/GO2/GO2 EDU2.png",
+      "/GO2/GO2 EDU2.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+      position: { top: "5%", left: "15%" },
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "13%", y: "35%" },
+      targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "15%", y: "50%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "55%", left: "1%" },
+    position: { top: "65%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "56%", y: "59%" }
     },
+
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
-      position: { top: "30%", left: "110%" },
+    position: { top: "55%", left: "98%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "76%", y: "25%" }
     },
   ],
   },
@@ -375,47 +401,47 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°) + 3D Mid-360 LiDAR, Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 EDU U3.png",
+      "/GO2/GO2 EDU U3.png",
+      "/GO2/GO2 EDU U3.png",
+      "/GO2/GO2 EDU U3.png",
+      "/GO2/GO2 EDU U3.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "10%" },
     lineDirection: "right",
     targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) + Mid-360 LiDAR for obstacle avoidance",
-     position: { top: "10%", left: "50%" },
+     position: { top: "2%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "52%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "18%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "60%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
       position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "33%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "95%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "23%" }
     },
   ],
   },
@@ -426,47 +452,47 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (limit ~10 kg), Maximum speed 3.7 m/s, Computing Power 100 TOPS (Jetson Orin NX 16GB), Front Camera resolution 1280 × 720 px with 120° FOV, Maximum gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D XT16 LiDAR. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 EDU U4.png",
+      "/GO2/GO2 EDU U4.png",
+      "/GO2/GO2 EDU U4.png",
+      "/GO2/GO2 EDU U4.png",
+      "/GO2/GO2 EDU U4.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "1280×720 px, 120° FOV",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "10%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "12%", y: "37%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D XT16 LiDAR",
-     position: { top: "10%", left: "50%" },
+     position: { top: "2%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "52%" }
     },
     {
       label: "Arm Control",
       detail: "Payload 8 kg (limit ~10 kg)",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "18%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "60%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "30%", left: "110%" },
+      position: { top: "40%", left: "85%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "80%", y: "22%" }
     },
   ],
   },
@@ -476,11 +502,11 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 40 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.png"
     ],
  features: [
     {
@@ -488,35 +514,35 @@ features: [
       detail: "RealSense D435i depth camera",
       position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "17%", y: "29%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "2%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "18%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "55%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "62%", y: "49%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-     position: { top: "30%", left: "110%" },
+      position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "33%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "22%" }
     },
   ],
   },
@@ -526,47 +552,47 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-     position: { top: "1%", left: "17%" },
+      position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "17%", y: "29%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "2%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "18%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "55%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "62%", y: "49%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-    position: { top: "30%", left: "110%" },
+      position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "22%" }
     },
   ],
   },
@@ -576,47 +602,47 @@ features: [
     description:
       "Technical specifications: Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Mid-360). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.png"
     ],
 features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "1%", left: "17%" },
+      position: { top: "1%", left: "12%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "20%", y: "32%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Mid-360)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "5%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "47%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "85%", left: "20%" },
     lineDirection: "right",
     targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-       position: { top: "30%", left: "110%" },
+       position: { top: "45%", left: "100%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "85%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "78%", y: "25%" }
     },
   ],
   },
@@ -626,47 +652,47 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Hesai XT16). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.png"
     ],
  features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "5%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "16%", y: "33%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "1%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "17%", y: "48%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "27%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "67%", y: "53%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-       position: { top: "30%", left: "110%" },
+       position: { top: "40%", left: "87%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "68%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "78%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "25%" }
     },
   ],
   },
@@ -676,11 +702,11 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.png"
     ],
  features: [
     {
@@ -688,35 +714,35 @@ features: [
       detail: "RealSense D435i depth camera",
       position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "18%", y: "41%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "5%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "55%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "75%", left: "27%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "65%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
        position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "38%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "82%", left: "85%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+     targetPoint: { x: "78%", y: "30%" }
     },
   ],
   },
@@ -726,40 +752,40 @@ features: [
     description:
       "Advanced version of GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), HD video transmission (1080P, 180ms delay), and dual 1080P cameras with fill lights. Depth camera not included.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 ENT U1.png",
+      "/GO2/GO2 ENT U1.png",
+      "/GO2/GO2 ENT U1.png",
+      "/GO2/GO2 ENT U1.png",
+      "/GO2/GO2 ENT U1.png"
     ],
 features: [
   {
     label: "Video Transmission",
     detail: "1080P HD, 180 ms delay",
-    position: { top: "68%", left: "5%" },
+    position: { top: "68%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }   // front head area (camera/sensor)
+    targetPoint: { x: "30%", y: "20%" }   // front head area (camera/sensor)
   },
   {
     label: "Depth Camera",
     detail: "3D depth perception",
     position: { top: "5%", left: "15%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }   // head-mounted depth cam
+    targetPoint: { x: "12%", y: "37%" }   // head-mounted depth cam
   },
   {
     label: "Remote Control",
     detail: "Multi-functional remote",
-    position: { top: "10%", left: "90%" },
+    position: { top: "7%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }   // external accessory, annotated
+    targetPoint: { x: "40%", y: "12%" }   // external accessory, annotated
   },
   {
     label: "Communication",
     detail: "5.8G wireless + 4G backup",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "37%" }   // mid-body communication module
+    targetPoint: { x: "58%", y: "25%" }   // mid-body communication module
   }
 ],
   },
@@ -769,33 +795,33 @@ features: [
     description:
       "Enhanced GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), low-latency 1080P video transmission, and dual wide-angle cameras with fill lights. Depth camera not included.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png"
     ],
 features: [
   {
     label: "Video Transmission",
     detail: "Dual-camera HD video with remote monitoring",
-    position: { top: "68%", left: "5%" },
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
     detail: "Integrated depth camera included",
-    position: { top: "5%", left: "15%" },
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
     detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
@@ -812,37 +838,37 @@ features: [
     description:
       "Advanced GO2 EDU with screen remote, dual comms (5.8G + 4G), 1080P low-latency video, dual wide-angle cameras, searchlight (30W, 3000lm), warning lights (red/blue), and digital voice broadcasting up to 800m. Depth camera not included.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png"
     ],
 features: [
   {
     label: "Video Transmission",
-    detail: "Dual-camera system with remote live streaming",
-    position: { top: "68%", left: "5%" },
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
-    detail: "Equipped with depth camera for 3D vision",
-    position: { top: "5%", left: "15%" },
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
-    detail: "App + optional screen control support",
+    detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
-    detail: "5.8G + 4G backup link for stability",
+    detail: "5.8G wireless control & monitoring link",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
     targetPoint: { x: "58%", y: "37%" }
@@ -855,43 +881,42 @@ features: [
     description:
       "GO2 EDU upgrade with dual cameras, capture net gun, laser-assisted aiming, and app-based control for tactical operations. Built with aviation-grade material for precision and reliability.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.png"
     ],
 features: [
   {
     label: "Video Transmission",
-    detail: "Dual-camera support with live video feed",
-    position: { top: "68%", left: "5%" },
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }    // front body/head area
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
-    detail: "Not included in ENT-U4 configuration",
-    position: { top: "5%", left: "15%" },
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }    // rear side
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
-    detail: "Screen remote control via App",
+    detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }   // front underside
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
-    detail: "App-based real-time control with display feedback",
+    detail: "5.8G wireless control & monitoring link",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "37%" }    // top/rear body area
+    targetPoint: { x: "58%", y: "37%" }
   }
-],
-  },
+],  },
 
 ]
 
@@ -953,6 +978,7 @@ const Button = ({
 )
 
 function RobotShowcase() {
+
   const { isDark } = useTheme();
   const [selectedVariant, setSelectedVariant] = useState("go2-basic");
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
@@ -962,6 +988,26 @@ function RobotShowcase() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);
+
+  // Cobot image mapping
+  const cobotImages: Record<string, string> = {
+    "GO2-AIR": "/GO2/GO2 AIR.png",
+    "GO2-PRO": "/GO2/GO2 PRO.png",
+    "GO2 EDU U1": "/GO2/GO2 EDU U1.png",
+    "GO2 EDU U2": "/GO2/GO2 EDU2.png",
+    "GO2 EDU U3": "/GO2/GO2 EDU U3.png",
+    "GO2 EDU U4": "/GO2/GO2 EDU U4.png",
+    "GO2-W U1": "/GO2/GO2-W U1.png",
+    "GO2-W U2": "/GO2/GO2-W-U2.png",
+    "GO2-W U3": "/GO2/GO2-w-u3.png",
+    "GO2-W U4": "/GO2/GO2-W-U4.png",
+    "GO2-W U5": "/GO2/GO2-W-U5.png",
+    "GO2-ENT U1": "/GO2/GO2 ENT U1.png",
+    "GO2-ENT U2": "/GO2/GO2 ENT U2.png",
+    "GO2-ENT U3": "/GO2/GO2 ENT U2.png",
+    "GO2-ENT U4": "/GO2/GO2 ENT U2.png",
+    "GO2 Edu": "/GO2/GO2 EDU.png",
+  };
 
   // Drag scroll state for cobot images
   const [isDragging, setIsDragging] = useState(false);
@@ -1259,8 +1305,8 @@ function RobotShowcase() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src="/media/Cobot_true.svg"
-                  alt={displayName}
+                  src={cobotImages[currentSpec.name] || "/GO2.png"}
+                  alt={currentSpec.name}
                   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />
               </div>

@@ -278,7 +278,21 @@ html, body {
   50% {
     transform: translateY(-10px);
   }
+
 }
+
+@keyframes videoRotateZoomIn {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
