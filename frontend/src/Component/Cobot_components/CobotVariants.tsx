@@ -304,39 +304,39 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "5%", left: "10%" },
+      position: { top: "5%", left: "15%" },
       positionSm: { top: "5%", left: "15%" },
       lineDirection: "right",
-      targetPoint: { x: "15%", y: "31%" },
+      targetPoint: { x: "13%", y: "35%" },
       targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "15%", y: "50%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity up to 8–10 kg",
-      position: { top: "55%", left: "1%" },
+    position: { top: "65%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "56%", y: "59%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime ~2–3 hours",
-     position: { top: "30%", left: "110%" },
+     position: { top: "55%", left: "98%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "76%", y: "25%" }
     },
   ],
   },
@@ -357,37 +357,40 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-      position: { top: "1%", left: "17%" },
-    lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+      position: { top: "5%", left: "15%" },
+      positionSm: { top: "5%", left: "15%" },
+      lineDirection: "right",
+      targetPoint: { x: "13%", y: "35%" },
+      targetPointSm: { x: "10%", y: "45%" },
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) for obstacle avoidance",
-      position: { top: "10%", left: "50%" },
+    position: { top: "3%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "15%", y: "50%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "55%", left: "1%" },
+    position: { top: "65%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "56%", y: "59%" }
     },
+
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
-      position: { top: "30%", left: "110%" },
+    position: { top: "55%", left: "98%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "76%", y: "25%" }
     },
   ],
   },
@@ -408,37 +411,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "Front Camera 1280×720 px, FOV 120° + RealSense D435i",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "10%" },
     lineDirection: "right",
     targetPoint: { x: "13%", y: "35%" }
     },
     {
       label: "LIDAR",
       detail: "4D-LiDAR (360° × 90°) + Mid-360 LiDAR for obstacle avoidance",
-     position: { top: "10%", left: "50%" },
+     position: { top: "2%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "52%" }
     },
     {
       label: "Arm Control",
       detail: "Payload capacity 8 kg (limit up to 10 kg)",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "18%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "60%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh ×1, runtime ~2–3 hours",
       position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "33%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb height 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "95%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "23%" }
     },
   ],
   },
@@ -459,37 +462,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "1280×720 px, 120° FOV",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "10%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "12%", y: "37%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D XT16 LiDAR",
-     position: { top: "10%", left: "50%" },
+     position: { top: "2%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "52%" }
     },
     {
       label: "Arm Control",
       detail: "Payload 8 kg (limit ~10 kg)",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "18%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "60%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-      position: { top: "30%", left: "110%" },
+      position: { top: "40%", left: "85%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 3.7 m/s, Gradient 40°, Climb 16 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "80%", y: "22%" }
     },
   ],
   },
@@ -511,35 +514,35 @@ features: [
       detail: "RealSense D435i depth camera",
       position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "17%", y: "29%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "2%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "18%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "55%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "62%", y: "49%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-     position: { top: "30%", left: "110%" },
+      position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "33%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "22%" }
     },
   ],
   },
@@ -559,37 +562,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-     position: { top: "1%", left: "17%" },
+      position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "17%", y: "29%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "2%", left: "65%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "18%", y: "45%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "55%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "62%", y: "49%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-    position: { top: "30%", left: "110%" },
+      position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "25%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "75%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "22%" }
     },
   ],
   },
@@ -609,37 +612,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-      position: { top: "1%", left: "17%" },
+      position: { top: "1%", left: "12%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "20%", y: "32%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Mid-360)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "5%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "47%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "85%", left: "20%" },
     lineDirection: "right",
     targetPoint: { x: "31%", y: "51%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-       position: { top: "30%", left: "110%" },
+       position: { top: "45%", left: "100%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "85%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "78%", y: "25%" }
     },
   ],
   },
@@ -659,37 +662,37 @@ features: [
     {
       label: "Vision Sensor",
       detail: "RealSense D435i depth camera",
-     position: { top: "1%", left: "17%" },
+     position: { top: "1%", left: "5%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "16%", y: "33%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "1%", left: "60%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "17%", y: "48%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "70%", left: "27%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "67%", y: "53%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
-       position: { top: "30%", left: "110%" },
+       position: { top: "40%", left: "87%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "68%", y: "30%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "78%", left: "75%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+    targetPoint: { x: "79%", y: "25%" }
     },
   ],
   },
@@ -711,35 +714,35 @@ features: [
       detail: "RealSense D435i depth camera",
       position: { top: "1%", left: "17%" },
     lineDirection: "right",
-    targetPoint: { x: "13%", y: "35%" }
+    targetPoint: { x: "18%", y: "41%" }
     },
     {
       label: "LIDAR",
       detail: "4D-Lidar (360°×90°) + 3D LiDAR (Hesai XT16)",
-      position: { top: "10%", left: "50%" },
+      position: { top: "5%", left: "70%" },
     lineDirection: "right",
-    targetPoint: { x: "15%", y: "31%" }
+    targetPoint: { x: "20%", y: "55%" }
     },
     {
       label: "Arm Control",
       detail: "16 Joint Motors, Payload 3 kg",
-      position: { top: "55%", left: "1%" },
+      position: { top: "75%", left: "27%" },
     lineDirection: "right",
-    targetPoint: { x: "31%", y: "51%" }
+    targetPoint: { x: "65%", y: "60%" }
     },
     {
       label: "Battery",
       detail: "15000 mAh, runtime up to 2–3 h",
        position: { top: "30%", left: "110%" },
     lineDirection: "left",
-    targetPoint: { x: "58%", y: "36%" }
+    targetPoint: { x: "65%", y: "38%" }
     },
     {
       label: "Motion Module",
       detail: "Max speed 2.5 m/s, Gradient 35°, Climb 70 cm",
-      position: { top: "75%", left: "45%" },
+      position: { top: "82%", left: "85%" },
     lineDirection: "right",
-    targetPoint: { x: "70%", y: "35%" }
+     targetPoint: { x: "78%", y: "30%" }
     },
   ],
   },
@@ -759,30 +762,30 @@ features: [
   {
     label: "Video Transmission",
     detail: "1080P HD, 180 ms delay",
-    position: { top: "68%", left: "5%" },
+    position: { top: "68%", left: "20%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }   // front head area (camera/sensor)
+    targetPoint: { x: "30%", y: "20%" }   // front head area (camera/sensor)
   },
   {
     label: "Depth Camera",
     detail: "3D depth perception",
     position: { top: "5%", left: "15%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }   // head-mounted depth cam
+    targetPoint: { x: "12%", y: "37%" }   // head-mounted depth cam
   },
   {
     label: "Remote Control",
     detail: "Multi-functional remote",
-    position: { top: "10%", left: "90%" },
+    position: { top: "7%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }   // external accessory, annotated
+    targetPoint: { x: "40%", y: "12%" }   // external accessory, annotated
   },
   {
     label: "Communication",
     detail: "5.8G wireless + 4G backup",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "37%" }   // mid-body communication module
+    targetPoint: { x: "58%", y: "25%" }   // mid-body communication module
   }
 ],
   },
@@ -802,23 +805,23 @@ features: [
   {
     label: "Video Transmission",
     detail: "Dual-camera HD video with remote monitoring",
-    position: { top: "68%", left: "5%" },
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
     detail: "Integrated depth camera included",
-    position: { top: "5%", left: "15%" },
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
     detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
@@ -844,28 +847,28 @@ features: [
 features: [
   {
     label: "Video Transmission",
-    detail: "Dual-camera system with remote live streaming",
-    position: { top: "68%", left: "5%" },
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
-    detail: "Equipped with depth camera for 3D vision",
-    position: { top: "5%", left: "15%" },
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
-    detail: "App + optional screen control support",
+    detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
-    detail: "5.8G + 4G backup link for stability",
+    detail: "5.8G wireless control & monitoring link",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
     targetPoint: { x: "58%", y: "37%" }
@@ -887,34 +890,33 @@ features: [
 features: [
   {
     label: "Video Transmission",
-    detail: "Dual-camera support with live video feed",
-    position: { top: "68%", left: "5%" },
+    detail: "Dual-camera HD video with remote monitoring",
+    position: { top: "68%", left: "25%" },
     lineDirection: "right",
-    targetPoint: { x: "14%", y: "31%" }    // front body/head area
+    targetPoint: { x: "32%", y: "32%" }
   },
   {
     label: "Depth Camera",
-    detail: "Not included in ENT-U4 configuration",
-    position: { top: "5%", left: "15%" },
+    detail: "Integrated depth camera included",
+    position: { top: "5%", left: "25%" },
     lineDirection: "left",
-    targetPoint: { x: "14%", y: "39%" }    // rear side
+    targetPoint: { x: "16%", y: "47%" }
   },
   {
     label: "Remote Control",
-    detail: "Screen remote control via App",
+    detail: "App-based control (without screen)",
     position: { top: "10%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "28%", y: "28%" }   // front underside
+    targetPoint: { x: "40%", y: "25%" }
   },
   {
     label: "Communication",
-    detail: "App-based real-time control with display feedback",
+    detail: "5.8G wireless control & monitoring link",
     position: { top: "70%", left: "90%" },
     lineDirection: "right",
-    targetPoint: { x: "58%", y: "37%" }    // top/rear body area
+    targetPoint: { x: "58%", y: "37%" }
   }
-],
-  },
+],  },
 
 ]
 
