@@ -39,131 +39,66 @@ const cobotSearchData = [
 const robotSpecs: RobotSpec[] = [
   
   {
-    id: "B2-Basic-3D-Lidar",
-    name: "B2 Basic Version with 3D Lidar (Industry Grade)",
-    description:
-      "B2 Basic Version with 3D Lidar features a 60kg quadruped robot with 1098×450×645 mm dimensions, 5 m/s max speed, 40 cm step climbing capability, endurance over 20 km, and 5+ hour battery life. Equipped with multiple depth cameras, high-definition cameras, and 32-line 3D radar with navigation SDK.",
-    gallery: [
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png"
-    ],
-    features: [
-      {
-        label: "3D Lidar Navigation",
-        detail: "32-line radar, navigation algorithm with SDK",
-        position: { top: "10%", left: "60%" },
-        positionSm: { top: "15%", left: "60%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Endurance Capability",
-        detail: "20 km+ range, 5+ hours battery life",
-        position: { top: "40%", left: "10%" },
-        positionSm: { top: "45%", left: "10%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Step Climbing",
-        detail: "Climbs 40 cm steps, 5 m/s max speed",
-        position: { top: "75%", left: "80%" },
-        positionSm: { top: "80%", left: "80%" },
-        lineDirection: "left",
-        targetPoint: { x: "75%", y: "30%" },
-        targetPointSm: { x: "75%", y: "35%" }
-      }
-    ]
-  },
-  {
-    id: "B2-W-Basic-3D-Lidar",
-    name: "B2-W Basic Version with 3D Lidar (Industry Grade)",
-    description:
-      "B2-W Basic Version with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.",
-    gallery: [
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png"
-    ],
-    features: [
-      {
-        label: "3D Lidar Navigation",
-        detail: "32-line radar with SDK integration",
-        position: { top: "10%", left: "60%" },
-        positionSm: { top: "15%", left: "60%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Shock Absorbing Tires",
-        detail: "High reliability, 4-wheel design",
-        position: { top: "35%", left: "10%" },
-        positionSm: { top: "40%", left: "10%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Stair Climbing Ability",
-        detail: "Climbs 16 cm steps, 5 m/s max speed",
-        position: { top: "70%", left: "80%" },
-        positionSm: { top: "75%", left: "80%" },
-        lineDirection: "left",
-        targetPoint: { x: "75%", y: "30%" },
-        targetPointSm: { x: "75%", y: "35%" }
-      }
-    ]
-  },
-  {
-    id: "B2-W-Basic",
-    name: "B2-W Basic Version (Industry Grade)",
-    description:
-      "B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.",
-    gallery: [
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png"
-    ],
-    features: [
-      {
-        label: "Shock Absorbing Tires",
-        detail: "Equipped with 4 high-reliability tires",
-        position: { top: "15%", left: "55%" },
-        positionSm: { top: "20%", left: "55%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Stair Climbing",
-        detail: "Climbs 16 cm steps with ease",
-        position: { top: "40%", left: "15%" },
-        positionSm: { top: "45%", left: "15%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "High-Speed Performance",
-        detail: "Maximum speed of 5 m/s",
-        position: { top: "75%", left: "85%" },
-        positionSm: { top: "80%", left: "85%" },
-        lineDirection: "left",
-        targetPoint: { x: "75%", y: "30%" },
-        targetPointSm: { x: "75%", y: "35%" }
-      }
-    ]
-  }
+  id: "A2-W-Standard",
+  name: "Unitree A2-w Standard Version",
+  description:
+    "The Unitree A2-w Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.",
+  gallery: [
+    "/media/A2-W-Standard.png",
+    "/media/A2-W-Standard.png",
+    "/media/A2-W-Standard.png",
+    "/media/A2-W-Standard.png",
+    "/media/A2-W-Standard.png"
+  ],
+  features: [
+    {
+      label: "Mobility & Payload",
+      detail: "Wheeled-foot design, 20-25kg payload capacity, stair climbing up to 28cm continuous height & 90cm single step, 45° slope capability",
+      position: { top: "11%", left: "85%" },
+      positionSm: { top: "20%", left: "65%" },
+      lineDirection: "right",
+      targetPoint: { x: "30%", y: "40%" },
+      targetPointSm: { x: "30%", y: "45%" }
+    },
+    {
+      label: "Battery & Runtime",
+      detail: "Dual-bay system, 9000mAh single or 18000mAh dual battery, 4-5h unladen runtime, 1h charging time",
+      position: { top: "40%", left: "-1%" },
+      positionSm: { top: "45%", left: "10%" },
+      lineDirection: "right",
+      targetPoint: { x: "30%", y: "40%" },
+      targetPointSm: { x: "30%", y: "45%" }
+    },
+    {
+      label: "Computing Power",
+      detail: "8-core high-performance CPU + Intel Core i7 for user development",
+      position: { top: "69%", left: "70%" },
+      positionSm: { top: "65%", left: "80%" },
+      lineDirection: "left",
+      targetPoint: { x: "70%", y: "35%" },
+      targetPointSm: { x: "70%", y: "40%" }
+    },
+    {
+      label: "Perception & Control",
+      detail: "1 LiDAR, wide-angle camera ×1 (expandable to 2), dual joint encoders, stable obstacle avoidance",
+      position: { top: "72%", left: "20%" },
+      positionSm: { top: "80%", left: "20%" },
+      lineDirection: "right",
+      targetPoint: { x: "35%", y: "35%" },
+      targetPointSm: { x: "35%", y: "40%" }
+    },
+    {
+      label: "Connectivity & Interfaces",
+      detail: "WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, Gigabit Ethernet×2, USB 3.0-Type-C×4, 12V/24V power output",
+      position: { top: "60%", left: "98%" },
+      positionSm: { top: "95%", left: "70%" },
+      lineDirection: "left",
+      targetPoint: { x: "75%", y: "40%" },
+      targetPointSm: { x: "75%", y: "45%" }
+    }
+  ]
+}
+
 ];
 const Select = ({
   value,
