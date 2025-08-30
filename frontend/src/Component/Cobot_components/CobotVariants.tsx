@@ -172,10 +172,7 @@ const robotSpecs: RobotSpec[] = [
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
       "/GO2/GO2 AIR.png",
-      "/GO2/GO2 AIR.png",
-      "/GO2/GO2 AIR.png",
-      "/GO2/GO2 AIR.png",
-      "/GO2/GO2 AIR.png"
+
     ],
     features: [
    {
@@ -233,10 +230,7 @@ const robotSpecs: RobotSpec[] = [
       "Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
       "/GO2/GO2 PRO.png",
-      "/GO2/GO2 PRO.png",
-      "/GO2/GO2 PRO.png",
-      "/GO2/GO2 PRO.png",
-      "/GO2/GO2 PRO.png"
+
     ],
   features: [
     {
@@ -295,10 +289,7 @@ const robotSpecs: RobotSpec[] = [
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
       "/GO2/GO2 EDU U1.png",
-      "/GO2/GO2 EDU U1.png",
-      "/GO2/GO2 EDU U1.png",
-      "/GO2/GO2 EDU U1.png",
-      "/GO2/GO2 EDU U1.png"
+
     ],
 features: [
     {
@@ -348,10 +339,7 @@ features: [
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
       "/GO2/GO2 EDU2.png",
-      "/GO2/GO2 EDU2.png",
-      "/GO2/GO2 EDU2.png",
-      "/GO2/GO2 EDU2.png",
-      "/GO2/GO2 EDU2.png"
+
     ],
 features: [
     {
@@ -402,10 +390,7 @@ features: [
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°) + 3D Mid-360 LiDAR, Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
       "/GO2/GO2 EDU U3.png",
-      "/GO2/GO2 EDU U3.png",
-      "/GO2/GO2 EDU U3.png",
-      "/GO2/GO2 EDU U3.png",
-      "/GO2/GO2 EDU U3.png"
+
     ],
 features: [
     {
@@ -453,10 +438,7 @@ features: [
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (limit ~10 kg), Maximum speed 3.7 m/s, Computing Power 100 TOPS (Jetson Orin NX 16GB), Front Camera resolution 1280 × 720 px with 120° FOV, Maximum gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D XT16 LiDAR. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2 EDU U4.png",
-      "/GO2/GO2 EDU U4.png",
-      "/GO2/GO2 EDU U4.png",
-      "/GO2/GO2 EDU U4.png",
-      "/GO2/GO2 EDU U4.png"
+
     ],
 features: [
     {
@@ -503,10 +485,7 @@ features: [
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 40 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2-W U1.png",
-      "/GO2/GO2-W U1.png",
-      "/GO2/GO2-W U1.png",
-      "/GO2/GO2-W U1.png",
-      "/GO2/GO2-W U1.png"
+
     ],
  features: [
     {
@@ -553,10 +532,7 @@ features: [
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2-W-U2.png",
-      "/GO2/GO2-W-U2.png",
-      "/GO2/GO2-W-U2.png",
-      "/GO2/GO2-W-U2.png",
-      "/GO2/GO2-W-U2.png"
+
     ],
 features: [
     {
@@ -603,10 +579,7 @@ features: [
       "Technical specifications: Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Mid-360). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2-w-u3.png",
-      "/GO2/GO2-w-u3.png",
-      "/GO2/GO2-w-u3.png",
-      "/GO2/GO2-w-u3.png",
-      "/GO2/GO2-w-u3.png"
+
     ],
 features: [
     {
@@ -653,10 +626,7 @@ features: [
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Hesai XT16). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2-W-U4.png",
-      "/GO2/GO2-W-U4.png",
-      "/GO2/GO2-W-U4.png",
-      "/GO2/GO2-W-U4.png",
-      "/GO2/GO2-W-U4.png"
+
     ],
  features: [
     {
@@ -703,10 +673,7 @@ features: [
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
       "/GO2/GO2-W-U5.png",
-      "/GO2/GO2-W-U5.png",
-      "/GO2/GO2-W-U5.png",
-      "/GO2/GO2-W-U5.png",
-      "/GO2/GO2-W-U5.png"
+
     ],
  features: [
     {
@@ -753,10 +720,7 @@ features: [
       "Advanced version of GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), HD video transmission (1080P, 180ms delay), and dual 1080P cameras with fill lights. Depth camera not included.",
     gallery: [
       "/GO2/GO2 ENT U1.png",
-      "/GO2/GO2 ENT U1.png",
-      "/GO2/GO2 ENT U1.png",
-      "/GO2/GO2 ENT U1.png",
-      "/GO2/GO2 ENT U1.png"
+
     ],
 features: [
   {
@@ -796,10 +760,7 @@ features: [
       "Enhanced GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), low-latency 1080P video transmission, and dual wide-angle cameras with fill lights. Depth camera not included.",
     gallery: [
       "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png"
+
     ],
 features: [
   {
@@ -839,10 +800,7 @@ features: [
       "Advanced GO2 EDU with screen remote, dual comms (5.8G + 4G), 1080P low-latency video, dual wide-angle cameras, searchlight (30W, 3000lm), warning lights (red/blue), and digital voice broadcasting up to 800m. Depth camera not included.",
     gallery: [
       "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png"
+
     ],
 features: [
   {
@@ -882,10 +840,7 @@ features: [
       "GO2 EDU upgrade with dual cameras, capture net gun, laser-assisted aiming, and app-based control for tactical operations. Built with aviation-grade material for precision and reliability.",
     gallery: [
       "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png",
-      "/GO2/GO2 ENT U2.png"
+
     ],
 features: [
   {

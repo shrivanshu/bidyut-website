@@ -169,10 +169,7 @@ const robotSpecs: RobotSpec[] = [
       "B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).",
     gallery: [
       "/media/B2 ADVANCED.png",
-      "/media/B2 ADVANCED.png",
-      "/media/B2 ADVANCED.png",
-      "/media/B2 ADVANCED.png",
-      "/media/B2 ADVANCED.png"
+
     ],
     features: [
       {
@@ -228,11 +225,8 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.",
     gallery: [
-      "/media/B2 ADVANCED 3D LIDAR.png",
-      "/media/B2 ADVANCED 3D LIDAR.png",
-      "/media/B2 ADVANCED 3D LIDAR.png",
-      "/media/B2 ADVANCED 3D LIDAR.png",
-      "/media/B2 ADVANCED 3D LIDAR.png"
+      "/media/B2 ADVANCED WITH 3D LIDAR.png",
+
     ],
     features: [
       {
@@ -289,10 +283,7 @@ const robotSpecs: RobotSpec[] = [
       "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
     gallery: [
       "/media/B2 BASIC.png",
-      "/media/B2 BASIC.png",
-      "/media/B2 BASIC.png",
-      "/media/B2 BASIC.png",
-      "/media/B2 BASIC.png"
+
     ],
     features: [
       {
@@ -348,11 +339,8 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Advanced is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and operating range of -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops). The pack includes B2 platform, 45000 mAh battery, charger, calibrator, and protective bracket. Version: B2 Advanced with 360° Lidar.",
     gallery: [
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg",
-      "/media/Cobot_true.svg"
+      "/media/B2 ADVANCED WITH 3D LIDAR.png",
+
     ],
     features: [
       {
