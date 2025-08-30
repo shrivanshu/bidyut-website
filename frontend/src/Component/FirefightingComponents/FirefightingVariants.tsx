@@ -184,7 +184,7 @@ features: [
   {
     label: "360° Omnidirectional Camera",
     detail: "Panoramic video monitoring",
-    position: { top: "1%", left: "20%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "5%", left: "35%" },
     lineDirection: "left",
     targetPoint: { x: "12%", y: "26%" },
@@ -193,7 +193,7 @@ features: [
   {
     label: "Industrial-Grade Gas Sensors",
     detail: "CH4, O2, CO2, H2S",
-    position: { top: "15%", left: "85%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "20%", left: "75%" },
     lineDirection: "right",
     targetPoint: { x: "70%", y: "30%" },
@@ -202,7 +202,7 @@ features: [
   {
     label: "Fill Light (3W)",
     detail: "Dark area support",
-    position: { top: "30%", left: "10%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "40%", left: "25%" },
     lineDirection: "left",
     targetPoint: { x: "18%", y: "42%" },
@@ -225,7 +225,7 @@ features: [
   {
     label: "Dual-Optical Gimbal Camera",
     detail: "Zoom & tracking",
-    position: { top: "3%", left: "45%" },        // label position
+    position: { top: "1%", left: "15%" },        // label position
     positionSm: { top: "6%", left: "40%" },
     lineDirection: "left",
     targetPoint: { x: "50%", y: "8%" },          // gimbal on top front
@@ -234,7 +234,7 @@ features: [
   {
     label: "Thermal Imaging",
     detail: "Infrared detection",
-    position: { top: "20%", left: "80%" },       // label position
+    position: { top: "1%", left: "89%" },       // label position
     positionSm: { top: "25%", left: "72%" },
     lineDirection: "right",
     targetPoint: { x: "60%", y: "20%" },         // thermal lens on gimbal
@@ -266,7 +266,7 @@ features: [
   {
     label: "Quick-release Tool Box",
     detail: "Detachable storage unit",
-    position: { top: "8%", left: "45%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "12%", left: "50%" },
     lineDirection: "right",
     targetPoint: { x: "50%", y: "10%" },
@@ -275,7 +275,7 @@ features: [
   {
     label: "Emergency Kit",
     detail: "Fire & safety tools",
-    position: { top: "15%", left: "55%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "20%", left: "60%" },
     lineDirection: "left",
     targetPoint: { x: "60%", y: "18%" },
@@ -307,7 +307,7 @@ features: [
   {
     label: "Robotic Arm",
     detail: "Equipped with Z1 Pro robotic arm",
-    position: { top: "18%", left: "72%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "20%", left: "65%" }, 
     lineDirection: "right",
     targetPoint: { x: "88%", y: "40%" },
@@ -316,7 +316,7 @@ features: [
   {
     label: "Gripper",
     detail: "Integrated gripper",
-    position: { top: "30%", left: "75%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "32%", left: "68%" }, 
     lineDirection: "right",
     targetPoint: { x: "90%", y: "52%" },
@@ -348,7 +348,7 @@ features: [
   {
     label: "Acoustic Imager",
     detail: "High-precision MEMS digital microphone array with 128 sensors",
-    position: { top: "10%", left: "60%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "15%", left: "70%" },
     lineDirection: "left",
     targetPoint: { x: "75%", y: "20%" },
@@ -357,7 +357,7 @@ features: [
   {
     label: "HD Camera",
     detail: "1920×1080 resolution, 5MP sensor, 60° FOV",
-    position: { top: "25%", left: "20%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "30%", left: "25%" },
     lineDirection: "right",
     targetPoint: { x: "30%", y: "28%" },
@@ -389,7 +389,7 @@ features: [
   {
     label: "3D Laser Scanner",
     detail: "High-speed laser scanning",
-    position: { top: "2%", left: "45%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "5%", left: "50%" }, 
     lineDirection: "right",
     targetPoint: { x: "48%", y: "8%" },
@@ -398,7 +398,7 @@ features: [
   {
     label: "16-Laser Beam",
     detail: "1 cm point accuracy",
-    position: { top: "12%", left: "70%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "15%", left: "65%" }, 
     lineDirection: "left",
     targetPoint: { x: "60%", y: "15%" },
@@ -434,7 +434,7 @@ features: [
   {
     label: "Gas Sensors",
     detail: "Detects CH4, O2, CO2 & H2S",
-    position: { top: "22%", left: "28%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "25%", left: "35%" },
     lineDirection: "left",
     targetPoint: { x: "32%", y: "30%" },
@@ -443,7 +443,7 @@ features: [
   {
     label: "360° Camera",
     detail: "Panoramic vision support",
-    position: { top: "5%", left: "50%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "10%", left: "55%" },
     lineDirection: "right",
     targetPoint: { x: "52%", y: "12%" },
@@ -475,7 +475,7 @@ features: [
   {
     label: "Dual-Light Gimbal Camera",
     detail: "Mounted on the top-front head section",
-    position: { top: "4%", left: "55%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "6%", left: "60%" }, 
     lineDirection: "right",
     targetPoint: { x: "58%", y: "12%" },
@@ -484,7 +484,7 @@ features: [
   {
     label: "Thermal Imaging Sensor",
     detail: "Integrated within the gimbal camera module",
-    position: { top: "12%", left: "65%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "16%", left: "68%" }, 
     lineDirection: "right",
     targetPoint: { x: "66%", y: "20%" },
@@ -517,7 +517,7 @@ features: [
   {
     label: "Quick-Release Tool Box",
     detail: "Outer dimensions: 557×350×240 mm; Inner dimensions: 528×293×200 mm (150+50 mm).",
-    position: { top: "22%", left: "55%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "28%", left: "65%" },
     lineDirection: "right",
     targetPoint: { x: "48%", y: "45%" },
@@ -526,7 +526,7 @@ features: [
   {
     label: "Fire Emergency Kit",
     detail: "Includes smoke alarm, fire blanket, smoke mask, multi-function flashlight, multi-function rope, etc.",
-    position: { top: "45%", left: "70%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "50%", left: "75%" },
     lineDirection: "right",
     targetPoint: { x: "60%", y: "55%" },
@@ -558,7 +558,7 @@ features: [
   {
     label: "Z1 Pro Robot Arm",
     detail: "Equipped with a gripper and 1080P HD camera for manipulation & vision tasks",
-    position: { top: "8%", left: "55%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "15%", left: "70%" }, 
     lineDirection: "right",
     targetPoint: { x: "65%", y: "18%" },
@@ -567,7 +567,7 @@ features: [
   {
     label: "Control Tablet",
     detail: "Handheld controller for real-time operation & monitoring",
-    position: { top: "70%", left: "10%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "80%", left: "25%" }, 
     lineDirection: "left",
     targetPoint: { x: "20%", y: "82%" },
@@ -590,7 +590,7 @@ features: [
   {
     label: "Acoustic Imager",
     detail: "Microphone array on top for sound-based inspection & mapping",
-    position: { top: "5%", left: "65%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "10%", left: "75%" }, 
     lineDirection: "right",
     targetPoint: { x: "58%", y: "8%" },
@@ -599,7 +599,7 @@ features: [
   {
     label: "Gas Leakage Detection",
     detail: "Integrated with the acoustic imager for real-time gas leakage sensing",
-    position: { top: "15%", left: "65%" },
+    position: { top: "1%", left: "89%" },
     positionSm: { top: "22%", left: "75%" }, 
     lineDirection: "right",
     targetPoint: { x: "58%", y: "12%" },
@@ -632,7 +632,7 @@ features: [
   {
     label: "3D Laser Scanner",
     detail: "16-beam mobile scanning system with 320,000 points/sec",
-    position: { top: "12%", left: "70%" },
+    position: { top: "1%", left: "15%" },
     positionSm: { top: "18%", left: "78%" },
     lineDirection: "right",
     targetPoint: { x: "60%", y: "15%" },
