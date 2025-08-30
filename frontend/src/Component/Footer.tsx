@@ -130,7 +130,7 @@ function AnimatedBanner({
     transform: morph < 1 ? "translate(-50%, 0)" : "translate(-50%, -50%)",
     width,
     height,
-background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
+    background: "linear-gradient(90deg, #e0e7ec 0%, #34d399 100%)",
 
     boxShadow:
       morph < 1
