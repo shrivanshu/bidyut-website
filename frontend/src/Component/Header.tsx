@@ -93,8 +93,8 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a href="/H1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
-                            <a href="/H1-2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1-2</a>
+                            <a href="/Robot/Humanoids/Industry/H1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
+                            <a href="/Robot/Humanoid/Industry/H1-2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1-2</a>
                           </div>
                           
                         </div>
@@ -106,8 +106,8 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a href="/robot" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G1</a>
-                            <a href="/R1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">R1</a>
+                            <a href="/Robot/Humanoid/Education/G1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G1</a>
+                            <a href="/Robot/Humanoid/Education/R1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">R1</a>
                           </div>
                         </div>
 
@@ -133,10 +133,10 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a href="/B2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2</a>
-                            <a href="/B2-W" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2-W</a>
-                            <a href="/A2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2</a>
-                            <a href="/A2-W" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2-W</a>
+                            <a href="/Robot/Quadrupeds/Industry/B2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2</a>
+                            <a href="/Robot/Quadrupeds/Industry/B2-W" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">B2-W</a>
+                            <a href="/Robot/Quadrupeds/Industry/A2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2</a>
+                            <a href="/Robot/Quadrupeds/Industry/A2-W" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">A2-W</a>
                           </div>
                         </div>
 
@@ -147,8 +147,8 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a href="/Cobot" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02</a>
-                            <a href="/Cobot-V" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02V</a>
+                            <a href="/Robot/Quadrupeds/Education/GO2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02</a>
+                            <a href="/Robot/Quadrupeds/Education/GO2V" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02V</a>
                           </div>
                         </div>
 
@@ -169,14 +169,14 @@ export default function Header() {
                         {/* Firefighting */}
                         <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           <a href="/Firefighting"> Firefighting Solution </a>
+                           <a href="/Robot/Solutions/Firefighting"> Firefighting Solution </a>
                           </button>
                         </div>
 
                         {/* Inspection  */}
                         <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           <a href="/Inspection">Inspection Solution</a> 
+                           <a href="/Robot/Solutions//Inspection">Inspection Solution</a> 
                           </button>
                         </div>
 
