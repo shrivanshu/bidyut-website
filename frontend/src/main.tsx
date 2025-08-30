@@ -35,24 +35,33 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
+              <Route path="/School" element={<SchoolPage />} />
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
-              <Route path="/Robot" element={<Robotpage />} />
-              <Route path="/Cobot" element={<Cobotpage />} />
-              <Route path="/H1" element={<H1_page />} />
-              <Route path="/H1-2" element={<H1_2_page />} />
-              <Route path="/R1" element={<R1_page />} />
-              <Route path="/B2" element={<B2Page />} />
-              <Route path="/A2" element={<A2Page />} />
-              <Route path="/Inspection" element={<Inspection_page />} />
-              <Route path="/B2-W" element={<B2_Wells_Page />} />
-              <Route path="/A2-W" element={<A2_Wells_Page />} />
-              <Route path="/School" element={<SchoolPage />} />
+              
+              <Route path="Robot/Humanoids/Industry/H1" element={<H1_page />} />
+              <Route path="Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
+              <Route path="Robot/Humanoid/Education/G1" element={<Robotpage />} />
+              <Route path="Robot/Humanoid/Education/R1" element={<R1_page />} />
+
+              <Route path="Robot/Quadrupeds/Industry/B2" element={<B2Page />} />
+              <Route path="Robot/Quadrupeds/Industry/B2-Wells" element={<B2_Wells_Page />} />
+              <Route path="Robot/Quadrupeds/Industry/A2" element={<A2Page />} />
+              <Route path="Robot/Quadrupeds/Industry/A2-Wells" element={<A2_Wells_Page />} />
+
+              <Route path="Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
+              <Route path="Robot/Quadrupeds/Education/GO2V" element={<GO2VPage />} />
+
+              <Route path="Robot/Solutions/Firefighting" element={<Firefighting />} />
+              <Route path="Robot/Solutions//InspectionSolutions" element={<Inspection_page />} />
+              
+              
+              
               <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
               <Route path="/Terms&Condition" element={<TermsCondition />} />
               <Route path="/RefundPolicy" element={<RefundPolicy />} />
-              <Route path="/Firefighting" element={<Firefighting />} />
-              <Route path="/GO2V" element={<GO2VPage />} />
+              
+              
             </Routes>
           </NavigationProvider>
         </BrowserRouter>
