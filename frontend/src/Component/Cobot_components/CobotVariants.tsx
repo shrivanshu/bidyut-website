@@ -179,19 +179,19 @@ const robotSpecs: RobotSpec[] = [
     label: "Vision Sensor",
     detail: "1280 × 720 px camera, 120° field of view",
     position: { top: "1%", left: "17%" },
-    positionSm: { top: "5%", left: "20%" },
+    positionSm: { top: "1%", left: "1%" },
     lineDirection: "right",
     targetPoint: { x: "5%", y: "34%"},
-    targetPointSm: { x: "15%", y: "34%" }  
+    targetPointSm: { x: "5%", y: "41%" }  
   },
   {
     label: "LIDAR",
     detail: "4D LIDAR, 360° × 90° coverage",
     position: { top: "3%", left: "70%" },
-    positionSm: { top: "5%", left: "20%" },
+    positionSm: { top: "18%", left: "82%" },
     lineDirection: "right",
     targetPoint: { x: "12%", y: "52%" },
-    targetPointSm: { x: "15%", y: "34%" }  
+    targetPointSm: { x: "9%", y: "50%" }  
   },
   {
     label: "Arm Control",
