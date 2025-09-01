@@ -243,7 +243,7 @@ features: [
   {
     label: "Audio Intercom",
     detail: "Mic + Speaker",
-    position: { top: "35%", left: "15%" },       // label position
+    position: { top: "90%", left: "60%" },       // label position
     positionSm: { top: "42%", left: "25%" },
     lineDirection: "left",
     targetPoint: { x: "45%", y: "32%" },         // small holes near sensor box
@@ -284,7 +284,7 @@ features: [
   {
     label: "Robot Body Functions",
     detail: "All B2-XF2-B features",
-    position: { top: "60%", left: "40%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "65%", left: "45%" },
     lineDirection: "right",
     targetPoint: { x: "45%", y: "70%" },
@@ -325,7 +325,7 @@ features: [
   {
     label: "Vision Camera",
     detail: "1080P HD camera for vision support",
-    position: { top: "5%", left: "40%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "7%", left: "38%" }, 
     lineDirection: "left",
     targetPoint: { x: "46%", y: "18%" },
@@ -366,7 +366,7 @@ features: [
   {
     label: "Gas Leakage Detection",
     detail: "Detects >100 sccm (0.2Mpa/2Bar) in quiet environments",
-    position: { top: "80%", left: "50%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "85%", left: "55%" },
     lineDirection: "left",
     targetPoint: { x: "52%", y: "78%" },
@@ -407,7 +407,7 @@ features: [
   {
     label: "SSD Storage",
     detail: "500GB expandable memory",
-    position: { top: "55%", left: "15%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "58%", left: "20%" }, 
     lineDirection: "right",
     targetPoint: { x: "40%", y: "60%" },
@@ -434,7 +434,7 @@ features: [
   {
     label: "Gas Sensors",
     detail: "Detects CH4, O2, CO2 & H2S",
-    position: { top: "1%", left: "15%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "25%", left: "35%" },
     lineDirection: "left",
     targetPoint: { x: "32%", y: "30%" },
@@ -452,7 +452,7 @@ features: [
   {
     label: "Comm Module",
     detail: "Point-to-point link",
-    position: { top: "40%", left: "70%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "45%", left: "75%" },
     lineDirection: "right",
     targetPoint: { x: "68%", y: "48%" },
@@ -493,7 +493,7 @@ features: [
   {
     label: "PTZ System",
     detail: "Pan-Tilt-Zoom mechanism for full movement",
-    position: { top: "18%", left: "50%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "22%", left: "55%" }, 
     lineDirection: "left",
     targetPoint: { x: "52%", y: "28%" },
@@ -535,7 +535,7 @@ features: [
   {
     label: "All Functions of B2-XF2-B",
     detail: "Inherits and supports every feature of the B2-XF2-B model.",
-    position: { top: "10%", left: "20%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "15%", left: "25%" },
     lineDirection: "left",
     targetPoint: { x: "38%", y: "25%" },
@@ -608,7 +608,7 @@ features: [
   {
     label: "Camera Module",
     detail: "Front-facing camera for vision and object detection",
-    position: { top: "45%", left: "10%" },
+    position: { top: "90%", left: "60%" },
     positionSm: { top: "55%", left: "20%" }, 
     lineDirection: "left",
     targetPoint: { x: "35%", y: "50%" },
