@@ -282,7 +282,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
     gallery: [
-      "/media/B2 BASIC.png",
+      "/media/B2 ADVANCED.png",
 
     ],
     features: [
@@ -292,7 +292,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: "1%", left: "20%" },
         positionSm: { top: "10%", left: "20%" },
         lineDirection: "right",
-        targetPoint: { x: "18%", y: "30%" },
+        targetPoint: { x: "18%", y: "26%" },
         targetPointSm: { x: "23%", y: "32%" }
       },
       {
@@ -301,7 +301,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: "3%", left: "60%" },
         positionSm: { top: "80%", left: "1%" },
         lineDirection: "right",
-        targetPoint: { x: "19%", y: "38%" },
+        targetPoint: { x: "21%", y: "34%" },
         targetPointSm: { x: "20%", y: "42%" }
       },
       {
@@ -310,7 +310,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: "55%", left: "1%" },
         positionSm: { top: "22%", left: "50%" },
         lineDirection: "right",
-        targetPoint: { x: "19%", y: "38%" },
+        targetPoint: { x: "21%", y: "34%" },
         targetPointSm: { x: "20%", y: "42%" }
       },
       {
@@ -763,7 +763,7 @@ function B2Variants() {
                       : displayName === "B2 Advanced with 3D Lidar"
                       ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
                       : displayName === "B2-W Basic"
-                      ? "/media/B2 BASIC.png"
+                      ? "/media/B2 ADVANCED.png"
                       : "/media/Cobot_true.svg"
                   }
                   alt={displayName}
