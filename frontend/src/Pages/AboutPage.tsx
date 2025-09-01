@@ -18,7 +18,24 @@ const videoZoomStyle = `
     0% { transform: scale(0.7) rotate(0deg); opacity: 0; }
     60% { transform: scale(1.15) rotate(360deg); opacity: 1; }
     100% { transform: scale(1) rotate(360deg); opacity: 1; }
-  } `
+  }
+  @keyframes animate-button-click {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(90deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    75% { transform: scale(1.1) rotate(270deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+  @keyframes animate-button-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+  @keyframes animate-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+`
 
 interface TimelineItem {
   year: string
@@ -330,16 +347,22 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
       setScrollY(window.scrollY)
     }
 
+    // Inject CSS animations
+    const styleElement = document.createElement('style')
+    styleElement.textContent = videoZoomStyle
+    document.head.appendChild(styleElement)
+
     window.addEventListener("scroll", handleScroll, { passive: true })
     document.documentElement.style.scrollBehavior = "smooth"
     document.body.style.scrollBehavior = "smooth"
     setTimeout(() => setIsVisible(true), 300)
 
     return () => {
-      
       window.removeEventListener("scroll", handleScroll)
       document.documentElement.style.scrollBehavior = "auto"
       document.body.style.scrollBehavior = "auto"
+      // Clean up injected styles
+      document.head.removeChild(styleElement)
     }
   }, [])
 
@@ -655,16 +678,42 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
   }
 
   // Trigger transitions
+
+  // Trigger transitions
   useEffect(() => {
-    // Immediately show the main content, bypassing the scroll animation
-    setShowAboutUs(true);
-    // A small delay to allow the component to render before animating
-    const animTimer = setTimeout(() => setAboutAnimStarted(true), 50);
-    
-    return () => {
-      clearTimeout(animTimer);
-    };
-  }, []); // Empty dependency array ensures this runs only once on mount
+    const transformed = getTransformedText();
+    const targetYear = String(currentYear).padStart(4, "0");
+    if (!hasTriggeredRef.current && transformed === targetYear) {
+      hasTriggeredRef.current = true;
+      setShowWhiteScreen(true);
+      // Start scroll to top
+      if (typeof window !== 'undefined') {
+        try {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (e) {
+          window.scrollTo(0, 0);
+        }
+      }
+      // Show blank screen for 0.75s, then About Us hero section
+      setTimeout(() => {
+        setShowAboutUs(true);
+        setTimeout(() => {
+          setShowWhiteScreen(false);
+          setTimeout(() => setAboutAnimStarted(true), 50);
+        }, 300); // fade out white screen after About Us appears
+      }, 200); // blank screen duration
+    }
+  }, [scrollY, currentYear]);
+
+  // White screen transition (blank screen for a few seconds while scrolling to top)
+  if (showWhiteScreen) {
+    return (
+      <div className={`fixed inset-0 z-[9999] flex items-center justify-center min-h-screen transition-all duration-1000 ease-out ${isDarkTheme ? 'bg-white' : 'bg-black'}`}
+        style={{ opacity: showWhiteScreen ? 1 : 0, pointerEvents: 'none' }}>
+        {/* Blank screen, optionally add a subtle fade-out spinner or logo if desired */}
+      </div>
+    );
+  }
 
   // Main about us sections
   if (showAboutUs || scrollY > 2400) {
@@ -740,207 +789,111 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
         </div>
 
         {/* Video Switcher Section */}
-      <div
-      ref={videoContainerRef}
-      className={`relative flex flex-col items-center justify-center min-h-[700px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? "bg-black" : "bg-white"} py-8 transition-colors duration-500 mx-auto`}
-      style={{
-        transform: aboutAnimStarted ? "scale(1) translateZ(0)" : "scale(0.8) translateZ(0)",
-        opacity: aboutAnimStarted ? 1 : 0,
-        transition: "transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 200ms, opacity 800ms ease-out 200ms",
-        transformOrigin: "center center",
-        willChange: "transform, opacity",
-      }}
-    >
-      {/* Static grid of light blue squares background */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(24, 1fr)',
-            gridTemplateRows: 'repeat(12, 1fr)',
-            width: '100%',
-            height: '100%',
-            gap: '18px',
-            opacity: 0.18,
-            pointerEvents: 'none',
-          }}
+        <div 
+            ref={videoContainerRef}
+            className={`relative flex flex-col items-center justify-center min-h-[700px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-8 transition-colors duration-500 mx-auto`}
         >
-          {Array.from({ length: 24 * 12 }).map((_, i) => (
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle, ${isDarkTheme ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)'} 2px, transparent 2px)
+              `,
+              backgroundSize: "30px 30px",
+              backgroundPosition: "0 0, 15px 15px"
+            }}
+          />
+
+          <div className="relative z-10 w-full max-w-[900px] rounded-2xl  shadow-2xl overflow-hidden aspect-video flex items-center justify-center" style={{ minHeight: '500px', minWidth: '700px' }}>
+            {/* Animated highlight border when in view */}
             <div
-              key={i}
-              style={{
-                width: '16px',
-                height: '16px',
-                borderRadius: '4px',
-                backgroundColor: '#60A5FA', // Tailwind light blue-400
-              }}
+              className={`absolute inset-0 pointer-events-none transition-all duration-700 ease-out z-20 ${isVideoInView ? 'ring-8 ring-blue-400/40 scale-105 opacity-100' : 'ring-0 scale-100 opacity-0'}`}
+              style={{ borderRadius: '1.5rem' }}
             />
-          ))}
-        </div>
-      </div>
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `
-            linear-gradient(${isDarkTheme ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"} 1px, transparent 1px),
-            linear-gradient(90deg, ${isDarkTheme ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"} 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-      <style>{videoZoomStyle}</style>
-      <div
-        className="relative z-10 w-full max-w-[900px] rounded-2xl bg-gray-800 shadow-2xl overflow-hidden aspect-video flex items-center justify-center"
-        style={{ minHeight: "500px", minWidth: "700px" }}
-      >
-        {/* Enhanced animated highlight border when in view */}
-        <div
-          className={`absolute inset-0 pointer-events-none transition-all duration-1000 ease-out z-20 ${isVideoInView ? "ring-8 ring-blue-400/60 scale-110 opacity-100" : "ring-0 scale-100 opacity-0"}`}
-          style={{ borderRadius: "1.5rem" }}
-        />
-        <video
-          key={videoSources[activeTab]}
-          ref={videoRef}
-          width="100%"
-          height="100%"
-          preload="auto"
-          loop
-          muted
-          autoPlay
-          playsInline
-          aria-label="Video player"
-          className="w-full h-full object-contain"
-          style={{
-            transform: `scale(${
-              activeTab === "who-we-are" || activeTab === "where-we-are" ? 1.3 - videoScrollProgress * 0.7 : 1.1
-            }) rotate(${
-              activeTab === "who-we-are" || activeTab === "where-we-are" ? videoScrollProgress * 360 : 0
-            }deg)`,
-            transition: "transform 1800ms cubic-bezier(0.34, 1.56, 0.64, 1)",
-            animation: "videoZoomIn 2.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          }}
-        >
-          <source src={videoSources[activeTab]} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Enhanced video tab buttons with zoom effects */}
-        <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
-          <div className="w-full flex justify-between px-8 pt-6">
-            <button
-              ref={whoWeAreBtnRef}
-              onClick={(event) => {
-                if (videoRef.current) {
-                  videoRef.current.style.animation = "none"
-                  videoRef.current.offsetHeight
-                  videoRef.current.style.animation = "videoZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
-                }
-                const button = event.currentTarget
-                button.classList.add("animate-button-click")
-                setTimeout(() => button.classList.remove("animate-button-click"), 800)
-
-                // Add section zoom effect on button click
-                if (videoContainerRef.current) {
-                  videoContainerRef.current.classList.add("animate-section-click")
-                  setTimeout(() => videoContainerRef.current.classList.remove("animate-section-click"), 800)
-                }
-
-                setActiveTab("who-we-are")
-              }}
-              className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
-              ${
-                activeTab === "who-we-are"
-                  ? "bg-green-500 text-white shadow-2xl scale-115"
-                  : isDarkTheme
-                    ? "bg-white text-gray-900 hover:bg-gray-100"
-                    : "bg-black text-white hover:bg-gray-800"
-              }`}
-              style={{ animationDelay: "1s" }}
+            <video
+              key={videoSources[activeTab]}
+              ref={videoRef}
+              width="100%"
+              height="100%"
+              preload="auto"
+              loop
+              muted
+              autoPlay
+              playsInline
+              aria-label="Video player"
+              className="w-full h-full object-contain transition-all duration-500 ease-out"
+              style={
+                (activeTab === 'who-we-are' || activeTab === 'where-we-are')
+                  ? {
+                      transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
+                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    }
+                  : {
+                      transform: 'scale(1) rotate(0deg)',
+                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    }
+              }
             >
-              Who We Are
-            </button>
-            <button
-              ref={whereWeAreBtnRef}
-              onClick={(event) => {
-                if (videoRef.current) {
-                  videoRef.current.style.animation = "none"
-                  videoRef.current.offsetHeight
-                  videoRef.current.style.animation = "videoZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
-                }
-                const button = event.currentTarget
-                button.classList.add("animate-button-click")
-                setTimeout(() => button.classList.remove("animate-button-click"), 800)
+              <source src={videoSources[activeTab]} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
-                // Add section zoom effect on button click
-                if (videoContainerRef.current) {
-                  videoContainerRef.current.classList.add("animate-section-click")
-                  setTimeout(() => videoContainerRef.current.classList.remove("animate-section-click"), 800)
-                }
-
-                setActiveTab("where-we-are")
-              }}
-              className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
-              ${
-                activeTab === "where-we-are"
-                  ? "bg-green-500 text-white shadow-2xl scale-115"
-                  : isDarkTheme
-                    ? "bg-white text-black hover:bg-gray-100"
-                    : "bg-black text-white hover:bg-gray-800"
-              }`}
-              style={{ animationDelay: "2s" }}
-            >
-              Where We Are
-            </button>
+            {/* Unique video tab buttons with animated indicator */}
+            <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
+              <div className="w-full flex justify-between px-8 pt-6">
+                <button
+                  ref={whoWeAreBtnRef}
+                  onClick={() => setActiveTab('who-we-are')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'who-we-are'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-gray-900 hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '1s' }}
+                >
+                  Who We Are
+                </button>
+                <button
+                  ref={whereWeAreBtnRef}
+                  onClick={() => setActiveTab('where-we-are')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'where-we-are'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '2s' }}
+                >
+                  Where We Are
+                </button>
+              </div>
+              <div className="w-full flex justify-center pb-6">
+                <button
+                  ref={whatWeDoBtnRef}
+                  onClick={() => setActiveTab('what-we-do')}
+                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  ${activeTab === 'what-we-do'
+                    ? 'bg-green-500 text-white shadow-2xl scale-110'
+                    : isDarkTheme
+                      ? 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                  style={{ animationDelay: '0s' }}
+                >
+                  What We Do
+                </button>
+              </div>
+            </div>
           </div>
-         <div className="w-full flex justify-center pb-6">
-  <button
-    ref={whatWeDoBtnRef}
-    onClick={(event) => {
-      if (videoRef.current) {
-        videoRef.current.style.animation = "none"; // reset animation
-        videoRef.current.offsetHeight; // reflow trick
-        videoRef.current.style.animation =
-          "videoRotateZoomIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
-      }
-
-      const button = event.currentTarget;
-      button.classList.add("animate-button-click");
-      setTimeout(() => button.classList.remove("animate-button-click"), 800);
-
-      // Section zoom effect
-      if (videoContainerRef.current) {
-        videoContainerRef.current.classList.add("animate-section-click");
-        setTimeout(
-          () => videoContainerRef.current.classList.remove("animate-section-click"),
-          800
-        );
-      }
-
-      setActiveTab("what-we-do");
-    }}
-    className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-115 hover:shadow-2xl animate-button-bounce animate-float
-    ${
-      activeTab === "what-we-do"
-        ? "bg-green-500 text-white shadow-2xl scale-115"
-        : isDarkTheme
-        ? "bg-white text-black hover:bg-gray-100"
-        : "bg-black text-white hover:bg-gray-800"
-    }`}
-    style={{ animationDelay: "0s" }}
-  >
-    What We Do
-  </button>
-</div>
-
         </div>
-      </div>
-    </div>
 
         {/* Static Content Section */}
             <div
               className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 pt-0 pb-48 transition-colors duration-500`}
               id="about-static-section"
-             
             >
               <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
             
@@ -992,14 +945,7 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
               </div>
 
             {/* Vision Text - moved further to the right for more gap */}
-            <div 
-              className="absolute top-[485px] left-[840px] w-[400px]"
-              style={{
-                transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
-                transform: visionInView ? 'translateX(0)' : 'translateX(120px)',
-                opacity: visionInView ? 1 : 0
-              }}
-            >
+            <div className="absolute top-[485px] left-[840px] w-[400px]">
               <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Vision</h2>
               <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
                 To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
@@ -1007,14 +953,7 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
             </div>
 
             {/* Mission Text - moved more to the left */}
-            <div 
-              className="absolute top-[1000px] left-[150px] w-[400px]"
-              style={{
-                transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
-                transform: missionInView ? 'translateX(0)' : 'translateX(-120px)',
-                opacity: missionInView ? 1 : 0
-              }}
-            >
+            <div className="absolute top-[1000px] left-[150px] w-[400px]">
               <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Mission</h2>
               <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
                 To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
