@@ -176,12 +176,20 @@ export default function Header() {
                         {/* Inspection  */}
                         <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           <a href="/Robot/Solutions//Inspection">Inspection Solution</a> 
+                           <a href="/Robot/Solutions/Inspection">Inspection Solution</a> 
                           </button>
                         </div>
 
                       </div>
                     </div>
+                  </div>
+                  {/* Solutions */}
+                  <div className="relative group/child">
+                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+                      <a href="/Cobot">Cobot</a>
+                      
+                    </button>
+
                   </div>
                 </div>
               </div>
