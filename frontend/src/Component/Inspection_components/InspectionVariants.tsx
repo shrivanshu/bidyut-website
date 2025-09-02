@@ -170,7 +170,7 @@ const robotSpecs: RobotSpec[] = [
     gallery: [
       "/media/Cobot_true.svg",
       "/robo-dance5.mp4",
-            "/media/Cobot_true.svg",
+            "/GO2/Inseption.png",
 
     
     ],

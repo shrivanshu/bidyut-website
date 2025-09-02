@@ -148,7 +148,7 @@ export default function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <a href="/Robot/Quadrupeds/Education/GO2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02</a>
-                            <a href="/Robot/Quadrupeds/Education/GO2V" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02V</a>
+                            <a href="/Robot/Quadrupeds/Education/GO2-W" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">G02-W</a>
                           </div>
                         </div>
 
@@ -184,13 +184,14 @@ export default function Header() {
                     </div>
                   </div>
                   {/* Solutions */}
-                  <div className="relative group/child">
-                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                      <a href="/Cobot">Cobot</a>
-                      
-                    </button>
-
-                  </div>
+                 <div
+  className="relative group/child cursor-pointer"
+  onClick={() => (window.location.href = "/Cobot")}
+>
+  <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
+    Cobot
+  </button>
+</div>
                 </div>
               </div>
             </div>

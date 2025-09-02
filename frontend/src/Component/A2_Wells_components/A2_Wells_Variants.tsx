@@ -51,8 +51,8 @@ const robotSpecs: RobotSpec[] = [
   features: [
     {
       label: "Mobility & Payload",
-      detail: "Wheeled-foot design, 20-25kg payload capacity, stair climbing up to 28cm continuous height & 90cm single step, 45° slope capability",
-      position: { top: "11%", left: "85%" },
+      detail: "20-25kg payload capacity, stair climbing up to 28cm height & 90cm single step, 45° slope capability",
+      position: { top: "-3%", left: "85%" },
       positionSm: { top: "20%", left: "65%" },
       lineDirection: "right",
       targetPoint: { x: "30%", y: "40%" },
@@ -61,7 +61,7 @@ const robotSpecs: RobotSpec[] = [
     {
       label: "Battery & Runtime",
       detail: "Dual-bay system, 9000mAh single or 18000mAh dual battery, 4-5h unladen runtime, 1h charging time",
-      position: { top: "40%", left: "-1%" },
+      position: { top: "35%", left: "-1%" },
       positionSm: { top: "45%", left: "10%" },
       lineDirection: "right",
       targetPoint: { x: "30%", y: "40%" },
@@ -70,7 +70,7 @@ const robotSpecs: RobotSpec[] = [
     {
       label: "Computing Power",
       detail: "8-core high-performance CPU + Intel Core i7 for user development",
-      position: { top: "69%", left: "70%" },
+      position: { top: "69%", left: "78%" },
       positionSm: { top: "65%", left: "80%" },
       lineDirection: "left",
       targetPoint: { x: "70%", y: "35%" },
@@ -79,7 +79,7 @@ const robotSpecs: RobotSpec[] = [
     {
       label: "Perception & Control",
       detail: "1 LiDAR, wide-angle camera ×1 (expandable to 2), dual joint encoders, stable obstacle avoidance",
-      position: { top: "72%", left: "20%" },
+      position: { top: "72%", left: "18%" },
       positionSm: { top: "80%", left: "20%" },
       lineDirection: "right",
       targetPoint: { x: "35%", y: "35%" },
@@ -88,7 +88,7 @@ const robotSpecs: RobotSpec[] = [
     {
       label: "Connectivity & Interfaces",
       detail: "WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, Gigabit Ethernet×2, USB 3.0-Type-C×4, 12V/24V power output",
-      position: { top: "60%", left: "98%" },
+      position: { top: "75%", left: "98%" },
       positionSm: { top: "95%", left: "70%" },
       lineDirection: "left",
       targetPoint: { x: "75%", y: "40%" },
