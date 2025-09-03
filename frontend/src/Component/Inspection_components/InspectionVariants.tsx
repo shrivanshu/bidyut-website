@@ -696,20 +696,10 @@ function InspectionVariants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src={
-                    displayName === "B2-W Advanced"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2 Advanced"
-                      ? "/media/B2 ADVANCED.png"
-                      : displayName === "B2 Advanced with 3D Lidar"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2-W Basic"
-                      ? "/media/B2 BASIC.png"
-                      : "/media/Cobot_true.svg"
-                  }
-                  alt={displayName}
-                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-                />
+        src={currentSpec.gallery[0]}
+        alt={displayName}
+        className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+      />
               </div>
 
               {/* SVG Lines - Only show on hover */}

@@ -23,7 +23,8 @@ import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
 import RefundPolicy from './Pages/RefundPolicy';
 import GO2VPage from './Pages/GO2VPage';
-
+import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct place
+import Cobo_page from './Pages/Cobo_page';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -37,6 +38,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/School" element={<SchoolPage />} />
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
+              <Route path="/Cobot" element={<Cobo_page />} />
+
               
               <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
               <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
@@ -52,7 +55,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
               <Route path="/Robot/Quadrupeds/Education/GO2V" element={<GO2VPage />} />
 
-              
+              <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
+              <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
               
               
               

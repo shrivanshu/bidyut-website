@@ -39,41 +39,41 @@ const cobotSearchData = [
 const robotSpecs: RobotSpec[] = [
   
   {
-    id: "B2-Basic-3D-Lidar",
-    name: "B2 Basic Version with 3D Lidar (Industry Grade)",
+    id: "B2-W-Basic",
+    name: "B2-W Basic Version ",
     description:
-      "B2 Basic Version with 3D Lidar features a 60kg quadruped robot with 1098×450×645 mm dimensions, 5 m/s max speed, 40 cm step climbing capability, endurance over 20 km, and 5+ hour battery life. Equipped with multiple depth cameras, high-definition cameras, and 32-line 3D radar with navigation SDK.",
+      "B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.",
     gallery: [
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png",
-      "/media/B2-Basic-3D-Lidar.png"
+      "/media/B2 ADVANCED.png",
+      "/media/B2-W-Basic.png",
+      "/media/B2-W-Basic.png",
+      "/media/B2-W-Basic.png",
+      "/media/B2-W-Basic.png"
     ],
     features: [
       {
-        label: "3D Lidar Navigation",
-        detail: "32-line radar, navigation algorithm with SDK",
-        position: { top: "10%", left: "60%" },
-        positionSm: { top: "15%", left: "60%" },
+        label: "Shock Absorbing Tires",
+        detail: "Equipped with 4 high-reliability tires",
+        position: { top: "15%", left: "55%" },
+        positionSm: { top: "20%", left: "55%" },
         lineDirection: "right",
         targetPoint: { x: "25%", y: "35%" },
         targetPointSm: { x: "25%", y: "40%" }
       },
       {
-        label: "Endurance Capability",
-        detail: "20 km+ range, 5+ hours battery life",
-        position: { top: "40%", left: "10%" },
-        positionSm: { top: "45%", left: "10%" },
+        label: "Stair Climbing",
+        detail: "Climbs 16 cm steps with ease",
+        position: { top: "40%", left: "15%" },
+        positionSm: { top: "45%", left: "15%" },
         lineDirection: "right",
         targetPoint: { x: "25%", y: "35%" },
         targetPointSm: { x: "25%", y: "40%" }
       },
       {
-        label: "Step Climbing",
-        detail: "Climbs 40 cm steps, 5 m/s max speed",
-        position: { top: "75%", left: "80%" },
-        positionSm: { top: "80%", left: "80%" },
+        label: "High-Speed Performance",
+        detail: "Maximum speed of 5 m/s",
+        position: { top: "75%", left: "85%" },
+        positionSm: { top: "80%", left: "85%" },
         lineDirection: "left",
         targetPoint: { x: "75%", y: "30%" },
         targetPointSm: { x: "75%", y: "35%" }
@@ -82,11 +82,11 @@ const robotSpecs: RobotSpec[] = [
   },
   {
     id: "B2-W-Basic-3D-Lidar",
-    name: "B2-W Basic Version with 3D Lidar (Industry Grade)",
+    name: "B2-W Basic Version with 3D Lidar ",
     description:
       "B2-W Basic Version with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.",
     gallery: [
-      "/media/B2-W-Basic-3D-Lidar.png",
+      "/media/B2 ADVANCED WITH 3D LIDAR.png",
       "/media/B2-W-Basic-3D-Lidar.png",
       "/media/B2-W-Basic-3D-Lidar.png",
       "/media/B2-W-Basic-3D-Lidar.png",
@@ -122,48 +122,7 @@ const robotSpecs: RobotSpec[] = [
       }
     ]
   },
-  {
-    id: "B2-W-Basic",
-    name: "B2-W Basic Version (Industry Grade)",
-    description:
-      "B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.",
-    gallery: [
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png"
-    ],
-    features: [
-      {
-        label: "Shock Absorbing Tires",
-        detail: "Equipped with 4 high-reliability tires",
-        position: { top: "15%", left: "55%" },
-        positionSm: { top: "20%", left: "55%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "Stair Climbing",
-        detail: "Climbs 16 cm steps with ease",
-        position: { top: "40%", left: "15%" },
-        positionSm: { top: "45%", left: "15%" },
-        lineDirection: "right",
-        targetPoint: { x: "25%", y: "35%" },
-        targetPointSm: { x: "25%", y: "40%" }
-      },
-      {
-        label: "High-Speed Performance",
-        detail: "Maximum speed of 5 m/s",
-        position: { top: "75%", left: "85%" },
-        positionSm: { top: "80%", left: "85%" },
-        lineDirection: "left",
-        targetPoint: { x: "75%", y: "30%" },
-        targetPointSm: { x: "75%", y: "35%" }
-      }
-    ]
-  }
+  
 ];
 const Select = ({
   value,
@@ -529,20 +488,10 @@ function B2_Wells_Variants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src={
-                    displayName === "B2-W Advanced"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2 Advanced"
-                      ? "/media/B2 ADVANCED.png"
-                      : displayName === "B2 Advanced with 3D Lidar"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2-W Basic"
-                      ? "/media/B2 BASIC.png"
-                      : "/media/Cobot_true.svg"
-                  }
-                  alt={displayName}
-                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-                />
+        src={currentSpec.gallery[0]}
+        alt={displayName}
+        className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+      />
               </div>
 
               {/* SVG Lines - Only show on hover */}

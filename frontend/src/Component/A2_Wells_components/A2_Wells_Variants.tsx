@@ -44,11 +44,9 @@ const robotSpecs: RobotSpec[] = [
   description:
     "The Unitree A2-w Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.",
   gallery: [
+    "/media/A2-w.png",
     "/media/A2-W-Standard.png",
-    "/media/A2-W-Standard.png",
-    "/media/A2-W-Standard.png",
-    "/media/A2-W-Standard.png",
-    "/media/A2-W-Standard.png"
+   
   ],
   features: [
     {
@@ -464,20 +462,10 @@ function A2_Wells_Variants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src={
-                    displayName === "B2-W Advanced"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2 Advanced"
-                      ? "/media/B2 ADVANCED.png"
-                      : displayName === "B2 Advanced with 3D Lidar"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
-                      : displayName === "B2-W Basic"
-                      ? "/media/B2 BASIC.png"
-                      : "/media/Cobot_true.svg"
-                  }
-                  alt={displayName}
-                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-                />
+        src={currentSpec.gallery[0]}
+        alt={displayName}
+        className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+      />
               </div>
 
               {/* SVG Lines - Only show on hover */}
