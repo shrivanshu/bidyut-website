@@ -96,7 +96,6 @@ export default function Header() {
                             <a href="/Robot/Humanoids/Industry/H1" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1</a>
                             <a href="/Robot/Humanoid/Industry/H1-2" className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">H1-2</a>
                           </div>
-                          
                         </div>
 
                         {/* Education */}
@@ -155,34 +154,30 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-                  {/* Solutions */}
+
+                  {/* Solutions (Commented Out) */}
+                  {/*
                   <div className="relative group/child">
                     <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                       Solutions
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </button>
-
-                    {/* Solutions Submenu */}
                     <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
                       <div className="py-2">
-
-                        {/* Firefighting */}
                         <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                            <a href="/Robot/Solutions/Firefighting"> Firefighting Solution </a>
                           </button>
                         </div>
-
-                        {/* Inspection  */}
                         <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                            <a href="/Robot/Solutions//Inspection">Inspection Solution</a> 
                           </button>
                         </div>
-
                       </div>
                     </div>
                   </div>
+                  */}
                 </div>
               </div>
             </div>
