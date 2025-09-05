@@ -54,7 +54,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
 
               <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
-              <Route path="/Robot/Quadrupeds/Education/GO2V" element={<GO2VPage />} />
+              <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
 
               <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
               <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />

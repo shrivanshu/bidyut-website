@@ -32,7 +32,7 @@ export default function GO2VHeroSection() {
 <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
   <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
     <img 
-      src="/media/A2-w.png" 
+      src="/GO2/GO2-W-U2.png" 
       alt="GO2V Robot" 
       className="w-full max-w-xl h-auto object-contain" 
     />
@@ -50,7 +50,7 @@ export default function GO2VHeroSection() {
       "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 35%, rgba(255,255,255,0.6) 87%, #FFFFFF 100%)",
   }}
   >
-  GO2V Robot
+  GO2-W Robot
   </h2>
 
 {/* Bottom description */}

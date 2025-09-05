@@ -45,16 +45,13 @@ const robotSpecs: RobotSpec[] = [
       "B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.",
     gallery: [
       "/media/B2 ADVANCED.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png",
-      "/media/B2-W-Basic.png"
+     
     ],
     features: [
       {
         label: "Shock Absorbing Tires",
         detail: "Equipped with 4 high-reliability tires",
-        position: { top: "15%", left: "55%" },
+        position: { top: "1%", left: "80%" },
         positionSm: { top: "20%", left: "55%" },
         lineDirection: "right",
         targetPoint: { x: "25%", y: "35%" },
@@ -63,7 +60,7 @@ const robotSpecs: RobotSpec[] = [
       {
         label: "Stair Climbing",
         detail: "Climbs 16 cm steps with ease",
-        position: { top: "40%", left: "15%" },
+        position: { top: "40%", left: "0%" },
         positionSm: { top: "45%", left: "15%" },
         lineDirection: "right",
         targetPoint: { x: "25%", y: "35%" },
@@ -87,10 +84,7 @@ const robotSpecs: RobotSpec[] = [
       "B2-W Basic Version with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.",
     gallery: [
       "/media/B2 ADVANCED WITH 3D LIDAR.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png",
-      "/media/B2-W-Basic-3D-Lidar.png"
+      
     ],
     features: [
       {

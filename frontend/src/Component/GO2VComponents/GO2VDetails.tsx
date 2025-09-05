@@ -5,7 +5,7 @@ interface GO2VDetailsProps {
   onContactClick?: () => void;
 }
 
-const go2vImgSrc = '/A2.png';
+const go2vImgSrc = '/GO2/GO2-W-U5.png';
 
 const GO2VDetails = ({ onContactClick }: GO2VDetailsProps) => {
   const { isDark } = useTheme();
@@ -31,7 +31,7 @@ const GO2VDetails = ({ onContactClick }: GO2VDetailsProps) => {
               <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join thousands of educators who are already using GO2V robots to inspire the next generation of innovators.
+              Join thousands of educators who are already using GO2-W robots to inspire the next generation of innovators.
             </p>
           </div>
 
