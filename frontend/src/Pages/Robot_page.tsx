@@ -8,7 +8,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 function Robot_page() {
   return (
     <ThemeProvider>
-      <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+      <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
         <HeroSectionRobot />
         <RobotVariants/>

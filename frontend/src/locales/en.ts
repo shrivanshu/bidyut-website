@@ -1,3 +1,4 @@
+import { Progress } from "@react-three/drei";
 
 export const en = {
   // Header
@@ -27,14 +28,14 @@ export const en = {
   ourOfferings: 'Our Offerings',
   offeringsSubtitle: 'Discover how Bidyut is transforming education and industry through innovative robotics solutions',
   offeringsInteractionHint: 'Click on any card to explore • Hover for details • Auto-scrolling pauses on interaction',
-  collaborativeLearning: 'Collaborative Learning Spaces',
-  collaborativeLearningDesc: 'Connect with peers worldwide in virtual study rooms where you can share resources, discuss concepts, and solve problems together.',
-  smartProgress: 'Smart Progress Tracking',
-  smartProgressDesc: 'Monitor your learning journey with detailed analytics and insights that help you identify strengths and areas for improvement.',
-  interactiveWorkshops: 'Interactive Workshops',
-  interactiveWorkshopsDesc: 'Engage in hands-on workshops led by experts to deepen your understanding and apply theoretical knowledge to real-world scenarios.',
-  roboticsLabs: 'Robotics Simulation Labs',
-  roboticsLabsDesc: 'Practice and experiment with robotics in a safe, virtual environment before deploying your solutions in the physical world.',
+  collaborativeLearning: 'AI Powered Learning Path',
+  collaborativeLearningDesc: 'Our algorithms analyze your learning style and progress to create customized learning journeys tailored specifically to your needs and goals.',
+  Collabration: 'Collaborative Learning Spaces',
+  collabrationDesc: 'Connect with peers worldwide in virtual study rooms where you can share resources, discuss concepts, and solve problems together.',
+  Learningexpi: 'Immersive Learning Experiences',
+  learningexpisDesc: 'Engage with interactive 3D models and simulations that bring complex concepts to life and make learning more engaging and effective',
+  ProgressTracking: 'Smart Progress Tracking',
+ ProgressTrackingDesc: 'Monitor your learning journey with detailed analytics and insights that help you identify strengths and areas for improvement.',
   personalizedMentorship: 'Personalized Mentorship',
   personalizedMentorshipDesc: 'Receive one-on-one guidance from industry professionals to accelerate your growth and achieve your career goals.',
   
@@ -51,17 +52,19 @@ export const en = {
   // Education Stream
   streamEducation: 'STREAM Education',
   stream: 'STREAM',
-  streamEducationDescription: 'STREAM Education blends Science, Technology, Robotics, Engineering, Arts, and Math to spark creativity and real-world problem-solving in learners',
-  roboMain: 'Robo Main',
-  roboMainDescription: 'Main robotic demonstration video',
-  roboDance: 'Robo Dance',
-  roboDanceDescription: 'Robotic dance performance',
-  roboDance2: 'Robo Dance 2',
-  roboDance2Description: 'Second robotic dance sequence',
-  roboDance3: 'Robo Dance 3',
-  roboDance3Description: 'Advanced robotic movements',
-  roboDance5: 'Robo Dance 5',
-  roboDance5Description: 'Final robotic performance',
+  streamEducationDescription: 'A future-ready approach that integrates Science, Technology, Reading, Engineering, Arts, and Mathematics. It nurtures creativity, problem-solving, and real-world skills for lifelong success.',
+  science: 'Science',
+  scienceDescription: 'Inspires curiosity and discovery through exploration.',
+  educationTechnology: 'Technology',
+  technologyDescription: 'Equips learners to innovate with digital tools.',
+  reading: 'Reading',
+  readingDescription: 'Builds strong literacy, imagination, and expression.',
+  engineering: 'Engineering',
+  engineeringDescription: 'Encourages design thinking and practical solutions.',
+  arts: 'Arts',
+  artsDescription: 'Fosters creativity, culture, and self-expression.',
+  mathematics: 'Mathematics',
+  mathematicsDescription: 'Develops logic, reasoning, and problem-solving skills.',
   
   // Testimonials
   whatOurPartnersSay: 'What Our Partners Say',

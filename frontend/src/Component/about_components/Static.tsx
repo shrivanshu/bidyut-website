@@ -4,62 +4,103 @@ const Static = () => {
   const { t } = useLanguage();
   
   return (
-    <div>
-      <div className="pt-32 min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <div className="flex flex-col mt-10">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-snug sm:leading-relaxed md:leading-snug text-gray-800 dark:text-white mb-6">
-                {t('bidyutFocuses')} <span className="text-green-400">{t('educatingStudents')} </span>
-                <br className="hidden sm:block" />
-                {t('actWithIntegrity')}
-                <br className="hidden sm:block " />
-                <span className="text-green-400"> {t('digitalWorld')}</span>
-              </h1>
+    <div className="min-h-screen bg-black px-4 py-16">
+      {/* Header Section */}
+      <div className="text-center pt-16 pb-24 max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+          {t('bidyutFocuses')} <span className="text-[#0ACF83]">{t('educatingStudents')} </span>
+          <br />
+          {t('actWithIntegrity')}
+          <br />
+          <span className="text-[#0ACF83]"> {t('digitalWorld')}</span>
+        </h1>
+        <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          {t('aboutDescription')}
+        </p>
+      </div>
+
+      {/* Content Sections with Dot Patterns */}
+      <div className="max-w-4xl mx-auto space-y-32">
+        
+        {/* Our Vision Section - Image Left, Text Right */}
+        <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Vision Image - Left */}
+            <div className="flex justify-center lg:justify-start relative">
+              {/* Left Dot Pattern - positioned closer to content */}
+              <div className="absolute -left-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
+                <div className="grid grid-cols-8 gap-1">
+                  {Array.from({ length: 64 }).map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  ))}
+                </div>
+              </div>
+              
+              <img
+                src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png"
+                alt="Our Vision"
+                className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
+              />
             </div>
-            <p className="text-[#0A254070] dark:text-gray-300 text-base sm:text-lg max-w-6xl mx-auto leading-relaxed">
-              {t('aboutDescription')}
-            </p>
+            
+            {/* Vision Text - Right */}
+            <div className="text-center lg:text-left relative">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                {t('ourVision')}
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed max-w-md">
+                {t('visionStatement')}
+              </p>
+              
+              {/* Right Dot Pattern - positioned closer to content */}
+              <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
+                <div className="grid grid-cols-8 gap-1">
+                  {Array.from({ length: 64 }).map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Mission and Vision Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-            {/* Our Mission */}
-            <div className="space-y-8 flex flex-col items-center md:items-start">
-              <div className="relative w-full sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[520px]">
-                <img
-                  src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png"
-                  alt="Our Mission"
-                  className="rounded-lg shadow-lg w-full h-full object-cover"
-                />
+        {/* Our Mission Section - Text Left, Image Right */}
+        <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Mission Text - Left */}
+            <div className="text-center lg:text-left order-2 lg:order-1 relative">
+              {/* Left Dot Pattern - positioned closer to content */}
+              <div className="absolute -left-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
+                <div className="grid grid-cols-8 gap-1">
+                  {Array.from({ length: 64 }).map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  ))}
+                </div>
               </div>
-              <div className="text-center md:text-center pt-4 md:pt-32 pb-12 sm:pb-20 md:pb-36">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400 mb-4">
-                  {t('ourMission')}
-                </h2>
-                <p className="text-gray-400 dark:text-gray-300 text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">
-                  {t('missionStatement')}
-                </p>
-              </div>
+              
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                {t('ourMission')}
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed max-w-md">
+                {t('missionStatement')}
+              </p>
             </div>
-
-            {/* Our Vision */}
-            <div className="space-y-8 flex flex-col items-center md:items-start">
-              <div className="text-center md:text-center order-2 md:order-1 pt-8 md:pt-44 pb-12 sm:pb-20 md:pb-36">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400 mb-4 sm:mb-3">
-                  {t('ourVision')}
-                </h2>
-                <p className="text-gray-400 dark:text-gray-300 text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">
-                  {t('visionStatement')}
-                </p>
-              </div>
-              <div className="relative w-full sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[520px] order-1 md:order-2">
-                <img
-                  src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png"
-                  alt="Our Vision"
-                  className="rounded-lg shadow-lg w-full h-full object-cover"
-                />
+            
+            {/* Mission Image - Right */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2 relative">
+              <img
+                src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png"
+                alt="Our Mission"
+                className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
+              />
+              
+              {/* Right Dot Pattern - positioned closer to content */}
+              <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 hidden xl:block">
+                <div className="grid grid-cols-8 gap-1">
+                  {Array.from({ length: 64 }).map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

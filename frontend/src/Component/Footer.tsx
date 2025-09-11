@@ -1,17 +1,183 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Twitter } from "lucide-react"
+import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
+
+// Animated Banner Component
+function AnimatedBanner({
+  scrollProgress,
+  iLetterRef,
+}: {
+  scrollProgress: number
+  iLetterRef: React.RefObject<HTMLSpanElement | null>
+}) {
+  const [iPosition, setIPosition] = useState({ x: 0, y: 0 })
+
+  // Update i position on scroll and resize
+  useEffect(() => {
+    const updateIPosition = () => {
+      if (iLetterRef.current) {
+        const iRect = iLetterRef.current.getBoundingClientRect()
+        const screenWidth = window.innerWidth
+
+        if (screenWidth < 380) {
+          // Small mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + iRect.height * 45.8,
+          })
+        } else if (screenWidth <= 768) {
+          // Regular mobile
+          setIPosition({
+            x: iRect.left + iRect.width / 2.7,
+            y: iRect.top + iRect.height * 6.25,
+          })
+        } else if (screenWidth < 1024) {
+          // Tablet
+          setIPosition({
+            x: iRect.left + iRect.width / 2.5,
+            y: iRect.top + iRect.height * 1.2,
+          })
+        } else {
+          // Desktop
+          setIPosition({
+            x: iRect.left + iRect.width / 2.4,
+            y: iRect.top + iRect.height * 2,
+          })
+        }
+        
+        // Add the static dot
+      
+      }
+    }
+
+    const handleUpdate = () => {
+      requestAnimationFrame(updateIPosition)
+    }
+
+    updateIPosition() // Initial
+    window.addEventListener("scroll", handleUpdate, { passive: true })
+    window.addEventListener("resize", handleUpdate)
+
+    return () => {
+      window.removeEventListener("scroll", handleUpdate)
+      window.removeEventListener("resize", handleUpdate)
+    }
+  }, [iLetterRef, scrollProgress])
+
+  // Add float-gentle animation
+  const floatGentleKeyframes = `
+    @keyframes float-gentle {
+      0%, 100% {
+        transform: translate(-50%, -50%);
+      }
+      50% {
+        transform: translate(-50%, -80%);
+      }
+    }
+  `;
+
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = floatGentleKeyframes;
+  document.head.appendChild(styleSheet);
+
+  // Morphing progress
+  let morph = 0
+  if (scrollProgress > 0.3 && scrollProgress < 0.95) {
+    morph = (scrollProgress - 0.3) / 0.65
+  } else if (scrollProgress >= 0.95) {
+    morph = 1
+  }
+
+  // Sizes
+  const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920
+  let initialWidth, initialHeight, dotSize, dotBorderRadius
+
+  if (screenWidth < 640) {
+    // Small mobile
+    initialWidth = 280
+    initialHeight = 70
+    dotSize = 14
+    dotBorderRadius = 7
+  } else if (screenWidth < 768) {
+    // Large mobile
+    initialWidth = 320
+    initialHeight = 80
+    dotSize = 16
+    dotBorderRadius = 8
+  } else if (screenWidth < 1024) {
+    // Tablet
+    initialWidth = 600
+    initialHeight = 140
+    dotSize = 24
+    dotBorderRadius = 12
+  } else {
+    // Desktop
+    initialWidth = 1600
+    initialHeight = 180
+    dotSize = 28
+    dotBorderRadius = 16
+  }
+
+  const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize
+  const height = morph < 1 ? initialHeight - (initialHeight - dotSize) * morph : dotSize
+  const borderRadius =
+    morph < 1 ? 40 + (dotBorderRadius - 40) * morph : dotBorderRadius
+
+  let bannerStyle: CSSProperties = {
+    position: "fixed",
+    left: "50%",
+    top: scrollProgress < 0.95 ? "2%" : undefined,
+    transform: morph < 1 ? "translate(-50%, 0)" : "translate(-50%, -50%)",
+    width,
+    height,
+background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
+
+    boxShadow:
+      morph < 1
+        ? "0 12px 48px rgba(34,197,94,0.18)"
+        : "0 0 32px rgba(34,197,94,0.22)",
+    borderRadius,
+    zIndex: 1001,
+    overflow: "hidden",
+    border: "1px solid #34d399",
+    opacity: morph < 1 ? 1 : 0, // fixed flicker
+    transition: "all 0.7s cubic-bezier(.4,2,.3,1)",
+  }
+
+  if (scrollProgress > 0.95 && iPosition.x && iPosition.y) {
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920;
+    let bottomPosition = "1.2em";  // default for mobile
+    
+    if (screenWidth >= 1024) {
+      bottomPosition = "5.5em";  // laptop
+    } else if (screenWidth >= 768) {
+      bottomPosition = "2.7em";  // tablet
+    }
+
+    bannerStyle = {
+      ...bannerStyle,
+      left: iPosition.x,
+      bottom: bottomPosition,
+      width: dotSize,
+      height: dotSize,
+      borderRadius: dotBorderRadius,
+      opacity: 1,
+      boxShadow:
+        "0 0 32px 8px rgba(34,197,94,0.32), 0 0 64px 16px rgba(34,197,94,0.18)",
+      animation: "glow-pulse-interactive 2.5s ease-in-out infinite",
+      transition: "all 1.2s cubic-bezier(.4,2,.3,1)",
+    }
+  }
+
+  return <div style={bannerStyle} aria-hidden="true"></div>
+}
 
 export default function Footer() {
   const { t } = useLanguage()
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [showAnimation, setShowAnimation] = useState(false)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
-  const dotRef = useRef<HTMLDivElement>(null)
-  const iDotTargetRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
+ useEffect(() => {
     let animationFrameId: number | null = null
 
     const handleScroll = () => {
@@ -20,390 +186,322 @@ export default function Footer() {
       const footerRect = footerRef.current.getBoundingClientRect()
       const windowHeight = window.innerHeight
 
-      // Check if footer is in view
       if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
-        setShowAnimation(true)
-
-        // Calculate scroll progress within footer view
         const footerHeight = footerRect.height
-        const progress = Math.min(1, Math.max(0, (windowHeight - (footerRect.top)) / (footerHeight * 0.7)))
+        const progress = Math.min(
+          1,
+          Math.max(0, (windowHeight - footerRect.top) / (footerHeight * 0.7))
+        )
         setScrollProgress(progress)
       } else {
-        setShowAnimation(false)
         setScrollProgress(0)
       }
     }
 
-    // Use requestAnimationFrame for smoother performance
     const throttledScroll = () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId)
-      }
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
       animationFrameId = requestAnimationFrame(handleScroll)
     }
 
     window.addEventListener("scroll", throttledScroll, { passive: true })
-    handleScroll() // Initial check
-
+    handleScroll()
     return () => {
       window.removeEventListener("scroll", throttledScroll)
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId)
-      }
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
     }
   }, [])
 
-  // Calculate banner/dot position and style based on scroll progress
-  const getDotStyle = (): CSSProperties => {
-    if (!showAnimation) return { opacity: 0 }
-
-    // Animation phases:
-    // 0.0 - 0.4: Grey banner at top of footer
-    // 0.4 - 0.7: Transform color and shape
-    // 0.7 - 1.0: Move to 'i' position
-
-    // Banner dimensions and positioning  
-    const initialWidth = Math.min(window.innerWidth * 0.95, 2000) // 95% of screen width, wider banner
-    const initialHeight = 110 // pehle 72 tha, ab bada kar diya
-    const finalSize = 16
-
-    // Smooth easing functions
-    const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
-    const easeInOutQuint = (t: number) => 
-      t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
-
-    // Color transition: grey to dark green with smooth gradient (#537D5D)
-    const colorProgress = Math.max(0, Math.min(1, (scrollProgress - 0.25) / 0.4))
-    const easedColorProgress = easeInOutQuint(colorProgress)
-    
-    // Enhanced color transition from grey-500 to dark green (#537D5D: 83, 125, 93)
-    const greyValue = Math.round(107 - (107 - 83) * easedColorProgress)   // R: grey-500 (107) to dark green (83)
-    const greenValue = Math.round(114 + (125 - 114) * easedColorProgress) // G: grey-500 (114) to dark green (125)
-    const blueValue = Math.round(111 - (111 - 93) * easedColorProgress)   // B: grey-500 (111) to dark green (93)
-    
-    // Shape transition: rectangle to circle with smooth morphing
-    const shapeProgress = Math.max(0, Math.min(1, (scrollProgress - 0.4) / 0.3))
-    const easedShapeProgress = easeOutQuart(shapeProgress)
-    
-    const currentWidth = initialWidth - (initialWidth - finalSize) * easedShapeProgress
-    const currentHeight = initialHeight - (initialHeight - finalSize) * easedShapeProgress
-    const borderRadius = Math.min(currentWidth, currentHeight) * 0.5 * easedShapeProgress + 16 * (1 - easedShapeProgress)
-
-    // Default position
-    let currentX = 50 // %
-    let currentY = 50 // %
-
-    // Move to 'i' position in final phase
-    if (scrollProgress > 0.95 && iLetterRef.current) {
-      const iRect = iLetterRef.current.getBoundingClientRect()
-      const windowWidth = window.innerWidth
-      const windowHeight = window.innerHeight
-
-      // Center of the "i" dot
-      currentX = iRect.left + iRect.width / 2
-      currentY = iRect.top + iRect.height * 0.18 // Adjust multiplier for exact dot position
-
-      return {
-        position: 'fixed',
-        left: `${currentX}px`,
-        top: `${currentY}px`,
-        width: `${finalSize}px`,
-        height: `${finalSize}px`,
-        backgroundColor: `rgb(${greyValue}, ${greenValue}, ${blueValue})`,
-        borderRadius: '50%',
-        transform: 'translate(-50%, -50%)',
-        opacity: 1,
-        zIndex: 1000,
-        boxShadow: `0 0 24px rgba(34, 197, 94, 0.7)`,
-        pointerEvents: 'none',
-        transition: 'none',
-        animation: 'float-gentle 3s ease-in-out infinite'
-      }
-    }
-
-    // Enhanced visual effects with interactive elements
-    const glowIntensity = Math.max(0, (scrollProgress - 0.3) * 2)
-    const shadowBlur = Math.max(currentWidth, currentHeight) / 3
-    const scaleEffect = 1 + Math.sin(scrollProgress * Math.PI * 2) * 0.015 // Slightly subtler breathing
-    const rotationEffect = scrollProgress > 0.6 ? (scrollProgress - 0.6) * 240 : 0 // Less aggressive rotation for elegance
-    
-    return {
-      position: 'fixed' as const,
-      left: `${currentX}%`,
-      top: `${currentY}%`,
-      width: `${currentWidth}px`,
-      height: `${currentHeight}px`,
-      backgroundColor: `rgb(${greyValue}, ${greenValue}, ${blueValue})`,
-      borderRadius: `${borderRadius}px`,
-      transform: `translate(-50%, -50%) scale(${scaleEffect}) rotate(${rotationEffect}deg)`,
-      opacity: scrollProgress < 0.98 ? Math.max(0.85, 1 - scrollProgress * 0.1) : 0,
-      zIndex: 1000,
-      transition: 'none',
-      boxShadow: scrollProgress > 0.4 
-        ? `0 0 ${shadowBlur}px rgba(34, 197, 94, ${0.5 + glowIntensity * 0.5}), 
-           0 0 ${shadowBlur * 2}px rgba(34, 197, 94, ${0.3 + glowIntensity * 0.3}),
-           0 0 ${shadowBlur * 4}px rgba(34, 197, 94, ${0.1 + glowIntensity * 0.2})` 
-        : `0 12px 40px rgba(0, 0, 0, 0.15), 
-           0 4px 12px rgba(0, 0, 0, 0.1),
-           inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
-      pointerEvents: 'none' as const,
-      filter: scrollProgress > 0.5 
-        ? `blur(${Math.max(0, (scrollProgress - 0.9) * 20)}px) saturate(${1 + scrollProgress * 0.3})` 
-        : `saturate(${0.8 + scrollProgress * 0.4})`,
-      background: scrollProgress > 0.3 
-        ? `linear-gradient(135deg, rgb(${greyValue}, ${greenValue}, ${blueValue}) 0%, rgb(${Math.max(0, greyValue - 20)}, ${Math.min(255, greenValue + 30)}, ${Math.max(0, blueValue - 10)}) 100%)`
-        : `linear-gradient(135deg, rgb(${greyValue}, ${greenValue}, ${blueValue}) 0%, rgb(${Math.max(0, greyValue - 10)}, ${Math.max(0, greenValue - 10)}, ${Math.max(0, blueValue - 10)}) 100%)`,
-    }
-  }
-
   return (
-    <footer ref={footerRef} className="bg-gray-100 dark:bg-gray-800 px-8 pt-36 pb-16 relative overflow-hidden transition-colors duration-300">
-      {/* Dedicated Banner Space */}
-      <div className="absolute top-0 left-0 right-0 h-32 flex items-center justify-center pointer-events-none">
-        {/* Animated Banner to Dot */}
-        <div 
-          ref={dotRef}
-          className="pointer-events-none" 
-          style={{
-            ...getDotStyle(),
-            animation: showAnimation && scrollProgress > 0.6 ? 'glow-pulse-interactive 2.5s ease-in-out infinite' : 
-                      showAnimation && scrollProgress > 0.2 ? 'shimmer-effect 3s ease-in-out infinite' : 'none'
-          }} 
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Bidyut Technologies Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('BidyutTechnologies')}</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-              {t('footerDescription')}
-            </p>
-          </div>
-
-          {/* Quick Links Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('quickLinks')}</h3>
-            <ul className="space-y-3">
+ <footer
+          ref={footerRef}
+          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg  border-emerald-500/15"
+        >
+          <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
+    
+          <div className="max-w-7xl mx-auto">
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+              {/* Company */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
+                </h3>
+                <p className="body-color text-sm sm:text-base leading-relaxed">
+                  {t("footerDescription")}
+                </p>
+              </div>
+    
+              {/* Links */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("quickLinks")}</span>
+                </h3>
+                <div className="ml-1">
+                  <ul className="space-y-3">
+                    {[
+                      { key: "home", href: "/" },
+                      { key: "aboutUs", href: "/About" },
+                      { key: "school", href: "/school" },
+                      { key: "robots", href: "/robot" },
+                      { key: "contact", href: "/Contact" },
+                      { key: "gallery", href: "/Gallery" },
+                    ].map((link) => (
+                      <li key={link.key}>
+                        <a
+                          href={link.href}
+                          className="link-color hover:text-emerald-500 transition-colors text-sm sm:text-base font-medium"
+                        >
+                          {t(link.key)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+    
+              {/* Contact */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("contactInformation")}</span>
+                </h3>
+                <div className="space-y-5 text-sm sm:text-base body-color">
+                  <div>
+                    <p className="font-semibold title-color">{t("address")}</p>
+                    <p>901 Clifton Corporate Park</p>
+                    <p>11/6, AB Road, Sector A, Slice 6</p>
+                    <p>Aranya Nagar, VijayNagar, Indore</p>
+                    <p>Madhya Pradesh – 452010</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold title-color">{t("Phone")}</p>
+                    <p>+91 9370782979</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold title-color">{t("Email")}</p>
+                    <p>info@bidyutrobotics.com</p>
+                    <p>rahul@bidyutrobotis.com</p>
+                  </div>
+                </div>
+              </div>
+    
+              {/* Newsletter */}
+              <div className="glass-card theme-aware p-8">
+                <h3 className="text-lg font-bold mb-4">
+                  <span className="brand-heading-gradient">{t("newsletter")}</span>
+                </h3>
+                <p className="body-color text-sm sm:text-base mb-4">
+                  {t("newsletterDescription")}
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder={t("enterEmail")}
+                    className="w-full px-4 py-3 rounded-lg transition-all focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white/65 border border-emerald-600/25 text-gray-900 placeholder:text-gray-500 dark:bg-black/40 dark:border-emerald-500/35 dark:text-white dark:placeholder:text-gray-400 backdrop-blur-md"
+                  />
+                  <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-emerald-600/30">
+                    {t("subscribeNewsletter")}
+                  </button>
+                </div>
+              </div>
+            </div>
+    
+            {/* Socials */}
+            <div className="flex space-x-4 mb-8 justify-left">
               {[
-                { key: 'home', href: '/' },
-                { key: 'aboutUs', href: '/About' },
-                { key: 'school', href: '#' },
-                { key: 'robots', href: '#' },
-                { key: 'contact', href: '/Contact' },
-                { key: 'gallery', href: '/Gallery' }
-              ].map((link) => (
-                <li key={link.key}>
-                  <a href={link.href} className="text-gray-700 dark:text-gray-300 hover:text-green-600 transition-colors text-sm font-medium">
-                    {t(link.key)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Information Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('contactInformation')}</h3>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
-                </div>
-                <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">{t('address')}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">901 Clifton Corporate Park,</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">11/6, AB Road, Sector A, Slice 6</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">Aranya Nagar,VijayNagar, Indore,Madhya Pradesh,</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">pin code – 452010</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
-                </div>
-                <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">{t('Phone')}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">+91 9370782979</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-300 rounded-full"></div>
-                </div>
-                <div>
-                  <p className="font-semibold text-black dark:text-white text-sm">{t('Email')}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs">info@bidyutrobotics.com</p>
-                   <p className="text-gray-700 dark:text-gray-300 text-xs">rahul@bidyutrobotis.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Newsletter Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-green-400 p-6 shadow-lg transition-colors duration-300">
-            <h3 className="text-lg font-bold text-black dark:text-white mb-4">{t('newsletter')}</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
-              {t('newsletterDescription')}
-            </p>
-            <div className="space-y-3">
-              <input
-                type="email"
-                placeholder={t('enterEmail')}
-                className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition-all"
-              />
-              <button className="w-full bg-accent-500 hover:bg-accent-600 text-green-900 py-2.5 px-4 rounded-lg transition-all font-medium text-sm shadow-md hover:shadow-lg transform hover:scale-105">
-                {t('subscribeNewsletter')}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Social Media Icons */}
-        <div className="flex space-x-4 mb-8">
-          {[Instagram, Facebook, Twitter].map((Icon, index) => (
-            <div
-              key={index}
-              className="w-12 h-12 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center hover:border-green-400 hover:shadow-md transition-all cursor-pointer transform hover:scale-110"
-            >
-              <Icon className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-green-500 transition-colors" />
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Copyright Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 p-6 mb-8 shadow-lg transition-colors duration-300">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <span className="font-medium">Copyright © 2024 All Right Reserved</span>
-              <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                {t('privacyPolicy')}
-              </a>
-              <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                {t('termsOfService')}
-              </a>
-              <a href="#" className="hover:text-green-600 transition-colors underline hover:no-underline">
-                {t('cookiePolicy')}
-              </a>
-            </div>
-            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{t('builtWithExcellence')}</span>
-          </div>
-        </div>
-
-        {/* Large Company Name with Dot Positioning - Maximum Width */}
-        <div className="text-center relative w-full px-1">
-          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-400 dark:text-gray-500 tracking-wider relative inline-block select-none w-full">
-            <span>B</span>
-            <span ref={iLetterRef} className="relative inline-block">
-              <span className="relative">
-                i
-                <div
-                  className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full transition-all duration-500 ${
-                    scrollProgress >= 0.95 ? "opacity-100" : "opacity-0"
-                  }`}
+                {
+                  Icon: Instagram,
+                  link: "https://www.instagram.com/bidyutinnovation?igsh=YTE3dDN4YmJ1NGlt",
+                },
+                { Icon: Youtube, link: "https://www.youtube.com/@BidyutRobotics" },
+                { Icon: Facebook, link: "https://www.facebook.com/bidyutinnovation" },
+                { Icon: Linkedin, link: "https://www.linkedin.com/company/bidyutinnovation/" },
+              ].map(({ Icon, link }, index) => (
+                <a
+                  key={index}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all shadow-md bg-white/55 border border-emerald-600/25 dark:bg-black/40 dark:border-emerald-500/35 backdrop-blur-md"
                   style={{
-                    top: "0.4em", // yahan value badhao, jitna niche chahiye utna
-                    boxShadow: "0 0 12px rgba(83, 125, 93, 0.8), 0 0 24px rgba(83, 125, 93, 0.4)",
-                    animation: scrollProgress >= 0.95 ? 'float-gentle 3s ease-in-out infinite' : 'none'
+                    boxShadow:
+                      "0 2px 10px rgba(0,0,0,0.15), 0 0 10px rgba(16,185,129,0.12)",
                   }}
-                />
-              </span>
-            </span>
-            <span>dyut Innovation
-            </span>
+                  aria-label="social-icon"
+                >
+                  <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-emerald-500 transition-colors" />
+                </a>
+              ))}
+            </div>
+    
+            {/* Copyright */}
+            <div className="glass-card theme-aware p-6 mb-10">
+              <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <span className="font-medium title-color">Copyright © 2024</span>
+                  <a
+                    href="/PrivacyPolicy"
+                    className="link-color hover:text-emerald-500 transition-colors underline"
+                  >
+                    {t("privacyPolicy")}
+                  </a>
+                  <a
+                    href="/Terms&Condition"
+                    className="link-color hover:text-emerald-500 transition-colors underline"
+                  >
+                    {t("termsOfService")}
+                  </a>
+                  <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  {t("Refund Policy")}
+                </a>
+                </div>
+                <span className="muted-color">{t("builtWithExcellence")}</span>
+              </div>
+            </div>
+    
+            {/* Brand with i target */}
+            <div className="flex justify-center items-center w-full">
+              <div
+                className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
+                style={{
+                  fontSize: "8.9vw",
+                  minWidth: "100vw",
+                  width: "100%",
+                  lineHeight: 1.05,
+                }}
+              >
+                <span>B</span>
+                <span ref={iLetterRef} className="relative inline-block">
+                  <span className="relative">
+                    i
+                   
+                  </span>
+                </span>
+                <span>dyut Innovation</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes pulse-subtle {
-          0%, 100% {
-            opacity: 1;
+    
+          {/* Keep your style block unchanged */}
+       <style>{`
+              /* Theme tokens via utility classes (light and dark) */
+              .title-color { color: rgb(23, 23, 23); }
+              .body-color { color: rgb(75, 85, 99); } /* gray-600 */
+              .muted-color { color: rgb(107, 114, 128); } /* gray-500 */
+              .link-color { color: rgb(55, 65, 81); } /* gray-700 */
+    
+              .dark .title-color { color: #fff; }
+              .dark .body-color { color: rgb(209, 213, 219); } /* gray-300 */
+              .dark .muted-color { color: rgb(156, 163, 175); } /* gray-400 */
+              .dark .link-color { color: rgb(209, 213, 219); }
+    
+              .brand-heading-gradient {
+                background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #22c55e 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                filter: drop-shadow(0 0 0.25rem rgba(16,185,129,0.15));
+              }
+    
+              /* Glass card base + animated conic gradient border */
+              .glass-card {
+                position: relative;
+                border-radius: 1rem;
+                overflow: hidden;
+                box-shadow:
+                  0 8px 24px rgba(0,0,0,0.12),
+                  inset 0 1px 1px rgba(255,255,255,0.06);
+              }
+              /* Light vs Dark background surfaces */
+              .theme-aware {
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(14px);
+                border: 1px solid rgba(16, 185, 129, 0.18);
+              }
+              .dark .theme-aware {
+                background: rgba(15, 15, 15, 0.55);
+                border: 1px solid rgba(34, 197, 94, 0.25);
+              }
+    
+              .glass-card::before {
+                content: "";
+                position: absolute;
+                inset: -1px;
+                border-radius: inherit;
+                padding: 1px;
+                background: conic-gradient(
+                  from 0deg,
+                  rgba(34,197,94,0.0) 0%,
+                  rgba(34,197,94,0.35) 12%,
+                  rgba(16,185,129,0.5) 24%,
+                  rgba(59,130,246,0.35) 36%,
+                  rgba(16,185,129,0.5) 48%,
+                  rgba(34,197,94,0.35) 60%,
+                  rgba(34,197,94,0.0) 72%,
+                  rgba(34,197,94,0.0) 100%
+                );
+                -webkit-mask:
+                  linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                animation: spin-gradient 6s linear infinite;
+                filter: drop-shadow(0 0 10px rgba(34,197,94,0.22));
+                pointer-events: none;
+              }
+              .glass-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                background:
+                  radial-gradient(120% 120% at 0% 0%, rgba(34,197,94,0.06), transparent 60%),
+                  radial-gradient(120% 120% at 100% 100%, rgba(16,185,129,0.05), transparent 60%);
+                pointer-events: none;
+              }
+              .glass-card:hover::before {
+                animation-duration: 4.5s;
+                filter: drop-shadow(0 0 14px rgba(34,197,94,0.30));
+              }
+    
+              /* Banner/dot keyframes */
+              @keyframes glow-pulse-interactive {
+                0%, 100% {
+                  filter: brightness(1) drop-shadow(0 0 12px rgba(34, 197, 94, 0.6)) saturate(1.2);
+                  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                }
+                25% {
+                  filter: brightness(1.3) drop-shadow(0 0 20px rgba(34, 197, 94, 0.8)) saturate(1.4);
+                  transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
+                }
+                50% {
+                  filter: brightness(1.1) drop-shadow(0 0 24px rgba(34, 197, 94, 0.9)) saturate(1.6);
+                  transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+                }
+                75% {
+                  filter: brightness(1.25) drop-shadow(0 0 18px rgba(34, 197, 94, 0.7)) saturate(1.3);
+                  transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
+                }
+              }
+          
+    
+              /* Reduced motion */
+              @media (prefers-reduced-motion: reduce) {
+                .glass-card::before { animation: none; }
+              }
+                 .dot-position {
+            bottom: 1.2em;  /* mobile */
           }
-          50% {
-            opacity: 0.8;
+          @media (min-width: 768px) {
+            .dot-position {
+              bottom: 3.8em;  /* tablet */
+            }
           }
-        }
-
-        @keyframes glow-pulse {
-          0%, 100% {
-            filter: brightness(1) drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
-            transform: translate(-50%, -50%) scale(1);
+          @media (min-width: 1024px) {
+            .dot-position {
+              bottom: 5.5em;  /* laptop */
+            }
           }
-          50% {
-            filter: brightness(1.2) drop-shadow(0 0 16px rgba(34, 197, 94, 0.7));
-            transform: translate(-50%, -50%) scale(1.05);
-          }
-        }
-
-        @keyframes glow-pulse-interactive {
-          0%, 100% {
-            filter: brightness(1) drop-shadow(0 0 12px rgba(34, 197, 94, 0.6)) saturate(1.2);
-            transform: translate(-50%, -50%) scale(1) rotate(0deg);
-          }
-          25% {
-            filter: brightness(1.3) drop-shadow(0 0 20px rgba(34, 197, 94, 0.8)) saturate(1.4);
-            transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
-          }
-          50% {
-            filter: brightness(1.1) drop-shadow(0 0 24px rgba(34, 197, 94, 0.9)) saturate(1.6);
-            transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
-          }
-          75% {
-            filter: brightness(1.25) drop-shadow(0 0 18px rgba(34, 197, 94, 0.7)) saturate(1.3);
-            transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
-          }
-        }
-
-        @keyframes shimmer-effect {
-          0%, 100% {
-            background-position: -100% 0;
-            opacity: 0.9;
-          }
-          50% {
-            background-position: 200% 0;
-            opacity: 1;
-          }
-        }
-
-        @keyframes bounce-gentle {
-          0%, 100% {
-            transform: translateX(-50%) translateY(0);
-          }
-          50% {
-            transform: translateX(-50%) translateY(-2px);
-          }
-        }
-
-        @keyframes float-gentle {
-          0%, 100% {
-            transform: translateX(-50%) translateY(-50%) translateZ(0);
-          }
-          50% {
-            transform: translateX(-50%) translateY(-50%) translateZ(0) translateY(-3px);
-          }
-        }
-
-        .animate-pulse-subtle {
-          animation: pulse-subtle 2s ease-in-out infinite;
-        }
-
-        .animate-glow-pulse {
-          animation: glow-pulse 2.5s ease-in-out infinite;
-        }
-
-        .animate-bounce-gentle {
-          animation: bounce-gentle 2s ease-in-out infinite;
-        }
-
-        .animate-float-gentle {
-          animation: float-gentle 3s ease-in-out infinite;
-        }
-      `}</style>
-    </footer>
+            `}</style>
+        </footer>
   )
 }

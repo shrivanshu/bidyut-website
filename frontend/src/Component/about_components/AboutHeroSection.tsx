@@ -1,259 +1,277 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
-import { gsap } from "gsap"
-import { useTheme } from "../../contexts/ThemeContext"
+import { useState, useEffect, useRef } from "react"
 
-// Define image data for the gallery with descriptive placeholder queries
-const initialImages = [
-  {
-    id: "robot-tablet",
-    src: "https://cdnb.artstation.com/p/assets/covers/images/001/694/405/large/jesus-velazco-cropped.jpg?1451069260",
-    alt: "Robot holding a tablet",
-  },
-  {
-    id: "humanoid-robot",
-    src: "https://tse4.mm.bing.net/th/id/OIP.jTRXTBz5PJpmXXS8IaqicwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    alt: "Humanoid robot",
-  },
-  {
-    id: "robot-car",
-    src: "https://images.pexels.com/photos/8294595/pexels-photo-8294595.jpeg?cs=srgb&dl=pexels-pavel-danilyuk-8294595.jpg&fm=jpg",
-    alt: "Robot car",
-  },
-  {
-    id: "industrial-arm",
-    src: "https://as2.ftcdn.net/v2/jpg/05/65/06/85/1000_F_565068563_jSzYovhlcrwcVTOm05akpqVdZXdoOaNE.jpg",
-    alt: "Industrial robot arm",
-  },
-]
+export default function ScrollAnimationPage() {
+  const [scrollY, setScrollY] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const [showWhiteScreen, setShowWhiteScreen] = useState(false)
+  const [showAboutUs, setShowAboutUs] = useState(false)
+  const [showVideoSection, setShowVideoSection] = useState(false)
+  const currentYear = new Date().getFullYear()
 
-export default function AboutHeroSection() {
-  const { isDark } = useTheme()
-  const mainImageContainerRef = useRef<HTMLDivElement>(null)
-  // Use an object for thumbnail slot refs, keyed by their fixed slot name (e.g., 'thumb1', 'thumb2', 'thumb3')
-  const thumbnailSlotRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-  const greenSquareTopRef = useRef<HTMLDivElement>(null)
-  const greenSquareBottomRef = useRef<HTMLDivElement>(null)
-
-  // State to manage which image ID is currently in which fixed slot
-  const [imageSlotMap, setImageSlotMap] = useState(() => {
-    const map: { [key: string]: string } = {
-      main: initialImages[0].id, // First image is initially main
-    }
-    // Assign the rest to fixed thumbnail slots
-    initialImages.slice(1).forEach((img, idx) => {
-      map[`thumb${idx + 1}`] = img.id
-    })
-    return map
-  })
-
-  // Helper function to get image data by ID
-  const getImageById = (id: string) => initialImages.find((img) => img.id === id)
-
-  // Initial animation for all elements on mount
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
 
-    // Animate the main image container
-    tl.fromTo(mainImageContainerRef.current, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1 })
-    // Animate the thumbnail containers with a slight stagger
-    tl.fromTo(
-      Object.values(thumbnailSlotRefs.current).filter(Boolean), // Filter out nulls
-      { opacity: 0, x: 50 },
-      { opacity: 1, x: 0, duration: 0.8, stagger: 0.2 },
-      "<0.2",
-    )
-    // Animate the green decorative squares with enhanced effects
-    tl.fromTo(
-      [greenSquareTopRef.current, greenSquareBottomRef.current],
-      { opacity: 0, scale: 0, rotation: 180 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.6, stagger: 0.1 },
-      "<0.3",
-    )
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    document.documentElement.style.scrollBehavior = "smooth"
+    document.body.style.scrollBehavior = "smooth"
+
+    setTimeout(() => setIsVisible(true), 300)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      document.documentElement.style.scrollBehavior = "auto"
+      document.body.style.scrollBehavior = "auto"
+    }
   }, [])
 
-  // Theme change animation effect
   useEffect(() => {
-    if (isDark) {
-      gsap.to([greenSquareTopRef.current, greenSquareBottomRef.current], {
-        boxShadow: "0 0 20px rgba(34, 197, 94, 0.3)",
-        duration: 0.3,
-        ease: "power2.out"
-      })
-    } else {
-      gsap.to([greenSquareTopRef.current, greenSquareBottomRef.current], {
-        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-        duration: 0.3,
-        ease: "power2.out"
-      })
+    if (showAboutUs) {
+      const timer = setTimeout(() => {
+        setShowVideoSection(true)
+      }, 2000)
+      return () => clearTimeout(timer)
     }
-  }, [isDark])
+  }, [showAboutUs])
 
-  // Function to handle thumbnail clicks and swap images with animation
-  const handleThumbnailClick = (clickedImageId: string, clickedSlotKey: string) => {
-    // Do nothing if clicking the current main image
-    if (clickedImageId === imageSlotMap.main) return
+  const getTransformedText = () => {
+  // Smooth counter from 0000 -> current year based on scroll progress
+  const maxScroll = 1500
+  const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
 
-    const oldMainImageId = imageSlotMap.main
-
-    const prevMainImageEl = mainImageContainerRef.current
-    const clickedThumbEl = thumbnailSlotRefs.current[clickedSlotKey]
-
-    if (!prevMainImageEl || !clickedThumbEl) return
-
-    // 1. First (F): Capture initial positions and sizes
-    const prevMainRect = prevMainImageEl.getBoundingClientRect()
-    const clickedThumbRect = clickedThumbEl.getBoundingClientRect()
-
-    // Temporarily hide the elements to prevent flicker during state update
-    gsap.set([prevMainImageEl, clickedThumbEl], { autoAlpha: 0 })
-
-    // 2. Last (L): Update state to trigger re-render with new content in slots
-    setImageSlotMap((prevMap) => {
-      const newMap = { ...prevMap }
-      newMap.main = clickedImageId // Clicked image becomes main
-      newMap[clickedSlotKey] = oldMainImageId // Old main image goes to clicked thumbnail's slot
-      return newMap
-    })
-
-    // Wait for the next render cycle to get the new elements and their final positions
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        // The DOM elements are the same, but their content (img src) has changed.
-        // We are animating the *containers* themselves.
-        const newMainImageEl = prevMainImageEl // Still the main container
-        const newThumbEl = clickedThumbEl // Still the clicked thumbnail container
-
-        if (!newMainImageEl || !newThumbEl) return
-
-        const newMainRect = newMainImageEl.getBoundingClientRect()
-        const newThumbRect = newThumbEl.getBoundingClientRect()
-
-        // 3. Invert (I): Calculate deltas and set the new elements to their old positions/sizes
-        // The element that is now the main image (newMainImageEl) needs to start from where the clicked thumbnail was.
-        const deltaXMain = clickedThumbRect.left - newMainRect.left
-        const deltaYMain = clickedThumbRect.top - newMainRect.top
-        const deltaScaleXMain = clickedThumbRect.width / newMainRect.width
-        const deltaScaleYMain = clickedThumbRect.height / newMainRect.height
-
-        // The element that is now the thumbnail (newThumbEl) needs to start from where the main image was.
-        const deltaXThumb = prevMainRect.left - newThumbRect.left
-        const deltaYThumb = prevMainRect.top - newThumbRect.top
-        const deltaScaleXThumb = prevMainRect.width / newThumbRect.width
-        const deltaScaleYThumb = prevMainRect.height / newThumbRect.height
-
-        gsap.set(newMainImageEl, {
-          x: deltaXMain,
-          y: deltaYMain,
-          scaleX: deltaScaleXMain,
-          scaleY: deltaScaleYMain,
-          autoAlpha: 1, // Make visible for animation
-        })
-        gsap.set(newThumbEl, {
-          x: deltaXThumb,
-          y: deltaYThumb,
-          scaleX: deltaScaleXThumb,
-          scaleY: deltaScaleYThumb,
-          autoAlpha: 1, // Make visible for animation
-        })
-
-        // 4. Play (P): Animate them to their final positions (x:0, y:0, scale:1)
-        gsap.to(newMainImageEl, {
-          x: 0,
-          y: 0,
-          scaleX: 1,
-          scaleY: 1,
-          duration: 0.6,
-          ease: "power3.out",
-        })
-        gsap.to(newThumbEl, {
-          x: 0,
-          y: 0,
-          scaleX: 1,
-          scaleY: 1,
-          duration: 0.6,
-          ease: "power3.out",
-        })
-      })
-    })
+  const target = currentYear
+  const count = Math.round(progress * target)
+  
+  // Format as 4-digit year with leading zeros if needed
+  const yearStr = String(count).padStart(4, "0")
+  
+  return yearStr
   }
 
-  // Get the current main image data
-  const currentMainImage = getImageById(imageSlotMap.main)
+  // Get individual digits for scroll animation
+  const getDigitAnimation = (digitIndex: number) => {
+    const maxScroll = 1500
+    const progress = Math.max(0, Math.min(1, scrollY / maxScroll))
+    
+    const target = currentYear
+    const count = Math.round(progress * target)
+    const yearStr = String(count).padStart(4, "0")
+    
+    return {
+      digit: yearStr[digitIndex] || "0",
+      transform: `translateY(${(1 - progress) * 100}px) scale(${0.8 + progress * 0.2})`
+    }
+  }
 
-  return (
-    <section className="relative min-h-screen flex items-center justify-center py-12 px-4 md:px-8 lg:px-16 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
-      {/* Green decorative squares - positioned absolutely */}
-      <div
-        ref={greenSquareTopRef}
-        className="absolute top-60 md:top-10 sm:right-10 w-24 h-24 bg-[#73946B] dark:bg-primary-500 rounded-lg shadow-lg dark:shadow-blue-500/20 transition-colors duration-300"
-        aria-hidden="true"
-      />
-      <div
-        ref={greenSquareBottomRef}
-        className="absolute bottom-0 right-80 w-24 h-24 bg-[#73946B] dark:bg-primary-500 rounded-lg shadow-lg dark:shadow-blue-500/20 sm:z-0 transition-colors duration-300"
-        aria-hidden="true"
-      />
-      <div className="w-full px-0 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+  const getZeroZoomScale = () => {
+    if (scrollY > 1800 && getTransformedText() === String(currentYear).padStart(4, "0")) {
+      const zoomProgress = (scrollY - 1800) / 400
+      return Math.min(zoomProgress * 30, 80)
+    }
+    return 1
+  }
 
+  const getMainScale = () => {
+    const maxScroll = 1500
+    const progress = Math.min(scrollY / maxScroll, 1)
+    return 1 + progress * 0.5 // Smoother scaling
+  }
 
-       {/* Left content section */}
-<div className="flex flex-col gap-4 text-left items-start px-2 lg:pl-0">
-  <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
-    About <span className="text-[#73946B] dark:text-green-400">Us</span>
-  </h2>
-  <h3 className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">Shaping Tomorrow's Technology</h3>
-<p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl transition-colors duration-300">
-  Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting
-  the future of automation with solutions that enhance human capabilities rather than replace them.
-</p>
-</div>
+  const getVideoSectionTransform = () => {
+    if (!showVideoSection) return { scale: 0.1, rotate: 0, opacity: 0 }
 
-        {/* Right image gallery section */}
-        <div className="relative w-full max-w-[550px] h-[650px] mx-auto flex items-center justify-center">
-          {/* Main image container (fixed slot) */}
-          <div
-            ref={mainImageContainerRef}
-            className="absolute w-[250px] h-[375px] md:w-[350px] md:h-[400px] rounded-xl overflow-hidden shadow-xl dark:shadow-2xl border border-gray-200 dark:border-gray-700 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
-          >
-            <img
-              src={currentMainImage?.src || "/placeholder.svg"}
-              alt={currentMainImage?.alt}
-              className="object-cover w-full h-full"
-            />
-          </div>
+    const videoSectionStart = 3000
+    const animationProgress = Math.max(0, Math.min(1, (scrollY - videoSectionStart) / 600))
 
-          {/* Thumbnail image slots (fixed positions) */}
-          {Object.keys(imageSlotMap)
-            .filter((key) => key.startsWith("thumb"))
-            .map((slotKey) => {
-              const image = getImageById(imageSlotMap[slotKey])
-              let positionClasses = ""
-              if (slotKey === "thumb1") {
-                positionClasses = "top-[8%] md:top-[10%] left-[0%] md:left-[-15%]" // Top-left
-              } else if (slotKey === "thumb2") {
-                positionClasses = "bottom-[5%] left-[0%] md:bottom-[-10%] md:left-[-15%]" // Bottom-left
-              } else if (slotKey === "thumb3") {
-                positionClasses = "top-1/2 right-[-5%] sm:right-[-20%] translate-x-1/2 -translate-y-1/2" // Right-center
-              }
-              
-              return (
-                <div
-                  key={slotKey} // Key by slot name to keep DOM node stable
-                  ref={(el) => {
-                    thumbnailSlotRefs.current[slotKey] = el
-                  }}
-                  // Removed transition-transform to avoid conflict with GSAP
-                  className={`absolute rounded-lg overflow-hidden shadow-md dark:shadow-lg border border-gray-200 dark:border-gray-600 cursor-pointer hover:scale-105 duration-200 ease-in-out transition-all ${positionClasses} w-20 h-20 md:w-28 md:h-28`}
-                  onClick={() => handleThumbnailClick(image?.id || "", slotKey)} // Pass image ID and slot key
-                >
-                  <img src={image?.src || "/placeholder.svg"} alt={image?.alt} className="object-cover w-full h-full" />
-                </div>
-              )
-            })}
+    // Smoother animation curve
+    const easeOut = 1 - Math.pow(1 - animationProgress, 3)
+    const scale = 0.1 + easeOut * 0.9
+    const rotate = easeOut * 360
+    const opacity = Math.min(1, easeOut * 2)
+
+    return { scale, rotate, opacity }
+  }
+
+  // Trigger the white-screen -> About transition once the big number reaches current year
+  const hasTriggeredRef = useRef(false)
+  const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
+  useEffect(() => {
+    const transformed = getTransformedText()
+    const targetYear = String(currentYear).padStart(4, "0")
+    // trigger only when counter reaches the current year
+    if (!hasTriggeredRef.current && transformed === targetYear) {
+      hasTriggeredRef.current = true
+      setShowWhiteScreen(true)
+      setTimeout(() => {
+        setShowAboutUs(true)
+        setShowWhiteScreen(false)
+        if (typeof window !== 'undefined') {
+          try {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          } catch (e) {
+            window.scrollTo(0, 0)
+          }
+        }
+        setTimeout(() => setAboutAnimStarted(true), 100)
+      }, 800)
+    }
+  }, [scrollY, currentYear])
+
+  if (showWhiteScreen && scrollY > 2000) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center transition-all duration-1000 ease-out">
+        <div className="w-full h-full bg-white flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
         </div>
       </div>
-    </section>
+    )
+  }
+
+  if (showAboutUs || scrollY > 2400) {
+    const videoTransform = getVideoSectionTransform()
+
+    return (
+      <div
+        className="bg-black min-h-screen relative overflow-hidden"
+        style={{
+          transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
+          opacity: aboutAnimStarted ? 1 : 0,
+          transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out',
+          transformOrigin: 'center center'
+        }}
+      >
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "50px 50px",
+          }}
+        />
+
+        <div className="flex items-center justify-center min-h-screen px-8">
+          <div className="text-center max-w-6xl mx-auto relative z-10">
+            {/* Main Heading */}
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tight animate-in slide-in-from-bottom-4 duration-700">
+              About Us
+            </h1>
+            
+            {/* Subtitle */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-400 mb-16 font-light animate-in slide-in-from-bottom-4 duration-700 delay-200">
+              Shaping Tomorrow's Technology
+            </h2>
+            
+            {/* Description Paragraph */}
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed max-w-5xl mx-auto mb-20 animate-in slide-in-from-bottom-4 duration-700 delay-400">
+              Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
+            </p>
+
+            {/* Statistics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
+              {/* Current Year */}
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  {currentYear}
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Current Year
+                </div>
+              </div>
+              
+              {/* Projects */}
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  100+
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Projects
+                </div>
+              </div>
+              
+              {/* Happy Clients */}
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                  50+
+                </div>
+                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                  Happy Clients
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {showVideoSection && (
+          <div
+            className="transition-all duration-1000 ease-out"
+            style={{
+              transform: `scale(${videoTransform.scale}) rotate(${videoTransform.rotate}deg)`,
+              opacity: videoTransform.opacity,
+              transformOrigin: "center center",
+            }}
+          >
+           
+          </div>
+        )}
+
+        
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-black min-h-[600vh]" style={{ scrollBehavior: "smooth" }}>
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="relative">
+          {scrollY > 1800 && getTransformedText() === String(currentYear).padStart(4, "0") ? (
+            <div
+              className="text-[12rem] font-bold text-white font-mono tracking-wider absolute inset-0 flex items-center justify-center"
+              style={{
+                transform: `scale(${getZeroZoomScale()})`,
+                transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+              }}
+            >
+              {String(currentYear).slice(-1)}
+            </div>
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="flex space-x-2">
+                {[0, 1, 2, 3].map((digitIndex) => {
+                  const digitData = getDigitAnimation(digitIndex)
+                  return (
+                    <div
+                      key={digitIndex}
+                      className={`
+                        text-[12rem] font-bold text-white font-mono tracking-wider
+                        transition-all duration-700 cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                        ${isVisible ? "opacity-100" : "opacity-0"}
+                      `}
+                      style={{
+                        transform: digitData.transform,
+                      }}
+                    >
+                      {digitData.digit}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="relative z-10 pointer-events-auto">
+        {/* Section 1 */}
+        {/* Section 2 */}
+        {/* Section 3 */}
+        {/* Section 4 */}
+      </div>
+    </div>
   )
 }

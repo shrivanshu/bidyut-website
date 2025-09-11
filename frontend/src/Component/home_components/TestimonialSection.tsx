@@ -77,26 +77,25 @@ const TestimonialSection: React.FC = () => {
   const centerCardData = testimonials[CENTER_INDEX];
 
   return (
-    <section className="relative w-full bg-gray-50 dark:bg-gray-900 py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
-     {/* Background Grid Lines */}
-<div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none opacity-30 z-0">
-  <div className="w-full h-full grid grid-cols-12 gap-0">
-    {Array.from({ length: 12 }).map((_, i) => (
-      <div key={i} className="border-r-5 border-gray-200 dark:border-gray-700 transition-colors duration-300" style={{ borderRightWidth: '10px' }} />
-    ))}
-  </div>
-</div>
+    <section className="relative w-full bg-gray-50 dark:bg-black py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
+      {/* Background Grid Lines */}
+      <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none opacity-30 z-0">
+        <div className="w-full h-full grid grid-cols-12 gap-0">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="border-r-5 border-gray-200 dark:border-gray-700 transition-colors duration-300" style={{ borderRightWidth: '10px' }} />
+          ))}
+        </div>
+      </div>
 
       {/* Header - matching image exactly */}
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
           <HomeHeroText
-            text={[`${t('whatOurPartnersSay').split(' ')[0]} ${t('whatOurPartnersSay').split(' ')[1]} ${t('whatOurPartnersSay').split(' ').slice(2).join(' ')}`]}
-            highlight={{ text: t('whatOurPartnersSay').split(' ').slice(2).join(' '), color: '#73946B' }}
+            text={`${t('whatOurPartnersSay').split(' ')[0]} ${t('whatOurPartnersSay').split(' ')[1]} ${t('whatOurPartnersSay').split(' ').slice(2).join(' ')}`}
+            highlight={{ text: t('whatOurPartnersSay').split(' ').slice(2).join(' '), color: '#10b981' }}
             typingSpeed={40}
             pauseDuration={0}
-            showCursor={true}
-            cursorCharacter="|"
+            showCursor={false}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300"
             startOnVisible={true}
           />
@@ -138,7 +137,7 @@ const TestimonialSection: React.FC = () => {
         {/* Horizontal Scroller for Thumbnails */}
         <div className="w-full mt-8">
           <p className="text-center font-semibold text-gray-500 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">{t('tapToViewOthers')}</p>
-          <div className="flex overflow-x-auto space-x-4 pb-4 pt-2 -mx-4 px-4">
+          <div className="flex overflow-x-auto scrollbar-hide space-x-4 pb-4 pt-2 -mx-4 px-4">
             {testimonials.map((testimonial, index) => {
               if (index === CENTER_INDEX) return null;
               return (
@@ -171,7 +170,7 @@ const TestimonialSection: React.FC = () => {
               
               return (
                 <motion.div
-                  key={testimonial.id}
+                  key={`testimonial-${testimonial.id}`}
                   layoutId={`testimonial-${testimonial.id}`}
                   style={{ gridArea: position.gridArea }}
                   className="relative cursor-pointer group"

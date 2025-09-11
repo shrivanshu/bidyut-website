@@ -10,11 +10,11 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-[#537D5D] dark:text-white overflow-hidden relative transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <div className="flex flex-col items-center justify-center text-center mb-12">
+  <div className="flex flex-col items-center justify-center text-center mb-20 mt-4 pt-16">
           <SplitText
             text="Innovative Learning with Robotics & AI"
             className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"

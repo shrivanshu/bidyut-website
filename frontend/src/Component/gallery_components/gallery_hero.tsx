@@ -41,20 +41,21 @@ const GalleryHero: React.FC = () => {
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background Video */}
+      {/* Background Video - always render, fix dark mode overlay */}
       <video
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ pointerEvents: "none" }}
       >
         <source src="/robott.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Dark overlay for better text readability */}
-      <div className={`absolute inset-0 z-10 ${isDark ? 'bg-black/60' : 'bg-black/40'} transition-colors duration-300`} />
+  {/* Dark overlay for better text readability */}
+  <div className={`absolute inset-0 z-10 ${isDark ? 'bg-black/60' : 'bg-black/40'} transition-colors duration-300`} />
 
       {/* Content */}
       <motion.div
@@ -113,25 +114,7 @@ const GalleryHero: React.FC = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
-        <motion.div
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <motion.div
-            className="w-1 h-3 bg-white/70 rounded-full mt-2"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
+  {/* ...removed mouse scroll indicator... */}
     </section>
   );
 };

@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
+         'oxanium': ['Oxanium', 'sans-serif'],
         'sans': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
       },
       colors: {
@@ -49,6 +50,20 @@ export default {
           800: '#3a5542',
           900: '#2f4437',
         },
+      },
+      keyframes: {
+        bell: {
+          '0%': { transform: 'rotate(0deg)' },
+          '15%': { transform: 'rotate(15deg)' },
+          '30%': { transform: 'rotate(-15deg)' },
+          '45%': { transform: 'rotate(10deg)' },
+          '60%': { transform: 'rotate(-10deg)' },
+          '75%': { transform: 'rotate(5deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
+      },
+      animation: {
+        bell: 'bell 0.8s ease-in-out infinite',
       },
       transitionProperty: {
         'colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',

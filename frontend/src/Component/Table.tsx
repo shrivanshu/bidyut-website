@@ -46,6 +46,7 @@ interface RobotSpec {
 
 const RoboticsComparisonChart: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("AIR");
+  const [showMoreSensors, setShowMoreSensors] = useState(false);
   
   const specifications: RobotSpec[] = [
     {
@@ -352,7 +353,7 @@ const RoboticsComparisonChart: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-2 sm:p-4">
+    <div className="min-h-screen bg-white dark:bg-black text-white p-2 sm:p-4">
       <div className="max-w-7xl mx-auto">
         
         {/* Mobile Layout */}
@@ -426,7 +427,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="AIR Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">AIR</span>
+              <span className="font-bold text-black dark:text-white text-sm">AIR</span>
             </div>
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
@@ -434,7 +435,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="PRO Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">PRO</span>
+              <span className="font-bold text-black dark:text-white text-sm">PRO</span>
             </div>
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
@@ -442,7 +443,7 @@ const RoboticsComparisonChart: React.FC = () => {
                 alt="EDU Robot" 
                 className="w-20 h-20 mb-2 object-contain"
               />
-              <span className="font-bold text-white text-sm">EDU</span>
+              <span className="font-bold text-black dark:text-white text-sm">EDU</span>
             </div>
           </div>
           
@@ -490,19 +491,61 @@ const RoboticsComparisonChart: React.FC = () => {
                 {renderGroup("Knee joint Parameters", "Motor & Control", group4Labels)}
 
                 {/* Group 5: Sensors & Detection (4 items) */}
-                {renderGroup("Force Sensor Parameters", "Sensors & Detection", group5Labels, true)}
+                {Object.entries(group5Labels).map(([key, label], idx) => (
+                  <tr key={key} className={idx % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}>
+                    {idx === 0 ? (
+                      <td
+                        rowSpan={Object.entries(group5Labels).length}
+                        className="p-3 border-2 border-gray-800 text-center align-middle rounded-xx mx-4 my-4"
+                        style={{
+                          backgroundColor: 'transparent',
+                          writingMode: 'vertical-rl',
+                          textOrientation: 'mixed',
+                          transform: 'rotate(360deg)',
+                          whiteSpace: 'nowrap',
+                          margin: '8px 16px',
+                        }}
+                      >
+                        Force Sensor Parameters
+                      </td>
+                    ) : null}
+                    <td className="p-3">{label}</td>
+                    {specifications.map((spec) =>
+                      <td key={spec.model} className="p-3 text-center">
+                        <span className="text-2xl leading-none inline-block w-6 text-center">
+                          {(spec[key as keyof RobotSpec] as boolean).toString() === "true" ? "●" : "○"}
+                        </span>
+                      </td>
+                    )}
+                  </tr>
+                ))}
 
-                {/* Group 6: Advanced Features & Intelligence (14 items) */}
-                {renderGroup("Feature List", "Advanced Features & Intelligence", group6Labels, true)}
+                {/* Show rest of table when showMoreSensors is true */}
+                {showMoreSensors && (
+                  <>
+                    {/* Group 6: Advanced Features & Intelligence (14 items) */}
+                    {renderGroup("Feature List", "Advanced Features & Intelligence", group6Labels, true)}
 
-                {/* Group 7: Power System & Accessories (5 items) */}
-                {renderGroup("Accessories", "Power System & Accessories", group7Labels)}
+                    {/* Group 7: Power System & Accessories (5 items) */}
+                    {renderGroup("Accessories", "Power System & Accessories", group7Labels)}
 
-                {/* Group 8: Warranty */}
-                {renderGroup("Warranty", "Warranty", group8Labels)}
+                    {/* Group 8: Warranty */}
+                    {renderGroup("Warranty", "Warranty", group8Labels)}
+                  </>
+                )}
               </tbody>
             </table>
+            
           </div>
+          {/* Show More Button outside the table, right side, at the bottom */}
+            <div className="flex justify-end mt-4 mr-4 mb-4">
+              <button
+                className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-green-700 transition"
+                onClick={() => setShowMoreSensors((prev) => !prev)}
+              >
+                {showMoreSensors ? "Hide More" : "Show More Specifications"}
+              </button>
+            </div>
         </div>
       </div>
     </div>
