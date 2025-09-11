@@ -160,7 +160,7 @@ function PartnerPin({
         center
         style={{
           pointerEvents: "none",
-          transform: scale(${hovered || isHovered ? 1.2 : 1}),
+          transform: `scale(${hovered || isHovered ? 1.2 : 1})`,
           transition: "transform 0.2s ease",
         }}
       >
