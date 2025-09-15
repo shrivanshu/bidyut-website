@@ -3,10 +3,10 @@ import React from "react";
 
 const WhyBidyut: React.FC = () => {
   return (
-    <section className="w-full bg-white relative font-['Roboto'] min-h-[400px]">
+    <section className="w-full bg-white relative font-['Roboto'] min-h-[400px] pb-10">
       {/* Heading */}
       <h2
-        className="absolute font-semibold leading-snug text-black"
+        className="absolute font-semibold leading-snug text-black hidden md:block"
         style={{
           fontSize: "62px",
           fontWeight: 600,
@@ -17,9 +17,19 @@ const WhyBidyut: React.FC = () => {
         Why Choose Bidyut <br /> Innovation?
       </h2>
 
+      <h2
+        className="block md:hidden text-center text-black font-semibold leading-snug px-4 mt-8"
+        style={{
+          fontSize: "28px",
+          fontWeight: 600,
+        }}
+      >
+        Why Choose Bidyut Innovation?
+      </h2>
+
       {/* Subheading */}
       <p
-        className="absolute text-black"
+        className="absolute text-black hidden md:block"
         style={{
           fontSize: "25px",
           fontWeight: 600,
@@ -30,6 +40,16 @@ const WhyBidyut: React.FC = () => {
         Transform your classrooms into innovation <br />
         hubs with fully equipped labs, teacher training, <br />
         and NEP 2020–aligned curriculum.
+      </p>
+
+      <p
+        className="block md:hidden text-center text-black font-medium leading-relaxed px-6 mt-4"
+        style={{
+          fontSize: "16px",
+          fontWeight: 500,
+        }}
+      >
+        Transform your classrooms into innovation hubs with fully equipped labs, teacher training, and NEP 2020–aligned curriculum.
       </p>
     </section>
   );
