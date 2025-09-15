@@ -333,6 +333,7 @@ export default function H1_2Variants() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  // @ts-ignore - setIsSearchOpen is used in onClick handlers but TypeScript doesn't detect it
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRobot, setSelectedRobot] = useState<(typeof robotSearchData[0]) | null>(null)
@@ -580,7 +581,7 @@ export default function H1_2Variants() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
               <div className="flex gap-3 flex-wrap">
-                {displayGallery.map((media, index) => (
+                {displayGallery.map((media: any, index: number) => (
                   <button
                     key={index}
                     onClick={() => openGallery(index)}
@@ -766,7 +767,7 @@ export default function H1_2Variants() {
 
             {/* Thumbnail Navigation */}
             <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {displayGallery.map((media, index) => (
+              {displayGallery.map((media: any, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}

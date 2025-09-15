@@ -1,14 +1,8 @@
 
 import Header from "../Component/Header";
 import FooterUnanimated from "../Component/FooterUnanimated";
-import { useTheme } from '../contexts/ThemeContext';
-
-const sectionTitle = (title: string) => (
-	<h2 className="text-2xl font-bold mb-4 mt-10" style={{ color: '#10b981', borderBottom: '2px solid #222', paddingBottom: '0.5rem' }}>{title}</h2>
-);
 
 const CookiePolicy = () => {
-	const { isDark, toggleTheme } = useTheme();
 	return (
 		<>
 			<Header />

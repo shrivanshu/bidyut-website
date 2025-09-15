@@ -75,11 +75,7 @@ export default function ScrollAnimationPage() {
     return 1
   }
 
-  const getMainScale = () => {
-    const maxScroll = 1500
-    const progress = Math.min(scrollY / maxScroll, 1)
-    return 1 + progress * 0.5 // Smoother scaling
-  }
+
 
   const getVideoSectionTransform = () => {
     if (!showVideoSection) return { scale: 0.1, rotate: 0, opacity: 0 }

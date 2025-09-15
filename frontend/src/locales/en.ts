@@ -1,5 +1,3 @@
-import { Progress } from "@react-three/drei";
-
 export const en = {
   // Header
   home: 'Home',

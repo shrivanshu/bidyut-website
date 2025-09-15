@@ -10,11 +10,11 @@ export default function TrustedPartners() {
   const [isActive, setIsActive] = useState(false) // make the arrow active by default so users can immediately move it
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null)
   const arrowRef = useRef<SVGSVGElement>(null)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | null>(null)
   const targetPositionRef = useRef({ x: 140, y: 50 })
   const logoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
-  const checkArrowLogoCollision = (arrowTipX: number, arrowTipY: number) => {
+  const checkArrowLogoCollision = (_arrowTipX: number, _arrowTipY: number) => {
     let hoveredLogoKey = null
 
     try {
@@ -373,7 +373,7 @@ export default function TrustedPartners() {
 
               {/* Company Logos */}
               <motion.div
-                ref={(el) => (logoRefs.current["google"] = el)}
+                ref={(el) => { logoRefs.current["google"] = el }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -409,7 +409,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["microsoft"] = el)}
+                ref={(el) => { logoRefs.current["microsoft"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -434,7 +434,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["apple"] = el)}
+                ref={(el) => { logoRefs.current["apple"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -456,7 +456,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["amazon"] = el)}
+                ref={(el) => { logoRefs.current["amazon"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -478,7 +478,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["netflix"] = el)}
+                ref={(el) => { logoRefs.current["netflix"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -500,7 +500,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["spotify"] = el)}
+                ref={(el) => { logoRefs.current["spotify"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -522,7 +522,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["adobe"] = el)}
+                ref={(el) => { logoRefs.current["adobe"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -544,7 +544,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["tesla"] = el)}
+                ref={(el) => { logoRefs.current["tesla"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -566,7 +566,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => (logoRefs.current["slack"] = el)}
+                ref={(el) => { logoRefs.current["slack"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -603,7 +603,7 @@ export default function TrustedPartners() {
 
               {/* GitHub - repositioned */}
               <motion.div
-                ref={(el) => (logoRefs.current["github"] = el)}
+                ref={(el) => { logoRefs.current["github"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -625,7 +625,7 @@ export default function TrustedPartners() {
 
               {/* LinkedIn - repositioned */}
               <motion.div
-                ref={(el) => (logoRefs.current["linkedin"] = el)}
+                ref={(el) => { logoRefs.current["linkedin"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -647,7 +647,7 @@ export default function TrustedPartners() {
 
               {/* Twitter/X - repositioned */}
               <motion.div
-                ref={(el) => (logoRefs.current["twitter"] = el)}
+                ref={(el) => { logoRefs.current["twitter"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -669,7 +669,7 @@ export default function TrustedPartners() {
 
               {/* Facebook - repositioned to avoid overlap */}
               <motion.div
-                ref={(el) => (logoRefs.current["facebook"] = el)}
+                ref={(el) => { logoRefs.current["facebook"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -691,7 +691,7 @@ export default function TrustedPartners() {
 
               {/* Instagram - repositioned to avoid overlap */}
               <motion.div
-                ref={(el) => (logoRefs.current["instagram"] = el)}
+                ref={(el) => { logoRefs.current["instagram"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -720,7 +720,7 @@ export default function TrustedPartners() {
 
               {/* Uber */}
               <motion.div
-                ref={(el) => (logoRefs.current["uber"] = el)}
+                ref={(el) => { logoRefs.current["uber"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -742,7 +742,7 @@ export default function TrustedPartners() {
 
               {/* Airbnb */}
               <motion.div
-                ref={(el) => (logoRefs.current["airbnb"] = el)}
+                ref={(el) => { logoRefs.current["airbnb"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -764,7 +764,7 @@ export default function TrustedPartners() {
 
               {/* Dropbox */}
               <motion.div
-                ref={(el) => (logoRefs.current["dropbox"] = el)}
+                ref={(el) => { logoRefs.current["dropbox"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -786,7 +786,7 @@ export default function TrustedPartners() {
 
               {/* Zoom */}
               <motion.div
-                ref={(el) => (logoRefs.current["zoom"] = el)}
+                ref={(el) => { logoRefs.current["zoom"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -808,7 +808,7 @@ export default function TrustedPartners() {
 
               {/* Shopify */}
               <motion.div
-                ref={(el) => (logoRefs.current["shopify"] = el)}
+                ref={(el) => { logoRefs.current["shopify"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -830,7 +830,7 @@ export default function TrustedPartners() {
 
               {/* PayPal */}
               <motion.div
-                ref={(el) => (logoRefs.current["paypal"] = el)}
+                ref={(el) => { logoRefs.current["paypal"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -852,7 +852,7 @@ export default function TrustedPartners() {
 
               {/* Stripe */}
               <motion.div
-                ref={(el) => (logoRefs.current["stripe"] = el)}
+                ref={(el) => { logoRefs.current["stripe"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -874,7 +874,7 @@ export default function TrustedPartners() {
 
               {/* Twitch */}
               <motion.div
-                ref={(el) => (logoRefs.current["twitch"] = el)}
+                ref={(el) => { logoRefs.current["twitch"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -896,7 +896,7 @@ export default function TrustedPartners() {
 
               {/* TikTok */}
               <motion.div
-                ref={(el) => (logoRefs.current["tiktok"] = el)}
+                ref={(el) => { logoRefs.current["tiktok"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -918,7 +918,7 @@ export default function TrustedPartners() {
 
               {/* Pinterest */}
               <motion.div
-                ref={(el) => (logoRefs.current["pinterest"] = el)}
+                ref={(el) => { logoRefs.current["pinterest"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,

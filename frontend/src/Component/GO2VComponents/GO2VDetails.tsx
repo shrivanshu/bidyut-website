@@ -1,6 +1,3 @@
-import { useTheme } from '../../contexts/ThemeContext';
-
-
 interface GO2VDetailsProps {
   onContactClick?: () => void;
 }
@@ -8,7 +5,6 @@ interface GO2VDetailsProps {
 const go2vImgSrc = '/GO2/GO2-W-U5.png';
 
 const GO2VDetails = ({ onContactClick }: GO2VDetailsProps) => {
-  const { isDark } = useTheme();
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-black min-h-screen flex items-center justify-center p-6 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

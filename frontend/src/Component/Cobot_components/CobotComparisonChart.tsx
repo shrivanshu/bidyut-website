@@ -339,7 +339,7 @@ const CobotComparisonChart: React.FC = () => {
 
           {/* Groups */}
           <div className="space-y-4">
-            {allGroups.map(([title, items], idx) => {
+            {allGroups.map(([title, items], _idx) => {
               const selectedSpec = specifications.find(s => s.model === selectedModel);
               const hasData = Object.keys(items).some(key =>
                 selectedSpec?.[key as keyof H1Spec] && selectedSpec[key as keyof H1Spec] !== ""

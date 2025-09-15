@@ -6,8 +6,7 @@ import { OrbitControls, Html } from "@react-three/drei"
 import { motion, AnimatePresence } from "framer-motion"
 import { BufferGeometry, BufferAttribute } from "three"
 import { X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+// UI components replaced with standard elements
 
 // Partner data with coordinates (latitude, longitude converted to 3D sphere coordinates)
 const partners = [
@@ -79,9 +78,9 @@ const connections = [
 
 // Earth component
 function Earth() {
-  const meshRef = useRef<any>()
+  const meshRef = useRef<any>(null)
 
-  useFrame((state) => {
+  useFrame((_state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.005
     }
@@ -112,16 +111,16 @@ function PartnerPin({
   isHovered: boolean
   onHover: (hovered: boolean) => void
 }) {
-  const meshRef = useRef<any>()
+  const meshRef = useRef<any>(null)
   const [hovered, setHovered] = useState(false)
 
-  useFrame((state) => {
+  useFrame((_state) => {
     if (meshRef.current) {
       const scale = hovered || isHovered ? 1.5 : 1
       meshRef.current.scale.lerp({ x: scale, y: scale, z: scale }, 0.1)
 
       // Floating animation
-      meshRef.current.position.y = partner.position[1] + Math.sin(state.clock.elapsedTime * 2) * 0.1
+      meshRef.current.position.y = partner.position[1] + Math.sin(_state.clock.elapsedTime * 2) * 0.1
     }
   })
 
@@ -160,7 +159,7 @@ function PartnerPin({
         center
         style={{
           pointerEvents: "none",
-          transform: scale(${hovered || isHovered ? 1.2 : 1}),
+          transform: `scale(${hovered || isHovered ? 1.2 : 1})`,
           transition: "transform 0.2s ease",
         }}
       >
@@ -175,7 +174,7 @@ function PartnerPin({
 
 // Connection lines component
 function ConnectionLines() {
-  const linesRef = useRef<any>()
+  const linesRef = useRef<any>(null)
 
   useFrame((state) => {
     if (linesRef.current) {
@@ -216,7 +215,7 @@ function ConnectionLines() {
 
 // Stars background
 function Stars() {
-  const starsRef = useRef<any>()
+  const starsRef = useRef<any>(null)
 
   useFrame(() => {
     if (starsRef.current) {
@@ -234,7 +233,7 @@ function Stars() {
   return (
     <points ref={starsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={1000} array={starPositions} itemSize={3} />
+        <bufferAttribute attach="attributes-position" args={[starPositions, 3]} count={1000} array={starPositions} itemSize={3} />
       </bufferGeometry>
       <pointsMaterial size={0.1} color="#ffffff" transparent opacity={0.6} />
     </points>
@@ -279,7 +278,7 @@ export default function TrustedPartnersShowcase() {
           <Earth />
           <ConnectionLines />
 
-          {partners.map((partner, index) => (
+          {partners.map((partner, _index) => (
             <PartnerPin
               key={partner.id}
               partner={partner}
@@ -317,16 +316,14 @@ export default function TrustedPartnersShowcase() {
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Card className="w-full max-w-md bg-slate-900/90 border-slate-700 text-white">
-                <CardHeader className="relative">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-2 top-2 text-white hover:bg-slate-800"
+              <div className="w-full max-w-md bg-slate-900/90 border border-slate-700 text-white rounded-lg">
+                <div className="relative p-6">
+                  <button
+                    className="absolute right-2 top-2 text-white hover:bg-slate-800 p-2 rounded-md"
                     onClick={() => setSelectedPartner(null)}
                   >
                     <X className="h-4 w-4" />
-                  </Button>
+                  </button>
                   <div className="flex items-center gap-4">
                     <img
                       src={selectedPartner.logo || "/placeholder.svg"}
@@ -334,26 +331,25 @@ export default function TrustedPartnersShowcase() {
                       className="w-16 h-16 rounded-lg"
                     />
                     <div>
-                      <CardTitle className="text-xl">{selectedPartner.name}</CardTitle>
-                      <CardDescription className="text-blue-400">{selectedPartner.tag}</CardDescription>
+                      <h3 className="text-xl font-semibold">{selectedPartner.name}</h3>
+                      <p className="text-blue-400 text-sm">{selectedPartner.tag}</p>
                     </div>
                   </div>
-                </CardHeader>
-                <CardContent>
+                </div>
+                <div className="p-6 pt-0">
                   <p className="text-gray-300 leading-relaxed">{selectedPartner.description}</p>
                   <div className="mt-4 flex gap-2">
-                    <Button className="flex-1" style={{ backgroundColor: selectedPartner.color }}>
+                    <button className="flex-1 px-4 py-2 rounded-md text-white font-medium" style={{ backgroundColor: selectedPartner.color }}>
                       Learn More
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-slate-600 text-white hover:bg-slate-800 bg-transparent"
+                    </button>
+                    <button
+                      className="flex-1 px-4 py-2 border border-slate-600 text-white hover:bg-slate-800 bg-transparent rounded-md font-medium"
                     >
                       Contact
-                    </Button>
+                    </button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}

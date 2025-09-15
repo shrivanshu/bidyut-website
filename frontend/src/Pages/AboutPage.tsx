@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { PlayIcon, PauseIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 // import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
@@ -146,7 +145,6 @@ export default function AboutPage() {
         if (staticRect.top < window.innerHeight * 0.75 && !staticAnimated) {
           setStaticAnimated(true);
         }
-        const sectionRect = staticSection.getBoundingClientRect();
         const visionRect = visionImg.getBoundingClientRect();
         const missionRect = missionImg.getBoundingClientRect();
         const windowHeight = window.innerHeight;
@@ -165,11 +163,8 @@ export default function AboutPage() {
   const currentYear = new Date().getFullYear()
   // Video Switcher States
   const [activeTab, setActiveTab] = useState("what-we-do")
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const [volume, setVolume] = useState(1)
-  const [isMuted, setIsMuted] = useState(true)
+
+
   const [hasVideoAnimated, setHasVideoAnimated] = useState(false)
 
   // Gallery States
@@ -185,7 +180,7 @@ export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   // Magnetic cursor for reel view
   const [reelMouse, setReelMouse] = useState({ x: 0, y: 0 });
-const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
+
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null)
   const videoContainerRef = useRef<HTMLDivElement>(null)
@@ -227,7 +222,7 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
     }
   }, [activeTab]);
     // Video Zoom/Rotate States
-    const [videoScrollProgress, setVideoScrollProgress] = useState(0)
+    const [videoScrollProgress] = useState(0)
     const [isVideoInView, setIsVideoInView] = useState(false)
   const galleryContainerRef = useRef<HTMLDivElement>(null)
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -526,19 +521,17 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
       setIsTransitioning(true)
       videoRef.current.load()
       videoRef.current.muted = true
-      setIsMuted(true)
+
 
       setTimeout(() => {
         if (videoRef.current) {
           videoRef.current
             .play()
             .then(() => {
-              setIsPlaying(true)
               setTimeout(() => setIsTransitioning(false), 600)
             })
             .catch((error) => {
               console.log("Autoplay prevented or interrupted:", error.name, error.message)
-              setIsPlaying(false)
               setIsTransitioning(false)
             })
         }
@@ -589,82 +582,16 @@ const[videoSectionAnimated, setVideoSectionAnimated] = useState(false)
   }
 
   // Video control functions
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      setCurrentTime(videoRef.current.currentTime)
-    }
-  }
 
-  const handleLoadedMetadata = () => {
-    if (videoRef.current) {
-      setDuration(videoRef.current.duration)
-    }
-  }
 
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch((error) => {
-            console.log("Play prevented or interrupted:", error.name, error.message)
-            setIsPlaying(false)
-          })
-      } else {
-        videoRef.current.pause()
-        setIsPlaying(false)
-      }
-    }
-  }
 
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (videoRef.current) {
-      const newTime = Number.parseFloat(e.target.value)
-      videoRef.current.currentTime = newTime
-      setCurrentTime(newTime)
-    }
-  }
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-      if (!isMuted && videoRef.current.volume === 0) {
-        videoRef.current.volume = volume > 0 ? volume : 0.5
-        setVolume(videoRef.current.volume)
-      }
-    }
-  }
-
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (videoRef.current) {
-      const newVolume = Number.parseFloat(e.target.value)
-      videoRef.current.volume = newVolume
-      setVolume(newVolume)
-      setIsMuted(newVolume === 0)
-    }
-  }
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
-  }
-
-  const handleTabChange = (newTab: string) => {
-    if (newTab !== activeTab) {
-      setIsTransitioning(true)
-      setActiveTab(newTab)
-    }
-  }
 
   // Gallery helper functions
   const filteredImages = galleryImages.filter(image => 
     selectedCategory === "all" || image.category === selectedCategory
   )
 
-  const get3DTransform = (index: number, isHovered: boolean) => {
+  const get3DTransform = (_index: number, isHovered: boolean) => {
     if (!isHovered) return 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'
     
     const randomX = (Math.random() - 0.5) * 20

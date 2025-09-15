@@ -174,7 +174,7 @@ export default function CurriculumPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <style jsx>{`
+      <style>{`
         @keyframes slideInLeft {
           from {
             opacity: 0;
@@ -467,7 +467,7 @@ export default function CurriculumPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex gap-8">
           <div className="w-[30%] space-y-6">
-            {curriculumData.map((level, levelIndex) => {
+            {curriculumData.map((level, _levelIndex) => {
               const images = getImagesForLevel(level)
               const isExpanded = expandedSections.has(level.id)
               const isVisible = visibleElements.has(`images-${level.id}`)

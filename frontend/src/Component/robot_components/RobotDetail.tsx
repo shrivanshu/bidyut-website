@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { useTheme } from '../../contexts/ThemeContext';
 import robotImgSrc from '/media/G1 EDU U6 .png'; 
 
-const RobotClassroom: React.FC = ({ onContactClick }) => {
-  const { isDark } = useTheme();
+interface RobotClassroomProps {
+  onContactClick?: () => void;
+}
+
+const RobotClassroom: React.FC<RobotClassroomProps> = ({ onContactClick }) => {
   
   return (
     // <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">

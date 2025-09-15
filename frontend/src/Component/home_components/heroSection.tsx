@@ -106,9 +106,9 @@ const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const [currentVideoIndex] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<{ from: "me" | "bot"; text: string }[]>([
     {
-      from: "bot",
+      from: "bot" as const,
       text: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
     },
   ]);
@@ -117,7 +117,7 @@ const HeroSection: React.FC = () => {
 
   // Handle sending message
   const handleSend = async (msg: string) => {
-    setMessages((prev) => [...prev, { from: "me", text: msg }]);
+    setMessages((prev) => [...prev, { from: "me" as const, text: msg }]);
 
     // Prepare conversation history
     const conversation = messages
@@ -134,13 +134,13 @@ const HeroSection: React.FC = () => {
 
       setMessages((prev) => [
         ...prev,
-        { from: "bot", text: response.text.trim() },
+        { from: "bot" as const, text: response.text?.trim() || "" },
       ]);
     } catch (error) {
       console.error("Error generating response:", error);
       setMessages((prev) => [
         ...prev,
-        { from: "bot", text: "Sorry, I encountered an error. Please try again." },
+        { from: "bot" as const, text: "Sorry, I encountered an error. Please try again." },
       ]);
     }
   };
