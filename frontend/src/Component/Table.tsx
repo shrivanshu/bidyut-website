@@ -189,8 +189,9 @@ const RoboticsComparisonChart: React.FC = () => {
     material: "Material",
   };
 
-  // Group 2: Motion & Range (2 items)
-  const group2Labels = {
+  // Group 2: Motion & Range (2 items) - Placeholder for future use
+  // @ts-ignore - Intentionally unused, kept for future implementation
+  const _group2Labels = {
     rangeOfMotion: "Range of Motion",
     intraJointCircuitLines: "Intra-joint circuit lines",
   };
@@ -300,7 +301,7 @@ const RoboticsComparisonChart: React.FC = () => {
 
   const renderGroup = (
     groupIndex: string,
-    groupLabel: string,
+    _groupLabel: string,
     items: { [key: string]: string },
     isBoolean = false,
     customRowSpan?: number,
@@ -335,7 +336,7 @@ const RoboticsComparisonChart: React.FC = () => {
               </td>
             ) : null}
             <td className="p-3">{label}</td>
-            {specifications.map((spec, specIdx) =>
+            {specifications.map((spec, _specIdx) =>
               isBoolean
                 ? <td key={spec.model} className="p-3 text-center">
                     <span className="text-2xl leading-none inline-block w-6 text-center">

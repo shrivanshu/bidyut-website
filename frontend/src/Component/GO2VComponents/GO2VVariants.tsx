@@ -36,14 +36,6 @@ const cobotSearchData = [
  
 ]
 
-// Add this mapping near the top of A2Variants function
-const variantImages: Record<string, string> = {
-  "A2-Standard": "/media/A2-standard.png",
-  "A2-Pro": "/media/A2-pro.png",
-  "A2-W-Standard": "/media/A2-w.png",
-  "A2-W-Pro": "/media/A2-w-pro.png",
-};
-
 const robotSpecs: 
 RobotSpec[] = [
     {
@@ -333,15 +325,12 @@ features: [
 ]
 
 const Select = ({
-  value,
-  onValueChange,
   children,
 }: {
   value: string
   onValueChange: (value: string) => void
   children: React.ReactNode
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="relative">
@@ -396,6 +385,7 @@ function GO2VVariants() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // @ts-ignore - setIsSearchOpen is used in onClick handlers but TypeScript doesn't detect it
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);

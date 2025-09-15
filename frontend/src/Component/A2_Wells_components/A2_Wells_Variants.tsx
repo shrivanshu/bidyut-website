@@ -99,15 +99,15 @@ const robotSpecs: RobotSpec[] = [
 
 ];
 const Select = ({
-  value,
-  onValueChange,
+  value: _value,
+  onValueChange: _onValueChange,
   children,
 }: {
   value: string
   onValueChange: (value: string) => void
   children: React.ReactNode
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [_isOpen] = useState(false)
 
   return (
     <div className="relative">
@@ -162,7 +162,7 @@ function A2_Wells_Variants() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSearchOpen, _setIsSearchOpen] = useState(false); // Used in onClick handlers
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);
 
@@ -238,7 +238,7 @@ function A2_Wells_Variants() {
         <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-center">
             <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              onClick={() => _setIsSearchOpen(!isSearchOpen)}
               className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
             >
               Search Cobots

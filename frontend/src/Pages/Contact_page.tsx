@@ -18,7 +18,7 @@ export default function ContactPage() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Integrate with API or email service
     alert("Form submitted! (hook up API/email service)");

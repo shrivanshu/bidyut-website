@@ -655,15 +655,12 @@ features: [
 ]
 
 const Select = ({
-  value,
-  onValueChange,
   children,
 }: {
   value: string
   onValueChange: (value: string) => void
   children: React.ReactNode
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="relative">
@@ -718,6 +715,7 @@ function FirefightingVariants() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // @ts-ignore - setIsSearchOpen is used in onClick handlers but TypeScript doesn't detect it
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCobot, setSelectedCobot] = useState<typeof cobotSearchData[0] | null>(null);

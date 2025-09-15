@@ -1,9 +1,7 @@
 import { Brain, Bot as Robot } from "lucide-react"
-import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import SplitText from "../../Text_Animation/LSMtext"
 
 export default function Component() {
-  const { t } = useLanguage()
 
   const handleAnimationComplete = () => {
     console.log('All letters have animated!');
