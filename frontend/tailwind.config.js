@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
          'oxanium': ['Oxanium', 'sans-serif'],
+         'roboto': ['Roboto', 'sans-serif'],
         'sans': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
       },
       colors: {
