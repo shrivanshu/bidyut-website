@@ -308,7 +308,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-[80px] left-0 w-[300px] bg-white dark:bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 z-[9999] ${isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
+        className={`md:hidden fixed top-[80px] left-5 rounded-lg w-[335px] px-2 bg-white dark:bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 z-[9999] ${isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
           }`}
       >
         <nav className="flex flex-col space-y-4 px-3">

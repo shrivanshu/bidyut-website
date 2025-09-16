@@ -17,7 +17,7 @@ const images = [
 
 export default function Scroller() {
   return (
-    <div className="overflow-hidden w-full  py-6">
+    <div className="overflow-hidden w-full dark:bg-black  py-14 md:py-24">
       {/* The moving track */}
       <div className="flex animate-scroll space-x-6">
         {/* Duplicate list for infinite loop */}
@@ -29,7 +29,7 @@ export default function Scroller() {
             <img
               src={item.src}
               alt={item.text}
-              className="w-full h-28 object-cover"
+              className=" w-[300px] h-[60px] md:w-[400px]  md:h-28 object-fill"
             />
             {/* Overlay text */}
             <div className="absolute inset-0 flex items-center justify-center ">
