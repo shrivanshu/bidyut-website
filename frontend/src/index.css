@@ -351,3 +351,12 @@ html, body {
 .animate-scroll {
   animation: scroll 14s linear infinite;
 }
+
+
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+.bounce-forever {
+  animation: bounceY 1.5s infinite;
+}
