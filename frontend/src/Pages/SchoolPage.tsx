@@ -12,10 +12,10 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 // import SchoolHeroSection from '../Component/SchoolComponent/SchoolHeroSection';
 
 
-import {AboutSchool} from '../Component/SchoolComponent/AboutSchool';
-import {EducationSections} from '../Component/SchoolComponent/EducationSections';
-import {CTASection} from '../Component/SchoolComponent/CTASection';
-import {RoboticsSchools} from '../Component/SchoolComponent/RoboticsSchools';
+import {AboutSchool} from '../Component/SchoolComponentsFinal/AboutSchool';
+import {EducationSections} from '../Component/SchoolComponentsFinal/EducationSections';
+import {CTASection} from '../Component/SchoolComponentsFinal/CTASection';
+import {RoboticsSchools} from '../Component/SchoolComponentsFinal/RoboticsSchools';
 import Scroller from '../Component/SchoolComponent/Scroller';
 
 function SchoolPage() {
