@@ -10,6 +10,7 @@ import Cobotpage from './Pages/Cobot_page';
 import B2Page from './Pages/B2Page';
 import A2Page from './Pages/A2Page';
 import SchoolPage from './Pages/SchoolPage';
+import SchoolPageFinal from './Pages/School_Page_final';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
@@ -28,9 +29,10 @@ import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct pla
 import Cobo_page from './Pages/Cobo_page';
 import FinalSchoolPage from './Pages/School_Page_Final';
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ThemeProvider> 
       <LanguageProvider>
         <BrowserRouter>
           <NavigationProvider>
@@ -38,7 +40,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
               <Route path="/School" element={<SchoolPage />} />
+
               <Route path="/finalSchool" element={<FinalSchoolPage />}/>
+
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
               <Route path="/Cobot" element={<Cobo_page />} />

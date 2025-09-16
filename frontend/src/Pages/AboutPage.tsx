@@ -1088,7 +1088,7 @@ export default function AboutPage() {
           }}
         >
           {/* Floating particles background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {Array.from({ length: 20 }).map((_, i) => (
               <div
                 key={i}
@@ -1101,7 +1101,7 @@ export default function AboutPage() {
                 }}
               />
             ))}
-          </div>
+          </div> */}
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="text-center mb-16">
