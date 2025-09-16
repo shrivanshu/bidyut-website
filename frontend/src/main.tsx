@@ -27,6 +27,7 @@ import RefundPolicy from './Pages/RefundPolicy';
 import GO2VPage from './Pages/GO2VPage';
 import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct place
 import Cobo_page from './Pages/Cobo_page';
+import FinalSchoolPage from './Pages/School_Page_Final';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -39,7 +40,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
               <Route path="/School" element={<SchoolPage />} />
-              <Route path="/SchoolFinal" element={<SchoolPageFinal />} />
+
+              <Route path="/finalSchool" element={<FinalSchoolPage />}/>
+
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
               <Route path="/Cobot" element={<Cobo_page />} />
