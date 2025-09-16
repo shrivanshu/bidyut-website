@@ -44,36 +44,31 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    year: "2014",
-    title: "2015 — The Spark of an Idea",
+    year: "2021",
+    title: "2021 – Foundation in STEAM",
     description:
-      "Long before Bidyut Innovation was officially founded, our core team was experimenting with robotics in community workshops, inspiring students through small coding camps and building early prototypes that would one day evolve into our flagship educational robots.",
+      "We began our journey by setting up STEAM (Science, Technology, Engineering, Arts, Mathematics) labs in just 1–2 pioneering schools,Our mission was to integrate robotics and hands-on learning into everyday education,These schools became our first references, opening the doors to growth.",
   },
   {
-    year: "2015",
-    title: "2015 — Foundation Year",
+    year: "2022",
+    title: "2022 – Transformation to STREAM",
     description:
-      "Bidyut Innovation was officially founded with a mission to revolutionize education through technology and robotics.",
+      "We evolved into STREAM (Science, Technology, Robotics, Engineering, Arts, Mathematics) by making Robotics the core of our programs,More schools adopted our labs, inspired by the success of early projects,This year cemented our reputation as an education innovator.",
   },
   {
-    year: "2016",
-    title: "2016 — First Products",
-    description: "Launched our first educational robotics kits and began partnerships with local schools.",
+    year: "2023",
+    title: "2023 – Expanding Horizons to Colleges",
+    description: "Our work extended from schools to colleges and universities, including premier institutes like IITs,We built advanced labs that prepared students with industry-ready applications,This positioned us as a bridge between academics and real-world innovation.",
   },
   {
-    year: "2017",
-    title: "2017 — Expansion",
-    description: "Expanded operations to multiple cities and introduced advanced programming curricula.",
+    year: "2024",
+    title: "2024 – R&D and Trusted Service Provider",
+    description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
   },
   {
-    year: "2018",
-    title: "2018 — Innovation Hub",
-    description: "Established our innovation hub and launched the flagship robotics competition series.",
-  },
-  {
-    year: "2019",
-    title: "2019 — Global Reach",
-    description: "Achieved international recognition and began global expansion of our educational programs.",
+    year: "2025",
+    title: "2025 – 500+ Schools, Global Clients, Lasting Impact",
+    description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
   },
 ]
 
@@ -244,7 +239,7 @@ export default function AboutPage() {
   // Gallery images with enhanced data
   const galleryImages = [
     {
-      src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
+      src: "/public/testfinal.jpg",
       alt: "Educational materials and learning kits",
       className: "row-span-1",
       category: "education",
@@ -540,10 +535,10 @@ export default function AboutPage() {
   }, [activeTab])
 
   // Helper functions
-  // Yearwise scroll: 0000, then 2000, 2001, ..., 2025
+  // Yearwise scroll: 0000, then 2000, 2001, ..., current year
   const getTransformedText = () => {
     const minYear = 2000;
-    const maxYear = 2025;
+    const maxYear = currentYear;
     const maxScroll = 1500;
     if (scrollY < 100) return "0000";
     const progress = Math.max(0, Math.min(1, (scrollY - 100) / (maxScroll - 100)));
@@ -554,8 +549,8 @@ export default function AboutPage() {
   }
 
   const getDigitAnimation = (digitIndex: number) => {
-    const minYear = 2000;
-    const maxYear = 2025;
+    const minYear = 2021;
+    const maxYear = currentYear;
     const maxScroll = 1500;
     let progress = 0;
     if (scrollY >= 100) {
@@ -676,11 +671,12 @@ export default function AboutPage() {
               </h1>
               
               <h2 className={`text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-12 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
-                Shaping Tomorrow's Technology
+                "Bridging Technology & Intelligence for a Smater Tomorrow."
               </h2>
               
               <p className={`text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-16 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
-                Pioneering the intersection of human ingenuity and robotic precision. At Bidyut Innovation, we are crafting the future of automation with solutions that enhance human capabilities rather than replace them.
+                We revolutionize education by combining advanced robotics, AI, and hands-on learning to prepare students for the challenges of tomorrow.
+Through innovative STEM programs and intelligent automation, we're building the foundation for India's technological future, one student at a time.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
@@ -695,16 +691,16 @@ export default function AboutPage() {
                 
                 <div className="text-center">
                   <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    100+
+                    500+
                   </div>
                   <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Projects
+                    Clients Served
                   </div>
                 </div>
                 
                 <div className="text-center">
                   <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    50+
+                    500+
                   </div>
                   <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
                     Happy Clients
@@ -929,11 +925,10 @@ export default function AboutPage() {
               Our Journey
             </h2>
             <h3 className={`text-2xl md:text-3xl font-semibold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-              PIONEERING THE FUTURE OF ENERGY
+              DRIVEN BY PURPOSE, GUIDED BY INNOVATION
             </h3>
             <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} text-lg max-w-4xl mx-auto leading-relaxed transition-colors duration-500`}>
-              From vision to reality, we've transformed the energy landscape through relentless innovation and unwavering commitment. Each milestone 
-              tells a story of challenges conquered and boundaries pushed.
+              Our story is one of courage, commitment, and constant evolution. With each leap forward, we’ve pushed the limits of what energy can do—creating sustainable progress and inspiring change across the globe.
             </p>
           </div>
 
@@ -1222,7 +1217,9 @@ export default function AboutPage() {
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full transition-all duration-500 group-hover:scale-110 ${
+                            image.src === "/public/testfinal.jpg" ? "object-contain" : "object-cover"
+                          }`}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className={`absolute bottom-0 left-0 right-0 p-6`}>
@@ -1295,7 +1292,9 @@ export default function AboutPage() {
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                        className={`w-full h-full transition-all duration-500 group-hover:scale-110 ${
+                          image.src === "/public/testfinal.jpg" ? "object-contain" : "object-cover"
+                        }`}
                       />
                       
                       {/* Gradient overlay */}
