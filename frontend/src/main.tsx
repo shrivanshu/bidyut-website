@@ -9,8 +9,6 @@ import Robotpage from './Pages/Robot_page';
 import Cobotpage from './Pages/Cobot_page';
 import B2Page from './Pages/B2Page';
 import A2Page from './Pages/A2Page';
-import SchoolPage from './Pages/SchoolPage';
-import SchoolPageFinal from './Pages/School_Page_final';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
@@ -27,7 +25,7 @@ import RefundPolicy from './Pages/RefundPolicy';
 import GO2VPage from './Pages/GO2VPage';
 import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct place
 import Cobo_page from './Pages/Cobo_page';
-import FinalSchoolPage from './Pages/School_Page_Final';
+import FinalSchoolPage from './Pages/School_Page_final';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -39,9 +37,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
-              <Route path="/School" element={<SchoolPage />} />
+              <Route path="/School" element={<FinalSchoolPage />} />
 
-              <Route path="/finalSchool" element={<FinalSchoolPage />}/>
+              {/* <Route path="/finalSchool" element={<FinalSchoolPage />}/> */}
 
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
