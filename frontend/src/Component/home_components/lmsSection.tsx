@@ -15,7 +15,7 @@ export default function Component() {
   <div className="flex flex-col items-center justify-center text-center mb-20 mt-4 pt-16">
           <SplitText
             text="Innovative Learning with Robotics & AI"
-            className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
+            className="md:whitespace-nowrap text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -65,12 +65,12 @@ export default function Component() {
               {/* Laptop Image */}
               <div className="relative w-full max-w-[90%] sm:max-w-[95%] md:max-w-[90%] lg:max-w-[550px] xl:max-w-[650px]">
                 <img
-                  src="/Rectangle.svg"
+                  src="/Rectangle.png"
                   alt="Laptop displaying LMS interface"
-                  className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
+                  className="md:w-[550px] md:h-[550px] object-fill z-10 transform transition-transform duration-300 hover:scale-105"
                   style={{
                     filter: "drop-shadow(0 0 250px rgba(16, 247, 120, 0.4)) saturate(0.9)",
-                    transform: "rotate(-5deg)",
+                    transform: "rotate(-7deg)",
                   }}
                 />
               </div>

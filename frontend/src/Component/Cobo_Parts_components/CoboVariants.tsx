@@ -152,7 +152,67 @@ const robotSpecs: RobotSpec[] = [
       targetPointSm: { x: "75%", y: "45%" }
     }
   ]
+},
+{
+  "id": "FR3-Arm",
+  "name": "Franka Research 3",
+  "description": "The Franka Research 3 is a state-of-the-art 7-DOF robotic arm built for advanced robotics research and human–robot interaction studies. Featuring exceptional force sensitivity, modular control architecture, and an elegant lightweight design, it enables safe, precise manipulation in labs, automation cells, and AI-driven projects.",
+  "gallery": [
+        "/Cobo/Franka-armm.png",
+
+        "/Cobo/franka-arm(2).jpg",
+
+    "/Cobo/Franka-arm.png",
+  ],
+  "features": [
+    {
+      "label": "High Sensitivity & Compliance",
+      "detail": "Torque sensors in every joint deliver sub-newton precision and soft, human-safe interaction.",
+      "position": { "top": "18%", "left": "62%" },
+      "positionSm": { "top": "22%", "left": "62%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "45%", "y": "38%" },
+      "targetPointSm": { "x": "35%", "y": "42%" }
+    },
+    {
+      "label": "7-DOF Dexterity",
+      "detail": "Seven rotational joints provide human-arm-like reach and redundancy for complex tasks.",
+      "position": { "top": "34%", "left": "8%" },
+      "positionSm": { "top": "38%", "left": "12%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "40%", "y": "40%" },
+      "targetPointSm": { "x": "30%", "y": "44%" }
+    },
+    {
+      "label": "Payload & Reach",
+      "detail": "Payload up to 3 kg with an 855 mm reach, enabling both delicate and extended manipulation.",
+      "position": { "top": "52%", "left": "85%" },
+      "positionSm": { "top": "58%", "left": "78%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "52%", "y": "36%" },
+      "targetPointSm": { "x": "68%", "y": "40%" }
+    },
+    {
+      "label": "Power & Connectivity",
+      "detail": "Runs on 24 V DC supply; integrated Ethernet and real-time interfaces for ROS and custom control.",
+      "position": { "top": "70%", "left": "18%" },
+      "positionSm": { "top": "76%", "left": "20%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "36%", "y": "34%" },
+      "targetPointSm": { "x": "36%", "y": "40%" }
+    },
+    {
+      "label": "Compact & Lightweight",
+      "detail": "Approx. 18 kg total weight with sleek profile for easy lab integration and mobility.",
+      "position": { "top": "82%", "left": "48%" },
+      "positionSm": { "top": "92%", "left": "68%" },
+      "lineDirection": "right",
+      "targetPoint": { "x": "66%", "y": "40%" },
+      "targetPointSm": { "x": "74%", "y": "44%" }
+    }
+  ]
 }
+
 
 
 ];

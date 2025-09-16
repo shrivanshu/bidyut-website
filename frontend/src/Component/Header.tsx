@@ -14,6 +14,39 @@ import { useTheme } from "../contexts/ThemeContext"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import { useNavigation } from "../contexts/NavigationContext"
 
+function MobileDropdown({ label, items }: { label: string, items: any[] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <button
+        className="flex items-center justify-between w-full font-medium dark:text-gray-300 hover:text-[#00F5A0] py-2"
+        onClick={() => setOpen((v) => !v)}
+        type="button"
+      >
+        {label}
+        <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className="pl-4">
+          {items.map((item) =>
+            item.children ? (
+              <MobileDropdown key={item.label} label={item.label} items={item.children} />
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block py-1 pl-4 dark:text-gray-300 hover:text-[#00F5A0] font-normal"
+              >
+                {item.label}
+              </a>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Header() {
   const { isDark, toggleTheme } = useTheme()
   const { currentLanguage, changeLanguage, t, getSupportedLanguages } = useLanguage()
@@ -31,7 +64,7 @@ export default function Header() {
   return (
     <>
       {/* Floating Glass Navbar */}
-      <header className="w-full fixed top-0 left-0 z-50 flex justify-center">
+      <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center">
         <div className="max-w-[90%] w-full mt-4 rounded-full bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
 
           {/* Logo */}
@@ -156,33 +189,33 @@ export default function Header() {
                     </div>
                   </div>
                   {/* Solutions */}
-                  <div className="relative group/child">
+                  {/* <div className="relative group/child">
                     <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                       Solutions
                       <ChevronRight className="h-4 w-4 ml-2" />
-                    </button>
+                    </button> */}
 
                     {/* Solutions Submenu */}
-                    <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
-                      <div className="py-2">
+                    {/* <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
+                      <div className="py-2"> */}
 
                         {/* Firefighting */}
-                        <div className="relative group/sub">
+                        {/* <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                            <a href="/Robot/Solutions/Firefighting"> Firefighting Solution </a>
                           </button>
-                        </div>
+                        </div> */}
 
                         {/* Inspection  */}
-                        <div className="relative group/sub">
+                        {/* <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                            <a href="/Robot/Solutions/Inspection">Inspection Solution</a> 
                           </button>
-                        </div>
+                        </div> */}
 
-                      </div>
-                    </div>
-                  </div>
+                      {/* </div>
+                    </div> */}
+                  {/* </div> */}
                   {/* Solutions */}
                  <div
   className="relative group/child cursor-pointer"
@@ -200,18 +233,24 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
             {/* Login Button */}
-            <button
-              className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-5 py-2.5 font-semibold text-white shadow-md transition-all duration-200 group hover:shadow-lg hover:scale-105"
-              style={{ textShadow: "0 1px 0 #009e6e" }}
-            >
-              <span
-                className="text-lg inline-block origin-top -rotate-12 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] drop-shadow-[0_3px_6px_#FFD60088]"
-                aria-label="bell"
-              >
-                🔔
-              </span>
-              <span className="text-base">{t("loginToLms")}</span>
-            </button>
+            <a
+  href="https://bidyutrobotics.com/login"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button
+    className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-5 py-2.5 font-semibold text-white shadow-md transition-all duration-200 group hover:shadow-lg hover:scale-105"
+    style={{ textShadow: "0 1px 0 #009e6e" }}
+  >
+    <span
+      className="text-lg inline-block origin-top -rotate-12 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] "
+      aria-label="bell"
+    >
+      🔔
+    </span>
+    <span className="text-base">{t("loginToLms")}</span>
+  </button>
+</a>
 
             {/* Language Button */}
             <div className="relative">
@@ -269,32 +308,83 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-[80px] left-0 w-full bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 ${isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
+        className={`md:hidden fixed top-[80px] left-0 w-[300px] bg-white dark:bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 z-[9999] ${isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
           }`}
       >
         <nav className="flex flex-col space-y-4 px-3">
-          {[
-            { href: "/", label: t("home") },
-            { href: "/About", label: t("aboutUs") },
-            { href: "/School", label: t("school") },
-            { href: "/Robot_page", label: "Robot Showcase" },
-            { href: "/Contact", label: t("contact") },
-            { href: "/Gallery", label: t("gallery") },
-          ].map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`font-medium transition-colors ${isActive(item.href)
-                ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
-                : "text-gray-300 hover:text-[#00F5A0]"
-                }`}
-            >
-              {item.label}
-            </a>
-          ))}
-          <button className="bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] hover:from-[#00F5A0]/80 hover:to-[#00C6FF]/80 text-white py-2 px-4 rounded-full font-semibold shadow-md hover:shadow-[0_0_20px_#00F5A0] transition-all duration-300">
-            {t("loginToLms")}
-          </button>
+          {/* Regular links */}
+          <a href="/" className={`font-medium transition-colors ${isActive("/") ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2" : "dark:text-gray-300 hover:text-[#00F5A0]"}`}>{t("home")}</a>
+          <a href="/About" className={`font-medium transition-colors ${isActive("/About") ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2" : "dark:text-gray-300 hover:text-[#00F5A0]"}`}>{t("aboutUs")}</a>
+          <a href="/School" className={`font-medium transition-colors ${isActive("/School") ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2" : "dark:text-gray-300 hover:text-[#00F5A0]"}`}>{t("school")}</a>
+          
+          {/* Robots Dropdown */}
+          <MobileDropdown
+            label={t("robots")}
+            items={[
+              {
+                label: "Humanoid",
+                children: [
+                  {
+                    label: "Industry",
+                    children: [
+                      { label: "H1", href: "/Robot/Humanoids/Industry/H1" },
+                      { label: "H1-2", href: "/Robot/Humanoid/Industry/H1-2" },
+                    ],
+                  },
+                  {
+                    label: "Education",
+                    children: [
+                      { label: "G1", href: "/Robot/Humanoid/Education/G1" },
+                      { label: "R1", href: "/Robot/Humanoid/Education/R1" },
+                    ],
+                  },
+                ],
+              },
+              {
+                label: "Quadrupeds",
+                children: [
+                  {
+                    label: "Industry",
+                    children: [
+                      { label: "B2", href: "/Robot/Quadrupeds/Industry/B2" },
+                      { label: "B2-W", href: "/Robot/Quadrupeds/Industry/B2-W" },
+                      { label: "A2", href: "/Robot/Quadrupeds/Industry/A2" },
+                      { label: "A2-W", href: "/Robot/Quadrupeds/Industry/A2-W" },
+                    ],
+                  },
+                  {
+                    label: "Education",
+                    children: [
+                      { label: "GO2", href: "/Robot/Quadrupeds/Education/GO2" },
+                      { label: "GO2-W", href: "/Robot/Quadrupeds/Education/GO2-W" },
+                    ],
+                  },
+                ],
+              },
+              {
+                label: "Cobot",
+                href: "/Cobot",
+              },
+            ]}
+          />
+
+          <a href="/Contact" className={`font-medium transition-colors ${isActive("/Contact") ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2" : "dark:text-gray-300 hover:text-[#00F5A0]"}`}>{t("contact")}</a>
+          <a href="/Gallery" className={`font-medium transition-colors ${isActive("/Gallery") ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2" : "dark:text-gray-300 hover:text-[#00F5A0]"}`}>{t("gallery")}</a>
+          <a
+  href="https://bidyutrobotics.com/login"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] hover:from-[#00F5A0]/80 hover:to-[#00C6FF]/80 text-white py-2 px-4 rounded-full font-semibold shadow-md hover:shadow-[0_0_20px_#00F5A0] transition-all duration-300">
+    <span
+      className="text-lg inline-block origin-top -rotate-12 mr-2 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] "
+      aria-label="bell"
+    >
+      🔔
+    </span>
+    {t("loginToLms")}
+  </button>
+</a>
         </nav>
       </div>
 
