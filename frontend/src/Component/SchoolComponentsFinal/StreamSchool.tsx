@@ -25,14 +25,14 @@ const StreamSchool: React.FC = () => {
   return (
     <section className="w-full bg-white flex flex-col items-center justify-center text-center py-20">
       {/* Rotating Word with Animation */}
-      <div style={{ marginBottom: "-15px" }}>
+      <div style={{ height: "50px", marginBottom: "-15px" }}>
         <AnimatePresence mode="wait">
           {/* Desktop Rotating Word */}
           <motion.h3
             key={words[currentWordIndex]}
-            initial={{ opacity: 0, y: -40, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="text-gray-700 font-medium hidden md:block"
             style={{
@@ -47,9 +47,9 @@ const StreamSchool: React.FC = () => {
           {/* Mobile Rotating Word */}
           <motion.h3
             key={words[currentWordIndex]}
-            initial={{ opacity: 0, y: -40, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="text-gray-700 font-medium block md:hidden"
             style={{
