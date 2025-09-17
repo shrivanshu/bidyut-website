@@ -53,20 +53,18 @@ export default function SchoolCarousel() {
 
   return (
     <div 
-      className="min-h-screen flex items-center w-full max-w-screen justify-center" 
+      className="min-h-screen flex items-center w-full max-w-screen justify-center bg-[#FFE3BF] dark:bg-black" 
       style={{ 
-        backgroundColor: 'var(--bg-color)',
-        '--bg-color': 'var(--is-dark, #1a1a1a)',
         opacity: 1,
         left: '-1px',
         borderTopLeftRadius: '60px',
         borderTopRightRadius: '60px',
         position: 'relative',
         margin: '0 auto'
-      } as React.CSSProperties}>
+      }}>
       {/* Top left text */}
       <div
-        className="absolute text-black dark:text-white w-[50%] md:w-[35%] md:max-w-[190px]"
+        className="absolute text-gray-900 dark:text-white w-[50%] md:w-[35%] md:max-w-[190px]"
         style={{
           top: '30px',
           left: '40px',
@@ -80,11 +78,11 @@ export default function SchoolCarousel() {
         }}
       >
         Discover how we make learning fun
-       <a> <button className="dark:text-white"> →</button> </a>
+       <a> <button className="text-gray-900 dark:text-white"> →</button> </a>
       </div>
       {/* Title text */}
       <div
-        className="absolute"
+        className="absolute  dark:text-white"
         style={{
           top: '100px',
           fontFamily: 'Poppins',
@@ -94,7 +92,10 @@ export default function SchoolCarousel() {
           letterSpacing: '0%',
           textAlign: 'center',
           background: 'var(--title-gradient)',
-          '--title-gradient': 'var(--is-dark, linear-gradient(180deg, #FFFFFF 10%, rgba(255, 255, 255, 0.14) 100%))',
+          '--title-gradient': 'linear-gradient(180deg, var(--gradient-start) 10%, var(--gradient-end) 100%)',
+          '--gradient-start': 'var(--is-dark, #000000)',
+          '--gradient-end': 'var(--is-dark, rgba(6, 6, 6, 0.14))',
+
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -106,7 +107,7 @@ export default function SchoolCarousel() {
       </div>
       {/* Bottom right text */}
       <div
-        className="absolute text-black dark:text-white"
+        className="absolute text-gray-900 dark:text-white"
         style={{
           bottom: '10px',
           right: '40px',
@@ -214,12 +215,6 @@ export default function SchoolCarousel() {
           border-radius: 0.75rem;
           translate: calc(-150% * var(--mov) * sqrt(var(--sin)));
           rotate: calc((1 - var(--sin)) * var(--a));
-          filter: var(--image-filter);
-          --image-filter: var(--is-dark, brightness(0.9) contrast(1.1));
-        }
-
-        :root[data-theme="dark"] {
-          --is-dark: initial;
         }
 
         .pin {
@@ -245,10 +240,7 @@ export default function SchoolCarousel() {
   .carousel-image {
     height: 12em;
     width: 16em;
-  }
-  
-  .carousel-section {
-    left: 62% !important;
+   
   }
 }
 
