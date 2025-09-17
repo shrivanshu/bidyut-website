@@ -53,12 +53,8 @@ export default function SchoolCarousel() {
 
   return (
     <div 
-      className="min-h-screen flex items-center w-full max-w-screen   justify-center " 
+      className="min-h-screen flex items-center w-full max-w-screen justify-center bg-[#FFE3BF] dark:bg-black" 
       style={{ 
-        backgroundColor: '#FFE3BF', 
-        // paddingTop: '80px',
-        // width: '1441px',
-        // height: '750px',
         opacity: 1,
         left: '-1px',
         borderTopLeftRadius: '60px',
@@ -68,11 +64,10 @@ export default function SchoolCarousel() {
       }}>
       {/* Top left text */}
       <div
-        className="absolute text-black w-[50%] md:w-[35%] md:max-w-[190px]   "
+        className="absolute text-gray-900 dark:text-white w-[50%] md:w-[35%] md:max-w-[190px]"
         style={{
           top: '30px',
           left: '40px',
-          
           fontFamily: 'Poppins',
           fontWeight: 500,
           textAlign: 'left',
@@ -83,11 +78,11 @@ export default function SchoolCarousel() {
         }}
       >
         Discover how we make learning fun
-       <a> <button> →</button> </a>
+       <a> <button className="text-gray-900 dark:text-white"> →</button> </a>
       </div>
       {/* Title text */}
       <div
-        className="absolute"
+        className="absolute  dark:text-white"
         style={{
           top: '100px',
           fontFamily: 'Poppins',
@@ -96,19 +91,23 @@ export default function SchoolCarousel() {
           lineHeight: '1.2',
           letterSpacing: '0%',
           textAlign: 'center',
-          background: 'linear-gradient(180deg, #000000 10%, rgba(6, 6, 6, 0.14) 100%)',
+          background: 'var(--title-gradient)',
+          '--title-gradient': 'linear-gradient(180deg, var(--gradient-start) 10%, var(--gradient-end) 100%)',
+          '--gradient-start': 'var(--is-dark, #000000)',
+          '--gradient-end': 'var(--is-dark, rgba(6, 6, 6, 0.14))',
+
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           width: 'fit-content',
           padding: '10px'
-        }}
+        } as React.CSSProperties}
       >
         Robotics Lab
       </div>
       {/* Bottom right text */}
       <div
-        className="absolute text-black"
+        className="absolute text-gray-900 dark:text-white"
         style={{
           bottom: '10px',
           right: '40px',
@@ -260,7 +259,7 @@ export default function SchoolCarousel() {
           '--n': n,
           '--k': k,
           position: 'absolute',
-          left: '52%',
+          left: window.innerWidth <= 768 ? '62%' : '52%',
           top: '60%',
           textAlign: 'center',
 
