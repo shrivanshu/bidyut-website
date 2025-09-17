@@ -10,6 +10,7 @@ export default function AdvanceRoboticsLabs() {
   const [scrollCompleted, setScrollCompleted] = useState(false)
   const showNewContentRef = useRef(showNewContent)
   const containerRef = useRef<HTMLDivElement>(null)
+  const componentRef = useRef<HTMLDivElement>(null)
 
   // Sync ref with state
   useEffect(() => {
@@ -44,11 +45,43 @@ export default function AdvanceRoboticsLabs() {
     },
   ]
 
+  // State to track if component is in view
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    // Create intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          console.log('Component in view');
+          setIsInView(true);
+        } else {
+          console.log('Component out of view');
+          setIsInView(false);
+        }
+      },
+      {
+        threshold: 0.2  // Start when 20% of component is visible
+      }
+    );
+
+    // Start observing the main component
+    if (componentRef.current) {
+      observer.observe(componentRef.current);
+    }
+
+    return () => {
+      if (componentRef.current) {
+        observer.unobserve(componentRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout | null = null;
     
     const handleScroll = () => {
-      if (containerRef.current && !scrollCompleted) {
+      if (containerRef.current && !scrollCompleted && isInView) {
         const { scrollTop, clientHeight } = containerRef.current
         const newIndex = Math.floor(scrollTop / clientHeight)
         
@@ -95,12 +128,12 @@ export default function AdvanceRoboticsLabs() {
       container.addEventListener('scroll', handleScroll);
     }
 
-    // Start auto-scroll
+    // Start auto-scroll only when in view
     const interval = setInterval(() => {
-      if (!scrollCompleted) {
+      if (!scrollCompleted && isInView) {
         scrollToNextImage();
       }
-    }, 1000);
+    }, 200);
 
     // Clean up function
     return () => {
@@ -112,20 +145,10 @@ export default function AdvanceRoboticsLabs() {
       }
       clearInterval(interval);
     };
-
-    return () => {
-      if (container) {
-        container.removeEventListener('scroll', handleScroll);
-      }
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      clearInterval(interval);
-    };
-  }, [currentIndex, images.length, scrollCompleted])
+  }, [currentIndex, images.length, scrollCompleted, isInView])
 
   return (
-    <div className="bg-teal-200 dark:bg-black  rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
+    <div ref={componentRef} className="bg-teal-200 dark:bg-black  rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
       <div className="relative h-screen w-full">
         {/* Text Content - Left Side */}
         <AnimatePresence mode="wait">
