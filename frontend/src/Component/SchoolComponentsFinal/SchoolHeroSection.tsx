@@ -245,7 +245,7 @@ const SchoolHeroSection: React.FC = () => {
   return (
     <section
       ref={sectionRef as React.MutableRefObject<HTMLElement | null>}
-      className="w-full bg-white relative font-['Poppins']"
+      className="w-full bg-white dark:bg-black relative font-['Poppins']"
       style={{ height: `${sectionHeight}px` }}
     >
       {/* Fixed overlay while pinned to avoid any vertical movement */}
@@ -263,10 +263,10 @@ const SchoolHeroSection: React.FC = () => {
               opacity: (1 - 0.95 * eh) * (1 - Math.min(1, e * 1.1)), // Additional fade as text moves out
             }}
           >
-            <h1 className="font-bold leading-tight" style={{ fontSize: "44px", fontWeight: 700 }}>
+            <h1 className="font-bold leading-tight dark:text-white" style={{ fontSize: "44px", fontWeight: 700 }}>
               Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
             </h1>
-            <p className="mt-2 text-gray-800" style={{ fontSize: "18px", fontWeight: 500 }}>
+            <p className="mt-2 text-gray-800 dark:text-gray-400" style={{ fontSize: "18px", fontWeight: 500 }}>
               We provide hands-on robotics, AI, drone programs, teacher training, and global competitions to
               prepare students for tomorrow.
             </p>
