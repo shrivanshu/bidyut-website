@@ -162,6 +162,8 @@ export default function AboutPage() {
 
   const [hasVideoAnimated, setHasVideoAnimated] = useState(false)
 
+  
+
   // Gallery States
   const [currentReelIndex, setCurrentReelIndex] = useState(0)
   const [showFullGallery, setShowFullGallery] = useState(false)
@@ -224,6 +226,10 @@ export default function AboutPage() {
   const accumulatedScroll = useRef(0)
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
+
+  const [animatedYear, setAnimatedYear] = useState(0);
+const [animatedClients, setAnimatedClients] = useState(0);
+const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
   
 
   // Language context
@@ -331,6 +337,41 @@ export default function AboutPage() {
     { id: "building", name: "Building", color: "#F97316" }
   ]
 
+useEffect(() => {
+  // Animate Year
+  let yearStart = 0;
+  let clientsStart = 0;
+  let happyClientsStart = 0;
+  const yearTarget = currentYear;
+  const clientsTarget = 500;
+  const happyClientsTarget = 500;
+  const duration = 3800; // ms
+  let startTime: number | null = null;
+
+  function animateCounter(timestamp: number) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 10);
+
+    setAnimatedYear(Math.floor(yearStart + (yearTarget - yearStart) * progress));
+    setAnimatedClients(Math.floor(clientsStart + (clientsTarget - clientsStart) * progress));
+    setAnimatedHappyClients(Math.floor(happyClientsStart + (happyClientsTarget - happyClientsStart) * progress));
+
+    if (progress < 1) {
+      requestAnimationFrame(animateCounter);
+    } else {
+      setAnimatedYear(yearTarget);
+      setAnimatedClients(clientsTarget);
+      setAnimatedHappyClients(happyClientsTarget);
+    }
+  }
+
+  requestAnimationFrame(animateCounter);
+
+  // Cleanup
+  return () => {};
+}, [currentYear]);
+
+
   // Hero Section Effects
   useEffect(() => {
     const handleScroll = () => {
@@ -389,6 +430,7 @@ export default function AboutPage() {
       }
     }
   }, [hasVideoAnimated])
+  
 
   // Gallery Effects
   useEffect(() => {
@@ -664,7 +706,7 @@ export default function AboutPage() {
             }}
           />
 
-          <div className="flex items-center justify-center min-h-screen px-8">
+          <div className="flex items-center justify-center min-h-screen mt-8 md:-mt-1 px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
               <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
                 About Us
@@ -679,34 +721,36 @@ export default function AboutPage() {
 Through innovative STEM programs and intelligent automation, we're building the foundation for India's technological future, one student at a time.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    {currentYear}
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Current Year
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    500+
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Clients Served
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-                    500+
-                  </div>
-                  <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                    Happy Clients
-                  </div>
-                </div>
-              </div>
+              
+<div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
+  <div className="text-center">
+    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
+      {animatedYear}
+    </div>
+    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+      Current Year
+    </div>
+  </div>
+  
+  <div className="text-center">
+    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
+      {animatedClients}+
+    </div>
+    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+      Clients Served
+    </div>
+  </div>
+  
+  <div className="text-center">
+    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
+      {animatedHappyClients}+
+    </div>
+    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+      Happy Clients
+    </div>
+  </div>
+</div>
+
             </div>
           </div>
         </div>
@@ -744,7 +788,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               autoPlay
               playsInline
               aria-label="Video player"
-              className="w-full h-full object-contain transition-all duration-500 ease-out"
+              className="w-[350px] md:w-full h-full object-contain transition-all duration-500 ease-out"
               style={
                 (activeTab === 'who-we-are' || activeTab === 'where-we-are')
                   ? {
@@ -763,7 +807,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
             {/* Unique video tab buttons with animated indicator */}
             <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
-              <div className="w-full flex justify-between px-8 pt-6">
+              <div className="w-full flex md:justify-between justify-around px-28 md:px-8 pt-6">
                 <button
                   ref={whoWeAreBtnRef}
                   onClick={() => setActiveTab('who-we-are')}
@@ -822,25 +866,25 @@ Through innovative STEM programs and intelligent automation, we're building the 
             
             {/* Main Heading Block - enlarged to better fit container */}
             <div
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
-              style={{ width: "1500px", height: "280px" }}
+              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-[410px] h-[280px] md:w-[1500px] md:h-[280px] flex items-center justify-center"
+             
             >
-              <div className="text-center px-8">
-                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[60px]`}>
+              <div className="text-center  px-8 ">
+                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[30px] md:text-[60px]`}>
                   Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
                 </h1>
               </div>
             </div>
 
             {/* Description Text - enlarged below heading */}
-            <div className="absolute top-[320px] left-1/2 transform -translate-x-1/2 w-[1320px] h-[60px] flex items-center justify-center px-4">
+            <div className="absolute top-[320px] left-1/2 transform -translate-x-1/2 w-[400px] md:w-[1320px] h-[60px] flex items-center justify-center px-4">
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-center text-[16px] leading-tight`}>
                 Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing like world's most advanced robotic and technological education to the children of our country.
               </p>
             </div>
 
             {/* Left Decorative Dots - moved more to the left */}
-            <div className="absolute top-[380px] left-[30px] w-[180px] h-[10px] z-10">
+            <div className="absolute top-[380px] left-[30px] w-[180px] h-[10px] z-10 bounce-forever">
               <div className="grid grid-cols-10 gap-[12px] p-3">
                 {Array.from({length: 100}).map((_, i) => (
                   <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
@@ -903,7 +947,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               </div>
 
             {/* Right Decorative Dots - moved more to the left */}
-            <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10">
+            <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10 bounce-forever">
               <div className="grid grid-cols-10 gap-[12px] p-3">
                 {Array.from({length: 100}).map((_, i) => (
                   <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
@@ -1474,6 +1518,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         ${isVisible ? "opacity-100" : "opacity-0"}
                       `}
                       style={{
+                            fontFamily: "'poppins', sans-serif", 
                         transform: digitData.transform,
                         transition: "transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 500ms ease-out",
                       }}
