@@ -125,7 +125,7 @@ export default function AdvanceRoboticsLabs() {
   }, [currentIndex, images.length, scrollCompleted])
 
   return (
-    <div className="bg-teal-200 rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
+    <div className="bg-teal-200 dark:bg-black  rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
       <div className="relative h-screen w-full">
         {/* Text Content - Left Side */}
         <AnimatePresence mode="wait">
@@ -135,13 +135,13 @@ export default function AdvanceRoboticsLabs() {
               initial={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-[50%] p-8 bg-teal-200 z-10 absolute left-0 top-0 h-full"
+              className="w-[50%] p-8   z-10 absolute left-0 top-0 h-full"
             >
               <div className="sticky top-0 space-y-6 p-4 rounded-lg">
                 <div>
-                  <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Advanced Robotics Labs</h1>
-                  <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 mb-6">Build the Future</h2>
-                  <p className="text-base lg:text-lg text-gray-700 leading-relaxed mb-8">
+                  <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Advanced Robotics Labs</h1>
+                  <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6">Build the Future</h2>
+                  <p className="text-base lg:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-8">
                     State-of-the-art robotics laboratories with cutting-edge tools where students design, build, and
                     program their own robots.
                   </p>
@@ -149,22 +149,22 @@ export default function AdvanceRoboticsLabs() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">Arduino & Raspberry Pi</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">Arduino & Raspberry Pi</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">3D Printing</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">3D Printing</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">AI Integration</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">AI Integration</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 pt-4">
-                  <span className="text-base lg:text-lg font-medium text-gray-800">Learn More</span>
-                  <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800" />
+                  <span className="text-base lg:text-lg font-medium text-gray-800 dark:text-gray-100">Learn More</span>
+                  <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800 dark:text-gray-100" />
                 </div>
               </div>
             </motion.div>
@@ -174,7 +174,7 @@ export default function AdvanceRoboticsLabs() {
               initial={{ x: "100%" }}
               animate={{ x: "0%" }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-[50%] p-8 bg-teal-200 z-10 absolute right-0 top-0 h-full"
+              className="w-[50%] p-8  z-10 absolute right-0 top-0 h-full"
             >
               <div className="sticky top-0 space-y-6 p-4 rounded-lg">
                 <motion.div
@@ -182,9 +182,9 @@ export default function AdvanceRoboticsLabs() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Innovation Hub</h1>
-                  <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 mb-6">Shape Tomorrow</h2>
-                  <p className="text-base lg:text-lg text-gray-700 leading-relaxed mb-8">
+                  <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Innovation Hub</h1>
+                  <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6">Shape Tomorrow</h2>
+                  <p className="text-base lg:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-8">
                     Experience the future of education with our cutting-edge technology integration and hands-on learning approach.
                   </p>
                 </motion.div>
@@ -196,16 +196,16 @@ export default function AdvanceRoboticsLabs() {
                   className="space-y-4"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">Virtual Reality Labs</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">Virtual Reality Labs</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">IoT Projects</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">IoT Projects</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base lg:text-lg text-gray-800">Blockchain Technology</span>
+                    <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full"></div>
+                    <span className="text-base lg:text-lg text-gray-800 dark:text-gray-100">Blockchain Technology</span>
                   </div>
                 </motion.div>
 
@@ -215,8 +215,8 @@ export default function AdvanceRoboticsLabs() {
                   transition={{ delay: 0.7, duration: 0.6 }}
                   className="flex items-center gap-2 pt-4"
                 >
-                  <span className="text-base lg:text-lg font-medium text-gray-800">Explore More</span>
-                  <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800" />
+                  <span className="text-base lg:text-lg font-medium text-gray-800 dark:text-gray-100">Explore More</span>
+                  <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800 dark:text-gray-100" />
                 </motion.div>
               </div>
             </motion.div>
