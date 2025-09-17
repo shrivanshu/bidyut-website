@@ -4,11 +4,11 @@ import SchoolCards from "../../Animations/SchoolCards";
 
 const SchoolHeroSection: React.FC = () => {
   return (
-    <section className="w-full bg-white relative font-['Poppins'] min-h-screen">
+    <section className="w-full bg-white relative font-['Poppins'] ">
       {/* Left Text Section */}
       <div
         className="absolute hidden md:block"
-        style={{ width: "543px", top: "284px", left: "69px" }}
+        style={{ width: "543px", top: "250px", left: "69px" }}
       >
         <h1
           className="font-bold leading-tight"
