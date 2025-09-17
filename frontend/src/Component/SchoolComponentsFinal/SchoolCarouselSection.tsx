@@ -53,11 +53,11 @@ export default function SchoolCarousel() {
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center relative" 
+      className="min-h-screen flex items-center w-full max-w-screen   justify-center " 
       style={{ 
         backgroundColor: '#FFE3BF', 
         // paddingTop: '80px',
-        width: '1441px',
+        // width: '1441px',
         // height: '750px',
         opacity: 1,
         left: '-1px',
@@ -68,12 +68,11 @@ export default function SchoolCarousel() {
       }}>
       {/* Top left text */}
       <div
-        className="absolute text-black"
+        className="absolute text-black w-[50%] md:w-[35%] md:max-w-[190px]   "
         style={{
           top: '30px',
           left: '40px',
-          maxWidth: '190px',
-          width: '35%',
+          
           fontFamily: 'Poppins',
           fontWeight: 500,
           textAlign: 'left',
@@ -237,6 +236,22 @@ export default function SchoolCarousel() {
           transform: scale(1.05);
           transition: transform 0.3s ease;
         }
+
+        @media (max-width: 768px) {
+  .carousel-image {
+    height: 12em;
+    width: 16em;
+   
+  }
+}
+
+/* ↓ Extra small screens ≤480 px */
+@media (max-width: 480px) {
+  .carousel-image {
+    height: 10em;
+    width: 13em;
+  }
+}
       `}</style>
 
       <section 
