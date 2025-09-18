@@ -1,13 +1,13 @@
 export function RoboticsSchools() {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 dark:bg-black bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="mb-12 text-center lg:text-left">
-          <h2 className="text-3xl md:text-5xl font-bold font-roboto text-gray-900 mb-2">
+          <h2 className="text-3xl md:text-5xl font-bold font-roboto dark:text-gray-300 text-gray-900 mb-2">
             See How Schools Are
           </h2>
-          <p className="text-lg md:text-xl font-roboto text-gray-600">
+          <p className="text-lg md:text-xl font-roboto dark:text-gray-400 text-gray-600">
             Transforming with Robotics
           </p>
         </div>
@@ -24,13 +24,13 @@ export function RoboticsSchools() {
             </div>
 
             <div className="space-y-4">
-              <p className="text-sm text-gray-500 uppercase tracking-wide">
+              <p className="text-sm dark:text-gray-400 text-gray-500 uppercase tracking-wide">
                 Bring Innovation to Your School Today
               </p>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+              <h3 className="text-2xl md:text-3xl font-bold dark:text-gray-300 text-gray-900">
                 Partner with us to set up your Robotics & AI Lab, train your teache...
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600  dark:text-gray-400">
                 We've already transformed 50+ schools with hands-on robotics programs.
                 Let's make your school next.
               </p>
@@ -44,13 +44,13 @@ export function RoboticsSchools() {
                 key={item}
                 className="space-y-4 pb-8 border-b border-gray-200 last:border-b-0"
               >
-                <p className="text-sm text-gray-500 uppercase tracking-wide">
+                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   Bring Innovation to Your School Today
                 </p>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
                   Partner with us to set up your Robotics & AI Lab, train your teache...
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400">
                   We've already transformed 50+ schools with hands-on robotics programs.
                   Let's make your school next.
                 </p>
@@ -58,12 +58,14 @@ export function RoboticsSchools() {
             ))}
 
             <div className="pt-4">
+              <a href="/gallery">
               <button
                 className="
-                  w-full md:w-auto
-                  px-6 py-3
+                   w-[350px] h-[40px] md:w-[591px]  md:h-[61px]
+                  
                   border border-gray-300
                   text-gray-700
+                  dark:text-gray-300
                   hover:bg-gray-50
                   bg-transparent
                   rounded-md
@@ -73,6 +75,7 @@ export function RoboticsSchools() {
               >
                 View More
               </button>
+              </a>
             </div>
           </div>
         </div>

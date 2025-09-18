@@ -67,11 +67,43 @@ export default function AdvanceRoboticsLabs() {
     },
   ]
 
+  // State to track if component is in view
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    // Create intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          console.log('Component in view');
+          setIsInView(true);
+        } else {
+          console.log('Component out of view');
+          setIsInView(false);
+        }
+      },
+      {
+        threshold: 0.2  // Start when 20% of component is visible
+      }
+    );
+
+    // Start observing the main component
+    if (componentRef.current) {
+      observer.observe(componentRef.current);
+    }
+
+    return () => {
+      if (componentRef.current) {
+        observer.unobserve(componentRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout | null = null;
     
     const handleScroll = () => {
-      if (containerRef.current && !scrollCompleted) {
+      if (containerRef.current && !scrollCompleted && isInView) {
         const { scrollTop, clientHeight } = containerRef.current
         const newIndex = Math.floor(scrollTop / clientHeight)
         
@@ -116,7 +148,6 @@ export default function AdvanceRoboticsLabs() {
     if (container) {
       container.addEventListener('scroll', handleScroll);
     }
-
     const interval = setInterval(() => {
       if (!scrollCompleted && isInView) {
         scrollToNextImage();
@@ -134,7 +165,6 @@ export default function AdvanceRoboticsLabs() {
     };
   }, [currentIndex, images.length, scrollCompleted, isInView])
 
-  // Mobile auto-scroll effect
   useEffect(() => {
     const mobileContainer = mobileScrollRef.current;
     if (!mobileContainer) return;
@@ -211,6 +241,7 @@ export default function AdvanceRoboticsLabs() {
               <div className="flex items-center gap-2 pt-4">
                 <span className="text-base font-medium text-gray-800">Learn More</span>
                 <ArrowRight className="w-5 h-5 text-gray-800" />
+
               </div>
             </div>
           </div>

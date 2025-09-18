@@ -13,12 +13,12 @@ export function AboutSchool() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl  px-6 text-center">
         <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 text-balance">
           Empowering Schools to Build the Future
         </h1>
 
-        <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto text-pretty leading-relaxed">
+        <p className="text-lg md:text-xl lg:text-2xl mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
           We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and
           STREAM education.
         </p>
