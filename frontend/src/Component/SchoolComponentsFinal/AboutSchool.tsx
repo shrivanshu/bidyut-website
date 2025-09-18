@@ -1,4 +1,3 @@
-import React from "react";
 import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
 
 export function AboutSchool() {
