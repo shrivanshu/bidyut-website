@@ -1,3 +1,6 @@
+import React from "react";
+import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
+
 export function AboutSchool() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -14,14 +17,35 @@ export function AboutSchool() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl  px-6 text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 text-balance">
-          Empowering Schools to Build the Future
-        </h1>
+        <AnimatedText
+          direction="up"
+          delay={0.3}
+          duration={1.2}
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 text-balance">
+            <StaggeredText 
+              text="Empowering Schools to Build the Future"
+              staggerDelay={0.08}
+              direction="up"
+              splitBy="words"
+            />
+          </h1>
+        </AnimatedText>
 
-        <p className="text-lg md:text-xl lg:text-2xl mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
-          We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and
-          STREAM education.
-        </p>
+        <AnimatedText
+          direction="up"
+          delay={0.8}
+          duration={1.5}
+        >
+          <p className="text-lg md:text-xl lg:text-2xl mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
+            <StaggeredText 
+              text="We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and STREAM education."
+              staggerDelay={0.03}
+              direction="fade"
+              splitBy="words"
+            />
+          </p>
+        </AnimatedText>
 
         {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           //Primary Button
