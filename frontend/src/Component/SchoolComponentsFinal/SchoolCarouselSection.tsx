@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const cats = {
   'Tiger': {
@@ -43,6 +44,7 @@ const rand = (max: number, min: number): number => {
 };
 
 export default function SchoolCarousel() {
+  const { isDark } = useTheme();
   const entries = Object.entries(cats);
   const n = entries.length;
   const [k, setK] = useState(0);
@@ -53,7 +55,7 @@ export default function SchoolCarousel() {
 
   return (
     <div 
-      className="min-h-screen flex items-center w-full max-w-screen justify-center bg-[#FFE3BF] dark:bg-black" 
+      className="min-h-screen flex items-center w-full max-w-screen justify-center bg-[#FFE3BF] dark:bg-[#FFE3BF]"
       style={{ 
         opacity: 1,
         left: '-1px',
@@ -64,7 +66,9 @@ export default function SchoolCarousel() {
       }}>
       {/* Top left text */}
       <div
-        className="absolute text-gray-900 dark:text-white w-[50%] md:w-[35%] md:max-w-[190px]"
+        className={`absolute transition-colors duration-300 w-[50%] md:w-[35%] md:max-w-[190px] ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}
         style={{
           top: '30px',
           left: '40px',
@@ -78,11 +82,11 @@ export default function SchoolCarousel() {
         }}
       >
         Discover how we make learning fun
-       <a> <button className="text-gray-900 dark:text-white"> →</button> </a>
+       <a> <button className={`transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}> →</button> </a>
       </div>
       {/* Title text */}
       <div
-        className="absolute  dark:text-white"
+        className={`absolute transition-colors duration-300 ${isDark ? 'text-white' : 'text-black'}`}
         style={{
           top: '100px',
           fontFamily: 'Poppins',
@@ -91,11 +95,9 @@ export default function SchoolCarousel() {
           lineHeight: '1.2',
           letterSpacing: '0%',
           textAlign: 'center',
-          background: 'var(--title-gradient)',
-          '--title-gradient': 'linear-gradient(180deg, var(--gradient-start) 10%, var(--gradient-end) 100%)',
-          '--gradient-start': 'var(--is-dark, #000000)',
-          '--gradient-end': 'var(--is-dark, rgba(6, 6, 6, 0.14))',
-
+          background: isDark 
+            ? 'linear-gradient(180deg, #ffffff 10%, rgba(255, 255, 255, 0.7) 100%)'
+            : 'linear-gradient(180deg, #000000 10%, rgba(6, 6, 6, 0.4) 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -107,7 +109,9 @@ export default function SchoolCarousel() {
       </div>
       {/* Bottom right text */}
       <div
-        className="absolute text-gray-900 dark:text-white"
+        className={`absolute transition-colors duration-300 ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}
         style={{
           bottom: '10px',
           right: '40px',
@@ -149,7 +153,7 @@ export default function SchoolCarousel() {
           grid-template: repeat(2, max-content) auto max-content / max-content 1fr;
           place-self: center;
           scale: 1.2;
-          color: #f1f5f9;
+          color: ${isDark ? '#f1f5f9' : '#374151'};
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           counter-reset: k calc(1 + var(--k)) n var(--n);
           transition: --p 0s 0.8s, --v 0.8s;
@@ -161,7 +165,7 @@ export default function SchoolCarousel() {
           width: 3ch;
           text-align: right;
           content: counter(k) '/' counter(n);
-          color: rgb(241 245 249 / 0.6);
+          color: ${isDark ? 'rgb(241 245 249 / 0.6)' : 'rgb(55 65 81 / 0.6)'};
         }
 
         .carousel-article {
@@ -196,7 +200,7 @@ export default function SchoolCarousel() {
         .carousel-subtitle {
           grid-area: 3 / 2;
           font-style: italic;
-          color: rgb(241 245 249 / 0.6);
+          color: ${isDark ? 'rgb(241 245 249 / 0.6)' : 'rgb(55 65 81 / 0.6)'};
           margin: 0;
         }
 
@@ -208,13 +212,14 @@ export default function SchoolCarousel() {
         .carousel-image {
           --sin: calc(sin(var(--prg) * 0.5turn));
           grid-area: 1 / 1 / -1;
-          border: solid 2px rgba(82, 82, 122, 0.5);
+          border: solid 2px ${isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(82, 82, 122, 0.5)'};
           height: 15em;
           width: 20em;
           object-fit: cover;
           border-radius: 0.75rem;
           translate: calc(-150% * var(--mov) * sqrt(var(--sin)));
           rotate: calc((1 - var(--sin)) * var(--a));
+          transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .pin {
@@ -233,7 +238,7 @@ export default function SchoolCarousel() {
 
         .carousel-image:hover {
           transform: scale(1.05);
-          transition: transform 0.3s ease;
+          border-color: ${isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(82, 82, 122, 0.8)'};
         }
 
         @media (max-width: 768px) {
