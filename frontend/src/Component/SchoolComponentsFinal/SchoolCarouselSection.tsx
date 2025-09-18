@@ -55,7 +55,6 @@ export default function SchoolCarousel() {
 
   return (
     <div 
-      className="min-h-screen flex items-center w-full max-w-screen justify-center bg-[#FFE3BF] dark:bg-[#FFE3BF]"
       style={{ 
         opacity: 1,
         left: '-1px',
@@ -66,9 +65,7 @@ export default function SchoolCarousel() {
       }}>
       {/* Top left text */}
       <div
-        className={`absolute transition-colors duration-300 w-[50%] md:w-[35%] md:max-w-[190px] ${
-          isDark ? 'text-white' : 'text-gray-900'
-        }`}
+
         style={{
           top: '30px',
           left: '40px',
@@ -81,12 +78,7 @@ export default function SchoolCarousel() {
           cursor: 'pointer'
         }}
       >
-        Discover how we make learning fun
-       <a> <button className={`transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}> →</button> </a>
-      </div>
-      {/* Title text */}
-      <div
-        className={`absolute transition-colors duration-300 ${isDark ? 'text-white' : 'text-black'}`}
+        Discover how we make learning
         style={{
           top: '100px',
           fontFamily: 'Poppins',
@@ -95,12 +87,7 @@ export default function SchoolCarousel() {
           lineHeight: '1.2',
           letterSpacing: '0%',
           textAlign: 'center',
-          background: isDark 
-            ? 'linear-gradient(180deg, #ffffff 10%, rgba(255, 255, 255, 0.7) 100%)'
-            : 'linear-gradient(180deg, #000000 10%, rgba(6, 6, 6, 0.4) 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+
           width: 'fit-content',
           padding: '10px'
         } as React.CSSProperties}
@@ -109,9 +96,7 @@ export default function SchoolCarousel() {
       </div>
       {/* Bottom right text */}
       <div
-        className={`absolute transition-colors duration-300 ${
-          isDark ? 'text-white' : 'text-gray-900'
-        }`}
+
         style={{
           bottom: '10px',
           right: '40px',
