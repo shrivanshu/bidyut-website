@@ -67,38 +67,6 @@ export default function AdvanceRoboticsLabs() {
     },
   ]
 
-  // State to track if component is in view
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    // Create intersection observer
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          console.log('Component in view');
-          setIsInView(true);
-        } else {
-          console.log('Component out of view');
-          setIsInView(false);
-        }
-      },
-      {
-        threshold: 0.2  // Start when 20% of component is visible
-      }
-    );
-
-    // Start observing the main component
-    if (componentRef.current) {
-      observer.observe(componentRef.current);
-    }
-
-    return () => {
-      if (componentRef.current) {
-        observer.unobserve(componentRef.current);
-      }
-    };
-  }, []);
-
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout | null = null;
     
