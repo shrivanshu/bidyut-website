@@ -1,3 +1,4 @@
+import React from "react";
 import Footer from "../Component/FooterUnanimated";
 import SchoolCarousel from "../Component/SchoolComponentsFinal/SchoolCarouselSection";
 import { ThemeProvider } from "../contexts/ThemeContext";

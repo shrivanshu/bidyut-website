@@ -13,6 +13,10 @@ const SchoolHeroSection: React.FC = () => {
   // Progress from 0 → 1 over the hero's internal scroll (animation part)
   const [progress, setProgress] = useState(0);
   const [pinned, setPinned] = useState(false); // true while the hero is in its pinned (horizontal-only) phase
+  
+  // Animation states for text entrance
+  const [isTextVisible, setIsTextVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   // Final layout computed responsively so 5 cards fit in the viewport
   const [cardW, setCardW] = useState(260);
@@ -179,6 +183,37 @@ const SchoolHeroSection: React.FC = () => {
     return () => window.removeEventListener("resize", recalcLayout);
   }, []);
 
+  // Text entrance animation effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            // Delay the animation slightly for better effect
+            setTimeout(() => {
+              setIsTextVisible(true);
+              setHasAnimated(true);
+            }, 150);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
   // Map window scroll to local progress 0..1 while the hero is in view
   useEffect(() => {
     const onScroll = () => {
@@ -263,13 +298,56 @@ const SchoolHeroSection: React.FC = () => {
               opacity: (1 - 0.95 * eh) * (1 - Math.min(1, e * 1.1)), // Additional fade as text moves out
             }}
           >
-            <h1 className="font-bold leading-tight dark:text-white" style={{ fontSize: "44px", fontWeight: 700 }}>
-              Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
-            </h1>
-            <p className="mt-2 text-gray-800 dark:text-gray-400" style={{ fontSize: "18px", fontWeight: 500 }}>
-              We provide hands-on robotics, AI, drone programs, teacher training, and global competitions to
-              prepare students for tomorrow.
-            </p>
+            {/* Main Heading with sliding animation */}
+            <div
+              className="overflow-hidden"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) translateZ(0)' 
+                  : 'translateX(-100%) translateZ(0)',
+                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.1s' : '0s'
+              }}
+            >
+              <h1 
+                className="font-bold leading-tight dark:text-white" 
+                style={{ 
+                  fontSize: "44px", 
+                  fontWeight: 700,
+                  transform: isTextVisible 
+                    ? 'translateY(0) scale(1)' 
+                    : 'translateY(15px) scale(0.98)',
+                  transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transitionDelay: isTextVisible ? '0.2s' : '0s'
+                }}
+              >
+                Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
+              </h1>
+            </div>
+            
+            {/* Subtext with sliding animation - Fixed glitchy behavior */}
+            <div
+              className="mt-2"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateY(0) translateZ(0)' 
+                  : 'translateY(20px) translateZ(0)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
+                transitionDelay: isTextVisible ? '0.4s' : '0s'
+              }}
+            >
+              <p 
+                className="text-gray-800 dark:text-gray-400" 
+                style={{ 
+                  fontSize: "18px", 
+                  fontWeight: 500
+                }}
+              >
+                We provide hands-on robotics, AI, drone programs, teacher training, and global competitions to
+                prepare students for tomorrow.
+              </p>
+            </div>
           </div>
 
           {/* Desktop images: uniform height, centered strip; vertical center is constant to avoid top drift */}
@@ -278,11 +356,16 @@ const SchoolHeroSection: React.FC = () => {
             const h = lerp(img.h, cardH, e);
             const left = lerp(img.left, finalLefts[i] ?? img.left, e);
             const top = imagesCenterY - h / 2 + baseYOffset; // keep the visual center fixed while resizing
+            
+            // Hide background images when video is scaling/opening
+            const videoFadeOut = Math.min(1, videoScalingProgress * 2); // Fade out during video scaling
+            const finalOpacity = (1 - 0.85 * eh) * (1 - videoFadeOut);
+            
             return (
               <div
                 key={i}
                 className="absolute hidden md:block rounded-[24px] overflow-hidden shadow-lg will-change-transform"
-                style={{ left: `${left}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`, opacity: 1 - 0.85 * eh }}
+                style={{ left: `${left}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`, opacity: finalOpacity }}
               >
                 <img src={img.src} alt={`School${i + 1}`} className="w-full h-full object-cover" />
               </div>
@@ -294,28 +377,107 @@ const SchoolHeroSection: React.FC = () => {
             className="md:hidden flex flex-col items-center pt-6 gap-5"
             style={{ 
               transform: `translateX(-${easeInOutCubic(e) * 120}px) translateY(${baseYOffset}px)`, // More pronounced leftward movement
-              opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) // Fade out as it moves left
+              opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) * (1 - Math.min(1, videoScalingProgress * 2)) // Also hide mobile images when video opens
             }}
           >
-            <h1 className="text-center font-bold leading-snug text-[26px] sm:text-[30px]">
-              Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
-            </h1>
-            <p className="text-gray-800 text-[15px] sm:text-[17px] font-medium px-4 text-center">
-              We provide hands-on robotics, AI, drone programs, teacher training, and global competitions.
-            </p>
-            <div className="w-[240px] h-[360px] rounded-[20px] overflow-hidden shadow-md">
+            {/* Mobile Heading with sliding animation */}
+            <div
+              className="w-full px-4"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateY(0) translateZ(0)' 
+                  : 'translateY(30px) translateZ(0)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out',
+                transitionDelay: isTextVisible ? '0.1s' : '0s'
+              }}
+            >
+              <h1 className="text-center font-bold leading-snug text-[26px] sm:text-[30px]">
+                Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
+              </h1>
+            </div>
+            
+            {/* Mobile Subtext with sliding animation - Fixed */}
+            <div
+              className="w-full px-4"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateY(0) translateZ(0)' 
+                  : 'translateY(20px) translateZ(0)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
+                transitionDelay: isTextVisible ? '0.3s' : '0s'
+              }}
+            >
+              <p className="text-gray-800 text-[15px] sm:text-[17px] font-medium text-center">
+                We provide hands-on robotics, AI, drone programs, teacher training, and global competitions.
+              </p>
+            </div>
+            
+            {/* Mobile Images with staggered sliding animation */}
+            <div
+              className="w-[240px] h-[360px] rounded-[20px] overflow-hidden shadow-md"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) scale(1)' 
+                  : 'translateX(-40px) scale(0.95)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.5s' : '0s'
+              }}
+            >
               <img src="/publicFinal/SchoolImages/School2.svg" alt="School1" className="w-full h-full object-cover" />
             </div>
-            <div className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md">
+            <div
+              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) scale(1)' 
+                  : 'translateX(40px) scale(0.95)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.6s' : '0s'
+              }}
+            >
               <img src="/publicFinal/SchoolImages/School1.svg" alt="School2" className="w-full h-full object-cover" />
             </div>
-            <div className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md">
+            <div
+              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) scale(1)' 
+                  : 'translateX(-40px) scale(0.95)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.7s' : '0s'
+              }}
+            >
               <img src="/publicFinal/SchoolImages/School3.svg" alt="School3" className="w-full h-full object-cover" />
             </div>
-            <div className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md">
+            <div
+              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) scale(1)' 
+                  : 'translateX(40px) scale(0.95)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.8s' : '0s'
+              }}
+            >
               <img src="/publicFinal/SchoolImages/School1.svg" alt="School4" className="w-full h-full object-cover" />
             </div>
-            <div className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md">
+            <div
+              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
+              style={{
+                transform: isTextVisible 
+                  ? 'translateX(0) scale(1)' 
+                  : 'translateX(-40px) scale(0.95)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: isTextVisible ? '0.9s' : '0s'
+              }}
+            >
               <img src="/publicFinal/SchoolImages/School2.svg" alt="School5" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -324,7 +486,7 @@ const SchoolHeroSection: React.FC = () => {
           <div
             className="absolute w-full h-full top-0 left-0 pointer-events-none flex justify-center"
             style={{ 
-              opacity: holdProgress > 0 ? (1 - Math.max(0, (holdProgress - 0.85) / 0.15)) : 0, // Fade out in last 15% of scroll
+              opacity: holdProgress > 0 && holdProgress < 0.98 ? 1 : 0, // Instant disappear at 98% - no fade effect
               paddingTop: "12rem", // Less space from top for larger video
               paddingLeft: "1rem", // Minimal space from left
               paddingRight: "1rem" // Minimal space from right
@@ -336,7 +498,9 @@ const SchoolHeroSection: React.FC = () => {
                 // Start from 3rd image position and size, then grow to full video size
                 width: `${lerp(desktopInitial[2].w, focusW, Math.min(1, videoScalingProgress + 0.1))}px`, // Start from 3rd image width
                 height: `${lerp(desktopInitial[2].h, focusH, Math.min(1, videoScalingProgress + 0.1))}px`, // Start from 3rd image height
-                transform: `translateZ(0) translateX(${lerp((finalLefts[2] || 0) - (window.innerWidth * 0.425), 0, Math.min(1, videoScalingProgress + 0.1))}px)translateY(${lerp(0, -80, Math.min(1, videoScalingProgress + 0.1))}px)`, // Start from 3rd image position, move to center
+                // Add zoom-out effect when approaching the end (starts at 94% progress)
+                transform: `translateZ(0) translateX(${lerp((finalLefts[2] || 0) - (window.innerWidth * 0.425), 0, Math.min(1, videoScalingProgress + 0.1))}px) translateY(${lerp(0, -80, Math.min(1, videoScalingProgress + 0.1))}px) scale(${holdProgress >= 0.94 ? lerp(1, 0.3, easeInOutCubic((holdProgress - 0.94) / 0.04)) : 1})`, // Zoom out from 94% to 98% progress
+                transition: holdProgress >= 0.94 ? 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'transform 0.7s ease-out', // Faster transition for zoom-out
               }}
             >
               {/* Current Video */}
