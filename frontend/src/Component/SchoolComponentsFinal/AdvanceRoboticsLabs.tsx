@@ -1,217 +1,165 @@
 "use client"
 
 import { ArrowRight } from "lucide-react"
-import { useEffect, useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion } from "framer-motion"
 
 export default function AdvanceRoboticsLabs() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [showNewContent, setShowNewContent] = useState(false)
-  const [scrollCompleted, setScrollCompleted] = useState(false)
-  const [isInView, setIsInView] = useState(false)
-  const [isMobileAutoScrolling, setIsMobileAutoScrolling] = useState(false)
-  const showNewContentRef = useRef(showNewContent)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const componentRef = useRef<HTMLDivElement>(null)
+  const [selectedIndex, setSelectedIndex] = useState(0)
   const mobileScrollRef = useRef<HTMLDivElement>(null)
+  const mainScrollRef = useRef<HTMLDivElement>(null)
 
-  // Sync ref with state
-  useEffect(() => {
-    showNewContentRef.current = showNewContent
-    console.log('showNewContent changed:', showNewContent)
-  }, [showNewContent])
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          setIsInView(entry.isIntersecting)
-        })
-      },
-      { threshold: 0.1 }
-    )
-    if (componentRef.current) {
-      observer.observe(componentRef.current)
+  const roboticsData = [
+    {
+      src: "/GO2/GO2 EDU.png",
+      alt: "GO2 EDU Robot - Image 1",
+      title: "Advanced Robotics Labs",
+      subtitle: "Build the Future",
+      description: "State-of-the-art robotics laboratories with cutting-edge tools where students design, build, and program their own robots.",
+      features: ["Arduino & Raspberry Pi", "3D Printing", "AI Integration"]
+    },
+    {
+      src: "/GO2/GO2 PRO.png",
+      alt: "GO2 PRO Robot - Image 2",
+      title: "Coding & Programming",
+      subtitle: "Master the Code",
+      description: "Interactive programming sessions with modern languages and frameworks to develop problem-solving skills.",
+      features: ["Python & JavaScript", "Web Development", "Mobile Apps"]
+    },
+    {
+      src: "/Cobo/D1-arm.png",
+      alt: "D1 Robotic Arm - Image 3",
+      title: "AI & Machine Learning",
+      subtitle: "Intelligence Unleashed",
+      description: "Explore artificial intelligence and machine learning concepts through hands-on projects and real-world applications.",
+      features: ["Neural Networks", "Data Science", "Computer Vision"]
+    },
+    {
+      src: "/GO2/GO2 AIR.png",
+      alt: "GO2 AIR Robot - Image 4",
+      title: "Smart Technology",
+      subtitle: "Connected Future",
+      description: "Discover IoT devices, smart sensors, and connected systems that power modern technology ecosystems.",
+      features: ["IoT Devices", "Smart Sensors", "Cloud Integration"]
+    },
+    {
+      src: "/Cobo/Franka-arm.png",
+      alt: "Franka Robotic Arm - Image 5",
+      title: "Virtual Reality Labs",
+      subtitle: "Immersive Learning",
+      description: "Experience immersive learning environments with VR technology for enhanced educational experiences.",
+      features: ["VR Development", "3D Modeling", "Interactive Simulations"]
+    },
+    {
+      src: "/GO2/GO2 EDU2.png",
+      alt: "GO2 EDU2 Robot - Image 6",
+      title: "Innovation Hub",
+      subtitle: "Create Tomorrow",
+      description: "A collaborative space where creativity meets technology, fostering innovation and entrepreneurial thinking.",
+      features: ["Design Thinking", "Prototyping", "Project Showcase"]
     }
-    return () => {
-      if (componentRef.current) {
-        observer.unobserve(componentRef.current)
-      }
-    }
-  }, [])
-
-  const images = [
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "Advanced Robotics - Image 1",
-    },
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "Coding and Programming - Image 2",
-    },
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "AI and Machine Learning - Image 3",
-    },
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "Smart Technology - Image 4",
-    },
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "Future Technology - Image 5",
-    },
-    {
-      src: "/publicFinal/SchoolImages/Rectangle 52.png",
-      alt: "Industry Applications - Image 6",
-    },
   ]
 
-  useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout | null = null;
+  const handleImageClick = (index: number) => {
+    setSelectedIndex(index)
     
-    const handleScroll = () => {
-      if (containerRef.current && !scrollCompleted && isInView) {
-        const { scrollTop, clientHeight } = containerRef.current
-        const newIndex = Math.floor(scrollTop / clientHeight)
-        
-        if (newIndex !== currentIndex) {
-          console.log('Current Image:', newIndex + 1, 'of', images.length)
-          setCurrentIndex(newIndex)
-        }
-        
-        if (newIndex === images.length - 1) {
-          setScrollCompleted(true)
-          setTimeout(() => setShowNewContent(true), 500)
-        }
-      }
-    }
-
-    const scrollToNextImage = () => {
-      if (!containerRef.current || scrollCompleted) return;
-
-      const { clientHeight } = containerRef.current;
-      const nextIndex = currentIndex + 1;
-
-      if (nextIndex >= images.length) {
-        console.log('Reached end of images');
-        setScrollCompleted(true);
-        setTimeout(() => setShowNewContent(true), 500);
-        return;
-      }
-
-      console.log(`Scrolling to Image ${nextIndex + 1}`);
-      
-      containerRef.current.scrollTo({
-        top: nextIndex * clientHeight,
+    // Scroll to the clicked section on desktop
+    if (mainScrollRef.current) {
+      const { clientHeight } = mainScrollRef.current
+      mainScrollRef.current.scrollTo({
+        top: index * clientHeight,
         behavior: 'smooth'
-      });
-
-      scrollTimeout = setTimeout(() => {
-        setCurrentIndex(nextIndex);
-      }, 200);
+      })
     }
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
+    
+    // Scroll to the clicked image on mobile
+    if (mobileScrollRef.current) {
+      const { clientHeight } = mobileScrollRef.current
+      mobileScrollRef.current.scrollTo({
+        top: index * clientHeight,
+        behavior: 'smooth'
+      })
     }
-    const interval = setInterval(() => {
-      if (!scrollCompleted && isInView) {
-        scrollToNextImage();
-      }
-    }, 200);
+  }
 
-    return () => {
-      if (container) {
-        container.removeEventListener('scroll', handleScroll);
-      }
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      clearInterval(interval);
-    };
-  }, [currentIndex, images.length, scrollCompleted, isInView])
-
+  // Handle scroll events to update description based on scroll position
   useEffect(() => {
-    const mobileContainer = mobileScrollRef.current;
-    if (!mobileContainer) return;
-
-    let autoScrollInterval: NodeJS.Timeout;
-
-    const scrollToNext = () => {
-      if (isMobileAutoScrolling) return;
-
-      const { scrollTop, clientHeight, scrollHeight } = mobileContainer;
-      const nextScrollPosition = scrollTop + clientHeight;
-
-      if (nextScrollPosition >= scrollHeight) {
-        // Reset to top when reached end
-        mobileContainer.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        // Scroll to next image
-        mobileContainer.scrollTo({ top: nextScrollPosition, behavior: 'smooth' });
+    const handleMainScroll = () => {
+      if (mainScrollRef.current) {
+        const { scrollTop, clientHeight } = mainScrollRef.current
+        const newIndex = Math.round(scrollTop / clientHeight)
+        if (newIndex !== selectedIndex && newIndex >= 0 && newIndex < roboticsData.length) {
+          setSelectedIndex(newIndex)
+        }
       }
-    };
+    }
 
-    const handleUserScroll = () => {
-      setIsMobileAutoScrolling(true);
-      clearInterval(autoScrollInterval);
-      
-      // Resume auto-scroll after 3 seconds of no user interaction
-      setTimeout(() => {
-        setIsMobileAutoScrolling(false);
-      }, 3000);
-    };
+    const handleMobileScroll = () => {
+      if (mobileScrollRef.current) {
+        const { scrollTop, clientHeight } = mobileScrollRef.current
+        const newIndex = Math.round(scrollTop / clientHeight)
+        if (newIndex !== selectedIndex && newIndex >= 0 && newIndex < roboticsData.length) {
+          setSelectedIndex(newIndex)
+        }
+      }
+    }
 
-    // Start auto-scroll when component is in view
-    if (isInView) {
-      autoScrollInterval = setInterval(scrollToNext, 3000);
-      mobileContainer.addEventListener('scroll', handleUserScroll);
+    const mainContainer = mainScrollRef.current
+    const mobileContainer = mobileScrollRef.current
+
+    if (mainContainer) {
+      mainContainer.addEventListener('scroll', handleMainScroll)
+    }
+    if (mobileContainer) {
+      mobileContainer.addEventListener('scroll', handleMobileScroll)
     }
 
     return () => {
-      clearInterval(autoScrollInterval);
-      mobileContainer?.removeEventListener('scroll', handleUserScroll);
-    };
-  }, [isInView, isMobileAutoScrolling]);
+      if (mainContainer) {
+        mainContainer.removeEventListener('scroll', handleMainScroll)
+      }
+      if (mobileContainer) {
+        mobileContainer.removeEventListener('scroll', handleMobileScroll)
+      }
+    }
+  }, [selectedIndex, roboticsData.length])
+
+  const selectedData = roboticsData[selectedIndex]
 
   return (
-    <div ref={componentRef} className="bg-teal-200 rounded-t-[40px] md:rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
+    <div className="bg-gray-900 rounded-t-[40px] md:rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
       <div className="relative md:h-screen w-full">
         {/* Mobile Layout */}
         <div className="md:hidden w-full flex flex-col">
           {/* First Text Block */}
           <div className="w-full p-6 bg-teal-200">
-            <div className="space-y-6">
+            <motion.div
+              key={selectedIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 mb-4">Advanced Robotics Labs</h1>
-                <h2 className="text-lg font-semibold text-gray-800 mb-6">Build the Future</h2>
+                <h1 className="text-2xl font-bold text-gray-900 mb-4">{selectedData.title}</h1>
+                <h2 className="text-lg font-semibold text-gray-800 mb-6">{selectedData.subtitle}</h2>
                 <p className="text-base text-gray-700 leading-relaxed mb-8">
-                  State-of-the-art robotics laboratories with cutting-edge tools where students design, build, and
-                  program their own robots.
+                  {selectedData.description}
                 </p>
               </div>
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">Arduino & Raspberry Pi</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">3D Printing</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">AI Integration</span>
-                </div>
+                {selectedData.features.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+                    <span className="text-base text-gray-800">{feature}</span>
+                  </div>
+                ))}
               </div>
               <div className="flex items-center gap-2 pt-4">
                 <span className="text-base font-medium text-gray-800">Learn More</span>
                 <ArrowRight className="w-5 h-5 text-gray-800" />
-
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Mobile Image Scrolling */}
@@ -224,196 +172,115 @@ export default function AdvanceRoboticsLabs() {
               scrollbarWidth: 'none'
             }}
           >
-            {images.map((image, index) => (
+            {roboticsData.map((image, index) => (
               <div 
                 key={index}
-                className="w-full h-full snap-start snap-always flex items-center justify-center p-4"
+                className={`w-full h-full snap-start snap-always flex items-center justify-center p-4 cursor-pointer ${
+                  selectedIndex === index ? 'ring-4 ring-gray-700' : ''
+                }`}
+                onClick={() => handleImageClick(index)}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-100 h-80 object-cover rounded-xl shadow-lg"
+                  className="w-full h-full object-contain"
                   style={{ 
                     height: '50vh',
-                    objectFit: 'cover'
+                    objectFit: 'contain'
                   }}
                 />
               </div>
             ))}
           </div>
-
-          {/* Second Text Block */}
-          <div className="w-full p-6 bg-teal-200">
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 mb-4">Innovation Hub</h1>
-                <h2 className="text-lg font-semibold text-gray-800 mb-6">Shape Tomorrow</h2>
-                <p className="text-base text-gray-700 leading-relaxed mb-8">
-                  Experience the future of education with our cutting-edge technology integration and hands-on learning approach.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">Virtual Reality Labs</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">IoT Projects</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                  <span className="text-base text-gray-800">Blockchain Technology</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 pt-4">
-                <span className="text-base font-medium text-gray-800">Explore More</span>
-                <ArrowRight className="w-5 h-5 text-gray-800" />
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Desktop Layout - Side by side */}
-        <div className="hidden md:block">
-          <AnimatePresence mode="wait">
-            {!showNewContent ? (
+        {/* Desktop Layout - Full screen scrollable */}
+        <div 
+          ref={mainScrollRef}
+          className="hidden md:block h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
+          style={{ 
+            scrollBehavior: 'smooth',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none'
+          }}
+        >
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              .main-scroll::-webkit-scrollbar {
+                display: none;
+              }
+            `
+          }} />
+          {roboticsData.map((image, index) => (
+            <div 
+              key={index}
+              className="w-full h-screen snap-start snap-always flex relative"
+            >
+              {/* Description Panel - Dynamic Position */}
               <motion.div 
-                key="original-content"
-                initial={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="w-[50%] p-8 bg-teal-200 z-10 absolute left-0 top-12 h-full"
+                initial={{ opacity: 0, x: index <= 2 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className={`w-[50%] p-8 z-10 h-full flex items-center ${
+                  index <= 2 
+                    ? 'order-1 bg-gray-800' 
+                    : 'order-2 bg-gray-800'
+                }`}
               >
-                <div className="sticky top-0 space-y-6 p-4 rounded-lg">
+                <div className="space-y-6 p-4 rounded-lg">
                   <div>
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Advanced Robotics Labs</h1>
-                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 mb-6">Build the Future</h2>
-                    <p className="text-base lg:text-lg text-gray-700 leading-relaxed mb-8">
-                      State-of-the-art robotics laboratories with cutting-edge tools where students design, build, and
-                      program their own robots.
+                    <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">{image.title}</h1>
+                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-200 mb-6">{image.subtitle}</h2>
+                    <p className="text-base lg:text-lg text-gray-300 leading-relaxed mb-8">
+                      {image.description}
                     </p>
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">Arduino & Raspberry Pi</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">3D Printing</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">AI Integration</span>
-                    </div>
+                    {image.features.map((feature, featureIndex) => (
+                      <motion.div
+                        key={featureIndex}
+                        initial={{ opacity: 0, x: index <= 2 ? -10 : 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: featureIndex * 0.1, duration: 0.3 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <span className="text-base lg:text-lg text-gray-200">{feature}</span>
+                      </motion.div>
+                    ))}
                   </div>
 
                   <div className="flex items-center gap-2 pt-4">
-                    <span className="text-base lg:text-lg font-medium text-gray-800">Learn More</span>
-                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800" />
+                    <span className="text-base lg:text-lg font-medium text-white">Learn More</span>
+                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                   </div>
                 </div>
               </motion.div>
-            ) : (
+
+              {/* Images Panel - Dynamic Position */}
               <motion.div 
-                key="new-content"
-                initial={{ x: "100%" }}
-                animate={{ x: "0%" }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="w-[50%] p-8 bg-teal-200 z-10 absolute right-0 top-12 h-full"
+                initial={{ opacity: 0, x: index <= 2 ? 20 : -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className={`w-[50%] h-full flex items-center justify-center py-20 relative cursor-pointer transition-all duration-300 ${
+                  index <= 2 
+                    ? 'order-2 bg-gray-800' 
+                    : 'order-1 bg-gray-800'
+                }`}
               >
-                <div className="sticky top-0 space-y-6 p-4 rounded-lg">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                  >
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Innovation Hub</h1>
-                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-800 mb-6">Shape Tomorrow</h2>
-                    <p className="text-base lg:text-lg text-gray-700 leading-relaxed mb-8">
-                      Experience the future of education with our cutting-edge technology integration and hands-on learning approach.
-                    </p>
-                  </motion.div>
-
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.6 }}
-                    className="space-y-4"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">Virtual Reality Labs</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">IoT Projects</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                      <span className="text-base lg:text-lg text-gray-800">Blockchain Technology</span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7, duration: 0.6 }}
-                    className="flex items-center gap-2 pt-4"
-                  >
-                    <span className="text-base lg:text-lg font-medium text-gray-800">Explore More</span>
-                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-800" />
-                  </motion.div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Vertical Scrolling Images */}
-          <motion.div 
-            ref={containerRef}
-            initial={{ x: "0%", width: "50%" }}
-            animate={{ 
-              x: showNewContent ? "-50%" : "20%",
-              width: showNewContent ? "60%" : "50%"
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute right-0 top-0 h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
-            style={{ 
-              scrollBehavior: 'smooth',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none'
-            }}
-          >
-            <style dangerouslySetInnerHTML={{
-              __html: `
-                .scroll-container::-webkit-scrollbar {
-                  display: none;
-                }
-              `
-            }} />
-            {images.map((image, index) => (
-              <motion.div 
-                key={index}
-                className="w-full h-screen snap-start snap-always flex items-center justify-center py-20 relative"
-              >
-                <div className="w-full h-full max-w-4xl px-4 relative">
+                <div className="w-full h-full px-4 relative flex items-center justify-center">
                   <motion.img
                     src={image.src}
                     alt={image.alt}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    className="w-100 h-90 object-cover rounded-xl shadow-lg"
-                    style={{ 
-                      maxHeight: 'calc(100vh - 10rem)',
-                    }}
+                    className="w-full h-full object-contain max-w-full max-h-[80vh]"
                   />
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
