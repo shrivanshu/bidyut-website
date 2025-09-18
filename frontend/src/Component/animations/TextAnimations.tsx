@@ -7,7 +7,6 @@ interface AnimatedTextProps {
   delay?: number;
   duration?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'fade';
-  stagger?: boolean;
   once?: boolean;
   threshold?: number;
 }
@@ -18,7 +17,6 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   delay = 0,
   duration = 0.6,
   direction = 'up',
-  stagger = false,
   once = true,
   threshold = 0.1,
 }) => {
