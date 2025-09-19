@@ -8,11 +8,11 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
+    <div className="bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
         
         {/* Header Section */}
-  <div className="flex flex-col items-center justify-center text-center mb-20 mt-4 pt-16">
+  <div className="flex flex-col items-center justify-center text-center mb-12 mt-4 pt-8">
           <SplitText
             text="Innovative Learning with Robotics & AI"
             className="md:whitespace-nowrap text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
@@ -52,7 +52,7 @@ export default function Component() {
           <div className="flex-1 xl:w-1/2 relative order-1 xl:order-2 w-full">
             
             {/* Container for image and cards */}
-            <div className="relative flex justify-center items-center min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
+            <div className="relative flex justify-center items-center min-h-[250px] sm:min-h-[300px] lg:min-h-[350px]">
               
               {/* Background Gradient */}
               <div
@@ -63,14 +63,13 @@ export default function Component() {
               ></div>
 
               {/* Laptop Image */}
-              <div className="relative w-full max-w-[90%] sm:max-w-[95%] md:max-w-[90%] lg:max-w-[550px] xl:max-w-[650px]">
+              <div className="relative w-full max-w-[105%] sm:max-w-[110%] md:max-w-[95%] lg:max-w-[600px] xl:max-w-[675px]">
                 <img
-                  src="/Rectangle.png"
+                  src="/LMS.png"
                   alt="Laptop displaying LMS interface"
-                  className="md:w-[550px] md:h-[550px] object-fill z-10 transform transition-transform duration-300 hover:scale-105"
+                  className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
                   style={{
                     filter: "drop-shadow(0 0 250px rgba(16, 247, 120, 0.4)) saturate(0.9)",
-                    transform: "rotate(-7deg)",
                   }}
                 />
               </div>
@@ -80,7 +79,7 @@ export default function Component() {
                 <div
                   className="absolute bg-white dark:bg-gray-800 p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105"
                   style={{
-                    bottom: "-5%",
+                    bottom: "-8%",
                     left: "-8%",
                     opacity:"0.9",
                   }}
@@ -99,8 +98,8 @@ export default function Component() {
                 <div
                   className="absolute bg-white dark:bg-gray-800 p-4 xl:p-5 rounded-xl shadow-xl z-20 w-[220px] xl:w-[260px] transition-all duration-300 hover:shadow-2xl hover:scale-105"
                   style={{
-                    bottom: "8%",
-                    right: "5%",
+                    bottom: "5%",
+                    right: "0%",
                     opacity:"0.9",
                   }}
                 >
@@ -118,7 +117,7 @@ export default function Component() {
             </div>
 
             {/* Feature Cards - Mobile/Tablet */}
-            <div className="lg:hidden relative -mt-12 sm:-mt-16">
+            <div className="lg:hidden relative -mt-8 sm:-mt-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 <div className="bg-white dark:bg-gray-800 p-4 md:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center mb-3">
