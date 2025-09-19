@@ -28,17 +28,17 @@ const StreamSchool: React.FC = () => {
   }, []);
 
   return (
-    <section className={`w-full ${isDark ? 'bg-black' : 'bg-white'} transition-colors duration-300 flex flex-col items-center justify-center text-center py-20`}>
+    <section
+      className={`w-full ${isDark ? 'bg-black' : 'bg-white'} transition-colors duration-300 flex flex-col items-center justify-center text-center py-12 sm:py-16 md:py-20 overflow-hidden`}
+      style={{
+        touchAction: 'pan-y',
+        overscrollBehavior: 'none',
+        WebkitOverflowScrolling: 'touch'
+      }}
+    >
       {/* Rotating Word with Animation */}
-      <div style={{ 
-        height: "50px", 
-        marginBottom: "-15px", 
-        position: "relative",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
+      <div className="h-12 sm:h-14 md:h-16 mb-[-15px] relative w-full flex justify-center items-center overflow-visible"
+           style={{ contain: 'layout style' }}>
         <AnimatePresence mode="wait">
           {/* Desktop Rotating Word */}
           <motion.h3
@@ -50,13 +50,13 @@ const StreamSchool: React.FC = () => {
             className={`${isDark ? 'text-gray-300' : 'text-gray-700'} font-medium hidden md:block w-full transition-colors duration-300`}
             style={{
               fontFamily: "Roboto, sans-serif",
-              fontSize: "43px",
+              fontSize: "clamp(28px, 4vw, 43px)",
               fontWeight: 500,
               position: "absolute",
-              
               transform: "translateX(-50%)",
               textAlign: "center",
-              width: "100%"
+              width: "100%",
+              willChange: 'transform, opacity'
             }}
           >
             {words[currentWordIndex]}
@@ -68,16 +68,17 @@ const StreamSchool: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: "easeInOut", type: "tween" }}
             className={`${isDark ? 'text-gray-300' : 'text-gray-700'} font-medium block md:hidden transition-colors duration-300`}
             style={{
               fontFamily: "Roboto, sans-serif",
-              fontSize: "28px",
+              fontSize: "clamp(20px, 6vw, 28px)",
               fontWeight: 500,
               position: "absolute",
               transform: "translateX(-50%)",
               textAlign: "center",
-              width: "100%"
+              width: "100%",
+              willChange: 'transform, opacity, scale'
             }}
           >
             {words[currentWordIndex]}
@@ -90,8 +91,9 @@ const StreamSchool: React.FC = () => {
         className={`${isDark ? 'text-white' : 'text-black'} mt-2 hidden md:block transition-colors duration-300`}
         style={{
           fontFamily: "Poppins, sans-serif",
-          fontSize: "181px",
+          fontSize: "clamp(120px, 15vw, 181px)",
           fontWeight: 600,
+          willChange: 'transform',
         }}
       >
         <AnimatedText
@@ -99,11 +101,12 @@ const StreamSchool: React.FC = () => {
           delay={0.5}
           duration={1}
         >
-          <StaggeredText 
+          <StaggeredText
             text="STREAM"
             staggerDelay={0.15}
             direction="up"
             splitBy="characters"
+            style={{ willChange: 'transform' }}
           />
         </AnimatedText>
       </div>
@@ -111,8 +114,9 @@ const StreamSchool: React.FC = () => {
         className={`${isDark ? 'text-white' : 'text-black'} mt-2 block md:hidden transition-colors duration-300`}
         style={{
           fontFamily: "Poppins, sans-serif",
-          fontSize: "60px",
+          fontSize: "clamp(40px, 12vw, 60px)",
           fontWeight: 600,
+          willChange: 'transform',
         }}
       >
         <AnimatedText
@@ -120,11 +124,12 @@ const StreamSchool: React.FC = () => {
           delay={0.5}
           duration={1}
         >
-          <StaggeredText 
+          <StaggeredText
             text="STREAM"
             staggerDelay={0.12}
             direction="up"
             splitBy="characters"
+            style={{ willChange: 'transform' }}
           />
         </AnimatedText>
       </div>
@@ -139,7 +144,7 @@ const StreamSchool: React.FC = () => {
           <span
             style={{
               fontFamily: "Roboto, sans-serif",
-              fontSize: "49px",
+              fontSize: "clamp(28px, 4vw, 49px)",
               fontWeight: 500,
             }}
           >
@@ -174,9 +179,10 @@ const StreamSchool: React.FC = () => {
               rotationInterval={2500}
               style={{
                 fontFamily: "Roboto, sans-serif",
-                fontSize: "49px",
+                fontSize: "clamp(28px, 4vw, 49px)",
                 fontWeight: 600,
                 color: "#ffffff",
+                willChange: 'transform'
               }}
             />
           </div>
@@ -191,7 +197,7 @@ const StreamSchool: React.FC = () => {
           <span
             style={{
               fontFamily: "Roboto, sans-serif",
-              fontSize: "22px",
+              fontSize: "clamp(16px, 5vw, 22px)",
               fontWeight: 500,
             }}
           >
@@ -226,9 +232,10 @@ const StreamSchool: React.FC = () => {
               rotationInterval={2500}
               style={{
                 fontFamily: "Roboto, sans-serif",
-                fontSize: "22px",
+                fontSize: "clamp(16px, 5vw, 22px)",
                 fontWeight: 600,
                 color: "#ffffff",
+                willChange: 'transform'
               }}
             />
           </div>
@@ -240,10 +247,9 @@ const StreamSchool: React.FC = () => {
         className={`mt-6 ${isDark ? 'text-gray-400' : 'text-gray-500'} hidden md:block transition-colors duration-300`}
         style={{
           fontFamily: "Poppins, sans-serif",
-          fontSize: "36px",
+          fontSize: "clamp(24px, 3vw, 36px)",
           fontWeight: 600,
-          width: "1353px",
-          height: "108px",
+          maxWidth: "1200px",
         }}
       >
         <AnimatedText
@@ -251,11 +257,12 @@ const StreamSchool: React.FC = () => {
           delay={1.8}
           duration={1.2}
         >
-          <StaggeredText 
+          <StaggeredText
             text="Empowering students with cutting-edge technology education through hands-on learning, creative projects, and real-world applications."
             staggerDelay={0.03}
             direction="fade"
             splitBy="words"
+            style={{ willChange: 'opacity' }}
           />
         </AnimatedText>
       </div>
@@ -263,10 +270,10 @@ const StreamSchool: React.FC = () => {
         className={`mt-4 ${isDark ? 'text-gray-400' : 'text-gray-500'} block md:hidden px-6 transition-colors duration-300`}
         style={{
           fontFamily: "Poppins, sans-serif",
-          fontSize: "18px",
+          fontSize: "clamp(14px, 4vw, 18px)",
           fontWeight: 500,
           textAlign: "center",
-          maxWidth: "320px",
+          maxWidth: "90vw",
           lineHeight: "1.8",
         }}
       >
@@ -275,11 +282,12 @@ const StreamSchool: React.FC = () => {
           delay={1.8}
           duration={1.2}
         >
-          <StaggeredText 
+          <StaggeredText
             text="Empowering students with cutting-edge technology education through hands-on learning, creative projects, and real-world applications."
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"
+            style={{ willChange: 'opacity' }}
           />
         </AnimatedText>
       </div>
