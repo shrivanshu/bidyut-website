@@ -235,11 +235,11 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
   // Language context
   // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
 
-  // Video sources
+  // Video sources (use local files from /about_vedio)
   const videoSources: { [key: string]: string } = {
-    "what-we-do": "https://www.w3schools.com/html/mov_bbb.mp4",
-    "who-we-are": "https://www.w3schools.com/html/movie.mp4",
-    "where-we-are": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "what-we-do": "/about_vedio/What we do.mp4",
+    "who-we-are": "/about_vedio/Who we are.mp4",
+    "where-we-are": "/about_vedio/Where we Are.mp4",
   }
 
   // Gallery images with enhanced data
@@ -780,17 +780,21 @@ Through innovative STEM programs and intelligent automation, we're building the 
             <video
               key={videoSources[activeTab]}
               ref={videoRef}
-              width="100%"
-              height="100%"
               preload="auto"
               loop
               muted
               autoPlay
               playsInline
               aria-label="Video player"
-              className="w-[350px] md:w-full h-full object-contain transition-all duration-500 ease-out"
-              style={
-                (activeTab === 'who-we-are' || activeTab === 'where-we-are')
+              className="w-full h-full object-contain transition-all duration-500 ease-out bg-black rounded-2xl"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                background: isDarkTheme ? '#000' : '#fff',
+                borderRadius: '1.5rem',
+                boxShadow: '0 4px 32px rgba(0,0,0,0.12)',
+                ...(activeTab === 'where-we-are'
                   ? {
                       transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
                       transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -798,8 +802,8 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   : {
                       transform: 'scale(1) rotate(0deg)',
                       transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
-              }
+                    })
+              }}
             >
               <source src={videoSources[activeTab]} type="video/mp4" />
               Your browser does not support the video tag.

@@ -106,7 +106,6 @@ const StreamSchool: React.FC = () => {
             staggerDelay={0.15}
             direction="up"
             splitBy="characters"
-            style={{ willChange: 'transform' }}
           />
         </AnimatedText>
       </div>
@@ -129,7 +128,6 @@ const StreamSchool: React.FC = () => {
             staggerDelay={0.12}
             direction="up"
             splitBy="characters"
-            style={{ willChange: 'transform' }}
           />
         </AnimatedText>
       </div>
@@ -262,7 +260,6 @@ const StreamSchool: React.FC = () => {
             staggerDelay={0.03}
             direction="fade"
             splitBy="words"
-            style={{ willChange: 'opacity' }}
           />
         </AnimatedText>
       </div>
@@ -287,7 +284,6 @@ const StreamSchool: React.FC = () => {
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"
-            style={{ willChange: 'opacity' }}
           />
         </AnimatedText>
       </div>

@@ -8,8 +8,6 @@ import GalleryText from '../../Text_Animation/GalleryText';
 
 
 const gridSpacing = 500 // Balanced spacing for filled look
-const rows = 4 // Fewer images for performance
-const cols = 4
 
 interface ImageItem {
   id: number
