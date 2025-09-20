@@ -21,109 +21,93 @@ interface ImageItem {
   depth: number
 }
 
+// List of all images in the gallery folder
+const galleryImageFiles = [
+  "_DSC4609.JPG",
+  "_DSC4624.JPG",
+  "_DSC4633.JPG",
+  "_DSC4634.JPG",
+  "_DSC4641.JPG",
+  "_DSC4668.JPG",
+  "_DSC4681.jpg",
+  "C3666.00_00_02_14.Still009.jpg",
+  "DSC_0054.JPG",
+  "DSC_0227.JPG",
+  "DSC_0266.JPG",
+  "DSC_0466.JPG",
+  "DSC_0533.JPG",
+  "DSC_0574.JPG",
+  "DSC01532.JPG",
+  "DSC01982.JPG",
+  "DSC02090.JPG",
+  "DSC02249.JPG",
+  "DSC02438.JPG",
+  "DSC02595.JPG",
+  "DSC02655.JPG",
+  "DSC02656.JPG",
+  "DSC02782.JPG",
+  "DSC02789.JPG",
+  "DSC03264.JPG",
+  "DSC03404.JPG",
+  "DSC03643.JPG",
+  "DSC04424.JPG",
+  "DSC04638.JPG",
+  "DSC05095 400x400.JPG",
+  "DSC05113 400x400.JPG",
+  "DSC05129.JPG",
+  "DSC05135.JPG",
+  "DSC05145.JPG",
+  "DSC05268.JPG",
+  "DSC05302.JPG",
+];
+
 const generateBaseImages = (): ImageItem[] => {
-  const images = []
-  const gridSpacing = 500 // Match main gridSpacing
-  const rows = 4
-  const cols = 4
-  const centerOffset = ((cols - 1) * gridSpacing) / 2
+  const images = [];
+  const gridSpacing = 500;
+  // Dynamically set rows and cols to fit all images in a square grid
+  const totalImages = galleryImageFiles.length;
+  const cols = Math.ceil(Math.sqrt(totalImages));
+  const rows = Math.ceil(totalImages / cols);
+  const centerOffsetX = ((cols - 1) * gridSpacing) / 2;
+  const centerOffsetY = ((rows - 1) * gridSpacing) / 2;
+  const sizes = ["small", "medium", "large"] as const;
 
-  const galleryImages = [
-    {
-      src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
-      alt: "Educational materials and learning kits",
-      className: "row-span-1",
-    },
-    {
-      src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
-      alt: "Robotic spider construction",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
-      alt: "Student working with robotics",
-      className: "row-span-1",
-    },
-    {
-      src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
-      alt: "Wedo2.0 educational materials",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
-      alt: "Robotic vehicle construction",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
-      alt: "Robotic humanoid construction",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
-      alt: "Student programming robot",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
-      alt: "Hands-on robot building",
-      className: "row-span-2",
-    },
-    {
-      src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
-      alt: "Educational programming mat",
-      className: "row-span-1",
-    },
-    {
-      src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
-      alt: "LEGO Mindstorms robot",
-      className: "row-span-1",
-    },
-  ];
-
-  let imageIndex = 0;
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      // Cycle through galleryImages repeatedly
-      const img = galleryImages[imageIndex % galleryImages.length];
-      const x = col * gridSpacing - centerOffset;
-      const y = row * gridSpacing - centerOffset;
-      const sizes = ["small", "medium", "large"] as const;
-      const size = sizes[(row + col) % sizes.length];
-      images.push({
-        id: imageIndex + 1,
-        src: img.src,
-        alt: img.alt,
-        title: img.alt,
-        size,
-        position: {
-          x: x,
-          y: y,
-        },
-        depth: 0.7 + Math.random() * 0.3,
-      });
-      imageIndex++;
-    }
+  for (let i = 0; i < totalImages; i++) {
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+    const x = col * gridSpacing - centerOffsetX;
+    const y = row * gridSpacing - centerOffsetY;
+    const file = galleryImageFiles[i];
+    images.push({
+      id: i + 1,
+      src: `/gallery/${file}`,
+      alt: file,
+      title: file,
+      size: sizes[(row + col) % sizes.length],
+      position: { x, y },
+      depth: 0.7 + Math.random() * 0.3,
+    });
   }
   return images;
-}
+};
 
 const generateInfiniteImages = (
   dragX: number,
   dragY: number,
-  gridSpacing: number,
-  rows: number,
-  cols: number
+  gridSpacing: number
 ): ImageItem[] => {
-  // Memoize base images for performance
-  const baseImages = generateBaseImages()
-  const tileSizeX = gridSpacing * cols
-  const tileSizeY = gridSpacing * rows
-  const infiniteImages: ImageItem[] = []
+  const baseImages = generateBaseImages();
+  // Use grid size based on image count
+  const totalImages = baseImages.length;
+  const cols = Math.ceil(Math.sqrt(totalImages));
+  const rows = Math.ceil(totalImages / cols);
+  const tileSizeX = gridSpacing * cols;
+  const tileSizeY = gridSpacing * rows;
+  const infiniteImages: ImageItem[] = [];
 
   // Calculate which tiles are visible based on current drag position
-  const centerTileX = Math.floor(-dragX / tileSizeX)
-  const centerTileY = Math.floor(-dragY / tileSizeY)
+  const centerTileX = Math.floor(-dragX / tileSizeX);
+  const centerTileY = Math.floor(-dragY / tileSizeY);
 
   // Only render 2x2 grid of tiles for performance
   for (let tileY = centerTileY; tileY <= centerTileY + 1; tileY++) {
@@ -135,14 +119,13 @@ const generateInfiniteImages = (
             x: image.position.x + tileX * tileSizeX,
             y: image.position.y + tileY * tileSizeY,
           },
-        })
-      })
+        });
+      });
     }
   }
-
   // Limit number of images rendered for performance
-  return infiniteImages.slice(0, 32)
-}
+  return infiniteImages.slice(0, Math.max(32, totalImages));
+};
 
 export default function InteractiveGallery() {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -180,24 +163,22 @@ export default function InteractiveGallery() {
     return generateInfiniteImages(
       dragX.get(),
       dragY.get(),
-      gridSpacing,
-      rows,
-      cols
-    )
-  }, [dragX.get(), dragY.get()])
+      gridSpacing
+    );
+  }, [dragX.get(), dragY.get()]);
 
   const getImageDimensions = (size: "small" | "medium" | "large") => {
     switch (size) {
       case "small":
-        return { width: 280, height: 210 }
+        return { width: 220, height: 160 };
       case "medium":
-        return { width: 360, height: 270 }
+        return { width: 320, height: 220 };
       case "large":
-        return { width: 440, height: 330 }
+        return { width: 420, height: 300 };
       default:
-        return { width: 360, height: 270 }
+        return { width: 320, height: 220 };
     }
-  }
+  };
 
   // Always allow closing gallery
   const handleExploreClick = () => {
@@ -287,238 +268,216 @@ export default function InteractiveGallery() {
 
       <AnimatePresence>
         {isExpanded && (
-          <motion.div
-            ref={containerRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-gray-900 z-50 overflow-hidden"
-            style={{
-              transform: "translate3d(0,0,0)",
-              backfaceVisibility: "hidden",
-              perspective: "1000px",
-            }}
-          >
-            {/* Always on top, pointer-events-auto */}
+          <>
+            {/* Close button absolutely outside drag area, always clickable */}
             <button
               onClick={handleCloseGallery}
-              className="fixed top-6 right-6 z-[100] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm pointer-events-auto"
-              style={{ pointerEvents: 'auto', transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden', perspective: '1000px' }}
+              className="fixed top-6 right-6 z-[99999] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm"
+              style={{ pointerEvents: 'all', transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden', perspective: '1000px' }}
+              tabIndex={0}
+              aria-label="Close Gallery"
             >
               ✕
             </button>
-
-            <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
-              <div style={{position: 'relative', height: '60px'}}>
-                <GalleryText
-                  text="Infinite Gallery"
-                  flex={true}
-                  alpha={false}
-                  stroke={false}
-                  width={true}
-                  weight={true}
-                  italic={true}
-                  textColor="#ffffff"
-                  strokeColor="#ff0000"
-                  minFontSize={24}
-                />
-              </div>
-              <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                Drag to View • Infinite space with seamless tiling
-              </p>
-            </div>
-
             <motion.div
-              className="fixed inset-0 w-full h-full cursor-grab active:cursor-grabbing z-50"
-              drag
-              dragElastic={0.05}
-              dragMomentum={true}
-              onDrag={(_event: any, info: { offset: { x: number; y: number } }) => {
-                dragX.set(info.offset.x)
-                dragY.set(info.offset.y)
-              }}
-              whileDrag={{ cursor: "grabbing" }}
+              ref={containerRef}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-gray-900 z-50 overflow-hidden"
               style={{
                 transform: "translate3d(0,0,0)",
                 backfaceVisibility: "hidden",
-                pointerEvents: 'auto',
+                perspective: "1000px",
               }}
             >
-              {/* --- MOVING GRID BACKGROUND --- */}
+              <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
+                <div style={{position: 'relative', height: '60px'}}>
+                  <GalleryText
+                    text="Infinite Gallery"
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#ff0000"
+                    minFontSize={24}
+                  />
+                </div>
+                <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                  Drag to View • Infinite space with seamless tiling
+                </p>
+              </div>
               <motion.div
-                className="absolute inset-0 opacity-15 pointer-events-none"
+                className="fixed inset-0 w-full h-full cursor-grab active:cursor-grabbing z-50"
+                drag
+                dragElastic={0.05}
+                dragMomentum={true}
+                onDrag={(_event: any, info: { offset: { x: number; y: number } }) => {
+                  dragX.set(info.offset.x)
+                  dragY.set(info.offset.y)
+                }}
+                whileDrag={{ cursor: "grabbing" }}
                 style={{
-                  x: backgroundSpringX1,
-                  y: backgroundSpringY1,
                   transform: "translate3d(0,0,0)",
-                  willChange: "transform",
+                  backfaceVisibility: "hidden",
+                  pointerEvents: 'auto',
                 }}
               >
-                <div
-                  className="w-[1200%] h-[1200%] -translate-x-1/2 -translate-y-1/2"
+                {/* --- MOVING GRID BACKGROUND --- */}
+                <motion.div
+                  className="absolute inset-0 opacity-15 pointer-events-none"
                   style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "800px 800px",
+                    x: backgroundSpringX1,
+                    y: backgroundSpringY1,
+                    transform: "translate3d(0,0,0)",
+                    willChange: "transform",
                   }}
-                />
-              </motion.div>
-
-              <motion.div
-                className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                  x: backgroundSpringX2,
-                  y: backgroundSpringY2,
-                  transform: "translate3d(0,0,0)",
-                  willChange: "transform",
-                }}
-              >
-                <div
-                  className="w-[800%] h-[800%] -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div
+                    className="w-[1200%] h-[1200%] -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "800px 800px",
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  className="absolute inset-0 opacity-10 pointer-events-none"
                   style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "400px 400px",
+                    x: backgroundSpringX2,
+                    y: backgroundSpringY2,
+                    transform: "translate3d(0,0,0)",
+                    willChange: "transform",
                   }}
-                />
-              </motion.div>
-
-              <motion.div
-                className="absolute inset-0 opacity-6 pointer-events-none"
-                style={{
-                  x: backgroundSpringX3,
-                  y: backgroundSpringY3,
-                  transform: "translate3d(0,0,0)",
-                  willChange: "transform",
-                }}
-              >
-                <div
-                  className="w-[600%] h-[600%] -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div
+                    className="w-[800%] h-[800%] -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "400px 400px",
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  className="absolute inset-0 opacity-6 pointer-events-none"
                   style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "200px 200px",
+                    x: backgroundSpringX3,
+                    y: backgroundSpringY3,
+                    transform: "translate3d(0,0,0)",
+                    willChange: "transform",
                   }}
-                />
-              </motion.div>
-
-              <motion.div
-                className="absolute inset-0 opacity-4 pointer-events-none"
-                style={{
-                  x: backgroundSpringX4,
-                  y: backgroundSpringY4,
-                  transform: "translate3d(0,0,0)",
-                  willChange: "transform",
-                }}
-              >
-                <div
-                  className="w-[400%] h-[400%] -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div
+                    className="w-[600%] h-[600%] -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "200px 200px",
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  className="absolute inset-0 opacity-4 pointer-events-none"
                   style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "100px 100px",
+                    x: backgroundSpringX4,
+                    y: backgroundSpringY4,
+                    transform: "translate3d(0,0,0)",
+                    willChange: "transform",
                   }}
-                />
-              </motion.div>
-
-              {/* --- IMAGES CONTAINER (moves with drag) --- */}
-              <motion.div
-                className="absolute w-full h-full flex items-center justify-center pointer-events-none"
-                style={{
-                  x: sceneSpringX,
-                  y: sceneSpringY,
-                  transform: "translate3d(0,0,0)",
-                  willChange: "transform",
-                }}
-              >
-                {infiniteImages.map((image: ImageItem, index: number) => {
-                  const dimensions = getImageDimensions(image.size)
-                  return (
-                    <motion.div
-                      key={image.id + '-' + index}
-                      className="absolute pointer-events-auto select-none"
-                      initial={{
-                        x: image.position.x,
-                        y: image.position.y,
-                        scale: 0.9,
-                        opacity: 0,
-                        rotateZ: 0,
-                      }}
-                      animate={{
-                        scale: 1,
-                        opacity: 1,
-                        rotateZ: 0,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 120,
-                        damping: 20,
-                        delay: 0,
-                        duration: 0.5,
-                      }}
-                      style={{
-                        transform: "translate3d(0,0,0)",
-                        willChange: "transform",
-                        backfaceVisibility: "hidden",
-                        zIndex: Math.floor(image.depth * 30),
-                      }}
-                    >
-                      <div className="relative group">
-                        <motion.img
-                          src={image.src || "/placeholder.svg"}
-                          alt={image.alt}
-                          className="object-cover transition-all duration-300 select-none border border-white/10 cursor-pointer"
-                          style={{
-                            width: dimensions.width,
-                            height: dimensions.height,
-                            filter: `brightness(${0.9 + image.depth * 0.1}) saturate(${0.98 + image.depth * 0.02}) contrast(${1.02 + image.depth * 0.03})`,
-                            boxShadow: `0 ${10 + image.depth * 10}px ${20 + image.depth * 20}px rgba(0,0,0,${0.3 + image.depth * 0.1}), 0 0 0 1px rgba(255,255,255,0.08)`,
-                            borderRadius: "6px",
-                          }}
-                          draggable={false}
-                          whileHover={{
-                            scale: 1.04,
-                            rotateZ: 0,
-                            filter: "brightness(1.1) saturate(1.05) contrast(1.05)",
-                            boxShadow: `0 ${15 + image.depth * 15}px ${30 + image.depth * 30}px rgba(0,0,0,${0.4 + image.depth * 0.2}), 0 0 0 2px rgba(255,255,255,0.15)`,
-                            transition: { duration: 0.2, ease: "easeOut" },
-                          }}
-                        />
-                        <motion.div
-                          className="absolute -bottom-16 left-0 right-0 text-center pointer-events-none opacity-0 group-hover:opacity-100 bg-black/70 backdrop-blur-sm px-3 py-2 mx-2 border border-white/10"
-                          transition={{ duration: 0.2 }}
-                        >
-                          <div style={{position: 'relative', height: '32px'}}>
-                            <GalleryText
-                              text={image.title}
-                              flex={true}
-                              alpha={false}
-                              stroke={false}
-                              width={true}
-                              weight={true}
-                              italic={true}
-                              textColor="#ffffff"
-                              strokeColor="#ff0000"
-                              minFontSize={14}
-                            />
-                          </div>
-                          <p className="text-xs text-zinc-300 mt-1 opacity-70">{image.alt}</p>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  )
-                })}
+                >
+                  <div
+                    className="w-[400%] h-[400%] -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "100px 100px",
+                    }}
+                  />
+                </motion.div>
+                {/* --- IMAGES CONTAINER (moves with drag) --- */}
+                <motion.div
+                  className="absolute w-full h-full flex items-center justify-center pointer-events-none"
+                  style={{
+                    x: sceneSpringX,
+                    y: sceneSpringY,
+                    transform: "translate3d(0,0,0)",
+                    willChange: "transform",
+                  }}
+                >
+                  {infiniteImages.map((image: ImageItem, index: number) => {
+                    const dimensions = getImageDimensions(image.size)
+                    return (
+                      <motion.div
+                        key={image.id + '-' + index}
+                        className="absolute pointer-events-auto select-none"
+                        initial={{
+                          x: image.position.x,
+                          y: image.position.y,
+                          scale: 0.9,
+                          opacity: 0,
+                          rotateZ: 0,
+                        }}
+                        animate={{
+                          scale: 1,
+                          opacity: 1,
+                          rotateZ: 0,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 120,
+                          damping: 20,
+                          delay: 0,
+                          duration: 0.5,
+                        }}
+                        style={{
+                          transform: "translate3d(0,0,0)",
+                          willChange: "transform",
+                          backfaceVisibility: "hidden",
+                          zIndex: Math.floor(image.depth * 30),
+                        }}
+                      >
+                        <div className="relative group">
+                          <motion.img
+                            src={image.src || "/placeholder.svg"}
+                            alt={image.alt}
+                            className="object-contain transition-all duration-300 select-none border border-white/10 cursor-pointer bg-black"
+                            style={{
+                              width: dimensions.width,
+                              height: dimensions.height,
+                              filter: `brightness(${0.9 + image.depth * 0.1}) saturate(${0.98 + image.depth * 0.02}) contrast(${1.02 + image.depth * 0.03})`,
+                              boxShadow: `0 ${10 + image.depth * 10}px ${20 + image.depth * 20}px rgba(0,0,0,${0.3 + image.depth * 0.1}), 0 0 0 1px rgba(255,255,255,0.08)`,
+                              borderRadius: "6px",
+                            }}
+                            draggable={false}
+                            whileHover={{
+                              scale: 1.04,
+                              rotateZ: 0,
+                              filter: "brightness(1.1) saturate(1.05) contrast(1.05)",
+                              boxShadow: `0 ${15 + image.depth * 15}px ${30 + image.depth * 30}px rgba(0,0,0,${0.4 + image.depth * 0.2}), 0 0 0 2px rgba(255,255,255,0.15)`,
+                              transition: { duration: 0.2, ease: "easeOut" },
+                            }}
+                          />
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>
