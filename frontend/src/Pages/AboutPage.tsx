@@ -1,10 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-// import { useLanguage } from "../contexts/OptimizedLanguageContext" // Commented out for hardcoded text
 import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
-import FooterUnanimated from "@/Component/FooterUnanimated"
+import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const videoZoomStyle = `
@@ -34,6 +33,38 @@ const videoZoomStyle = `
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
   }
+  
+  /* Image transition animations */
+  @keyframes slideInFromRight {
+    0% { opacity: 0; transform: translateX(100%) scale(0.9); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  @keyframes slideInFromBottom {
+    0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes galleryFadeIn {
+    0% { 
+      opacity: 0; 
+      transform: translateY(40px) scale(0.95); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
+  }
+  @keyframes slideInFromLeft {
+    0% { opacity: 0; transform: translateX(-100%) scale(0.9); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+  }
 `
 
 interface TimelineItem {
@@ -45,29 +76,29 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     year: "2021",
-    title: "2021 – Foundation in STEAM",
+    title: "Foundation in STEAM",
     description:
       "We began our journey by setting up STEAM (Science, Technology, Engineering, Arts, Mathematics) labs in just 1–2 pioneering schools,Our mission was to integrate robotics and hands-on learning into everyday education,These schools became our first references, opening the doors to growth.",
   },
   {
     year: "2022",
-    title: "2022 – Transformation to STREAM",
+    title: "Transformation to STREAM",
     description:
       "We evolved into STREAM (Science, Technology, Robotics, Engineering, Arts, Mathematics) by making Robotics the core of our programs,More schools adopted our labs, inspired by the success of early projects,This year cemented our reputation as an education innovator.",
   },
   {
     year: "2023",
-    title: "2023 – Expanding Horizons to Colleges",
+    title: "Expanding Horizons to Colleges",
     description: "Our work extended from schools to colleges and universities, including premier institutes like IITs,We built advanced labs that prepared students with industry-ready applications,This positioned us as a bridge between academics and real-world innovation.",
   },
   {
     year: "2024",
-    title: "2024 – R&D and Trusted Service Provider",
+    title: "R&D and Trusted Service Provider",
     description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
   },
   {
     year: "2025",
-    title: "2025 – 500+ Schools, Global Clients, Lasting Impact",
+    title: " 500+ Schools, Global Clients, Lasting Impact",
     description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
   },
 ]
@@ -165,18 +196,18 @@ export default function AboutPage() {
   
 
   // Gallery States
-  const [currentReelIndex, setCurrentReelIndex] = useState(0)
   const [showFullGallery, setShowFullGallery] = useState(false)
-  const [showExplosion, setShowExplosion] = useState(false)
+  const [showMobilePreview, setShowMobilePreview] = useState(false)
+  const [galleryAnimationTrigger, setGalleryAnimationTrigger] = useState(false)
   const [visibleImages, setVisibleImages] = useState<boolean[]>([])
   const [isInGallerySection, setIsInGallerySection] = useState(false)
-  const [reelProgress, setReelProgress] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState("all")
+  const [autoScrollIndex, setAutoScrollIndex] = useState(0)
   const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  // Magnetic cursor for reel view
-  const [reelMouse, setReelMouse] = useState({ x: 0, y: 0 });
+  // Image transition states
+  const [isImageTransitioning, setIsImageTransitioning] = useState(false)
 
   // Refs
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -223,7 +254,6 @@ export default function AboutPage() {
     const [isVideoInView, setIsVideoInView] = useState(false)
   const galleryContainerRef = useRef<HTMLDivElement>(null)
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
-  const accumulatedScroll = useRef(0)
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
 
@@ -432,17 +462,29 @@ useEffect(() => {
   }, [hasVideoAnimated])
   
 
-  // Gallery Effects
+  // Gallery Effects - Handle mobile vs desktop differently
   useEffect(() => {
     const handleScroll = () => {
-      if (!galleryContainerRef.current || showFullGallery) return
+      if (!galleryContainerRef.current) return
 
       const container = galleryContainerRef.current
       const rect = container.getBoundingClientRect()
       const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0
+      const isMobile = window.innerWidth < 768
 
       if (isVisible && !isInGallerySection) {
         setIsInGallerySection(true)
+        
+        if (isMobile) {
+          // On mobile, show preview with auto-scroll
+          setShowMobilePreview(true)
+        } else {
+          // On desktop, show full gallery immediately
+          setTimeout(() => {
+            setShowFullGallery(true)
+            setTimeout(() => setGalleryAnimationTrigger(true), 100)
+          }, 200)
+        }
       }
     }
 
@@ -450,20 +492,14 @@ useEffect(() => {
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isInGallerySection, showFullGallery])
+  }, [isInGallerySection, showFullGallery, showMobilePreview])
 
-  // Mouse tracking for magnetic cursor in reel view
+  // Reset category filter when gallery opens
   useEffect(() => {
-    const handleReelMouseMove = (e: MouseEvent) => {
-      setReelMouse({ x: e.clientX, y: e.clientY });
-    };
-    if (isInGallerySection && !showFullGallery) {
-      window.addEventListener('mousemove', handleReelMouseMove);
+    if (showFullGallery) {
+      setSelectedCategory("all")
     }
-    return () => {
-      window.removeEventListener('mousemove', handleReelMouseMove);
-    };
-  }, [isInGallerySection, showFullGallery]);
+  }, [showFullGallery])
 
   // Mouse tracking for interactive effects
   useEffect(() => {
@@ -480,45 +516,37 @@ useEffect(() => {
     }
   }, [showFullGallery])
 
-  // Gallery wheel events
+  // Prevent background scrolling when modal is open
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (!isInGallerySection || showFullGallery) return
-
-      const container = galleryContainerRef.current
-      if (!container) return
-
-      const rect = container.getBoundingClientRect()
-
-      if (rect.top <= 100 && rect.bottom >= window.innerHeight - 100) {
-        e.preventDefault()
-
-        accumulatedScroll.current += e.deltaY
-        const scrollStep = 300
-        const maxScroll = scrollStep * 4
-
-        accumulatedScroll.current = Math.max(0, Math.min(maxScroll, accumulatedScroll.current))
-
-        const progress = accumulatedScroll.current / maxScroll
-        setReelProgress(progress)
-
-        const newReelIndex = Math.floor(progress * 3)
-        const clampedIndex = Math.max(0, Math.min(2, newReelIndex))
-        setCurrentReelIndex(clampedIndex)
-
-        if (progress >= 0.95) {
-          setShowExplosion(true)
-          setTimeout(() => {
-            setShowFullGallery(true)
-            setShowExplosion(false)
-          }, 1000)
-        }
-      }
+    if (selectedImage !== null) {
+      // Prevent scrolling
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      // Restore scrolling
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
     }
 
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [isInGallerySection, showFullGallery])
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+  }, [selectedImage])
+
+  // Auto-scroll effect for mobile preview
+  useEffect(() => {
+    if (!showMobilePreview || showFullGallery) return
+
+    const interval = setInterval(() => {
+      setAutoScrollIndex(prev => (prev + 1) % Math.min(6, galleryImages.length))
+    }, 4000) // Change image every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [showMobilePreview, showFullGallery, galleryImages.length])
+
+
 
   // Gallery intersection observer for full gallery
   useEffect(() => {
@@ -567,14 +595,30 @@ useEffect(() => {
             .then(() => {
               setTimeout(() => setIsTransitioning(false), 600)
             })
-            .catch((error) => {
-              console.log("Autoplay prevented or interrupted:", error.name, error.message)
+            .catch(() => {
+              // Autoplay prevented or interrupted
               setIsTransitioning(false)
             })
         }
       }, 200)
     }
   }, [activeTab])
+
+  // Enhanced image transition function
+  const transitionToImage = (newIndex: number) => {
+    if (isImageTransitioning || newIndex === selectedImage) return;
+    
+    setIsImageTransitioning(true);
+    
+    // Smooth transition with fade out, image change, then fade in
+    setTimeout(() => {
+      setSelectedImage(newIndex);
+      // Allow a moment for the new image to load, then fade in
+      setTimeout(() => {
+        setIsImageTransitioning(false);
+      }, 50);
+    }, 250); // Half way through the 500ms transition
+  };
 
   // Helper functions
   // Yearwise scroll: 0000, then 2000, 2001, ..., current year
@@ -686,7 +730,7 @@ useEffect(() => {
         <Header />
         {/* Hero About Section */}
         <div
-            className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-screen relative overflow-hidden transition-colors duration-500 pt-14`}
+            className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[70vh] sm:min-h-screen relative overflow-hidden transition-colors duration-500 pt-12 sm:pt-14`}
             style={{
               transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
               opacity: aboutAnimStarted ? 1 : 0,
@@ -706,47 +750,91 @@ useEffect(() => {
             }}
           />
 
-          <div className="flex items-center justify-center min-h-screen mt-8 md:-mt-1 px-8">
+          <div className="flex items-center justify-center min-h-[80vh] sm:min-h-screen mt-2 sm:mt-4 md:-mt-1 px-4 sm:px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
-              <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-8 tracking-tight animate-in slide-in-from-bottom-4 transition-colors duration-500`}>
+              <h1 
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-none text-transparent bg-clip-text mb-4 sm:mb-6 tracking-wider animate-in slide-in-from-bottom-4 select-none pointer-events-none uppercase"
+                style={{
+                  backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+                }}
+              >
                 About Us
               </h1>
               
-              <h2 className={`text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-12 font-light animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500`}>
-                "Bridging Technology & Intelligence for a Smater Tomorrow."
+              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
+                "Bridging Technology & Intelligence for a Smarter Tomorrow."
               </h2>
               
-              <p className={`text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-16 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500`}>
+              <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
                 We revolutionize education by combining advanced robotics, AI, and hands-on learning to prepare students for the challenges of tomorrow.
 Through innovative STEM programs and intelligent automation, we're building the foundation for India's technological future, one student at a time.
               </p>
 
               
-<div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
-  <div className="text-center">
-    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-      {animatedYear}
+<div className="animate-in slide-in-from-bottom-4 duration-700 delay-600">
+  {/* Mobile Layout: Left-Right-Bottom */}
+  <div className="block sm:hidden -mb-8">
+    {/* Top row: Left and Right */}
+    <div className="grid grid-cols-2 gap-4 mb-3">
+      <div className="text-center">
+        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+          {animatedYear}
+        </div>
+        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+          Current Year
+        </div>
+      </div>
+      
+      <div className="text-center">
+        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+          {animatedClients}+
+        </div>
+        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+          Clients Served
+        </div>
+      </div>
     </div>
-    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-      Current Year
+    
+    {/* Bottom row: Centered */}
+    <div className="flex justify-center mb-0">
+      <div className="text-center">
+        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+          {animatedHappyClients}+
+        </div>
+        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>
+          Happy Clients
+        </div>
+      </div>
     </div>
   </div>
-  
-  <div className="text-center">
-    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-      {animatedClients}+
+
+  {/* Desktop/Tablet Layout: Original 3-column */}
+  <div className="hidden sm:grid sm:grid-cols-3 gap-4 md:gap-6">
+    <div className="text-center">
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+        {animatedYear}
+      </div>
+      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+        Current Year
+      </div>
     </div>
-    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-      Clients Served
+    
+    <div className="text-center">
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+        {animatedClients}+
+      </div>
+      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+        Clients Served
+      </div>
     </div>
-  </div>
-  
-  <div className="text-center">
-    <div className={`text-5xl md:text-6xl lg:text-7xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
-      {animatedHappyClients}+
-    </div>
-    <div className={`text-lg md:text-xl lg:text-2xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-      Happy Clients
+    
+    <div className="text-center">
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+        {animatedHappyClients}+
+      </div>
+      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+        Happy Clients
+      </div>
     </div>
   </div>
 </div>
@@ -758,7 +846,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
         {/* Video Switcher Section */}
         <div 
             ref={videoContainerRef}
-            className={`relative flex flex-col items-center justify-center min-h-[700px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-8 transition-colors duration-500 mx-auto`}
+            className={`relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-1 sm:py-2 md:py-4 px-0 sm:px-1 md:px-2 transition-colors duration-500 mx-auto`}
         >
           <div
             className="absolute inset-0 opacity-20"
@@ -771,10 +859,10 @@ Through innovative STEM programs and intelligent automation, we're building the 
             }}
           />
 
-          <div className="relative z-10 w-full max-w-[900px] rounded-2xl  shadow-2xl overflow-hidden aspect-video flex items-center justify-center" style={{ minHeight: '500px', minWidth: '700px' }}>
+          <div className="relative z-10 w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px] xl:max-w-[1200px] rounded-2xl shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
             {/* Animated highlight border when in view */}
             <div
-              className={`absolute inset-0 pointer-events-none transition-all duration-700 ease-out z-20 ${isVideoInView ? 'ring-8 ring-blue-400/40 scale-105 opacity-100' : 'ring-0 scale-100 opacity-0'}`}
+              className={`absolute inset-0 pointer-events-none transition-all duration-700 ease-out z-20 ${isVideoInView ? 'ring-4 sm:ring-8 ring-blue-400/40 scale-105 opacity-100' : 'ring-0 scale-100 opacity-0'}`}
               style={{ borderRadius: '1.5rem' }}
             />
             <video
@@ -811,11 +899,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
             {/* Unique video tab buttons with animated indicator */}
             <div className="absolute inset-0 flex flex-col justify-between items-center pointer-events-none z-30">
-              <div className="w-full flex md:justify-between justify-around px-28 md:px-8 pt-6">
+              <div className="w-full flex justify-between px-2 sm:px-4 md:px-8 pt-3 sm:pt-4 md:pt-6">
                 <button
                   ref={whoWeAreBtnRef}
                   onClick={() => setActiveTab('who-we-are')}
-                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'who-we-are'
                     ? 'bg-green-500 text-white shadow-2xl scale-110'
                     : isDarkTheme
@@ -824,12 +912,12 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   }`}
                   style={{ animationDelay: '1s' }}
                 >
-                  Who We Are
+                  <span className="inline">Who We Are</span>
                 </button>
                 <button
                   ref={whereWeAreBtnRef}
                   onClick={() => setActiveTab('where-we-are')}
-                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'where-we-are'
                     ? 'bg-green-500 text-white shadow-2xl scale-110'
                     : isDarkTheme
@@ -838,14 +926,14 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   }`}
                   style={{ animationDelay: '2s' }}
                 >
-                  Where We Are
+                  <span className="inline">Where We Are</span>
                 </button>
               </div>
-              <div className="w-full flex justify-center pb-6">
+              <div className="w-full flex justify-center pb-1 sm:pb-2 md:pb-3">
                 <button
                   ref={whatWeDoBtnRef}
                   onClick={() => setActiveTab('what-we-do')}
-                  className={`relative pointer-events-auto rounded-xl px-6 py-3 font-semibold shadow-lg transition-all duration-500 ease-out whitespace-nowrap text-xl transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
+                  className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'what-we-do'
                     ? 'bg-green-500 text-white shadow-2xl scale-110'
                     : isDarkTheme
@@ -854,7 +942,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   }`}
                   style={{ animationDelay: '0s' }}
                 >
-                  What We Do
+                  <span className="inline">What We Do</span>
                 </button>
               </div>
             </div>
@@ -862,146 +950,162 @@ Through innovative STEM programs and intelligent automation, we're building the 
         </div>
 
         {/* Static Content Section */}
-            <div
-              className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 pt-0 pb-48 transition-colors duration-500`}
-              id="about-static-section"
-            >
-              <div className="w-full max-w-[1367px] h-[1224px] mx-auto relative">
+        <div
+          className={`${isDarkTheme ? 'bg-black' : 'bg-white'} px-4 py-8 sm:py-12 transition-colors duration-500`}
+          id="about-static-section"
+        >
+          <div className="max-w-7xl mx-auto">
             
-            {/* Main Heading Block - enlarged to better fit container */}
-            <div
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-[410px] h-[280px] md:w-[1500px] md:h-[280px] flex items-center justify-center"
-             
-            >
-              <div className="text-center  px-8 ">
-                <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-[30px] md:text-[60px]`}>
-                  Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world
-                </h1>
-              </div>
+            {/* Main Heading Block */}
+            <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-7xl mx-auto">
+              <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
+                {/* Mobile only: 3 lines */}
+                <span className="block md:hidden">
+                  <span className="block">Bidyut Focuses on Educating Students to act with</span>
+                  <span className="block">Integrity in an increasingly digital world</span>
+                </span>
+                
+                {/* Tablet and Desktop: 2 professional lines */}
+                <span className="hidden md:block">
+                  <span className="block">Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world</span>
+                </span>
+              </h1>
             </div>
 
-            {/* Description Text - enlarged below heading */}
-            <div className="absolute top-[320px] left-1/2 transform -translate-x-1/2 w-[400px] md:w-[1320px] h-[60px] flex items-center justify-center px-4">
-              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-center text-[16px] leading-tight`}>
+            {/* Description Text */}
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed px-4`}>
                 Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing like world's most advanced robotic and technological education to the children of our country.
               </p>
             </div>
 
-            {/* Left Decorative Dots - moved more to the left */}
-            <div className="absolute top-[380px] left-[30px] w-[180px] h-[10px] z-10 bounce-forever">
-              <div className="grid grid-cols-10 gap-[12px] p-3">
-                {Array.from({length: 100}).map((_, i) => (
-                  <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
-                ))}
-              </div>
-            </div>
+            {/* Vision Section */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                {/* Vision Text - Mobile: appears first, Desktop: appears first */}
+                <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
+                  <h2 
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
+                    style={{
+                      backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+                    }}
+                  >
+                    Our Vision
+                  </h2>
+                  <p className={`text-base sm:text-lg leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
+                    To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
+                  </p>
+                </div>
 
-            {/* Vision Card - moved more to the left */}
-              <div
-                className="absolute top-[445px] left-[115px] w-[600px] h-[350px] z-30"
-                id="vision-img-container"
-                style={{
-                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
-                  transform: visionInView ? 'translateX(0)' : 'translateX(-120px)',
-                  opacity: visionInView ? 1 : 0
-                }}
-              >
-                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
-                  <img 
-                    src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
-                    alt="Our Vision" 
-                    className="w-full h-full object-cover" 
-                  />
+                {/* Vision Image - Mobile: appears second, Desktop: appears first */}
+                <div
+                  className="w-full lg:w-1/2 max-w-lg order-2 lg:order-1"
+                  id="vision-img-container"
+                  style={{
+                    transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                    transform: visionInView ? 'translateX(0)' : 'translateX(-120px)',
+                    opacity: visionInView ? 1 : 0
+                  }}
+                >
+                  <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
+                    <img 
+                      src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png" 
+                      alt="Our Vision" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
                 </div>
               </div>
-
-            {/* Vision Text - moved further to the right for more gap */}
-            <div className="absolute top-[485px] left-[840px] w-[400px]">
-              <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Vision</h2>
-              <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
-                To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
-              </p>
             </div>
 
-            {/* Mission Text - moved more to the left */}
-            <div className="absolute top-[1000px] left-[150px] w-[400px]">
-              <h2 className={`text-[36px] font-bold mb-6 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Our Mission</h2>
-              <p className={`text-[18px] leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
-                To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
-              </p>
-            </div>
+            {/* Mission Section */}
+            <div className="mb-8 sm:mb-12">
+              <div className="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12">
+                {/* Mission Text - Mobile: appears first, Desktop: appears second */}
+                <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
+                  <h2 
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
+                    style={{
+                      backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+                    }}
+                  >
+                    Our Mission
+                  </h2>
+                  <p className={`text-base sm:text-lg leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
+                    To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
+                  </p>
+                </div>
 
-            {/* Mission Card - aligned with Mission text */}
-              <div
-                className="absolute top-[940px] left-[650px] w-[600px] h-[350px] z-30"
-                id="mission-img-container"
-                style={{
-                  transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
-                  transform: missionInView ? 'translateX(0)' : 'translateX(120px)',
-                  opacity: missionInView ? 1 : 0
-                }}
-              >
-                <div className={`w-full h-full overflow-hidden ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                  <img 
-                    src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
-                    alt="Our Mission" 
-                    className="w-full h-full object-cover" 
-                  />
-                </div>    
-              </div>
-
-            {/* Right Decorative Dots - moved more to the left */}
-            <div className="absolute top-[875px] left-[1150px] w-[180px] h-[140px] z-10 bounce-forever">
-              <div className="grid grid-cols-10 gap-[12px] p-3">
-                {Array.from({length: 100}).map((_, i) => (
-                  <div key={i} className={`w-[8px] h-[8px] rounded-full ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'}`}></div>
-                ))}
+                {/* Mission Image - Mobile: appears second, Desktop: appears first */}
+                <div
+                  className="w-full lg:w-1/2 max-w-lg order-2 lg:order-1"
+                  id="mission-img-container"
+                  style={{
+                    transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s',
+                    transform: missionInView ? 'translateX(0)' : 'translateX(120px)',
+                    opacity: missionInView ? 1 : 0
+                  }}
+                >
+                  <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                    <img 
+                      src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png" 
+                      alt="Our Mission" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>    
+                </div>
               </div>
             </div>
 
-            {/* Container size indicator */}
-            <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 text-blue-500 text-[12px] font-mono bg-white px-2">
-              
-            </div>
           </div>
         </div>
 
         {/* Our Journey Section */}
-  <div className={`relative min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 py-0 transition-colors duration-500 mb-0`}>
+  <div className={`relative min-h-0 sm:min-h-[70vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 sm:px-1 md:px-2 py-1 sm:py-4 md:py-6 transition-colors duration-500`}>
           <div className="text-center  ">
-            <h2 className={`text-4xl md:text-5xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
+            <h2 
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none text-transparent bg-clip-text mb-1 sm:mb-4 select-none pointer-events-none uppercase tracking-wider"
+              style={{
+                backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+              }}
+            >
               Our Journey
             </h2>
-            <h3 className={`text-2xl md:text-3xl font-semibold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 transition-colors duration-500`}>
+            <h3 
+              className="text-xl sm:text-2xl md:text-3xl font-semibold leading-tight text-transparent bg-clip-text mb-1 sm:mb-3"
+              style={{
+                backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+              }}
+            >
               DRIVEN BY PURPOSE, GUIDED BY INNOVATION
             </h3>
-            <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} text-lg max-w-4xl mx-auto leading-relaxed transition-colors duration-500`}>
+            <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed transition-colors duration-500 px-4`}>
               Our story is one of courage, commitment, and constant evolution. With each leap forward, we’ve pushed the limits of what energy can do—creating sustainable progress and inspiring change across the globe.
             </p>
           </div>
 
-          <div className="relative max-w-6xl w-full m-8" style={{height: '60%', width: '50%'}}  >
-            <div className={`relative ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'} rounded-lg p-6 shadow-2xl transition-colors duration-500`}>
-              <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} rounded-lg border-4 ${isDarkTheme ? 'border-gray-300' : 'border-gray-600'} overflow-hidden transition-colors duration-500`} style={{height: '50%'}}>
-                  <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'}  flex items-center justify-center transition-colors duration-500`} style={{height: '50%'}}>
+          <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mb-8">
+            <div className={`relative ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'} rounded-lg p-3 sm:p-4 md:p-6 shadow-2xl transition-colors duration-500`}>
+              <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} rounded-lg border-2 sm:border-4 ${isDarkTheme ? 'border-gray-300' : 'border-gray-600'} overflow-hidden transition-colors duration-500`}>
+                  <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'} flex items-center justify-center transition-colors duration-500`}>
                     <video
                       key={currentItem.year}
-                      
                       autoPlay
                       loop
                       muted
-                      className={`rounded transition-colors duration-500 object-contain`}
+                      playsInline
+                      className={`w-full h-full rounded transition-colors duration-500 object-contain`}
                     >
                       <source src={getVideoForYear(currentItem.year)} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
                 </div>
-              <div className="flex justify-center mt-4">
-                <div className={`w-32 h-6 ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'} rounded-t-lg transition-colors duration-500`}></div>
+              <div className="flex justify-center mt-2 sm:mt-4">
+                <div className={`w-16 sm:w-24 md:w-32 h-3 sm:h-4 md:h-6 ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'} rounded-t-lg transition-colors duration-500`}></div>
               </div>
               <div className="flex justify-center">
-                <div className={`w-48 h-4 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-500'} rounded-b-lg transition-colors duration-500`}></div>
+                <div className={`w-24 sm:w-32 md:w-48 h-2 sm:h-3 md:h-4 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-500'} rounded-b-lg transition-colors duration-500`}></div>
               </div>
             </div>
 
@@ -1010,66 +1114,37 @@ Through innovative STEM programs and intelligent automation, we're building the 
           </div>
       
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between w-full max-w-6xl mb-2 -mt-32 relative z-20">
-        <div className="w-24">
+      <div className="flex items-center justify-between w-full max-w-6xl mb-4 px-4">
+        <div className="w-12 sm:w-16 md:w-24">
           <button
             onClick={goToPrevious}
             disabled={isTransitioning || currentIndex === 0}
-            className="p-3 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:border-white/20"
+            className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
             aria-label="Previous year"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
-        <div className="text-center flex-1 relative z-20 mt-28">
-          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-[4rem] md:text-[6rem] font-bold leading-none relative`}>
+        <div className="text-center flex-1">
+          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none transition-colors duration-500`}>
             {currentItem.year}
           </h3>
         </div>
-        <div className="w-24 flex justify-end">
+        <div className="w-12 sm:w-16 md:w-24 flex justify-end">
           <button
             onClick={goToNext}
             disabled={isTransitioning || currentIndex === timelineData.length - 1}
-            className="p-3 rounded-full border border-white/20 hover:border-white/40 transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:border-white/20"
+            className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
             aria-label="Next year"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>
 
-       {/* Main Timeline Content */} 
-       <div className= {`${isDarkTheme ? ' text-white' : ' text-black'} flex items-center justify-center w-full max-w-6xl mb-16 `}>
-         {/* Year Display */}
-         <div className="text-center flex-1 relative">
-           <div
-             className={`transition-all duration-700 ease-out ${
-               isTransitioning
-                 ? "transform translate-x-8 opacity-0 scale-95"
-                 : "transform translate-x-0 opacity-100 scale-100"
-             }`}
-           >
-             {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
-               {currentItem.year}
-             </div> */}
- 
-             {/* Title */}
-             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-xl md:text-2xl font-medium mb-6 transition-all duration-700 delay-100`}>
-               {currentItem.title}
-             </h2>
- 
-             {/* Description */}
-             <p className={`${isDarkTheme ? ' text-white' : ' text-black'} text-base md:text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-700 delay-200`}>
-               {currentItem.description}
-             </p>
-           </div>
-         </div>
- 
-       </div>
- 
-       {/* Timeline Progress Bar */}
-      <div className={`${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'} w-full max-w-4xl`}>
+      {/* Timeline Progress Bar - Positioned between TV structure and content */}
+      <div className={`${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'} w-full max-w-4xl mb-8`}>
         <div className={`${isDarkTheme ? 'text-white' : 'text-black'} relative`}>
           {/* Progress Line */}
           <div className={`h-0.5 w-full ${isDarkTheme ? 'bg-white/20' : 'bg-black/20'}`}></div>
@@ -1106,7 +1181,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
                 {/* Year Label */}
                 <span
-                  className={`text-sm transition-all duration-500 ${
+               className={`text-xs sm:text-sm transition-all duration-500 ${
                     index === currentIndex
                       ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
                       : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
@@ -1119,11 +1194,40 @@ Through innovative STEM programs and intelligent automation, we're building the 
           </div>
         </div>
       </div>
+
+       {/* Main Timeline Content */} 
+       <div className= {`${isDarkTheme ? ' text-white' : ' text-black'} flex items-center justify-center w-full max-w-6xl mb-16 `}>
+         {/* Year Display */}
+         <div className="text-center flex-1 relative">
+           <div
+             className={`transition-all duration-700 ease-out ${
+               isTransitioning
+                 ? "transform translate-x-8 opacity-0 scale-95"
+                 : "transform translate-x-0 opacity-100 scale-100"
+             }`}
+           >
+             {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
+               {currentItem.year}
+             </div> */}
+ 
+             {/* Title */}
+             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-lg sm:text-xl md:text-2xl font-medium mb-4 sm:mb-6 transition-all duration-700 delay-100 px-4`}>
+               {currentItem.title}
+             </h2>
+ 
+             {/* Description */}
+             <p className={`${isDarkTheme ? ' text-white' : ' text-black'} text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-700 delay-200 px-4`}>
+               {currentItem.description}
+             </p>
+           </div>
+         </div>
+ 
+       </div>
      </div>
   {/* Gallery Section */}
         <div 
           ref={galleryContainerRef}
-          className={`min-h-screen ${isDarkTheme ? 'bg-black' : 'bg-white'} py-16 transition-colors duration-500 relative overflow-hidden`}
+          className={`min-h-[60vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} py-2 sm:py-4 transition-colors duration-500 relative overflow-hidden`}
           style={{
             background: hoveredImageIndex !== null 
               ? `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, ${getBackgroundGlow(galleryImages[hoveredImageIndex]?.bgColor || '#000000', true)}, transparent 50%)`
@@ -1146,23 +1250,31 @@ Through innovative STEM programs and intelligent automation, we're building the 
             ))}
           </div> */}
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-6 transition-colors duration-500`}>
-                Bidyut's Gallery
+          <div className="max-w-7xl mx-auto px-0 sm:px-2 md:px-4 relative z-10">
+            <div className="text-center mb-1 sm:mb-3 md:mb-6">
+              <h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none text-transparent bg-clip-text mb-0 sm:mb-1 md:mb-2 select-none pointer-events-none uppercase tracking-wider"
+                style={{
+                  backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
+                }}
+              >
+                Gallery
               </h1>
-              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500 mb-8`}>
+              <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500 mb-1 sm:mb-2 md:mb-4 px-0 sm:px-2`}>
                 Explore our journey through these captivating moments of innovation and learning
               </p>
 
-              {/* Category Filter Buttons */}
+              {/* Category Filter Buttons - Show only on desktop or after exploring on mobile */}
               {showFullGallery && (
-                <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-4">
                   {galleryCategories.map((category) => (
                     <button
                       key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
+                      onClick={() => {
+                        setSelectedCategory(category.id);
+                        setSelectedImage(0); // Reset to first image of new category
+                      }}
+                      className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                         selectedCategory === category.id
                           ? 'text-white shadow-lg scale-105'
                           : isDarkTheme 
@@ -1181,115 +1293,74 @@ Through innovative STEM programs and intelligent automation, we're building the 
               )}
             </div>
 
-            {isInGallerySection && !showFullGallery && (
-              <div className="text-center mb-8">
-                <p className={`${isDarkTheme ? 'text-gray-500' : 'text-gray-400'} text-sm transition-colors duration-500`}>Scroll to explore our story</p>
-                <div className={`mx-auto w-6 h-10 border-2 ${isDarkTheme ? 'border-gray-500' : 'border-gray-400'} rounded-full mt-2 transition-colors duration-500`}>
-                  <div className={`w-1 h-3 ${isDarkTheme ? 'bg-gray-500' : 'bg-gray-400'} rounded-full mx-auto mt-2 animate-bounce transition-colors duration-500`}></div>
-                </div>
-                
-                <div className={`mt-4 mx-auto w-32 h-1 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-300'} rounded-full overflow-hidden transition-colors duration-500`}>
+            {/* Mobile Preview Gallery - Auto-scrolling images with tap to explore */}
+            {showMobilePreview && !showFullGallery && (
+              <div className="md:hidden px-0 mb-1">
+                {/* Auto-scrolling image carousel */}
+                <div className="relative overflow-hidden rounded-xl mb-2 shadow-lg">
                   <div 
-                    className={`h-full ${isDarkTheme ? 'bg-white' : 'bg-black'} transition-all duration-300 ease-out`}
-                    style={{ width: `${reelProgress * 100}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Explosion Animation */}
-            {showExplosion && (
-              <>
-                <style>{`
-                  @keyframes explode-0 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% - 200px), calc(-50% - 150px)) scale(1.2) rotate(36deg); opacity: 0.8; } 100% { transform: translate(calc(-50% - 300px), calc(-50% - 225px)) scale(0.6) rotate(72deg); opacity: 0; } }
-                  @keyframes explode-1 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% + 200px), calc(-50% - 150px)) scale(1.2) rotate(72deg); opacity: 0.8; } 100% { transform: translate(calc(-50% + 300px), calc(-50% - 225px)) scale(0.6) rotate(144deg); opacity: 0; } }
-                  @keyframes explode-2 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% - 300px), -50%) scale(1.2) rotate(108deg); opacity: 0.8; } 100% { transform: translate(calc(-50% - 450px), -50%) scale(0.6) rotate(216deg); opacity: 0; } }
-                  @keyframes explode-3 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% + 300px), -50%) scale(1.2) rotate(144deg); opacity: 0.8; } 100% { transform: translate(calc(-50% + 450px), -50%) scale(0.6) rotate(288deg); opacity: 0; } }
-                  @keyframes explode-4 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% - 200px), calc(-50% + 150px)) scale(1.2) rotate(180deg); opacity: 0.8; } 100% { transform: translate(calc(-50% - 300px), calc(-50% + 225px)) scale(0.6) rotate(360deg); opacity: 0; } }
-                  @keyframes explode-5 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% + 200px), calc(-50% + 150px)) scale(1.2) rotate(216deg); opacity: 0.8; } 100% { transform: translate(calc(-50% + 300px), calc(-50% + 225px)) scale(0.6) rotate(432deg); opacity: 0; } }
-                  @keyframes explode-6 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(-50%, calc(-50% - 200px)) scale(1.2) rotate(252deg); opacity: 0.8; } 100% { transform: translate(-50%, calc(-50% - 300px)) scale(0.6) rotate(504deg); opacity: 0; } }
-                  @keyframes explode-7 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(-50%, calc(-50% + 200px)) scale(1.2) rotate(288deg); opacity: 0.8; } 100% { transform: translate(-50%, calc(-50% + 300px)) scale(0.6) rotate(576deg); opacity: 0; } }
-                  @keyframes explode-8 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% - 100px), calc(-50% - 75px)) scale(1.2) rotate(324deg); opacity: 0.8; } 100% { transform: translate(calc(-50% - 150px), calc(-50% - 112px)) scale(0.6) rotate(648deg); opacity: 0; } }
-                  @keyframes explode-9 { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; } 50% { transform: translate(calc(-50% + 100px), calc(-50% + 75px)) scale(1.2) rotate(360deg); opacity: 0.8; } 100% { transform: translate(calc(-50% + 150px), calc(-50% + 112px)) scale(0.6) rotate(720deg); opacity: 0; } }
-                `}</style>
-                <div className="fixed inset-0 z-50 overflow-hidden pointer-events-none">
-                  {galleryImages.map((image, index) => (
-                    <div
-                      key={`explosion-${index}`}
-                      className="absolute w-32 h-32 rounded-lg overflow-hidden shadow-xl"
-                      style={{
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        animation: `explode-${index} 1s ease-out forwards`,
-                      }}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {/* Reel View */}
-            {isInGallerySection && !showFullGallery && (
-              <div className="flex justify-center items-center min-h-[60vh]">
-              
-                <div className="relative w-80 h-96 rounded-lg overflow-hidden shadow-2xl">
-                  {galleryImages.slice(0, 3).map((image, index) => {
-                    // Calculate magnetic transform
-                    const centerX = window.innerWidth / 2;
-                    const centerY = window.innerHeight / 2;
-                    const dx = (reelMouse.x - centerX) / 40;
-                    const dy = (reelMouse.y - centerY) / 40;
-                    const isActive = index === currentReelIndex;
-                    return (
+                    className="flex transition-transform duration-700 ease-in-out"
+                    style={{ 
+                      transform: `translateX(-${autoScrollIndex * 100}%)`,
+                      width: `${Math.min(6, galleryImages.length) * 100}%`
+                    }}
+                  >
+                    {galleryImages.slice(0, 6).map((image, index) => (
                       <div
-                        key={index}
-                        className={`absolute inset-0 transition-all duration-700 ease-in-out transform
-                          ${isActive 
-                            ? 'translate-y-0 opacity-100 scale-100' 
-                            : index < currentReelIndex 
-                              ? '-translate-y-full opacity-0 scale-95'
-                              : 'translate-y-full opacity-0 scale-95'
-                          }`}
-                        style={isActive ? {
-                          transform: `translateY(0) scale(1.05) translateX(${dx * (index - 1)}px) translateY(${dy * (index - 1)}px)`,
-                          zIndex: 10
-                        } : undefined}
+                        key={`mobile-preview-${index}`}
+                        className="relative flex-shrink-0 w-full h-56 sm:h-64"
+                        style={{ width: '100%' }}
                       >
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className={`w-full h-full transition-all duration-500 group-hover:scale-110 ${
-                            image.src === "/public/testfinal.jpg" ? "object-contain" : "object-cover"
-                          }`}
+                          className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className={`absolute bottom-0 left-0 right-0 p-6`}>
-                          <p className={`${isDarkTheme ? 'text-white' : 'text-black'} text-lg font-medium transition-colors duration-500`}>{image.alt}</p>
-                        </div>
-                        <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                          {[0, 1, 2].map((dotIndex) => (
-                            <div
-                              key={dotIndex}
-                              className={`w-2 h-8 rounded-full transition-all duration-500 
-                                ${dotIndex === currentReelIndex 
-                                  ? isDarkTheme ? 'bg-white' : 'bg-black'
-                                  : dotIndex < currentReelIndex 
-                                    ? isDarkTheme ? 'bg-white/50' : 'bg-black/50'
-                                    : isDarkTheme ? 'bg-white/20' : 'bg-black/20'
-                                }`}
-                            />
-                          ))}
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <span className="text-white text-xs font-medium bg-black/70 px-2 py-1 rounded-full backdrop-blur-sm">
+                            {galleryCategories.find(cat => cat.id === image.category)?.name}
+                          </span>
+                          <p className="text-white text-xs mt-1 opacity-90 line-clamp-2 leading-tight">
+                            {image.alt}
+                          </p>
                         </div>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
+                  
+                  {/* Progress indicators */}
+                  <div className="absolute bottom-2 right-2 flex space-x-1">
+                    {Array.from({ length: Math.min(6, galleryImages.length) }).map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                          index === autoScrollIndex 
+                            ? 'bg-white' 
+                            : 'bg-white/40'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tap to explore button */}
+                <div className="text-center px-1">
+                  <button
+                    onClick={() => {
+                      setShowFullGallery(true)
+                      setTimeout(() => setGalleryAnimationTrigger(true), 100)
+                    }}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center mx-auto gap-2 w-full max-w-xs"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Tap to explore full gallery
+                  </button>
+                  <p className="text-gray-500 text-xs mt-0.5">
+                    {galleryImages.length} photos waiting to be discovered
+                  </p>
                 </div>
               </div>
             )}
@@ -1307,10 +1378,13 @@ Through innovative STEM programs and intelligent automation, we're building the 
             {/* Full Gallery Grid */}
             {showFullGallery && (
               <div 
-                className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-[180px] sm:auto-rows-[200px] md:auto-rows-[240px]
-                  transition-all duration-1000 ease-out transform
-                  ${showFullGallery ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
-                `}
+                className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[180px] lg:auto-rows-[220px]"
+                style={{
+                  opacity: galleryAnimationTrigger ? 1 : 0,
+                  transform: galleryAnimationTrigger ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
+                  transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transitionDelay: '200ms'
+                }}
               >
                 {filteredImages.map((image, index) => (
                   <div
@@ -1321,13 +1395,13 @@ Through innovative STEM programs and intelligent automation, we're building the 
                     }}
                     data-index={galleryImages.findIndex(img => img.src === image.src)}
                     className={`relative overflow-hidden rounded-xl shadow-xl group ${image.className} 
-                      cursor-pointer transition-all duration-500 ease-out
+                      cursor-pointer transition-all duration-300 ease-out
                       ${visibleImages[galleryImages.findIndex(img => img.src === image.src)] 
                         ? 'translate-y-0 opacity-100 scale-100' 
                         : 'translate-y-8 opacity-0 scale-95'
                       }`}
                     style={{
-                      transitionDelay: `${index * 100}ms`,
+                      transitionDelay: `${index * 50}ms`,
                       transform: get3DTransform(index, hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src)),
                       backgroundColor: getBackgroundGlow(image.bgColor, hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src))
                     }}
@@ -1404,83 +1478,119 @@ Through innovative STEM programs and intelligent automation, we're building the 
             {/* Enhanced Lightbox Modal */}
             {selectedImage !== null && (
               <div 
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4 pt-16 sm:pt-20"
                 onClick={() => setSelectedImage(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setSelectedImage(null);
+                  if (e.key === 'ArrowLeft' && !isImageTransitioning) {
+                    const prevIndex = selectedImage > 0 ? selectedImage - 1 : filteredImages.length - 1;
+                    transitionToImage(prevIndex);
+                  }
+                  if (e.key === 'ArrowRight' && !isImageTransitioning) {
+                    const nextIndex = selectedImage < filteredImages.length - 1 ? selectedImage + 1 : 0;
+                    transitionToImage(nextIndex);
+                  }
+                }}
+                tabIndex={0}
+                style={{ overflow: 'hidden' }}
               >
                 <div 
-                  className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl"
+                  className="relative max-w-4xl w-full max-h-[90vh] bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Close button */}
+                  {/* Close button - Visible and well positioned */}
                   <button
                     onClick={() => setSelectedImage(null)}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors duration-200 flex items-center justify-center"
+                    className="absolute top-4 right-4 z-30 w-12 h-12 rounded-full bg-black/80 text-white hover:bg-black transition-all duration-200 flex items-center justify-center text-2xl font-light shadow-lg backdrop-blur-sm"
                   >
                     ×
                   </button>
 
-                  {/* Image */}
-                  <div className="relative">
+                  {/* Image with navigation buttons */}
+                  <div className="relative overflow-hidden">
+                    {/* Current Image */}
                     <img
-                      src={galleryImages[selectedImage].src}
-                      alt={galleryImages[selectedImage].alt}
-                      className="w-full h-auto max-h-[60vh] object-cover"
+                      key={`image-${selectedImage}`}
+                      src={filteredImages[selectedImage]?.src || galleryImages[0].src}
+                      alt={filteredImages[selectedImage]?.alt || galleryImages[0].alt}
+                      className={`w-full h-auto max-h-[60vh] object-cover transition-all duration-500 ease-out transform ${
+                        isImageTransitioning 
+                          ? 'opacity-0 scale-95 blur-sm' 
+                          : 'opacity-100 scale-100 blur-0'
+                      }`}
                     />
+                    
                     <div 
-                      className="absolute inset-0 opacity-20"
+                      className={`absolute inset-0 opacity-20 pointer-events-none transition-all duration-500 ease-out ${
+                        isImageTransitioning ? 'opacity-0' : 'opacity-20'
+                      }`}
                       style={{
-                        background: `linear-gradient(135deg, ${galleryImages[selectedImage].bgColor}, transparent 70%)`
+                        background: `linear-gradient(135deg, ${filteredImages[selectedImage]?.bgColor || '#3B82F6'}, transparent 70%)`
                       }}
                     />
+                    
+                    {/* Navigation buttons positioned over the image */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (!isImageTransitioning) {
+                          const prevIndex = selectedImage > 0 ? selectedImage - 1 : filteredImages.length - 1;
+                          transitionToImage(prevIndex);
+                        }
+                      }}
+                      disabled={isImageTransitioning}
+                      className={`absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${
+                        isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+                      }`}
+                      aria-label="Previous image"
+                    >
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (!isImageTransitioning) {
+                          const nextIndex = selectedImage < filteredImages.length - 1 ? selectedImage + 1 : 0;
+                          transitionToImage(nextIndex);
+                        }
+                      }}
+                      disabled={isImageTransitioning}
+                      className={`absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${
+                        isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+                      }`}
+                      aria-label="Next image"
+                    >
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
                   </div>
 
                   {/* Content */}
-                  <div className="p-8">
+                  <div className={`p-8 transition-all duration-400 ease-out ${
+                    isImageTransitioning ? 'opacity-60 transform translate-y-2' : 'opacity-100 transform translate-y-0'
+                  }`}>
                     <div className="flex items-center gap-3 mb-4">
                       <span 
-                        className="px-3 py-1 rounded-full text-sm font-semibold text-white"
-                        style={{ backgroundColor: galleryImages[selectedImage].bgColor }}
+                        className="px-3 py-1 rounded-full text-sm font-semibold text-white transition-colors duration-300"
+                        style={{ backgroundColor: filteredImages[selectedImage]?.bgColor || '#3B82F6' }}
                       >
-                        {galleryCategories.find(cat => cat.id === galleryImages[selectedImage].category)?.name}
+                        {galleryCategories.find(cat => cat.id === filteredImages[selectedImage]?.category)?.name}
                       </span>
                     </div>
                     
-                    <h2 className={`text-2xl font-bold mb-4 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>
-                      {galleryImages[selectedImage].alt}
+                    <h2 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>
+                      {filteredImages[selectedImage]?.alt}
                     </h2>
                     
-                    <p className={`text-lg leading-relaxed ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
-                      {galleryImages[selectedImage].story}
+                    <p className={`text-lg leading-relaxed transition-colors duration-300 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
+                      {filteredImages[selectedImage]?.story}
                     </p>
 
-                    {/* Navigation */}
-                    <div className="flex justify-between items-center mt-8">
-                      <button
-                        onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : galleryImages.length - 1)}
-                        className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
-                          isDarkTheme 
-                            ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-                        }`}
-                      >
-                        ← Previous
-                      </button>
-                      
-                      <span className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-500'}`}>
-                        {selectedImage + 1} of {galleryImages.length}
-                      </span>
-                      
-                      <button
-                        onClick={() => setSelectedImage(selectedImage < galleryImages.length - 1 ? selectedImage + 1 : 0)}
-                        className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
-                          isDarkTheme 
-                            ? 'bg-gray-800 text-white hover:bg-gray-700' 
-                            : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-                        }`}
-                      >
-                        Next →
-                      </button>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -1496,11 +1606,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
   return (
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
       <Header />
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden px-4">
         <div className="relative">
           {scrollY > 1800 && getTransformedText() === "202O" ? (
             <div
-              className={`text-[12rem] font-bold ${isDarkTheme ? 'text-white' : 'text-black'} font-mono tracking-wider absolute inset-0 flex items-center justify-center transition-colors duration-500`}
+              className={`text-[8rem] sm:text-[10rem] md:text-[12rem] font-bold ${isDarkTheme ? 'text-white' : 'text-black'} font-mono tracking-wider absolute inset-0 flex items-center justify-center transition-colors duration-500`}
               style={{
                 transform: `scale(${getZeroZoomScale()})`,
                 transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 500ms ease-out",
@@ -1517,7 +1627,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                     <div
                       key={digitIndex}
                       className={`
-                        text-[12rem] font-bold ${isDarkTheme ? 'text-white' : 'text-black'} font-mono tracking-wider
+                        text-[8rem] sm:text-[10rem] md:text-[12rem] font-bold ${isDarkTheme ? 'text-white' : 'text-black'} font-mono tracking-wider
                         transition-all duration-700 cubic-bezier(0.25, 0.46, 0.45, 0.94)
                         ${isVisible ? "opacity-100" : "opacity-0"}
                       `}
