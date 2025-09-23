@@ -11,11 +11,11 @@ interface Offering {
 }
 
 const offerings: Offering[] = [
-  { image: "/OurOfferingImages/AI Powered Learning Path.jpg", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
-  { image: "/OurOfferingImages/collaborativeLearning.jpg", titleKey: "Collabration", descriptionKey: "collabrationDesc" },
-  { image: "/OurOfferingImages/Immersive Learning Experiences.jpg", titleKey: "Learningexpi", descriptionKey: "learningexpisDesc" },
-  { image: "/OurOfferingImages/Smart_Progress_Tracking.jpg", titleKey: "ProgressTracking", descriptionKey: "ProgressTrackingDesc" },
-  { image: "/OurOfferingImages/Personalized Mentorship.jpg", titleKey: "personalizedMentorship", descriptionKey: "personalizedMentorshipDesc" }
+  { image: "/OurOfferingImages/D1-arm.png", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
+  { image: "/OurOfferingImages/G1 Basic.png", titleKey: "collaboration", descriptionKey: "collabrationDesc" },
+  { image: "/OurOfferingImages/School.jpeg", titleKey: "learningExperience", descriptionKey: "learningexpisDesc" },
+  { image: "/OurOfferingImages/GO2 AIR.jpg", titleKey: "quadrupedRobots", descriptionKey: "ProgressTrackingDesc" },
+  { image: "/OurOfferingImages/A2-W.png", titleKey: "roboticSolutions", descriptionKey: "personalizedMentorshipDesc" }
 ]
 
 
@@ -134,7 +134,7 @@ export default function OfferingsSection() {
                       <img
                         src={item.image}
                         alt={t(item.titleKey)}
-                        className="w-full h-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 will-change-transform group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
