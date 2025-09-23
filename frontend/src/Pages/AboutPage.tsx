@@ -272,99 +272,179 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
     "where-we-are": "/about_vedio/Where we Are.mp4",
   }
 
-  // Gallery images with enhanced data
+  // Gallery images with enhanced data - randomized order for balanced grid layout
   const galleryImages = [
+    // Mixed layout for better visual balance
     {
-      src: "/public/testfinal.jpg",
-      alt: "Educational materials and learning kits",
+      src: "/About_us_gallery/Events 400x400/fggh.jpg",
+      alt: "Educational event and workshop",
       className: "row-span-1",
-      category: "education",
-      story: "Comprehensive learning kits designed to spark curiosity and hands-on exploration in young minds.",
-      bgColor: "#3B82F6"
-    },
-    {
-      src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
-      alt: "Robotic spider construction",
-      className: "row-span-2",
-      category: "robotics",
-      story: "Advanced robotics engineering where students build sophisticated mechanical creatures.",
+      category: "events",
+      story: "Interactive workshops where learning meets innovation, bringing together students and educators.",
       bgColor: "#10B981"
     },
     {
-      src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
-      alt: "Student working with robotics",
-      className: "row-span-1",
-      category: "students",
-      story: "Focused learning moments where theory meets practical application in robotics.",
-      bgColor: "#F59E0B"
-    },
-    {
-      src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
-      alt: "Wedo2.0 educational materials",
+      src: "/About_us_gallery/Robots 400x800/ffff.jpg",
+      alt: "Advanced humanoid robot",
       className: "row-span-2",
-      category: "technology",
-      story: "Cutting-edge Wedo2.0 technology bringing programming concepts to life through interactive builds.",
-      bgColor: "#8B5CF6"
-    },
-    {
-      src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
-      alt: "Robotic vehicle construction",
-      className: "row-span-2",
-      category: "robotics",
-      story: "Engineering marvels on wheels - students create autonomous vehicles with precision and creativity.",
+      category: "robots",
+      story: "State-of-the-art humanoid robots designed for educational and research purposes.",
       bgColor: "#EF4444"
     },
     {
-      src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
-      alt: "Robotic humanoid construction",
-      className: "row-span-2",
-      category: "robotics",
-      story: "The future of human-robot interaction begins with understanding humanoid mechanics.",
-      bgColor: "#06B6D4"
-    },
-    {
-      src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
-      alt: "Student programming robot",
-      className: "row-span-2",
-      category: "programming",
-      story: "Code comes alive as students program their creations to move, think, and respond.",
-      bgColor: "#84CC16"
-    },
-    {
-      src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
-      alt: "Hands-on robot building",
-      className: "row-span-2",
-      category: "building",
-      story: "The joy of creation - every bolt, wire, and sensor placed with purpose and passion.",
-      bgColor: "#F97316"
-    },
-    {
-      src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
-      alt: "Educational programming mat",
+      src: "/About_us_gallery/Students 400x400/j.jpg",
+      alt: "Students engaged in robotics learning",
       className: "row-span-1",
-      category: "education",
-      story: "Interactive learning surfaces that transform abstract programming concepts into tangible experiences.",
-      bgColor: "#EC4899"
+      category: "students",
+      story: "Students actively participating in hands-on robotics learning experiences.",
+      bgColor: "#F59E0B"
     },
     {
-      src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
-      alt: "LEGO Mindstorms robot",
+      src: "/About_us_gallery/Projects 400x400/1204RR_M12 - Edited.jpg",
+      alt: "Advanced robotics project development",
       className: "row-span-1",
-      category: "technology",
-      story: "LEGO Mindstorms - where imagination meets engineering in perfect harmony.",
-      bgColor: "#6366F1"
+      category: "projects",
+      story: "Cutting-edge robotics projects that push the boundaries of technology and innovation.",
+      bgColor: "#3B82F6"
     },
+    {
+      src: "/About_us_gallery/Training 400x800/d.jpg",
+      alt: "Professional robotics training session",
+      className: "row-span-2",
+      category: "training",
+      story: "Comprehensive training programs for educators and professionals in robotics technology.",
+      bgColor: "#8B5CF6"
+    },
+    {
+      src: "/About_us_gallery/Events 400x400/Untitled-1.jpg",
+      alt: "Robotics competition event",
+      className: "row-span-1",
+      category: "events",
+      story: "Exciting robotics competitions that challenge students to showcase their technical skills.",
+      bgColor: "#10B981"
+    },
+    {
+      src: "/About_us_gallery/Students 400x400/Untitled-10.jpg",
+      alt: "Collaborative student project work",
+      className: "row-span-1",
+      category: "students",
+      story: "Students collaborating on innovative projects that combine creativity with technology.",
+      bgColor: "#F59E0B"
+    },
+    {
+      src: "/About_us_gallery/Robots 400x800/REE.jpg",
+      alt: "Industrial automation robot",
+      className: "row-span-2",
+      category: "robots",
+      story: "Industrial automation robots revolutionizing manufacturing and production processes.",
+      bgColor: "#EF4444"
+    },
+    {
+      src: "/About_us_gallery/Projects 400x400/DSC05157 - Edited.jpg",
+      alt: "Engineering project implementation",
+      className: "row-span-1",
+      category: "projects",
+      story: "Real-world engineering projects that bridge theoretical knowledge with practical application.",
+      bgColor: "#3B82F6"
+    },
+    {
+      src: "/About_us_gallery/Events 400x400/Untitled-3.jpg",
+      alt: "STEM education seminar",
+      className: "row-span-1",
+      category: "events",
+      story: "Educational seminars focused on advancing STEM learning methodologies.",
+      bgColor: "#10B981"
+    },
+    {
+      src: "/About_us_gallery/Training 400x800/e.jpg",
+      alt: "Advanced technical training",
+      className: "row-span-2",
+      category: "training",
+      story: "Advanced technical training sessions covering cutting-edge robotics and automation.",
+      bgColor: "#8B5CF6"
+    },
+    {
+      src: "/About_us_gallery/Students 400x400/Untitled-7.jpg",
+      alt: "Student innovation and creativity",
+      className: "row-span-1",
+      category: "students",
+      story: "Young innovators exploring the limitless possibilities of robotics and engineering.",
+      bgColor: "#F59E0B"
+    },
+    {
+      src: "/About_us_gallery/Projects 400x400/f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.jpg",
+      alt: "Collaborative project development",
+      className: "row-span-1",
+      category: "projects",
+      story: "Collaborative projects fostering teamwork and innovative problem-solving approaches.",
+      bgColor: "#3B82F6"
+    },
+    {
+      src: "/About_us_gallery/Robots 400x800/Untitled-12.jpg",
+      alt: "Educational robotics platform",
+      className: "row-span-2",
+      category: "robots",
+      story: "Educational robotics platforms designed to enhance STREAM learning experiences.",
+      bgColor: "#EF4444"
+    },
+    {
+      src: "/About_us_gallery/Events 400x400/Untitled-4.jpg",
+      alt: "Innovation showcase event",
+      className: "row-span-1",
+      category: "events",
+      story: "Innovation showcases highlighting breakthrough projects and creative solutions.",
+      bgColor: "#10B981"
+    },
+    {
+      src: "/About_us_gallery/Students 400x400/Untitled-8.jpg",
+      alt: "Students mastering technology",
+      className: "row-span-1",
+      category: "students",
+      story: "Students developing technical mastery through practical, hands-on learning approaches.",
+      bgColor: "#F59E0B"
+    },
+    {
+      src: "/About_us_gallery/Training 400x800/h.jpg",
+      alt: "Hands-on training workshop",
+      className: "row-span-2",
+      category: "training",
+      story: "Interactive training workshops combining theoretical knowledge with practical skills.",
+      bgColor: "#8B5CF6"
+    },
+    {
+      src: "/About_us_gallery/Projects 400x400/fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
+      alt: "Technical project showcase",
+      className: "row-span-1",
+      category: "projects",
+      story: "Technical project showcases demonstrating advanced engineering capabilities.",
+      bgColor: "#3B82F6"
+    },
+    {
+      src: "/About_us_gallery/Robots 400x800/Untitled-3-Recovered.jpg",
+      alt: "Autonomous robot system",
+      className: "row-span-2",
+      category: "robots",
+      story: "Autonomous robot systems capable of independent decision-making and navigation.",
+      bgColor: "#EF4444"
+    },
+    {
+      src: "/About_us_gallery/Training 400x800/Untitled-4.jpg",
+      alt: "Specialized training program",
+      className: "row-span-2",
+      category: "training",
+      story: "Specialized training programs designed for industry professionals and educators.",
+      bgColor: "#8B5CF6"
+    }
   ]
 
   // Gallery categories
   const galleryCategories = [
     { id: "all", name: "All", color: "#6B7280" },
-    { id: "robotics", name: "Robotics", color: "#10B981" },
-    { id: "education", name: "Education", color: "#3B82F6" },
+    { id: "events", name: "Events", color: "#10B981" },
+    { id: "projects", name: "Projects", color: "#3B82F6" },
+    { id: "robots", name: "Robots", color: "#EF4444" },
     { id: "students", name: "Students", color: "#F59E0B" },
-    { id: "technology", name: "Technology", color: "#8B5CF6" },
-    { id: "programming", name: "Programming", color: "#84CC16" },
-    { id: "building", name: "Building", color: "#F97316" }
+    { id: "training", name: "Training", color: "#8B5CF6" }
   ]
 
 useEffect(() => {
@@ -1080,7 +1160,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               DRIVEN BY PURPOSE, GUIDED BY INNOVATION
             </h3>
             <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed transition-colors duration-500 px-4`}>
-              Our story is one of courage, commitment, and constant evolution. With each leap forward, we’ve pushed the limits of what energy can do—creating sustainable progress and inspiring change across the globe.
+              Pioneering the Future of Energy - From vision to reality, we have redefined the energy landscape through relentless innovation and steadfast commitment. With each leap forward, we’ve pushed the limits of what energy can do—creating sustainable progress and inspiring change across the globe.
             </p>
           </div>
 
@@ -1272,7 +1352,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                       key={category.id}
                       onClick={() => {
                         setSelectedCategory(category.id);
-                        setSelectedImage(0); // Reset to first image of new category
+                        // Only filter images, don't open any lightbox
                       }}
                       className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
                         selectedCategory === category.id
@@ -1414,9 +1494,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className={`w-full h-full transition-all duration-500 group-hover:scale-110 ${
-                          image.src === "/public/testfinal.jpg" ? "object-contain" : "object-cover"
-                        }`}
+                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                       />
                       
                       {/* Gradient overlay */}
@@ -1513,7 +1591,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                       key={`image-${selectedImage}`}
                       src={filteredImages[selectedImage]?.src || galleryImages[0].src}
                       alt={filteredImages[selectedImage]?.alt || galleryImages[0].alt}
-                      className={`w-full h-auto max-h-[60vh] object-cover transition-all duration-500 ease-out transform ${
+                      className={`w-full h-auto max-h-[60vh] object-contain transition-all duration-500 ease-out transform ${
                         isImageTransitioning 
                           ? 'opacity-0 scale-95 blur-sm' 
                           : 'opacity-100 scale-100 blur-0'
