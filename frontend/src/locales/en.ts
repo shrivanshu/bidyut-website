@@ -50,7 +50,7 @@ export const en = {
   // Education Stream
   streamEducation: 'STREAM Education',
   stream: 'STREAM',
-  streamEducationDescription: 'A future-ready approach that integrates Science, Technology, Reading, Engineering, Arts, and Mathematics. It nurtures creativity, problem-solving, and real-world skills for lifelong success.',
+  streamEducationDescription: 'A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills for lifelong success.',
   science: 'Science',
   scienceDescription: 'Inspires curiosity and discovery through exploration.',
   educationTechnology: 'Technology',
@@ -66,7 +66,7 @@ export const en = {
   
   // Testimonials
   whatOurPartnersSay: 'What Our Partners Say',
-  partnersTestimonialDescription: 'Discover how Bidyut is transforming education and industry through innovative robotics solutions',
+  partnersTestimonialDescription: 'See how Bidyut is reshaping education and industry with innovative robotics solutions that inspire learning and drive transformation',
   tapToViewOthers: 'TAP TO VIEW OTHERS',
 
   // Education News
@@ -111,7 +111,7 @@ export const en = {
   
   // Footer
   bidyutTechnologies: 'Bidyut Technologies',
-  footerDescription: 'Leading provider of advanced robotics and technology solutions for educational institutions. Empowering the next generation through innovative STEM education and cutting-edge research.',
+  footerDescription: 'Shaping Tomorrow\'s Technology - At Bidyut Innovation, we pioneer at the intersection of human creativity and robotic precision. Our mission is to craft the future of automation through solutions that empower people, enhance capabilities, and drive meaningful progress—in classrooms, industries, and beyond.',
   quickLinks: 'Quick Links',
   contactInformation: 'Contact Information',
   address: 'Address',

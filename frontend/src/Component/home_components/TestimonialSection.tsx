@@ -101,7 +101,7 @@ const TestimonialSection: React.FC = () => {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          {t('partnersTestimonialDescription')}
+          See how Bidyut is reshaping education and industry with innovative robotics solutions that inspire learning and drive transformation
         </p>
       </div>
 
@@ -117,11 +117,11 @@ const TestimonialSection: React.FC = () => {
             transition={{ duration: 0.3 }}
             className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl w-full flex flex-col items-center text-center transition-colors duration-300"
           >
-            <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-emerald-100 ring-offset-2">
+            <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-emerald-100 ring-offset-2 bg-white p-2">
               <img
                 src={centerCardData.image}
                 alt={centerCardData.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             <h3 className="font-bold text-lg text-gray-800 dark:text-white transition-colors duration-300">{centerCardData.name}</h3>
@@ -144,12 +144,12 @@ const TestimonialSection: React.FC = () => {
                 <div
                   key={testimonial.id}
                   onClick={() => handleSelectTestimonial(index)}
-                  className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-md cursor-pointer border-2 border-transparent hover:border-emerald-500 transition-colors"
+                  className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden shadow-md cursor-pointer border-2 border-transparent hover:border-emerald-500 transition-colors bg-white p-2"
                 >
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               );
@@ -178,11 +178,11 @@ const TestimonialSection: React.FC = () => {
                   whileHover={{ scale: 1.05, zIndex: 20 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
-                  <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                  <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100 p-3">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   {/* Hover tooltip */}
@@ -211,11 +211,11 @@ const TestimonialSection: React.FC = () => {
                 <span className="text-7xl text-emerald-200 leading-none font-serif">"</span>
               </div>
 
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-emerald-100 relative z-10">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-emerald-100 relative z-10 bg-white p-3">
                 <img
                   src={centerCardData.image}
                   alt={centerCardData.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               
