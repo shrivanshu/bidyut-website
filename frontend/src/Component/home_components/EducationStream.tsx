@@ -15,38 +15,38 @@ export default function EducationStream() {
   
   const videoOptions: VideoOption[] = [
     {
-      src: "/Science.mp4",
-      thumbnail: "/Science.mp4",
+      src: "/stream_video/Science.mp4",
+      thumbnail: "/stream_video/Science.mp4",
       title: t('science'),
       description: t('scienceDescription')
     },
     {
-      src: "/Technology1.mp4",
-      thumbnail: "/Technology1.mp4",
+      src: "/stream_video/Technology.mp4",
+      thumbnail: "/stream_video/Technology.mp4",
       title: t('Technology'),
       description: t('technologyDescription')
     },
     {
-      src: "/Reading1.mp4",
-      thumbnail: "/Reading1.mp4",
+      src: "/stream_video/Reading.mp4",
+      thumbnail: "/stream_video/Reading.mp4",
       title: t('Reading'),
       description: t('readingDescription')
     },
     {
-      src: "/Engineering.mp4",
-      thumbnail: "/Engineering.mp4",
+      src: "/stream_video/Engineering.mp4",
+      thumbnail: "/stream_video/Engineering.mp4",
       title: t('Engineering'),
       description: t('engineeringDescription')
     },
     {
-      src: "/Art.mp4",
-      thumbnail: "/Art.mp4",
+      src: "/stream_video/Art.mp4",
+      thumbnail: "/stream_video/stream_video/Art.mp4",
       title: t('Art'),
       description: t('artsDescription')
     },
     {
-      src: "/Maths.mp4",
-      thumbnail: "/Maths.mp4",
+      src: "/stream_video/Mathematics.mp4",
+      thumbnail: "/stream_video/Mathematics.mp4",
       title: t('mathematics'),
       description: t('mathsDescription')
     },
@@ -133,8 +133,7 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills for lifelong success.
-        </p>
+          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills for lifelong success. </p>
       </motion.div>
 
       {/* Mobile Layout */}

@@ -108,7 +108,7 @@ export const ru = {
   yearsExperience: 'Лет опыта',
   
   // Footer
-  bidyutTechnologies: 'Bidyut Technologies',
+  bidyutTechnologies: 'Bidyut Innovations',
   footerDescription: 'Ведущий поставщик передовых робототехнических и технологических решений для образовательных учреждений. Расширение возможностей следующего поколения через инновационное STEM образование и передовые исследования.',
   quickLinks: 'Быстрые ссылки',
   contactInformation: 'Контактная информация',
@@ -117,7 +117,7 @@ export const ru = {
   newsletterDescription: 'Будьте в курсе наших последних инноваций, образовательных программ и технологических обновлений.',
   enterEmail: 'Введите ваш email адрес',
   subscribeNewsletter: 'Подписаться на рассылку',
-  allRightsReserved: '© 2025 Bidyut Technologies. Все права защищены.',
+  allRightsReserved: '© 2025 Bidyut Innovations. Все права защищены.',
   privacyPolicy: 'Политика конфиденциальности',
   termsOfService: 'Условия обслуживания',
   cookiePolicy: 'Политика cookie',

@@ -1,40 +1,40 @@
 import React, { useState } from 'react';
 
-const cats = {
-  'Tiger': {
-    name: 'Panthera tigris',
-    code: '1501705388883-4ed8a543392c',
-    desc: 'tiger in the water'
+const schoolImages = {
+  'Robotics Project': {
+    name: 'Advanced Robotics Project',
+    src: '/About_us_gallery/Projects 400x400/DSC05157 - Edited.jpg',
+    desc: 'Students working on advanced robotics projects'
   },
-  'Lion': {
-    name: 'Panthera leo',
-    code: '1519066629447-267fffa62d4b',
-    desc: 'lion and lioness resting on a rock in the sun'
+  'AI Workshop': {
+    name: 'Artificial Intelligence Workshop',
+    src: '/About_us_gallery/Events 400x400/Untitled-1.jpg',
+    desc: 'Interactive AI learning session with students'
   },
-  'Leopard': {
-    name: 'Panthera pardus',
-    code: '1566489564594-f2163930c034',
-    desc: 'blue-eyed leopard resting high up with its head on its front paws'
+  'Tech Lab': {
+    name: 'Technology Integration Lab',
+    src: '/About_us_gallery/Events 400x400/Untitled-3.jpg',
+    desc: 'Advanced technology learning environment'
   },
-  'Jaguar': {
-    name: 'Panthera onca',
-    code: '1601544359642-c76c4f7c3221',
-    desc: 'jaguar closeup'
+  'Innovation Lab': {
+    name: 'Innovation Laboratory',
+    src: '/About_us_gallery/Students 400x400/Untitled-10.jpg',
+    desc: 'Students collaborating in innovation lab'
   },
-  'Snow leopard': {
-    name: 'Panthera uncia',
-    code: '1689847190291-f8e0823f13ab',
-    desc: 'snow leopard lying low on some rocks, its fur blending in perfectly'
+  'STEM Workshop': {
+    name: 'STEM Learning Workshop',
+    src: '/About_us_gallery/Training 400x800/h.jpg',
+    desc: 'Hands-on STEM learning experience'
   },
-  'Cheetah': {
-    name: 'Acinonyx jubatus',
-    code: '1693702366986-cbfbd1cf0450',
-    desc: 'cheetah in the grass at dusk'
+  'Project Development': {
+    name: 'Student Project Development',
+    src: '/About_us_gallery/Students 400x400/Untitled-7.jpg',
+    desc: 'Students developing innovative projects'
   },
-  'Cougar': {
-    name: 'Puma concolor',
-    code: '1661004527094-07d861089aed',
-    desc: 'cougar walking through the snow'
+  'Research Hub': {
+    name: 'Research and Development Hub',
+    src: '/About_us_gallery/Events 400x400/fggh.jpg',
+    desc: 'Advanced research and development activities'
   }
 };
 
@@ -43,7 +43,7 @@ const rand = (max: number, min: number): number => {
 };
 
 export default function SchoolCarousel() {
-  const entries = Object.entries(cats);
+  const entries = Object.entries(schoolImages);
   const n = entries.length;
   const [k, setK] = useState(0);
 
@@ -204,9 +204,11 @@ export default function SchoolCarousel() {
           height: 15em;
           width: 20em;
           object-fit: cover;
+          object-position: center;
           border-radius: 0.75rem;
           translate: calc(-150% * var(--mov) * sqrt(var(--sin)));
           rotate: calc((1 - var(--sin)) * var(--a));
+          background-color: #FFE3BF;
         }
 
         .pin {
@@ -224,25 +226,27 @@ export default function SchoolCarousel() {
         }
 
         .carousel-image:hover {
+        
           transform: scale(1.05);
           transition: transform 0.3s ease;
         }
 
         @media (max-width: 768px) {
-  .carousel-image {
-    height: 12em;
-    width: 16em;
-   
-  }
-}
+          .carousel-image {
+            height: 12em;
+            width: 16em;
+          }
+        }
 
-/* ↓ Extra small screens ≤480 px */
-@media (max-width: 480px) {
-  .carousel-image {
-    height: 10em;
-    width: 13em;
-  }
-}
+        /* ↓ Extra small screens ≤480 px */
+        @media (max-width: 480px) {
+          .carousel-image {
+            height: 10em;
+            width: 13em;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
       `}</style>
 
       <section 
@@ -259,7 +263,7 @@ export default function SchoolCarousel() {
           marginTop: '-10px'
         } as React.CSSProperties}
       >
-        {entries.map(([name, cat], i) => (
+        {entries.map(([name, schoolImage], i) => (
           <article
             key={name}
             className="carousel-article"
@@ -273,11 +277,13 @@ export default function SchoolCarousel() {
               {/* <div className="pin"></div> */}
               <img
                 className="carousel-image cursor-pointer"
-                src={`https://images.unsplash.com/photo-${cat.code}?w=400`}
-                alt={cat.desc}
+                src={schoolImage.src}
+                alt={schoolImage.desc}
                 onClick={() => handleNavigation(1)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer',  objectFit: 'cover', }}
               />
+         
+             
             </div>
           </article>
         ))}

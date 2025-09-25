@@ -4,6 +4,23 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState, useRef, useEffect } from "react"
 
+// Import partner logos
+const accentureLogo = "/trustedPartners_logos/Accenture-logo.jpg"
+const acgLogo = "/trustedPartners_logos/ACG_Logo.jpg"
+const hclLogo = "/trustedPartners_logos/HCL-Technologies-Logo.png"
+const iiscLogo = "/trustedPartners_logos/IISc.png"
+const iitKanpurLogo = "/trustedPartners_logos/iit hanpur.png"
+const iitRoorkeeLogo = "/trustedPartners_logos/iit-roorkee-iit-roorkee-01.jpg"
+const iitBombayLogo = "/trustedPartners_logos/Indian_Institute_of_Technology_Bombay_Logo.svg"
+const infinitudeitLogo = "/trustedPartners_logos/infinitudeit.jpeg"
+const larsenToubroLogo = "/trustedPartners_logos/Larsen-Toubro.webp"
+const wtvisionLogo = "/trustedPartners_logos/logo_wtvision.jpg"
+const nipponLogo = "/trustedPartners_logos/nippon.png"
+const nxtwaveLogo = "/trustedPartners_logos/nxtwave.jpg"
+const oricaLogo = "/trustedPartners_logos/orica-logo-3.jpg"
+const phytecLogo = "/trustedPartners_logos/phytec.jpg"
+const plakshaLogo = "/trustedPartners_logos/Plaksha_Logo.png"
+
 export default function TrustedPartners() {
   const [arrowEndX, setArrowEndX] = useState(140)
   const [arrowEndY, setArrowEndY] = useState(50)
@@ -13,8 +30,17 @@ export default function TrustedPartners() {
   const animationFrameRef = useRef<number | null>(null)
   const targetPositionRef = useRef({ x: 140, y: 50 })
   const logoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const lastCollisionCheckRef = useRef<number>(0)
 
-  const checkArrowLogoCollision = (_arrowTipX: number, _arrowTipY: number) => {
+  const checkArrowLogoCollision = (arrowTipX?: number, arrowTipY?: number) => {
+    // Throttle collision checks to improve performance
+    const now = Date.now()
+    if (now - lastCollisionCheckRef.current < 16) {
+      // ~60fps
+      return
+    }
+    lastCollisionCheckRef.current = now
+
     let hoveredLogoKey = null
 
     try {
@@ -27,8 +53,9 @@ export default function TrustedPartners() {
         const scaleX = arrowRect.width / svgWidth
         const scaleY = arrowRect.height / svgHeight
 
-        const actualArrowTipX = arrowRect.left + arrowEndX * scaleX
-        const actualArrowTipY = arrowRect.top + arrowEndY * scaleY
+        // Use provided coordinates or calculate from current arrow position
+        const actualArrowTipX = arrowTipX !== undefined ? arrowTipX : arrowRect.left + arrowEndX * scaleX
+        const actualArrowTipY = arrowTipY !== undefined ? arrowTipY : arrowRect.top + arrowEndY * scaleY
 
         Object.entries(logoRefs.current).forEach(([logoKey, logoElement]) => {
           if (logoElement) {
@@ -41,7 +68,9 @@ export default function TrustedPartners() {
               Math.pow(actualArrowTipX - logoCenterX, 2) + Math.pow(actualArrowTipY - logoCenterY, 2),
             )
 
-            if (distance <= logoRadius + 45) {
+            // Increased collision radius for better detection
+            const collisionRadius = logoRadius + 60
+            if (distance <= collisionRadius) {
               hoveredLogoKey = logoKey
             }
           }
@@ -74,7 +103,14 @@ export default function TrustedPartners() {
             const newEndY = 50 + normalizedY * distance
 
             targetPositionRef.current = { x: newEndX, y: newEndY }
-            checkArrowLogoCollision(e.clientX, e.clientY)
+
+            // Calculate the actual arrow tip position for collision detection
+            const scaleX = arrowRect.width / 220
+            const scaleY = arrowRect.height / 100
+            const actualArrowTipX = arrowRect.left + newEndX * scaleX
+            const actualArrowTipY = arrowRect.top + newEndY * scaleY
+
+            checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
           }
         } catch (error) {
           console.error("Mouse move error:", error)
@@ -97,6 +133,7 @@ export default function TrustedPartners() {
           setArrowEndX(newX)
           setArrowEndY(newY)
 
+          // Check collision with the new arrow position
           if (arrowRef.current) {
             const arrowRect = arrowRef.current.getBoundingClientRect()
             const scaleX = arrowRect.width / 220
@@ -340,7 +377,7 @@ export default function TrustedPartners() {
 
           <div className="relative flex items-center justify-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0 }}
+              initial={{ opacity: 0, scale: 0, rotate: 0 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 360 }}
               transition={{
                 opacity: { duration: 0.8, delay: 0.6 },
@@ -373,7 +410,9 @@ export default function TrustedPartners() {
 
               {/* Company Logos */}
               <motion.div
-                ref={(el) => { logoRefs.current["google"] = el }}
+                ref={(el) => {
+                  logoRefs.current["accenture"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -386,30 +425,15 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[8vw] left-1/2 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "google" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-[16vw] left-6 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "accenture" ? "scale-[2] z-50 shadow-xl" : "hover:scale-105"}`}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path
-                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                    fill="#4285F4"
-                  />
-                  <path
-                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 8.55 7.7 23 12 23z"
-                    fill="#34A853"
-                  />
-                  <path
-                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                    fill="#FBBC05"
-                  />
-                  <path
-                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                    fill="#EA4335"
-                  />
-                </svg>
+                <img src={accentureLogo || "/placeholder.svg"} alt="Accenture" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
-                ref={(el) => { logoRefs.current["microsoft"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["acg"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -422,19 +446,15 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[28vw] right-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "microsoft" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "acg" ? "scale-[2] z-50 shadow-xl" : "hover:scale-105"}`}
               >
-                {/* Microsoft logo */}
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                  <path fill="#F25022" d="M0 0h11.377v11.372H0z" />
-                  <path fill="#00A4EF" d="M12.623 0H24v11.372H12.623z" />
-                  <path fill="#7FBA00" d="M0 12.628h11.377V24H0z" />
-                  <path fill="#FFB900" d="M12.623 12.628H24V24H12.623z" />
-                </svg>
+                <img src={acgLogo || "/placeholder.svg"} alt="ACG" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
-                ref={(el) => { logoRefs.current["apple"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["hcl"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -447,16 +467,19 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute right-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "apple" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute right-[1vw] top-42 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "hcl" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                {/* Apple logo */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z" />
-                </svg>
+                <img
+                  src={hclLogo || "/placeholder.svg"}
+                  alt="HCL Technologies"
+                  className="w-4/5 h-4/5 object-contain"
+                />
               </motion.div>
 
               <motion.div
-                ref={(el) => { logoRefs.current["amazon"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["iisc"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -469,16 +492,15 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[28vw] right-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "amazon" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute bottom-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iisc" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                {/* Amazon logo */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9900">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
+                <img src={iiscLogo || "/placeholder.svg"} alt="IISc" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
-                ref={(el) => { logoRefs.current["netflix"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["iitKanpur"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -491,163 +513,20 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[8vw] left-1/2 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "netflix" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute bottom-[22vw] left-12 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iitKanpur" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                {/* Netflix logo */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#E50914">
-                  <path d="M5.398 0v.006c3.028 8.556 5.37 15.175 8.348 23.596 2.344.058 4.85.398 4.854.398-2.8-7.924-5.923-16.747-8.487-24zm8.489 0v9.63L7.084 22.951c-.043-7.86-.004-15.71.002-22.95zM5.398 1.05V24c2.873-.086 5.81-.406 8.487-.606V1.05z" />
-                </svg>
+                <img
+                  src={iitKanpurLogo || "/placeholder.svg"}
+                  alt="IIT Kanpur"
+                  className="w-4/5 h-4/5 object-contain"
+                />
               </motion.div>
 
+              {/* NxtWave */}
               <motion.div
-                ref={(el) => { logoRefs.current["spotify"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
+                ref={(el) => {
+                  logoRefs.current["nxtwave"] = el
                 }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 1.5 },
-                  scale: { duration: 0.5, delay: 1.5 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "spotify" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                {/* Spotify logo */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954">
-                  <path d="M13.966 22.624l-1.69-4.281H7.084l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 19.905z" />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                ref={(el) => { logoRefs.current["adobe"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 1.6 },
-                  scale: { duration: 0.5, delay: 1.6 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute left-[4vw] top-1/2 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "adobe" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                {/* Adobe logo */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000">
-                  <path d="M12 5.362L2.4 8.638v6.724L12 18.638l9.6-3.276V8.638L12 5.362zM12 0l12 4.095v15.81L12 24 0 19.905z" />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                ref={(el) => { logoRefs.current["tesla"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 1.7 },
-                  scale: { duration: 0.5, delay: 1.7 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[28vw] left-[8vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "tesla" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                {/* Tesla logo */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#CC0000">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z" />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                ref={(el) => { logoRefs.current["slack"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 2.0 },
-                  scale: { duration: 0.5, delay: 2.0 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-16 right-24 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "slack" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24">
-                  <path
-                    fill="#E01E5A"
-                    d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z"
-                  />
-                  <path
-                    fill="#36C5F0"
-                    d="M6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"
-                  />
-                  <path
-                    fill="#2EB67D"
-                    d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834z"
-                  />
-                  <path
-                    fill="#ECB22E"
-                    d="M8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"
-                  />
-                </svg>
-              </motion.div>
-
-              {/* GitHub - repositioned */}
-              <motion.div
-                ref={(el) => { logoRefs.current["github"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 2.1 },
-                  scale: { duration: 0.5, delay: 2.1 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-16 right-24 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "github" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#181717">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
-                </svg>
-              </motion.div>
-
-              {/* LinkedIn - repositioned */}
-              <motion.div
-                ref={(el) => { logoRefs.current["linkedin"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 2.2 },
-                  scale: { duration: 0.5, delay: 2.2 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-16 left-24 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "linkedin" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </motion.div>
-
-              {/* Twitter/X - repositioned */}
-              <motion.div
-                ref={(el) => { logoRefs.current["twitter"] = el; }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -660,16 +539,16 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-16 left-24 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "twitter" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-16 left-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "nxtwave" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                <img src={nxtwaveLogo || "/placeholder.svg"} alt="NxtWave" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
-              {/* Facebook - repositioned to avoid overlap */}
+              {/* Orica */}
               <motion.div
-                ref={(el) => { logoRefs.current["facebook"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["orica"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -682,16 +561,181 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-24 right-8 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "facebook" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-24 right-40 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "orica" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-2.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.849.97 1.213 2.115 1.074 3.907z" />
-                </svg>
+                <img src={oricaLogo || "/placeholder.svg"} alt="Orica" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
-              {/* Instagram - repositioned to avoid overlap */}
               <motion.div
-                ref={(el) => { logoRefs.current["instagram"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["plaksha"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 1.1 },
+                  scale: { duration: 0.5, delay: 1.1 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute top-[22vw] right-[12vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "plaksha" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img src={plakshaLogo || "/placeholder.svg"} alt="Plaksha" className="w-4/5 h-4/5 object-contain" />
+              </motion.div>
+
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["iitRoorkee"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 1.5 },
+                  scale: { duration: 0.5, delay: 1.5 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute bottom-[19vw] left-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iitRoorkee" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img
+                  src={iitRoorkeeLogo || "/placeholder.svg"}
+                  alt="IIT Roorkee"
+                  className="w-4/5 h-4/5 object-contain"
+                />
+              </motion.div>
+
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["iitBombay"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 1.6 },
+                  scale: { duration: 0.5, delay: 1.6 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute left-[12vw] top-38 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iitBombay" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img
+                  src={iitBombayLogo || "/placeholder.svg"}
+                  alt="IIT Bombay"
+                  className="w-4/5 h-4/5 object-contain"
+                />
+              </motion.div>
+
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["infinitudeit"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 1.7 },
+                  scale: { duration: 0.5, delay: 1.7 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute top-[16vw] left-[19vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "infinitudeit" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img
+                  src={infinitudeitLogo || "/placeholder.svg"}
+                  alt="Infinitude IT"
+                  className="w-4/5 h-4/5 object-contain"
+                />
+              </motion.div>
+
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["larsenToubro"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 2.0 },
+                  scale: { duration: 0.5, delay: 2.0 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute top-8 right-56 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "larsenToubro" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img
+                  src={larsenToubroLogo || "/placeholder.svg"}
+                  alt="Larsen & Toubro"
+                  className="w-4/5 h-4/5 object-contain"
+                />
+              </motion.div>
+
+              {/* WT Vision */}
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["wtvision"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 2.1 },
+                  scale: { duration: 0.5, delay: 2.1 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute bottom-16 right-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "wtvision" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img src={wtvisionLogo || "/placeholder.svg"} alt="WT Vision" className="w-4/5 h-4/5 object-contain" />
+              </motion.div>
+
+              {/* Nippon */}
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["nippon"] = el
+                }}
+                initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: -360,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, delay: 2.2 },
+                  scale: { duration: 0.5, delay: 2.2 },
+                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className={`absolute bottom-8 left-34 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "nippon" ? "scale-[2] z-50" : "hover:scale-105"}`}
+              >
+                <img src={nipponLogo || "/placeholder.svg"} alt="Nippon" className="w-4/5 h-4/5 object-contain" />
+              </motion.div>
+
+              {/* Phytec */}
+              <motion.div
+                ref={(el) => {
+                  logoRefs.current["phytec"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -704,23 +748,16 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-24 left-8 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "instagram" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute bottom-24 left-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "phytec" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="url(#instagram-gradient)">
-                  <defs>
-                    <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#833AB4" />
-                      <stop offset="50%" stopColor="#FD1D1D" />
-                      <stop offset="100%" stopColor="#FCB045" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
-                </svg>
+                <img src={phytecLogo || "/placeholder.svg"} alt="Phytec" className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               {/* Uber */}
               <motion.div
-                ref={(el) => { logoRefs.current["uber"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["uber"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -733,16 +770,17 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "uber" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-24 left-38 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "uber" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
                   <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
-
               {/* Airbnb */}
               <motion.div
-                ref={(el) => { logoRefs.current["airbnb"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["airbnb"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -755,16 +793,17 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "airbnb" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute bottom-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "airbnb" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF5A5F">
                   <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
-
               {/* Dropbox */}
               <motion.div
-                ref={(el) => { logoRefs.current["dropbox"] = el; }}
+                ref={(el) => {
+                  logoRefs.current["dropbox"] = el
+                }}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -777,164 +816,10 @@ export default function TrustedPartners() {
                   rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-1/4 right-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "dropbox" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
+                className={`absolute top-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "dropbox" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#0061FF">
                   <path d="M6 2l6 4 6-4-6-2zm0 6l6 4 6-4h-12zm12 6l-6-4v6l6 4 6-4v-6z" />
-                </svg>
-              </motion.div>
-
-              {/* Zoom */}
-              <motion.div
-                ref={(el) => { logoRefs.current["zoom"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.1 },
-                  scale: { duration: 0.5, delay: 3.1 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-1/4 left-6 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "zoom" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#2D8CFF">
-                  <path d="M6 2l6 4 6-4-6-2zm0 6l6 4 6-4h-12zm12 6l-6-4v6l6 4 6-4v-6z" />
-                </svg>
-              </motion.div>
-
-              {/* Shopify */}
-              <motion.div
-                ref={(el) => { logoRefs.current["shopify"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.2 },
-                  scale: { duration: 0.5, delay: 3.2 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-8 left-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "shopify" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#7AB55C">
-                  <path d="M15.337 2.136c-.168-.042-.336-.042-.504 0-1.176.294-2.184.966-2.856 1.932-.504.714-.84 1.554-.966 2.436-.378-.126-.798-.21-1.218-.21-2.394 0-4.326 1.932-4.326 4.326 0 .378.042.756.126 1.134C2.394 12.378 0 15.234 0 18.636c0 2.982 2.394 5.364 5.376 5.364h13.248C21.606 24 24 21.606 24 18.636c0-2.982-2.394-5.364-5.376-5.364-.378 0-.756.042-1.134.126 0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
-                </svg>
-              </motion.div>
-
-              {/* PayPal */}
-              <motion.div
-                ref={(el) => { logoRefs.current["paypal"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.3 },
-                  scale: { duration: 0.5, delay: 3.3 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-8 right-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "paypal" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#00457C">
-                  <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.849.97 1.213 2.115 1.012 4.287z" />
-                </svg>
-              </motion.div>
-
-              {/* Stripe */}
-              <motion.div
-                ref={(el) => { logoRefs.current["stripe"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.4 },
-                  scale: { duration: 0.5, delay: 3.4 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-8 right-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "stripe" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#635BFF">
-                  <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.274 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" />
-                </svg>
-              </motion.div>
-
-              {/* Twitch */}
-              <motion.div
-                ref={(el) => { logoRefs.current["twitch"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.5 },
-                  scale: { duration: 0.5, delay: 3.5 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-8 left-1/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "twitch" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#9146FF">
-                  <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
-                </svg>
-              </motion.div>
-
-              {/* TikTok */}
-              <motion.div
-                ref={(el) => { logoRefs.current["tiktok"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.6 },
-                  scale: { duration: 0.5, delay: 3.6 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute left-8 top-2/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "tiktok" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-                </svg>
-              </motion.div>
-
-              {/* Pinterest */}
-              <motion.div
-                ref={(el) => { logoRefs.current["pinterest"] = el; }}
-                initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: -360,
-                }}
-                transition={{
-                  opacity: { duration: 0.5, delay: 3.7 },
-                  scale: { duration: 0.5, delay: 3.7 },
-                  rotate: { duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                }}
-                viewport={{ once: false, amount: 0.3 }}
-                className={`absolute right-8 bottom-2/3 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "pinterest" ? "scale-[1.7] z-50" : "hover:scale-105"}`}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#BD081C">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7z" />
                 </svg>
               </motion.div>
             </motion.div>

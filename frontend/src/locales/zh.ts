@@ -108,7 +108,7 @@ export const zh = {
   yearsExperience: '年经验',
   
   // Footer
-  bidyutTechnologies: 'Bidyut Technologies',
+  bidyutTechnologies: 'Bidyut Innovations',
   footerDescription: '教育机构高级机器人和技术解决方案的领先提供商。通过创新的 STEM 教育和尖端研究赋能下一代。',
   quickLinks: '快速链接',
   contactInformation: '联系信息',
@@ -117,7 +117,7 @@ export const zh = {
   newsletterDescription: '了解我们最新的创新、教育项目和技术更新。',
   enterEmail: '输入您的电子邮件地址',
   subscribeNewsletter: '订阅通讯',
-  allRightsReserved: '© 2025 Bidyut Technologies. 保留所有权利。',
+  allRightsReserved: '© 2025 Bidyut Innovations. 保留所有权利。',
   privacyPolicy: '隐私政策',
   termsOfService: '服务条款',
   cookiePolicy: 'Cookie 政策',

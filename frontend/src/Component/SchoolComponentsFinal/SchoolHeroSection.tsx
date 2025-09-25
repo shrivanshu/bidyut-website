@@ -61,42 +61,42 @@ const SchoolHeroSection: React.FC = () => {
 
   // Desktop images initial layout - positioned further right for more dramatic leftward movement
   const desktopInitial = [
-    { left: 800, w: 166, h: 247, src: "/publicFinal/SchoolImages/School1.svg" },
-    { left: 1000, w: 205, h: 305, src: "/publicFinal/SchoolImages/School2.svg" },
-    { left: 1250, w: 231, h: 348, src: "/publicFinal/SchoolImages/School3.svg" },
-    { left: 1520, w: 257, h: 393, src: "/publicFinal/SchoolImages/School1.svg" },
-    { left: 1800, w: 280, h: 430, src: "/publicFinal/SchoolImages/School2.svg" },
+    { left: 800, w: 166, h: 247, src: "/school_images/C2271.00_00_21_55.Still002.jpg" },
+    { left: 1000, w: 205, h: 305, src: "/school_images/C2271.00_00_25_11.Still004.jpg" },
+    { left: 1250, w: 231, h: 348, src: "/school_images/C2271.00_00_33_34.Still003.jpg" },
+    { left: 1520, w: 257, h: 393, src: "/school_images/Render.00_01_51_13.Still005.jpg" },
+    { left: 1800, w: 280, h: 430, src: "/school_images/Render.00_01_54_02.Still006.jpg" },
   ] as const;
 
   // Multiple videos data for scroll-based video switching
   const videosData = [
     {
-      src: "/robo-main.mp4",
-      poster: "/publicFinal/SchoolImages/School1.svg",
+      src: "/school_hero_video/hero section video/01.mp4",
+      poster: "/school_images/C2271.00_00_21_55.Still002.jpg",
       title: "Robotics Lab Highlight",
       description: "Hands-on robotics, AI and drone programs that transform classrooms."
     },
     {
-      src: "/Art.mp4",
-      poster: "/publicFinal/SchoolImages/School2.svg",
+      src: "/school_hero_video/hero section video/C2271.mp4",
+      poster: "/school_images/C2271.00_00_25_11.Still004.jpg",
       title: "Creative Arts Integration",
       description: "Combining technology with creative arts for holistic learning experiences."
     },
     {
-      src: "/Science.mp4",
-      poster: "/publicFinal/SchoolImages/School3.svg",
+      src: "/school_hero_video/hero section video/School lab video.mp4",
+      poster: "/school_images/C2271.00_00_33_34.Still003.jpg",
       title: "Advanced Science Labs",
       description: "State-of-the-art science equipment for experimental learning."
     },
     {
-      src: "/Technology.mp4",
-      poster: "/publicFinal/SchoolImages/School1.svg",
+      src: "/school_hero_video/hero section video/IMG_1791.mp4",
+      poster: "/school_images/Render.00_01_51_13.Still005.jpg",
       title: "Technology Workshop",
       description: "Modern technology integration across all learning modules."
     },
     {
-      src: "/Engineering.mp4",
-      poster: "/publicFinal/SchoolImages/School2.svg",
+      src: "/school_hero_video/hero section video/Engineering.mp4",
+      poster: "/school_images/Render.00_01_54_02.Still006.jpg",
       title: "Engineering Concepts",
       description: "Foundation engineering principles through interactive projects."
     }
@@ -344,8 +344,7 @@ const SchoolHeroSection: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                We provide hands-on robotics, AI, drone programs, teacher training, and global competitions to
-                prepare students for tomorrow.
+                We offer hands-on programs in Robotics, AI, and Drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future
               </p>
             </div>
           </div>
