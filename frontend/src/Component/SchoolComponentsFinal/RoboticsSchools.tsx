@@ -12,50 +12,57 @@ export function RoboticsSchools() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Left side - Main image and content */}
-          <div className="space-y-6">
-            <div className="rounded-2xl overflow-hidden">
+          <div className="space-y-6 flex flex-col">
+            <div className="rounded-2xl overflow-hidden flex-grow">
               <img
-                src="/School/RoboticsSchools.png"
+                src="/school_images/Render.00_01_51_13.Still005.jpg"
                 alt="Modern robotics lab with red and purple LED lighting"
-                className="w-full h-auto object-cover"
+                className="w-full h-full min-h-[600px] object-cover"
               />
             </div>
 
-            <div className="space-y-4">
-              <p className="text-sm dark:text-gray-400 text-gray-500 uppercase tracking-wide">
-                Bring Innovation to Your School Today
-              </p>
-              <h3 className="text-2xl md:text-3xl font-bold dark:text-gray-300 text-gray-900">
-                Partner with us to set up your Robotics & AI Lab, train your teache...
-              </h3>
-              <p className="text-gray-600  dark:text-gray-400">
-                We've already transformed 50+ schools with hands-on robotics programs.
-                Let's make your school next.
-              </p>
-            </div>
+          
           </div>
 
-          {/* Right side - Repeated content blocks */}
+          {/* Right side - Content blocks */}
           <div className="space-y-8">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="space-y-4 pb-8 border-b border-gray-200 last:border-b-0"
-              >
-                <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  Bring Innovation to Your School Today
-                </p>
-                <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
-                  Partner with us to set up your Robotics & AI Lab, train your teache...
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  We've already transformed 50+ schools with hands-on robotics programs.
-                  Let's make your school next.
-                </p>
-              </div>
-            ))}
+            <div className="space-y-4 pb-8 border-b border-gray-200">
+              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                See How Schools Are Transforming with Robotics
+              </p>
+              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+                Modern robotics labs, equipped with smart tools and vibrant learning spaces
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Modern robotics labs, equipped with smart tools and vibrant learning spaces, are helping students turn curiosity into innovation. Join the growing movement of schools embracing future-ready education.
+              </p>
+            </div>
+
+            <div className="space-y-4 pb-8 border-b border-gray-200">
+              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                Empower Teachers, Inspire Students
+              </p>
+              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+                Expert-led training for confident robotics and AI education
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                With our expert-led training, teachers gain the confidence to deliver robotics and AI education effectively. Supported with lesson plans, hands-on practice, and continuous guidance, they create engaging classrooms that spark creativity.
+              </p>
+            </div>
+
+            <div className="space-y-4 pb-8 border-b border-gray-200 last:border-b-0">
+              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                Building Future-Ready Skills
+              </p>
+              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+                From robotics and AI to drones and global competitions
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                From robotics and AI to drones and global competitions, we prepare students with real-world problem-solving skills. Over 50+ schools have already experienced the transformation—let's make your school the next hub of innovation.
+              </p>
+            </div>
 
             <div className="pt-4">
               <a href="/gallery">

@@ -11,52 +11,52 @@ export default function AdvanceRoboticsLabs() {
 
   const roboticsData = [
     {
-      src: "/GO2/GO2 EDU.png",
-      alt: "GO2 EDU Robot - Image 1",
-      title: "Advanced Robotics Labs",
-      subtitle: "Build the Future",
-      description: "State-of-the-art robotics laboratories with cutting-edge tools where students design, build, and program their own robots.",
-      features: ["Arduino & Raspberry Pi", "3D Printing", "AI Integration"]
+      src: "/school_images/project/Copy of DSC03498.jpg",
+      alt: "Schools Transforming with Robotics",
+      title: "See How Schools Are Transforming with Robotics",
+      subtitle: "Modern Learning Revolution",
+      description: "Modern robotics labs, equipped with smart tools and vibrant learning spaces, are helping students turn curiosity into innovation. Join the growing movement of schools embracing future-ready education.",
+      features: ["Smart Robotics Labs", "Interactive Learning Spaces", "Innovation-Driven Curriculum"]
     },
     {
-      src: "/GO2/GO2 PRO.png",
-      alt: "GO2 PRO Robot - Image 2",
-      title: "Coding & Programming",
-      subtitle: "Master the Code",
-      description: "Interactive programming sessions with modern languages and frameworks to develop problem-solving skills.",
-      features: ["Python & JavaScript", "Web Development", "Mobile Apps"]
+      src: "/school_images/project/Copy of fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
+      alt: "Teacher Training and Support",
+      title: "Empower Teachers, Inspire Students",
+      subtitle: "Expert-Led Training",
+      description: "With our expert-led training, teachers gain the confidence to deliver robotics and AI education effectively. Supported with lesson plans, hands-on practice, and continuous guidance, they create engaging classrooms that spark creativity.",
+      features: ["Comprehensive Training Programs", "Lesson Plans & Resources", "Continuous Support & Guidance"]
     },
     {
-      src: "/Cobo/D1-arm.png",
-      alt: "D1 Robotic Arm - Image 3",
-      title: "AI & Machine Learning",
+      src: "/school_images/project/Copy of f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.jpg",
+      alt: "Building Future-Ready Skills",
+      title: "Building Future-Ready Skills",
+      subtitle: "Real-World Problem Solving",
+      description: "From robotics and AI to drones and global competitions, we prepare students with real-world problem-solving skills. Over 50+ schools have already experienced the transformation—let's make your school the next hub of innovation.",
+      features: ["Robotics & AI Education", "Drone Technology", "Global Competition Preparation"]
+    },
+    {
+      src: "/school_images/project/Copy of 1204RR_M12 - Edited.jpg",
+      alt: "Advanced Robotics Project",
+      title: "Hands-On Robotics Projects",
+      subtitle: "Interactive Learning",
+      description: "Students engage in practical, hands-on robotics projects that bridge the gap between theoretical knowledge and real-world application through our innovative programs.",
+      features: ["Project-Based Learning", "Real-World Applications", "Advanced Robotics Tools"]
+    },
+    {
+      src: "/school_images/project/Copy of ai.jpg",
+      alt: "AI Learning Session",
+      title: "AI & Machine Learning Labs",
       subtitle: "Intelligence Unleashed",
-      description: "Explore artificial intelligence and machine learning concepts through hands-on projects and real-world applications.",
-      features: ["Neural Networks", "Data Science", "Computer Vision"]
+      description: "Explore artificial intelligence and machine learning concepts through hands-on projects, preparing students for the future of technology and innovation.",
+      features: ["AI Programming", "Machine Learning Models", "Computer Vision Projects"]
     },
     {
-      src: "/GO2/GO2 AIR.png",
-      alt: "GO2 AIR Robot - Image 4",
-      title: "Smart Technology",
-      subtitle: "Connected Future",
-      description: "Discover IoT devices, smart sensors, and connected systems that power modern technology ecosystems.",
-      features: ["IoT Devices", "Smart Sensors", "Cloud Integration"]
-    },
-    {
-      src: "/Cobo/Franka-arm.png",
-      alt: "Franka Robotic Arm - Image 5",
-      title: "Virtual Reality Labs",
-      subtitle: "Immersive Learning",
-      description: "Experience immersive learning environments with VR technology for enhanced educational experiences.",
-      features: ["VR Development", "3D Modeling", "Interactive Simulations"]
-    },
-    {
-      src: "/GO2/GO2 EDU2.png",
-      alt: "GO2 EDU2 Robot - Image 6",
-      title: "Innovation Hub",
-      subtitle: "Create Tomorrow",
-      description: "A collaborative space where creativity meets technology, fostering innovation and entrepreneurial thinking.",
-      features: ["Design Thinking", "Prototyping", "Project Showcase"]
+      src: "/school_images/project/Copy of DSC05157 - Edited.jpg",
+      alt: "STEM Workshop",
+      title: "STEM Innovation Workshops",
+      subtitle: "Creative Problem Solving",
+      description: "Comprehensive STEM workshops that combine science, technology, engineering, and mathematics in exciting, hands-on learning experiences that inspire creativity.",
+      features: ["Interdisciplinary Learning", "Creative Problem Solving", "Innovation Challenges"]
     }
   ]
 
@@ -183,11 +183,7 @@ export default function AdvanceRoboticsLabs() {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-contain"
-                  style={{ 
-                    height: '50vh',
-                    objectFit: 'contain'
-                  }}
+                  className="w-[400px] h-[400px] object-contain"
                 />
               </div>
             ))}
@@ -269,13 +265,18 @@ export default function AdvanceRoboticsLabs() {
                     : 'order-1 bg-gray-800'
                 }`}
               >
-                <div className="w-full h-full px-4 relative flex items-center justify-center">
+                <div className="relative flex items-center justify-center">
                   <motion.img
                     src={image.src}
                     alt={image.alt}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    className="w-full h-full object-contain max-w-full max-h-[80vh]"
+                    className="w-[500px] h-[500px] object-contain"
+                    style={{
+                      background: '#f5f5f5',
+                      borderRadius: '12px',
+                      padding: '20px'
+                    }}
                   />
                 </div>
               </motion.div>

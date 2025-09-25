@@ -108,7 +108,7 @@ export const bn = {
   yearsExperience: 'বছরের অভিজ্ঞতা',
   
   // Footer
-  bidyutTechnologies: 'Bidyut Technologies',
+  bidyutTechnologies: 'Bidyut Innovations',
   footerDescription: 'শিক্ষা প্রতিষ্ঠানের জন্য উন্নত রোবোটিক্স এবং প্রযুক্তি সমাধানের নেতৃস্থানীয় প্রদানকারী। উদ্ভাবনী STEM শিক্ষা এবং অত্যাধুনিক গবেষণার মাধ্যমে পরবর্তী প্রজন্মের ক্ষমতায়ন।',
   quickLinks: 'দ্রুত লিংক',
   contactInformation: 'যোগাযোগের তথ্য',

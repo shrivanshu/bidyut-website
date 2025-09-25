@@ -7,7 +7,7 @@ export function AboutSchool() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/School/schooll.png')",
+          backgroundImage: "url('/school_images/Render.00_01_54_02.Still006.jpg')",
         }}
       />
 

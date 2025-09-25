@@ -90,7 +90,7 @@ export const en = {
   
   // Gallery Page
   knowUsMore: 'Know Us More',
-  discoverHeart: 'Discover The Heart And Soul Of Bidyut Innovation – Our Mission, Our Team, And Our Vision For Transforming Education Through Technology.',
+  discoverHeart: 'Explore the Heart of Bidyut Innovation Discover our mission, our passionate team, and our vision to transform education through technology. At Bidyut Innovation, we believe in creating future-ready learners through robotics, AI, and hands-on experiences. Together, we are building a culture of creativity, problem-solving, and innovation that empowers both students and teachers.',
   awardWinning: 'Award Winning',
   digitalInnovation: 'Digital Innovation',
   celebratingJourney: 'Celebrating our journey of innovation, excellence, and impact in the field of technology and education.',
@@ -110,7 +110,7 @@ export const en = {
   yearsExperience: 'Years Experience',
   
   // Footer
-  bidyutTechnologies: 'Bidyut Technologies',
+  bidyutTechnologies: 'Bidyut Innovations',
   footerDescription: 'Shaping Tomorrow\'s Technology - At Bidyut Innovation, we pioneer at the intersection of human creativity and robotic precision. Our mission is to craft the future of automation through solutions that empower people, enhance capabilities, and drive meaningful progress—in classrooms, industries, and beyond.',
   quickLinks: 'Quick Links',
   contactInformation: 'Contact Information',

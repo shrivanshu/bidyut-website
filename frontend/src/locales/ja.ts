@@ -117,7 +117,7 @@ export const ja = {
   newsletterDescription: '最新のイノベーション、教育プログラム、技術アップデートについてお知らせします。',
   enterEmail: 'メールアドレスを入力',
   subscribeNewsletter: 'ニュースレターに登録',
-  allRightsReserved: '© 2025 Bidyut Technologies. すべての権利予約済み。',
+  allRightsReserved: '© 2025 Bidyut Innovations. すべての権利予約済み。',
   privacyPolicy: 'プライバシーポリシー',
   termsOfService: '利用規約',
   cookiePolicy: 'クッキーポリシー',
