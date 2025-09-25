@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 const schoolImages = {
   'Robotics Project': {
     name: 'Advanced Robotics Project',
-    src: '/About_us_gallery/Students 400x400/j.jpg',
+    src: '/About_us_gallery/Projects 400x400/DSC05157 - Edited.jpg',
     desc: 'Students working on advanced robotics projects'
   },
   'AI Workshop': {
     name: 'Artificial Intelligence Workshop',
-    src: '/About_us_gallery/Students 400x400/Untitled-7.jpg',
+    src: '/About_us_gallery/Events 400x400/Untitled-1.jpg',
     desc: 'Interactive AI learning session with students'
   },
   'Tech Lab': {
     name: 'Technology Integration Lab',
-    src: '/About_us_gallery/Students 400x400/Untitled-8.jpg',
+    src: '/About_us_gallery/Events 400x400/Untitled-3.jpg',
     desc: 'Advanced technology learning environment'
   },
   'Innovation Lab': {
@@ -23,7 +23,7 @@ const schoolImages = {
   },
   'STEM Workshop': {
     name: 'STEM Learning Workshop',
-    src: '/About_us_gallery/Students 400x400/j.jpg',
+    src: '/About_us_gallery/Training 400x800/h.jpg',
     desc: 'Hands-on STEM learning experience'
   },
   'Project Development': {
@@ -33,7 +33,7 @@ const schoolImages = {
   },
   'Research Hub': {
     name: 'Research and Development Hub',
-    src: '/About_us_gallery/Students 400x400/Untitled-8.jpg',
+    src: '/About_us_gallery/Events 400x400/fggh.jpg',
     desc: 'Advanced research and development activities'
   }
 };
@@ -226,6 +226,7 @@ export default function SchoolCarousel() {
         }
 
         .carousel-image:hover {
+        
           transform: scale(1.05);
           transition: transform 0.3s ease;
         }
@@ -279,8 +280,10 @@ export default function SchoolCarousel() {
                 src={schoolImage.src}
                 alt={schoolImage.desc}
                 onClick={() => handleNavigation(1)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer',  objectFit: 'cover', }}
               />
+         
+             
             </div>
           </article>
         ))}
