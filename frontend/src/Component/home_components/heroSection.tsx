@@ -113,7 +113,7 @@ const HeroSection: React.FC = () => {
     },
   ]);
 
-  const videos = ["/public/fnf 03.mp4"];
+  const videos = ["/fnf 03.mp4"];
 
   // Handle sending message
   const handleSend = async (msg: string) => {

@@ -33,7 +33,6 @@ const SchoolHeroSection: React.FC = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [prevVideoIndex, setPrevVideoIndex] = useState(0);
   const [videoTransition, setVideoTransition] = useState(0); // 0-1 for smooth transitions
-  const [actualScrollInHold, setActualScrollInHold] = useState(0); // Track actual scroll distance in hold phase
   const [videoScalingProgress, setVideoScalingProgress] = useState(0); // Separate scaling for video div
 
   // Text layout
@@ -238,7 +237,6 @@ const SchoolHeroSection: React.FC = () => {
       const videoScalingPhase = 500; // 500px for video to reach full size first
       
       const actualScrollInHold = y - duration;
-      setActualScrollInHold(actualScrollInHold); // Update state for UI
       
       // Calculate video scaling progress (0-1 over first 500px)
       const scalingProgress = clamp01(actualScrollInHold / videoScalingPhase);
@@ -512,7 +510,7 @@ const SchoolHeroSection: React.FC = () => {
                 muted
                 loop
                 playsInline
-                style={{ opacity: videoTransition < 0.5 ? 0 : 1 }} // Only show after transition midpoint
+                style={{ opacity: prevVideoIndex !== currentVideoIndex ? (videoTransition < 0.5 ? 0 : 1) : 1 }} // Only apply transition when switching videos
               />
 
               {/* Previous Video for smooth transition */}
@@ -562,9 +560,9 @@ const SchoolHeroSection: React.FC = () => {
                   />
                 </div>
                 
-                <p className="text-white text-[11px] md:text-[13px] opacity-75 mt-2">
+                {/* <p className="text-white text-[11px] md:text-[13px] opacity-75 mt-2">
                   {actualScrollInHold <= 500 ? `Video scaling: ${Math.round(videoScalingProgress * 100)}%` : `Video ${currentVideoIndex + 1} of ${videosData.length}`}
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

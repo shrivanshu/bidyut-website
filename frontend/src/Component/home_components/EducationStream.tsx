@@ -57,10 +57,48 @@ export default function EducationStream() {
   const [autoRotate] = useState(true);
   const pillsContainerRef = useRef<HTMLDivElement>(null);
   const rotationInterval = useRef<NodeJS.Timeout | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    // Initialize video refs array
+    videoRefs.current = new Array(videoOptions.length).fill(null);
+  }, []);
+
+  // Handle video loading and playing
+  useEffect(() => {
+    const currentVideo = videoRefs.current[currentVideoIndex];
+    if (currentVideo) {
+      currentVideo.play().catch(console.error);
+    }
+    
+    // Pause other videos
+    videoRefs.current.forEach((video, idx) => {
+      if (idx !== currentVideoIndex && video) {
+        video.pause();
+      }
+    });
+  }, [currentVideoIndex]);
 
   const handleVideoClick = (video: VideoOption, index: number) => {
-    setActiveVideo(video);
-    setCurrentVideoIndex(index);
+    const nextVideo = videoRefs.current[index];
+    if (nextVideo) {
+      // Ensure the video is ready to play
+      nextVideo.currentTime = 0;
+      const playPromise = nextVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setActiveVideo(video);
+          setCurrentVideoIndex(index);
+        }).catch(error => {
+          console.error("Video play failed:", error);
+          setActiveVideo(video);
+          setCurrentVideoIndex(index);
+        });
+      }
+    } else {
+      setActiveVideo(video);
+      setCurrentVideoIndex(index);
+    }
     
     if (pillsContainerRef.current) {
       const containerHeight = pillsContainerRef.current.scrollHeight;
@@ -148,16 +186,24 @@ export default function EducationStream() {
         >
           <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] animated-border">
             <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden">
-              <video
-                className="absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto"
-                src={activeVideo.src}
-                playsInline
-                muted
-                controls={false}
-                autoPlay={false}
-                loop
-                poster="/media/video.svg"
-              />
+              {videoOptions.map((video, index) => (
+                <video
+                  key={video.src}
+                  ref={(el) => {
+                    videoRefs.current[index] = el;
+                  }}
+                  className={`absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto transition-opacity duration-300 ${
+                    index === currentVideoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                  src={video.src}
+                  playsInline
+                  muted
+                  controls={false}
+                  autoPlay={index === currentVideoIndex}
+                  loop
+                  preload="auto"
+                />
+              ))}
               <div className="sheen pointer-events-none" />
               <div className={`progress-bar ${!autoRotate ? 'paused' : ''}`} key={`mobile-pb-${currentVideoIndex}`} />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
@@ -280,15 +326,24 @@ export default function EducationStream() {
             >
               <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] animated-border">
                 <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden">
-                  <video
-                    src={activeVideo.src}
-                    className="absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    controls={false}
-                  />
+                  {videoOptions.map((video, index) => (
+                    <video
+                      key={video.src}
+                      ref={(el) => {
+                        videoRefs.current[index] = el;
+                      }}
+                      src={video.src}
+                      className={`absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto transition-opacity duration-300 ${
+                        index === currentVideoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      }`}
+                      autoPlay={index === currentVideoIndex}
+                      muted
+                      loop
+                      playsInline
+                      controls={false}
+                      preload="auto"
+                    />
+                  ))}
                   <div className="sheen pointer-events-none" />
                   <div className={`progress-bar ${!autoRotate ? 'paused' : ''}`} key={`desk-pb-${currentVideoIndex}`} />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8">
