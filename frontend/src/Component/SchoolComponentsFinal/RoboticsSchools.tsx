@@ -17,7 +17,7 @@ export function RoboticsSchools() {
           <div className="space-y-6 flex flex-col">
             <div className="rounded-2xl overflow-hidden flex-grow">
               <img
-                src="/school_images/Render.00_01_51_13.Still005.jpg"
+                src="/school_images/WhatsApp Image 2025-09-22 at 7.45.54 PM.jpeg"
                 alt="Modern robotics lab with red and purple LED lighting"
                 className="w-full h-full min-h-[600px] object-cover"
               />
