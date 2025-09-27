@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 const schoolImages = {
   'Robotics Project': {
     name: 'Advanced Robotics Project',
-    src: '/About_us_gallery/Projects 400x400/DSC05157 - Edited.jpg',
+    src: '/school_images/C2271.00_00_25_11.Still004.jpg',
     desc: 'Students working on advanced robotics projects'
   },
   'AI Workshop': {
     name: 'Artificial Intelligence Workshop',
-    src: '/About_us_gallery/Events 400x400/Untitled-1.jpg',
+    src: '/school_images/C2271.00_00_33_34.Still003.jpg',
     desc: 'Interactive AI learning session with students'
   },
   'Tech Lab': {
     name: 'Technology Integration Lab',
-    src: '/About_us_gallery/Events 400x400/Untitled-3.jpg',
+    src: '/school_images/IMG_9899.JPG',
     desc: 'Advanced technology learning environment'
   },
   'Innovation Lab': {
