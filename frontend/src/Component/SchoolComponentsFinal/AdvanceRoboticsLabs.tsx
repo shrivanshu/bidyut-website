@@ -14,7 +14,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of DSC03498.jpg",
       alt: "Schools Transforming with Robotics",
       title: "See How Schools Are Transforming with Robotics",
-      subtitle: "Modern Learning Revolution",
+      subtitle: "Bottling Plant",
       description: "Our student-built functional bottling plant, created using our components, brings engineering and robotics to life. Students turn ideas into working systems, learning problem-solving, automation, and innovation along the way.",
       features: ["Smart Robotics Labs", "Interactive Learning Spaces", "Innovation-Driven Curriculum"]
     },
@@ -22,7 +22,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
       alt: "Teacher Training and Support",
       title: "Empower Teachers, Inspire Students",
-      subtitle: "Expert-Led Training",
+      subtitle: "AI Color Sorter ",
       description: "Using the magic of computer vision, this smart shooter automatically identifies and sorts objects by color. It’s a brilliant demonstration of how AI can bring speed and accuracy to simple, everyday tasks.",
       features: ["Comprehensive Training Programs", "Lesson Plans & Resources", "Continuous Support & Guidance"]
     },
@@ -30,7 +30,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.jpg",
       alt: "Building Future-Ready Skills",
       title: "Building Future-Ready Skills",
-      subtitle: "Real-World Problem Solving",
+      subtitle: "Robotic Arm",
       description: "Powered by a micro:bit brain and precision gears, this arm responds to its environment. It’s a hands-on showcase of robotics, coding, and real-world problem-solving brought to life.",
       features: ["Robotics & AI Education", "Drone Technology", "Global Competition Preparation"]
     },
@@ -38,7 +38,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of 1204RR_M12 - Edited.jpg",
       alt: "Advanced Robotics Project",
       title: "Hands-On Robotics Projects",
-      subtitle: "Interactive Learning",
+      subtitle: "Cukoo Clock",
       description: "Encounter. Watch as this clever clock senses your presence with an IR sensor. The door swings open, and the cuckoo emerges, creating a delightful surprise that blends tradition with technology.",
       features: ["Project-Based Learning", "Real-World Applications", "Advanced Robotics Tools"]
     },
@@ -46,7 +46,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of ai.jpg",
       alt: "AI Learning Session",
       title: "AI & Machine Learning Labs",
-      subtitle: "Intelligence Unleashed",
+      subtitle: "AI Dancing Robot",
       description: "This project showcases the integration of computer vision and robotics. Using a real-time face detection algorithm, the AI robot identifies human presence. Upon recognition, it triggers a dynamic sequence of pre-programmed dance moves, creating an interactive and entertaining experience that demonstrates how machines can perceive and respond to their environment.",
       features: ["AI Programming", "Machine Learning Models", "Computer Vision Projects"]
     },
@@ -54,7 +54,7 @@ export default function AdvanceRoboticsLabs() {
       src: "/school_images/project/Copy of DSC05157 - Edited.jpg",
       alt: "STEM Workshop",
       title: "STEM Innovation Workshops",
-      subtitle: "Creative Problem Solving",
+      subtitle: "Hydraulic Pump",
       description: "Harness the Power of Pressure. This hydraulic timer uses the force of water to measure intervals. By pressing the pump, you control the flow of time itself, demonstrating fundamental principles of physics in a hands-on way.",
       features: ["Interdisciplinary Learning", "Creative Problem Solving", "Innovation Challenges"]
     }
@@ -232,7 +232,7 @@ export default function AdvanceRoboticsLabs() {
                     </p>
                   </div>
 
-                  <div className="space-y-4">
+                  {/* <div className="space-y-4">
                     {image.features.map((feature, featureIndex) => (
                       <motion.div
                         key={featureIndex}
@@ -245,12 +245,12 @@ export default function AdvanceRoboticsLabs() {
                         <span className="text-base lg:text-lg text-gray-200">{feature}</span>
                       </motion.div>
                     ))}
-                  </div>
+                  </div> */}
 
-                  <div className="flex items-center gap-2 pt-4">
+                  {/* <div className="flex items-center gap-2 pt-4">
                     <span className="text-base lg:text-lg font-medium text-white">Learn More</span>
                     <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
 

@@ -76,30 +76,30 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     year: "2021",
-    title: "Foundation in STEAM",
+    title: "Vision Ignited",
     description:
-      "We began our journey by setting up STEAM (Science, Technology, Engineering, Arts, Mathematics) labs in just 1–2 pioneering schools,Our mission was to integrate robotics and hands-on learning into everyday education,These schools became our first references, opening the doors to growth.",
+      "In 2021, our journey began with a bold idea: to bring the future of robotics and technology into education, research, and industry. We envisioned a world where every student and innovator could access cutting-edge robotics.",
   },
   {
     year: "2022",
-    title: "Transformation to STREAM",
+    title: "Building the Future of Learning",
     description:
-      "We evolved into STREAM (Science, Technology, Robotics, Engineering, Arts, Mathematics) by making Robotics the core of our programs,More schools adopted our labs, inspired by the success of early projects,This year cemented our reputation as an education innovator.",
+      "By 2022, we launched Robotics Labs for Schools, giving young learners hands-on exposure to innovation. Our early programs inspired curiosity, creativity, and problem-solving through interactive robotics education.",
   },
   {
     year: "2023",
-    title: "Expanding Horizons to Colleges",
-    description: "Our work extended from schools to colleges and universities, including premier institutes like IITs,We built advanced labs that prepared students with industry-ready applications,This positioned us as a bridge between academics and real-world innovation.",
+    title: "Expanding Horizons & Incorporation",
+    description: "2023 was a landmark year. We officially became a Private Limited Company, strengthening our structure and vision for long-term impact. Alongside this milestone, we scaled our offerings to universities and R&D centers, introducing humanoid robots, quadrupeds, and collaborative robots (cobots). These advanced systems helped students and researchers push the boundaries of robotics exploration.",
   },
   {
     year: "2024",
-    title: "R&D and Trusted Service Provider",
-    description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
+    title: "Driving Industry Transformation",
+    description: "2024 was the year of industry collaboration. We began delivering tailored robotics solutions for companies, empowering businesses with automation, efficiency, and next-generation robotics technology.",
   },
   {
     year: "2025",
-    title: " 500+ Schools, Global Clients, Lasting Impact",
-    description: "We established a strong R&D wing, designing tailored robotics and automation solutions,From STREAM labs in schools to industrial automation for enterprises, we became a trusted service provider,Government collaborations and large-scale projects boosted our national presence.",
+    title: "Leading the Robotics Revolution",
+    description: "Today, in 2025, we stand as a trusted Edutech & Robotics innovation partner—bridging schools, universities, and industries with cutting-edge solutions that shape the future of technology and learning.",
   },
 ]
 
@@ -265,11 +265,11 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
   // Language context
   // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
 
-  // Video sources (use local files from /about_vedio)
+  // Video sources (use local files from /about_video)
   const videoSources: { [key: string]: string } = {
-    "what-we-do": "/about_vedio/What we do.mp4",
-    "who-we-are": "/about_vedio/Who we are.mp4",
-    "where-we-are": "/about_vedio/Where we Are.mp4",
+    "what-we-do": "/about_video/What we do.mp4",
+    "who-we-are": "/about_video/Who we are.mp4",
+    "where-we-are": "/about_video/Where we Are.mp4",
   }
 
   // Gallery images with enhanced data - randomized order for balanced grid layout
@@ -1089,8 +1089,9 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
                     <img 
-src="/About_us_gallery/our_vision.png"                       alt="Our Vision" 
-                      className="w-full h-full object-cover" 
+                      src="/about_video/our_vision.gif"
+                      alt="Our Vision"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
