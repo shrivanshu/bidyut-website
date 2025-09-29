@@ -382,7 +382,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
     {
       src: "/About_us_gallery/Robots 400x800/Untitled-12.jpg",
       alt: "Educational robotics platform",
-      className: "row-span-2",
+      className: "row-span-1",
       category: "robots",
       story: "Educational robotics platforms designed to enhance STREAM learning experiences.",
       bgColor: "#EF4444"
@@ -414,7 +414,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
     {
       src: "/About_us_gallery/Projects 400x400/fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
       alt: "Technical project showcase",
-      className: "row-span-1",
+      className: "row-span-2",
       category: "projects",
       story: "Technical project showcases demonstrating advanced engineering capabilities.",
       bgColor: "#3B82F6"
