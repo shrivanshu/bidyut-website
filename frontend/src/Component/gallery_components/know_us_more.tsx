@@ -45,11 +45,19 @@ const galleryImages = [
     title: "Student programming robot",
     category: "team"
   },
-  {
-    src: "https://i.ibb.co/cSZNwb6H/6ec9e2ca97a74d13fb904b656c290c09878b4094.png",
-    title: "Hands-on robot building",
+  // Replace workspace image with local images
+  ...[
+    "Copy of DSC05302.JPG",
+    "DSC05543 copy.jpg",
+    "DSC05546.JPG",
+    "DSC05551.JPG",
+    "DSC05553.JPG",
+    "DSC05560.JPG",
+    "DSC05561.JPG"
+  ].map(filename => ({
+    src: `/knowusmore_gallery/${filename}`,
     category: "workspace"
-  },
+  })),
   {
     src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
     title: "Educational programming mat",
@@ -93,7 +101,7 @@ export default function KnowUsMore() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
 
-  const categories = ["all", "workspace", "team", "technology", "education"]
+  const categories = ["all", "workspace", "technology", "education"]
   
   const filteredImages = selectedCategory === "all" 
     ? galleryImages 
@@ -186,7 +194,6 @@ export default function KnowUsMore() {
               <div className="relative overflow-hidden rounded-2xl aspect-square">
                 <motion.img
                   src={image.src}
-                  alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-700"
                   whileHover={{ scale: 1.1 }}
                 />
@@ -197,7 +204,7 @@ export default function KnowUsMore() {
                 
                 {/* Interactive Overlay Content */}
                 <AnimatePresence>
-                  {hoveredIndex === index && (
+                  {hoveredIndex === index && image.category !== "workspace" && (
                     <motion.div
                       variants={overlayVariants}
                       initial="hidden"
@@ -207,7 +214,6 @@ export default function KnowUsMore() {
                     >
                       <div style={{position: 'relative', height: '40px', marginBottom: '8px'}}>
                         <GalleryText
-                          text={image.title}
                           flex={true}
                           alpha={false}
                           stroke={false}
@@ -233,6 +239,17 @@ export default function KnowUsMore() {
                           </svg>
                         </motion.div>
                       </div>
+                    </motion.div>
+                  )}
+                  {hoveredIndex === index && image.category === "workspace" && (
+                    <motion.div
+                      variants={overlayVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      className="absolute inset-0 flex flex-col justify-end p-6"
+                    >
+                      {/* No title or search button for workspace images */}
                     </motion.div>
                   )}
                 </AnimatePresence>

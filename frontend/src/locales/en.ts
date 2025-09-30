@@ -90,7 +90,7 @@ export const en = {
   
   // Gallery Page
   knowUsMore: 'Know Us More',
-  discoverHeart: 'Explore the Heart of Bidyut Innovation Discover our mission, our passionate team, and our vision to transform education through technology. At Bidyut Innovation, we believe in creating future-ready learners through robotics, AI, and hands-on experiences. Together, we are building a culture of creativity, problem-solving, and innovation that empowers both students and teachers.',
+  discoverHeart: 'Explore the Heart of Bidyut Innovation, At Bidyut Innovation, we are driven by a single mission: to transform education and industry through technology. As a leading edutech company, we specialize in setting up state-of-the-art robotics labs in schools, providing humanoids, cobots, and quadruped robots for universities, and delivering customized robotics solutions for companies.Our passionate team is committed to building future-ready learners by fostering creativity, critical thinking, and hands-on problem-solving skills. Through AI, robotics, and interactive learning experiences, we empower students, educators, and organizations to embrace innovation and drive progress.',
   awardWinning: 'Award Winning',
   digitalInnovation: 'Digital Innovation',
   celebratingJourney: 'Celebrating our journey of innovation, excellence, and impact in the field of technology and education.',
