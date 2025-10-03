@@ -87,29 +87,51 @@ const StreamSchool: React.FC = () => {
       </div>
 
       {/* STREAM */}
-      <div
-        className={`${isDark ? 'text-white' : 'text-black'} mt-2 hidden md:block transition-colors duration-300`}
-        style={{
-          fontFamily: "Poppins, sans-serif",
-          fontSize: "clamp(120px, 15vw, 181px)",
-          fontWeight: 600,
-          willChange: 'transform',
-        }}
-      >
-        <AnimatedText
-          direction="up"
-          delay={0.5}
-          duration={1}
-        >
-          <StaggeredText
-            text="STREAM"
-            staggerDelay={0.15}
-            direction="up"
-            splitBy="characters"
-          />
-        </AnimatedText>
-      </div>
-      <div
+      <div className="mt-2 transition-colors duration-300">
+  {/* Desktop */}
+  <div
+    className="hidden md:block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 drop-shadow-xl hover:scale-110 hover:tracking-wider transition-all duration-500"
+    style={{
+      fontFamily: "Poppins, sans-serif",
+      fontSize: "clamp(120px, 15vw, 181px)",
+      fontWeight: 700,
+      willChange: "transform",
+      cursor: "default",
+    }}
+  >
+    <AnimatedText direction="up" delay={0.5} duration={1}>
+      <StaggeredText
+        text="STREAM"
+        staggerDelay={0.15}
+        direction="up"
+        splitBy="characters"
+      />
+    </AnimatedText>
+  </div>
+
+  {/* Mobile */}
+  <div
+    className="block md:hidden text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 drop-shadow-lg hover:scale-105 hover:tracking-wider transition-all duration-500"
+    style={{
+      fontFamily: "Poppins, sans-serif",
+      fontSize: "clamp(40px, 12vw, 60px)",
+      fontWeight: 700,
+      willChange: "transform",
+      cursor: "default",
+    }}
+  >
+    <AnimatedText direction="up" delay={0.5} duration={1}>
+      <StaggeredText
+        text="STREAM"
+        staggerDelay={0.12}
+        direction="up"
+        splitBy="characters"
+      />
+    </AnimatedText>
+  </div>
+</div>
+
+      {/* <div
         className={`${isDark ? 'text-white' : 'text-black'} mt-2 block md:hidden transition-colors duration-300`}
         style={{
           fontFamily: "Poppins, sans-serif",
@@ -130,7 +152,7 @@ const StreamSchool: React.FC = () => {
             splitBy="characters"
           />
         </AnimatedText>
-      </div>
+      </div> */}
 
       {/* Subheading with Rotating Text Effect */}
       <div className={`mt-6 ${isDark ? 'text-white' : 'text-black'} hidden md:flex items-center justify-center flex-wrap transition-colors duration-300`}>

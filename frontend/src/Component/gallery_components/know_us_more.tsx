@@ -110,15 +110,15 @@ export default function KnowUsMore() {
   return (
     <section
       ref={sectionRef}
-      className={`py-20 px-4 flex flex-col items-center justify-center transition-colors duration-300 ${
-        isDark ? 'bg-black' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+      className={`py-10 md:py-20 px-4 flex flex-col items-center justify-center transition-colors duration-300 ${
+        isDark ? 'bg-black' : 'bg-white'
       }`}
     >
       {/* Enhanced Heading */}
       <div className="text-center max-w-4xl mb-16">
         <motion.h2 
-          initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0.2, y: -30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0.9, y: 10 }}
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-bold tracking-tight transition-colors duration-300 mb-6"
         >
@@ -128,7 +128,7 @@ export default function KnowUsMore() {
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } :  { opacity: 0.9, y: 10 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className={`text-xl leading-relaxed transition-colors duration-300 ${
             isDark ? 'text-gray-300' : 'text-gray-600'
@@ -140,9 +140,9 @@ export default function KnowUsMore() {
         {/* Category Filter */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0.9, y: 10 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-3 mt-8"
+          className="flex flex-wrap justify-center gap-3 mt-8" 
         >
           {categories.map((category) => (
             <button
