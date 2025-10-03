@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
+// import { ArrowRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
@@ -47,7 +47,7 @@ export default function AdvanceRoboticsLabs() {
       alt: "AI Learning Session",
       title: "AI & Machine Learning Labs",
       subtitle: "AI Dancing Robot",
-      description: "This project showcases the integration of computer vision and robotics. Using a real-time face detection algorithm, the AI robot identifies human presence. Upon recognition, it triggers a dynamic sequence of pre-programmed dance moves, creating an interactive and entertaining experience that demonstrates how machines can perceive and respond to their environment.",
+      description: "This project showcases the integration of computer vision and robotics. AI robot identifies human presence. Upon recognition, it triggers a dynamic sequence of pre-programmed dance moves, creating an interactive experience that demonstrates how machines can perceive and respond to their environment.",
       features: ["AI Programming", "Machine Learning Models", "Computer Vision Projects"]
     },
     {
@@ -130,61 +130,55 @@ export default function AdvanceRoboticsLabs() {
     <div className="bg-gray-900 rounded-t-[40px] md:rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
       <div className="relative md:h-screen w-full">
         {/* Mobile Layout */}
-        <div className="md:hidden w-full flex flex-col">
-          {/* First Text Block */}
-          <div className="w-full p-6 bg-teal-200">
-            <motion.div
-              key={selectedIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-6"
-            >
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 mb-4">{selectedData.title}</h1>
-                <h2 className="text-lg font-semibold text-gray-800 mb-6">{selectedData.subtitle}</h2>
-                <p className="text-base text-gray-700 leading-relaxed mb-8">
-                  {selectedData.description}
-                </p>
-              </div>
-              <div className="space-y-4">
-                {selectedData.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
-                    <span className="text-base text-gray-800">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 pt-4">
-                <span className="text-base font-medium text-gray-800">Learn More</span>
-                <ArrowRight className="w-5 h-5 text-gray-800" />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Mobile Image Scrolling */}
+         <div className="md:hidden w-full flex flex-col">
           <div 
             ref={mobileScrollRef}
-            className="w-full h-[60vh] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+            className="w-full h-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide"
             style={{
               scrollBehavior: 'smooth',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none'
             }}
           >
-            {roboticsData.map((image, index) => (
+            {roboticsData.map((item, index) => (
               <div 
                 key={index}
-                className={`w-full h-full snap-start snap-always flex items-center justify-center p-4 cursor-pointer ${
-                  selectedIndex === index ? 'ring-4 ring-gray-700' : ''
-                }`}
-                onClick={() => handleImageClick(index)}
+                className="w-full h-screen snap-start snap-always flex flex-col justify-start items-center bg-gray-900"
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-[400px] h-[400px] object-contain"
-                />
+                {/* Image Section (Top) */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full flex justify-center p-4"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-[90%] max-w-[400px] h-[250px] object-cover rounded-lg shadow-lg bg-white"
+                  />
+                </motion.div>
+
+                {/* Description Section (Bottom) */}
+                <motion.div
+                  key={selectedIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full p-6 space-y-6"
+                >
+                  <div>
+                    <h1 className="text-2xl font-bold text-gray-900 mb-4 text-center">{item.title}</h1>
+                    <h2 className="text-lg font-semibold text-gray-200 mb-4 text-center">{item.subtitle}</h2>
+                    <p className="text-base text-gray-300 leading-relaxed mb-6 text-center">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  
+
+                
+                </motion.div>
               </div>
             ))}
           </div>
