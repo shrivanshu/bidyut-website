@@ -12,11 +12,11 @@ export interface Testimonial {
 export const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: 'Mr. Mitesh',
+    name: 'Mrs. Manju Dogra',
     title: 'Principal',
-    company: 'Laurels school',
-    quote: "Robotics has made science concepts very easy to understand. Bidyut Innovation brought knowledge from book to the real world, developing enthusiasm in students about robotics.",
-    image: '/schools/Laurels School.png',
+    company: 'DAV BDL Public school',
+    quote: "Bidyut innovation is a wonderful platform! The staff is so cool and helpful in all situations they have knowledge, let others light their candles in it. I truly appreciate bidyut innovation for sharing such a knowledge with us. They helped us a lot by providing such a valuable information by videos and they even provided different kits which are truly helpful for children We are really thankfull for working with such a cool team.",
+    image: "/dav school.png",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Teacher',
     company: 'School',
     quote: 'Bidyut Innovative Lab is an awesome place! They have cool gadgets and inventions that make life easier. The staff is friendly and helpful with hands-on activities.',
-    image: '/schools/little wonders school.jpg', // Using a generic school logo
+    image: '/schools/little wonders school.jpg',
     bgColor: 'bg-teal-400',
   },
   {
@@ -53,11 +53,11 @@ export const testimonialData: Testimonial[] = [
   },
   {
     id: 6,
-    name: 'Mr.Kshitij',
-    title: 'Lab Supervisor',
-    company: 'Carmel School Ujjain',
-    quote: "Bidyut Innovations created a fantastic learning environment with top-notch resources and exceptional support. Their knowledgeable trainers make their robotics program outstanding for anyone diving into robotics.",
-    image: '/schools/carmel ujjain.png',
+    name: 'Ankit sir',
+    title: 'Principal',
+    company: 'St. Raphael’s Higher Secondary School',
+    quote: "I would like to extend my heartfelt thanks to the trainers of Bidyut Innovation for conducting such an engaging and informative robotics training session. The program will not only introduce our students to the exciting world of robotics but will also spark creativity, critical thinking, and a genuine interest in technology and innovation.",
+    image: "/St. Raphael’s Higher Secondary School.png",
   },
   {
     id: 7,
@@ -79,11 +79,11 @@ export const testimonialData: Testimonial[] = [
   },
   {
     id: 9,
-    name: 'Mr. Mitesh',
+    name: 'Mrs. Renu Gurnani',
     title: 'Principal',
-    company: 'Laurels school',
+    company: 'Vedansh International School',
     quote: "Bidyut Innovations created a fantastic learning environment with top-notch resources and exceptional support. Their knowledgeable trainers make their robotics program outstanding for anyone diving into robotics.",
-    image: '/schools/Laurels School.png',
+    image: "/vedansh.jpeg",
   },
   {
     id: 10,
@@ -95,10 +95,10 @@ export const testimonialData: Testimonial[] = [
   },
   {
     id: 11,
-    name: 'Mrs. Aruna Rao',
+    name: 'Vishal Sir',
     title: 'Science Teacher',
-    company: 'Laurels School',
-    quote: "Bidyut's screenless coding concept has been brilliant for our tiny tots. Their well-planned activities kindle curiosity and develop logical thinking without performance stress, helping students build clear thought processes.",
-    image: '/schools/Laurels School.png',
+    company: 'Christu Jyoti School',
+    quote: "Excellent explained all modules of course and also helping in making different models.Thanks a lot madam and sir for your guidance.We enjoyed a lot....Thanks again",
+    image: "/ChristuJyotiConventSchool.png",
   },
 ];
