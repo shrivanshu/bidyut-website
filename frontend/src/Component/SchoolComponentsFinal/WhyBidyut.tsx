@@ -4,7 +4,7 @@ import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
 
 const WhyBidyut: React.FC = () => {
   return (
-    <section className="w-full bg-white dark:bg-black relative font-['Roboto'] min-h-[300px] pb-10 mt-0 md:mt-4">
+    <section className="w-full bg-white dark:bg-black relative font-['Roboto'] min-h-[200px] md:min-h-[300px] pb-10 mt-0 md:mt-4">
       {/* Heading */}
       <div
         className="absolute font-semibold leading-snug text-black dark:text-white hidden md:block"
@@ -42,7 +42,7 @@ const WhyBidyut: React.FC = () => {
       </div>
 
       <div
-        className="block md:hidden text-center text-black dark:text-white font-semibold leading-snug px-4 mt-6"
+        className="block md:hidden text-center dark:text-white font-semibold leading-snug px-4 mt-6"
         style={{
           fontSize: "28px",
           fontWeight: 600,

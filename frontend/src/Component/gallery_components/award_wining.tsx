@@ -35,7 +35,7 @@ export default function AwardWinning() {
     const total = (textLeft + ' ' + textRight).length
     return (
       <motion.h1
-        className="cursor-pointer select-none text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-tight transition-colors duration-300 mb-4 sm:mb-6"
+        className="cursor-pointer select-none text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight transition-colors duration-300 mb-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -145,17 +145,17 @@ export default function AwardWinning() {
   }, [])
 
   // Auto-rotate every 3 seconds
-  useEffect(() => {
-    if (isMobile) return // Disable auto-rotation on mobile
-    
-    let interval: NodeJS.Timeout
-    if (!isHovering) {
-      interval = setInterval(() => {
-        setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
-      }, 3000)
-    }
-    return () => clearInterval(interval)
-  }, [isHovering, isMobile])
+  // Auto-rotate every 3 seconds (works for all screens)
+useEffect(() => {
+  let interval: NodeJS.Timeout
+  if (!isHovering) {
+    interval = setInterval(() => {
+      setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
+    }, 3000)
+  }
+  return () => clearInterval(interval)
+}, [isHovering])
+
 
   // Manual navigation
   const goNext = () => {
@@ -167,11 +167,11 @@ export default function AwardWinning() {
   }
 
   return (
-    <section className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
+    <section className={`py-12 sm:py-16 lg:py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          {renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)}
+        <div className="text-center mb-12  lg:mb-20">
+          {renderInteractiveWavy(t('Award Winning '), t('digitalInnovation'), isDark)}
           <motion.p
             className={`cursor-pointer select-none text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
             initial={{ opacity: 0, y: 20 }}
@@ -209,27 +209,30 @@ export default function AwardWinning() {
             </>
           )}
 
-          <div className={`relative ${isMobile ? 'h-[330px]' : 'h-[360px] lg:h-[420px]'} w-full flex items-center justify-center overflow-hidden`}>
+          <div className={`relative ${isMobile ? 'h-[390px]' : 'h-[360px] lg:h-[480px]'} w-full flex items-center justify-center overflow-hidden`}>
             {awards.map((award, originalIndex) => {
               const posIndex = displayOrder.indexOf(originalIndex)
               const positions = isMobile ? mobileCardPositions : cardPositions
               const { x, y, scale, opacity, zIndex } = positions[posIndex]
               return (
-                <motion.div
-                  key={award.id}
-                  className={`absolute ${isMobile ? 'w-64 max-w-[90vw]' : 'w-56 sm:w-64 lg:w-72'}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ x, y, scale, opacity }}
-                  transition={{ type: "spring", stiffness: 120, damping: 15 }}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                  whileHover={{ scale: posIndex === 0 ? 1.15 : (isMobile ? 1.02 : scale * 1.05) }}
-                  style={{
-                    zIndex,
-                    originX: 0.5,
-                    originY: 0.5,
-                  }}
-                >
+               <motion.div
+  key={award.id}
+  className={`absolute ${isMobile ? 'w-64 max-w-[90vw]' : 'w-56 sm:w-64 lg:w-72'}`}
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ x, y, scale, opacity }}
+  transition={{ type: "spring", stiffness: 120, damping: 15 }}
+  onMouseEnter={() => setIsHovering(true)}
+  onMouseLeave={() => setIsHovering(false)}
+  onTouchStart={() => setIsHovering(true)}
+  onTouchEnd={() => setIsHovering(false)}
+  whileHover={{ scale: posIndex === 0 ? 1.15 : (isMobile ? 1.02 : scale * 1.05) }}
+  style={{
+    zIndex,
+    originX: 0.5,
+    originY: 0.5,
+  }}
+>
+
                   {/* Card */}
                   <div className={`rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border-2 transition-all duration-300 hover:shadow-2xl ${isDark ? 'bg-gray-800 border-gray-700 hover:border-green-500/30' : 'bg-white border-gray-100 hover:border-green-500/20'}`}>
                     {/* Image */}
@@ -274,17 +277,46 @@ export default function AwardWinning() {
 
         {/* Mobile indicators */}
         {isMobile && (
-          <div className="flex justify-center mt-8 space-x-2">
-            {awards.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setDisplayOrder([index, (index + 1) % 3, (index + 2) % 3])}
-                className={`w-3 h-3 rounded-full transition-colors ${displayOrder[0] === index ? 'bg-green-500' : (isDark ? 'bg-gray-600' : 'bg-gray-300')}`}
-                aria-label={`Go to award ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
+  <div className="flex justify-between items-center mt-8 px-6 relative">
+    {/* Left Arrow Button */}
+    <button 
+      onClick={goPrev}
+      className={`p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 
+        ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+      aria-label="Previous award"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    {/* Optional: Indicator showing current award */}
+    <div className="flex space-x-2">
+      {awards.map((_, index) => (
+        <div
+          key={index}
+          className={`w-3 h-3 rounded-full transition-colors 
+            ${displayOrder[0] === index 
+              ? 'bg-green-500' 
+              : (isDark ? 'bg-gray-600' : 'bg-gray-300')}`}
+        />
+      ))}
+    </div>
+
+    {/* Right Arrow Button */}
+    <button 
+      onClick={goNext}
+      className={`p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 
+        ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+      aria-label="Next award"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+)}
+
       </div>
     </section>
   )

@@ -75,7 +75,7 @@ export default function Header() {
     <>
       {/* Floating Glass Navbar */}
       <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center">
-        <div className="max-w-[90%] w-full mt-4 rounded-full bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
+        <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
           {/* Logo */}
           <a
             href="/"
@@ -391,7 +391,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-[80px] left-5 rounded-lg w-[335px] px-2 bg-white dark:bg-black/95 backdrop-blur-md border-t border-[#00F5A0]/30 transition-all duration-300 z-[9999] ${
+        className={`md:hidden fixed top-[80px] left-5 rounded-lg w-[335px] px-2 bg-white dark:bg-black/95 backdrop-blur-md  border-[#00F5A0]/30 transition-all duration-300 z-[9999] ${
           isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
         }`}
       >

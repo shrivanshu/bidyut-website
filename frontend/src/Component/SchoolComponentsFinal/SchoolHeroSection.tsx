@@ -371,113 +371,77 @@ const SchoolHeroSection: React.FC = () => {
 
           {/* Mobile: stacked view with enhanced horizontal drift and tighter spacing */}
           <div
-            className="md:hidden flex flex-col items-center pt-6 gap-5"
-            style={{ 
-              transform: `translateX(-${easeInOutCubic(e) * 120}px) translateY(${baseYOffset}px)`, // More pronounced leftward movement
-              opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) * (1 - Math.min(1, videoScalingProgress * 2)) // Also hide mobile images when video opens
-            }}
-          >
-            {/* Mobile Heading with sliding animation */}
-            <div
-              className="w-full px-4"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateY(0) translateZ(0)' 
-                  : 'translateY(30px) translateZ(0)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out',
-                transitionDelay: isTextVisible ? '0.1s' : '0s'
-              }}
-            >
-              <h1 className="text-center font-heading font-bold leading-snug text-[26px] sm:text-[30px]">
-                Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
-              </h1>
-            </div>
-            
-            {/* Mobile Subtext with sliding animation - Fixed */}
-            <div
-              className="w-full px-4"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateY(0) translateZ(0)' 
-                  : 'translateY(20px) translateZ(0)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
-                transitionDelay: isTextVisible ? '0.3s' : '0s'
-              }}
-            >
-              <p className="text-gray-800 text-[15px] sm:text-[17px] font-medium text-center">
-                We provide hands-on robotics, AI, drone programs, teacher training, and global competitions.
-              </p>
-            </div>
-            
-            {/* Mobile Images with staggered sliding animation */}
-            <div
-              className="w-[240px] h-[360px] rounded-[20px] overflow-hidden shadow-md"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) scale(1)' 
-                  : 'translateX(-40px) scale(0.95)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: isTextVisible ? '0.5s' : '0s'
-              }}
-            >
-              <img src="/publicFinal/SchoolImages/School2.svg" alt="School1" className="w-full h-full object-cover" />
-            </div>
-            <div
-              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) scale(1)' 
-                  : 'translateX(40px) scale(0.95)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: isTextVisible ? '0.6s' : '0s'
-              }}
-            >
-              <img src="/publicFinal/SchoolImages/School1.svg" alt="School2" className="w-full h-full object-cover" />
-            </div>
-            <div
-              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) scale(1)' 
-                  : 'translateX(-40px) scale(0.95)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: isTextVisible ? '0.7s' : '0s'
-              }}
-            >
-              <img src="/publicFinal/SchoolImages/School3.svg" alt="School3" className="w-full h-full object-cover" />
-            </div>
-            <div
-              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) scale(1)' 
-                  : 'translateX(40px) scale(0.95)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: isTextVisible ? '0.8s' : '0s'
-              }}
-            >
-              <img src="/publicFinal/SchoolImages/School1.svg" alt="School4" className="w-full h-full object-cover" />
-            </div>
-            <div
-              className="w-[260px] h-[380px] rounded-[20px] overflow-hidden shadow-md"
-              style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) scale(1)' 
-                  : 'translateX(-40px) scale(0.95)',
-                opacity: isTextVisible ? 1 : 0,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: isTextVisible ? '0.9s' : '0s'
-              }}
-            >
-              <img src="/publicFinal/SchoolImages/School2.svg" alt="School5" className="w-full h-full object-cover" />
-            </div>
-          </div>
+  className="md:hidden flex flex-col items-center  gap-6 "
+  style={{ 
+    transform: `translateX(-${easeInOutCubic(e) * 120}px) translateY(${baseYOffset}px)`,
+    opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) * (1 - Math.min(1, videoScalingProgress * 2))
+  }}
+>
+  {/* Mobile Heading */}
+  <div
+    className="w-full"
+    style={{
+      transform: isTextVisible 
+        ? 'translateY(0)' 
+        : 'translateY(30px)',
+      opacity: isTextVisible ? 1 : 0,
+      transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out',
+      transitionDelay: isTextVisible ? '0.1s' : '0s'
+    }}
+  >
+    <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
+      Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
+    </h1>
+  </div>
+
+  {/* Subtext */}
+  <div
+    className="w-full"
+    style={{
+      transform: isTextVisible 
+        ? 'translateY(0)' 
+        : 'translateY(20px)',
+      opacity: isTextVisible ? 1 : 0,
+      transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
+      transitionDelay: isTextVisible ? '0.3s' : '0s'
+    }}
+  >
+    <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
+      We provide hands-on robotics, AI, drone programs, teacher training, and global competitions.
+    </p>
+  </div>
+
+  {/* Responsive Image Grid */}
+  <div className="grid grid-cols-2 px-4 gap-6  max-w-[300px]  md:max-w-lg">
+    {[
+      "/school_images/Render.00_01_54_02.Still006.jpg",
+      "/school_images/Render.00_01_51_13.Still005.jpg",
+      "/school_images/C2271.00_00_33_34.Still003.jpg",
+      "/school_images/C2271.00_00_25_11.Still004.jpg",
+      "/school_images/C2271.00_00_21_55.Still002.jpg"
+    ].map((src, i) => (
+      <div
+        key={i}
+        className="rounded-2xl overflow-hidden shadow-md w-full aspect-[3/4]"
+        style={{
+          transform: isTextVisible 
+            ? 'translateX(0) scale(1)' 
+            : `translateX(${i % 2 === 0 ? '-40px' : '40px'}) scale(0.95)`,
+          opacity: isTextVisible ? 1 : 0,
+          transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transitionDelay: isTextVisible ? `${0.5 + i * 0.1}s` : '0s'
+        }}
+      >
+        <img
+          src={src}
+          alt={`School${i + 1}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
 
           {/* Focus popup: center video with rounded edges and left-corner details (appears during hold) */}
           <div
