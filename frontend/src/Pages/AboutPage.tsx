@@ -1089,7 +1089,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
                     <img 
-                      src="/about_video/our_vision.gif"
+                      src="\public\vision.jpg"
                       alt="Our Vision"
                       className="w-full h-full object-cover"
                     />
@@ -1128,7 +1128,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
                     <img 
-                   src="/About_us_gallery/our_mission.png" 
+                   src="\public\mission.png" 
                       alt="Our Mission" 
                       className="w-full h-full object-cover" 
                     />

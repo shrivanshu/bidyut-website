@@ -181,11 +181,11 @@ const HeroSection: React.FC = () => {
         {/* Hero Heading */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-white drop-shadow-lg mb-6">
           <HeroHeading
-            text={["Think Limitless Learn Beyond Boundaries"]}
+            text={["Let’s Innovate Learn Beyond Boundaries"]}
             typingSpeed={40}
             pauseDuration={0}
             showCursor={false}
-            highlight={{ text: "Think Limitless", color: "#0acf83" }}
+            highlight={{ text: "Let’s Innovate", color: "#0acf83" }}
           />
         </h1>
 

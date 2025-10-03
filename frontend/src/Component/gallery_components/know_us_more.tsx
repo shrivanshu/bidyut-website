@@ -9,66 +9,44 @@ import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import GalleryText from '../../Text_Animation/GalleryText';
 
 // Gallery image data with provided images, cycling through them for grid fill
-const galleryImages = [
-  {
-    src: "https://i.ibb.co/svzzjwQn/7a93d3f8c9c45ac228352a70399df2062c9e2401.png",
-    title: "Educational materials and learning kits",
-    category: "education"
-  },
-  {
-    src: "https://i.ibb.co/Vpm1jkR1/f759394b8e1ec2bd0637856e1b18a1ea86e7838e.png",
-    title: "Robotic spider construction",
-    category: "technology"
-  },
-  {
-    src: "https://i.ibb.co/ZpPR1Mv9/57e913251f6ae9a763f2b728ec42dcc77e21aa63.png",
-    title: "Student working with robotics",
-    category: "team"
-  },
-  {
-    src: "https://i.ibb.co/Xr52JHcf/9ddc8551159d02fb2f65cd39e7ef29f13c2b9970.png",
-    title: "Wedo2.0 educational materials",
-    category: "education"
-  },
-  {
-    src: "https://i.ibb.co/VWFPYDNN/e95dbb576a2a5b81b2a7c473c5d7eaeccaebfdbe.png",
-    title: "Robotic vehicle construction",
-    category: "technology"
-  },
-  {
-    src: "https://i.ibb.co/fzF0PSmG/17b9f01c5d5af111609c7c37e105f414e0720fa7.png",
-    title: "Robotic humanoid construction",
-    category: "technology"
-  },
-  {
-    src: "https://i.ibb.co/ZwNKdbr/d56a57fb76139c9a3e132f335c83881a238393e5.png",
-    title: "Student programming robot",
-    category: "team"
-  },
-  // Replace workspace image with local images
-  ...[
-    "Copy of DSC05302.JPG",
-    "DSC05543 copy.jpg",
-    "DSC05546.JPG",
-    "DSC05551.JPG",
-    "DSC05553.JPG",
-    "DSC05560.JPG",
-    "DSC05561.JPG"
-  ].map(filename => ({
-    src: `/knowusmore_gallery/${filename}`,
-    category: "workspace"
-  })),
-  {
-    src: "https://i.ibb.co/mYNcM0V/cc9492090b06f0bba1cf190f752b56d3ea824ea2.png",
-    title: "Educational programming mat",
-    category: "education"
-  },
-  {
-    src: "https://i.ibb.co/mr9Dp7zD/62e886bb1ed0a688915eef5b9da04e11b5cfe104.png",
-    title: "LEGO Mindstorms robot",
-    category: "technology"
-  },
+// Define all images with categories
+// All gallery images
+let galleryImages = [
+  // Workspace
+  { src: "/knowusmore_gallery/Copy of DSC05302.JPG", title: "Workspace 1", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05543 copy.jpg", title: "Workspace 2", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05546.JPG", title: "Workspace 3", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05551.JPG", title: "Workspace 4", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05553.JPG", title: "Workspace 5", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05560.JPG", title: "Workspace 6", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05561.JPG", title: "Workspace 7", category: "workspace" },
+
+  // Technology
+  { src: "/Cobo/D1-arm.png", title: "Robotic Arm", category: "technology" },
+  { src: "/Cobo/Franka-arm.png", title: "Franka Robotic Arm", category: "technology" },
+  { src: "/media/A2-pro.png", title: "A2 Pro Robot", category: "technology" },
+
+  // Education
+  { src: "/GO2/GO2 EDU.png", title: "GO2 Educational Robot", category: "education" },
+  { src: "/GO2/GO2 EDU U1.png", title: "GO2 EDU Unit 1", category: "education" },
+  // { src: "/media/G1 EDU U1.png", title: "G1 EDU Unit 1", category: "education" }
 ];
+
+// Shuffle function
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // swap
+  }
+  return array;
+}
+
+// Shuffle and add index IDs
+galleryImages = shuffleArray(galleryImages).map((item, index) => ({
+  ...item,
+  id: index
+}));
+
 
 // Enhanced animation settings
 const containerVariants = {
