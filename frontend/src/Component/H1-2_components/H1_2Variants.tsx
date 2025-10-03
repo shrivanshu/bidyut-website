@@ -568,8 +568,8 @@ export default function H1_2Variants() {
           {/* Left Section - Product Info */}
           <div id="robot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight">{displayName}</h1>
-              <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
+              <h1 className="text-5xl md:text-6xl font-heading font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight">{displayName}</h1>
+              <h2 className="text-xl md:text-2xl font-subheading text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 

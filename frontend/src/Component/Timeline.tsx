@@ -104,7 +104,7 @@ export default function Timeline() {
             </div>
 
             {/* Title */}
-            <h2 className="text-xl md:text-2xl font-medium mb-6 transition-all duration-700 delay-100">
+            <h2 className="text-xl md:text-2xl font-subheading  mb-6 transition-all duration-700 delay-100">
               {currentItem.title}
             </h2>
 

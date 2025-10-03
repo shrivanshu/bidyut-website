@@ -28,13 +28,13 @@ const HeroSectionR1 = () => {
     
     {/* Left part */}
     <div className="flex flex-wrap  items-baseline justify-center sm:justify-start">
-      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-oxanium text-black dark:text-white drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white drop-shadow-sm cursor-target">
         Let's
       </span>
-      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-oxanium text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
         Innovate
       </span>
-      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-oxanium text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
         Learn
       </span>
     </div>
@@ -42,10 +42,10 @@ const HeroSectionR1 = () => {
     {/* Right part */}
     <div className="flex flex-wrap items-baseline justify-center sm:justify-end">
       
-      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-oxanium text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-[#00ffa3] ml-2 drop-shadow-sm cursor-target">
         Beyond
       </span>
-      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-oxanium text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
+      <span className="text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white ml-2 drop-shadow-sm cursor-target">
         Boundaries
       </span>
     </div>

@@ -275,7 +275,7 @@ const CobotComparisonChart: React.FC = () => {
     return (
       <React.Fragment key={title}>
         {keys.map((key, idx) => (
-          <tr key={key} className={idx % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}>
+          <tr key={key} className={idx % 2 === 0 ? "bg-gradient-to-r from-emerald-900/40 to-emerald-800/30" : "bg-gradient-to-r from-emerald-800/30 to-emerald-900/20"}>
             {idx === 0 && (
               <td
                 rowSpan={keys.length}
@@ -289,7 +289,7 @@ const CobotComparisonChart: React.FC = () => {
                 {title}
               </td>
             )}
-            <td className="p-3">{items[key]}</td>
+            <td className="p-3 border-b border-emerald-500/10 hover:bg-emerald-500/5 transition-colors duration-150">{items[key]}</td>
             {specifications.map((spec) => (
               <td key={spec.model + key} className="p-3 text-center">
                 {spec[key as keyof H1Spec] || "-"}
@@ -407,7 +407,7 @@ const CobotComparisonChart: React.FC = () => {
             ))}
           </div>
 
-          <div className="border border-gray-700 rounded-lg overflow-x-auto">
+          <div className="border border-emerald-500/20 rounded-lg overflow-x-auto bg-black/40 backdrop-blur-sm shadow-xl shadow-emerald-500/10">
             <table className="w-full border-collapse min-w-[800px]">
               <tbody>
                 {allGroups.map(([grp, items]) => {

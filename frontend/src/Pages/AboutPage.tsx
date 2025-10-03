@@ -833,7 +833,7 @@ useEffect(() => {
           <div className="flex items-center justify-center min-h-[80vh] sm:min-h-screen mt-2 sm:mt-4 md:-mt-1 px-4 sm:px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
               <h1 
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black leading-none text-transparent bg-clip-text mb-4 sm:mb-6 tracking-wider animate-in slide-in-from-bottom-4 select-none pointer-events-none uppercase"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading font-black leading-none text-transparent bg-clip-text mb-4 sm:mb-6 tracking-wider animate-in slide-in-from-bottom-4 select-none pointer-events-none uppercase"
                 style={{
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}
@@ -841,7 +841,7 @@ useEffect(() => {
                 About Us
               </h1>
               
-              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
+              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
                 "Bridging Technology & Intelligence for a Smarter Tomorrow."
               </h2>
               
@@ -857,7 +857,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
     {/* Top row: Left and Right */}
     <div className="grid grid-cols-2 gap-4 mb-3">
       <div className="text-center">
-        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
           {animatedYear}
         </div>
         <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
@@ -866,7 +866,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
       </div>
       
       <div className="text-center">
-        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
           {animatedClients}+
         </div>
         <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
@@ -878,7 +878,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
     {/* Bottom row: Centered */}
     <div className="flex justify-center mb-0">
       <div className="text-center">
-        <div className={`text-3xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
           {animatedHappyClients}+
         </div>
         <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>
@@ -891,7 +891,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
   {/* Desktop/Tablet Layout: Original 3-column */}
   <div className="hidden sm:grid sm:grid-cols-3 gap-4 md:gap-6">
     <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
         {animatedYear}
       </div>
       <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
@@ -900,7 +900,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
     </div>
     
     <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
         {animatedClients}+
       </div>
       <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
@@ -909,7 +909,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
     </div>
     
     <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
         {animatedHappyClients}+
       </div>
       <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
@@ -1038,7 +1038,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
             
             {/* Main Heading Block */}
             <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-7xl mx-auto">
-              <h1 className={`font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
+              <h1 className={`font-heading font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
                 {/* Mobile only: 3 lines */}
                 <span className="block md:hidden">
                   <span className="block">Bidyut Focuses on Educating Students to act with</span>
@@ -1065,7 +1065,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 {/* Vision Text - Mobile: appears first, Desktop: appears first */}
                 <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
                   <h2 
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
+                    className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
                     style={{
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                     }}
@@ -1104,7 +1104,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 {/* Mission Text - Mobile: appears first, Desktop: appears second */}
                 <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
                   <h2 
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
+                    className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
                     style={{
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                     }}
@@ -1144,7 +1144,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
   <div className={`relative min-h-0 sm:min-h-[70vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 sm:px-1 md:px-2 py-1 sm:py-4 md:py-6 transition-colors duration-500`}>
           <div className="text-center  ">
             <h2 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none text-transparent bg-clip-text mb-1 sm:mb-4 select-none pointer-events-none uppercase tracking-wider"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-heading font-black leading-none text-transparent bg-clip-text mb-1 sm:mb-4 select-none pointer-events-none uppercase tracking-wider"
               style={{
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
               }}
@@ -1152,7 +1152,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               Our Journey
             </h2>
             <h3 
-              className="text-xl sm:text-2xl md:text-3xl font-semibold leading-tight text-transparent bg-clip-text mb-1 sm:mb-3"
+              className="text-xl sm:text-2xl md:text-3xl font-subheading font-semibold leading-tight text-transparent bg-clip-text mb-1 sm:mb-3"
               style={{
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
               }}
@@ -1207,7 +1207,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
         </div>
 
         <div className="text-center flex-1">
-          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none transition-colors duration-500`}>
+          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-none transition-colors duration-500`}>
             {currentItem.year}
           </h3>
         </div>
@@ -1291,7 +1291,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
              </div> */}
  
              {/* Title */}
-             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-lg sm:text-xl md:text-2xl font-medium mb-4 sm:mb-6 transition-all duration-700 delay-100 px-4`}>
+             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-lg sm:text-xl md:text-2xl font-subheading font-medium mb-4 sm:mb-6 transition-all duration-700 delay-100 px-4`}>
                {currentItem.title}
              </h2>
  
@@ -1333,7 +1333,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
           <div className="max-w-7xl mx-auto px-0 sm:px-2 md:px-4 relative z-10">
             <div className="text-center mb-1 sm:mb-3 md:mb-6">
               <h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none text-transparent bg-clip-text mb-0 sm:mb-1 md:mb-2 select-none pointer-events-none uppercase tracking-wider"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-black leading-none text-transparent bg-clip-text mb-0 sm:mb-1 md:mb-2 select-none pointer-events-none uppercase tracking-wider"
                 style={{
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}

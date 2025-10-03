@@ -229,12 +229,12 @@ const RoboticsComparisonChart: React.FC = () => {
     return (
       <>
         {entries.map(([key, label], idx) => (
-          <tr key={key} className={idx % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}>
+          <tr key={key} className={idx % 2 === 0 ? "bg-gradient-to-r from-emerald-900/40 to-emerald-800/30" : "bg-gradient-to-r from-emerald-800/30 to-emerald-900/20"}>
             {idx === 0 ? (
               <td 
                 rowSpan={rowSpanValue} 
                 colSpan={colSpanValue}
-                className="p-3 border-2 border-gray-800 text-center align-middle rounded-xx mx-4"
+                className="p-3 border-r-2 border-emerald-500/20 text-center align-middle rounded-xx mx-4 bg-gradient-to-b from-emerald-900/50 to-emerald-800/30"
                 style={{ 
                   backgroundColor: 'transparent',
                   writingMode: 'vertical-rl',
@@ -342,7 +342,7 @@ const RoboticsComparisonChart: React.FC = () => {
         {/* Desktop Layout */}
         <div className="hidden lg:block">
           {/* Desktop Table with horizontal scroll */}
-          <div className="border border-gray-700 rounded-lg overflow-x-auto">
+          <div className="border border-emerald-500/20 rounded-lg overflow-x-auto bg-black/40 backdrop-blur-sm shadow-xl shadow-emerald-500/10">
             <table className="w-full border-collapse min-w-[800px]">
               <thead>
                 <tr>

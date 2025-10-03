@@ -361,7 +361,7 @@ const RoboticsComparisonChart: React.FC = () => {
         <div className="block lg:hidden">
           {/* Mobile Model Selector */}
           <div className="mb-6">
-            <h2 className="text-xl font-bold mb-4 text-center">Robot Comparison</h2>
+            <h2 className="text-xl font-subheading  mb-4 text-center">Robot Comparison</h2>
             <div className="flex justify-center space-x-2 mb-4">
               {specifications.map((spec) => (
                 <button

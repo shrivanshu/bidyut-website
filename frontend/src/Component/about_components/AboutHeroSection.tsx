@@ -154,12 +154,12 @@ export default function ScrollAnimationPage() {
         <div className="flex items-center justify-center min-h-screen px-8">
           <div className="text-center max-w-6xl mx-auto relative z-10">
             {/* Main Heading */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tight animate-in slide-in-from-bottom-4 duration-700">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold text-white mb-8 tracking-tight animate-in slide-in-from-bottom-4 duration-700">
               About Us
             </h1>
             
             {/* Subtitle */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-400 mb-16 font-light animate-in slide-in-from-bottom-4 duration-700 delay-200">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-subheading text-gray-400 mb-16 font-light animate-in slide-in-from-bottom-4 duration-700 delay-200">
               Shaping Tomorrow's Technology
             </h2>
             
@@ -172,30 +172,30 @@ export default function ScrollAnimationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 animate-in slide-in-from-bottom-4 duration-700 delay-600">
               {/* Current Year */}
               <div className="text-center">
-                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-4">
                   {currentYear}
                 </div>
-                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                <div className="text-lg md:text-xl lg:text-2xl font-subheading text-gray-400">
                   Current Year
                 </div>
               </div>
               
               {/* Projects */}
               <div className="text-center">
-                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-4">
                   100+
                 </div>
-                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                <div className="text-lg md:text-xl lg:text-2xl font-subheading text-gray-400">
                   Projects
                 </div>
               </div>
               
               {/* Happy Clients */}
               <div className="text-center">
-                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-4">
                   50+
                 </div>
-                <div className="text-lg md:text-xl lg:text-2xl text-gray-400">
+                <div className="text-lg md:text-xl lg:text-2xl font-subheading text-gray-400">
                   Happy Clients
                 </div>
               </div>

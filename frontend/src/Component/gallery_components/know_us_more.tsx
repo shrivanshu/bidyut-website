@@ -98,7 +98,7 @@ export default function KnowUsMore() {
           initial={{ opacity: 0.2, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0.9, y: 10 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight transition-colors duration-300 mb-6"
+          className="text-5xl md:text-7xl font-heading font-bold tracking-tight transition-colors duration-300 mb-6"
         >
           <span className="text-green-400 drop-shadow-lg">{t('knowUsMore').split(' ')[0]} </span>
           <span className="text-green-500 drop-shadow-lg">{t('knowUsMore').split(' ')[1]} </span>
@@ -108,7 +108,7 @@ export default function KnowUsMore() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } :  { opacity: 0.9, y: 10 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className={`text-xl leading-relaxed transition-colors duration-300 ${
+          className={`text-xl font-body leading-relaxed transition-colors duration-300 ${
             isDark ? 'text-gray-300' : 'text-gray-600'
           }`}
         >

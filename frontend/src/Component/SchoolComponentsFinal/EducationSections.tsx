@@ -14,7 +14,7 @@ export function EducationSections() {
             />
           </div>
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold dark:text-gray-300 text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold dark:text-gray-300 text-gray-900 leading-tight">
               Turn Classrooms into Innovation Hubs
             </h2>
             <p className="text-gray-700 dark:text-gray-500 text-lg leading-relaxed">

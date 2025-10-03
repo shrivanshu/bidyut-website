@@ -9,13 +9,13 @@ export default function CoboHeroSection() {
       </div>
 
       {/* Top tagline */}
-      <div className="text-center font-poppins mb-8">
+      <div className="text-center font-subheading mb-8">
         <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
       </div>
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
-        <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
+        <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target">
           <span className="text-[#0acf83]">Thynk Limitless.</span> Learn Beyond Boundaries
         </h1>
       </div>
@@ -39,7 +39,7 @@ export default function CoboHeroSection() {
   <div className="-mt-10 mb-4 text-center">
   {/* Gradient Heading */}
   <h2
-    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text mb-0"
+    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading font-heading font-semibold leading-none text-transparent bg-clip-text mb-0"
     style={{
     backgroundImage:
       "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 36%, rgba(255,255,255,0.5) 87%, #FFFFFF 100%)",

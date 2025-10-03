@@ -308,7 +308,7 @@ const SchoolHeroSection: React.FC = () => {
               }}
             >
               <h1 
-                className="font-bold leading-tight dark:text-white" 
+                className="font-heading font-bold leading-tight dark:text-white" 
                 style={{ 
                   fontSize: "44px", 
                   fontWeight: 700,
@@ -494,7 +494,7 @@ const SchoolHeroSection: React.FC = () => {
 
               {/* Description in the bottom left corner */}
               <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-white max-w-[70%] drop-shadow-md transition-all duration-500 ease-out">
-                <h2 className="font-semibold text-[20px] md:text-[24px] leading-tight mb-3 transition-all duration-500">
+                <h2 className="font-heading font-semibold text-[20px] md:text-[24px] leading-tight mb-3 transition-all duration-500">
                   {videosData[currentVideoIndex].title}
                 </h2>
                 <p className="text-[14px] md:text-[16px] opacity-90 leading-relaxed transition-all duration-500">

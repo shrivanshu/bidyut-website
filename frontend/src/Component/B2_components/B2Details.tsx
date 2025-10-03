@@ -25,7 +25,7 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4">
               <span className="block md:inline">Ready to revolutionize</span>{' '}
               <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
             </h1>

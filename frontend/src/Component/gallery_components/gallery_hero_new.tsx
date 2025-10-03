@@ -65,7 +65,7 @@ const GalleryHero: React.FC = () => {
       >
         {/* Main Heading */}
         <motion.h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2"
+          className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-2"
           variants={itemVariants}
         >
           <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
@@ -74,7 +74,7 @@ const GalleryHero: React.FC = () => {
         </motion.h1>
 
         <motion.h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-6"
+          className="text-2xl sm:text-3xl lg:text-4xl font-subheading font-semibold text-white mb-6"
           variants={itemVariants}
         >
           {t('galleryInnovationTech')}
