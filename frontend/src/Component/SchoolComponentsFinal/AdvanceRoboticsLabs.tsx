@@ -60,28 +60,7 @@ export default function AdvanceRoboticsLabs() {
     }
   ]
 
-  const handleImageClick = (index: number) => {
-    setSelectedIndex(index)
-    
-    // Scroll to the clicked section on desktop
-    if (mainScrollRef.current) {
-      const { clientHeight } = mainScrollRef.current
-      mainScrollRef.current.scrollTo({
-        top: index * clientHeight,
-        behavior: 'smooth'
-      })
-    }
-    
-    // Scroll to the clicked image on mobile
-    if (mobileScrollRef.current) {
-      const { clientHeight } = mobileScrollRef.current
-      mobileScrollRef.current.scrollTo({
-        top: index * clientHeight,
-        behavior: 'smooth'
-      })
-    }
-  }
-
+ 
   // Handle scroll events to update description based on scroll position
   useEffect(() => {
     const handleMainScroll = () => {
@@ -124,7 +103,7 @@ export default function AdvanceRoboticsLabs() {
     }
   }, [selectedIndex, roboticsData.length])
 
-  const selectedData = roboticsData[selectedIndex]
+  // const selectedData = roboticsData[selectedIndex]
 
   return (
     <div className="bg-gray-900 rounded-t-[40px] md:rounded-t-[60px] w-full max-w-[1442px] mx-auto overflow-hidden relative">
