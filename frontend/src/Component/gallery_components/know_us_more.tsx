@@ -161,8 +161,8 @@ export default function KnowUsMore() {
                 opacity: { duration: 0.3 }
               }}
               className={`relative group cursor-pointer rounded-2xl overflow-hidden ${
-                index === 0 || index === 4 || index === 7 ? 'md:col-span-2 md:row-span-2' :
-                index === 2 || index === 5 ? 'lg:row-span-2' : ''
+                index === 0 || index === 4 || index === 7 ? 'md:col-span-1 md:row-span-1' :
+                index === 2 || index === 5 ? 'lg:row-span-1' : ''
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
