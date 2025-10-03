@@ -319,7 +319,7 @@ const RoboticsComparisonChart: React.FC = () => {
               <td 
                 rowSpan={rowSpanValue} 
                 colSpan={colSpanValue}
-                className="p-3 border-2 border-gray-800 text-center align-middle rounded-xx mx-4 my-4 my-2"
+                className="p-3 border-2 border-gray-800 text-center align-middle rounded-xx mx-4 my-4 "
                 style={{ 
                   backgroundColor: 'transparent',
                   writingMode: 'vertical-rl',

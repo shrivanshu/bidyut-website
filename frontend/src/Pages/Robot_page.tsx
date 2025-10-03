@@ -3,7 +3,7 @@ import Header from '../Component/Header';
 import HeroSectionRobot from '../Component/robot_components/HeroSectionRobot';
 import RobotVariants from '../Component/robot_components/RobotVariants';
 import RobotDetail from '../Component/robot_components/RobotDetail';
-import Table from '../Component/Table';
+import Table from '../Component/G1_Table';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
 function Robot_page() {
