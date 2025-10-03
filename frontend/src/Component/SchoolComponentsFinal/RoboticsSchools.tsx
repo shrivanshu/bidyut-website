@@ -4,7 +4,7 @@ export function RoboticsSchools() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="mb-12 text-center lg:text-left">
-          <h2 className="text-3xl md:text-5xl font-bold font-roboto dark:text-gray-300 text-gray-900 mb-2">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold dark:text-gray-300 text-gray-900 mb-2">
             See How Schools Are
           </h2>
           <p className="text-lg md:text-xl font-roboto dark:text-gray-400 text-gray-600">
@@ -32,7 +32,7 @@ export function RoboticsSchools() {
               <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                 See How Schools Are Transforming with Robotics
               </p>
-              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+              <h3 className="text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900">
                 Modern robotics labs, equipped with smart tools and vibrant learning spaces
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -44,7 +44,7 @@ export function RoboticsSchools() {
               <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                 Empower Teachers, Inspire Students
               </p>
-              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+              <h3 className="text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900">
                 Expert-led training for confident robotics and AI education
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -56,7 +56,7 @@ export function RoboticsSchools() {
               <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                 Building Future-Ready Skills
               </p>
-              <h3 className="text-xl md:text-2xl dark:text-gray-300 font-bold text-gray-900">
+              <h3 className="text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900">
                 From robotics and AI to drones and global competitions
               </h3>
               <p className="text-gray-600 dark:text-gray-400">

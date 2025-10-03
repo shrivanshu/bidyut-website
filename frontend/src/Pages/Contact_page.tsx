@@ -68,7 +68,7 @@ export default function ContactPage() {
                 variants={fadeIn}
                 initial="hidden"
                 animate="show"
-                className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl"
+                className="text-4xl md:text-6xl font-heading font-bold mb-4 text-white drop-shadow-2xl"
                 style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)" }}
               >
                 Meet Our Amazing Team
@@ -89,7 +89,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className={`rounded-2xl shadow-xl p-10 border ${bgColor} ${borderColor}`}>
-                <h2 className={`text-3xl font-bold mb-4 ${textColor}`}>Contact Us</h2>
+                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>Contact Us</h2>
                 <p className={`${subTextColor} mb-10`}>
                   Let’s power up your innovation journey together. From idea to
                   innovation — Bidyut makes it happen.
@@ -166,7 +166,7 @@ export default function ContactPage() {
 
             {/* Studio Info */}
             <div className={`rounded-2xl p-10 shadow-xl border ${bgColor} ${textColor} ${borderColor}`}>
-              <h3 className="text-xl font-bold mb-6 text-[#00F5A0]">Our Studio</h3>
+              <h3 className="text-xl font-subheading font-bold mb-6 text-[#00F5A0]">Our Studio</h3>
               <p className={`${subTextColor} mb-8 text-sm`}>
                 Bridging innovation and technology to create extraordinary
                 solutions.

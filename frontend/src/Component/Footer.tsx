@@ -110,7 +110,8 @@ function AnimatedBanner({
     initialHeight = 140
     dotSize = 24
     dotBorderRadius = 12
-  } else {
+  } 
+  else {
     // Desktop
     initialWidth = 1600
     initialHeight = 180
@@ -214,7 +215,7 @@ export default function Footer() {
   return (
  <footer
           ref={footerRef}
-          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg  border-emerald-500/15"
+          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg bg-white dark:bg-black   border-emerald-500/15"
         >
           <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
     

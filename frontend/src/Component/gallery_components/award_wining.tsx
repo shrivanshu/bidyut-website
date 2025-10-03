@@ -35,7 +35,7 @@ export default function AwardWinning() {
     const total = (textLeft + ' ' + textRight).length
     return (
       <motion.h1
-        className="cursor-pointer select-none text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight transition-colors duration-300 mb-4 sm:mb-6"
+        className="cursor-pointer select-none text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-tight transition-colors duration-300 mb-4 sm:mb-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}

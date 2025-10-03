@@ -410,10 +410,10 @@ function A2_Wells_Variants() {
              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
   {displayName}
 </h1>
-<h2 className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium">
+<h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
   Technical Specifications
 </h2>
-<p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+<p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
   {displayDescription}
 </p>
 

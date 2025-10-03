@@ -8,10 +8,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        // Headings - Poppins
+        'heading': ['Poppins', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
-         'oxanium': ['Oxanium', 'sans-serif'],
-         'roboto': ['Roboto', 'sans-serif'],
-        'sans': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        
+        // Subheadings - Nunito Sans
+        'subheading': ['Nunito Sans', 'sans-serif'],
+        'nunito': ['Nunito Sans', 'sans-serif'],
+        
+        // Body text - Roboto (default)
+        'body': ['Roboto', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif'],
+        'sans': ['Roboto', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
       },
       colors: {
         // Custom colors for consistent theming
@@ -52,4 +60,3 @@ export default {
   },
   plugins: [],
 }
-

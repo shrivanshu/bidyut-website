@@ -21,7 +21,7 @@ export function AboutSchool() {
           delay={0.3}
           duration={1.2}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 text-balance">
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-heading font-bold text-white mb-6 text-balance">
             <StaggeredText 
               text="Empowering Schools to Build the Future"
               staggerDelay={0.08}
@@ -36,7 +36,7 @@ export function AboutSchool() {
           delay={0.8}
           duration={1.5}
         >
-          <p className="text-lg md:text-xl lg:text-2xl mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl font-body mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
             <StaggeredText 
               text="We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and STREAM education."
               staggerDelay={0.03}

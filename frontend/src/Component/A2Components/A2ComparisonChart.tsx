@@ -227,7 +227,7 @@ const A2ComparisonChart: React.FC = () => {
         {entries.map(([key, label], idx) => (
           <tr
             key={key}
-            className={idx % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}
+            className={idx % 2 === 0 ? "bg-gradient-to-r from-emerald-900/40 to-emerald-800/30" : "bg-gradient-to-r from-emerald-800/30 to-emerald-900/20"}
           >
             {idx === 0 && (
               <td
@@ -242,9 +242,9 @@ const A2ComparisonChart: React.FC = () => {
                 {title}
               </td>
             )}
-            <td className="p-3">{label}</td>
+            <td className="p-3 border-b border-emerald-500/10 hover:bg-emerald-500/5 transition-colors duration-150">{label}</td>
             {specifications.map((spec) => (
-              <td key={spec.model + key} className="p-3 text-center">
+              <td key={spec.model + key} className="p-3 text-center border-b border-emerald-500/10 hover:bg-emerald-500/5 transition-colors duration-150">
                 {spec[key as keyof H1Spec] || "-"}
               </td>
             ))}
@@ -259,7 +259,7 @@ const A2ComparisonChart: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="block lg:hidden">
-          <h2 className="text-xl font-bold mb-4 text-center text-black dark:text-white">
+          <h2 className="text-xl font-heading font-bold mb-4 text-center text-black dark:text-white">
             A2 Series Comparison
           </h2>
 
@@ -291,9 +291,9 @@ const A2ComparisonChart: React.FC = () => {
                 return (
                   <div
                     key={title}
-                    className="bg-gray-900 rounded-lg p-4 mb-4"
+                    className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 backdrop-blur-sm border border-emerald-500/30 rounded-lg p-4 mb-4 shadow-lg"
                   >
-                    <h3 className="text-lg font-semibold mb-3 text-blue-400 border-b border-gray-700 pb-2">
+                    <h3 className="text-lg font-subheading font-semibold mb-3 text-blue-400 border-b border-gray-700 pb-2">
                       {title}
                     </h3>
                     <div className="space-y-3">
@@ -358,7 +358,7 @@ const A2ComparisonChart: React.FC = () => {
           </div>
 
           {/* Table */}
-          <div className="border border-gray-700 rounded-lg overflow-x-auto">
+          <div className="border border-emerald-500/20 rounded-lg overflow-x-auto bg-black/40 backdrop-blur-sm shadow-xl shadow-emerald-500/10">
             <table className="w-full border-collapse min-w-[800px]">
               <tbody>
                 {allGroups.map(({ title, items }) => {
