@@ -1,12 +1,16 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import robotImgSrc from '/media/G1 EDU U6 .png'; 
 
-interface RobotClassroomProps {
-  onContactClick?: () => void;
-}
+interface RobotClassroomProps {}
 
-const RobotClassroom: React.FC<RobotClassroomProps> = ({ onContactClick }) => {
+const RobotClassroom: React.FC<RobotClassroomProps> = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/Contact');
+  };
   
   return (
     // <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
@@ -41,7 +45,7 @@ const RobotClassroom: React.FC<RobotClassroomProps> = ({ onContactClick }) => {
 
           <div className="pt-4">
             <button 
-              onClick={onContactClick}
+              onClick={handleContactClick}
               className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold cursor-target px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
             >
               Contact Sales Team

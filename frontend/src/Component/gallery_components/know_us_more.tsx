@@ -10,8 +10,15 @@ import GalleryText from '../../Text_Animation/GalleryText';
 
 // Gallery image data with provided images, cycling through them for grid fill
 // Define all images with categories
+interface GalleryImage {
+  src: string;
+  title: string;
+  category: string;
+  id?: number;
+}
+
 // All gallery images
-let galleryImages = [
+let galleryImages: GalleryImage[] = [
   // Workspace
   { src: "/knowusmore_gallery/Copy of DSC05302.JPG", title: "Workspace 1", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05543 copy.jpg", title: "Workspace 2", category: "workspace" },
@@ -33,7 +40,7 @@ let galleryImages = [
 ];
 
 // Shuffle function
-function shuffleArray(array) {
+function shuffleArray(array: GalleryImage[]): GalleryImage[] {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]]; // swap
@@ -42,7 +49,7 @@ function shuffleArray(array) {
 }
 
 // Shuffle and add index IDs
-galleryImages = shuffleArray(galleryImages).map((item, index) => ({
+galleryImages = shuffleArray(galleryImages).map((item: GalleryImage, index: number) => ({
   ...item,
   id: index
 }));
