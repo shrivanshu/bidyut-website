@@ -13,7 +13,7 @@ interface Offering {
 const offerings: Offering[] = [
   { image: "/OurOfferingImages/D1-arm.png", titleKey: "collaborativeLearning", descriptionKey: "collaborativeLearningDesc" },
   { image: "/OurOfferingImages/G1 Basic.png", titleKey: "collaboration", descriptionKey: "collabrationDesc" },
-  { image: "/OurOfferingImages/School.jpeg", titleKey: "learningExperience", descriptionKey: "learningexpisDesc" },
+  { image: "/OurOfferingImages/our offering.jpg", titleKey: "learningExperience", descriptionKey: "learningexpisDesc" },
   { image: "/OurOfferingImages/GO2 AIR.png", titleKey: "quadrupedRobots", descriptionKey: "ProgressTrackingDesc" },
   { image: "/OurOfferingImages/A2-W.png", titleKey: "roboticSolutions", descriptionKey: "personalizedMentorshipDesc" }
 ]
