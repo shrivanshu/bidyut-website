@@ -11,7 +11,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 const Gallery_page: React.FC = () => {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className=" bg-white dark:bg-gray-900 transition-colors duration-300">
         <Header />
         <main>
           <GalleryHero />

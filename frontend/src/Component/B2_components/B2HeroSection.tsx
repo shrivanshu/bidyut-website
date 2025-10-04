@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
     <div className="relative aspect-video rounded-lg overflow-hidden ">
-  <img src="\public\B2 ADVANCED.png" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
+  <img src="/B2 ADVANCED.png" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
     </div>
   </div>
 
@@ -39,7 +39,7 @@ export default function HeroSection() {
   <div className="-mt-10 mb-4 text-center">
   {/* Gradient Heading */}
   <h2
-    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading font-heading font-semibold leading-none text-transparent bg-clip-text mb-0"
+    className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading  font-semibold leading-none text-transparent bg-clip-text mb-0"
     style={{
     backgroundImage:
       "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 36%, rgba(255,255,255,0.5) 87%, #FFFFFF 100%)",

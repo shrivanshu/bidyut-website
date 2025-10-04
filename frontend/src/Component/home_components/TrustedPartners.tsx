@@ -21,16 +21,138 @@ const oricaLogo = "/trustedPartners_logos/orica-logo-3.jpg"
 const phytecLogo = "/trustedPartners_logos/phytec.jpg"
 const plakshaLogo = "/trustedPartners_logos/Plaksha_Logo.png"
 
+// Import school logos
+const anshulVidhyaMandirLogo = "/schools/Anshul Vidhya Mandir Higher Secondary School, Jobat..png"
+const carmelBhelLogo = "/schools/carmel bhel.jpeg"
+const carmelConventBhadrakLogo = "/schools/carmel convent school bhadrak.jpg"
+const carmelUjjainLogo = "/schools/carmel ujjain.png"
+const christuJyotiConventLogo = "/schools/Christu Jyoti Convent School.jpg"
+const ciaLogo = "/schools/cia.jpeg"
+const davSchoolLogo = "/schools/dav school.png"
+const ffgsLogo = "/schools/FFGS-LOGO-01.jpg"
+const garimaLogo = "/schools/garima.webp"
+const gdGoenkaLogo = "/schools/GD Goenka.webp"
+const holyFamilySchoolLogo = "/schools/holy family school.jpg"
+const jghsLogo = "/schools/JGHS.png"
+const jyotiConventBiaoraLogo = "/schools/Jyoti convent sr. sec school Biaora.png"
+const laurelsSchoolLogo = "/schools/Laurels School.png"
+const littleWondersConventLogo = "/schools/little wonders convent school.avif"
+const littleWondersLogo = "/schools/little wonders school.jpg"
+const lnctLogo = "/schools/LNCT.webp"
+const medicapsSchoolLogo = "/schools/medicaps school.png"
+const mkvvLogo = "/schools/Mkvv-Logo-300x277.png"
+const mountCarmelLogo = "/schools/mount carmel.jpg"
+const providenceConventLogo = "/schools/providence convent high school.png"
+const sherringwoodSchoolLogo = "/schools/Sherringwood School.webp"
+const shriramCentennialLogo = "/schools/Shriram-centennial-school.jpg"
+const stVincentPallotiLogo = "/schools/St vincent palloti.avif"
+const stJosephSchoolLogo = "/schools/St. Joseph School.png"
+const stMaryConventLogo = "/schools/st. mary convent school .png"
+const stPaulConventLogo = "/schools/St. Paul_s Convent Sr. Sec. School.jpg"
+const stRaphaelLogo = "/schools/St. Raphael's Higher Secondary School.png"
+const stConventSchoolLogo = "/schools/St.-convent-school-logo-1.webp"
+const vedanshLogo = "/schools/vedansh.jpeg"
+const vijayaConventLogo = "/schools/VIJAYA CONVENT SENIOR SEC SCHOOL.jpg"
+
 export default function TrustedPartners() {
   const [arrowEndX, setArrowEndX] = useState(140)
   const [arrowEndY, setArrowEndY] = useState(50)
   const [isActive, setIsActive] = useState(false) // make the arrow active by default so users can immediately move it
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null)
+  const [showSchoolLogos, setShowSchoolLogos] = useState(false)
+  const [currentSchoolLogoSet, setCurrentSchoolLogoSet] = useState(0)
   const arrowRef = useRef<SVGSVGElement>(null)
   const animationFrameRef = useRef<number | null>(null)
   const targetPositionRef = useRef({ x: 140, y: 50 })
   const logoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const lastCollisionCheckRef = useRef<number>(0)
+
+  // Create arrays of school logos organized in sets
+  const schoolLogoSets = [
+    {
+      accenture: carmelUjjainLogo,
+      acg: davSchoolLogo,
+      hcl: gdGoenkaLogo,
+      iisc: jghsLogo,
+      iitKanpur: laurelsSchoolLogo,
+      nxtwave: littleWondersLogo,
+      orica: medicapsSchoolLogo,
+      plaksha: stVincentPallotiLogo
+    },
+    {
+      accenture: anshulVidhyaMandirLogo,
+      acg: carmelBhelLogo,
+      hcl: carmelConventBhadrakLogo,
+      iisc: christuJyotiConventLogo,
+      iitKanpur: ciaLogo,
+      nxtwave: ffgsLogo,
+      orica: garimaLogo,
+      plaksha: holyFamilySchoolLogo
+    },
+    {
+      accenture: jyotiConventBiaoraLogo,
+      acg: littleWondersConventLogo,
+      hcl: lnctLogo,
+      iisc: mkvvLogo,
+      iitKanpur: mountCarmelLogo,
+      nxtwave: providenceConventLogo,
+      orica: sherringwoodSchoolLogo,
+      plaksha: shriramCentennialLogo
+    },
+    {
+      accenture: stJosephSchoolLogo,
+      acg: stMaryConventLogo,
+      hcl: stPaulConventLogo,
+      iisc: stRaphaelLogo,
+      iitKanpur: stConventSchoolLogo,
+      nxtwave: vedanshLogo,
+      orica: vijayaConventLogo,
+      plaksha: carmelUjjainLogo // Cycle back to start
+    }
+  ]
+
+  const schoolLogoNames = [
+    {
+      accenture: 'Carmel Ujjain',
+      acg: 'DAV School',
+      hcl: 'GD Goenka',
+      iisc: 'JGHS',
+      iitKanpur: 'Laurels School',
+      nxtwave: 'Little Wonders School',
+      orica: 'Medicaps School',
+      plaksha: 'St Vincent Palloti'
+    },
+    {
+      accenture: 'Anshul Vidhya Mandir',
+      acg: 'Carmel BHEL',
+      hcl: 'Carmel Convent Bhadrak',
+      iisc: 'Christu Jyoti Convent',
+      iitKanpur: 'CIA',
+      nxtwave: 'FFGS',
+      orica: 'Garima',
+      plaksha: 'Holy Family School'
+    },
+    {
+      accenture: 'Jyoti Convent Biaora',
+      acg: 'Little Wonders Convent',
+      hcl: 'LNCT',
+      iisc: 'MKVV',
+      iitKanpur: 'Mount Carmel',
+      nxtwave: 'Providence Convent',
+      orica: 'Sherringwood School',
+      plaksha: 'Shriram Centennial'
+    },
+    {
+      accenture: 'St Joseph School',
+      acg: 'St Mary Convent',
+      hcl: 'St Paul Convent',
+      iisc: 'gdGoenkaLogo',
+      iitKanpur: 'St Convent School',
+      nxtwave: 'Vedansh',
+      orica: 'Vijaya Convent',
+      plaksha: 'Carmel Ujjain'
+    }
+  ]
 
   const checkArrowLogoCollision = (arrowTipX?: number, arrowTipY?: number) => {
     // Throttle collision checks to improve performance
@@ -214,6 +336,69 @@ export default function TrustedPartners() {
       }
     } catch (error) {
       console.error("Arrow click error:", error)
+    }
+  }
+
+  // Logo interchange effect
+  useEffect(() => {
+    const logoInterchangeInterval = setInterval(() => {
+      if (!showSchoolLogos) {
+        // Currently showing company logos, switch to school logos
+        setCurrentSchoolLogoSet(0)
+        setShowSchoolLogos(true)
+      } else {
+        // Currently showing school logos, cycle to next set or back to company logos
+        if (currentSchoolLogoSet >= schoolLogoSets.length - 1) {
+          // Reached end of school sets, switch back to company logos
+          setShowSchoolLogos(false)
+          setCurrentSchoolLogoSet(0)
+        } else {
+          // Move to next school logo set
+          setCurrentSchoolLogoSet(prev => prev + 1)
+        }
+      }
+    }, 3000) // Change logos every 3 seconds
+
+    return () => clearInterval(logoInterchangeInterval)
+  }, [showSchoolLogos, currentSchoolLogoSet, schoolLogoSets.length])
+
+  // Function to get the appropriate logo based on current state
+  const getCurrentLogo = (logoType: string) => {
+    if (showSchoolLogos) {
+      const currentSet = schoolLogoSets[currentSchoolLogoSet]
+      return currentSet[logoType as keyof typeof currentSet] || "/placeholder.svg"
+    } else {
+      switch (logoType) {
+        case 'accenture': return accentureLogo
+        case 'acg': return acgLogo
+        case 'hcl': return hclLogo
+        case 'iisc': return iiscLogo
+        case 'iitKanpur': return iitKanpurLogo
+        case 'nxtwave': return nxtwaveLogo
+        case 'orica': return oricaLogo
+        case 'plaksha': return plakshaLogo
+        default: return "/placeholder.svg"
+      }
+    }
+  }
+
+  // Function to get the appropriate alt text based on current state
+  const getCurrentAltText = (logoType: string) => {
+    if (showSchoolLogos) {
+      const currentSet = schoolLogoNames[currentSchoolLogoSet]
+      return currentSet[logoType as keyof typeof currentSet] || 'School Logo'
+    } else {
+      switch (logoType) {
+        case 'accenture': return 'Accenture'
+        case 'acg': return 'ACG'
+        case 'hcl': return 'HCL Technologies'
+        case 'iisc': return 'IISc'
+        case 'iitKanpur': return 'IIT Kanpur'
+        case 'nxtwave': return 'NxtWave'
+        case 'orica': return 'Orica'
+        case 'plaksha': return 'Plaksha'
+        default: return 'Partner Logo'
+      }
     }
   }
 
@@ -427,7 +612,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute top-[16vw] left-6 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "accenture" ? "scale-[2] z-50 shadow-xl" : "hover:scale-105"}`}
               >
-                <img src={accentureLogo || "/placeholder.svg"} alt="Accenture" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('accenture') || "/placeholder.svg"} alt={getCurrentAltText('accenture')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
@@ -448,7 +633,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute top-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "acg" ? "scale-[2] z-50 shadow-xl" : "hover:scale-105"}`}
               >
-                <img src={acgLogo || "/placeholder.svg"} alt="ACG" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('acg') || "/placeholder.svg"} alt={getCurrentAltText('acg')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
@@ -470,8 +655,8 @@ export default function TrustedPartners() {
                 className={`absolute right-[1vw] top-42 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "hcl" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
                 <img
-                  src={hclLogo || "/placeholder.svg"}
-                  alt="HCL Technologies"
+                  src={getCurrentLogo('hcl') || "/placeholder.svg"}
+                  alt={getCurrentAltText('hcl')}
                   className="w-4/5 h-4/5 object-contain"
                 />
               </motion.div>
@@ -494,7 +679,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute bottom-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iisc" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <img src={iiscLogo || "/placeholder.svg"} alt="IISc" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('iisc') || "/placeholder.svg"} alt={getCurrentAltText('iisc')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
@@ -516,8 +701,8 @@ export default function TrustedPartners() {
                 className={`absolute bottom-[22vw] left-12 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "iitKanpur" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
                 <img
-                  src={iitKanpurLogo || "/placeholder.svg"}
-                  alt="IIT Kanpur"
+                  src={getCurrentLogo('iitKanpur') || "/placeholder.svg"}
+                  alt={getCurrentAltText('iitKanpur')}
                   className="w-4/5 h-4/5 object-contain"
                 />
               </motion.div>
@@ -541,7 +726,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute top-16 left-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "nxtwave" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <img src={nxtwaveLogo || "/placeholder.svg"} alt="NxtWave" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('nxtwave') || "/placeholder.svg"} alt={getCurrentAltText('nxtwave')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               {/* Orica */}
@@ -563,7 +748,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute top-24 right-40 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${hoveredLogo === "orica" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <img src={oricaLogo || "/placeholder.svg"} alt="Orica" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('orica') || "/placeholder.svg"} alt={getCurrentAltText('orica')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div
@@ -584,7 +769,7 @@ export default function TrustedPartners() {
                 viewport={{ once: false, amount: 0.3 }}
                 className={`absolute top-[22vw] right-[12vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${hoveredLogo === "plaksha" ? "scale-[2] z-50" : "hover:scale-105"}`}
               >
-                <img src={plakshaLogo || "/placeholder.svg"} alt="Plaksha" className="w-4/5 h-4/5 object-contain" />
+                <img src={getCurrentLogo('plaksha') || "/placeholder.svg"} alt={getCurrentAltText('plaksha')} className="w-4/5 h-4/5 object-contain" />
               </motion.div>
 
               <motion.div

@@ -1,11 +1,51 @@
-import { useRef } from "react"
+import { useState, useEffect, useRef, CSSProperties } from "react"
 import { Instagram, Facebook, Linkedin,Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function FooterUnanimated() {
   const { t } = useLanguage()
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [showAnimation, setShowAnimation] = useState(false)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    let animationFrameId: number | null = null
+
+    const handleScroll = () => {
+      if (!footerRef.current) return
+
+      const footerRect = footerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
+        setShowAnimation(true)
+        const footerHeight = footerRect.height
+        const progress = Math.min(
+          1,
+          Math.max(0, (windowHeight - footerRect.top) / (footerHeight * 0.7))
+        )
+        setScrollProgress(progress)
+      } else {
+        setShowAnimation(false)
+        setScrollProgress(0)
+      }
+    }
+
+    const throttledScroll = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+      animationFrameId = requestAnimationFrame(handleScroll)
+    }
+
+    window.addEventListener("scroll", throttledScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener("scroll", throttledScroll)
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  // Remove getDotStyle and animated dot logic
 
   return (
     <footer
@@ -19,7 +59,7 @@ export default function FooterUnanimated() {
             {/* Company */}
             <div className="glass-card theme-aware p-8">
               <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("Bidyut Innovation")}</span>
+                <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
               </h3>
               <p className="body-color text-sm sm:text-base leading-relaxed">
                 {t("footerDescription")}
@@ -157,10 +197,10 @@ export default function FooterUnanimated() {
                 <span className="relative">
                   i
                   <div
-                   className="absolute left-2/3 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-7 lg:h-7 bg-green-500 rounded-full opacity-100 dot-position"                   
+                   className="absolute left-2/3  transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-7 lg:h-7 bg-green-500 rounded-full opacity-100 dot-position"                   
                     style={{
                       left: "42%",
-                      top:"1.2rem",
+
                       boxShadow: "0 0 12px rgba(34, 197, 94, 0.8), 0 0 24px rgba(34, 197, 94, 0.4)",
                       animation: 'float-gentle 3s ease-in-out infinite'
                     }}
@@ -255,7 +295,7 @@ export default function FooterUnanimated() {
           }
 
           .dot-position {
-            top: 0.15em;  /* mobile */
+            top: -0.05em;  /* mobile */
           }
           @media (min-width: 640px) {
             .dot-position {
@@ -269,7 +309,7 @@ export default function FooterUnanimated() {
           }
           @media (min-width: 1024px) {
             .dot-position {
-              top: 0.23em;  /* lg */
+              top: 0.18em;  /* lg */
             }
           }
         `}</style>
