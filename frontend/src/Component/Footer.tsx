@@ -19,31 +19,36 @@ function AnimatedBanner({
         const iRect = iLetterRef.current.getBoundingClientRect()
         const screenWidth = window.innerWidth
 
+        const fontScale = iRect.height / 100; // normalize by expected height
+        let xOffset = 2.5;
+        let yMultiplier = 2;
+
         if (screenWidth < 380) {
           // Small mobile
-          setIPosition({
-            x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + iRect.height * 45.8,
-          })
+          xOffset = 2.7;
+          yMultiplier = 45.8;
         } else if (screenWidth <= 768) {
           // Regular mobile
-          setIPosition({
-            x: iRect.left + iRect.width / 2.7,
-            y: iRect.top + iRect.height * 6.25,
-          })
+          xOffset = 2.7;
+          yMultiplier = 6.25;
         } else if (screenWidth < 1024) {
           // Tablet
-          setIPosition({
-            x: iRect.left + iRect.width / 2.5,
-            y: iRect.top + iRect.height * 1.2,
-          })
+          xOffset = 2.5;
+          yMultiplier = 1.2;
+        } else if (screenWidth < 1440) {
+          // Laptop
+          xOffset = 2.4;
+          yMultiplier = 1.8;
         } else {
-          // Desktop
-          setIPosition({
-            x: iRect.left + iRect.width / 2.4,
-            y: iRect.top + iRect.height * 2,
-          })
+          // Large Desktop
+          xOffset = 2.4;
+          yMultiplier = 2;
         }
+
+        setIPosition({
+          x: iRect.left + (iRect.width / xOffset),
+          y: iRect.top + (iRect.height * yMultiplier * fontScale)
+        });
         
         // Add the static dot
       
@@ -112,11 +117,11 @@ function AnimatedBanner({
     dotBorderRadius = 12
   } 
   else {
-    // Desktop
-    initialWidth = 1600
-    initialHeight = 180
-    dotSize = 28
-    dotBorderRadius = 16
+    // Desktop/Laptop
+    initialWidth = 1200
+    initialHeight = 160
+    dotSize = 20
+    dotBorderRadius = 12
   }
 
   const width = morph < 1 ? initialWidth - (initialWidth - dotSize) * morph : dotSize
@@ -149,8 +154,10 @@ background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1920;
     let bottomPosition = "1.2em";  // default for mobile
     
-    if (screenWidth >= 1024) {
-      bottomPosition = "5.5em";  // laptop
+    if (screenWidth >= 1440) {
+      bottomPosition = "5.5em";  // large desktop
+    } else if (screenWidth >= 1024) {
+      bottomPosition = "3.8em";  // laptop
     } else if (screenWidth >= 768) {
       bottomPosition = "2.7em";  // tablet
     }
@@ -215,7 +222,7 @@ export default function Footer() {
   return (
  <footer
           ref={footerRef}
-          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg bg-white dark:bg-black   border-emerald-500/15"
+          className="relative px-8 pt-44 overflow-hidden transition-colors duration-300 backdrop-blur-lg  border-emerald-500/15"
         >
           <AnimatedBanner scrollProgress={scrollProgress} iLetterRef={iLetterRef} />
     

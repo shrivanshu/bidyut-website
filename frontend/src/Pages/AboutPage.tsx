@@ -105,20 +105,18 @@ const timelineData: TimelineItem[] = [
 
 export function getVideoForYear(year: string): string {
   switch (year) {
-    case "2014":
-      return "/robo-main.mp4";
-    case "2015":
-      return "/robott.mp4";
-    case "2016":
-      return "/robo-dance5.mp4";
-    case "2017":
-      return "/Engineering.mp4";
-    case "2018":
-      return "/Technology.mp4";
-    case "2019":
-      return "/Science.mp4";
+    case "2021":
+      return "/our_jurnary/2021.mp4";
+    case "2022":
+      return "/our_jurnary/2022.mp4";
+    case "2023":
+      return "/our_jurnary/2023.mp4";
+    case "2024":
+      return "/our_jurnary/2024.mp4";
+    case "2025":
+      return "/our_jurnary/2025.mp4";
     default:
-      return "/robo-main.mp4";
+      return "/our_jurnary/2021.mp4";
   }
 }
 export default function AboutPage() {
@@ -1089,7 +1087,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
                     <img 
-                      src="\public\vision.jpg"
+                      src="/vision.jpg"
                       alt="Our Vision"
                       className="w-full h-full object-cover"
                     />
@@ -1128,7 +1126,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
                     <img 
-                   src="\public\mission.png" 
+                   src="/mission.png" 
                       alt="Our Mission" 
                       className="w-full h-full object-cover" 
                     />
