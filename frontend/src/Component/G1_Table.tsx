@@ -307,8 +307,8 @@ const RoboticsComparisonChart: React.FC = () => {
           {/* Mobile Specifications */}
           <div className="space-y-4">
             {allGroups.map((group, groupIndex) => (
-              <div key={groupIndex} className="bg-gray-900 rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-3 text-blue-400 border-b border-gray-700 pb-2">
+              <div key={groupIndex} className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 rounded-lg p-4 border border-emerald-500/20">
+                <h3 className="text-lg font-semibold mb-3 text-emerald-400 border-b border-emerald-500/30 pb-2">
                   {group.title}
                 </h3>
                 <div className="space-y-3">
@@ -317,8 +317,8 @@ const RoboticsComparisonChart: React.FC = () => {
                     const value = selectedSpec?.[key as keyof RobotSpec];
                     
                     return (
-                      <div key={key} className="flex justify-between items-start py-2 border-b border-gray-800 last:border-b-0">
-                        <span className="text-gray-300 text-sm flex-1 pr-4">{label}</span>
+                      <div key={key} className="flex justify-between items-start py-2 border-b border-emerald-500/20 last:border-b-0">
+                        <span className="text-emerald-200 text-sm flex-1 pr-4">{label}</span>
                         <span className="text-white text-sm font-medium text-right flex-1">
                           {key === "extraLargeJointMovementSpace" ? (
                             <div className="text-sm text-left">

@@ -1,7 +1,7 @@
 "use client"
 
 
-import { useState, useRef, useMemo } from "react"
+import { useState, useRef, useMemo, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 import GalleryText from '../../Text_Animation/GalleryText';
@@ -127,9 +127,22 @@ const generateInfiniteImages = (
 
 export default function InteractiveGallery() {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const dragX = useMotionValue(0)
   const dragY = useMotionValue(0)
+
+  // Handle mobile detection and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Memoize transforms for performance
   const backgroundX1 = useTransform(dragX, [-20000, 20000], [-1000, 1000])
@@ -166,15 +179,17 @@ export default function InteractiveGallery() {
   }, [dragX.get(), dragY.get()]);
 
   const getImageDimensions = (size: "small" | "medium" | "large") => {
+    const scaleFactor = isMobile ? 0.7 : 1;
+    
     switch (size) {
       case "small":
-        return { width: 220, height: 160 };
+        return { width: Math.round(220 * scaleFactor), height: Math.round(160 * scaleFactor) };
       case "medium":
-        return { width: 320, height: 220 };
+        return { width: Math.round(320 * scaleFactor), height: Math.round(220 * scaleFactor) };
       case "large":
-        return { width: 420, height: 300 };
+        return { width: Math.round(420 * scaleFactor), height: Math.round(300 * scaleFactor) };
       default:
-        return { width: 320, height: 220 };
+        return { width: Math.round(320 * scaleFactor), height: Math.round(220 * scaleFactor) };
     }
   };
 
@@ -192,10 +207,10 @@ export default function InteractiveGallery() {
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}> 
       <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-10 w-64 h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-zinc-600/50 rotate-45 backdrop-blur-sm"></div>
-        <div className="absolute top-1/3 right-1/3 w-40 h-40 border border-zinc-600/30 -rotate-30 backdrop-blur-sm"></div>
+        <div className="absolute top-10 left-4 sm:top-20 sm:left-10 w-32 h-32 sm:w-64 sm:h-64 border border-zinc-700/50 rotate-12 backdrop-blur-sm"></div>
+        <div className="absolute bottom-10 right-4 sm:bottom-20 sm:right-10 w-24 h-24 sm:w-48 sm:h-48 border border-zinc-700/50 -rotate-12 backdrop-blur-sm"></div>
+        <div className="absolute top-1/2 left-1/4 w-20 h-20 sm:w-32 sm:h-32 border border-zinc-600/50 rotate-45 backdrop-blur-sm"></div>
+        <div className="absolute top-1/3 right-1/3 w-24 h-24 sm:w-40 sm:h-40 border border-zinc-600/30 -rotate-30 backdrop-blur-sm"></div>
       </div>
 
   {/* Removed theme toggle and header icon for gallery */}
@@ -203,10 +218,10 @@ export default function InteractiveGallery() {
   {/* Removed hamburger menu button for gallery */}
 
       <div className="relative z-10 min-h-[80vh] flex items-center justify-center">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div style={{position: 'relative', height: '120px'}}>
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-6 lg:space-y-8">
+              <div style={{position: 'relative', height: '80px'}} className="sm:h-[100px] lg:h-[120px]">
                 <GalleryText
                   text="Explore Our Gallery"
                   flex={true}
@@ -217,12 +232,12 @@ export default function InteractiveGallery() {
                   italic={true}
                   textColor={isDark ? '#ffffff' : '#222222'}
                   strokeColor="#ff0000"
-                  minFontSize={48}
+                  minFontSize={28}
                 />
               </div>
 
-              <div className={`max-w-md space-y-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                <p className="leading-relaxed text-lg">
+              <div className={`max-w-md space-y-4 lg:space-y-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="leading-relaxed text-base lg:text-lg">
                   Discover our architectural vision through an interactive experience. Each image tells a story of
                   innovation, creativity, and thoughtful design.
                 </p>
@@ -237,22 +252,22 @@ export default function InteractiveGallery() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative mt-8 lg:mt-0">
               <div className="relative w-full max-w-lg mx-auto">
-                <div className={`absolute -top-8 -left-8 w-32 h-48 opacity-80 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-900 to-green-800' : 'bg-gradient-to-br from-amber-600 to-amber-700'}`}></div>
-                <div className={`absolute -bottom-8 -right-8 w-32 h-48 opacity-60 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-800 to-green-900' : 'bg-gradient-to-br from-amber-700 to-amber-800'}`}></div>
-                <div className={`absolute top-4 right-4 w-24 h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-700 to-green-900' : 'bg-gradient-to-br from-green-800 to-green-900'}`}></div>
+                <div className={`absolute -top-4 -left-2 sm:-top-8 sm:-left-4 w-24 h-36 sm:w-32 sm:h-48 opacity-80 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-900 to-green-800' : 'bg-gradient-to-br from-amber-600 to-amber-700'}`}></div>
+                <div className={`absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-24 h-36 sm:w-32 sm:h-48 opacity-60 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-800 to-green-900' : 'bg-gradient-to-br from-amber-700 to-amber-800'}`}></div>
+                <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 w-20 h-28 sm:w-24 sm:h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-700 to-green-900' : 'bg-gradient-to-br from-green-800 to-green-900'}`}></div>
 
-                <div className={`relative p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
+                <div className={`relative p-4 sm:p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.png"
                     alt="Gallery Preview"
-                    className="w-full h-80 object-cover shadow-lg"
+                    className="w-full h-60 sm:h-80 object-cover shadow-lg"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                     <button
                       onClick={handleExploreClick}
-                      className={`px-8 py-3 text-sm tracking-wider transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20 ${isDark ? 'bg-black bg-opacity-80 text-white hover:bg-opacity-95' : 'bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-95'}`}
+                      className={`px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20 ${isDark ? 'bg-black bg-opacity-80 text-white hover:bg-opacity-95' : 'bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-95'}`}
                     >
                       • EXPLORE
                     </button>
@@ -270,7 +285,7 @@ export default function InteractiveGallery() {
             {/* Close button absolutely outside drag area, always clickable */}
             <button
               onClick={handleCloseGallery}
-              className="fixed top-6 right-6 z-[99999] w-12 h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[99999] w-10 h-10 sm:w-12 sm:h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm text-sm sm:text-base"
               style={{ pointerEvents: 'all', transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden', perspective: '1000px' }}
               tabIndex={0}
               aria-label="Close Gallery"
@@ -289,8 +304,8 @@ export default function InteractiveGallery() {
                 perspective: "1000px",
               }}
             >
-              <div className="absolute top-6 left-6 z-60 bg-black/50 backdrop-blur-sm px-6 py-4 border border-white/10 pointer-events-none">
-                <div style={{position: 'relative', height: '60px'}}>
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-60 bg-black/50 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-4 border border-white/10 pointer-events-none">
+                <div style={{position: 'relative', height: '40px'}} className="sm:h-[60px]">
                   <GalleryText
                     text="Infinite Gallery"
                     flex={true}
@@ -301,10 +316,10 @@ export default function InteractiveGallery() {
                     italic={true}
                     textColor="#ffffff"
                     strokeColor="#ff0000"
-                    minFontSize={24}
+                    minFontSize={16}
                   />
                 </div>
-                <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 mt-1 sm:mt-2 leading-relaxed">
                   Drag to View • Infinite space with seamless tiling
                 </p>
               </div>

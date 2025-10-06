@@ -1,13 +1,46 @@
-import { useRef } from "react"
-import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Instagram, Facebook, Linkedin,Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function FooterUnanimated() {
   const { t } = useLanguage()
+  const [, setScrollProgress] = useState(0)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
 
 
+    const handleScroll = () => {
+      if (!footerRef.current) return
+
+      const footerRect = footerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
+        const footerHeight = footerRect.height
+        const progress = Math.min(
+          1,
+          Math.max(0, (windowHeight - footerRect.top) / (footerHeight * 0.7))
+        )
+        setScrollProgress(progress)
+      } else {
+        setScrollProgress(0)
+      }
+    }
+
+    const throttledScroll = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+      animationFrameId = requestAnimationFrame(handleScroll)
+    }
+
+    window.addEventListener("scroll", throttledScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener("scroll", throttledScroll)
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  // Remove getDotStyle and animated dot logic
 
   return (
     <footer

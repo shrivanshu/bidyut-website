@@ -87,8 +87,15 @@ const GalleryText: React.FC<TextPressureProps> = ({
 
         const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
-        let newFontSize = containerW / (chars.length / 2);
+        // Better mobile font size calculation
+        const isMobile = window.innerWidth < 768;
+        const divisor = isMobile ? (chars.length / 1.5) : (chars.length / 2);
+        let newFontSize = containerW / divisor;
+        
+        // Ensure minimum font size but also set a reasonable maximum for mobile
+        const maxFontSize = isMobile ? Math.min(containerW * 0.8, 60) : containerW;
         newFontSize = Math.max(newFontSize, minFontSize);
+        newFontSize = Math.min(newFontSize, maxFontSize);
 
         setFontSize(newFontSize);
         setScaleY(1);
