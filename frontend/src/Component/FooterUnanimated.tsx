@@ -8,8 +8,6 @@ export default function FooterUnanimated() {
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
 
-  useEffect(() => {
-    let animationFrameId: number | null = null
 
     const handleScroll = () => {
       if (!footerRef.current) return
@@ -289,6 +287,11 @@ export default function FooterUnanimated() {
           /* Reduced motion */
           @media (prefers-reduced-motion: reduce) {
             .glass-card::before { animation: none; }
+          }
+
+          @keyframes float-gentle {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -5px); }
           }
 
           .dot-position {

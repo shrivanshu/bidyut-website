@@ -10,7 +10,7 @@ import { AboutSchool } from "../Component/SchoolComponentsFinal/AboutSchool";
 import { EducationSections } from "../Component/SchoolComponentsFinal/EducationSections";
 import { CTASection } from "../Component/SchoolComponentsFinal/CTASection";
 import { RoboticsSchools } from "../Component/SchoolComponentsFinal/RoboticsSchools";
-import Scroller from "../Component/SchoolComponent/Scroller";
+import Scroller from "../Component/SchoolComponentsFinal/Scroller";
 
 function FinalSchoolPage() {
   return (
