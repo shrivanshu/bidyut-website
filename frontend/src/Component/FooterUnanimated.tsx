@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef, CSSProperties } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Instagram, Facebook, Linkedin,Youtube } from "lucide-react"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 export default function FooterUnanimated() {
   const { t } = useLanguage()
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [showAnimation, setShowAnimation] = useState(false)
+  const [, setScrollProgress] = useState(0)
   const footerRef = useRef<HTMLDivElement>(null)
   const iLetterRef = useRef<HTMLSpanElement>(null)
 
@@ -19,7 +18,6 @@ export default function FooterUnanimated() {
       const windowHeight = window.innerHeight
 
       if (footerRect.top <= windowHeight && footerRect.bottom >= 0) {
-        setShowAnimation(true)
         const footerHeight = footerRect.height
         const progress = Math.min(
           1,
@@ -27,7 +25,6 @@ export default function FooterUnanimated() {
         )
         setScrollProgress(progress)
       } else {
-        setShowAnimation(false)
         setScrollProgress(0)
       }
     }
