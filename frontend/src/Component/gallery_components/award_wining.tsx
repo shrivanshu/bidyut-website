@@ -95,21 +95,21 @@ export default function AwardWinning() {
   const awards = [
     {
       id: 1,
-      imageSrc: "https://plus.unsplash.com/premium_photo-1754254828698-12c96f89d7a2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imageSrc: "/award-wining/01.png",
       titleKey: "nationalRoboticsAward",
       descriptionKey: "roboticsAwardDesc",
       year: "2023",
     },
     {
       id: 2,
-      imageSrc: "https://images.unsplash.com/photo-1754079132799-c766676cda0a?q=80&w=1236&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imageSrc: "/award-wining/02.png",
       titleKey: "globalYouthEmpowerment",
       descriptionKey: "youthEmpowermentDesc",
       year: "2021",
     },
     {
       id: 3,
-      imageSrc: "https://plus.unsplash.com/premium_photo-1720132000141-a405eff592e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imageSrc: "/award-wining/03.png",
       titleKey: "edtechExcellence",
       descriptionKey: "edtechExcellenceDesc",
       year: "2022",
@@ -236,12 +236,12 @@ useEffect(() => {
                   {/* Card */}
                   <div className={`rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border-2 transition-all duration-300 hover:shadow-2xl ${isDark ? 'bg-gray-800 border-gray-700 hover:border-green-500/30' : 'bg-white border-gray-100 hover:border-green-500/20'}`}>
                     {/* Image */}
-                    <div className="relative w-full h-36 sm:h-40 lg:h-44 overflow-hidden">
+                    <div className={`relative w-full h-36 sm:h-40 lg:h-44 overflow-hidden flex items-center justify-center ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                       <img
                         src={award.imageSrc}
                         alt={t(award.titleKey)}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                         loading="lazy"
                       />
                     </div>
