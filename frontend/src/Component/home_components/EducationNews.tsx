@@ -4,13 +4,12 @@ import HomeHeroText from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 interface Article {
-  source: { name: string };
   title: string;
-  description?: string | null;
+  description?: string;
   url: string;
-  urlToImage?: string | null;
-  publishedAt: string;
-  author?: string | null;
+  source: { title: string };
+  date: string;
+  image?: string;
 }
 
 const ensureSix = (arr: Article[]) => {
@@ -31,64 +30,63 @@ const EducationNews: React.FC = () => {
   const hover1 = useRef(false);
   const hover2 = useRef(false);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await fetch(
-       `https://newsapi.org/v2/everything?q=(education OR technology OR robotics) -stock -stocks -finance -market -crypto&language=en&sortBy=publishedAt&pageSize=12&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
-      );
+ useEffect(() => {
+  const fetchArticles = async () => {
+    try {
+      const url = `https://eventregistry.org/api/v1/article/getArticles?action=getArticles&keyword=Tesla&apiKey=93b70b4a-d48c-4ad6-b593-70eab72a88c1&lang=eng&articlesSortBy=date&articlesCount=12`;
+      const res = await fetch(url);
+      const data = await res.json();
 
-        const data = await res.json();
-        if (data && Array.isArray(data.articles)) {
-          setArticles(data.articles);
-        }
-      } catch (err) {
-        console.error("Error fetching news:", err);
-      }
-    };
+      // Map EventRegistry format to Article interface
+      const mappedArticles: Article[] = data.articles?.results.map((a: any) => ({
+        title: a.title,
+        description: a.body,
+        url: a.url,
+        source: { title: a.source?.title ?? "Unknown" },
+        date: a.dateTimePub,
+        image: a.image ?? undefined,
+      })) ?? [];
 
-    fetchNews();
-  }, []);
+      setArticles(mappedArticles);
+    } catch (err) {
+      console.error("Error fetching EventRegistry articles:", err);
+    }
+  };
 
-  // Prepare two rows (6 items each). Duplicate each row in JSX to make a seamless loop
+  fetchArticles();
+}, []);
+
+
   const row1 = ensureSix(articles.slice(0, 6));
   const row2 = ensureSix(articles.slice(6, 12));
-
   const loop1 = [...row1, ...row1];
   const loop2 = [...row2, ...row2];
 
-  // animation using requestAnimationFrame, pause on hover
+  // scrolling animation
   useEffect(() => {
     const c1 = scrollRef.current;
     const c2 = scrollRef2.current;
     if (!c1 || !c2) return;
 
     let raf = 0;
-    const speed = 0.6; // px per frame (adjust)
+    const speed = 0.6;
     const speed2 = -0.6;
 
     const step = () => {
       if (c1 && !hover1.current) {
         c1.scrollLeft += speed;
-        if (c1.scrollLeft >= c1.scrollWidth / 2) {
-          c1.scrollLeft = 0;
-        }
+        if (c1.scrollLeft >= c1.scrollWidth / 2) c1.scrollLeft = 0;
       }
-
       if (c2 && !hover2.current) {
         c2.scrollLeft += speed2;
-        // since speed2 is negative, when <= 0 wrap
-        if (c2.scrollLeft <= 0) {
-          c2.scrollLeft = c2.scrollWidth / 2;
-        }
+        if (c2.scrollLeft <= 0) c2.scrollLeft = c2.scrollWidth / 2;
       }
-
       raf = requestAnimationFrame(step);
     };
 
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [articles]); // restart animation if articles change
+  }, [articles]);
 
   return (
     <section className="pt-56 pb-10 bg-gray-50 dark:bg-black transition-colors duration-300">
@@ -110,7 +108,6 @@ const EducationNews: React.FC = () => {
           </p>
         </div>
 
-        {/* Row 1 */}
         <div
           ref={scrollRef}
           onMouseEnter={() => (hover1.current = true)}
@@ -122,16 +119,15 @@ const EducationNews: React.FC = () => {
             <EN1
               key={`r1-${i}-${a.url}`}
               platform="news"
-              timestamp={new Date(a.publishedAt).toLocaleString()}
+              timestamp={new Date(a.date).toLocaleString()}
               title={a.title}
               content={a.description ?? ""}
-              author={a.author ?? a.source.name}
+              author={a.source.title}
               url={a.url}
             />
           ))}
         </div>
 
-        {/* Row 2 (opposite direction) */}
         <div
           ref={scrollRef2}
           onMouseEnter={() => (hover2.current = true)}
@@ -143,10 +139,10 @@ const EducationNews: React.FC = () => {
             <EN1
               key={`r2-${i}-${a.url}`}
               platform="news"
-              timestamp={new Date(a.publishedAt).toLocaleString()}
+              timestamp={new Date(a.date).toLocaleString()}
               title={a.title}
               content={a.description ?? ""}
-              author={a.author ?? a.source.name}
+              author={a.source.title}
               url={a.url}
             />
           ))}
