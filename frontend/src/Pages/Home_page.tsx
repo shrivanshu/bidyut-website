@@ -17,24 +17,17 @@ import { useState, useEffect } from "react";
 
 function Home_page() {
 
-   const [loading, setLoading] = useState(true);
-   const [fadeOut, setFadeOut] = useState(false);
+ const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
-   useEffect(() => {
-    const handleLoad = () => {
-      // Add a small buffer (e.g. 1s) to ensure visual stability
-      setTimeout(() => {
-        setFadeOut(true);
-        setTimeout(() => setLoading(false), 700); // match fade duration
-      }, 2700);
-    };
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setFadeOut(true); // Start fade-out animation
+      setTimeout(() => setLoading(false), 5000); // Remove loader after transition
+    }, 5000); // Loader visible for 2.5s
 
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
 
