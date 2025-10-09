@@ -99,7 +99,7 @@ const TermsCondition = () => {
 					</section>
 					<section className="mb-8">
 						{sectionTitle("9. Contact")}
-						<p className="text-gray-700">If you have any questions about these Terms, reach us at: <a href="mailto:legal@bidyutinno.com" className="text-green-600 underline">legal@bidyutinno.com</a></p>
+						<p className="text-gray-700">If you have any questions about these Terms, reach us at: <a href="mailto:Info@bidyutrobotics.com" className="text-green-600 underline">Info@bidyutrobotics.com</a></p>
 					</section>
 				</div>
 			</main>

@@ -188,8 +188,7 @@ export default function ContactPage() {
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
                     <Mail className="w-4 h-4" /> {t("emailLabel")}
                   </h4>
-                  <p><a href="mailto:info@bidyutrobotics.com">info@bidyutrobotics.com</a></p>
-                  <p><a href="mailto:rahul@bidyutrobotics.com">rahul@bidyutrobotics.com</a></p>
+                  <p><a href="mailto:Info@bidyutrobotics.com">Info@bidyutrobotics.com</a></p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1">{t("businessHoursLabel")}</h4>

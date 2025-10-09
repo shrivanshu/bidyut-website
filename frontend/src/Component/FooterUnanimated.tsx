@@ -111,8 +111,7 @@ export default function FooterUnanimated() {
                 </div>
                 <div>
                   <p className="font-semibold title-color">{t("Email")}</p>
-                  <p>info@bidyutrobotics.com</p>
-                  <p>rahul@bidyutrobotis.com</p>
+                  <p>Info@bidyutrobotics.com</p>
                 </div>
               </div>
             </div>

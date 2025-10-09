@@ -33,7 +33,7 @@ const PrivacyPolicy = () => {
 										By accessing and using the Platform, providing your personal information, or otherwise signifying your agreement when the option is presented, you consent to the collection, use, and disclosure of information as described in this Policy and our Terms of Use. If you do not agree with any provisions of this Policy or the Terms of Use, please do not access or use the Platform and discontinue communication with us immediately.
 									</p>
 									<p className="mb-2 text-gray-700 text-lg">
-										If any information you provide or upload violates the terms of this Policy or the Terms of Use, we may delete such information upon informing you of the same and revoke your access without incurring liability. Please read this Policy carefully prior to accessing our Platform and using any of the services or products offered. For questions, contact us at <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.
+										If any information you provide or upload violates the terms of this Policy or the Terms of Use, we may delete such information upon informing you of the same and revoke your access without incurring liability. Please read this Policy carefully prior to accessing our Platform and using any of the services or products offered. For questions, contact us at <a href="mailto:Info@bidyutrobotics.com" className="text-green-600 underline">Info@bidyutrobotics.com</a>.
 									</p>
 								</section>
 								<section className="mb-8">
@@ -88,7 +88,7 @@ const PrivacyPolicy = () => {
 									{sectionTitle("5. Your Choices")}
 									<ul className="list-disc pl-6 text-gray-700">
 										<li>Update or Delete Information: You may modify or delete your data at any time using the Platform’s account settings.</li>
-										<li>Control Communication Preferences: Opt-out of promotional emails by contacting us at <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.</li>
+										<li>Control Communication Preferences: Opt-out of promotional emails by contacting us at <a href="mailto:Info@bidyutrobotics.com" className="text-green-600 underline">Info@bidyutrobotics.com</a>.</li>
 									</ul>
 								</section>
 								<section className="mb-8">
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
 										<li>Erasure: Request deletion of data (subject to legal exceptions).</li>
 										<li>Restriction: Limit the processing of your data in certain situations.</li>
 									</ul>
-									<p className="mt-2 text-gray-700">For any of these rights, contact <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a>.</p>
+									<p className="mt-2 text-gray-700">For any of these rights, contact <a href="mailto:Info@bidyutrobotics.com" className="text-green-600 underline">Info@bidyutrobotics.com</a>.</p>
 								</section>
 								<section className="mb-8">
 									{sectionTitle("7. Data Protection")}
@@ -129,7 +129,7 @@ const PrivacyPolicy = () => {
 										<li>Bidyut Innovation Pvt Ltd</li>
 										<li>901, Cliffton Corporate</li>
 										<li>Phone: 9370782979</li>
-										<li>Email: <a href="mailto:rahul@bidyutinnovation.com" className="text-green-600 underline">rahul@bidyutinnovation.com</a></li>
+										<li>Email: <a href="mailto:Info@bidyutrobotics.com" className="text-green-600 underline">Info@bidyutrobotics.com</a></li>
 									</ul>
 								</section>
 				</div>
