@@ -56,7 +56,7 @@ export class TranslationManager {
     // Priority: technical and marketing content first
     const priority = entries
       .filter(entry => ['technical', 'marketing'].includes(entry.domain || ''))
-      .sort((a, b) => (a.domain === 'technical' ? -1 : 1));
+      .sort((a, _b) => (a.domain === 'technical' ? -1 : 1));
 
     return {
       totalKeys: entries.length,
@@ -80,13 +80,6 @@ export class TranslationManager {
 
 // Professional Translation Service Integration
 export class ProfessionalTranslationService {
-  private static readonly SUPPORTED_SERVICES = {
-    LOKALISE: 'lokalise',
-    CROWDIN: 'crowdin',
-    PHRASE: 'phrase',
-    TRANSIFEX: 'transifex'
-  };
-
   // Generate files for professional translation services
   static exportForTranslation(format: 'json' | 'csv' | 'xliff' = 'json'): string {
     const manager = TranslationManager.getInstance();

@@ -13,7 +13,12 @@ const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  origin: [
+    'http://localhost:3000', 
+    'http://127.0.0.1:3000',
+    'https://bidyutinnovation.com',
+    'http://bidyutinnovation.com'
+  ],
   credentials: true
 }));
 app.use(express.json());

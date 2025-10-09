@@ -11,4 +11,4 @@ Disallow: /login/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://www.bidyutinnovations.com/sitemap.xml
+Sitemap: https://bidyutinnovation.com/sitemap.xml

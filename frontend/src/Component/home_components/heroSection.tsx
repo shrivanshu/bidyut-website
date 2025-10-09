@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import HeroHeading from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyBXvyQXa7LjTNqqDkm3uvubhhkQ1A5dWZs" });
+const genAI = new GoogleGenerativeAI("AIzaSyBXvyQXa7LjTNqqDkm3uvubhhkQ1A5dWZs");
 
 const systemPrompt = "You are Buddy, an AI assistant. Help users with robotics, coding, and Bidyut Innovation programs.";
 
@@ -127,14 +127,14 @@ const HeroSection: React.FC = () => {
     const fullPrompt = `${systemPrompt}\n${conversation}\nUser: ${msg}\nBuddy:`;
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-1.5-flash",
-        contents: fullPrompt,
-      });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const result = await model.generateContent(fullPrompt);
+      const response = await result.response;
+      const text = response.text();
 
       setMessages((prev) => [
         ...prev,
-        { from: "bot" as const, text: response.text?.trim() || "" },
+        { from: "bot" as const, text: text?.trim() || "I'm having trouble responding right now. Please try again!" },
       ]);
     } catch (error) {
       console.error("Error generating response:", error);
