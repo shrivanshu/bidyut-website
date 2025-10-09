@@ -2,9 +2,11 @@ import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
+import { useLanguage } from "../contexts/OptimizedLanguageContext";
 
 export default function ContactPage() {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
 
   // Reusable theme classes
   const bgColor = isDark ? "bg-black" : "bg-white";
@@ -71,7 +73,7 @@ export default function ContactPage() {
                 className="text-4xl md:text-6xl font-heading font-bold mb-4 text-white drop-shadow-2xl"
                 style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)" }}
               >
-                Meet Our Amazing Team
+                {t("meetOurTeam")}
               </motion.h1>
               <motion.div
                 initial={{ width: 0 }}
@@ -104,13 +106,13 @@ export default function ContactPage() {
                       type="text"
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder="Your Name"
+                      placeholder={t("yourFullName")}
                     />
                     <label
                       htmlFor="name"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      Your Name
+                      {t("yourNameLabel")}
                     </label>
                   </div>
 
@@ -122,13 +124,13 @@ export default function ContactPage() {
                       type="email"
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder="Your Email"
+                      placeholder={t("wellGetBackToYou")}
                     />
                     <label
                       htmlFor="email"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      Your Email
+                      {t("yourEmailLabel")}
                     </label>
                   </div>
 
@@ -140,13 +142,13 @@ export default function ContactPage() {
                       rows={5}
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] resize-none ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder="Your Message"
+                      placeholder={t("tellUsHowWeCanHelp")}
                     />
                     <label
                       htmlFor="message"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      Your Message
+                      {t("yourMessageLabel")}
                     </label>
                   </div>
 
@@ -158,7 +160,7 @@ export default function ContactPage() {
                     className="relative w-full bg-gradient-to-r from-[#00F5A0]/20 to-[#00D4AA]/20 hover:from-[#00F5A0]/30 hover:to-[#00D4AA]/30 backdrop-blur-lg border border-[#00F5A0]/30 hover:border-[#00F5A0]/50 text-[#00F5A0] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-[#00F5A0] to-[#00D4AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                    <span className="relative z-10">Send Message</span>
+                    <span className="relative z-10">{t("sendMessageButton")}</span>
                   </motion.button>
                 </form>
               </div>
@@ -166,34 +168,32 @@ export default function ContactPage() {
 
             {/* Studio Info */}
             <div className={`rounded-2xl p-10 shadow-xl border ${bgColor} ${textColor} ${borderColor}`}>
-              <h3 className="text-xl font-subheading font-bold mb-6 text-[#00F5A0]">Our Studio</h3>
+              <h3 className="text-xl font-subheading font-bold mb-6 text-[#00F5A0]">{t("ourStudio")}</h3>
               <p className={`${subTextColor} mb-8 text-sm`}>
-                Bridging innovation and technology to create extraordinary
-                solutions.
+                {t("studioDescription")}
               </p>
 
               <div className={`space-y-6 text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 <div>
-                  <h4 className="font-semibold text-[#00F5A0] mb-1">Address</h4>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">{t("addressLabel")}</h4>
                   <p>901 Clifton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
-                    <Phone className="w-4 h-4" /> Phone
+                    <Phone className="w-4 h-4" /> {t("phoneLabel")}
                   </h4>
                   <p><a href="tel:+919370782979">+91 9370782979</a></p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
-                    <Mail className="w-4 h-4" /> Email
+                    <Mail className="w-4 h-4" /> {t("emailLabel")}
                   </h4>
                   <p><a href="mailto:info@bidyutrobotics.com">info@bidyutrobotics.com</a></p>
                   <p><a href="mailto:rahul@bidyutrobotics.com">rahul@bidyutrobotics.com</a></p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#00F5A0] mb-1">Business Hours</h4>
-                  <p>Mon - Fri: 9:00am - 6:00pm</p>
-                  <p>Sat - Sun: 10:00am - 4:00pm</p>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">{t("businessHoursLabel")}</h4>
+                  <p>{t("businessHoursTime")}</p>
                 </div>
               </div>
             </div>

@@ -170,5 +170,22 @@ export const kn = {
   studentsEmpowered: '45,000+ ವಿದ್ಯಾರ್ಥಿಗಳು',
   schoolsTransformed: '30+ ಶಾಲೆಗಳು',
   exploreProgram: 'ಕಾರ್ಯಕ್ರಮವನ್ನು ಪರಿಶೋಧಿಸಿ',
-  partnerWithUs: 'ನಮ್ಮೊಂದಿಗೆ ಪಾಲುದಾರಿಕೆ ಮಾಡಿ'
+  partnerWithUs: 'ನಮ್ಮೊಂದಿಗೆ ಪಾಲುದಾರಿಕೆ ಮಾಡಿ',
+  
+  // Contact Page
+  meetOurTeam: 'ನಮ್ಮ ಅದ್ಭುತ ತಂಡವನ್ನು ಭೇಟಿಯಾಗಿ',
+  contactHeroDescription: 'ನಿಮ್ಮ ನಾವೀನ್ಯತೆಯ ಪ್ರಯಾಣಕ್ಕೆ ಒಟ್ಟಾಗಿ ಶಕ್ತಿ ನೀಡೋಣ. ಕಲ್ಪನೆಯಿಂದ ನಾವೀನ್ಯತೆಯವರೆಗೆ — ಬಿದ್ಯುತ್ ಅದನ್ನು ಸಾಧ್ಯವಾಗಿಸುತ್ತದೆ.',
+  
+  // About Page  
+  visionIgnited: 'ದೃಷ್ಟಿ ಪ್ರಜ್ವಲಿತ',
+  buildingFutureOfLearning: 'ಕಲಿಕೆಯ ಭವಿಷ್ಯವನ್ನು ನಿರ್ಮಿಸುವುದು',
+  roboticsLabsDescription: '2022 ವರೆಗೆ, ನಾವು ಶಾಲೆಗಳಿಗಾಗಿ ರೊಬೊಟಿಕ್ಸ್ ಲ್ಯಾಬ್‌ಗಳನ್ನು ಪ್ರಾರಂಭಿಸಿದ್ದೇವೆ, ಯುವ ಕಲಿಯುವವರಿಗೆ ನಾವೀನ್ಯತೆಯ ಪ್ರತ್ಯಕ್ಷ ಅನುಭವವನ್ನು ನೀಡಿದ್ದೇವೆ.',
+  currentStatusDescription: 'ಇಂದು, 2025 ರಲ್ಲಿ, ನಾವು ವಿಶ್ವಾಸಾರ್ಹ ಎಡುಟೆಕ್ ಮತ್ತು ರೊಬೊಟಿಕ್ಸ್ ನಾವೀನ್ಯತೆ ಪಾಲುದಾರರಾಗಿ ನಿಂತಿದ್ದೇವೆ.',
+  revolutionizeEducationText: 'ನಾವು ಸುಧಾರಿತ ರೊಬೊಟಿಕ್ಸ್, AI, ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಯನ್ನು ಸಂಯೋಜಿಸಿ ಶಿಕ್ಷಣದಲ್ಲಿ ಕ್ರಾಂತಿ ತರುತ್ತೇವೆ.',
+  exploreJourneyText: 'ನಾವೀನ್ಯತೆ ಮತ್ತು ಕಲಿಕೆಯ ಈ ಆಕರ್ಷಕ ಕ್ಷಣಗಳ ಮೂಲಕ ನಮ್ಮ ಪ್ರಯಾಣವನ್ನು ಅನ್ವೇಷಿಸಿ',
+  
+  // Terms & Conditions
+  paymentTerms: 'ಪಾವತಿ ನಿಯಮಗಳು',
+  serviceTerms: 'ಸೇವಾ ನಿಯಮಗಳು',
+  transactionSecurity: 'ವಹಿವಾಟು ಭದ್ರತೆ'
 };

@@ -170,5 +170,22 @@ export const mr = {
   studentsEmpowered: '45,000+ विद्यार्थी',
   schoolsTransformed: '30+ शाळा',
   exploreProgram: 'कार्यक्रम एक्सप्लोर करा',
-  partnerWithUs: 'आमच्यासोबत भागीदारी करा'
+  partnerWithUs: 'आमच्यासोबत भागीदारी करा',
+  
+  // Contact Page
+  meetOurTeam: 'आमच्या अप्रतिम टीमला भेटा',
+  contactHeroDescription: 'चला एकत्र तुमच्या नवोन्मेषाच्या प्रवासाला शक्ती देऊ. कल्पनेपासून नवोन्मेषापर्यंत — बिद्युत हे शक्य करते.',
+  
+  // About Page  
+  visionIgnited: 'दृष्टी प्रज्वलित',
+  buildingFutureOfLearning: 'शिक्षणाचे भविष्य निर्माण करणे',
+  roboticsLabsDescription: '2022 पर्यंत, आम्ही शाळांसाठी रोबोटिक्स लॅब सुरू केल्या, तरुण शिकणाऱ्यांना नवोन्मेषाचा प्रत्यक्ष अनुभव दिला.',
+  currentStatusDescription: 'आज, 2025 मध्ये, आम्ही एक विश्वसनीय एडुटेक आणि रोबोटिक्स नवोन्मेष भागीदार म्हणून उभे आहोत.',
+  revolutionizeEducationText: 'आम्ही प्रगत रोबोटिक्स, AI, आणि प्रत्यक्ष शिक्षण एकत्र करून शिक्षणात क्रांती घडवून आणतो.',
+  exploreJourneyText: 'नवोन्मेष आणि शिक्षणाच्या या मोहक क्षणांद्वारे आमचा प्रवास एक्सप्लोर करा',
+  
+  // Terms & Conditions
+  paymentTerms: 'पेमेंट अटी',
+  serviceTerms: 'सेवा अटी',
+  transactionSecurity: 'व्यवहार सुरक्षा'
 };

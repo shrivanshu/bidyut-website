@@ -170,5 +170,22 @@ export const gu = {
   studentsEmpowered: '45,000+ વિદ્યાર્થીઓ',
   schoolsTransformed: '30+ શાળાઓ',
   exploreProgram: 'કાર્યક્રમ એક્સપ્લોર કરો',
-  partnerWithUs: 'અમારી સાથે ભાગીદારી કરો'
+  partnerWithUs: 'અમારી સાથે ભાગીદારી કરો',
+  
+  // Contact Page
+  meetOurTeam: 'અમારી અદ્ભુત ટીમને મળો',
+  contactHeroDescription: 'ચાલો એકસાથે તમારી નવીનતાની યાત્રાને શક્તિ આપીએ. વિચારથી નવીનતા સુધી — બિદ્યુત તેને શક્ય બનાવે છે.',
+  
+  // About Page  
+  visionIgnited: 'દ્રષ્ટિ પ્રકાશિત',
+  buildingFutureOfLearning: 'શિક્ષણનું ભવિષ્ય બનાવવું',
+  roboticsLabsDescription: '2022 સુધીમાં, અમે શાળાઓ માટે રોબોટિક્સ લેબ શરૂ કર્યા, યુવા શિક્ષાર્થીઓને નવીનતાનો હાથે-હાથ અનુભવ આપ્યો.',
+  currentStatusDescription: 'આજે, 2025 માં, અમે એક વિશ્વસનીય એડુટેક અને રોબોટિક્સ નવીનતા ભાગીદાર તરીકે ઊભા છીએ.',
+  revolutionizeEducationText: 'અમે અદ્યતન રોબોટિક્સ, AI, અને હાથે-હાથના શિક્ષણને મિલાવીને શિક્ષણમાં ક્રાંતિ લાવીએ છીએ.',
+  exploreJourneyText: 'નવીનતા અને શિક્ષણની આ મોહક ક્ષણો દ્વારા અમારી યાત્રાની અન્વેષણ કરો',
+  
+  // Terms & Conditions
+  paymentTerms: 'પેમેન્ટ શરતો',
+  serviceTerms: 'સેવા શરતો',
+  transactionSecurity: 'વ્યવહાર સુરક્ષા'
 };

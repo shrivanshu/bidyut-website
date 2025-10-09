@@ -12,7 +12,7 @@ const Loader: React.FC<LoaderProps> = ({ fadeOut }) => {
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-<div className="loader-wrapper bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent">
+<div className="loader-wrapper">
         <span className="loader-letter">T</span>
         <span className="loader-letter">H</span>
         <span className="loader-letter">Y</span>

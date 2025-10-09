@@ -170,5 +170,31 @@ export const hi = {
   studentsEmpowered: '45,000+ छात्र',
   schoolsTransformed: '30+ स्कूल',
   exploreProgram: 'कार्यक्रम देखें',
-  partnerWithUs: 'हमारे साथ साझेदारी करें'
+  partnerWithUs: 'हमारे साथ साझेदारी करें',
+  
+  // Contact Page
+  meetOurTeam: 'हमारी अद्भुत टीम से मिलें',
+  contactHeroDescription: 'आइए आपकी नवाचार यात्रा को एक साथ शक्ति प्रदान करें। विचार से नवाचार तक — बिद्युत इसे संभव बनाता है।',
+  yourNameLabel: 'आपका नाम',
+  yourEmailLabel: 'आपका ईमेल',
+  yourMessageLabel: 'आपका संदेश',
+  sendMessageButton: 'संदेश भेजें',
+  ourStudio: 'हमारा स्टूडियो',
+  studioDescription: 'असाधारण समाधान बनाने के लिए नवाचार और प्रौद्योगिकी को जोड़ना।',
+  addressLabel: 'पता',
+  businessHoursLabel: 'व्यावसायिक घंटे',
+  businessHoursTime: 'सोम - शुक्र: सुबह 9:00 - शाम 6:00\nशनि - रवि: सुबह 10:00 - शाम 4:00',
+  
+  // About Page  
+  visionIgnited: 'दृष्टि प्रज्वलित',
+  buildingFutureOfLearning: 'सीखने के भविष्य का निर्माण',
+  roboticsLabsDescription: '2022 तक, हमने स्कूलों के लिए रोबोटिक्स लैब लॉन्च की, युवा शिक्षार्थियों को नवाचार का व्यावहारिक अनुभव दिया।',
+  currentStatusDescription: 'आज, 2025 में, हम एक विश्वसनीय एडुटेक और रोबोटिक्स नवाचार भागीदार के रूप में खड़े हैं।',
+  revolutionizeEducationText: 'हम उन्नत रोबोटिक्स, AI, और व्यावहारिक शिक्षा को मिलाकर शिक्षा में क्रांति लाते हैं।',
+  exploreJourneyText: 'नवाचार और शिक्षा के इन मनमोहक क्षणों के माध्यम से हमारी यात्रा का अन्वेषण करें',
+  
+  // Terms & Conditions
+  paymentTerms: 'भुगतान शर्तें',
+  serviceTerms: 'सेवा शर्तें',
+  transactionSecurity: 'लेनदेन सुरक्षा'
 };

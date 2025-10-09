@@ -170,5 +170,22 @@ export const ja = {
   studentsEmpowered: '45,000以上の学生',
   schoolsTransformed: '30以上の学校',
   exploreProgram: 'プログラムを探索',
-  partnerWithUs: '私たちとパートナー'
+  partnerWithUs: '私たちとパートナー',
+  
+  // Contact Page
+  meetOurTeam: '私たちの素晴らしいチームに会う',
+  contactHeroDescription: '一緒にあなたのイノベーションの旅に力を与えましょう。アイデアからイノベーションまで — Bidyutがそれを可能にします。',
+  
+  // About Page  
+  visionIgnited: 'ビジョン点火',
+  buildingFutureOfLearning: '学習の未来を構築',
+  roboticsLabsDescription: '2022年までに、学校向けのロボティクスラボを立ち上げ、若い学習者にイノベーションの実践的な体験を提供しました。',
+  currentStatusDescription: '今日、2025年に、私たちは信頼できるエドテックとロボティクスイノベーションパートナーとして立っています。',
+  revolutionizeEducationText: '私たちは高度なロボティクス、AI、実践的な学習を組み合わせて教育に革命をもたらします。',
+  exploreJourneyText: 'イノベーションと学習のこれらの魅力的な瞬間を通じて私たちの旅を探索してください',
+  
+  // Terms & Conditions
+  paymentTerms: '支払い条件',
+  serviceTerms: 'サービス条件',
+  transactionSecurity: '取引セキュリティ'
 };

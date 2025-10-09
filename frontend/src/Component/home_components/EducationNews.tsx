@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import EN1 from "./EN1";
 import HomeHeroText from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
+import { getApiUrl } from "../../utils/api";
 
 interface Article {
   title: string;
@@ -33,23 +34,27 @@ const EducationNews: React.FC = () => {
  useEffect(() => {
   const fetchArticles = async () => {
     try {
-      const url = `https://eventregistry.org/api/v1/article/getArticles?action=getArticles&keyword=Tesla&apiKey=93b70b4a-d48c-4ad6-b593-70eab72a88c1&lang=eng&articlesSortBy=date&articlesCount=12`;
-      const res = await fetch(url);
+      // Use the API utility for consistent URL handling
+      const apiUrl = getApiUrl('/news');
+      
+      const res = await fetch(apiUrl);
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      
       const data = await res.json();
 
-      // Map EventRegistry format to Article interface
-      const mappedArticles: Article[] = data.articles?.results.map((a: any) => ({
-        title: a.title,
-        description: a.body,
-        url: a.url,
-        source: { title: a.source?.title ?? "Unknown" },
-        date: a.dateTimePub,
-        image: a.image ?? undefined,
-      })) ?? [];
-
-      setArticles(mappedArticles);
+      if (data.success && data.articles) {
+        setArticles(data.articles);
+      } else {
+        console.error("Error fetching news:", data.error || "Unknown error");
+        setArticles([]);
+      }
     } catch (err) {
-      console.error("Error fetching EventRegistry articles:", err);
+      console.error("Error fetching news from backend:", err);
+      // Fallback to empty array if backend is not available
+      setArticles([]);
     }
   };
 

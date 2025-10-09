@@ -6,13 +6,12 @@ import { gu } from '../locales/gu';
 import { ta } from '../locales/ta';
 import { te } from '../locales/te';
 import { kn } from '../locales/kn';
-import { ur } from '../locales/ur';
 import { bn } from '../locales/bn';
 import { ja } from '../locales/ja';
 import { ru } from '../locales/ru';
 import { zh } from '../locales/zh';
 
-export type Language = 'en' | 'hi' | 'ur' | 'bn' | 'ja' | 'mr' | 'gu' | 'ta' | 'te' | 'kn' | 'ru' | 'zh';
+export type Language = 'en' | 'hi' | 'bn' | 'ja' | 'mr' | 'gu' | 'ta' | 'te' | 'kn' | 'ru' | 'zh';
 
 interface LanguageContextType {
   currentLanguage: Language;
@@ -27,7 +26,6 @@ interface LanguageContextType {
 const translations = {
   en,
   hi, 
-  ur,
   bn,
   ja,
   mr,
@@ -59,7 +57,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   useEffect(() => {
     // Check for saved language preference or browser language
     const savedLanguage = localStorage.getItem("language") as Language;
-    const supportedLanguages: Language[] = ['en', 'hi', 'ur', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
+    const supportedLanguages: Language[] = ['en', 'hi', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
     
     if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
       setCurrentLanguage(savedLanguage);
@@ -103,7 +101,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const languageNames: Record<Language, string> = {
       en: 'English',
       hi: 'हिंदी',
-      ur: 'اردو',
       bn: 'বাংলা',
       ja: '日本語',
       mr: 'मराठी',
@@ -121,7 +118,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const flags: Record<Language, string> = {
       en: '🇺🇸',
       hi: '🇮🇳',
-      ur: '🇵🇰',
       bn: '🇧🇩',
       ja: '🇯🇵',
       mr: '🇮🇳',
@@ -136,7 +132,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   const getSupportedLanguages = () => {
-    const languages: Language[] = ['en', 'hi', 'ur', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
+    const languages: Language[] = ['en', 'hi', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
     return languages.map(lang => ({
       code: lang,
       name: getLanguageName(lang),

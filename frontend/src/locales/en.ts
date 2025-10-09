@@ -172,5 +172,22 @@ export const en = {
   studentsEmpowered: '45,000+ students',
   schoolsTransformed: '30+ schools',
   exploreProgram: 'Explore Program',
-  partnerWithUs: 'Partner With Us'
+  partnerWithUs: 'Partner With Us',
+  
+  // Contact Page
+  meetOurTeam: 'Meet Our Amazing Team',
+  contactHeroDescription: "Let's power up your innovation journey together. From idea to innovation — Bidyut makes it happen.",
+  
+  // About Page  
+  visionIgnited: 'Vision Ignited',
+  buildingFutureOfLearning: 'Building the Future of Learning',
+  roboticsLabsDescription: 'By 2022, we launched Robotics Labs for Schools, giving young learners hands-on exposure to innovation. Our early programs inspired curiosity, creativity, and problem-solving through interactive robotics education.',
+  currentStatusDescription: 'Today, in 2025, we stand as a trusted Edutech & Robotics innovation partner—bridging schools, universities, and industries with cutting-edge solutions that shape the future of technology and learning.',
+  revolutionizeEducationText: 'We revolutionize education by combining advanced robotics, AI, and hands-on learning to prepare students for the challenges of tomorrow.',
+  exploreJourneyText: 'Explore our journey through these captivating moments of innovation and learning',
+  
+  // Terms & Conditions
+  paymentTerms: 'Payment Terms',
+  serviceTerms: 'Service Terms',
+  transactionSecurity: 'Transaction Security'
 };

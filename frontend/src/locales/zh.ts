@@ -170,5 +170,22 @@ export const zh = {
   studentsEmpowered: '45,000多名学生',
   schoolsTransformed: '30多所学校',
   exploreProgram: '探索计划',
-  partnerWithUs: '与我们合作'
+  partnerWithUs: '与我们合作',
+  
+  // Contact Page
+  meetOurTeam: '认识我们的精彩团队',
+  contactHeroDescription: '让我们一起为您的创新之旅注入活力。从想法到创新 — Bidyut 让它成为可能。',
+  
+  // About Page  
+  visionIgnited: '点燃愿景',
+  buildingFutureOfLearning: '构建学习的未来',
+  roboticsLabsDescription: '到2022年，我们为学校推出了机器人实验室，为年轻学习者提供了创新的实践体验。',
+  currentStatusDescription: '今天，在2025年，我们作为教育科技和机器人创新的可信赖合作伙伴而站立。',
+  revolutionizeEducationText: '我们通过结合先进的机器人技术、人工智能和实践学习来革命教育。',
+  exploreJourneyText: '通过这些迷人的创新和学习时刻探索我们的旅程',
+  
+  // Terms & Conditions
+  paymentTerms: '付款条款',
+  serviceTerms: '服务条款',
+  transactionSecurity: '交易安全'
 };

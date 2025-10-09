@@ -170,5 +170,22 @@ export const te = {
   studentsEmpowered: '45,000+ విద్యార్థులు',
   schoolsTransformed: '30+ పాఠశాలలు',
   exploreProgram: 'కార్యక్రమాన్ని అన్వేషించండి',
-  partnerWithUs: 'మాతో భాగస్వామ్యం చేయండి'
+  partnerWithUs: 'మాతో భాగస్వామ్యం చేయండి',
+  
+  // Contact Page
+  meetOurTeam: 'మా అద్భుతమైన టీమ్‌ను కలుసుకోండి',
+  contactHeroDescription: 'మీ నవాచార ప్రయాణానికి కలిసి శక్తిని అందించండి. ఆలోచన నుండి నవాచారం వరకు — బిద్యుత్ దీన్ని సాధ్యం చేస్తుంది.',
+  
+  // About Page  
+  visionIgnited: 'దృష్టి మండింది',
+  buildingFutureOfLearning: 'అభ్యాసం యొక్క భవిష్యత్తును నిర్మించడం',
+  roboticsLabsDescription: '2022 వరకు, మేము పాఠశాలల కోసం రోబోటిక్స్ ల్యాబ్‌లను ప్రారంభించాము, యువ అభ్యాసకులకు నవాచారం యొక్క ప్రత్యక్ష అనుభవాన్ని అందించాము.',
+  currentStatusDescription: 'నేడు, 2025లో, మేము విశ్వసనీయ ఎడుటెక్ మరియు రోబోటిక్స్ నవాచార భాగస్వామిగా నిలుస్తున్నాము.',
+  revolutionizeEducationText: 'మేము అధునాతన రోబోటిక్స్, AI, మరియు ప్రత్యక్ష అభ్యాసాన్ని కలిపి విద్యలో విప్లవం తెస్తున్నాము.',
+  exploreJourneyText: 'నవాచారం మరియు అభ్యాసం యొక్క ఈ ఆకర్షణీయ క్షణాల ద్వారా మా ప్రయాణాన్ని అన్వేషించండి',
+  
+  // Terms & Conditions
+  paymentTerms: 'చెల్లింపు నిబంధనలు',
+  serviceTerms: 'సేవా నిబంధనలు',
+  transactionSecurity: 'లావాదేవీ భద్రత'
 };

@@ -170,5 +170,22 @@ export const bn = {
   studentsEmpowered: '৪৫,০০০+ শিক্ষার্থী',
   schoolsTransformed: '৩০+ স্কুল',
   exploreProgram: 'প্রোগ্রাম অন্বেষণ করুন',
-  partnerWithUs: 'আমাদের সাথে অংশীদার হন'
+  partnerWithUs: 'আমাদের সাথে অংশীদার হন',
+  
+  // Contact Page
+  meetOurTeam: 'আমাদের অসাধারণ টিমের সাথে দেখা করুন',
+  contactHeroDescription: 'আসুন একসাথে আপনার উদ্ভাবনের যাত্রায় শক্তি প্রদান করি। ধারণা থেকে উদ্ভাবন পর্যন্ত — Bidyut এটি সম্ভব করে তোলে।',
+  
+  // About Page  
+  visionIgnited: 'দৃষ্টিভঙ্গি প্রজ্বলিত',
+  buildingFutureOfLearning: 'শেখার ভবিষ্যত তৈরি',
+  roboticsLabsDescription: '২০২২ সালের মধ্যে, আমরা স্কুলগুলির জন্য রোবোটিক্স ল্যাব চালু করেছি, তরুণ শিক্ষার্থীদের উদ্ভাবনের হাতে-কলমে অভিজ্ঞতা দিয়েছি।',
+  currentStatusDescription: 'আজ, ২০২৫ সালে, আমরা একটি বিশ্বস্ত এডুটেক এবং রোবোটিক্স উদ্ভাবন অংশীদার হিসাবে দাঁড়িয়ে আছি।',
+  revolutionizeEducationText: 'আমরা উন্নত রোবোটিক্স, AI, এবং হাতে-কলমে শেখার মাধ্যমে শিক্ষায় বিপ্লব ঘটাই।',
+  exploreJourneyText: 'উদ্ভাবন এবং শেখার এই মুগ্ধকর মুহূর্তগুলির মাধ্যমে আমাদের যাত্রা অন্বেষণ করুন',
+  
+  // Terms & Conditions
+  paymentTerms: 'পেমেন্ট শর্তাবলী',
+  serviceTerms: 'সেবা শর্তাবলী',
+  transactionSecurity: 'লেনদেন নিরাপত্তা'
 };

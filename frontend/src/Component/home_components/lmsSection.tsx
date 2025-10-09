@@ -43,9 +43,16 @@ export default function Component() {
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
               Bidyut LMS brings robotics, coding, and AI to life with hands-on and gamified lessons. Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
             </p>
-            <button className="bg-[#28C76F] hover:bg-[#24B064] text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins']">
-              Login to LMS
-            </button>
+            <a
+              href="https://bidyutrobotics.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-white border-2 border-gradient px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins'] hover:shadow-lg transform hover:scale-105 relative overflow-hidden group">
+                <span className="text-gradient-animated relative z-10">Login to LMS</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#28C76F] to-[#20B2AA] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              </button>
+            </a>
           </div>
 
           {/* Right Column */}
