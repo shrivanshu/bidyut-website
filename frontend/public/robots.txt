@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Block private/admin pages
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://bidyutinnovation.com/sitemap.xml
