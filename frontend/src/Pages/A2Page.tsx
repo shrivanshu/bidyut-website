@@ -5,15 +5,17 @@ import A2Details from '../Component/A2Components/A2Details';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import A2HeroSection from '../Component/A2Components/A2HeroSection';
 import A2ComparisonChart from '../Component/A2Components/A2ComparisonChart';
+import { useNavigate } from 'react-router-dom';
 
 function A2Page() {
+  const navigate = useNavigate();
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />
   <A2HeroSection/>
   <A2Variants/>
-  <A2Details/>
+  <A2Details onContactClick={() => navigate('/Contact')} />
   <A2ComparisonChart />
         <Footer />
       </div>

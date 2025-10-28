@@ -177,6 +177,15 @@ export const en = {
   // Contact Page
   meetOurTeam: 'Meet Our Amazing Team',
   contactHeroDescription: "Let's power up your innovation journey together. From idea to innovation — Bidyut makes it happen.",
+  yourNameLabel: 'Your Name',
+  yourEmailLabel: 'Your Email',
+  yourMessageLabel: 'Your Message',
+  sendMessageButton: 'Send Message',
+  ourStudio: 'Our Studio',
+  studioDescription: 'Connecting innovation and technology to create extraordinary solutions.',
+  addressLabel: 'Address',
+  businessHoursLabel: 'Business Hours',
+  businessHoursTime: 'Mon - Fri: 9:00 AM - 6:00 PM\nSat - Sun: 10:00 AM - 4:00 PM',
   
   // About Page  
   visionIgnited: 'Vision Ignited',

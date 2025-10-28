@@ -1,17 +1,17 @@
 
 const images = [
-  { src: "/School/1.png",  text: "Robotics Lab" },
-  { src: "/School/2.png",  text: "STREAM Innovation" },
-  { src: "/School/33.png", text: "AI & Coding Club" },
-  { src: "/School/4.png",  text: "Tech & Engineering" },
-  { src: "/School/5.png",  text: "Science Projects" },
-  { src: "/School/6.png",  text: "Math Excellence" },
-  { src: "/School/7.png",  text: "Arts & Design" },
-  { src: "/School/8.png",  text: "Growth Mindset" },
-  { src: "/School/9.png",  text: "Student Leadership" },
-  { src: "/School/10.png", text: "Community Service" },
-  { src: "/School/111.png",text: "Sports & Wellness" },
-  { src: "/School/12.png", text: "Future Careers" },
+  { src: "/School/1.webp",  text: "Robotics Lab" },
+  { src: "/School/2.webp",  text: "STREAM Innovation" },
+  { src: "/School/33.webp", text: "AI & Coding Club" },
+  { src: "/School/4.webp",  text: "Tech & Engineering" },
+  { src: "/School/5.webp",  text: "Science Projects" },
+  { src: "/School/6.webp",  text: "Math Excellence" },
+  { src: "/School/7.webp",  text: "Arts & Design" },
+  { src: "/School/8.webp",  text: "Growth Mindset" },
+  { src: "/School/9.webp",  text: "Student Leadership" },
+  { src: "/School/10.webp", text: "Community Service" },
+  { src: "/School/111.webp",text: "Sports & Wellness" },
+  { src: "/School/12.webp", text: "Future Careers" },
 ];
 
 

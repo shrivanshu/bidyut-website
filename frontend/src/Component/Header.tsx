@@ -10,6 +10,7 @@ import {
   X,
   Globe,
 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useNavigation } from "../contexts/NavigationContext";
@@ -40,13 +41,13 @@ function MobileDropdown({ label, items }: { label: string; items: any[] }) {
                 items={item.children}
               />
             ) : (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="block py-1 pl-4 dark:text-gray-300 hover:text-[#00F5A0] font-normal"
               >
                 {item.label}
-              </a>
+              </Link>
             )
           )}
         </div>
@@ -56,6 +57,7 @@ function MobileDropdown({ label, items }: { label: string; items: any[] }) {
 }
 
 export default function Header() {
+  const navigate = useNavigate();
   const { isDark, toggleTheme } = useTheme();
   const { currentLanguage, changeLanguage, t, getSupportedLanguages } =
     useLanguage();
@@ -77,8 +79,8 @@ export default function Header() {
       <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center">
         <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="/"
+          <Link
+            to="/"
             className="flex items-center group"
             style={{ textDecoration: "none" }}
           >
@@ -88,7 +90,7 @@ export default function Header() {
               className="h-14 w-auto mr-2 transition-transform group-hover:scale-105"
               style={{ maxHeight: "56px" }}
             />
-          </a>
+          </Link>
 
           {/* Navigation Menu (Desktop) */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -97,9 +99,9 @@ export default function Header() {
               { href: "/About", label: t("aboutUs") },
               { href: "/School", label: t("school") },
             ].map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={`relative font-medium transition-all duration-300 ${
                   isActive(item.href)
                     ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent after:w-full after:bg-gradient-to-r after:from-[#00F5A0] after:to-[#00C6FF]"
@@ -107,7 +109,7 @@ export default function Header() {
                 } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             {/* Robots Dropdown */}
@@ -137,18 +139,18 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a
-                              href="/Robot/Humanoids/Industry/H1"
+                            <Link
+                              to="/Robot/Humanoids/Industry/H1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               H1
-                            </a>
-                            <a
-                              href="/Robot/Humanoid/Industry/H1-2"
+                            </Link>
+                            <Link
+                              to="/Robot/Humanoid/Industry/H1-2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               H1-2
-                            </a>
+                            </Link>
                           </div>
                         </div>
 
@@ -159,18 +161,18 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a
-                              href="/Robot/Humanoid/Education/G1"
+                            <Link
+                              to="/Robot/Humanoid/Education/G1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G1
-                            </a>
-                            <a
-                              href="/Robot/Humanoid/Education/R1"
+                            </Link>
+                            <Link
+                              to="/Robot/Humanoid/Education/R1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               R1
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -194,30 +196,30 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a
-                              href="/Robot/Quadrupeds/Industry/B2"
+                            <Link
+                              to="/Robot/Quadrupeds/Industry/B2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               B2
-                            </a>
-                            <a
-                              href="/Robot/Quadrupeds/Industry/B2-W"
+                            </Link>
+                            <Link
+                              to="/Robot/Quadrupeds/Industry/B2-W"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               B2-W
-                            </a>
-                            <a
-                              href="/Robot/Quadrupeds/Industry/A2"
+                            </Link>
+                            <Link
+                              to="/Robot/Quadrupeds/Industry/A2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               A2
-                            </a>
-                            <a
-                              href="/Robot/Quadrupeds/Industry/A2-W"
+                            </Link>
+                            <Link
+                              to="/Robot/Quadrupeds/Industry/A2-W"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               A2-W
-                            </a>
+                            </Link>
                           </div>
                         </div>
 
@@ -228,18 +230,18 @@ export default function Header() {
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
-                            <a
-                              href="/Robot/Quadrupeds/Education/GO2"
+                            <Link
+                              to="/Robot/Quadrupeds/Education/GO2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G02
-                            </a>
-                            <a
-                              href="/Robot/Quadrupeds/Education/GO2-W"
+                            </Link>
+                            <Link
+                              to="/Robot/Quadrupeds/Education/GO2-W"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G02-W
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -256,17 +258,17 @@ export default function Header() {
                   {/* <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
                       <div className="py-2"> */}
 
-                  {/* Firefighting */}
+                  {/* Firefighting (disabled for now) */}
                   {/* <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           <a href="/Robot/Solutions/Firefighting"> Firefighting Solution </a>
+                           Firefighting Solution
                           </button>
                         </div> */}
 
-                  {/* Inspection  */}
+                  {/* Inspection (disabled for now) */}
                   {/* <div className="relative group/sub">
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           <a href="/Robot/Solutions/Inspection">Inspection Solution</a> 
+                           Inspection Solution
                           </button>
                         </div> */}
 
@@ -276,7 +278,7 @@ export default function Header() {
                   {/* Solutions */}
                   <div
                     className="relative group/child cursor-pointer"
-                    onClick={() => (window.location.href = "/Cobot")}
+                    onClick={() => navigate("/Cobot")}
                   >
                     <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                       Cobot
@@ -290,9 +292,9 @@ export default function Header() {
               { href: "/Gallery", label: t("gallery") },
               { href: "/Contact", label: t("contact") },
             ].map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={`relative font-medium transition-all duration-300 ${
                   isActive(item.href)
                     ? "bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] bg-clip-text text-transparent after:w-full after:bg-gradient-to-r after:from-[#00F5A0] after:to-[#00C6FF]"
@@ -300,7 +302,7 @@ export default function Header() {
                 } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -397,8 +399,8 @@ export default function Header() {
       >
         <nav className="flex flex-col space-y-4 px-3">
           {/* Regular links */}
-          <a
-            href="/"
+          <Link
+            to="/"
             className={`font-medium transition-colors ${
               isActive("/")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
@@ -406,9 +408,9 @@ export default function Header() {
             }`}
           >
             {t("home")}
-          </a>
-          <a
-            href="/About"
+          </Link>
+          <Link
+            to="/About"
             className={`font-medium transition-colors ${
               isActive("/About")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
@@ -416,9 +418,9 @@ export default function Header() {
             }`}
           >
             {t("aboutUs")}
-          </a>
-          <a
-            href="/School"
+          </Link>
+          <Link
+            to="/School"
             className={`font-medium transition-colors ${
               isActive("/School")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
@@ -426,7 +428,7 @@ export default function Header() {
             }`}
           >
             {t("school")}
-          </a>
+          </Link>
 
           {/* Robots Dropdown */}
           <MobileDropdown
@@ -488,8 +490,8 @@ export default function Header() {
             ]}
           />
 
-          <a
-            href="/Gallery"
+          <Link
+            to="/Gallery"
             className={`font-medium transition-colors ${
               isActive("/Gallery")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
@@ -497,9 +499,9 @@ export default function Header() {
             }`}
           >
             {t("gallery")}
-          </a>
-          <a
-            href="/Contact"
+          </Link>
+          <Link
+            to="/Contact"
             className={`font-medium transition-colors ${
               isActive("/Contact")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
@@ -507,7 +509,7 @@ export default function Header() {
             }`}
           >
             {t("contact")}
-          </a>
+          </Link>
           <a
             href="https://bidyutrobotics.com/login"
             target="_blank"

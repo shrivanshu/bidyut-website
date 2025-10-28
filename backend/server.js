@@ -10,6 +10,26 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const GOOGLE_AI_API_KEY = 'AIzaSyCur8DUiq_dPI5ZxAOiIT16yoEeOGLp9pI';
+
+// Session tracking for chat limits (3 chats per session)
+const sessionChatCounts = new Map(); // sessionId -> { count, lastActivity }
+
+// Cleanup old sessions every hour (sessions older than 2 hours)
+setInterval(() => {
+  const now = Date.now();
+  const TWO_HOURS = 2 * 60 * 60 * 1000;
+  
+  for (const [sessionId, data] of sessionChatCounts.entries()) {
+    if (now - data.lastActivity > TWO_HOURS) {
+      sessionChatCounts.delete(sessionId);
+    }
+  }
+  
+  if (sessionChatCounts.size > 0) {
+    console.log(`Cleaned up old sessions. Active sessions: ${sessionChatCounts.size}`);
+  }
+}, 60 * 60 * 1000); // Run every hour
 
 // Middleware
 app.use(cors({
@@ -166,6 +186,138 @@ app.get('/api/news', async (req, res) => {
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Chatbot API endpoint with 3-chat-per-session limit
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, conversation = [], sessionId } = req.body;
+
+    if (!message) {
+      return res.status(400).json({
+        success: false,
+        error: 'Message is required'
+      });
+    }
+
+    if (!sessionId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Session ID is required'
+      });
+    }
+
+    // Check session chat count (limit 3 per session)
+    const sessionData = sessionChatCounts.get(sessionId) || { count: 0, lastActivity: Date.now() };
+    const currentCount = sessionData.count;
+    
+    if (currentCount >= 3) {
+      return res.status(429).json({
+        success: false,
+        error: 'Chat limit reached',
+        response: 'You have reached the maximum of 3 chats per session. Please refresh the page to start a new session.',
+        limitReached: true
+      });
+    }
+
+    if (!GOOGLE_AI_API_KEY) {
+      return res.status(500).json({
+        success: false,
+        error: 'Google AI API key not configured'
+      });
+    }
+
+    // Import Google Generative AI
+    const { GoogleGenerativeAI } = await import('@google/generative-ai');
+    const genAI = new GoogleGenerativeAI(GOOGLE_AI_API_KEY);
+
+    const systemPrompt = `You are Buddy, an AI assistant for Bidyut Innovation, a leading robotics education company. You help users with:
+    - Robotics concepts and learning
+    - Coding and programming help
+    - Information about Bidyut Innovation's programs, courses, and services
+    - STEAM education and technology topics
+    - General questions about educational robotics
+    
+    Keep responses helpful, friendly, and focused on education and robotics. If asked about topics outside your expertise, politely redirect to robotics and education.`;
+
+    // Format conversation history
+    const conversationHistory = conversation
+      .map((msg) => `${msg.from === "me" ? "User" : "Buddy"}: ${msg.text}`)
+      .join("\n");
+
+    const fullPrompt = `${systemPrompt}\n\n${conversationHistory}\nUser: ${message}\nBuddy:`;
+
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(fullPrompt);
+    const response = await result.response;
+    const text = response.text();
+
+    // Increment chat count for this session
+    const newCount = currentCount + 1;
+    sessionChatCounts.set(sessionId, {
+      count: newCount,
+      lastActivity: Date.now()
+    });
+    const remainingChats = 3 - newCount;
+
+    res.json({
+      success: true,
+      response: text?.trim() || "I'm having trouble responding right now. Please try again!",
+      timestamp: new Date().toISOString(),
+      chatCount: newCount,
+      remainingChats: remainingChats,
+      limitReached: remainingChats === 0
+    });
+
+  } catch (error) {
+    console.error('Error in chat endpoint:', error);
+    
+    let errorMessage = "Sorry, I encountered an error. Please try again.";
+    let statusCode = 500;
+    
+    // Handle specific Google AI API errors
+    if (error.status === 429) {
+      errorMessage = "I'm currently experiencing high usage. Please try again in a few minutes.";
+      statusCode = 429;
+    } else if (error.status === 401 || error.status === 403) {
+      errorMessage = "There's an issue with the AI service configuration. Please contact support.";
+      statusCode = 503;
+    }
+    
+    res.status(statusCode).json({
+      success: false,
+      error: 'Failed to generate response',
+      response: errorMessage
+    });
+  }
+});
+
+// Fallback chatbot endpoint for when AI is unavailable
+app.post('/api/chat/fallback', (req, res) => {
+  const { message } = req.body;
+  
+  // Simple keyword-based responses
+  const lowerMessage = message.toLowerCase();
+  let response = "Thanks for your message! ";
+  
+  if (lowerMessage.includes('robot') || lowerMessage.includes('robotics')) {
+    response += "Robotics is an exciting field that combines engineering, programming, and creativity. At Bidyut Innovation, we offer comprehensive robotics education programs for students of all ages.";
+  } else if (lowerMessage.includes('course') || lowerMessage.includes('program') || lowerMessage.includes('learn')) {
+    response += "We offer various robotics and STEAM education programs. Please visit our website or contact us directly to learn more about our courses and enrollment.";
+  } else if (lowerMessage.includes('coding') || lowerMessage.includes('programming')) {
+    response += "Programming is a crucial skill in robotics! We teach various programming languages and concepts as part of our robotics curriculum.";
+  } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    response = "Hello! I'm Buddy, your AI assistant from Bidyut Innovation. I'm here to help you with questions about robotics, coding, and our educational programs. How can I assist you today?";
+  } else {
+    response += "I'd be happy to help you with questions about robotics, coding, or Bidyut Innovation's programs. Could you please tell me more about what you're interested in learning?";
+  }
+  
+  res.json({
+    success: true,
+    response: response,
+    timestamp: new Date().toISOString(),
+    fallback: true
+  });
 });
 
 // Schedule news updates twice a week (Monday and Thursday at 6 AM)

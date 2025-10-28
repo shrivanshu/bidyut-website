@@ -4,7 +4,7 @@ interface CobotClassroomProps {
   onContactClick?: () => void;
 }
 
-const robotImgSrc = '/Cobo/D1-arm.png';
+const robotImgSrc = '/Cobo/D1-arm.webp';
 
 const CoboClassroom = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark: _isDark } = useTheme();

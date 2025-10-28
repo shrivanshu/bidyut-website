@@ -32,7 +32,7 @@ export default function FirefightingHeroSection() {
 <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
   <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
     <img 
-  src="/media/A2-w.png" 
+  src="/media/A2-w.webp" 
       alt="Firefighting Robot" 
   className="w-full max-w-xl h-auto object-contain" 
     />

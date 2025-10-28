@@ -56,7 +56,7 @@ const HeroSectionR1 = () => {
         {/* Robot Image - Reduced size for better spacing */}
         <div className="absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]">
           <img 
-            src="/media/R1 (3).png" 
+            src="/media/R1 (3).webp" 
             alt="Humanoid Robot" 
             className="w-[100%] h-full object-contain"
           />

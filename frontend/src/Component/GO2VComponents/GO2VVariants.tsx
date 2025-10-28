@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -27,11 +28,11 @@ const cobotSearchData = [
   {
     id: "GO2 AIR",
     name: "GO2 AIR",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
  
 ]
@@ -44,7 +45,7 @@ RobotSpec[] = [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 40 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.webp",
 
     ],
  features: [
@@ -101,7 +102,7 @@ RobotSpec[] = [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.webp",
 
     ],
 features: [
@@ -157,7 +158,7 @@ features: [
     description:
       "Technical specifications: Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Mid-360). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.webp",
 
     ],
 features: [
@@ -214,7 +215,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Hesai XT16). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.webp",
 
     ],
  features: [
@@ -271,7 +272,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.webp",
 
     ],
  features: [
@@ -631,7 +632,7 @@ function GO2VVariants() {
           {/* Left Section - Product Info */}
           <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-black rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-             <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-heading font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+             <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 tracking-tight">
   {displayName}
 </h1>
 <h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
@@ -641,11 +642,11 @@ function GO2VVariants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             

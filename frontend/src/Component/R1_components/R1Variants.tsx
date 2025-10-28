@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const robotSearchData = [
     category: "Educational",
     description: "Alpha unit for classrooms with quick-swap modules.",
     specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-dance5.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
 ]
 
@@ -41,8 +42,8 @@ const robotSpecs: RobotSpec[] = [
   "name": "Unitree R1",
   "description": "The Unitree R1 is a compact full-featured humanoid robot, measuring 1210 × 357 × 190 mm and weighing about 25 kg. It features 24 degrees of freedom (expandable up to 40 for the EDU version), 6 DOF per leg, and 5 DOF per arm (3 at the shoulder and 2 at the elbow). Equipped with a humanoid binocular camera for ultra-wide-angle vision, a 4-microphone array for voice interaction, and stereo dual speakers, it is designed for dynamic educational and research applications. The R1 integrates hollow and internal wiring, a smart quick-release battery, an 8-core CPU computing module, and supports OTA upgrades, making it a versatile and powerful educational humanoid platform.",
   "gallery": [
-    "/media/R1.png",
-    "/media/R1 (3).png",
+    "/media/R1.webp",
+    "/media/R1 (3).webp",
     // "/media/Robot_Details.svg",
     // "/media/Robot_Details.svg",
     // "/media/Robot_Details.svg"
@@ -429,11 +430,11 @@ export default function R1Variants() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
-            <a href="/contact">
+            <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+</Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
@@ -474,7 +475,7 @@ export default function R1Variants() {
   {/* Robot Image */}
   <div className="absolute inset-0 flex items-center justify-center">
     <img
-      src="/media/R1.png"
+      src="/media/R1.webp"
       alt={currentSpec.name}
       className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
     />

@@ -2,12 +2,22 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const GalleryHero: React.FC = () => {
   const { isDark } = useTheme();
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
+  const handleExploreProgram = () => {
+    navigate('/School');
+  };
+
+  const handlePartnerWithUs = () => {
+    navigate('/Contact');
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,8 +58,8 @@ const GalleryHero: React.FC = () => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/gallery hero section.webm"
       >
-        <source src="/gallery hero section.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -98,6 +108,7 @@ const GalleryHero: React.FC = () => {
             variants={buttonVariants}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
+            onClick={handleExploreProgram}
           >
             {t('exploreProgram')}
           </motion.button>
@@ -107,6 +118,7 @@ const GalleryHero: React.FC = () => {
             variants={buttonVariants}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
+            onClick={handlePartnerWithUs}
           >
             {t('partnerWithUs')}
           </motion.button>

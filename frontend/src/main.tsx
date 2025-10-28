@@ -10,12 +10,12 @@ import Cobotpage from './Pages/Cobot_page';
 import B2Page from './Pages/B2Page';
 import A2Page from './Pages/A2Page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './Component/ScrollToTop';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
-import { HelmetProvider } from 'react-helmet-async';
 import H1_page from './Pages/H1_page';
-import H1_2_page from './Pages/H1_2_page';   // ✅ Added missing import
+import H1_2_page from './Pages/H1_2_page';   
 import R1_page from './Pages/R1_page';
 import B2_Wells_Page from './Pages/B2_Wells_Page';
 import A2_Wells_Page from './Pages/A2_Wells_Page';
@@ -24,19 +24,19 @@ import PrivacyPolicy from './Pages/PrivacyPolicy';
 import TermsCondition from './Pages/Terms&Condition';
 import RefundPolicy from './Pages/RefundPolicy';
 import GO2VPage from './Pages/GO2VPage';
-import Firefighting from './Pages/FirefightingPage'; // ✅ moved to correct place
+import Firefighting from './Pages/FirefightingPage';
 import Cobo_page from './Pages/Cobo_page';
 import FinalSchoolPage from './Pages/School_Page_final';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <ThemeProvider> 
-        <LanguageProvider>
-          <BrowserRouter>
-            <NavigationProvider>
-              <Routes>
+    <ThemeProvider> 
+      <LanguageProvider>
+        <BrowserRouter>
+          <NavigationProvider>
+            <ScrollToTop />
+            <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
               <Route path="/School" element={<FinalSchoolPage />} />
@@ -77,6 +77,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </LanguageProvider>
     </ThemeProvider>
-  </HelmetProvider>
   </React.StrictMode>
 );

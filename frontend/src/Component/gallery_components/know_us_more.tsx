@@ -21,7 +21,7 @@ interface GalleryImage {
 let galleryImages: GalleryImage[] = [
   // Workspace
   { src: "/knowusmore_gallery/Copy of DSC05302.JPG", title: "Workspace 1", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05543 copy.jpg", title: "Workspace 2", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05543 copy.webp", title: "Workspace 2", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05546.JPG", title: "Workspace 3", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05551.JPG", title: "Workspace 4", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05553.JPG", title: "Workspace 5", category: "workspace" },
@@ -29,14 +29,14 @@ let galleryImages: GalleryImage[] = [
   { src: "/knowusmore_gallery/DSC05561.JPG", title: "Workspace 7", category: "workspace" },
 
   // Technology
-  { src: "/Cobo/D1-arm.png", title: "Robotic Arm", category: "technology" },
-  { src: "/Cobo/Franka-arm.png", title: "Franka Robotic Arm", category: "technology" },
-  { src: "/media/A2-pro.png", title: "A2 Pro Robot", category: "technology" },
+  { src: "/Cobo/D1-arm.webp", title: "Robotic Arm", category: "technology" },
+  { src: "/Cobo/Franka-arm.webp", title: "Franka Robotic Arm", category: "technology" },
+  { src: "/media/A2-pro.webp", title: "A2 Pro Robot", category: "technology" },
 
   // Education
-  { src: "/GO2/GO2 EDU.png", title: "GO2 Educational Robot", category: "education" },
-  { src: "/GO2/GO2 EDU U1.png", title: "GO2 EDU Unit 1", category: "education" },
-  // { src: "/media/G1 EDU U1.png", title: "G1 EDU Unit 1", category: "education" }
+  { src: "/GO2/GO2 EDU.webp", title: "GO2 Educational Robot", category: "education" },
+  { src: "/GO2/GO2 EDU U1.webp", title: "GO2 EDU Unit 1", category: "education" },
+  // { src: "/media/G1 EDU U1.webp", title: "G1 EDU Unit 1", category: "education" }
 ];
 
 // Shuffle function

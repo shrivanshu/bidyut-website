@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 const schoolImages = {
   'Robotics Project': {
     name: 'Advanced Robotics Project',
-    src: '/school_images/C2271.00_00_25_11.Still004.jpg',
+    src: '/school_images/C2271.00_00_25_11.Still004.webp',
     desc: 'Students working on advanced robotics projects'
   },
   'AI Workshop': {
     name: 'Artificial Intelligence Workshop',
-    src: '/school_images/C2271.00_00_33_34.Still003.jpg',
+    src: '/school_images/C2271.00_00_33_34.Still003.webp',
     desc: 'Interactive AI learning session with students'
   },
   'Tech Lab': {
@@ -18,22 +18,22 @@ const schoolImages = {
   },
   'Innovation Lab': {
     name: 'Innovation Laboratory',
-    src: '/About_us_gallery/Students 400x400/Untitled-10.jpg',
+    src: '/About_us_gallery/Students 400x400/Untitled-10.webp',
     desc: 'Students collaborating in innovation lab'
   },
   'STEM Workshop': {
     name: 'STEM Learning Workshop',
-    src: '/About_us_gallery/Training 400x800/h.jpg',
+    src: '/About_us_gallery/Training 400x800/h.webp',
     desc: 'Hands-on STEM learning experience'
   },
   'Project Development': {
     name: 'Student Project Development',
-    src: '/About_us_gallery/Students 400x400/Untitled-7.jpg',
+    src: '/About_us_gallery/Students 400x400/Untitled-7.webp',
     desc: 'Students developing innovative projects'
   },
   'Research Hub': {
     name: 'Research and Development Hub',
-    src: '/About_us_gallery/Events 400x400/fggh.jpg',
+    src: '/About_us_gallery/Events 400x400/fggh.webp',
     desc: 'Advanced research and development activities'
   }
 };

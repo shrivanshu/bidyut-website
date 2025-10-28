@@ -4,15 +4,17 @@ import InspectionVariants from '../Component/Inspection_components/InspectionVar
 import InspectionDetails from '../Component/Inspection_components/InspectionDetails';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import InspectionHeroSection from '../Component/Inspection_components/InspectionHeroSection';
+import { useNavigate } from 'react-router-dom';
 
 function Inspection_page() {
+  const navigate = useNavigate();
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />
         <InspectionHeroSection/>
         <InspectionVariants/>
-        <InspectionDetails/>
+  <InspectionDetails onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>

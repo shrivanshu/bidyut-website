@@ -505,16 +505,45 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
-  width: auto;
-  margin: 2rem;
+  height: clamp(210px, 15vh, 200px);
+  
+  margin: clamp(0.5rem, 2vw, 2rem);
   font-family: "Orbitron", sans-serif;
-  font-size: 1.8em;
+  font-size: clamp(0.8rem, 3vw, 1.8rem);
   font-weight: 700;
   user-select: none;
-  scale: 3;
-  letter-spacing: 1px;
+  scale: clamp(1, 2.5vw + 1, 3);
+  letter-spacing: clamp(0.5px, 0.5vw, 1px);
+  width:350px;
+  overflow: hidden;
+}
 
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .loader-wrapper {
+    height: clamp(260px, 12vh, 120px);
+    scale: clamp(0.8, 1.5vw + 0.8, 5);
+    font-size: clamp(1.9rem, 4vw, 1.2rem);
+    margin: clamp(0.25rem, 1vw, 1rem);
+    width:390px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .loader-wrapper {
+    scale: clamp(1.5, 2vw + 1.2, 2.5);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1400px) {
+  .loader-wrapper {
+    scale: 3;
+    font-size: 1.9rem;
+    max-width: 1200px;
+  }
 }
 
 
@@ -531,10 +560,22 @@ html, body {
   mask: repeating-linear-gradient(
     90deg,
     transparent 0,
-    transparent 6px,
-    black 7px,
-    black 8px
+    transparent clamp(4px, 1vw, 6px),
+    black clamp(5px, 1.2vw, 7px),
+    black clamp(6px, 1.4vw, 8px)
   );
+}
+
+@media (max-width: 480px) {
+  .loader {
+    mask: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 3px,
+      black 4px,
+      black 5px
+    );
+  }
 }
 
 .loader::after {
@@ -594,6 +635,20 @@ html, body {
   color: #28C76F; /* Fallback color */
   animation: loader-letter-anim 4s infinite linear, gradient-shift 3s ease infinite;
   z-index: 2;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments for loader letters */
+@media (max-width: 480px) {
+  .loader-letter {
+    margin: 0 clamp(0px, 0.2vw, 1px);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .loader-letter {
+    margin: 0 clamp(0.5px, 0.3vw, 1.5px);
+  }
 }
 
 .loader-letter:nth-child(1) {
@@ -642,11 +697,11 @@ html, body {
 @keyframes loader-letter-anim {
   0% {
     opacity: 0;
-    transform: scale(0.8) translateY(10px);
+    transform: scale(0.8) translateY(clamp(5px, 2vw, 10px));
   }
   10% {
     opacity: 1;
-    transform: scale(1.1) translateY(-2px);
+    transform: scale(1.1) translateY(clamp(-1px, -0.4vw, -2px));
   }
   30% {
     opacity: 0.8;
@@ -654,6 +709,28 @@ html, body {
   }
   100% {
     opacity: 0;
-    transform: scale(0.8) translateY(10px);
+    transform: scale(0.8) translateY(clamp(5px, 2vw, 10px));
+  }
+}
+
+/* Mobile-specific animation adjustments */
+@media (max-width: 480px) {
+  @keyframes loader-letter-anim {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(5px);
+    }
+    10% {
+      opacity: 1;
+      transform: scale(1.05) translateY(-1px);
+    }
+    30% {
+      opacity: 0.8;
+      transform: scale(1) translateY(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8) translateY(5px);
+    }
   }
 }

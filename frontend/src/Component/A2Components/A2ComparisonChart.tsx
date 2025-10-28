@@ -267,7 +267,7 @@ const A2ComparisonChart: React.FC = () => {
             <div key={spec.model} className="mb-8">
               <div className="flex flex-col items-center mb-4">
                 <img
-                  src="/A2.png"
+                  src="/A2.webp"
                   alt={spec.model}
                   className="w-32 h-32 mb-2 object-contain"
                 />
@@ -346,7 +346,7 @@ const A2ComparisonChart: React.FC = () => {
                 className="flex-1 flex flex-col items-center px-2"
               >
                 <img
-                  src="/A2.png"
+                  src="/A2.webp"
                   alt={spec.model}
                   className="w-32 h-32 mb-2 object-contain"
                 />

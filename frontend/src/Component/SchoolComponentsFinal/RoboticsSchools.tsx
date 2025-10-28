@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export function RoboticsSchools() {
   return (
     <section className="py-16 px-4 dark:bg-black bg-white">
@@ -17,7 +18,7 @@ export function RoboticsSchools() {
           <div className="space-y-6 flex flex-col">
             <div className="rounded-2xl overflow-hidden flex-grow">
               <img
-                src="/school_images/WhatsApp Image 2025-09-22 at 7.45.54 PM.jpeg"
+                src="/school_images/WhatsApp Image 2025-09-22 at 7.45.54 PM.webp"
                 alt="Modern robotics lab with red and purple LED lighting"
                 className="w-full h-full min-h-[600px] object-cover"
               />
@@ -65,7 +66,7 @@ export function RoboticsSchools() {
             </div>
 
             <div className="pt-4">
-              <a href="/gallery">
+              <Link to="/Gallery">
               <button
                 className="
                    w-[350px] h-[40px] md:w-[591px]  md:h-[61px]
@@ -82,7 +83,7 @@ export function RoboticsSchools() {
               >
                 View More
               </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -72,7 +72,7 @@ export default function Component() {
               {/* Laptop Image */}
               <div className="relative w-full max-w-[105%] sm:max-w-[110%] md:max-w-[95%] lg:max-w-[600px] xl:max-w-[675px]">
                 <img
-                  src="/LMS.png"
+                  src="/LMS.webp"
                   alt="Laptop displaying LMS interface"
                   className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
                   style={{

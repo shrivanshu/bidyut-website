@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
  
 ]
@@ -44,8 +45,8 @@ const robotSpecs: RobotSpec[] = [
   description:
     "The Unitree A2-w Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.",
   gallery: [
-    "/media/A2-w.png",
-    "/media/A2-W-Standard.png",
+    "/media/A2-w.webp",
+    "/media/A2-W-Standard.webp",
    
   ],
   features: [
@@ -417,11 +418,11 @@ function A2_Wells_Variants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             

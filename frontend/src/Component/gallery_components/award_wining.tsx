@@ -95,21 +95,21 @@ export default function AwardWinning() {
   const awards = [
     {
       id: 1,
-      imageSrc: "/award-wining/01.png",
+      imageSrc: "/award-wining/01.webp",
       titleKey: "nationalRoboticsAward",
       descriptionKey: "roboticsAwardDesc",
       year: "2023",
     },
     {
       id: 2,
-      imageSrc: "/award-wining/02.png",
+      imageSrc: "/award-wining/02.webp",
       titleKey: "globalYouthEmpowerment",
       descriptionKey: "youthEmpowermentDesc",
       year: "2021",
     },
     {
       id: 3,
-      imageSrc: "/award-wining/03.png",
+      imageSrc: "/award-wining/03.webp",
       titleKey: "edtechExcellence",
       descriptionKey: "edtechExcellenceDesc",
       year: "2022",

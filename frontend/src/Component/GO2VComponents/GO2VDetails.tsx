@@ -2,7 +2,7 @@ interface GO2VDetailsProps {
   onContactClick?: () => void;
 }
 
-const go2vImgSrc = '/GO2/GO2-W-U5.png';
+const go2vImgSrc = '/GO2/GO2-W-U5.webp';
 
 const GO2VDetails = ({ onContactClick }: GO2VDetailsProps) => {
   return (

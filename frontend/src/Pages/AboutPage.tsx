@@ -106,17 +106,17 @@ const timelineData: TimelineItem[] = [
 export function getVideoForYear(year: string): string {
   switch (year) {
     case "2021":
-      return "/our_jurnary/2021.mp4";
+      return "/our_jurnary/2021.webm";
     case "2022":
-      return "/our_jurnary/2022.mp4";
+      return "/our_jurnary/2022.webm";
     case "2023":
-      return "/our_jurnary/2023.mp4";
+      return "/our_jurnary/2023.webm";
     case "2024":
-      return "/our_jurnary/2024.mp4";
+      return "/our_jurnary/2024.webm";
     case "2025":
-      return "/our_jurnary/2025.mp4";
+      return "/our_jurnary/2025.webm";
     default:
-      return "/our_jurnary/2021.mp4";
+      return "/our_jurnary/2021.webm";
   }
 }
 export default function AboutPage() {
@@ -265,16 +265,16 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
 
   // Video sources (use local files from /about_video)
   const videoSources: { [key: string]: string } = {
-    "what-we-do": "/about_video/What we do.mp4",
-    "who-we-are": "/about_video/Who we are.mp4",
-    "where-we-are": "/about_video/Where we Are.mp4",
+    "what-we-do": "/about_video/What we do.webm",
+    "who-we-are": "/about_video/Who we are.webm",
+    "where-we-are": "/about_video/Where we Are.webm",
   }
 
   // Gallery images with enhanced data - randomized order for balanced grid layout
   const galleryImages = [
     // Mixed layout for better visual balance
     {
-      src: "/About_us_gallery/Events 400x400/fggh.jpg",
+      src: "/About_us_gallery/Events 400x400/fggh.webp",
       alt: "Educational event and workshop",
       className: "row-span-1",
       category: "events",
@@ -282,7 +282,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#10B981"
     },
     {
-      src: "/About_us_gallery/Robots 400x800/ffff.jpg",
+      src: "/About_us_gallery/Robots 400x800/ffff.webp",
       alt: "Advanced humanoid robot",
       className: "row-span-2",
       category: "robots",
@@ -290,7 +290,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#EF4444"
     },
     {
-      src: "/About_us_gallery/Students 400x400/j.jpg",
+      src: "/About_us_gallery/Students 400x400/j.webp",
       alt: "Students engaged in robotics learning",
       className: "row-span-1",
       category: "students",
@@ -298,7 +298,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#F59E0B"
     },
     {
-      src: "/About_us_gallery/Projects 400x400/1204RR_M12 - Edited.jpg",
+      src: "/About_us_gallery/Projects 400x400/1204RR_M12 - Edited.webp",
       alt: "Advanced robotics project development",
       className: "row-span-1",
       category: "projects",
@@ -306,7 +306,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#3B82F6"
     },
     {
-      src: "/About_us_gallery/Training 400x800/d.jpg",
+      src: "/About_us_gallery/Training 400x800/d.webp",
       alt: "Professional robotics training session",
       className: "row-span-2",
       category: "training",
@@ -314,7 +314,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#8B5CF6"
     },
     {
-      src: "/About_us_gallery/Events 400x400/Untitled-1.jpg",
+      src: "/About_us_gallery/Events 400x400/Untitled-1.webp",
       alt: "Robotics competition event",
       className: "row-span-1",
       category: "events",
@@ -322,7 +322,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#10B981"
     },
     {
-      src: "/About_us_gallery/Students 400x400/Untitled-10.jpg",
+      src: "/About_us_gallery/Students 400x400/Untitled-10.webp",
       alt: "Collaborative student project work",
       className: "row-span-1",
       category: "students",
@@ -330,7 +330,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#F59E0B"
     },
     {
-      src: "/About_us_gallery/Robots 400x800/REE.jpg",
+      src: "/About_us_gallery/Robots 400x800/REE.webp",
       alt: "Industrial automation robot",
       className: "row-span-2",
       category: "robots",
@@ -338,7 +338,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#EF4444"
     },
     {
-      src: "/About_us_gallery/Projects 400x400/DSC05157 - Edited.jpg",
+      src: "/About_us_gallery/Projects 400x400/DSC05157 - Edited.webp",
       alt: "Engineering project implementation",
       className: "row-span-1",
       category: "projects",
@@ -346,7 +346,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#3B82F6"
     },
     {
-      src: "/About_us_gallery/Events 400x400/Untitled-3.jpg",
+      src: "/About_us_gallery/Events 400x400/Untitled-3.webp",
       alt: "STEM education seminar",
       className: "row-span-1",
       category: "events",
@@ -354,7 +354,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#10B981"
     },
     {
-      src: "/About_us_gallery/Training 400x800/e.jpg",
+      src: "/About_us_gallery/Training 400x800/e.webp",
       alt: "Advanced technical training",
       className: "row-span-2",
       category: "training",
@@ -362,7 +362,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#8B5CF6"
     },
     {
-      src: "/About_us_gallery/Students 400x400/Untitled-7.jpg",
+      src: "/About_us_gallery/Students 400x400/Untitled-7.webp",
       alt: "Student innovation and creativity",
       className: "row-span-1",
       category: "students",
@@ -370,7 +370,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#F59E0B"
     },
     {
-      src: "/About_us_gallery/Projects 400x400/f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.jpg",
+      src: "/About_us_gallery/Projects 400x400/f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.webp",
       alt: "Collaborative project development",
       className: "row-span-1",
       category: "projects",
@@ -378,7 +378,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#3B82F6"
     },
     {
-      src: "/About_us_gallery/Robots 400x800/Untitled-12.jpg",
+      src: "/About_us_gallery/Robots 400x800/Untitled-12.webp",
       alt: "Educational robotics platform",
       className: "row-span-1",
       category: "robots",
@@ -386,7 +386,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#EF4444"
     },
     {
-      src: "/About_us_gallery/Events 400x400/Untitled-4.jpg",
+      src: "/About_us_gallery/Events 400x400/Untitled-4.webp",
       alt: "Innovation showcase event",
       className: "row-span-1",
       category: "events",
@@ -394,7 +394,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#10B981"
     },
     {
-      src: "/About_us_gallery/Students 400x400/Untitled-8.jpg",
+      src: "/About_us_gallery/Students 400x400/Untitled-8.webp",
       alt: "Students mastering technology",
       className: "row-span-1",
       category: "students",
@@ -402,7 +402,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#F59E0B"
     },
     {
-      src: "/About_us_gallery/Training 400x800/h.jpg",
+      src: "/About_us_gallery/Training 400x800/h.webp",
       alt: "Hands-on training workshop",
       className: "row-span-2",
       category: "training",
@@ -410,7 +410,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#8B5CF6"
     },
     {
-      src: "/About_us_gallery/Projects 400x400/fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
+      src: "/About_us_gallery/Projects 400x400/fce7c3fb-d89a-42f7-b574-6882a3960378.webp",
       alt: "Technical project showcase",
       className: "row-span-2",
       category: "projects",
@@ -418,7 +418,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#3B82F6"
     },
     {
-      src: "/About_us_gallery/Robots 400x800/Untitled-3-Recovered.jpg",
+      src: "/About_us_gallery/Robots 400x800/Untitled-3-Recovered.webp",
       alt: "Autonomous robot system",
       className: "row-span-2",
       category: "robots",
@@ -426,7 +426,7 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
       bgColor: "#EF4444"
     },
     {
-      src: "/About_us_gallery/Training 400x800/Untitled-4.jpg",
+      src: "/About_us_gallery/Training 400x800/Untitled-4.webp",
       alt: "Specialized training program",
       className: "row-span-2",
       category: "training",
@@ -1087,7 +1087,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
                     <img 
-                      src="/vision.jpg"
+                      src="/vision.webp"
                       alt="Our Vision"
                       className="w-full h-full object-cover"
                     />
@@ -1126,7 +1126,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
                     <img 
-                   src="/mission.png" 
+                   src="/mission.webp" 
                       alt="Our Mission" 
                       className="w-full h-full object-cover" 
                     />

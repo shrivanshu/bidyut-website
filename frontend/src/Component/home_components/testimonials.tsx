@@ -10,23 +10,24 @@ export interface Testimonial {
 
 // Using placeholder images. Replace with your actual image URLs.
 export const testimonialData: Testimonial[] = [
-  {
+   {
     id: 1,
-    name: 'Mrs. Manju Dogra',
-    title: 'Principal',
-    company: 'DAV BDL Public school',
-    quote: "Bidyut innovation is a wonderful platform! The staff is so cool and helpful in all situations they have knowledge, let others light their candles in it. I truly appreciate bidyut innovation for sharing such a knowledge with us. They helped us a lot by providing such a valuable information by videos and they even provided different kits which are truly helpful for children We are really thankfull for working with such a cool team.",
-    image: "/dav school.png",
-  },
-  {
-    id: 2,
     name: 'Mrs. Nidhi Chaudhary',
     title: 'Teacher',
     company: 'School',
     quote: 'Bidyut Innovative Lab is an awesome place! They have cool gadgets and inventions that make life easier. The staff is friendly and helpful with hands-on activities.',
-    image: '/schools/little wonders school.jpg',
+    image: '/schools/little wonders school.webp',
     bgColor: 'bg-teal-400',
   },
+  {
+    id: 2,
+    name: 'Mrs. Manju Dogra',
+    title: 'Principal',
+    company: 'DAV BDL Public school',
+    quote: "Bidyut innovation is a wonderful platform! The staff is so cool and helpful in all situations they have knowledge, let others light their candles in it. I truly appreciate bidyut innovation for sharing such a knowledge with us. They helped us a lot by providing such a valuable information by videos and they even provided different kits which are truly helpful for children We are really thankfull for working with such a cool team.",
+    image: "/dav school.webp",
+  },
+ 
   {
     id: 3,
     name: 'Mr. Selvin Bernardr',
@@ -41,7 +42,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Teacher',
     company: 'Laurels School',
     quote: 'Introducing critical thinking to our tiny tots without performance stress is tough. But Bidyut Innovations made it straightforward with well-planned activities that develop clear thought processes.',
-    image: '/schools/Laurels School.png',
+    image: '/schools/Laurels School.webp',
   },
   {
     id: 5,
@@ -49,7 +50,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Curriculum Head',
     company: 'JG High Secondary School Mhow',
     quote: "My experience with Bidyut's Robotics Lab has been incredible. The cutting-edge equipment, knowledgeable instructors, and solid foundation in robotics fundamentals have significantly impacted my understanding.",
-    image: '/schools/JGHS.png',
+    image: '/schools/JGHS.webp',
   },
   {
     id: 6,
@@ -57,7 +58,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Principal',
     company: 'St. Raphael’s Higher Secondary School',
     quote: "I would like to extend my heartfelt thanks to the trainers of Bidyut Innovation for conducting such an engaging and informative robotics training session. The program will not only introduce our students to the exciting world of robotics but will also spark creativity, critical thinking, and a genuine interest in technology and innovation.",
-    image: "/St. Raphael’s Higher Secondary School.png",
+    image: "/St. Raphael’s Higher Secondary School.webp",
   },
   {
     id: 7,
@@ -74,7 +75,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Robotics Club Mentor',
     company: 'Medicaps',
     quote: "At MediCaps, we take immense pride in our Robotic Lab established with Bidyut Innovation. It provides students an immersive learning experience integrating practical STEM concepts. Our well-equipped lab serves as a focal point for exploration and hands-on learning, preparing students for a technology-driven future.",
-    image: '/schools/medicaps school.png',
+    image: '/schools/medicaps school.webp',
     bgColor: 'bg-teal-400',
   },
   {
@@ -83,7 +84,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Principal',
     company: 'Vedansh International School',
     quote: "Bidyut Innovations created a fantastic learning environment with top-notch resources and exceptional support. Their knowledgeable trainers make their robotics program outstanding for anyone diving into robotics.",
-    image: "/vedansh.jpeg",
+    image: "/vedansh.webp",
   },
   {
     id: 10,
@@ -91,7 +92,7 @@ export const testimonialData: Testimonial[] = [
     title: 'Lab Supervisor',
     company: 'Carmel School Ujjain',
     quote: "Bidyut Innovations created a fantastic learning environment with top-notch resources and exceptional support. Their knowledgeable trainers make their robotics program outstanding for anyone diving into robotics.",
-    image: '/schools/carmel ujjain.png',
+    image: '/schools/carmel ujjain.webp',
   },
   {
     id: 11,
@@ -99,6 +100,6 @@ export const testimonialData: Testimonial[] = [
     title: 'Science Teacher',
     company: 'Christu Jyoti School',
     quote: "Excellent explained all modules of course and also helping in making different models.Thanks a lot madam and sir for your guidance.We enjoyed a lot....Thanks again",
-    image: "/ChristuJyotiConventSchool.png",
+    image: "/ChristuJyotiConventSchool.webp",
   },
 ];

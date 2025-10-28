@@ -4,15 +4,17 @@ import A2_Wells_Variants from '../Component/A2_Wells_components/A2_Wells_Variant
 import A2_Wells_Details from '../Component/A2_Wells_components/A2_Wells_Details';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import A2WellHeroSection from '../Component/A2_Wells_components/A2WellHeroSection';
+import { useNavigate } from 'react-router-dom';
 
 function A2_Wells_Page() {
+  const navigate = useNavigate();
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />
         <A2WellHeroSection/>
         <A2_Wells_Variants/>
-        <A2_Wells_Details/>
+  <A2_Wells_Details onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>

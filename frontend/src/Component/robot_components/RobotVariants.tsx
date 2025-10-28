@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from "lucide-react"
+import { Link } from "react-router-dom"
 import { useTheme } from "../../contexts/ThemeContext"
 
 interface RobotSpec {
@@ -31,7 +32,7 @@ const robotSearchData = [
     category: "Educational",
     description: "Alpha unit for classrooms with quick-swap modules.",
     specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-dance5.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
   {
     id: "edu-bot-2", 
@@ -40,7 +41,7 @@ const robotSearchData = [
     category: "Educational",
     description: "Beta model focused on AI projects and coding camps.",
     specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-main.webm", "/robott.webm"],
   },
   {
     id: "service-bot-1",
@@ -49,7 +50,7 @@ const robotSearchData = [
     category: "Service",
     description: "Built for reception, delivery and kiosk assistance.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-main.webm"],
   },
   {
     id: "companion-bot-1",
@@ -58,7 +59,7 @@ const robotSearchData = [
     category: "Companion", 
     description: "Social companion with voice, vision and music modes.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robott.webm"],
   },
   {
     id: "industrial-bot-1",
@@ -67,7 +68,7 @@ const robotSearchData = [
     category: "Industrial",
     description: "Rugged automation for factories and warehouses.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm"],
   },
   {
     id: "security-bot-1",
@@ -76,7 +77,7 @@ const robotSearchData = [
     category: "Security",
     description: "Patrol, detect and alert with 24/7 monitoring.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robott.webm"],
   },
   {
     id: "cleaning-bot-1",
@@ -85,7 +86,7 @@ const robotSearchData = [
     category: "Cleaning",
     description: "Autonomous sweeping, mopping and spot cleaning.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-main.webm"],
   },
   {
     id: "research-bot-1",
@@ -94,7 +95,7 @@ const robotSearchData = [
     category: "Research",
     description: "Lab-ready platform for rapid prototyping.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robo-main.webm"],
   }
 ]
 
@@ -106,9 +107,9 @@ const robotSpecs: RobotSpec[] = [
       "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.1 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to 2 m/s , making it perfect for dynamic educational demonstrations.",
     gallery: [
       "/media/Robot_Details.svg",
-       "/media/G1+Kungfu.png",
-      "/media/g1_video.mp4",
-      "/media/g1_video1.mp4",
+       "/media/G1+Kungfu.webp",
+      "/media/g1_video.webm",
+      "/media/g1_video1.webm",
       // "/media/Robot_Details.svg"
     ],
     features: [
@@ -180,10 +181,10 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U1",
     "description": "The G1 EDU U1 is an advanced educational humanoid robot with enhanced dexterity and power. It features optional three-fingered force control hands, additional wrist and waist degrees of freedom, and a stronger knee joint torque of 120 N·m. Equipped with NVIDIA Jetson Orin (optional), it provides higher computing performance, making it ideal for advanced robotics education and research.",
     "gallery": [
-      "/media/G1 EDU U1 .png",
-      "/media/G1+Kungfu.png",
-      "/media/g1_video.mp4",
-      "/media/g1_video1.mp4",
+      "/media/G1 EDU U1 .webp",
+      "/media/G1+Kungfu.webp",
+      "/media/g1_video.webm",
+      "/media/g1_video1.webm",
       // "/media/Robot_Details_EDU.svg"
     ],
     "features": [
@@ -264,7 +265,7 @@ const robotSpecs: RobotSpec[] = [
     "description": "The G1 EDU U2 builds upon U1 with extended battery life (10,500mAh), enhanced AI modules, and improved joint flexibility. It is tailored for advanced robotics coursework and real-world robotics competitions.",
     "gallery": [
       "/media/Robot_Details.svg",
-      "/media/G1 EDU U2.png"
+      "/media/G1 EDU U2.webp"
     ],
     "features": [
       {
@@ -308,7 +309,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U3",
     "description": "The G1 EDU U3 introduces advanced locomotion control, upgraded vision system with multi-camera SLAM, and reinforced joints for longer durability in research environments.",
     "gallery": [
-      "/media/Copy of G1 EDU U3 .png"
+      "/media/Copy of G1 EDU U3 .webp"
     ],
     "features": [
       {
@@ -335,7 +336,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U4",
     "description": "The G1 EDU U4 enhances AI computing with built-in Jetson Orin NX, integrates haptic feedback for hand control, and supports cloud-based simulation training.",
     "gallery": [
-      "/media/G1 EDU U4 .png"
+      "/media/G1 EDU U4 .webp"
     ],
     "features": [
       {
@@ -359,7 +360,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U5",
     "description": "The G1 EDU U5 focuses on collaborative research, with voice AI, advanced gesture recognition, and improved human-robot interaction modules.",
     "gallery": [
-      "/media/G1 EDU U5 .png"
+      "/media/G1 EDU U5 .webp"
     ],
     "features": [
       {
@@ -387,7 +388,7 @@ const robotSpecs: RobotSpec[] = [
     "name": "G1 EDU U6",
     "description": "The G1 EDU U6 is the flagship model in the EDU series, combining all previous upgrades with AI-driven decision-making, cloud-edge hybrid control, and maximum safety features for real-world deployment in labs and competitions.",
     "gallery": [
-      "/media/G1 EDU U6  (1).png"
+      "/media/G1 EDU U6  (1).webp"
     ],
     "features": [
       {
@@ -418,10 +419,10 @@ const robotSpecs: RobotSpec[] = [
   //     "Advanced humanoid robot with enhanced AI capabilities and improved mobility. Features upgraded sensors and extended battery life for professional applications.",
   //   gallery: [
   //     "/media/Robot_Details.svg",
-  //     "/robot.mp4",
-  //     "/robo-dance5.mp4",
-  //     "/robott.mp4",
-  //     "/robo-main.mp4"
+  //     "/robot.webm",
+  //     "/robo-dance5.webm",
+  //     "/robott.webm",
+  //     "/robo-main.webm"
   //   ],
   //   features: [
   //     {
@@ -788,11 +789,11 @@ export default function RobotShowcase() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
-            <a href="/contact">
+            <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+</Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">

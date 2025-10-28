@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
   {
     id: "GO2 PRO",
@@ -40,7 +41,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
     specId: "go2-pro",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance2.mp4", "/robo-dance3.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance2.webm", "/robo-dance3.webm"],
   },
   {
     id: "GO2 EDU U1",
@@ -49,7 +50,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U2",
@@ -58,7 +59,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U3",
@@ -67,7 +68,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U4",
@@ -76,7 +77,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U1",
@@ -85,7 +86,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U2",
@@ -94,7 +95,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U3",
@@ -103,7 +104,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U4",
@@ -112,7 +113,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U5",
@@ -121,7 +122,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U1",
@@ -130,7 +131,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U2",
@@ -139,7 +140,7 @@ const cobotSearchData = [
     category: "Service",
     description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U3",
@@ -148,7 +149,7 @@ const cobotSearchData = [
     category: "Service",
     description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U4",
@@ -157,7 +158,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
 ]
 
@@ -171,7 +172,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
-      "/GO2/GO2 AIR.png",
+      "/GO2/GO2 AIR.webp",
 
     ],
     features: [
@@ -229,7 +230,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
-      "/GO2/GO2 PRO.png",
+      "/GO2/GO2 PRO.webp",
 
     ],
   features: [
@@ -288,7 +289,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/GO2/GO2 EDU U1.png",
+      "/GO2/GO2 EDU U1.webp",
 
     ],
 features: [
@@ -346,7 +347,7 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/GO2/GO2 EDU2.png",
+      "/GO2/GO2 EDU2.webp",
 
     ],
 features: [
@@ -405,7 +406,7 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (maximum 10 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin NX 16GB (100 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°) + 3D Mid-360 LiDAR, Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.",
     gallery: [
-      "/GO2/GO2 EDU U3.png",
+      "/GO2/GO2 EDU U3.webp",
 
     ],
 features: [
@@ -463,7 +464,7 @@ features: [
     description:
       "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8 kg (limit ~10 kg), Maximum speed 3.7 m/s, Computing Power 100 TOPS (Jetson Orin NX 16GB), Front Camera resolution 1280 × 720 px with 120° FOV, Maximum gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D XT16 LiDAR. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2 EDU U4.png",
+      "/GO2/GO2 EDU U4.webp",
 
     ],
 features: [
@@ -520,7 +521,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 40 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W U1.png",
+      "/GO2/GO2-W U1.webp",
 
     ],
  features: [
@@ -577,7 +578,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U2.png",
+      "/GO2/GO2-W-U2.webp",
 
     ],
 features: [
@@ -633,7 +634,7 @@ features: [
     description:
       "Technical specifications: Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Mid-360). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-w-u3.png",
+      "/GO2/GO2-w-u3.webp",
 
     ],
 features: [
@@ -690,7 +691,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°) and 3D LiDAR radar (Hesai XT16). Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U4.png",
+      "/GO2/GO2-W-U4.webp",
 
     ],
  features: [
@@ -747,7 +748,7 @@ features: [
     description:
       "Dimensions 70 × 43 × 50 cm, Weight 18 kg, Payload 3 kg (approx.), Maximum speed 2.5 m/s, Joint Motors 16, Computing Power 100 TOPS, Maximum gradient climb 35°, Climbing height 70 cm, Obstacle avoidance via 4D-Lidar (360° × 90°), 3D LiDAR radar (Hesai XT16), and Dual-optical gimbal with high-precision three-axis stabilization. Battery 15000 mAh with included charger, runtime up to 2–3 h. Accessories include Calibrator, Label Controller, Remote Controller, and RealSense D435i depth camera.",
     gallery: [
-      "/GO2/GO2-W-U5.png",
+      "/GO2/GO2-W-U5.webp",
 
     ],
  features: [
@@ -804,7 +805,7 @@ features: [
     description:
       "Advanced version of GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), HD video transmission (1080P, 180ms delay), and dual 1080P cameras with fill lights. Depth camera not included.",
     gallery: [
-      "/GO2/GO2 ENT U1.png",
+      "/GO2/GO2 ENT U1.webp",
 
     ],
 features: [
@@ -852,7 +853,7 @@ features: [
     description:
       "Enhanced GO2 EDU with screen remote control, dual backup communication (5.8G + 4G), low-latency 1080P video transmission, and dual wide-angle cameras with fill lights. Depth camera not included.",
     gallery: [
-      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.webp",
 
     ],
 features: [
@@ -900,7 +901,7 @@ features: [
     description:
       "Advanced GO2 EDU with screen remote, dual comms (5.8G + 4G), 1080P low-latency video, dual wide-angle cameras, searchlight (30W, 3000lm), warning lights (red/blue), and digital voice broadcasting up to 800m. Depth camera not included.",
     gallery: [
-      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.webp",
 
     ],
 features: [
@@ -948,7 +949,7 @@ features: [
     description:
       "GO2 EDU upgrade with dual cameras, capture net gun, laser-assisted aiming, and app-based control for tactical operations. Built with aviation-grade material for precision and reliability.",
     gallery: [
-      "/GO2/GO2 ENT U2.png",
+      "/GO2/GO2 ENT U2.webp",
 
     ],
 features: [
@@ -1064,22 +1065,22 @@ function RobotShowcase() {
 
   // Cobot image mapping
   const cobotImages: Record<string, string> = {
-    "GO2-AIR": "/GO2/GO2 AIR.png",
-    "GO2-PRO": "/GO2/GO2 PRO.png",
-    "GO2 EDU U1": "/GO2/GO2 EDU U1.png",
-    "GO2 EDU U2": "/GO2/GO2 EDU2.png",
-    "GO2 EDU U3": "/GO2/GO2 EDU U3.png",
-    "GO2 EDU U4": "/GO2/GO2 EDU U4.png",
-    "GO2-W U1": "/GO2/GO2-W U1.png",
-    "GO2-W U2": "/GO2/GO2-W-U2.png",
-    "GO2-W U3": "/GO2/GO2-w-u3.png",
-    "GO2-W U4": "/GO2/GO2-W-U4.png",
-    "GO2-W U5": "/GO2/GO2-W-U5.png",
-    "GO2-ENT U1": "/GO2/GO2 ENT U1.png",
-    "GO2-ENT U2": "/GO2/GO2 ENT U2.png",
-    "GO2-ENT U3": "/GO2/GO2 ENT U2.png",
-    "GO2-ENT U4": "/GO2/GO2 ENT U2.png",
-    "GO2 Edu": "/GO2/GO2 EDU.png",
+    "GO2-AIR": "/GO2/GO2 AIR.webp",
+    "GO2-PRO": "/GO2/GO2 PRO.webp",
+    "GO2 EDU U1": "/GO2/GO2 EDU U1.webp",
+    "GO2 EDU U2": "/GO2/GO2 EDU2.webp",
+    "GO2 EDU U3": "/GO2/GO2 EDU U3.webp",
+    "GO2 EDU U4": "/GO2/GO2 EDU U4.webp",
+    "GO2-W U1": "/GO2/GO2-W U1.webp",
+    "GO2-W U2": "/GO2/GO2-W-U2.webp",
+    "GO2-W U3": "/GO2/GO2-w-u3.webp",
+    "GO2-W U4": "/GO2/GO2-W-U4.webp",
+    "GO2-W U5": "/GO2/GO2-W-U5.webp",
+    "GO2-ENT U1": "/GO2/GO2 ENT U1.webp",
+    "GO2-ENT U2": "/GO2/GO2 ENT U2.webp",
+    "GO2-ENT U3": "/GO2/GO2 ENT U2.webp",
+    "GO2-ENT U4": "/GO2/GO2 ENT U2.webp",
+    "GO2 Edu": "/GO2/GO2 EDU.webp",
   };
 
   // Drag scroll state for cobot images
@@ -1333,11 +1334,11 @@ function RobotShowcase() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             
@@ -1380,7 +1381,7 @@ function RobotShowcase() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src={cobotImages[currentSpec.name] || "/GO2.png"}
+                  src={cobotImages[currentSpec.name] || "/GO2.webp"}
                   alt={currentSpec.name}
                   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />

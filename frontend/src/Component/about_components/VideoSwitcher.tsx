@@ -19,9 +19,9 @@ export default function VideoSwitcher() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const videoSources: { [key: string]: string } = {
-    "what-we-do": "/robo-main.mp4", 
+    "what-we-do": "/robo-main.webm", 
     "who-we-are": "robott.mp4",
-    "where-we-are": "/robo-dance5.mp4",
+    "where-we-are": "/robo-dance5.webm",
   }
   const currentVideoSrc = videoSources[activeTab]
 

@@ -205,8 +205,8 @@ const RoboticsComparisonChart: React.FC = () => {
 
   const getImageForModel = (model: string) => {
     switch (model) {
-      case "G1": return "/media/G1 front.png";
-      case "G1 EDU": return "/media/G1 EDU U6 .png";
+      case "G1": return "/media/G1 front.webp";
+      case "G1 EDU": return "/media/G1 EDU U6 .webp";
       default: return "/media/Robot_hero.svg";
     }
   };
@@ -351,7 +351,7 @@ const RoboticsComparisonChart: React.FC = () => {
                     <div className="flex flex-col items-center justify-center">
                       <div className="w-32 h-32 flex items-center justify-center">
                         <img 
-                          src="/media/G1 front.png" 
+                          src="/media/G1 front.webp" 
                           alt="G1 Robot" 
                           className="w-28 h-28 object-contain"
                         />
@@ -363,7 +363,7 @@ const RoboticsComparisonChart: React.FC = () => {
                     <div className="flex flex-col items-center justify-center">
                       <div className="w-32 h-32 flex items-center justify-center">
                         <img 
-                          src="/media/G1 EDU U6 .png" 
+                          src="/media/G1 EDU U6 .webp" 
                           alt="G1 EDU Robot" 
                           className="w-28 h-28 object-contain"
                         />

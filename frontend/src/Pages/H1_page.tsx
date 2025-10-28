@@ -5,15 +5,17 @@ import H1Variants from '../Component/H1_components/H1Variants';
 import H1Detail from '../Component/H1_components/H1Detail';
 import H1ComparisonChart from '../Component/H1_components/H1ComparisonChart';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 function H1_page() {
+  const navigate = useNavigate();
   return (
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
         <HeroSectionH1 />
         <H1Variants/>
-        <H1Detail/>
-        <H1ComparisonChart/>
+        <H1Detail onContactClick={() => navigate('/Contact')} />
+  <H1ComparisonChart/>
         <Footer />
       </div>
     </ThemeProvider>

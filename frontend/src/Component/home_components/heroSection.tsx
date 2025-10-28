@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import HeroHeading from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAI = new GoogleGenerativeAI("AIzaSyBXvyQXa7LjTNqqDkm3uvubhhkQ1A5dWZs");
-
-const systemPrompt = "You are Buddy, an AI assistant. Help users with robotics, coding, and Bidyut Innovation programs.";
+import { chatService } from "../../services/chatService";
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
 function ChatBox({
@@ -113,28 +109,17 @@ const HeroSection: React.FC = () => {
     },
   ]);
 
-  const videos = ["/fnf 03.mp4"];
+  const videos = ["/fnf 03.webm"];
 
   // Handle sending message
   const handleSend = async (msg: string) => {
     setMessages((prev) => [...prev, { from: "me" as const, text: msg }]);
 
-    // Prepare conversation history
-    const conversation = messages
-      .map((m) => `${m.from === "me" ? "User" : "Buddy"}: ${m.text}`)
-      .join("\n");
-
-    const fullPrompt = `${systemPrompt}\n${conversation}\nUser: ${msg}\nBuddy:`;
-
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const result = await model.generateContent(fullPrompt);
-      const response = await result.response;
-      const text = response.text();
-
+      const response = await chatService.sendMessage(msg, messages);
       setMessages((prev) => [
         ...prev,
-        { from: "bot" as const, text: text?.trim() || "I'm having trouble responding right now. Please try again!" },
+        { from: "bot" as const, text: response },
       ]);
     } catch (error) {
       console.error("Error generating response:", error);
@@ -153,7 +138,7 @@ const HeroSection: React.FC = () => {
         rel="stylesheet"
       />
 
-      {/* Background Videos */}
+      {/* Background Videos - Optimized loading */}
       {videos.map((video, index) => (
         <video
           key={index}
@@ -165,11 +150,15 @@ const HeroSection: React.FC = () => {
           loop
           muted
           playsInline
+          preload="metadata"
+          crossOrigin="anonymous"
+          onLoadStart={() => console.log(`Video ${index + 1} loading started`)}
+          onCanPlayThrough={() => console.log(`Video ${index + 1} ready to play`)}
         />
       ))}
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-white/20 dark:bg-gray-900/40" />
+      {/* Overlay - Same dark overlay for both light and dark mode for consistent video visibility */}
+      <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center">
@@ -181,11 +170,11 @@ const HeroSection: React.FC = () => {
         {/* Hero Heading */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6">
           <HeroHeading
-            text={["Let’s Innovate Learn Beyond Boundaries"]}
+            text={["Let's Innovate Learn Beyond Boundaries"]}
             typingSpeed={40}
             pauseDuration={0}
             showCursor={false}
-            highlight={{ text: "Let’s Innovate", color: "#0acf83" }}
+            highlight={{ text: "Let's Innovate", color: "#0acf83" }}
           />
         </h1>
 

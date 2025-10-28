@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -27,20 +28,20 @@ const cobotSearchData = [
   {
     id: "GO2 AIR",
     name: "GO2 AIR",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 PRO",
     name: "GO2 PRO",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
     specId: "go2-pro",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 EDU U1",
@@ -49,124 +50,124 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 EDU U2",
     name: "GO2 EDU U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2 EDU U3",
     name: "GO2 EDU U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2 EDU U4",
     name: "GO2 EDU U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2-W U1",
     name: "GO2-W U1",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U2",
     name: "GO2-W U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U3",
     name: "GO2-W U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U4",
     name: "GO2-W U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U5",
     name: "GO2-W U5",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U1",
     name: "GO2 ENT-U1",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U2",
     name: "GO2 ENT-U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U3",
     name: "GO2 ENT-U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U4",
     name: "GO2 ENT-U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
 ]
 
 // Add this mapping near the top of A2Variants function
 const variantImages: Record<string, string> = {
-  "A2-Standard": "/media/A2-standard.png",
-  "A2-Pro": "/media/A2-pro.png",
-  "A2-W-Standard": "/media/A2-w.png",
-  "A2-W-Pro": "/media/A2-w-pro.png",
+  "A2-Standard": "/media/A2-standard.webp",
+  "A2-Pro": "/media/A2-pro.webp",
+  "A2-W-Standard": "/media/A2-w.webp",
+  "A2-W-Pro": "/media/A2-w-pro.webp",
 };
 
 const robotSpecs: 
@@ -177,7 +178,7 @@ RobotSpec[] = [
     description:
       "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
-      "/media/A2-standard.png",
+      "/media/A2-standard.webp",
 
     ],
 features: [
@@ -235,7 +236,7 @@ targetPointSm: { x: "19%", y: "32%" }   // head/top front
     description:
       "The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.",
     gallery: [
-      "/media/A2-pro.png",
+      "/media/A2-pro.webp",
 
     ],
 features: [
@@ -295,7 +296,7 @@ features: [
     description:
       "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
     gallery: [
-      "/media/A2-w.png",
+      "/media/A2-w.webp",
 
     ],
 features: [
@@ -354,7 +355,7 @@ features: [
     description:
       "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -729,11 +730,11 @@ function A2Variants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             
@@ -776,7 +777,7 @@ function A2Variants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
 <img
-  src={variantImages[currentSpec.id] || "/A2.png"}
+  src={variantImages[currentSpec.id] || "/A2.webp"}
   alt={displayName}
   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
 />

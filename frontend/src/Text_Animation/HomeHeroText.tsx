@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementType, useEffect, useRef, useState, createElement } from "react";
+import { ElementType, useEffect, useRef, useState, createElement, useCallback } from "react";
 import { gsap } from "gsap";
 
 interface TextTypeProps {
@@ -63,6 +63,15 @@ const HomeHeroText = ({
     return Math.random() * (max - min) + min;
   };
 
+  // Debounced state updates for better performance
+  const updateDisplayedText = useCallback((newText: string) => {
+    setDisplayedText(newText);
+  }, []);
+
+  const updateCharIndex = useCallback((updater: (prev: number) => number) => {
+    setCurrentCharIndex(updater);
+  }, []);
+
   const getCurrentTextColor = () => {
     if (textColors.length === 0) return "inherit";
     return textColors[currentTextIndex % textColors.length];
@@ -73,13 +82,16 @@ const HomeHeroText = ({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
+        const entry = entries[0]; // Only process first entry for performance
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once visible
+        }
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.1,
+        rootMargin: '50px' // Pre-trigger for smoother experience
+      }
     );
 
     observer.observe(containerRef.current);
@@ -95,6 +107,8 @@ const HomeHeroText = ({
         repeat: -1,
         yoyo: true,
         ease: "power2.inOut",
+        force3D: true, // Hardware acceleration
+        will: "change", // CSS will-change hint
       });
     }
   }, [showCursor, cursorBlinkDuration]);
@@ -103,6 +117,7 @@ const HomeHeroText = ({
     if (!isVisible) return;
 
     let timeout: NodeJS.Timeout;
+    let rafId: number;
 
     const currentText = textArray[currentTextIndex];
     const processedText = reverseMode
@@ -110,42 +125,43 @@ const HomeHeroText = ({
       : currentText;
 
     const executeTypingAnimation = () => {
-      if (isDeleting) {
-        if (displayedText === "") {
-          setIsDeleting(false);
-          if (currentTextIndex === textArray.length - 1 && !loop) {
-            return;
-          }
+      // Use RAF for better performance
+      rafId = requestAnimationFrame(() => {
+        if (isDeleting) {
+          if (displayedText === "") {
+            setIsDeleting(false);
+            if (currentTextIndex === textArray.length - 1 && !loop) {
+              return;
+            }
 
-          if (onSentenceComplete) {
-            onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
-          }
+            if (onSentenceComplete) {
+              onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
+            }
 
-          setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
-          setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+            setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
+            setCurrentCharIndex(0);
+            timeout = setTimeout(() => {}, pauseDuration);
+          } else {
+            timeout = setTimeout(() => {
+              updateDisplayedText(displayedText.slice(0, -1));
+            }, Math.max(16, deletingSpeed)); // Minimum 16ms for 60fps
+          }
         } else {
-          timeout = setTimeout(() => {
-            setDisplayedText((prev) => prev.slice(0, -1));
-          }, deletingSpeed);
+          if (currentCharIndex < processedText.length) {
+            timeout = setTimeout(
+              () => {
+                updateDisplayedText(displayedText + processedText[currentCharIndex]);
+                updateCharIndex((prev) => prev + 1);
+              },
+              Math.max(16, variableSpeed ? getRandomSpeed() : typingSpeed) // Minimum 16ms for 60fps
+            );
+          } else if (textArray.length > 1) {
+            timeout = setTimeout(() => {
+              setIsDeleting(true);
+            }, pauseDuration);
+          }
         }
-      } else {
-        if (currentCharIndex < processedText.length) {
-          timeout = setTimeout(
-            () => {
-              setDisplayedText(
-                (prev) => prev + processedText[currentCharIndex]
-              );
-              setCurrentCharIndex((prev) => prev + 1);
-            },
-            variableSpeed ? getRandomSpeed() : typingSpeed
-          );
-        } else if (textArray.length > 1) {
-          timeout = setTimeout(() => {
-            setIsDeleting(true);
-          }, pauseDuration);
-        }
-      }
+      });
     };
 
     if (currentCharIndex === 0 && !isDeleting && displayedText === "") {
@@ -154,7 +170,10 @@ const HomeHeroText = ({
       executeTypingAnimation();
     }
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [
     currentCharIndex,
     displayedText,
@@ -181,6 +200,11 @@ const HomeHeroText = ({
     {
       ref: containerRef,
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
+      style: {
+        willChange: 'contents', // Hint browser about content changes
+        transform: 'translateZ(0)', // Force hardware acceleration
+        ...props.style
+      },
       ...props,
     },
     (() => {
@@ -188,18 +212,42 @@ const HomeHeroText = ({
         const parts = displayedText.split(highlight.text);
         return (
           <>
-            {parts[0]}
-            <span style={{ color: highlight.color }}>{highlight.text}</span>
-            {parts[1]}
+            <span style={{ color: getCurrentTextColor() }}>{parts[0]}</span>
+            <span 
+              style={{ 
+                color: highlight.color,
+                willChange: 'contents',
+                contain: 'layout'
+              }}
+            >
+              {highlight.text}
+            </span>
+            <span style={{ color: getCurrentTextColor() }}>{parts[1]}</span>
           </>
         );
       }
-      return <span className="inline" style={{ color: getCurrentTextColor() }}>{displayedText}</span>;
+      return (
+        <span 
+          className="inline" 
+          style={{ 
+            color: getCurrentTextColor(),
+            willChange: 'contents',
+            contain: 'layout'
+          }}
+        >
+          {displayedText}
+        </span>
+      );
     })(),
     showCursor && (
       <span
         ref={cursorRef}
         className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorClassName}`}
+        style={{
+          willChange: 'opacity',
+          transform: 'translateZ(0)', // Hardware acceleration
+          contain: 'layout' // Prevent layout recalculation
+        }}
       >
         {cursorCharacter}
       </span>

@@ -263,10 +263,10 @@ const CobotComparisonChart: React.FC = () => {
 
   const getImageForModel = (model: string) => {
     switch (model) {
-      case "Air": return "/media/GO2 AIR.png";
-      case "Pro": return "/media/GO2 PRO.png";
-      case "Edu": return "/media/GO2 EDU U1.png";
-      default: return "/media/GO2 AIR.png";
+      case "Air": return "/media/GO2 AIR.webp";
+      case "Pro": return "/media/GO2 PRO.webp";
+      case "Edu": return "/media/GO2 EDU U1.webp";
+      default: return "/media/GO2 AIR.webp";
     }
   };
 

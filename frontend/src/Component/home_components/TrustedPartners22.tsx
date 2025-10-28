@@ -9,10 +9,10 @@ export function TrustedPartners22() {
 
   // Using higher quality Earth textures
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(TextureLoader, [
-    "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg", // Blue/green day map
-    "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg", // Normal map
-    "https://threejs.org/examples/textures/planets/earth_specular_2048.jpg", // Specular map
-    "https://threejs.org/examples/textures/planets/earth_clouds_1024.png" // Clouds
+    "https://threejs.org/examples/textures/planets/earth_atmos_2048.webp", // Blue/green day map
+    "https://threejs.org/examples/textures/planets/earth_normal_2048.webp", // Normal map
+    "https://threejs.org/examples/textures/planets/earth_specular_2048.webp", // Specular map
+    "https://threejs.org/examples/textures/planets/earth_clouds_1024.webp" // Clouds
   ]);
 
   // Improve texture quality
@@ -67,7 +67,7 @@ export function TrustedPartners22() {
       <mesh>
         <sphereGeometry args={[1.001, 64, 64]} />
         <meshBasicMaterial
-          map={useLoader(TextureLoader, "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_lights_2048.png")}
+          map={useLoader(TextureLoader, "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_lights_2048.webp")}
           blending={THREE.AdditiveBlending}
           transparent
           opacity={0.8}

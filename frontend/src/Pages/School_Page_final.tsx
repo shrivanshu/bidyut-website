@@ -11,24 +11,11 @@ import { EducationSections } from "../Component/SchoolComponentsFinal/EducationS
 import { CTASection } from "../Component/SchoolComponentsFinal/CTASection";
 import { RoboticsSchools } from "../Component/SchoolComponentsFinal/RoboticsSchools";
 import Scroller from "../Component/SchoolComponentsFinal/Scroller";
-import { Helmet } from "react-helmet-async";
 
 function FinalSchoolPage() {
   return (
     <ThemeProvider>
-      <Helmet>
-        <title>Robotics Lab Setup for Schools | Bidyut Innovation</title>
-        <meta
-          name="description"
-          content="Transform school learning with Bidyut Innovation’s Robotics Lab Setup. Hands-on programs in Robotics, AI, and STREAM empower students to innovate globally."
-        />
-        <meta
-          property="og:description"
-          content="Transform school learning with Bidyut Innovation’s Robotics Lab Setup. Hands-on programs in Robotics, AI, and STREAM empower students to innovate globally."
-        />
-        <link rel="canonical" href="https://bidyutinnovation.com/school/" />
-      </Helmet>
-      <div className="App bg-white dark:bgm-black transition-colors duration-300 min-h-screen">
+      <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
 
         <SchoolHeroSection />

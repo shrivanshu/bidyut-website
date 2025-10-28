@@ -1,6 +1,6 @@
 
 import React from 'react';
-import robotImgSrc from '/media/H1 - 2.png'; 
+import robotImgSrc from '/media/H1 - 2.webp'; 
 
 interface H1DetailProps {
   onContactClick?: () => void;

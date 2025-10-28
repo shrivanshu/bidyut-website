@@ -11,7 +11,7 @@ export default function AdvanceRoboticsLabs() {
 
   const roboticsData = [
     {
-      src: "/school_images/project/Copy of DSC03498.jpg",
+      src: "/school_images/project/Copy of DSC03498.webp",
       alt: "Schools Transforming with Robotics",
       title: "See How Schools Are Transforming with Robotics",
       subtitle: "Bottling Plant",
@@ -19,7 +19,7 @@ export default function AdvanceRoboticsLabs() {
       features: ["Smart Robotics Labs", "Interactive Learning Spaces", "Innovation-Driven Curriculum"]
     },
     {
-      src: "/school_images/project/Copy of fce7c3fb-d89a-42f7-b574-6882a3960378.jpg",
+      src: "/school_images/project/Copy of fce7c3fb-d89a-42f7-b574-6882a3960378.webp",
       alt: "Teacher Training and Support",
       title: "Empower Teachers, Inspire Students",
       subtitle: "AI Color Sorter ",
@@ -27,7 +27,7 @@ export default function AdvanceRoboticsLabs() {
       features: ["Comprehensive Training Programs", "Lesson Plans & Resources", "Continuous Support & Guidance"]
     },
     {
-      src: "/school_images/project/Copy of f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.jpg",
+      src: "/school_images/project/Copy of f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.webp",
       alt: "Building Future-Ready Skills",
       title: "Building Future-Ready Skills",
       subtitle: "Robotic Arm",
@@ -35,7 +35,7 @@ export default function AdvanceRoboticsLabs() {
       features: ["Robotics & AI Education", "Drone Technology", "Global Competition Preparation"]
     },
     {
-      src: "/school_images/project/Copy of 1204RR_M12 - Edited.jpg",
+      src: "/school_images/project/Copy of 1204RR_M12 - Edited.webp",
       alt: "Advanced Robotics Project",
       title: "Hands-On Robotics Projects",
       subtitle: "Cukoo Clock",
@@ -43,7 +43,7 @@ export default function AdvanceRoboticsLabs() {
       features: ["Project-Based Learning", "Real-World Applications", "Advanced Robotics Tools"]
     },
     {
-      src: "/school_images/project/Copy of ai.jpg",
+      src: "/school_images/project/Copy of ai.webp",
       alt: "AI Learning Session",
       title: "AI & Machine Learning Labs",
       subtitle: "AI Dancing Robot",
@@ -51,7 +51,7 @@ export default function AdvanceRoboticsLabs() {
       features: ["AI Programming", "Machine Learning Models", "Computer Vision Projects"]
     },
     {
-      src: "/school_images/project/Copy of DSC05157 - Edited.jpg",
+      src: "/school_images/project/Copy of DSC05157 - Edited.webp",
       alt: "STEM Workshop",
       title: "STEM Innovation Workshops",
       subtitle: "Hydraulic Pump",

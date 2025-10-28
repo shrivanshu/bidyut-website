@@ -21,42 +21,42 @@ interface ImageItem {
 
 // List of all images in the gallery folder
 const galleryImageFiles = [
-  "_DSC4609.JPG",
-  "_DSC4624.JPG",
-  "_DSC4633.JPG",
-  "_DSC4634.JPG",
-  "_DSC4641.JPG",
-  "_DSC4668.JPG",
-  "_DSC4681.jpg",
-  "C3666.00_00_02_14.Still009.jpg",
-  "DSC_0054.JPG",
-  "DSC_0227.JPG",
-  "DSC_0266.JPG",
-  "DSC_0466.JPG",
-  "DSC_0533.JPG",
-  "DSC_0574.JPG",
-  "DSC01532.JPG",
-  "DSC01982.JPG",
-  "DSC02090.JPG",
-  "DSC02249.JPG",
-  "DSC02438.JPG",
-  "DSC02595.JPG",
-  "DSC02655.JPG",
-  "DSC02656.JPG",
-  "DSC02782.JPG",
-  "DSC02789.JPG",
-  "DSC03264.JPG",
-  "DSC03404.JPG",
-  "DSC03643.JPG",
-  "DSC04424.JPG",
-  "DSC04638.JPG",
-  "DSC05095 400x400.JPG",
-  "DSC05113 400x400.JPG",
-  "DSC05129.JPG",
-  "DSC05135.JPG",
-  "DSC05145.JPG",
-  "DSC05268.JPG",
-  "DSC05302.JPG",
+  "_DSC4609.JPG.webp",
+  "_DSC4624.JPG.webp",
+  "_DSC4633.JPG.webp",
+  "_DSC4634.JPG.webp",
+  "_DSC4641.JPG.webp",
+  "_DSC4668.JPG.webp",
+  "_DSC4681.webp",
+  "C3666.00_00_02_14.Still009.webp",
+  "DSC_0054.JPG.webp",
+  "DSC_0227.JPG.webp",
+  "DSC_0266.JPG.webp",
+  "DSC_0466.JPG.webp",
+  "DSC_0533.JPG.webp",
+  "DSC_0574.JPG.webp",
+  "DSC01532.JPG.webp",
+  "DSC01982.JPG.webp",
+  "DSC02090.JPG.webp",
+  "DSC02249.JPG.webp",
+  "DSC02438.JPG.webp",
+  "DSC02595.JPG.webp",
+  "DSC02655.JPG.webp",
+  "DSC02656.JPG.webp",
+  "DSC02782.JPG.webp",
+  "DSC02789.JPG.webp",
+  "DSC03264.JPG.webp",
+  "DSC03404.JPG.webp",
+  "DSC03643.JPG.webp",
+  "DSC04424.JPG.webp",
+  "DSC04638.JPG.webp",
+  "DSC05095 400x400.JPG.webp",
+  "DSC05113 400x400.JPG.webp",
+  "DSC05129.JPG.webp",
+  "DSC05135.JPG.webp",
+  "DSC05145.JPG.webp",
+  "DSC05268.JPG.webp",
+  "DSC05302.JPG.webp",
 ];
 
 const generateBaseImages = (): ImageItem[] => {
@@ -221,7 +221,7 @@ export default function InteractiveGallery() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8">
-              <div style={{position: 'relative', height: '80px'}} className="sm:h-[100px] lg:h-[120px]">
+              <div style={{position: 'relative', height: '100px'}} className="sm:h-[120px] lg:h-[140px]">
                 <GalleryText
                   text="Explore Our Gallery"
                   flex={true}
@@ -232,7 +232,7 @@ export default function InteractiveGallery() {
                   italic={true}
                   textColor={isDark ? '#ffffff' : '#222222'}
                   strokeColor="#ff0000"
-                  minFontSize={28}
+                  minFontSize={20}
                 />
               </div>
 
@@ -260,7 +260,7 @@ export default function InteractiveGallery() {
 
                 <div className={`relative p-4 sm:p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.png"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.webp"
                     alt="Gallery Preview"
                     className="w-full h-60 sm:h-80 object-cover shadow-lg"
                   />
@@ -305,7 +305,7 @@ export default function InteractiveGallery() {
               }}
             >
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-60 bg-black/50 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-4 border border-white/10 pointer-events-none">
-                <div style={{position: 'relative', height: '40px'}} className="sm:h-[60px]">
+                <div style={{position: 'relative', height: '40px'}} className="sm:h-[50px]">
                   <GalleryText
                     text="Infinite Gallery"
                     flex={true}
@@ -316,7 +316,7 @@ export default function InteractiveGallery() {
                     italic={true}
                     textColor="#ffffff"
                     strokeColor="#ff0000"
-                    minFontSize={16}
+                    minFontSize={12}
                   />
                 </div>
                 <p className="text-xs sm:text-sm text-zinc-400 mt-1 sm:mt-2 leading-relaxed">
@@ -466,6 +466,7 @@ export default function InteractiveGallery() {
                           <motion.img
                             src={image.src || "/placeholder.svg"}
                             alt={image.alt}
+                            loading="lazy"
                             className="object-contain transition-all duration-300 select-none border border-white/10 cursor-pointer bg-black"
                             style={{
                               width: dimensions.width,

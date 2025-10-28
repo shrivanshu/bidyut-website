@@ -3,10 +3,25 @@ import { motion } from "framer-motion";
 import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
+import { useEffect, useState } from "react";
 
 export default function ContactPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
+
+  // Check for success message from URL params
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setShowSuccess(true);
+      // Remove the success parameter from URL
+      window.history.replaceState({}, '', '/contact');
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
+    }
+  }, []);
 
   // Reusable theme classes
   const bgColor = isDark ? "bg-black" : "bg-white";
@@ -18,12 +33,6 @@ export default function ContactPage() {
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Integrate with API or email service
-    alert("Form submitted! (hook up API/email service)");
   };
 
   return (
@@ -40,7 +49,7 @@ export default function ContactPage() {
           {/* Team Photo Background */}
           <div className="absolute inset-0">
             <img
-              src="/team-photo.jpg"
+              src="/team-photo.webp"
               alt="Bidyut Team Photo"
               className="absolute inset-0 w-full h-full object-cover rounded-b-[80px]"
               style={{ objectPosition: "center top" }}
@@ -49,7 +58,7 @@ export default function ContactPage() {
 
             {/* Fade Overlay */}
             <div className="absolute inset-0 rounded-b-[80px] bg-gradient-to-t 
-    from-black/50 via-transparent to-transparent" />
+            from-black/50 via-transparent to-transparent" />
           </div>
 
 
@@ -91,13 +100,36 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className={`rounded-2xl shadow-xl p-10 border ${bgColor} ${borderColor}`}>
+                {/* Success Message */}
+                {showSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg"
+                  >
+                    <p className="text-green-800 dark:text-green-200 font-medium">
+                      ✅ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                    </p>
+                  </motion.div>
+                )}
+
                 <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>Contact Us</h2>
                 <p className={`${subTextColor} mb-10`}>
                   Let’s power up your innovation journey together. From idea to
                   innovation — Bidyut makes it happen.
                 </p>
 
-                <form className="space-y-8" onSubmit={handleSubmit}>
+                <form 
+                  className="space-y-8" 
+                  action="https://formsubmit.co/info@bidyutrobotics.com" 
+                  method="POST"
+                >
+                  {/* Hidden fields for FormSubmit configuration */}
+                  <input type="hidden" name="_subject" value="New Contact Form Submission from Bidyut Website" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_next" value="https://bidyutrobotics.com/contact?success=true" />
                   {/* Name */}
                   <div className="relative">
                     <input

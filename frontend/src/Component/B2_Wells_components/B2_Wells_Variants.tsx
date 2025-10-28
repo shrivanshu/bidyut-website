@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
  
 ]
@@ -44,7 +45,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.",
     gallery: [
-      "/media/B2 ADVANCED.png",
+      "/media/B2 ADVANCED.webp",
      
     ],
     features: [
@@ -83,7 +84,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Basic Version with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.",
     gallery: [
-      "/media/B2 ADVANCED WITH 3D LIDAR.png",
+      "/media/B2 ADVANCED WITH 3D LIDAR.webp",
       
     ],
     features: [
@@ -438,11 +439,11 @@ function B2_Wells_Variants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             

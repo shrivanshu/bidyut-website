@@ -15,38 +15,38 @@ export default function EducationStream() {
   
   const videoOptions: VideoOption[] = [
     {
-      src: "/Science.mp4",
-      thumbnail: "/Science.mp4",
+      src: "/Science.webm",
+      thumbnail: "/Science.webm",
       title: t('science'),
       description: t('scienceDescription')
     },
     {
-      src: "/Technology1.mp4",
-      thumbnail: "/Technology1.mp4",
+      src: "/Technology1.webm",
+      thumbnail: "/Technology1.webm",
       title: t('Technology'),
       description: t('technologyDescription')
     },
     {
-      src: "/Reading1.mp4",
-      thumbnail: "/Reading1.mp4",
+      src: "/Reading1.webm",
+      thumbnail: "/Reading1.webm",
       title: t('Reading'),
       description: t('readingDescription')
     },
     {
-      src: "/Engineering.mp4",
-      thumbnail: "/Engineering.mp4",
+      src: "/Engineering.webm",
+      thumbnail: "/Engineering.webm",
       title: t('Engineering'),
       description: t('engineeringDescription')
     },
     {
-      src: "/Art.mp4",
-      thumbnail: "/Art.mp4",
+      src: "/Art.webm",
+      thumbnail: "/Art.webm",
       title: t('Art'),
       description: t('artsDescription')
     },
     {
-      src: "/Maths.mp4",
-      thumbnail: "/Maths.mp4",
+      src: "/Maths.webm",
+      thumbnail: "/Maths.webm",
       title: t('mathematics'),
       description: t('mathsDescription')
     },

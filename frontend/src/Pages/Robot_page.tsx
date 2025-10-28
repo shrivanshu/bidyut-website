@@ -14,7 +14,7 @@ function Robot_page() {
         <HeroSectionRobot />
         <RobotVariants/>
         <RobotDetail/>
-        <Table/>
+  <Table/>
         <Footer />
       </div>
     </ThemeProvider>

@@ -37,7 +37,7 @@ const Static = () => {
               </div>
               
               <img
-                src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.png"
+                src="https://i.ibb.co/5gf6JysH/f1c278f39c1e7100fd51971710b47389cf7bae76.webp"
                 alt="Our Vision"
                 className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
               />
@@ -89,7 +89,7 @@ const Static = () => {
             {/* Mission Image - Right */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2 relative">
               <img
-                src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.png"
+                src="https://i.ibb.co/Xf74d2Xs/0ae07f15c7144df71a52f94be159ea2311903644.webp"
                 alt="Our Mission"
                 className="rounded-lg shadow-lg w-full max-w-xs h-auto object-cover"
               />

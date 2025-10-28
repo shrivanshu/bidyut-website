@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import robotImgSrc from '/media/G1 EDU U6 .png'; 
+import robotImgSrc from '/media/G1 EDU U6 .webp'; 
 
 interface RobotClassroomProps {}
 

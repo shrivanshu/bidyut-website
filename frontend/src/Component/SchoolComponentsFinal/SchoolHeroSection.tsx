@@ -60,42 +60,42 @@ const SchoolHeroSection: React.FC = () => {
 
   // Desktop images initial layout - positioned further right for more dramatic leftward movement
   const desktopInitial = [
-    { left: 800, w: 166, h: 247, src: "/school_images/C2271.00_00_21_55.Still002.jpg" },
-    { left: 1000, w: 205, h: 305, src: "/school_images/C2271.00_00_25_11.Still004.jpg" },
-    { left: 1250, w: 231, h: 348, src: "/school_images/C2271.00_00_33_34.Still003.jpg" },
-    { left: 1520, w: 257, h: 393, src: "/school_images/Render.00_01_51_13.Still005.jpg" },
-    { left: 1800, w: 280, h: 430, src: "/school_images/Render.00_01_54_02.Still006.jpg" },
+    { left: 800, w: 166, h: 247, src: "/school_images/C2271.00_00_21_55.Still002.webp" },
+    { left: 1000, w: 205, h: 305, src: "/school_images/C2271.00_00_25_11.Still004.webp" },
+    { left: 1250, w: 231, h: 348, src: "/school_images/C2271.00_00_33_34.Still003.webp" },
+    { left: 1520, w: 257, h: 393, src: "/school_images/Render.00_01_51_13.Still005.webp" },
+    { left: 1800, w: 280, h: 430, src: "/school_images/Render.00_01_54_02.Still006.webp" },
   ] as const;
 
   // Multiple videos data for scroll-based video switching
   const videosData = [
     {
-      src: "/school_hero_video/hero section video/01.mp4",
-      poster: "/school_images/C2271.00_00_21_55.Still002.jpg",
+      src: "/school_hero_video/hero section video/01.webm",
+      poster: "/school_images/C2271.00_00_21_55.Still002.webp",
       title: "Robotics Lab Highlight",
       description: "Hands-on robotics, AI and drone programs that transform classrooms."
     },
     {
-      src: "/school_hero_video/hero section video/C2271.mp4",
-      poster: "/school_images/C2271.00_00_25_11.Still004.jpg",
+      src: "/school_hero_video/hero section video/C2271.webm",
+      poster: "/school_images/C2271.00_00_25_11.Still004.webp",
       title: "Creative Arts Integration",
       description: "Combining technology with creative arts for holistic learning experiences."
     },
     {
-      src: "/school_hero_video/hero section video/School lab video.mp4",
-      poster: "/school_images/C2271.00_00_33_34.Still003.jpg",
+      src: "/school_hero_video/hero section video/School lab video.webm",
+      poster: "/school_images/C2271.00_00_33_34.Still003.webp",
       title: "Advanced Science Labs",
       description: "State-of-the-art science equipment for experimental learning."
     },
     {
-      src: "/school_hero_video/hero section video/IMG_1791.mp4",
-      poster: "/school_images/Render.00_01_51_13.Still005.jpg",
+      src: "/school_hero_video/hero section video/IMG_1791.webm",
+      poster: "/school_images/Render.00_01_51_13.Still005.webp",
       title: "Technology Workshop",
       description: "Modern technology integration across all learning modules."
     },
     {
-      src: "/school_hero_video/hero section video/Engineering.mp4",
-      poster: "/school_images/Render.00_01_54_02.Still006.jpg",
+      src: "/school_hero_video/hero section video/Engineering.webm",
+      poster: "/school_images/Render.00_01_54_02.Still006.webp",
       title: "Engineering Concepts",
       description: "Foundation engineering principles through interactive projects."
     }
@@ -414,11 +414,11 @@ const SchoolHeroSection: React.FC = () => {
   {/* Responsive Image Grid */}
   <div className="grid grid-cols-2 px-4 gap-6  max-w-[300px]  md:max-w-lg">
     {[
-      "/school_images/Render.00_01_54_02.Still006.jpg",
-      "/school_images/Render.00_01_51_13.Still005.jpg",
-      "/school_images/C2271.00_00_33_34.Still003.jpg",
-      "/school_images/C2271.00_00_25_11.Still004.jpg",
-      "/school_images/C2271.00_00_21_55.Still002.jpg"
+      "/school_images/Render.00_01_54_02.Still006.webp",
+      "/school_images/Render.00_01_51_13.Still005.webp",
+      "/school_images/C2271.00_00_33_34.Still003.webp",
+      "/school_images/C2271.00_00_25_11.Still004.webp",
+      "/school_images/C2271.00_00_21_55.Still002.webp"
     ].map((src, i) => (
       <div
         key={i}

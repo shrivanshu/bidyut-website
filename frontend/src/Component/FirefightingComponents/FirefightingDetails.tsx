@@ -4,7 +4,7 @@ interface FirefightingDetailsProps {
   onContactClick?: () => void;
 }
 
-const firefightingImgSrc = '/A2.png';
+const firefightingImgSrc = '/A2.webp';
 
 const FirefightingDetails = ({ onContactClick }: FirefightingDetailsProps) => {
   const { isDark: _isDark } = useTheme();

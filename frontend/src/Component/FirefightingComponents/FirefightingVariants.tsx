@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -27,20 +28,20 @@ const cobotSearchData = [
   {
     id: "GO2 AIR",
     name: "GO2 AIR",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 PRO",
     name: "GO2 PRO",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
     specId: "go2-pro",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 EDU U1",
@@ -49,124 +50,124 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 EDU U2",
     name: "GO2 EDU U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2 EDU U3",
     name: "GO2 EDU U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2 EDU U4",
     name: "GO2 EDU U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "//A2.png", "//A2.png"],
+    gallery: ["/A2.webp", "//A2.webp", "//A2.webp"],
   },
   {
     id: "GO2-W U1",
     name: "GO2-W U1",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U2",
     name: "GO2-W U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U3",
     name: "GO2-W U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U4",
     name: "GO2-W U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2-W U5",
     name: "GO2-W U5",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U1",
     name: "GO2 ENT-U1",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U2",
     name: "GO2 ENT-U2",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U3",
     name: "GO2 ENT-U3",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
   {
     id: "GO2 ENT-U4",
     name: "GO2 ENT-U4",
-    image: "/A2.png",
+    image: "/A2.webp",
     category: "Service",
     description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
     specId: "go2-enterprise",
-    gallery: ["/A2.png", "/A2.png", "/A2.png"],
+    gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
 ]
 
 // Add this mapping near the top of A2Variants function
 const variantImages: Record<string, string> = {
-  "A2-Standard": "/media/A2-standard.png",
-  "A2-Pro": "/media/A2-pro.png",
-  "A2-W-Standard": "/media/A2-w.png",
-  "A2-W-Pro": "/media/A2-w-pro.png",
+  "A2-Standard": "/media/A2-standard.webp",
+  "A2-Pro": "/media/A2-pro.webp",
+  "A2-W-Standard": "/media/A2-w.webp",
+  "A2-W-Pro": "/media/A2-w-pro.webp",
 };
 
 const robotSpecs: 
@@ -177,7 +178,7 @@ RobotSpec[] = [
     description:
       "This model includes all functions of the B2 dog (without the laser SLAM kit) and features gas sensors, a 360° omnidirectional camera, a point-to-point communication module, and an industrial-grade remote control. It also comes with a 3W fill light, air transport box, and tool kit with mounting rails.",
     gallery: [
-      "/media/A2-standard.png",
+      "/media/A2-standard.webp",
 
     ],
 features: [
@@ -218,7 +219,7 @@ features: [
     description:
       "This version retains all functions of the B2-XF1-A (without mounting rails) and features a dual-optical gimbal camera. It supports audio intercom, high-resolution visible light imaging with zoom, advanced thermal imaging, and PTZ controls with wide horizontal and vertical range, presets, cruise routes, and vertical closed-loop support.",
     gallery: [
-      "/media/A2-pro.png",
+      "/media/A2-pro.webp",
 
     ],
 features: [
@@ -259,7 +260,7 @@ features: [
     description:
       "This model provides all functions of the B2-XF1-B and comes with a quick-release toolbox for easy handling. The box is spacious and includes a fire emergency kit equipped with a smoke alarm, fire blanket, smoke mask, multi-function flashlight, and rope.",
     gallery: [
-      "/media/A2-w.png",
+      "/media/A2-w.webp",
 
     ],
 features: [
@@ -300,7 +301,7 @@ features: [
     description:
       "This version offers all the functions of the B2-XF1-B while integrating the Z1 Pro robotic arm. The arm is fitted with a gripper and a 1080P HD camera, enabling precise manipulation and visual monitoring.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -341,7 +342,7 @@ features: [
     description:
       "This model contains all functions of the B2-XF1-B along with an advanced acoustic imager. It uses a 128-sensor MEMS microphone array to provide 1080p acoustic imaging with a wide frequency response, long measurement range, and gas leakage detection, making it ideal for industrial monitoring.",
     gallery: [
-      "/media/A2-w.png",
+      "/media/A2-w.webp",
 
     ],
 features: [
@@ -382,7 +383,7 @@ features: [
     description:
       "This version includes all functions of the B2-XF1-B and adds a 3D laser mobile scanning system. With 16 laser beams, 320,000 points per second scanning speed, and 120m range with 1cm accuracy, it supports 360°×285° coverage, visual SLAM, and has a 500GB expandable SSD for efficient data storage.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -427,7 +428,7 @@ features: [
     description:
       "This model includes all functions of the B2 dog with the basic laser SLAM kit. It features industrial gas sensors, a 360° omnidirectional camera, point-to-point communication, and an industrial-grade remote control with noise-cancelling headset. Extras include a 3W fill light, air transport box, and tool kit with mounting rails.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -468,7 +469,7 @@ features: [
     description:
       "This version retains all functions of the B2-XF2-A (without mounting rails) and adds a dual-light gimbal camera. It supports audio intercom, high-resolution visible light imaging with powerful zoom, thermal imaging, and a PTZ system with 360° rotation, cruise routes, presets, and power-off recovery.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -510,7 +511,7 @@ features: [
     description:
       "This model offers all functions of the B2-XF2-B and comes with a quick-release toolbox (557×350×240mm). The box includes a fire emergency kit with essentials such as a smoke alarm, fire blanket, smoke mask, flashlight, and multi-function rope.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -551,7 +552,7 @@ features: [
     description:
       "This version contains all functions of the B2-XF2-B and integrates the Z1 Pro robotic arm. The arm is equipped with a gripper and a 1080P HD camera, enabling precise handling with real-time visual feedback.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -583,7 +584,7 @@ features: [
     description:
       "This model includes all functions of the B2-XF2-B and an advanced acoustic imager. With 128 MEMS microphones, 1080p imaging, and a wide frequency range, it supports accurate sound detection, gas leak monitoring, and measurements up to 50m for industrial use.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -625,7 +626,7 @@ features: [
     description:
       "This version offers all functions of the B2-XF2-B and features a 3D laser mobile scanning system. It uses 16 laser beams with 320,000 points/sec speed, 120m range, and 1cm accuracy, plus 360°×285° coverage, visual SLAM, and a 500GB expandable SSD for data storage.",
     gallery: [
-      "/media/A2-w-pro.png",
+      "/media/A2-w-pro.webp",
 
     ],
 features: [
@@ -971,11 +972,11 @@ function FirefightingVariants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             
@@ -1018,7 +1019,7 @@ function FirefightingVariants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
 <img
-  src={variantImages[currentSpec.id] || "/A2.png"}
+  src={variantImages[currentSpec.id] || "/A2.webp"}
   alt={displayName}
   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
 />

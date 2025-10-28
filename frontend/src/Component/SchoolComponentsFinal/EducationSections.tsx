@@ -8,7 +8,7 @@ export function EducationSections() {
         <div className="grid md:grid-cols-2 gap-2 items-center">
           <div className="relative">
             <img
-              src="/school_images/C2271.00_00_25_11.Still004.jpg"
+              src="/school_images/C2271.00_00_25_11.Still004.webp"
               alt="Students working with robotics and STEM materials in classroom"
               className="rounded-lg shadow-lg object-cover w-[555px] h-[355px]"
             />

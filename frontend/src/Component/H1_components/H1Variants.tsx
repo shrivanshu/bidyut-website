@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const robotSearchData = [
     category: "Educational",
     description: "Alpha unit for classrooms with quick-swap modules.",
     specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-dance5.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
   {
     id: "edu-bot-2", 
@@ -40,7 +41,7 @@ const robotSearchData = [
     category: "Educational",
     description: "Beta model focused on AI projects and coding camps.",
     specId: "g1-basic",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-main.webm", "/robott.webm"],
   },
   {
     id: "service-bot-1",
@@ -49,7 +50,7 @@ const robotSearchData = [
     category: "Service",
     description: "Built for reception, delivery and kiosk assistance.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-main.webm"],
   },
   {
     id: "companion-bot-1",
@@ -58,7 +59,7 @@ const robotSearchData = [
     category: "Companion", 
     description: "Social companion with voice, vision and music modes.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robott.webm"],
   },
   {
     id: "industrial-bot-1",
@@ -67,7 +68,7 @@ const robotSearchData = [
     category: "Industrial",
     description: "Rugged automation for factories and warehouses.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robot.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robot.webm"],
   },
   {
     id: "security-bot-1",
@@ -76,7 +77,7 @@ const robotSearchData = [
     category: "Security",
     description: "Patrol, detect and alert with 24/7 monitoring.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robott.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robott.webm"],
   },
   {
     id: "cleaning-bot-1",
@@ -85,7 +86,7 @@ const robotSearchData = [
     category: "Cleaning",
     description: "Autonomous sweeping, mopping and spot cleaning.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-main.webm"],
   },
   {
     id: "research-bot-1",
@@ -94,7 +95,7 @@ const robotSearchData = [
     category: "Research",
     description: "Lab-ready platform for rapid prototyping.",
     specId: "g2-pro",
-    gallery: ["/media/Robot_Details.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robo-main.webm"],
   }
 ]
 
@@ -104,11 +105,11 @@ const robotSpecs: RobotSpec[] = [
   "name": "Unitree H1",
   "description": "The Unitree H1 is a full-size universal humanoid robot standing about 180 cm tall and weighing only 47 kg. Equipped with advanced 3D LiDAR and Intel RealSense depth sensing, it achieves 360° environment perception. With a moving speed of 3.3 m/s and potential mobility exceeding 5 m/s, it is among the most powerful humanoid robots in terms of speed, maneuverability, and flexibility. The H1 also features a quick-release 864 Wh battery, hollow electrical routing without external cables, and high joint torque up to 360 N·m, making it ideal for advanced research, mobility, and dynamic real-world applications.",
   "gallery": [
-    "/media/H1.png",
-    "/media/h1-2_4.jpg",
-    "/media/h1_2.gif",
-    "/media/h1_3.jpg",
-    "/media/h1_4.gif"
+    "/media/H1.webp",
+    "/media/h1-2_4.webp",
+    "/media/h1_2.webp",
+    "/media/h1_3.webp",
+    "/media/h1_4.webp"
   ],
   "features": [
     {
@@ -193,10 +194,10 @@ const robotSpecs: RobotSpec[] = [
   "name": "Unitree H1-2",
   "description": "The Unitree H1-2 is a full-size universal humanoid robot, standing at 178 cm and weighing about 70 kg. It is equipped with Intel RealSense depth sensing and 3D LiDAR for 360° perception. Featuring 27 degrees of freedom, high torque joints (up to 360 N·m at legs and 120 N·m at arms), and a peak torque density of 189 N·m/kg, it offers exceptional power and dexterity. The H1-2 integrates hollow electrical wiring without external cables, dual encoder systems for stability, and supports optional dexterous hands and higher computing power. Designed with an ergonomic bionic shape, it balances aesthetics and high performance for advanced robotics applications.",
   "gallery": [
-    "/media/H1 - 2.png",
-    "/media/h1-2_2.jpg",
-    "/media/h1_2.gif",
-    "/media/h1_3.jpg",
+    "/media/H1 - 2.webp",
+    "/media/h1-2_2.webp",
+    "/media/h1_2.webp",
+    "/media/h1_3.webp",
     // "/media/Robot_Details.svg"
   ],
   "features": [
@@ -572,11 +573,11 @@ export default function H1Variants() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
-            <a href="/contact">
+            <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+</Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
 import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
+import { Link } from "react-router-dom"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
 // Animated Banner Component
@@ -255,12 +256,12 @@ export default function Footer() {
                       { key: "gallery", href: "/Gallery" },
                     ].map((link) => (
                       <li key={link.key}>
-                        <a
-                          href={link.href}
+                        <Link
+                          to={link.href}
                           className="link-color hover:text-emerald-500 transition-colors text-sm sm:text-base font-medium"
                         >
                           {t(link.key)}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -345,21 +346,21 @@ export default function Footer() {
               <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-sm body-color">
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <span className="font-medium title-color">Copyright © 2024</span>
-                  <a
-                    href="/PrivacyPolicy"
+                  <Link
+                    to="/PrivacyPolicy"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("privacyPolicy")}
-                  </a>
-                  <a
-                    href="/Terms&Condition"
+                  </Link>
+                  <Link
+                    to="/Terms&Condition"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("termsOfService")}
-                  </a>
-                  <a href="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  </Link>
+                  <Link to="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
                   {t("Refund Policy")}
-                </a>
+                </Link>
                 </div>
                 <span className="muted-color">{t("builtWithExcellence")}</span>
               </div>

@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
   {
     id: "GO2 PRO",
@@ -40,7 +41,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 PRO – Fast, smart, and interactive robot with 4G, voice control, and advanced movement.",
     specId: "go2-pro",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance2.mp4", "/robo-dance3.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance2.webm", "/robo-dance3.webm"],
   },
   {
     id: "GO2 EDU U1",
@@ -49,7 +50,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U1 – High-speed, AI-powered educational robot with 4G, advanced sensors, voice control, and up to 4 hours battery life.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U2",
@@ -58,7 +59,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U2 – AI robot with 100Tops computing, 4G, sensors, voice control, obstacle avoidance, and 4h battery.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U3",
@@ -67,7 +68,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U3 – 15kg AI robot with 100Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 EDU U4",
@@ -76,7 +77,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 EDU-U4 is a high-performance quadruped robot with AI vision, voice control, long battery life, and advanced mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U1",
@@ -85,7 +86,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U1 is a compact quadruped robot with 4D lidar, depth camera, AI computing, and precise mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U2",
@@ -94,7 +95,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U2 is a high-performance quadruped robot with 4D lidar, depth camera, 100 Tops AI power, and agile mobility.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U3",
@@ -103,7 +104,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U3 is a powerful quadruped robot with 4D & 3D lidar, depth camera, 100 Tops AI power, and agile terrain handling.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U4",
@@ -112,7 +113,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U4 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2-W U5",
@@ -121,7 +122,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2-W U5 is an 18 kg quadruped robot with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and advanced obstacle avoidance.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U1",
@@ -130,7 +131,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U2",
@@ -139,7 +140,7 @@ const cobotSearchData = [
     category: "Service",
     description: "Same as U1 — GO2 Edu features, screen remote, dual-link comms, 1080P HD video, explosion-proof screen, dual wide-angle cameras + fill lights.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U3",
@@ -148,7 +149,7 @@ const cobotSearchData = [
     category: "Service",
     description: "U1/U2 features plus 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
   {
     id: "GO2 ENT-U4",
@@ -157,7 +158,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 Edu features, screen remote (dual camera), capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control.",
     specId: "go2-enterprise",
-    gallery: ["/media/Cobot_true.svg", "/robo-dance5.mp4", "/robo-main.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/robo-dance5.webm", "/robo-main.webm"],
   },
 ]
 
@@ -168,7 +169,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).",
     gallery: [
-      "/media/B2 ADVANCED.png",
+      "/media/B2 ADVANCED.webp",
 
     ],
     features: [
@@ -225,7 +226,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.",
     gallery: [
-      "/media/B2 ADVANCED WITH 3D LIDAR.png",
+      "/media/B2 ADVANCED WITH 3D LIDAR.webp",
 
     ],
     features: [
@@ -282,7 +283,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
     gallery: [
-      "/media/B2 BASIC.png",
+      "/media/B2 BASIC.webp",
 
     ],
     features: [
@@ -339,7 +340,7 @@ const robotSpecs: RobotSpec[] = [
     description:
       "B2-W Advanced is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and operating range of -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops). The pack includes B2 platform, 45000 mAh battery, charger, calibrator, and protective bracket. Version: B2 Advanced with 360° Lidar.",
     gallery: [
-      "/media/B2 ADVANCED WITH 3D LIDAR.png",
+      "/media/B2 ADVANCED WITH 3D LIDAR.webp",
 
     ],
     features: [
@@ -711,11 +712,11 @@ function B2Variants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             
@@ -760,13 +761,13 @@ function B2Variants() {
                 <img
                   src={
                     displayName === "B2-W Advanced"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
+                      ? "/media/B2 ADVANCED WITH 3D LIDAR.webp"
                       : displayName === "B2 Advanced"
-                      ? "/media/B2 ADVANCED.png"
+                      ? "/media/B2 ADVANCED.webp"
                       : displayName === "B2 Advanced with 3D Lidar"
-                      ? "/media/B2 ADVANCED WITH 3D LIDAR.png"
+                      ? "/media/B2 ADVANCED WITH 3D LIDAR.webp"
                       : displayName === "B2-W Basic"
-                      ? "/media/B2 BASIC.png"
+                      ? "/media/B2 BASIC.webp"
                       : "/media/Cobot_true.svg"
                   }
                   alt={displayName}

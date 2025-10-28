@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
 
@@ -31,7 +32,7 @@ const cobotSearchData = [
     category: "Service",
     description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
-    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.mp4"],
+    gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
   
 ]
@@ -43,8 +44,8 @@ const robotSpecs: RobotSpec[] = [
   description:
     "The Z1 Arm is a high-precision robotic arm with harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It provides high accuracy, stable performance, and robust communication for industrial and research applications.",
   gallery: [
-   "/Cobo/Z1-Arm.png",
-      "/Cobo/Z!-arm.mp4",
+   "/Cobo/Z1-Arm.webp",
+      "/Cobo/Z!-arm.webm",
   ],
   features: [
     {
@@ -101,8 +102,8 @@ const robotSpecs: RobotSpec[] = [
   description:
     "The D1 Robotic Arm offers 6-axis + 1 gripper configuration for high flexibility and wide range of motion. With a compact design, lightweight build, and multiple interface options, it provides precise control for industrial and research applications.",
   gallery: [
-          "/Cobo/D1-arm.png",
-   "/Cobo/d1-arm.jpg",
+          "/Cobo/D1-arm.webp",
+   "/Cobo/d1-arm.webp",
   
   ],
   features: [
@@ -158,11 +159,11 @@ const robotSpecs: RobotSpec[] = [
   "name": "Franka Research 3",
   "description": "The Franka Research 3 is a state-of-the-art 7-DOF robotic arm built for advanced robotics research and human–robot interaction studies. Featuring exceptional force sensitivity, modular control architecture, and an elegant lightweight design, it enables safe, precise manipulation in labs, automation cells, and AI-driven projects.",
   "gallery": [
-        "/Cobo/Franka-armm.png",
+        "/Cobo/Franka-armm.webp",
 
-        "/Cobo/franka-arm(2).jpg",
+        "/Cobo/franka-arm(2).webp",
 
-    "/Cobo/Franka-arm.png",
+    "/Cobo/Franka-arm.webp",
   ],
   "features": [
     {
@@ -536,11 +537,11 @@ function CoboVariants() {
   {displayDescription}
 </p>
 
- <a href="/contact">
+ <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
     Order Now
   </Button>
-</a>
+ </Link>
             </div>
 
             

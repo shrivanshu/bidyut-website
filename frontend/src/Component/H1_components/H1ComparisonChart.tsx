@@ -149,9 +149,9 @@ const H1ComparisonChart: React.FC = () => {
 
   const getImageForModel = (model: string) => {
     switch (model) {
-      case "H1": return "/media/H1.png";
-      case "H1-2": return "/media/H1 - 2.png";
-      default: return "/media/H1.png";
+      case "H1": return "/media/H1.webp";
+      case "H1-2": return "/media/H1 - 2.webp";
+      default: return "/media/H1.webp";
     }
   };
 
@@ -281,7 +281,7 @@ const H1ComparisonChart: React.FC = () => {
             <div className="w-64"></div> {/* Spacer for specifications column */}
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
-                src="/media/H1.png" 
+                src="/media/H1.webp" 
                 alt="H1 Robot" 
                 className="w-32 h-32 mb-2 object-contain"
               />
@@ -289,7 +289,7 @@ const H1ComparisonChart: React.FC = () => {
             </div>
             <div className="flex-1 flex flex-col items-center px-2">
               <img 
-                src="/media/H1 - 2.png" 
+                src="/media/H1 - 2.webp" 
                 alt="H1-2 Robot" 
                 className="w-32 h-32 mb-2 object-contain"
               />

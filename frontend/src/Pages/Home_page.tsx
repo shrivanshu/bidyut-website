@@ -13,6 +13,7 @@ import TrustedPartners from '../Component/home_components/TrustedPartners';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import Loader from "../Component/Loader";
 import { useState, useEffect } from "react";
+import usePerformanceMonitoring from '../hooks/usePerformanceMonitoring';
 
 
 function Home_page() {
@@ -20,12 +21,15 @@ function Home_page() {
  const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
+  // Enable performance monitoring
+  usePerformanceMonitoring();
+
   useEffect(() => {
-    // Simulate loading delay
+    // Reduced loading delay for better user experience
     const timer = setTimeout(() => {
       setFadeOut(true); // Start fade-out animation
-      setTimeout(() => setLoading(false), 5000); // Remove loader after transition
-    }, 5000); // Loader visible for 2.5s
+      setTimeout(() => setLoading(false), 500); // Remove loader after transition
+    }, 3000); // Loader visible for 3s instead of 5s
 
     return () => clearTimeout(timer);
   }, []);

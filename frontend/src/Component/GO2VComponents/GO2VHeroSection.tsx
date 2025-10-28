@@ -32,7 +32,7 @@ export default function GO2VHeroSection() {
 <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
   <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
     <img 
-      src="/GO2/GO2-W-U2.png" 
+      src="/GO2/GO2-W-U2.webp" 
       alt="GO2V Robot" 
       className="w-full max-w-xl h-auto object-contain" 
     />

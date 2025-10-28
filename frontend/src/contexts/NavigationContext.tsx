@@ -26,6 +26,14 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({ children
 
   useEffect(() => {
     setCurrentPath(location.pathname);
+    // Also reset scroll on navigation to ensure new page starts at top.
+    // Kept non-smooth to avoid conflicting with in-page smooth scrolling.
+    try {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+    } catch {}
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (

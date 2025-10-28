@@ -70,7 +70,7 @@ const SchoolCards: React.FC = () => {
           transition={{ type: "spring", damping: 30, stiffness: 100 }}
         >
           <img
-            src="/robotics-components-and-mechanical-parts-in-worksh.jpg"
+            src="/robotics-components-and-mechanical-parts-in-worksh.webp"
             alt="Robotics Workshop"
             width={180}
             height={260}
@@ -91,7 +91,7 @@ const SchoolCards: React.FC = () => {
           transition={{ type: "spring", damping: 30, stiffness: 100 }}
         >
           <img
-            src="/students-learning-outdoors-in-natural-environment-.jpg"
+            src="/students-learning-outdoors-in-natural-environment-.webp"
             alt="Outdoor Learning"
             width={200}
             height={280}
@@ -114,7 +114,7 @@ const SchoolCards: React.FC = () => {
           transition={{ type: "spring", damping: 25, stiffness: 80 }}
         >
           <img
-            src="/green-robot-on-bright-green-background-educational.jpg"
+            src="/green-robot-on-bright-green-background-educational.webp"
             alt="Educational Robot"
             className="w-full h-full object-cover"
           />
@@ -134,7 +134,7 @@ const SchoolCards: React.FC = () => {
           transition={{ type: "spring", damping: 25, stiffness: 80 }}
         >
           <img
-            src="/students-in-modern-classroom-with-technology-and-l.jpg"
+            src="/students-in-modern-classroom-with-technology-and-l.webp"
             alt="Modern Classroom"
             width={240}
             height={340}
@@ -150,21 +150,21 @@ const SchoolCards: React.FC = () => {
             className="absolute top-[60px] left-[20px] w-[140px] h-[200px] rounded-[15px] overflow-hidden shadow-lg"
             style={{ zIndex: 1 }}
           >
-            <img src="/robotics-components-workshop.jpg" alt="Robotics" className="w-full h-full object-cover" />
+            <img src="/robotics-components-workshop.webp" alt="Robotics" className="w-full h-full object-cover" />
           </motion.div>
 
           <motion.div
             className="absolute top-[80px] left-[80px] w-[160px] h-[220px] rounded-[15px] overflow-hidden shadow-lg"
             style={{ zIndex: 2 }}
           >
-            <img src="/outdoor-learning-environment.jpg" alt="Learning" className="w-full h-full object-cover" />
+            <img src="/outdoor-learning-environment.webp" alt="Learning" className="w-full h-full object-cover" />
           </motion.div>
 
           <motion.div
             className="absolute top-[40px] left-[140px] w-[180px] h-[240px] rounded-[15px] overflow-hidden shadow-lg"
             style={{ zIndex: 3 }}
           >
-            <img src="/green-robot-educational-technology.jpg" alt="Robot" className="w-full h-full object-cover" />
+            <img src="/green-robot-educational-technology.webp" alt="Robot" className="w-full h-full object-cover" />
           </motion.div>
 
           <motion.div
@@ -172,7 +172,7 @@ const SchoolCards: React.FC = () => {
             style={{ zIndex: 4 }}
           >
             <img
-              src="/modern-classroom-students-technology.jpg"
+              src="/modern-classroom-students-technology.webp"
               alt="Classroom"
               className="w-full h-full object-cover"
             />

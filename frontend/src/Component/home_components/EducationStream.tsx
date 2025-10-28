@@ -15,38 +15,38 @@ export default function EducationStream() {
   
   const videoOptions: VideoOption[] = [
     {
-      src: "/stream_video/Science.mp4",
-      thumbnail: "/stream_video/Science.mp4",
+      src: "/stream_video/Science.webm",
+      thumbnail: "/stream_video/Science.webm",
       title: t('science'),
       description: t('scienceDescription')
     },
     {
-      src: "/stream_video/Technology.mp4",
-      thumbnail: "/stream_video/Technology.mp4",
+      src: "/stream_video/Technology.webm",
+      thumbnail: "/stream_video/Technology.webm",
       title: t('Technology'),
       description: t('technologyDescription')
     },
     {
-      src: "/stream_video/Reading.mp4",
-      thumbnail: "/stream_video/Reading.mp4",
+      src: "/stream_video/Reading.webm",
+      thumbnail: "/stream_video/Reading.webm",
       title: t('Reading'),
       description: t('readingDescription')
     },
     {
-      src: "/stream_video/Engineering.mp4",
-      thumbnail: "/stream_video/Engineering.mp4",
+      src: "/stream_video/Engineering.webm",
+      thumbnail: "/stream_video/Engineering.webm",
       title: t('Engineering'),
       description: t('engineeringDescription')
     },
     {
-      src: "/stream_video/Art.mp4",
-      thumbnail: "/stream_video/stream_video/Art.mp4",
+      src: "/stream_video/Art.webm",
+      thumbnail: "/stream_video/stream_video/Art.webm",
       title: t('Art'),
       description: t('artsDescription')
     },
     {
-      src: "/stream_video/Mathematics.mp4",
-      thumbnail: "/stream_video/Mathematics.mp4",
+      src: "/stream_video/Mathematics.webm",
+      thumbnail: "/stream_video/Mathematics.webm",
       title: t('mathematics'),
       description: t('mathsDescription')
     },

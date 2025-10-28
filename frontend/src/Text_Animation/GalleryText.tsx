@@ -87,15 +87,21 @@ const GalleryText: React.FC<TextPressureProps> = ({
 
         const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
-        // Better mobile font size calculation
+        // Simplified font size calculation that ensures text fits
         const isMobile = window.innerWidth < 768;
-        const divisor = isMobile ? (chars.length / 1.5) : (chars.length / 2);
-        let newFontSize = containerW / divisor;
         
-        // Ensure minimum font size but also set a reasonable maximum for mobile
-        const maxFontSize = isMobile ? Math.min(containerW * 0.8, 60) : containerW;
+        // Use a more conservative approach to prevent text cutoff
+        let newFontSize: number;
+        if (isMobile) {
+            // For mobile, use a much simpler calculation
+            newFontSize = Math.min(containerW / (chars.length * 0.6), 40);
+        } else {
+            // For desktop, be more conservative
+            newFontSize = Math.min(containerW / (chars.length * 0.7), 80);
+        }
+        
+        // Ensure minimum readable size
         newFontSize = Math.max(newFontSize, minFontSize);
-        newFontSize = Math.min(newFontSize, maxFontSize);
 
         setFontSize(newFontSize);
         setScaleY(1);
@@ -105,10 +111,12 @@ const GalleryText: React.FC<TextPressureProps> = ({
             if (!titleRef.current) return;
             const textRect = titleRef.current.getBoundingClientRect();
 
-            if (scale && textRect.height > 0) {
+            if (scale && textRect.height > 0 && containerH > 0) {
                 const yRatio = containerH / textRect.height;
-                setScaleY(yRatio);
-                setLineHeight(yRatio);
+                if (yRatio < 1) {
+                    setScaleY(yRatio * 0.9); // Leave some margin
+                    setLineHeight(yRatio * 0.9);
+                }
             }
         });
     };
@@ -202,6 +210,8 @@ const GalleryText: React.FC<TextPressureProps> = ({
                     margin: 0,
                     fontWeight: 100,
                     color: stroke ? undefined : textColor,
+                    whiteSpace: 'nowrap',
+                    overflow: 'visible',
                 }}
             >
                 {chars.map((char, i) => (
