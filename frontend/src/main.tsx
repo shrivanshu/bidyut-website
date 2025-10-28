@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
+import { HelmetProvider } from 'react-helmet-async';
 import H1_page from './Pages/H1_page';
 import H1_2_page from './Pages/H1_2_page';   // ✅ Added missing import
 import R1_page from './Pages/R1_page';
@@ -30,11 +31,12 @@ import FinalSchoolPage from './Pages/School_Page_final';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider> 
-      <LanguageProvider>
-        <BrowserRouter>
-          <NavigationProvider>
-            <Routes>
+    <HelmetProvider>
+      <ThemeProvider> 
+        <LanguageProvider>
+          <BrowserRouter>
+            <NavigationProvider>
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
               <Route path="/School" element={<FinalSchoolPage />} />
@@ -75,5 +77,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </LanguageProvider>
     </ThemeProvider>
+  </HelmetProvider>
   </React.StrictMode>
 );
