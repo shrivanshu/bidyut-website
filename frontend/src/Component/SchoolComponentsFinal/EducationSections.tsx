@@ -18,8 +18,7 @@ export function EducationSections() {
               Turn Classrooms into Innovation Hubs
             </h2>
             <p className="text-gray-700 dark:text-gray-500 text-lg leading-relaxed">
-         Our AI & Robotics Lab solutions are designed to inspire creativity and innovation. Each lab is equipped with hands-on kits, sensors, and tools that bring learning to life. We provide a structured, grade-wise curriculum aligned with school textbooks and NEP 2020, ensuring seamless integration into academics without adding extra burden.
-            </p>
+     Our AI & robotics lab solutions are designed to inspire creativity and innovation. Each robotics lab setup is equipped with hands-on kits, sensors, and tools that bring learning to life. We provide a structured, grade-wise curriculum aligned with school textbooks and NEP 2020, ensuring seamless integration into academics without adding extra burden.       </p>
             {/* <button className="flex items-center gap-2 text-black dark:text-gray-300 hover:text-blue-800 font-semibold transition-colors group">
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               Explore Lab Setup

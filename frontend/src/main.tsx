@@ -12,6 +12,7 @@ import A2Page from './Pages/A2Page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './Component/ScrollToTop';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import H1_page from './Pages/H1_page';
@@ -31,8 +32,9 @@ import FinalSchoolPage from './Pages/School_Page_final';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider> 
-      <LanguageProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <LanguageProvider>
         <BrowserRouter>
           <NavigationProvider>
             <ScrollToTop />
@@ -76,6 +78,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </NavigationProvider>
         </BrowserRouter>
       </LanguageProvider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </HelmetProvider>
   </React.StrictMode>
 );
