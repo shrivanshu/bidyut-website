@@ -319,7 +319,7 @@ const SchoolHeroSection: React.FC = () => {
                   transitionDelay: isTextVisible ? '0.2s' : '0s'
                 }}
               >
-                Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
+                Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup
               </h1>
             </div>
             
@@ -342,8 +342,7 @@ const SchoolHeroSection: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                We offer hands-on programs in Robotics, AI, and Drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future
-              </p>
+               We offer hands-on programs in Robotics, AI, and Drones through our robotics lab setup, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future. </p>
             </div>
           </div>
 
@@ -364,7 +363,7 @@ const SchoolHeroSection: React.FC = () => {
                 className="absolute hidden md:block rounded-[24px] overflow-hidden shadow-lg will-change-transform"
                 style={{ left: `${left}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`, opacity: finalOpacity }}
               >
-                <img src={img.src} alt={`School${i + 1}`} className="w-full h-full object-cover" />
+                <img src={img.src} alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms" className="w-full h-full object-cover" />
               </div>
             );
           })}
@@ -390,8 +389,7 @@ const SchoolHeroSection: React.FC = () => {
     }}
   >
     <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
-      Transform Your Classroom with <br /> Robotics, AI & <br /> Future-Ready Labs
-    </h1>
+Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup    </h1>
   </div>
 
   {/* Subtext */}
@@ -407,8 +405,7 @@ const SchoolHeroSection: React.FC = () => {
     }}
   >
     <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
-      We provide hands-on robotics, AI, drone programs, teacher training, and global competitions.
-    </p>
+   We offer hands-on programs in Robotics, AI, and Drones through our robotics lab setup, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future. </p>
   </div>
 
   {/* Responsive Image Grid */}
@@ -434,7 +431,7 @@ const SchoolHeroSection: React.FC = () => {
       >
         <img
           src={src}
-          alt={`School${i + 1}`}
+          alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms"
           className="w-full h-full object-cover"
         />
       </div>
