@@ -1,12 +1,34 @@
 import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './Component/ScrollToTop';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
+
+const Home = lazy(() => import('./Pages/Home_page'));
+const About = lazy(() => import('./Pages/AboutPage'));
+const Gallery = lazy(() => import('./Pages/Gallery_page'));
+const Contactpage = lazy(() => import('./Pages/Contact_page'));
+const Robotpage = lazy(() => import('./Pages/Robot_page'));
+const Cobotpage = lazy(() => import('./Pages/Cobot_page'));
+const B2Page = lazy(() => import('./Pages/B2Page'));
+const A2Page = lazy(() => import('./Pages/A2Page'));
+const H1_page = lazy(() => import('./Pages/H1_page'));
+const H1_2_page = lazy(() => import('./Pages/H1_2_page'));
+const R1_page = lazy(() => import('./Pages/R1_page'));
+const B2_Wells_Page = lazy(() => import('./Pages/B2_Wells_Page'));
+const A2_Wells_Page = lazy(() => import('./Pages/A2_Wells_Page'));
+const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
+const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy'));
+const TermsCondition = lazy(() => import('./Pages/Terms&Condition'));
+const RefundPolicy = lazy(() => import('./Pages/RefundPolicy'));
+const GO2VPage = lazy(() => import('./Pages/GO2VPage'));
+const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
+const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
+const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
 
 const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
