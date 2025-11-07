@@ -9,7 +9,7 @@ import {
   Menu,
   X,
   Globe,
-} from "lucide-react";
+} from "./InlineIcons";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";

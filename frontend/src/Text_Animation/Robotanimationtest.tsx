@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useCallback, useMemo } from "react";
-import { gsap } from "gsap";
+import React, { useEffect, useRef, useCallback, useMemo, useState } from "react";
+import { loadGSAP } from "../utils/gsapLoader";
 
 export interface TargetCursorProps {
   targetSelector?: string;
@@ -25,18 +25,24 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     []
   );
 
+  const [gsapInstance, setGsapInstance] = useState<any>(null);
+
+  useEffect(() => {
+    loadGSAP().then(gsap => setGsapInstance(gsap));
+  }, []);
+
   const moveCursor = useCallback((x: number, y: number) => {
-    if (!cursorRef.current) return;
-    gsap.to(cursorRef.current, {
+    if (!cursorRef.current || !gsapInstance) return;
+    gsapInstance.to(cursorRef.current, {
       x,
       y,
       duration: 0.1,
       ease: "power3.out",
     });
-  }, []);
+  }, [gsapInstance]);
 
   useEffect(() => {
-    if (!cursorRef.current) return;
+    if (!cursorRef.current || !gsapInstance) return;
 
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
@@ -65,7 +71,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       currentLeaveHandler = null;
     };
 
-    gsap.set(cursor, {
+    gsapInstance.set(cursor, {
       xPercent: -50,
       yPercent: -50,
       x: window.innerWidth / 2,
@@ -76,7 +82,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       if (spinTl.current) {
         spinTl.current.kill();
       }
-      spinTl.current = gsap
+      spinTl.current = gsapInstance
         .timeline({ repeat: -1 })
         .to(cursor, { rotation: "+=360", duration: spinDuration, ease: "none" });
     };
@@ -206,7 +212,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
           blOffset.y += mouseOffsetY;
         }
 
-        const tl = gsap.timeline();
+        const tl = gsapInstance.timeline();
         const corners = [tlc, trc, brc, blc];
         const offsets = [tlOffset, trOffset, brOffset, blOffset];
 
@@ -247,7 +253,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
         if (cornersRef.current) {
           const corners = Array.from(cornersRef.current);
-          gsap.killTweensOf(corners);
+          gsapInstance.killTweensOf(corners);
 
           const { cornerSize } = constants;
           const positions = [
@@ -257,7 +263,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
             { x: -cornerSize * 1.5, y: cornerSize * 0.5 },
           ];
 
-          const tl = gsap.timeline();
+          const tl = gsapInstance.timeline();
           corners.forEach((corner, index) => {
             tl.to(
               corner,
@@ -274,18 +280,18 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
         resumeTimeout = setTimeout(() => {
           if (!activeTarget && cursorRef.current && spinTl.current) {
-            const currentRotation = gsap.getProperty(
+            const currentRotation = gsapInstance.getProperty(
               cursorRef.current,
               "rotation"
             ) as number;
             const normalizedRotation = currentRotation % 360;
 
             spinTl.current.kill();
-            spinTl.current = gsap
+            spinTl.current = gsapInstance
               .timeline({ repeat: -1 })
               .to(cursorRef.current, { rotation: "+=360", duration: spinDuration, ease: "none" });
 
-            gsap.to(cursorRef.current, {
+            gsapInstance.to(cursorRef.current, {
               rotation: normalizedRotation + 360,
               duration: spinDuration * (1 - normalizedRotation / 360),
               ease: "none",

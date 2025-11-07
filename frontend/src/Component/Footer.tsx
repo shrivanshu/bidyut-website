@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
+import { Instagram, Facebook, Youtube, Linkedin } from "./InlineIcons"
 import { Link } from "react-router-dom"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 

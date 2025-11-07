@@ -1,7 +1,7 @@
 "use client";
 
 import { ElementType, useEffect, useRef, useState, createElement, useCallback } from "react";
-import { gsap } from "gsap";
+import { loadGSAP } from "../utils/gsapLoader";
 
 interface TextTypeProps {
   highlight?: { text: string, color: string };
@@ -99,9 +99,17 @@ const HomeHeroText = ({
   }, [startOnVisible]);
 
   useEffect(() => {
-    if (showCursor && cursorRef.current) {
+    if (!showCursor || !cursorRef.current) return;
+
+    let cleanup: () => void;
+    
+    (async () => {
+      const gsap = await loadGSAP();
+      
+      if (!cursorRef.current) return; // Check again in case component unmounted
+      
       gsap.set(cursorRef.current, { opacity: 1 });
-      gsap.to(cursorRef.current, {
+      const tween = gsap.to(cursorRef.current, {
         opacity: 0,
         duration: cursorBlinkDuration,
         repeat: -1,
@@ -110,7 +118,13 @@ const HomeHeroText = ({
         force3D: true, // Hardware acceleration
         will: "change", // CSS will-change hint
       });
-    }
+      
+      cleanup = () => tween.kill();
+    })();
+
+    return () => {
+      if (cleanup) cleanup();
+    };
   }, [showCursor, cursorBlinkDuration]);
 
   useEffect(() => {
