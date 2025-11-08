@@ -127,13 +127,17 @@ export default function EducationStream() {
           setActiveVideo(videoOptions[nextIndex]);
           
           if (pillsContainerRef.current) {
-            const visibleHeight = pillsContainerRef.current.clientHeight;
-            const itemHeight = 120;
-            const scrollPosition = (nextIndex * itemHeight) - (visibleHeight / 2) + (itemHeight / 2);
-            
-            pillsContainerRef.current.scrollTo({
-              top: Math.max(0, scrollPosition),
-              behavior: 'smooth'
+            requestAnimationFrame(() => {
+              if (pillsContainerRef.current) {
+                const visibleHeight = pillsContainerRef.current.clientHeight;
+                const itemHeight = 120;
+                const scrollPosition = (nextIndex * itemHeight) - (visibleHeight / 2) + (itemHeight / 2);
+                
+                pillsContainerRef.current.scrollTo({
+                  top: Math.max(0, scrollPosition),
+                  behavior: 'smooth'
+                });
+              }
             });
           }
 

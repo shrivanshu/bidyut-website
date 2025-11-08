@@ -1,4 +1,4 @@
-import { Brain, Bot as Robot } from "lucide-react"
+import { Brain, Robot } from "./icons"
 import SplitText from "../../Text_Animation/LSMtext"
 
 export default function Component() {

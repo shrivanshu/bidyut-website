@@ -1,7 +1,6 @@
 "use client";
 
 import { ElementType, useEffect, useRef, useState, createElement, useCallback } from "react";
-import { loadGSAP } from "../utils/gsapLoader";
 
 interface TextTypeProps {
   highlight?: { text: string, color: string };
@@ -99,32 +98,32 @@ const HomeHeroText = ({
   }, [startOnVisible]);
 
   useEffect(() => {
-    if (!showCursor || !cursorRef.current) return;
+    const cursor = cursorRef.current;
+    if (!showCursor || !cursor) return;
 
-    let cleanup: () => void;
-    
-    (async () => {
-      const gsap = await loadGSAP();
-      
-      if (!cursorRef.current) return; // Check again in case component unmounted
-      
-      gsap.set(cursorRef.current, { opacity: 1 });
-      const tween = gsap.to(cursorRef.current, {
-        opacity: 0,
-        duration: cursorBlinkDuration,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        force3D: true, // Hardware acceleration
-        will: "change", // CSS will-change hint
-      });
-      
-      cleanup = () => tween.kill();
-    })();
+    cursor.style.opacity = "1";
 
-    return () => {
-      if (cleanup) cleanup();
-    };
+    if (typeof cursor.animate === "function") {
+      const animation = cursor.animate(
+        [{ opacity: 1 }, { opacity: 0 }],
+        {
+          duration: Math.max(16, cursorBlinkDuration * 1000),
+          iterations: Infinity,
+          direction: "alternate",
+          easing: "ease-in-out",
+        }
+      );
+
+      return () => animation.cancel();
+    }
+
+    let visible = true;
+    const interval = window.setInterval(() => {
+      visible = !visible;
+      cursor.style.opacity = visible ? "1" : "0";
+    }, Math.max(16, cursorBlinkDuration * 1000));
+
+    return () => window.clearInterval(interval);
   }, [showCursor, cursorBlinkDuration]);
 
   useEffect(() => {

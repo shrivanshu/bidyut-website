@@ -12,36 +12,61 @@ function AnimatedBanner({
   iLetterRef: React.RefObject<HTMLSpanElement | null>
 }) {
   const [iPosition, setIPosition] = useState({ x: 0, y: 0 })
+  
+  useEffect(() => {
+    const floatGentleKeyframes = `
+      @keyframes float-gentle {
+        0%, 100% {
+          transform: translate(-50%, -50%);
+        }
+        50% {
+          transform: translate(-50%, -80%);
+        }
+      }
+    `;
+    
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'float-gentle-keyframes';
+    styleSheet.textContent = floatGentleKeyframes;
+    
+    if (!document.getElementById('float-gentle-keyframes')) {
+      document.head.appendChild(styleSheet);
+    }
+    
+    return () => {
+      const existing = document.getElementById('float-gentle-keyframes');
+      if (existing && existing.parentNode) {
+        existing.parentNode.removeChild(existing);
+      }
+    };
+  }, []);
 
   // Update i position on scroll and resize
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout | null = null;
+
     const updateIPosition = () => {
       if (iLetterRef.current) {
         const iRect = iLetterRef.current.getBoundingClientRect()
         const screenWidth = window.innerWidth
 
-        const fontScale = iRect.height / 100; // normalize by expected height
+        const fontScale = iRect.height / 100;
         let xOffset = 2.5;
         let yMultiplier = 2;
 
         if (screenWidth < 380) {
-          // Small mobile
           xOffset = 2.7;
           yMultiplier = 45.8;
         } else if (screenWidth <= 768) {
-          // Regular mobile
           xOffset = 2.7;
           yMultiplier = 6.25;
         } else if (screenWidth < 1024) {
-          // Tablet
           xOffset = 2.5;
           yMultiplier = 1.2;
         } else if (screenWidth < 1440) {
-          // Laptop
           xOffset = 2.4;
           yMultiplier = 1.8;
         } else {
-          // Large Desktop
           xOffset = 2.4;
           yMultiplier = 2;
         }
@@ -50,41 +75,26 @@ function AnimatedBanner({
           x: iRect.left + (iRect.width / xOffset),
           y: iRect.top + (iRect.height * yMultiplier * fontScale)
         });
-        
-        // Add the static dot
-      
       }
     }
 
     const handleUpdate = () => {
-      requestAnimationFrame(updateIPosition)
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        requestAnimationFrame(updateIPosition);
+      }, 100);
     }
 
-    updateIPosition() // Initial
+    updateIPosition();
     window.addEventListener("scroll", handleUpdate, { passive: true })
     window.addEventListener("resize", handleUpdate)
 
     return () => {
       window.removeEventListener("scroll", handleUpdate)
       window.removeEventListener("resize", handleUpdate)
+      if (debounceTimer) clearTimeout(debounceTimer);
     }
   }, [iLetterRef, scrollProgress])
-
-  // Add float-gentle animation
-  const floatGentleKeyframes = `
-    @keyframes float-gentle {
-      0%, 100% {
-        transform: translate(-50%, -50%);
-      }
-      50% {
-        transform: translate(-50%, -80%);
-      }
-    }
-  `;
-
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = floatGentleKeyframes;
-  document.head.appendChild(styleSheet);
 
   // Morphing progress
   let morph = 0

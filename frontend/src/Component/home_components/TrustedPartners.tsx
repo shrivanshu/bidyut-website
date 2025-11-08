@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useLayoutEffect } from "react"
 
 // Import partner logos
 const accentureLogo = "/trustedPartners_logos/Accenture-logo.webp"
@@ -66,6 +66,70 @@ export default function TrustedPartners() {
   const targetPositionRef = useRef({ x: 140, y: 50 })
   const logoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const lastCollisionCheckRef = useRef<number>(0)
+  const arrowMetricsRef = useRef({ left: 0, top: 0, width: 0, height: 0 })
+  const logoMetricsRef = useRef<Record<string, { centerX: number; centerY: number; radius: number }>>({})
+  const pendingMeasureRef = useRef<number | null>(null)
+
+  const updateArrowMetrics = () => {
+    if (!arrowRef.current) return
+    const rect = arrowRef.current.getBoundingClientRect()
+    arrowMetricsRef.current = {
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height,
+    }
+  }
+
+  const updateLogoMetrics = () => {
+    const next: Record<string, { centerX: number; centerY: number; radius: number }> = {}
+    Object.entries(logoRefs.current).forEach(([key, element]) => {
+      if (!element) return
+      const rect = element.getBoundingClientRect()
+      const radius = rect.width / 2
+      next[key] = {
+        centerX: rect.left + radius,
+        centerY: rect.top + radius,
+        radius,
+      }
+    })
+    logoMetricsRef.current = next
+  }
+
+  const scheduleMetricsUpdate = () => {
+    if (pendingMeasureRef.current !== null) return
+    pendingMeasureRef.current = requestAnimationFrame(() => {
+      pendingMeasureRef.current = null
+      updateArrowMetrics()
+      updateLogoMetrics()
+    })
+  }
+
+  const registerLogoRef = (key: string) => (element: HTMLDivElement | null) => {
+    logoRefs.current[key] = element
+    if (element) scheduleMetricsUpdate()
+  }
+
+  useLayoutEffect(() => {
+    scheduleMetricsUpdate()
+  }, [])
+
+  useEffect(() => {
+    scheduleMetricsUpdate()
+  }, [showSchoolLogos, currentSchoolLogoSet, isActive])
+
+  useEffect(() => {
+    const handleResize = () => scheduleMetricsUpdate()
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("scroll", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("scroll", handleResize)
+      if (pendingMeasureRef.current !== null) {
+        cancelAnimationFrame(pendingMeasureRef.current)
+      }
+    }
+  }, [])
 
   // Create arrays of school logos organized in sets
   const schoolLogoSets = [
@@ -155,120 +219,106 @@ export default function TrustedPartners() {
   ]
 
   const checkArrowLogoCollision = (arrowTipX?: number, arrowTipY?: number) => {
-    // Throttle collision checks to improve performance
     const now = Date.now()
     if (now - lastCollisionCheckRef.current < 16) {
-      // ~60fps
       return
     }
     lastCollisionCheckRef.current = now
 
-    let hoveredLogoKey = null
-
-    try {
-      if (arrowRef.current) {
-        const arrowRect = arrowRef.current.getBoundingClientRect()
-        const svgWidth = 220
-        const svgHeight = 100
-
-        // Convert SVG coordinates to screen coordinates
-        const scaleX = arrowRect.width / svgWidth
-        const scaleY = arrowRect.height / svgHeight
-
-        // Use provided coordinates or calculate from current arrow position
-        const actualArrowTipX = arrowTipX !== undefined ? arrowTipX : arrowRect.left + arrowEndX * scaleX
-        const actualArrowTipY = arrowTipY !== undefined ? arrowTipY : arrowRect.top + arrowEndY * scaleY
-
-        Object.entries(logoRefs.current).forEach(([logoKey, logoElement]) => {
-          if (logoElement) {
-            const logoRect = logoElement.getBoundingClientRect()
-            const logoRadius = logoRect.width / 2
-            const logoCenterX = logoRect.left + logoRadius
-            const logoCenterY = logoRect.top + logoRadius
-
-            const distance = Math.sqrt(
-              Math.pow(actualArrowTipX - logoCenterX, 2) + Math.pow(actualArrowTipY - logoCenterY, 2),
-            )
-
-            // Increased collision radius for better detection
-            const collisionRadius = logoRadius + 60
-            if (distance <= collisionRadius) {
-              hoveredLogoKey = logoKey
-            }
-          }
-        })
-      }
-    } catch (error) {
-      console.error("Collision detection error:", error)
+    const arrowMetrics = arrowMetricsRef.current
+    if (!arrowMetrics.width || !arrowMetrics.height) {
+      scheduleMetricsUpdate()
+      setHoveredLogo(null)
+      return
     }
+
+    const svgWidth = 220
+    const svgHeight = 100
+    const scaleX = arrowMetrics.width / svgWidth
+    const scaleY = arrowMetrics.height / svgHeight
+    const actualArrowTipX = arrowTipX ?? arrowMetrics.left + arrowEndX * scaleX
+    const actualArrowTipY = arrowTipY ?? arrowMetrics.top + arrowEndY * scaleY
+
+    let hoveredLogoKey: string | null = null
+
+    Object.entries(logoMetricsRef.current).forEach(([logoKey, metrics]) => {
+      if (!metrics) return
+      const distance = Math.hypot(actualArrowTipX - metrics.centerX, actualArrowTipY - metrics.centerY)
+      const collisionRadius = metrics.radius + 60
+      if (distance <= collisionRadius) {
+        hoveredLogoKey = logoKey
+      }
+    })
 
     setHoveredLogo(hoveredLogoKey)
   }
 
   useEffect(() => {
     const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (isActive && arrowRef.current) {
-        try {
-          const arrowRect = arrowRef.current.getBoundingClientRect()
-          const arrowStartX = arrowRect.left + (10 * arrowRect.width) / 220
-          const arrowStartY = arrowRect.top + (50 * arrowRect.height) / 100
+      if (!isActive) return
+      const arrowMetrics = arrowMetricsRef.current
+      if (!arrowMetrics.width || !arrowMetrics.height) {
+        scheduleMetricsUpdate()
+        return
+      }
+      try {
+        const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
+        const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
 
-          const deltaX = e.clientX - arrowStartX
-          const deltaY = e.clientY - arrowStartY
-          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+        const deltaX = e.clientX - arrowStartX
+        const deltaY = e.clientY - arrowStartY
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
 
-          if (distance > 0) {
-            const normalizedX = deltaX / distance
-            const normalizedY = deltaY / distance
+        if (distance > 0) {
+          const normalizedX = deltaX / distance
+          const normalizedY = deltaY / distance
 
-            const newEndX = 10 + normalizedX * distance
-            const newEndY = 50 + normalizedY * distance
+          const newEndX = 10 + normalizedX * distance
+          const newEndY = 50 + normalizedY * distance
 
-            targetPositionRef.current = { x: newEndX, y: newEndY }
+          targetPositionRef.current = { x: newEndX, y: newEndY }
 
-            // Calculate the actual arrow tip position for collision detection
-            const scaleX = arrowRect.width / 220
-            const scaleY = arrowRect.height / 100
-            const actualArrowTipX = arrowRect.left + newEndX * scaleX
-            const actualArrowTipY = arrowRect.top + newEndY * scaleY
+          const scaleX = arrowMetrics.width / 220
+          const scaleY = arrowMetrics.height / 100
+          const actualArrowTipX = arrowMetrics.left + newEndX * scaleX
+          const actualArrowTipY = arrowMetrics.top + newEndY * scaleY
 
-            checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
-          }
-        } catch (error) {
-          console.error("Mouse move error:", error)
+          checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
         }
+      } catch (error) {
+        console.error("Mouse move error:", error)
       }
     }
 
     const smoothUpdate = () => {
-      if (isActive) {
-        try {
-          const current = { x: arrowEndX, y: arrowEndY }
-          const target = targetPositionRef.current
+      if (!isActive) return
+      try {
+        const current = { x: arrowEndX, y: arrowEndY }
+        const target = targetPositionRef.current
 
-          const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
-          const easingFactor = 0.15
+        const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
+        const easingFactor = 0.15
 
-          const newX = lerp(current.x, target.x, easingFactor)
-          const newY = lerp(current.y, target.y, easingFactor)
+        const newX = lerp(current.x, target.x, easingFactor)
+        const newY = lerp(current.y, target.y, easingFactor)
 
-          setArrowEndX(newX)
-          setArrowEndY(newY)
+        setArrowEndX(newX)
+        setArrowEndY(newY)
 
-          // Check collision with the new arrow position
-          if (arrowRef.current) {
-            const arrowRect = arrowRef.current.getBoundingClientRect()
-            const scaleX = arrowRect.width / 220
-            const scaleY = arrowRect.height / 100
-            const actualArrowTipX = arrowRect.left + newX * scaleX
-            const actualArrowTipY = arrowRect.top + newY * scaleY
-            checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
-          }
-
-          animationFrameRef.current = requestAnimationFrame(smoothUpdate)
-        } catch (error) {
-          console.error("Animation error:", error)
+        const arrowMetrics = arrowMetricsRef.current
+        if (!arrowMetrics.width || !arrowMetrics.height) {
+          scheduleMetricsUpdate()
+        } else {
+          const scaleX = arrowMetrics.width / 220
+          const scaleY = arrowMetrics.height / 100
+          const actualArrowTipX = arrowMetrics.left + newX * scaleX
+          const actualArrowTipY = arrowMetrics.top + newY * scaleY
+          checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
         }
+
+        animationFrameRef.current = requestAnimationFrame(smoothUpdate)
+      } catch (error) {
+        console.error("Animation error:", error)
       }
     }
 
@@ -308,25 +358,27 @@ export default function TrustedPartners() {
     try {
       if (!isActive) {
         setIsActive(true)
-        if (arrowRef.current) {
-          const arrowRect = arrowRef.current.getBoundingClientRect()
-          const arrowStartX = arrowRect.left + (10 * arrowRect.width) / 220
-          const arrowStartY = arrowRect.top + (50 * arrowRect.height) / 100
+        const arrowMetrics = arrowMetricsRef.current
+        if (!arrowMetrics.width || !arrowMetrics.height) {
+          scheduleMetricsUpdate()
+          return
+        }
+        const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
+        const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
 
-          const deltaX = e.clientX - arrowStartX
-          const deltaY = e.clientY - arrowStartY
-          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+        const deltaX = e.clientX - arrowStartX
+        const deltaY = e.clientY - arrowStartY
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
 
-          if (distance > 0) {
-            const normalizedX = deltaX / distance
-            const normalizedY = deltaY / distance
+        if (distance > 0) {
+          const normalizedX = deltaX / distance
+          const normalizedY = deltaY / distance
 
-            const newEndX = 10 + normalizedX * distance
-            const newEndY = 50 + normalizedY * distance
+          const newEndX = 10 + normalizedX * distance
+          const newEndY = 50 + normalizedY * distance
 
-            setArrowEndX(newEndX)
-            setArrowEndY(newEndY)
-          }
+          setArrowEndX(newEndX)
+          setArrowEndY(newEndY)
         }
       } else {
         setIsActive(false)
@@ -595,9 +647,7 @@ export default function TrustedPartners() {
 
               {/* Company Logos */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["accenture"] = el
-                }}
+                ref={registerLogoRef("accenture")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -616,9 +666,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["acg"] = el
-                }}
+                ref={registerLogoRef("acg")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -637,9 +685,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["hcl"] = el
-                }}
+                ref={registerLogoRef("hcl")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -662,9 +708,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["iisc"] = el
-                }}
+                ref={registerLogoRef("iisc")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -683,9 +727,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["iitKanpur"] = el
-                }}
+                ref={registerLogoRef("iitKanpur")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -709,9 +751,7 @@ export default function TrustedPartners() {
 
               {/* NxtWave */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["nxtwave"] = el
-                }}
+                ref={registerLogoRef("nxtwave")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -731,9 +771,7 @@ export default function TrustedPartners() {
 
               {/* Orica */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["orica"] = el
-                }}
+                ref={registerLogoRef("orica")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -752,9 +790,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["plaksha"] = el
-                }}
+                ref={registerLogoRef("plaksha")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -773,9 +809,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["iitRoorkee"] = el
-                }}
+                ref={registerLogoRef("iitRoorkee")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -798,9 +832,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["iitBombay"] = el
-                }}
+                ref={registerLogoRef("iitBombay")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -823,9 +855,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["infinitudeit"] = el
-                }}
+                ref={registerLogoRef("infinitudeit")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -848,9 +878,7 @@ export default function TrustedPartners() {
               </motion.div>
 
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["larsenToubro"] = el
-                }}
+                ref={registerLogoRef("larsenToubro")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -874,9 +902,7 @@ export default function TrustedPartners() {
 
               {/* WT Vision */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["wtvision"] = el
-                }}
+                ref={registerLogoRef("wtvision")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -896,9 +922,7 @@ export default function TrustedPartners() {
 
               {/* Nippon */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["nippon"] = el
-                }}
+                ref={registerLogoRef("nippon")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -918,9 +942,7 @@ export default function TrustedPartners() {
 
               {/* Phytec */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["phytec"] = el
-                }}
+                ref={registerLogoRef("phytec")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -940,9 +962,7 @@ export default function TrustedPartners() {
 
               {/* Uber */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["uber"] = el
-                }}
+                ref={registerLogoRef("uber")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -963,9 +983,7 @@ export default function TrustedPartners() {
               </motion.div>
               {/* Airbnb */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["airbnb"] = el
-                }}
+                ref={registerLogoRef("airbnb")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,
@@ -986,9 +1004,7 @@ export default function TrustedPartners() {
               </motion.div>
               {/* Dropbox */}
               <motion.div
-                ref={(el) => {
-                  logoRefs.current["dropbox"] = el
-                }}
+                ref={registerLogoRef("dropbox")}
                 initial={{ opacity: 0, scale: 0, rotate: 0 }}
                 whileInView={{
                   opacity: 1,

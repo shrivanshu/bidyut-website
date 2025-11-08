@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
@@ -10,19 +10,18 @@ export default function AwardWinning() {
   const { isDark } = useTheme()
   const { t } = useLanguage()
 
-  // Cursor-driven wave: animate letters based on mouse position
   const [cursorIndex, setCursorIndex] = useState<number | null>(null)
   const falloff = 3
-  const [scrollEnergy, setScrollEnergy] = useState(0) // grows with wheel, decays over time
+  const [scrollEnergy, setScrollEnergy] = useState(0)
   const maxAmplitude = 22
+  const lastMoveTimeRef = useRef(0)
 
-  // Decay energy smoothly
   useEffect(() => {
     if (scrollEnergy <= 0) return
     let raf: number
     const decay = () => {
       setScrollEnergy((prev) => {
-        const next = prev - 0.8 // decay rate per frame (~48px/s at 60fps)
+        const next = prev - 0.8
         return next > 0 ? next : 0
       })
       raf = requestAnimationFrame(decay)
@@ -40,6 +39,10 @@ export default function AwardWinning() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
   onMouseMove={(e: React.MouseEvent<HTMLHeadingElement>) => {
+          const now = Date.now()
+          if (now - lastMoveTimeRef.current < 16) return
+          lastMoveTimeRef.current = now
+
           const el = e.currentTarget
           const rect = el.getBoundingClientRect()
           const x = e.clientX - rect.left

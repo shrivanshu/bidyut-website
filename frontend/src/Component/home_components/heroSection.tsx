@@ -132,11 +132,6 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
-      {/* Google Fonts (you may want to move this to _document.tsx or index.html) */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet"
-      />
 
       {/* Background Videos - Optimized loading */}
       {videos.map((video, index) => (
@@ -197,7 +192,7 @@ const HeroSection: React.FC = () => {
               lineHeight: "1.3",
             }}
           >
-            <span className="font-semibold text-[#0ACF83]">Hi, I'm Buddy!</span>
+            <span className="font-semibold text-emerald-700">Hi, I'm Buddy!</span>
             <br />
             <span>
               Ask me anything 🚀

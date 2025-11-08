@@ -26,40 +26,55 @@ const ensureSix = (arr: Article[]) => {
 const EducationNews: React.FC = () => {
   const { t } = useLanguage();
   const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const scrollRef2 = useRef<HTMLDivElement | null>(null);
   const hover1 = useRef(false);
   const hover2 = useRef(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
- useEffect(() => {
-  const fetchArticles = async () => {
-    try {
-      // Use the API utility for consistent URL handling
-      const apiUrl = getApiUrl('/news');
-      
-      const res = await fetch(apiUrl);
-      
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      
-      const data = await res.json();
-
-      if (data.success && data.articles) {
-        setArticles(data.articles);
-      } else {
-        console.error("Error fetching news:", data.error || "Unknown error");
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setIsLoading(true);
+        const apiUrl = getApiUrl('/news');
+        const controller = new AbortController();
+        abortControllerRef.current = controller;
+        
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        timeoutIdRef.current = timeoutId;
+        
+        const res = await fetch(apiUrl, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        
+        const data = await res.json();
+        if (data.success && data.articles) {
+          setArticles(data.articles);
+        } else {
+          setArticles([]);
+        }
+      } catch (err) {
+        console.error("Error fetching news:", err);
         setArticles([]);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      console.error("Error fetching news from backend:", err);
-      // Fallback to empty array if backend is not available
-      setArticles([]);
-    }
-  };
+    };
 
-  fetchArticles();
-}, []);
+    const timer = setTimeout(fetchArticles, 100);
+    return () => {
+      clearTimeout(timer);
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+    };
+  }, []);
 
 
   const row1 = ensureSix(articles.slice(0, 6));
@@ -76,22 +91,38 @@ const EducationNews: React.FC = () => {
     let raf = 0;
     const speed = 0.6;
     const speed2 = -0.6;
+    
+    let half1 = c1.scrollWidth / 2;
+    let half2 = c2.scrollWidth / 2;
 
     const step = () => {
-      if (c1 && !hover1.current) {
-        c1.scrollLeft += speed;
-        if (c1.scrollLeft >= c1.scrollWidth / 2) c1.scrollLeft = 0;
+      // Batch reads first, then writes to avoid forced reflow
+      let newScroll1 = c1.scrollLeft;
+      let newScroll2 = c2.scrollLeft;
+
+      if (!hover1.current) {
+        newScroll1 += speed;
+        if (newScroll1 >= half1) newScroll1 = 0;
       }
-      if (c2 && !hover2.current) {
-        c2.scrollLeft += speed2;
-        if (c2.scrollLeft <= 0) c2.scrollLeft = c2.scrollWidth / 2;
+      if (!hover2.current) {
+        newScroll2 += speed2;
+        if (newScroll2 <= 0) newScroll2 = half2;
       }
+
+      // Write updates together
+      if (!hover1.current) c1.scrollLeft = newScroll1;
+      if (!hover2.current) c2.scrollLeft = newScroll2;
+
       raf = requestAnimationFrame(step);
     };
 
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
   }, [articles]);
+
+  if (articles.length === 0 && !isLoading) {
+    return null;
+  }
 
   return (
     <section className="pt-56 pb-10 bg-gray-50 dark:bg-black transition-colors duration-300">
@@ -113,45 +144,55 @@ const EducationNews: React.FC = () => {
           </p>
         </div>
 
-        <div
-          ref={scrollRef}
-          onMouseEnter={() => (hover1.current = true)}
-          onMouseLeave={() => (hover1.current = false)}
-          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
-          style={{ scrollBehavior: "auto" }}
-        >
-          {loop1.map((a, i) => (
-            <EN1
-              key={`r1-${i}-${a.url}`}
-              platform="news"
-              timestamp={new Date(a.date).toLocaleString()}
-              title={a.title}
-              content={a.description ?? ""}
-              author={a.source.title}
-              url={a.url}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex gap-3 overflow-x-auto pb-6 pt-6 scrollbar-hide">
+            {Array(6).fill(0).map((_, i) => (
+              <div key={i} className="flex-shrink-0 w-80 h-40 bg-gray-300 dark:bg-gray-700 rounded-lg animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          <>
+            <div
+              ref={scrollRef}
+              onMouseEnter={() => (hover1.current = true)}
+              onMouseLeave={() => (hover1.current = false)}
+              className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative scrollbar-hide"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {loop1.map((a, i) => (
+                <EN1
+                  key={`r1-${i}-${a.url}`}
+                  platform="news"
+                  timestamp={new Date(a.date).toLocaleString()}
+                  title={a.title}
+                  content={a.description ?? ""}
+                  author={a.source.title}
+                  url={a.url}
+                />
+              ))}
+            </div>
 
-        <div
-          ref={scrollRef2}
-          onMouseEnter={() => (hover2.current = true)}
-          onMouseLeave={() => (hover2.current = false)}
-          className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
-          style={{ scrollBehavior: "auto" }}
-        >
-          {loop2.map((a, i) => (
-            <EN1
-              key={`r2-${i}-${a.url}`}
-              platform="news"
-              timestamp={new Date(a.date).toLocaleString()}
-              title={a.title}
-              content={a.description ?? ""}
-              author={a.source.title}
-              url={a.url}
-            />
-          ))}
-        </div>
+            <div
+              ref={scrollRef2}
+              onMouseEnter={() => (hover2.current = true)}
+              onMouseLeave={() => (hover2.current = false)}
+              className="flex gap-3 overflow-x-auto overflow-y-hidden pb-6 pt-6 relative mt-6 scrollbar-hide"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {loop2.map((a, i) => (
+                <EN1
+                  key={`r2-${i}-${a.url}`}
+                  platform="news"
+                  timestamp={new Date(a.date).toLocaleString()}
+                  title={a.title}
+                  content={a.description ?? ""}
+                  author={a.source.title}
+                  url={a.url}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

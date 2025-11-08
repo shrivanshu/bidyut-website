@@ -1,7 +1,6 @@
 
 import { lazy } from 'react';
 import Header from '../Component/Header';
-import Footer from '../Component/Footer';
 import { LazyLoad } from '../Component/LazyLoad';
 
 // Lazy load heavy components with chunk names for better caching
@@ -12,6 +11,7 @@ const LmsSection = lazy(() => import(/* webpackChunkName: "lms" */ '../Component
 const EducationNews = lazy(() => import(/* webpackChunkName: "edu-news" */ '../Component/home_components/EducationNews'));
 const TestimonialSection = lazy(() => import(/* webpackChunkName: "testimonials" */ '../Component/home_components/TestimonialSection'));
 const TrustedPartners = lazy(() => import(/* webpackChunkName: "partners" */ '../Component/home_components/TrustedPartners'));
+const Footer = lazy(() => import(/* webpackChunkName: "footer" */ '../Component/Footer'));
 
 import { ThemeProvider } from '../contexts/ThemeContext';
 import Loader from "../Component/Loader";
@@ -137,7 +137,20 @@ function Home_page() {
         }>
           <EducationStream />
         </LazyLoad>
-        <Footer />
+        <LazyLoad fallback={
+          <div className="min-h-[30vh] flex items-center justify-center p-6">
+            <div className="w-full max-w-5xl space-y-4">
+              <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded w-1/3 animate-pulse" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="h-16 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
+                ))}
+              </div>
+            </div>
+          </div>
+        }>
+          <Footer />
+        </LazyLoad>
       </div>
     </ThemeProvider>
   );

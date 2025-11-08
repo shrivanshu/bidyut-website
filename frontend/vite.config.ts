@@ -3,11 +3,25 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    react(),
+    {
+      name: "async-css-loader",
+      transformIndexHtml(html) {
+        return html.replace(
+          /<link rel="stylesheet"([^>]+href=\"[^\"]*\/assets\/css[^\"]*\"[^>]*)>/g,
+          (match, attrs) => `
+    <link rel="preload" as="style"${attrs} onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet"${attrs}></noscript>`
+        );
+      },
+    },
+  ],
   server: {
     port: 3000,
     open: true,
+    hmr: process.env.DISABLE_HMR === 'true' ? false : undefined,
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
@@ -16,17 +30,42 @@ export default defineConfig({
       }
     }
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'gsap', 'framer-motion'],
+    exclude: []
+  },
+  esbuild: {
+    minify: mode === 'development',
+    treeShaking: true
+  },
   build: {
     outDir: 'build',
-    sourcemap: false, // Disable sourcemaps in production
-    minify: 'terser',
+    sourcemap: mode === 'production' ? false : true, // Enable sourcemaps in dev for debugging
+    minify: mode === 'development' ? 'esbuild' : 'terser',
     target: 'es2020', // Modern browsers for better tree-shaking
     assetsInlineLimit: 4096, // Inline small assets
     cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Vendor chunks
+          // Simplified chunking for development mode
+          if (mode === 'development') {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'vendor-react';
+              }
+              if (id.includes('gsap')) {
+                return 'vendor-gsap';
+              }
+              if (id.includes('framer-motion')) {
+                return 'vendor-framer';
+              }
+              return 'vendor-shared';
+            }
+            return 'app';
+          }
+
+          // Production chunking
           if (id.includes('node_modules')) {
             if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
@@ -115,4 +154,4 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js'
   }
-})
+}))

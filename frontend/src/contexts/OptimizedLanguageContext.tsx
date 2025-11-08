@@ -1,15 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { en } from '../locales/en';
-import { hi } from '../locales/hi';
-import { mr } from '../locales/mr';
-import { gu } from '../locales/gu';
-import { ta } from '../locales/ta';
-import { te } from '../locales/te';
-import { kn } from '../locales/kn';
-import { bn } from '../locales/bn';
-import { ja } from '../locales/ja';
-import { ru } from '../locales/ru';
-import { zh } from '../locales/zh';
 
 export type Language = 'en' | 'hi' | 'bn' | 'ja' | 'mr' | 'gu' | 'ta' | 'te' | 'kn' | 'ru' | 'zh';
 
@@ -22,20 +11,21 @@ interface LanguageContextType {
   getSupportedLanguages: () => Array<{code: Language, name: string, flag: string}>;
 }
 
-// Consolidated translations object
-const translations = {
-  en,
-  hi, 
-  bn,
-  ja,
-  mr,
-  gu,
-  ta,
-  te,
-  kn,
-  ru,
-  zh
+const localeModules: Record<Language, () => Promise<{ [key: string]: any }>> = {
+  en: () => import(/* webpackChunkName: "locale-en" */ '../locales/en').then(m => m),
+  hi: () => import(/* webpackChunkName: "locale-hi" */ '../locales/hi').then(m => m),
+  mr: () => import(/* webpackChunkName: "locale-mr" */ '../locales/mr').then(m => m),
+  gu: () => import(/* webpackChunkName: "locale-gu" */ '../locales/gu').then(m => m),
+  ta: () => import(/* webpackChunkName: "locale-ta" */ '../locales/ta').then(m => m),
+  te: () => import(/* webpackChunkName: "locale-te" */ '../locales/te').then(m => m),
+  kn: () => import(/* webpackChunkName: "locale-kn" */ '../locales/kn').then(m => m),
+  bn: () => import(/* webpackChunkName: "locale-bn" */ '../locales/bn').then(m => m),
+  ja: () => import(/* webpackChunkName: "locale-ja" */ '../locales/ja').then(m => m),
+  ru: () => import(/* webpackChunkName: "locale-ru" */ '../locales/ru').then(m => m),
+  zh: () => import(/* webpackChunkName: "locale-zh" */ '../locales/zh').then(m => m),
 };
+
+const loadedTranslations: Partial<Record<Language, any>> = {};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
@@ -54,38 +44,55 @@ interface LanguageProviderProps {
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
-  useEffect(() => {
-    // Check for saved language preference or browser language
-    const savedLanguage = localStorage.getItem("language") as Language;
-    const supportedLanguages: Language[] = ['en', 'hi', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
+  const loadLocale = async (lang: Language) => {
+    if (loadedTranslations[lang]) return;
     
-    if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
-    } else {
-      // Try to detect browser language
-      const browserLang = navigator.language.split('-')[0] as Language;
-      if (supportedLanguages.includes(browserLang)) {
-        setCurrentLanguage(browserLang);
+    try {
+      const module = await localeModules[lang]();
+      loadedTranslations[lang] = module[lang] || module.default;
+    } catch (error) {
+      console.error(`Failed to load locale ${lang}:`, error);
+      if (!loadedTranslations[lang]) {
+        loadedTranslations[lang] = {};
       }
     }
+  };
+
+  useEffect(() => {
+    const initLanguage = async () => {
+      const savedLanguage = localStorage.getItem("language") as Language;
+      const supportedLanguages: Language[] = ['en', 'hi', 'bn', 'ja', 'mr', 'gu', 'ta', 'te', 'kn', 'ru', 'zh'];
+      
+      let langToLoad: Language = 'en';
+      
+      if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
+        langToLoad = savedLanguage;
+      } else {
+        const browserLang = navigator.language.split('-')[0] as Language;
+        if (supportedLanguages.includes(browserLang)) {
+          langToLoad = browserLang;
+        }
+      }
+      
+      await loadLocale(langToLoad);
+      setCurrentLanguage(langToLoad);
+    };
+    
+    initLanguage();
   }, []);
 
   const changeLanguage = (lang: Language) => {
+    loadLocale(lang);
     setCurrentLanguage(lang);
     localStorage.setItem("language", lang);
-    
-    // Update document language attribute for accessibility
     document.documentElement.lang = lang;
-    
-    // Trigger custom event for other components that might need to react
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
   };
 
   const t = (key: string): string => {
-    const translation = translations[currentLanguage];
+    const translation = loadedTranslations[currentLanguage];
     if (!translation) return key;
     
-    // Handle nested keys (e.g., 'common.loading')
     const keys = key.split('.');
     let value = translation as any;
     
