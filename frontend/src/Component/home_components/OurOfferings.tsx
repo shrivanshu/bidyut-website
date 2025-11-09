@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
-import HomeHeroText from "../../Text_Animation/HomeHeroText"
+import { useEffect, useMemo, useState, memo } from "react"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 interface Offering {
@@ -18,8 +17,7 @@ const offerings: Offering[] = [
   { image: "/OurOfferingImages/A2-W.webp", titleKey: "roboticSolutions", descriptionKey: "personalizedMentorshipDesc" }
 ]
 
-
-export default function OfferingsSection() {
+function OfferingsSection() {
   const { t } = useLanguage()
   const [index, setIndex] = useState(0)
   const len = offerings.length
@@ -71,14 +69,10 @@ export default function OfferingsSection() {
         {/* Heading */}
         <div className="text-center mb-10 md:mb-12">
           <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
-            <HomeHeroText
-              text={[t("ourOfferings")]}
-              highlight={{ text: t("ourOfferings").split(" ").slice(1).join(" "), color: "#2ecc71" }}
-              typingSpeed={40}
-              showCursor={false}
-              className="inline-block"
-              startOnVisible
-            />
+            {t("ourOfferings").split(" ")[0]}{" "}
+            <span style={{ color: "#2ecc71" }}>
+              {t("ourOfferings").split(" ").slice(1).join(" ")}
+            </span>
           </h2>
           <p className="max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-300">
             At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, empowering students with future-ready skills. Beyond education, we also design and deliver advanced robotics solutions for industries, helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.
@@ -212,14 +206,8 @@ export default function OfferingsSection() {
         </div>
       </div>
 
-      {/* Motion reduction safety */}
-      <style>{`
-        @media (prefers-reduced-motion: reduce) {
-          .transition, .transition-all, .duration-500, .duration-700 {
-            transition: none !important;
-          }
-        }
-      `}</style>
     </section>
   )
 }
+
+export default memo(OfferingsSection);

@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
-const GOOGLE_AI_API_KEY = 'AIzaSyCur8DUiq_dPI5ZxAOiIT16yoEeOGLp9pI';
+const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 
 // Session tracking for chat limits (3 chats per session)
 const sessionChatCounts = new Map(); // sessionId -> { count, lastActivity }
@@ -185,6 +185,7 @@ app.get('/api/news', async (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
+  console.log("dfkjs");
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 

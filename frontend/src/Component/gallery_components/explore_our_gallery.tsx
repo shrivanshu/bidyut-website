@@ -259,11 +259,11 @@ export default function InteractiveGallery() {
                 <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 w-20 h-28 sm:w-24 sm:h-32 opacity-70 shadow-xl ${isDark ? 'bg-gradient-to-br from-green-700 to-green-900' : 'bg-gradient-to-br from-green-800 to-green-900'}`}></div>
 
                 <div className={`relative p-4 sm:p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
-                  {/* <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.webp"
+                  <img
+                    src="gallery/DSC05145.JPG.webp"
                     alt="Gallery Preview"
                     className="w-full h-60 sm:h-80 object-cover shadow-lg"
-                  /> */}
+                  />
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                     <button
                       onClick={handleExploreClick}

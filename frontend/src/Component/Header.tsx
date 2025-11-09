@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -15,7 +15,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useNavigation } from "../contexts/NavigationContext";
 
-function MobileDropdown({ label, items }: { label: string; items: any[] }) {
+const MobileDropdown = memo(({ label, items }: { label: string; items: any[] }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -54,9 +54,9 @@ function MobileDropdown({ label, items }: { label: string; items: any[] }) {
       )}
     </div>
   );
-}
+});
 
-export default function Header() {
+function Header() {
   const navigate = useNavigate();
   const { isDark, toggleTheme } = useTheme();
   const { currentLanguage, changeLanguage, t, getSupportedLanguages } =
@@ -538,3 +538,5 @@ export default function Header() {
     </>
   );
 }
+
+export default memo(Header);

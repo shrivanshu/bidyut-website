@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementType, useEffect, useRef, useState, createElement, useCallback } from "react";
+import { ElementType, useEffect, useRef, useState, createElement } from "react";
 
 interface TextTypeProps {
   highlight?: { text: string, color: string };
@@ -63,13 +63,7 @@ const HomeHeroText = ({
   };
 
   // Debounced state updates for better performance
-  const updateDisplayedText = useCallback((newText: string) => {
-    setDisplayedText(newText);
-  }, []);
 
-  const updateCharIndex = useCallback((updater: (prev: number) => number) => {
-    setCurrentCharIndex(updater);
-  }, []);
 
   const getCurrentTextColor = () => {
     if (textColors.length === 0) return "inherit";
@@ -129,80 +123,32 @@ const HomeHeroText = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    let timeout: NodeJS.Timeout;
-    let rafId: number;
-
     const currentText = textArray[currentTextIndex];
-    const processedText = reverseMode
-      ? currentText.split("").reverse().join("")
-      : currentText;
+    const processedText = reverseMode ? currentText.split("").reverse().join("") : currentText;
 
-    const executeTypingAnimation = () => {
-      // Use RAF for better performance
-      rafId = requestAnimationFrame(() => {
-        if (isDeleting) {
-          if (displayedText === "") {
-            setIsDeleting(false);
-            if (currentTextIndex === textArray.length - 1 && !loop) {
-              return;
-            }
-
-            if (onSentenceComplete) {
-              onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
-            }
-
-            setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
-            setCurrentCharIndex(0);
-            timeout = setTimeout(() => {}, pauseDuration);
-          } else {
-            timeout = setTimeout(() => {
-              updateDisplayedText(displayedText.slice(0, -1));
-            }, Math.max(16, deletingSpeed)); // Minimum 16ms for 60fps
-          }
+    const timeout = setTimeout(() => {
+      if (isDeleting) {
+        if (displayedText === "") {
+          setIsDeleting(false);
+          if (currentTextIndex === textArray.length - 1 && !loop) return;
+          onSentenceComplete?.(textArray[currentTextIndex], currentTextIndex);
+          setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
+          setCurrentCharIndex(0);
         } else {
-          if (currentCharIndex < processedText.length) {
-            timeout = setTimeout(
-              () => {
-                updateDisplayedText(displayedText + processedText[currentCharIndex]);
-                updateCharIndex((prev) => prev + 1);
-              },
-              Math.max(16, variableSpeed ? getRandomSpeed() : typingSpeed) // Minimum 16ms for 60fps
-            );
-          } else if (textArray.length > 1) {
-            timeout = setTimeout(() => {
-              setIsDeleting(true);
-            }, pauseDuration);
-          }
+          setDisplayedText(displayedText.slice(0, -1));
         }
-      });
-    };
+      } else {
+        if (currentCharIndex < processedText.length) {
+          setDisplayedText(displayedText + processedText[currentCharIndex]);
+          setCurrentCharIndex((prev) => prev + 1);
+        } else if (textArray.length > 1) {
+          setTimeout(() => setIsDeleting(true), pauseDuration);
+        }
+      }
+    }, currentCharIndex === 0 && !isDeleting && displayedText === "" ? initialDelay : (isDeleting ? deletingSpeed : (variableSpeed ? getRandomSpeed() : typingSpeed)));
 
-    if (currentCharIndex === 0 && !isDeleting && displayedText === "") {
-      timeout = setTimeout(executeTypingAnimation, initialDelay);
-    } else {
-      executeTypingAnimation();
-    }
-
-    return () => {
-      clearTimeout(timeout);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, [
-    currentCharIndex,
-    displayedText,
-    isDeleting,
-    typingSpeed,
-    deletingSpeed,
-    pauseDuration,
-    textArray,
-    currentTextIndex,
-    loop,
-    initialDelay,
-    isVisible,
-    reverseMode,
-    variableSpeed,
-    onSentenceComplete,
-  ]);
+    return () => clearTimeout(timeout);
+  }, [currentCharIndex, displayedText, isDeleting, currentTextIndex, isVisible]);
 
   const shouldHideCursor =
     hideCursorWhileTyping &&
