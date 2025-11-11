@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 const schoolImages = {
   'Robotics Project': {
@@ -30,67 +30,68 @@ const schoolImages = {
     name: 'Student Project Development',
     src: '/About_us_gallery/Students 400x400/Untitled-7.webp',
     desc: 'Students developing innovative projects'
-  },
-  'Research Hub': {
-    name: 'Research and Development Hub',
-    src: '/About_us_gallery/Events 400x400/fggh.webp',
-    desc: 'Advanced research and development activities'
   }
-};
+}
 
 const rand = (max: number, min: number): number => {
-  return +(min + (max - min) * Math.random()).toFixed(2);
-};
+  return +(min + (max - min) * Math.random()).toFixed(2)
+}
 
-export default function SchoolCarousel() {
-  const entries = Object.entries(schoolImages);
-  const n = entries.length;
-  const [k, setK] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+export default function SchoolCarousel () {
+  const entries = Object.entries(schoolImages)
+  const n = entries.length
+  const [k, setK] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  )
+  const [isAutoPlay, setIsAutoPlay] = useState(true)
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+      setWindowWidth(window.innerWidth)
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlay) return;
+    if (!isAutoPlay) return
 
     const autoPlayInterval = setInterval(() => {
-      setK((prev) => (prev + 1) % n);
-    }, 5000); // Change image every 5 seconds
+      setK(prev => (prev + 1) % n)
+    }, 5000) // Change image every 5 seconds
 
-    return () => clearInterval(autoPlayInterval);
-  }, [isAutoPlay, n]);
+    return () => clearInterval(autoPlayInterval)
+  }, [isAutoPlay, n])
 
   const handleNavigation = (direction: number) => {
-    setK((prev) => ((prev + direction + n) % n));
+    setK(prev => (prev + direction + n) % n)
     // Pause auto-play for 5 seconds when user manually navigates
-    setIsAutoPlay(false);
-    setTimeout(() => setIsAutoPlay(true), 5000);
-  };
+    setIsAutoPlay(false)
+    setTimeout(() => setIsAutoPlay(true), 5000)
+  }
 
   return (
-    <div 
-      className={`${windowWidth <= 768 ? 'min-h-[70vh]' : 'min-h-screen'} flex items-center w-full max-w-screen justify-center bg-[#FFE3BF]`}
-      style={{ 
+    <div
+      className={`${
+        windowWidth <= 768 ? 'min-h-[70vh]' : 'min-h-screen'
+      } flex items-center w-full max-w-screen justify-center bg-[#FFE3BF]`}
+      style={{
         opacity: 1,
         left: '-1px',
         borderTopLeftRadius: '60px',
         borderTopRightRadius: '60px',
         position: 'relative',
         margin: '0 auto',
-        height: windowWidth <= 480 ? '60vh' : windowWidth <= 768 ? '70vh' : '100vh'
-      }}>
+        height:
+          windowWidth <= 480 ? '60vh' : windowWidth <= 768 ? '70vh' : '100vh'
+      }}
+    >
       {/* Top left text */}
       <div
-        className="absolute text-gray-900 w-[70%] sm:w-[50%] md:w-[35%] md:max-w-[190px]"
+        className='absolute text-gray-900 w-[70%] sm:w-[50%] md:w-[35%] md:max-w-[190px]'
         style={{
           top: '20px',
           left: '20px',
@@ -104,30 +105,35 @@ export default function SchoolCarousel() {
         }}
       >
         Discover how we make learning fun
-       <a> <button className="text-gray-900"> →</button> </a>
+        <a>
+          {' '}
+          <button className='text-gray-900'> →</button>{' '}
+        </a>
       </div>
       {/* Title text */}
       <div
-        className="absolute text-gray-900"
-        style={{
-          top: '80px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          fontFamily: 'Poppins',
-          fontWeight: 600,
-          fontSize: 'clamp(24px, 6vw, 48px)',
-          lineHeight: '1.2',
-          letterSpacing: '0%',
-          textAlign: 'center',
-          width: 'fit-content',
-          padding: '10px'
-        } as React.CSSProperties}
+        className='absolute text-gray-900'
+        style={
+          {
+            top: '80px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontFamily: 'Poppins',
+            fontWeight: 600,
+            fontSize: 'clamp(24px, 6vw, 48px)',
+            lineHeight: '1.2',
+            letterSpacing: '0%',
+            textAlign: 'center',
+            width: 'fit-content',
+            padding: '10px'
+          } as React.CSSProperties
+        }
       >
         Robotics Lab
       </div>
       {/* Bottom right text */}
       <div
-        className="absolute text-gray-900"
+        className='absolute text-gray-900'
         style={{
           bottom: '20px',
           right: '20px',
@@ -380,42 +386,46 @@ export default function SchoolCarousel() {
         }
       `}</style>
 
-      <section 
-        className="carousel-section"
-        style={{
-          '--n': n,
-          '--k': k,
-          position: 'absolute',
-          left: '50%',
-          top: windowWidth <= 480 ? '50%' : windowWidth <= 768 ? '52%' : '60%',
-          textAlign: 'center',
-          transform: 'translate(-50%, -50%)',
-          marginTop: '0px'
-        } as React.CSSProperties}
+      <section
+        className='carousel-section'
+        style={
+          {
+            '--n': n,
+            '--k': k,
+            position: 'absolute',
+            left: '50%',
+            top:
+              windowWidth <= 480 ? '50%' : windowWidth <= 768 ? '52%' : '60%',
+            textAlign: 'center',
+            transform: 'translate(-50%, -50%)',
+            marginTop: '0px'
+          } as React.CSSProperties
+        }
       >
         {entries.map(([name, schoolImage], i) => (
           <article
             key={name}
-            className="carousel-article"
-            style={{
-              '--i': i,
-              '--a': `${rand(15, -15)}deg`,
-              zIndex: ((n - 1 + i - k) % n)
-            } as React.CSSProperties}
+            className='carousel-article'
+            style={
+              {
+                '--i': i,
+                '--a': `${rand(15, -15)}deg`,
+                zIndex: (n - 1 + i - k) % n
+              } as React.CSSProperties
+            }
           >
-            <div className="carousel-image-container">
+            <div className='carousel-image-container'>
               <img
-                className="carousel-image cursor-pointer"
+                className='carousel-image cursor-pointer'
                 src={schoolImage.src}
                 alt={schoolImage.desc}
                 onClick={() => handleNavigation(1)}
-                style={{ cursor: 'pointer',  objectFit: 'cover', }}
+                style={{ cursor: 'pointer', objectFit: 'cover' }}
               />
-            
             </div>
           </article>
         ))}
       </section>
     </div>
-  );
+  )
 }
