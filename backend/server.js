@@ -248,7 +248,7 @@ app.post('/api/chat', async (req, res) => {
 
     const fullPrompt = `${systemPrompt}\n\n${conversationHistory}\nUser: ${message}\nBuddy:`;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
     const text = response.text();

@@ -90,6 +90,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   const t = (key: string): string => {
+    if (!key) return '';
     const translation = loadedTranslations[currentLanguage];
     if (!translation) return key;
     
@@ -101,7 +102,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       if (value === undefined) break;
     }
     
-    return value || key;
+    return (typeof value === 'string' ? value : key) || key;
   };
 
   const getLanguageName = (lang: Language): string => {

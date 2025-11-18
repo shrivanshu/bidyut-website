@@ -117,13 +117,29 @@ export default function AwardWinning() {
       descriptionKey: "edtechExcellenceDesc",
       year: "2022",
     },
+    {
+      id: 4,
+      imageSrc: "/award-wining/DSC05843.JPG",
+      titleKey: "nationalRoboticsAward",
+      descriptionKey: "roboticsAwardDesc",
+      year: "2023",
+    },
+    {
+      id: 5,
+      imageSrc: "/award-wining/DSC05847.JPG",
+      titleKey: "globalYouthEmpowerment",
+      descriptionKey: "youthEmpowermentDesc",
+      year: "2021",
+    },
   ]
 
   // Card position presets - responsive positioning
   const cardPositions = [
-    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 3 }, // center
-    { x: 200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // right
-    { x: -200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // left
+    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 5 }, // center
+    { x: 220, y: 20, scale: 0.9, opacity: 0.8, zIndex: 4 }, // right 1
+    { x: -220, y: 20, scale: 0.9, opacity: 0.8, zIndex: 4 }, // left 1
+    { x: 440, y: 40, scale: 0.75, opacity: 0.6, zIndex: 3 }, // right 2
+    { x: -440, y: 40, scale: 0.75, opacity: 0.6, zIndex: 3 }, // left 2
   ]
 
   // Mobile card positions
@@ -131,9 +147,11 @@ export default function AwardWinning() {
     { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 3 }, // center only
     { x: 0, y: 200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
     { x: 0, y: -200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
+    { x: 0, y: 200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
+    { x: 0, y: -200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
   ]
 
-  const [displayOrder, setDisplayOrder] = useState([0, 1, 2])
+  const [displayOrder, setDisplayOrder] = useState([0, 1, 2, 3, 4])
   const [isMobile, setIsMobile] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
@@ -153,7 +171,7 @@ useEffect(() => {
   let interval: NodeJS.Timeout
   if (!isHovering) {
     interval = setInterval(() => {
-      setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
+      setDisplayOrder((prev) => [prev[1], prev[2], prev[3], prev[4], prev[0]])
     }, 3000)
   }
   return () => clearInterval(interval)
@@ -162,11 +180,11 @@ useEffect(() => {
 
   // Manual navigation
   const goNext = () => {
-    setDisplayOrder((prev) => [prev[1], prev[2], prev[0]])
+    setDisplayOrder((prev) => [prev[1], prev[2], prev[3], prev[4], prev[0]])
   }
 
   const goPrev = () => {
-    setDisplayOrder((prev) => [prev[2], prev[0], prev[1]])
+    setDisplayOrder((prev) => [prev[4], prev[0], prev[1], prev[2], prev[3]])
   }
 
   return (

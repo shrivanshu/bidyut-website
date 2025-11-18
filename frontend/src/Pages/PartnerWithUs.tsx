@@ -5,7 +5,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useEffect, useState } from "react";
 
-export default function ContactPage() {
+export default function PartnerWithUsPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
     if (urlParams.get('success') === 'true') {
       setShowSuccess(true);
       // Remove the success parameter from URL
-      window.history.replaceState({}, '', '/contact');
+      window.history.replaceState({}, '', '/PartnerWithUs');
       // Hide success message after 5 seconds
       setTimeout(() => setShowSuccess(false), 5000);
     }
@@ -61,9 +61,6 @@ export default function ContactPage() {
             from-black/50 via-transparent to-transparent" />
           </div>
 
-
-
-
           {/* Overlay */}
           <div className={`absolute inset-0 ${isDark ? "bg-black/40" : "bg-black/20"}`} />
 
@@ -82,7 +79,7 @@ export default function ContactPage() {
                 className="text-4xl md:text-6xl font-heading font-bold mb-4 text-white drop-shadow-2xl"
                 style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)" }}
               >
-                {t("meetOurTeam")}
+                {t("partnerWithUs") || "Partner With Us"}
               </motion.h1>
               <motion.div
                 initial={{ width: 0 }}
@@ -94,10 +91,10 @@ export default function ContactPage() {
           </div>
         </motion.section>
 
-        {/* Contact Section */}
+        {/* Partnership Section */}
         <section className={`py-20 ${bgColor}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Contact Form */}
+            {/* Partnership Form */}
             <div className="lg:col-span-2">
               <div className={`rounded-2xl shadow-xl p-10 border ${bgColor} ${borderColor}`}>
                 {/* Success Message */}
@@ -109,15 +106,16 @@ export default function ContactPage() {
                     className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg"
                   >
                     <p className="text-green-800 dark:text-green-200 font-medium">
-                      ✅ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                      ✅ Thank you! Your partnership inquiry has been received. We'll get back to you soon.
                     </p>
                   </motion.div>
                 )}
 
-                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>Contact Us</h2>
+                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>
+                  {t("partnerWithUs") || "Partner With Us"}
+                </h2>
                 <p className={`${subTextColor} mb-10`}>
-                  Let’s power up your innovation journey together. From idea to
-                  innovation — Bidyut makes it happen.
+                  Join us in revolutionizing robotics education and industry solutions. Tell us about your vision and let's grow together.
                 </p>
 
                 <form 
@@ -127,8 +125,27 @@ export default function ContactPage() {
                 >
                   {/* Hidden fields for StaticForms configuration */}
                   <input type="hidden" name="accessKey" value="sf_m38f9317i2e053l3h9937cf7" />
-                  <input type="hidden" name="redirectTo" value="https://bidyutinnovation.com/contact?success=true" />
-                  {/* Name */}
+                  <input type="hidden" name="redirectTo" value="https://bidyutinnovation.com/PartnerWithUs?success=true" />
+                  
+                  {/* Organization Name */}
+                  <div className="relative">
+                    <input
+                      id="organization"
+                      name="organization"
+                      type="text"
+                      required
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                      placeholder="Organization Name"
+                    />
+                    <label
+                      htmlFor="organization"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Organization Name
+                    </label>
+                  </div>
+
+                  {/* Contact Person Name */}
                   <div className="relative">
                     <input
                       id="name"
@@ -136,13 +153,13 @@ export default function ContactPage() {
                       type="text"
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder={t("yourFullName")}
+                      placeholder="Your Full Name"
                     />
                     <label
                       htmlFor="name"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      {t("yourNameLabel")}
+                      Your Full Name
                     </label>
                   </div>
 
@@ -154,15 +171,54 @@ export default function ContactPage() {
                       type="email"
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder={t("wellGetBackToYou")}
+                      placeholder="your.email@company.com"
                     />
                     <label
                       htmlFor="email"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      {t("yourEmailLabel")}
+                      Email Address
                     </label>
                   </div>
+
+                  {/* Phone */}
+                  <div className="relative">
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                      placeholder="+91 XXXXX XXXXX"
+                    />
+                    <label
+                      htmlFor="phone"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Phone Number
+                    </label>
+                  </div>
+
+                  {/* Partnership Type */}
+                  {/* <div className="relative">
+                    <select
+                      id="partnershipType"
+                      name="partnershipType"
+                      required
+                      className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
+                    >
+                      <option value="" disabled selected hidden>Select Partnership Type</option>
+                      <option value="Education" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Education</option>
+                      <option value="Industry" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Industry</option>
+                      <option value="Distribution" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Distribution</option>
+                      <option value="Other" className={isDark ? "bg-black text-white" : "bg-white text-black"}>Other</option>
+                    </select>
+                    <label
+                      htmlFor="partnershipType"
+                      className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
+                    >
+                      Partnership Type
+                    </label>
+                  </div> */}
 
                   {/* Message */}
                   <div className="relative">
@@ -172,13 +228,13 @@ export default function ContactPage() {
                       rows={5}
                       required
                       className={`peer w-full px-4 pt-5 pb-2 border-b-2 bg-transparent placeholder-transparent focus:outline-none focus:border-[#00F5A0] resize-none ${isDark ? "border-gray-700 text-white" : "border-gray-300 text-gray-900"}`}
-                      placeholder={t("tellUsHowWeCanHelp")}
+                      placeholder="Tell us about your partnership vision..."
                     />
                     <label
                       htmlFor="message"
                       className={`absolute left-4 top-2 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm ${subTextColor}`}
                     >
-                      {t("yourMessageLabel")}
+                      Your Message
                     </label>
                   </div>
 
@@ -190,39 +246,39 @@ export default function ContactPage() {
                     className="relative w-full bg-gradient-to-r from-[#00F5A0]/20 to-[#00D4AA]/20 hover:from-[#00F5A0]/30 hover:to-[#00D4AA]/30 backdrop-blur-lg border border-[#00F5A0]/30 hover:border-[#00F5A0]/50 text-[#00F5A0] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-[#00F5A0] to-[#00D4AA] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                    <span className="relative z-10">{t("sendMessageButton")}</span>
+                    <span className="relative z-10">Send Partnership Inquiry</span>
                   </motion.button>
                 </form>
               </div>
             </div>
 
-            {/* Studio Info */}
+            {/* Partnership Info */}
             <div className={`rounded-2xl p-10 shadow-xl border ${bgColor} ${textColor} ${borderColor}`}>
-              <h3 className="text-xl font-subheading font-bold mb-6 text-[#00F5A0]">{t("ourStudio")}</h3>
+              <h3 className="text-xl font-subheading font-bold mb-6 text-[#00F5A0]">Why Partner With Bidyut?</h3>
               <p className={`${subTextColor} mb-8 text-sm`}>
-                {t("studioDescription")}
+                We're committed to transforming robotics education and industrial solutions. Join our network of successful partners.
               </p>
 
               <div className={`space-y-6 text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 <div>
-                  <h4 className="font-semibold text-[#00F5A0] mb-1">{t("addressLabel")}</h4>
-                  <p>901 Clifton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">Innovation Hub</h4>
+                  <p>Cutting-edge robotics technology and solutions.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#00F5A0] mb-1">Global Support</h4>
+                  <p>Strong network and comprehensive partner support system.</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
-                    <Phone className="w-4 h-4" /> {t("phoneLabel")}
+                    <Phone className="w-4 h-4" /> Contact Us
                   </h4>
                   <p><a href="tel:+919370782979">+91 9370782979</a></p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
-                    <Mail className="w-4 h-4" /> {t("emailLabel")}
+                    <Mail className="w-4 h-4" /> Email
                   </h4>
                   <p><a href="mailto:Info@bidyutrobotics.com">Info@bidyutrobotics.com</a></p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-[#00F5A0] mb-1">{t("businessHoursLabel")}</h4>
-                  <p>{t("businessHoursTime")}</p>
                 </div>
               </div>
             </div>

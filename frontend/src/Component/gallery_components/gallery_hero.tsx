@@ -16,7 +16,7 @@ const GalleryHero: React.FC = () => {
   };
 
   const handlePartnerWithUs = () => {
-    navigate('/Contact');
+    navigate('/PartnerWithUs');
   };
 
   const containerVariants = {
