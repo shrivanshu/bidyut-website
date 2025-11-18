@@ -8,18 +8,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Headings - Poppins
+        // Primary font - Poppins for all text
         'heading': ['Poppins', 'sans-serif'],
-        'poppins': ['Poppins', 'sans-serif'],
-        
-        // Subheadings - Nunito Sans
-        'subheading': ['Nunito Sans', 'sans-serif'],
-        'nunito': ['Nunito Sans', 'sans-serif'],
-        
-        // Body text - Roboto (default)
-        'body': ['Roboto', 'sans-serif'],
-        'roboto': ['Roboto', 'sans-serif'],
-        'sans': ['Roboto', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        'subheading': ['Poppins', 'sans-serif'],
+        'body': ['Poppins', 'sans-serif'],
+        'sans': ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       colors: {
         // Custom colors for consistent theming

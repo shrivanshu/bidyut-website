@@ -11,6 +11,8 @@
 body, html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE and Edge */
+  text-size-adjust: 100%; /* Standard */
+  -webkit-text-size-adjust: 100%; /* Safari/iOS */
 }
 body::-webkit-scrollbar, html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
@@ -84,6 +86,17 @@ html, body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
+}
+
+/* Backdrop filter with vendor prefix */
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 

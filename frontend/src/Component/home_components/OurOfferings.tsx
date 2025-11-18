@@ -11,38 +11,37 @@ interface Offering {
 
 const offerings: Offering[] = [
   {
-    image: '/OurOfferingImages/D1-arm.webp',
+    image: '/OurOfferingImages/D1-arm-optimized.webp',
     titleKey: 'collaborativeLearning',
     descriptionKey: 'collaborativeLearningDesc'
   },
   {
-    image: '/OurOfferingImages/G1 Basic.webp',
+    image: '/OurOfferingImages/G1 Basic-optimized.webp',
     titleKey: 'collaboration',
     descriptionKey: 'collabrationDesc'
   },
   {
-    image: '/OurOfferingImages/our offering.webp',
+    image: '/OurOfferingImages/our offering-optimized.webp',
     titleKey: 'learningExperience',
     descriptionKey: 'learningexpisDesc'
   },
   {
-    image: '/OurOfferingImages/GO2 AIR.webp',
+    image: '/OurOfferingImages/GO2 AIR-optimized.webp',
     titleKey: 'quadrupedRobots',
     descriptionKey: 'ProgressTrackingDesc'
   },
   {
-    image: '/OurOfferingImages/A2-W.webp',
+    image: '/OurOfferingImages/A2-W-optimized.webp',
     titleKey: 'roboticSolutions',
     descriptionKey: 'personalizedMentorshipDesc'
   },
-  // 🆕 Added 2 new offerings below:
   {
-    image: '/OurOfferingImages/school11.jpej n g',
+    image: '/OurOfferingImages/school11-optimized.webp',
     titleKey: 'schoolIntegration',
     descriptionKey: 'schoolIntegrationDesc'
   },
   {
-    image: '/OurOfferingImages/school22.jpg',
+    image: '/OurOfferingImages/school22-optimized.webp',
     titleKey: 'eduAutomation',
     descriptionKey: 'eduAutomationDesc'
   }
@@ -151,6 +150,8 @@ function OfferingsSection () {
                         loading='lazy'
                         decoding='async'
                         referrerPolicy='no-referrer'
+                        width='440'
+                        height='312'
                       />
                       <div className='pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/[.05]' />
                     </div>

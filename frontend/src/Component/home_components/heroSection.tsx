@@ -157,14 +157,14 @@ const HeroSection: React.FC = () => {
       <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px' }}>
         {/* Small tagline */}
-        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md">
+        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '24px' }}>
           {t("learnRobotics")}
         </div>
 
         {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>

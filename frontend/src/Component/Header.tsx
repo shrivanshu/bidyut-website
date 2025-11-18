@@ -91,6 +91,9 @@ function Header () {
               alt='Bidyut Logo'
               className='h-14 w-auto mr-2 transition-transform group-hover:scale-105'
               style={{ maxHeight: '56px' }}
+              fetchPriority="high"
+              width='56'
+              height='56'
             />
           </Link>
 

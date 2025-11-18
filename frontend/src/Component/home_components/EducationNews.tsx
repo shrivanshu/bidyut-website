@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo, memo } from "react";
 import EN1 from "./EN1";
 import HomeHeroText from "../../Text_Animation/HomeHeroText";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
@@ -23,7 +23,7 @@ const ensureSix = (arr: Article[]) => {
   return out.slice(0, 6);
 };
 
-const EducationNews: React.FC = () => {
+const EducationNews: React.FC = memo(() => {
   const { t } = useLanguage();
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,10 +77,14 @@ const EducationNews: React.FC = () => {
   }, []);
 
 
-  const row1 = ensureSix(articles.slice(0, 6));
-  const row2 = ensureSix(articles.slice(6, 12));
-  const loop1 = [...row1, ...row1];
-  const loop2 = [...row2, ...row2];
+  const { loop1, loop2 } = useMemo(() => {
+    const row1 = ensureSix(articles.slice(0, 6));
+    const row2 = ensureSix(articles.slice(6, 12));
+    return {
+      loop1: [...row1, ...row1],
+      loop2: [...row2, ...row2]
+    };
+  }, [articles]);
 
   // scrolling animation
   useEffect(() => {
@@ -196,6 +200,6 @@ const EducationNews: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default EducationNews;

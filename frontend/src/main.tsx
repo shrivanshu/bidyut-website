@@ -14,6 +14,7 @@ const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
 const Gallery = lazy(() => import('./Pages/Gallery_page'));
 const Contactpage = lazy(() => import('./Pages/Contact_page'));
+const PartnerWithUs = lazy(() => import('./Pages/PartnerWithUs'));
 const Robotpage = lazy(() => import('./Pages/Robot_page'));
 const Cobotpage = lazy(() => import('./Pages/Cobot_page'));
 const B2Page = lazy(() => import('./Pages/B2Page'));
@@ -62,6 +63,7 @@ const AppRouter = lazy(async () => {
               <Route path="/School" element={<FinalSchoolPage />} />
               <Route path="/Gallery" element={<Gallery />} />
               <Route path="/Contact" element={<Contactpage />} />
+              <Route path="/PartnerWithUs" element={<PartnerWithUs />} />
               <Route path="/Cobot" element={<Cobo_page />} />
               <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
               <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
