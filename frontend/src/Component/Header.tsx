@@ -318,12 +318,7 @@ function Header() {
                 className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-5 py-2.5 font-semibold text-white shadow-md transition-all duration-200 group hover:shadow-lg hover:scale-105"
                 style={{ textShadow: "0 1px 0 #009e6e" }}
               >
-                <span
-                  className="text-lg inline-block origin-top -rotate-12 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] "
-                  aria-label="bell"
-                >
-                  🔔
-                </span>
+                
                 <span className="text-base">{t("loginToLms")}</span>
               </button>
             </a>
@@ -520,7 +515,7 @@ function Header() {
                 className="text-lg inline-block origin-top -rotate-12 mr-2 group-hover:animate-bell drop-shadow-[0_1px_0_#B8860B] "
                 aria-label="bell"
               >
-                🔔
+                
               </span>
               {t("loginToLms")}
             </button>

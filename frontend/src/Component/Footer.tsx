@@ -124,7 +124,7 @@ function AnimatedBanner({
     // Tablet
     initialWidth = 600
     initialHeight = 140
-    dotSize = 24
+    dotSize = 20
     dotBorderRadius = 12
   } 
   else {
@@ -166,7 +166,7 @@ background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
     let bottomPosition = "1.2em";  // default for mobile
     
     if (screenWidth >= 1440) {
-      bottomPosition = "5.5em";  // large desktop
+      bottomPosition = "5.9em";  // large desktop
     } else if (screenWidth >= 1024) {
       bottomPosition = "3.8em";  // laptop
     } else if (screenWidth >= 768) {
@@ -377,26 +377,96 @@ export default function Footer() {
             </div>
     
             {/* Brand with i target */}
-            <div className="flex justify-center items-center w-full">
-              <div
-                className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
-                style={{
-                  fontSize: "8.9vw",
-                  minWidth: "100vw",
-                  width: "100%",
-                  lineHeight: 1.05,
-                }}
-              >
-                <span>B</span>
-                <span ref={iLetterRef} className="relative inline-block">
-                  <span className="relative">
-                    i
-                   
-                  </span>
-                </span>
-                <span>dyut Innovation</span>
-              </div>
-            </div>
+<div className="flex justify-center items-center w-full">
+  <div
+    className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
+    style={{
+      fontSize: "8.9vw",
+      minWidth: "100vw",
+      width: "100%",
+      lineHeight: 1.05,
+
+      // GLOBAL SMOOTHING
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale",
+      fontFamily: "'Poppins', sans-serif",
+
+      // GPU RENDER (removes font artifacts)
+      transform: "translateZ(0)",
+      willChange: "transform",
+    }}
+  >
+    <span
+      style={{
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        fontFamily: "'Poppins', sans-serif",
+        transform: "translateZ(0)",
+        willChange: "transform",
+      }}
+    >
+      B
+    </span>
+
+    <span
+      ref={iLetterRef}
+      className="relative inline-block"
+      // style={{
+      //   WebkitFontSmoothing: "antialiased",
+      //   MozOsxFontSmoothing: "grayscale",
+      //   fontFamily: "'Poppins', sans-serif",
+      //   transform: "translateZ(0)",
+      //   willChange: "transform",
+      // }}
+    >
+      <span
+        className="relative"
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        i
+      </span>
+    </span>
+
+    {/* ==== dyut ==== */}
+    {"dyut ".split("").map((letter, index) => (
+      <span
+        key={index}
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        {letter}
+      </span>
+    ))}
+
+    {/* ==== Innovation ==== */}
+    {"Innovation".split("").map((letter, index) => (
+      <span
+        key={`inv-${index}`}
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        {letter}
+      </span>
+    ))}
+  </div>
+</div>
+
           </div>
     
           {/* Keep your style block unchanged */}

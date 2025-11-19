@@ -35,7 +35,11 @@ export const en = {
   quadrupedRobots: 'Quadruped Robots',
  ProgressTrackingDesc: 'Engineered for mobility and adaptability, our quadruped robots can navigate rough terrain, carry loads, and perform complex tasks. They are ideal for research, defense, and inspection applications.',
   roboticSolutions: 'Robotic Solutions',
-  personalizedMentorshipDesc: 'We provide customized robotic solutions tailored to your business needs. Whether it’s automation, AI integration, or specialized robotics, our solutions are built to enhance efficiency, reduce costs, and drive growth.',
+  personalizedMentorshipDesc: 'We provide customized robotic solutions tailored to your business needs. Whether it\'s automation, AI integration, or specialized robotics, our solutions are built to enhance efficiency, reduce costs, and drive growth.',
+  schoolIntegration: 'School Integration & Support',
+  schoolIntegrationDesc: 'Comprehensive support for integrating robotics into your school curriculum. We provide staff training, resource materials, and ongoing technical support to ensure successful implementation and student engagement.',
+  eduAutomation: 'Educational Automation Solutions',
+  eduAutomationDesc: 'Streamline school operations with intelligent automation. From administrative tasks to learning management, our solutions help educators focus on teaching while technology handles routine processes efficiently.',
   
   // LMS Section
   advancedLms: 'Advanced Learning Management System',
