@@ -34,185 +34,186 @@ const cobotSearchData = [
     specId: "go2-basic",
     gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
-  
+
+
 ]
 
 const robotSpecs: RobotSpec[] = [
- {
-  id: "Z1-Arm",
-  name: "Z1 Arm",
-  description:
-    "The Z1 Arm is a high-precision robotic arm with harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It provides high accuracy, stable performance, and robust communication for industrial and research applications.",
-  gallery: [
-   "/Cobo/Z1-Arm.webp",
+  {
+    id: "Z1-Arm",
+    name: "Z1 Arm",
+    description:
+      "The Z1 Arm is a high-precision robotic arm with harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It provides high accuracy, stable performance, and robust communication for industrial and research applications.",
+    gallery: [
+      "/Cobo/Z1-Arm.webp",
       "/Cobo/Z!-arm.webm",
-  ],
-  features: [
-    {
-      label: "High Torque & Accuracy",
-      detail: "33N·m maximum torque, ~0.2N·m force control accuracy, ~6 arcmin backlash",
-      position: { top: "15%", left: "82%" },
-      positionSm: { top: "20%", left: "65%" },
-      lineDirection: "right",
-      targetPoint: { x: "30%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "Communication & Control",
-      detail: "RS 485 communication, 1KHz control frequency, torque & angle control commands",
-      position: { top: "20%", left: "0%" },
-      positionSm: { top: "45%", left: "10%" },
-      lineDirection: "right",
-      targetPoint: { x: "30%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "Lightweight & Compact",
-      detail: "Weight 405g, Φ65*52mm size, harmonic reducer with industrial-grade cross-roller bearings",
-      position: { top: "50%", left: "82%" },
-      positionSm: { top: "65%", left: "80%" },
-      lineDirection: "right",
-      targetPoint: { x: "70%", y: "35%" },
-      targetPointSm: { x: "70%", y: "40%" }
-    },
-    {
-      label: "Advanced Sensing",
-      detail: "Torque, angle, angular velocity feedback with 15-bit encoder resolution",
-      position: { top: "72%", left: "20%" },
-      positionSm: { top: "80%", left: "20%" },
-      lineDirection: "right",
-      targetPoint: { x: "35%", y: "35%" },
-      targetPointSm: { x: "35%", y: "40%" }
-    },
-    {
-      label: "Power & Control Commands",
-      detail: "24V recommended voltage, supports stiffness and damping control",
-      position: { top: "85%", left: "70%" },
-      positionSm: { top: "95%", left: "70%" },
-      lineDirection: "left",
-      targetPoint: { x: "75%", y: "40%" },
-      targetPointSm: { x: "75%", y: "45%" }
-    },
-    
-  ]
-},
-{
-  id: "D1-Arm",
-  name: "D1 Robotic Arm",
-  description:
-    "The D1 Robotic Arm offers 6-axis + 1 gripper configuration for high flexibility and wide range of motion. With a compact design, lightweight build, and multiple interface options, it provides precise control for industrial and research applications.",
-  gallery: [
-          "/Cobo/D1-arm.webp",
-   "/Cobo/d1-arm.webp",
-  
-  ],
-  features: [
-    {
-      label: "Lightweight Design",
-      detail: "Weight about 2.37Kg, compact and portable for versatile applications",
-      position: { top: "15%", left: "65%" },
-      positionSm: { top: "20%", left: "65%" },
-      lineDirection: "right",
-      targetPoint: { x: "40%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "High Flexibility",
-      detail: "6-axis + 1 gripper configuration, ±135° and ±90° joint movements",
-      position: { top: "35%", left: "2%" },
-      positionSm: { top: "40%", left: "10%" },
-      lineDirection: "right",
-      targetPoint: { x: "40%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "Payload & Reach",
-      detail: "Payload 500g, 550mm reach (without gripper), 670mm reach (with gripper)",
-      position: { top: "55%", left: "86%" },
-      positionSm: { top: "60%", left: "80%" },
-      lineDirection: "right",
-      targetPoint: { x: "50%", y: "35%" },
-      targetPointSm: { x: "70%", y: "40%" }
-    },
-    {
-      label: "Power & Interface",
-      detail: "24V 2.5A (Max 5A) power supply, DC5.5-2.1 + RJ45 + Type-C interfaces",
-      position: { top: "75%", left: "20%" },
-      positionSm: { top: "80%", left: "20%" },
-      lineDirection: "right",
-      targetPoint: { x: "35%", y: "35%" },
-      targetPointSm: { x: "35%", y: "40%" }
-    },
-    {
-      label: "Motor & Power",
-      detail: "Bus servo motor type, 60W power rating for reliable performance",
-      position: { top: "80%", left: "50%" },
-      positionSm: { top: "95%", left: "70%" },
-      lineDirection: "right",
-      targetPoint: { x: "66%", y: "40%" },
-      targetPointSm: { x: "75%", y: "45%" }
-    }
-  ]
-},
-{
-  "id": "FR3-Arm",
-  "name": "Franka Research 3",
-  "description": "The Franka Research 3 is a state-of-the-art 7-DOF robotic arm built for advanced robotics research and human–robot interaction studies. Featuring exceptional force sensitivity, modular control architecture, and an elegant lightweight design, it enables safe, precise manipulation in labs, automation cells, and AI-driven projects.",
-  "gallery": [
-        "/Cobo/Franka-armm.webp",
+    ],
+    features: [
+      {
+        label: "High Torque & Accuracy",
+        detail: "33N·m maximum torque, ~0.2N·m force control accuracy, ~6 arcmin backlash",
+        position: { top: "15%", left: "82%" },
+        positionSm: { top: "20%", left: "65%" },
+        lineDirection: "right",
+        targetPoint: { x: "30%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "Communication & Control",
+        detail: "RS 485 communication, 1KHz control frequency, torque & angle control commands",
+        position: { top: "20%", left: "0%" },
+        positionSm: { top: "45%", left: "10%" },
+        lineDirection: "right",
+        targetPoint: { x: "30%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "Lightweight & Compact",
+        detail: "Weight 405g, Φ65*52mm size, harmonic reducer with industrial-grade cross-roller bearings",
+        position: { top: "50%", left: "82%" },
+        positionSm: { top: "65%", left: "80%" },
+        lineDirection: "right",
+        targetPoint: { x: "70%", y: "35%" },
+        targetPointSm: { x: "70%", y: "40%" }
+      },
+      {
+        label: "Advanced Sensing",
+        detail: "Torque, angle, angular velocity feedback with 15-bit encoder resolution",
+        position: { top: "72%", left: "20%" },
+        positionSm: { top: "80%", left: "20%" },
+        lineDirection: "right",
+        targetPoint: { x: "35%", y: "35%" },
+        targetPointSm: { x: "35%", y: "40%" }
+      },
+      {
+        label: "Power & Control Commands",
+        detail: "24V recommended voltage, supports stiffness and damping control",
+        position: { top: "85%", left: "70%" },
+        positionSm: { top: "95%", left: "70%" },
+        lineDirection: "left",
+        targetPoint: { x: "75%", y: "40%" },
+        targetPointSm: { x: "75%", y: "45%" }
+      },
 
-        "/Cobo/franka-arm(2).webp",
+    ]
+  },
+  {
+    id: "D1-Arm",
+    name: "D1 Robotic Arm",
+    description:
+      "The D1 Robotic Arm offers 6-axis + 1 gripper configuration for high flexibility and wide range of motion. With a compact design, lightweight build, and multiple interface options, it provides precise control for industrial and research applications.",
+    gallery: [
+      "/Cobo/D1-arm.webp",
+      "/Cobo/d1-arm.webp",
 
-    "/Cobo/Franka-arm.webp",
-  ],
-  "features": [
-    {
-      "label": "High Sensitivity & Compliance",
-      "detail": "Torque sensors in every joint deliver sub-newton precision and soft, human-safe interaction.",
-      "position": { "top": "18%", "left": "62%" },
-      "positionSm": { "top": "22%", "left": "62%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "45%", "y": "38%" },
-      "targetPointSm": { "x": "35%", "y": "42%" }
-    },
-    {
-      "label": "7-DOF Dexterity",
-      "detail": "Seven rotational joints provide human-arm-like reach and redundancy for complex tasks.",
-      "position": { "top": "34%", "left": "8%" },
-      "positionSm": { "top": "38%", "left": "12%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "40%", "y": "40%" },
-      "targetPointSm": { "x": "30%", "y": "44%" }
-    },
-    {
-      "label": "Payload & Reach",
-      "detail": "Payload up to 3 kg with an 855 mm reach, enabling both delicate and extended manipulation.",
-      "position": { "top": "52%", "left": "85%" },
-      "positionSm": { "top": "58%", "left": "78%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "52%", "y": "36%" },
-      "targetPointSm": { "x": "68%", "y": "40%" }
-    },
-    {
-      "label": "Power & Connectivity",
-      "detail": "Runs on 24 V DC supply; integrated Ethernet and real-time interfaces for ROS and custom control.",
-      "position": { "top": "70%", "left": "18%" },
-      "positionSm": { "top": "76%", "left": "20%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "36%", "y": "34%" },
-      "targetPointSm": { "x": "36%", "y": "40%" }
-    },
-    {
-      "label": "Compact & Lightweight",
-      "detail": "Approx. 18 kg total weight with sleek profile for easy lab integration and mobility.",
-      "position": { "top": "82%", "left": "48%" },
-      "positionSm": { "top": "92%", "left": "68%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "66%", "y": "40%" },
-      "targetPointSm": { "x": "74%", "y": "44%" }
-    }
-  ]
-}
+    ],
+    features: [
+      {
+        label: "Lightweight Design",
+        detail: "Weight about 2.37Kg, compact and portable for versatile applications",
+        position: { top: "15%", left: "65%" },
+        positionSm: { top: "20%", left: "65%" },
+        lineDirection: "right",
+        targetPoint: { x: "40%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "High Flexibility",
+        detail: "6-axis + 1 gripper configuration, ±135° and ±90° joint movements",
+        position: { top: "35%", left: "2%" },
+        positionSm: { top: "40%", left: "10%" },
+        lineDirection: "right",
+        targetPoint: { x: "40%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "Payload & Reach",
+        detail: "Payload 500g, 550mm reach (without gripper), 670mm reach (with gripper)",
+        position: { top: "55%", left: "86%" },
+        positionSm: { top: "60%", left: "80%" },
+        lineDirection: "right",
+        targetPoint: { x: "50%", y: "35%" },
+        targetPointSm: { x: "70%", y: "40%" }
+      },
+      {
+        label: "Power & Interface",
+        detail: "24V 2.5A (Max 5A) power supply, DC5.5-2.1 + RJ45 + Type-C interfaces",
+        position: { top: "75%", left: "20%" },
+        positionSm: { top: "80%", left: "20%" },
+        lineDirection: "right",
+        targetPoint: { x: "35%", y: "35%" },
+        targetPointSm: { x: "35%", y: "40%" }
+      },
+      {
+        label: "Motor & Power",
+        detail: "Bus servo motor type, 60W power rating for reliable performance",
+        position: { top: "80%", left: "50%" },
+        positionSm: { top: "95%", left: "70%" },
+        lineDirection: "right",
+        targetPoint: { x: "66%", y: "40%" },
+        targetPointSm: { x: "75%", y: "45%" }
+      }
+    ]
+  },
+  {
+    "id": "FR3-Arm",
+    "name": "Franka Research 3",
+    "description": "The Franka Research 3 is a state-of-the-art 7-DOF robotic arm built for advanced robotics research and human–robot interaction studies. Featuring exceptional force sensitivity, modular control architecture, and an elegant lightweight design, it enables safe, precise manipulation in labs, automation cells, and AI-driven projects.",
+    "gallery": [
+      "/Cobo/Franka-armm.webp",
+
+      "/Cobo/franka-arm(2).webp",
+
+      "/Cobo/Franka-arm.webp",
+    ],
+    "features": [
+      {
+        "label": "High Sensitivity & Compliance",
+        "detail": "Torque sensors in every joint deliver sub-newton precision and soft, human-safe interaction.",
+        "position": { "top": "18%", "left": "62%" },
+        "positionSm": { "top": "22%", "left": "62%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "45%", "y": "38%" },
+        "targetPointSm": { "x": "35%", "y": "42%" }
+      },
+      {
+        "label": "7-DOF Dexterity",
+        "detail": "Seven rotational joints provide human-arm-like reach and redundancy for complex tasks.",
+        "position": { "top": "34%", "left": "8%" },
+        "positionSm": { "top": "38%", "left": "12%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "40%", "y": "40%" },
+        "targetPointSm": { "x": "30%", "y": "44%" }
+      },
+      {
+        "label": "Payload & Reach",
+        "detail": "Payload up to 3 kg with an 855 mm reach, enabling both delicate and extended manipulation.",
+        "position": { "top": "52%", "left": "85%" },
+        "positionSm": { "top": "58%", "left": "78%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "52%", "y": "36%" },
+        "targetPointSm": { "x": "68%", "y": "40%" }
+      },
+      {
+        "label": "Power & Connectivity",
+        "detail": "Runs on 24 V DC supply; integrated Ethernet and real-time interfaces for ROS and custom control.",
+        "position": { "top": "70%", "left": "18%" },
+        "positionSm": { "top": "76%", "left": "20%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "36%", "y": "34%" },
+        "targetPointSm": { "x": "36%", "y": "40%" }
+      },
+      {
+        "label": "Compact & Lightweight",
+        "detail": "Approx. 18 kg total weight with sleek profile for easy lab integration and mobility.",
+        "position": { "top": "82%", "left": "48%" },
+        "positionSm": { "top": "92%", "left": "68%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "66%", "y": "40%" },
+        "targetPointSm": { "x": "74%", "y": "44%" }
+      }
+    ]
+  }
 
 
 
@@ -350,9 +351,9 @@ function CoboVariants() {
   }, [selectedVariant, selectedCobot]);
 
   return (
-     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}> 
-     
-  <div className="w-full px-6 py-6 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+
+      <div className="w-full px-6 py-6 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
         {/*
         Search Button Section
         <div className="w-full max-w-4xl mx-auto mb-8">
@@ -385,7 +386,7 @@ function CoboVariants() {
             </div>
 
             {/* Scrollable Cobot Images - Single Line */}
-            <div 
+            <div
               className="overflow-x-auto scrollbar-hide pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
@@ -491,35 +492,35 @@ function CoboVariants() {
           </div>
         )}
 
-{/* Header Dropdown */}
-<div className="w-full max-w-4xl mx-auto mb-10 relative">
-  <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-    <SelectTrigger
-      className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
-      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-    >
-      <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
-      <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
-    </SelectTrigger>
-    {isDropdownOpen && (
-      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
-        {robotSpecs.map((spec) => (
-          <div
-            key={spec.id}
-            className="px-6 py-3 md:py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-sm md:text-base font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
-            onClick={() => {
-              setSelectedVariant(spec.id);
-              setSelectedCobot(null);
-              setIsDropdownOpen(false);
-            }}
-          >
-            {spec.name}
-          </div>
-        ))}
-      </div>
-    )}
-  </Select>
-</div>
+        {/* Header Dropdown */}
+        <div className="w-full max-w-4xl mx-auto mb-10 relative">
+          <Select value={selectedVariant} onValueChange={setSelectedVariant}>
+            <SelectTrigger
+              className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+              <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
+            </SelectTrigger>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
+                {robotSpecs.map((spec) => (
+                  <div
+                    key={spec.id}
+                    className="px-6 py-3 md:py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-sm md:text-base font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
+                    onClick={() => {
+                      setSelectedVariant(spec.id);
+                      setSelectedCobot(null);
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    {spec.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Select>
+        </div>
 
 
         {/* Main Content */}
@@ -527,24 +528,24 @@ function CoboVariants() {
           {/* Left Section - Product Info */}
           <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-black rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-             <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 tracking-tight">
-  {displayName}
-</h1>
-<h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
-  Technical Specifications
-</h2>
-<p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
-  {displayDescription}
-</p>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+                {displayName}
+              </h1>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
+                Technical Specifications
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+                {displayDescription}
+              </p>
 
- <Link to="/Contact">
-  <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-    Order Now
-  </Button>
- </Link>
+              <Link to="/Contact">
+                <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                  Order Now
+                </Button>
+              </Link>
             </div>
 
-            
+
             {/* Image Gallery Selector */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
@@ -555,7 +556,7 @@ function CoboVariants() {
                     onClick={() => openGallery(index)}
                     className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 hover:scale-105 transition-transform duration-200 border-2 border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500"
                   >
-                    {media.endsWith('.mp4') ? (
+                    {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                       <video
                         src={media}
                         className="w-full h-full object-cover"
@@ -584,10 +585,10 @@ function CoboVariants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-        src={currentSpec.gallery[0]}
-        alt={displayName}
-        className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-      />
+                  src={currentSpec.gallery[0]}
+                  alt={displayName}
+                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+                />
               </div>
 
               {/* SVG Lines - Only show on hover */}
@@ -653,18 +654,16 @@ function CoboVariants() {
                   >
                     <div className="text-left max-w-[120px]">
                       <div
-                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                          hoveredFeature === index 
-                            ? "text-green-600 dark:text-green-400" 
-                            : "text-gray-900 dark:text-gray-100"
-                        }`}
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${hoveredFeature === index
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-gray-900 dark:text-gray-100"
+                          }`}
                       >
                         {feature.label}
                       </div>
-                      <div 
-                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                          hoveredFeature === index ? "opacity-100" : "opacity-70"
-                        }`}
+                      <div
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${hoveredFeature === index ? "opacity-100" : "opacity-70"
+                          }`}
                       >
                         {feature.detail}
                       </div>
@@ -707,7 +706,7 @@ function CoboVariants() {
 
             {/* Media Display */}
             <div className="w-full h-full flex items-center justify-center">
-              {displayGallery[currentImageIndex]?.endsWith('.mp4') ? (
+              {displayGallery[currentImageIndex]?.endsWith('.mp4') || displayGallery[currentImageIndex]?.endsWith('.webm') ? (
                 <video
                   src={displayGallery[currentImageIndex]}
                   controls
@@ -737,11 +736,10 @@ function CoboVariants() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${
-                    currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
-                  }`}
+                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
+                    }`}
                 >
-                  {media.endsWith('.mp4') ? (
+                  {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                     <video
                       src={media}
                       className="w-full h-full object-cover"

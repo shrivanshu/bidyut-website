@@ -34,69 +34,69 @@ const cobotSearchData = [
     specId: "go2-basic",
     gallery: ["/media/Cobot_true.svg", "/media/Cobot_true.svg", "/robo-dance.webm"],
   },
- 
+
 ]
 
 const robotSpecs: RobotSpec[] = [
-  
+
   {
-  id: "A2-W-Standard",
-  name: "Unitree A2-w Standard Version",
-  description:
-    "The Unitree A2-w Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.",
-  gallery: [
-    "/media/A2-w.webp",
-    "/media/A2-W-Standard.webp",
-   
-  ],
-  features: [
-    {
-      label: "Mobility & Payload",
-      detail: "20-25kg payload capacity, stair climbing up to 28cm height & 90cm single step, 45° slope capability",
-      position: { top: "-3%", left: "85%" },
-      positionSm: { top: "20%", left: "65%" },
-      lineDirection: "right",
-      targetPoint: { x: "30%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "Battery & Runtime",
-      detail: "Dual-bay system, 9000mAh single or 18000mAh dual battery, 4-5h unladen runtime, 1h charging time",
-      position: { top: "35%", left: "-1%" },
-      positionSm: { top: "45%", left: "10%" },
-      lineDirection: "right",
-      targetPoint: { x: "30%", y: "40%" },
-      targetPointSm: { x: "30%", y: "45%" }
-    },
-    {
-      label: "Computing Power",
-      detail: "8-core high-performance CPU + Intel Core i7 for user development",
-      position: { top: "69%", left: "78%" },
-      positionSm: { top: "65%", left: "80%" },
-      lineDirection: "left",
-      targetPoint: { x: "70%", y: "35%" },
-      targetPointSm: { x: "70%", y: "40%" }
-    },
-    {
-      label: "Perception & Control",
-      detail: "1 LiDAR, wide-angle camera ×1 (expandable to 2), dual joint encoders, stable obstacle avoidance",
-      position: { top: "72%", left: "18%" },
-      positionSm: { top: "80%", left: "20%" },
-      lineDirection: "right",
-      targetPoint: { x: "35%", y: "35%" },
-      targetPointSm: { x: "35%", y: "40%" }
-    },
-    {
-      label: "Connectivity & Interfaces",
-      detail: "WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, Gigabit Ethernet×2, USB 3.0-Type-C×4, 12V/24V power output",
-      position: { top: "75%", left: "98%" },
-      positionSm: { top: "95%", left: "70%" },
-      lineDirection: "left",
-      targetPoint: { x: "75%", y: "40%" },
-      targetPointSm: { x: "75%", y: "45%" }
-    }
-  ]
-}
+    id: "A2-W-Standard",
+    name: "Unitree A2-w Standard Version",
+    description:
+      "The Unitree A2-w Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.",
+    gallery: [
+      "/media/A2-w.webp",
+      "/media/A2-standard.webp",
+
+    ],
+    features: [
+      {
+        label: "Mobility & Payload",
+        detail: "20-25kg payload capacity, stair climbing up to 28cm height & 90cm single step, 45° slope capability",
+        position: { top: "-3%", left: "85%" },
+        positionSm: { top: "20%", left: "65%" },
+        lineDirection: "right",
+        targetPoint: { x: "30%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "Battery & Runtime",
+        detail: "Dual-bay system, 9000mAh single or 18000mAh dual battery, 4-5h unladen runtime, 1h charging time",
+        position: { top: "35%", left: "-1%" },
+        positionSm: { top: "45%", left: "10%" },
+        lineDirection: "right",
+        targetPoint: { x: "30%", y: "40%" },
+        targetPointSm: { x: "30%", y: "45%" }
+      },
+      {
+        label: "Computing Power",
+        detail: "8-core high-performance CPU + Intel Core i7 for user development",
+        position: { top: "69%", left: "78%" },
+        positionSm: { top: "65%", left: "80%" },
+        lineDirection: "left",
+        targetPoint: { x: "70%", y: "35%" },
+        targetPointSm: { x: "70%", y: "40%" }
+      },
+      {
+        label: "Perception & Control",
+        detail: "1 LiDAR, wide-angle camera ×1 (expandable to 2), dual joint encoders, stable obstacle avoidance",
+        position: { top: "72%", left: "18%" },
+        positionSm: { top: "80%", left: "20%" },
+        lineDirection: "right",
+        targetPoint: { x: "35%", y: "35%" },
+        targetPointSm: { x: "35%", y: "40%" }
+      },
+      {
+        label: "Connectivity & Interfaces",
+        detail: "WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, Gigabit Ethernet×2, USB 3.0-Type-C×4, 12V/24V power output",
+        position: { top: "75%", left: "98%" },
+        positionSm: { top: "95%", left: "70%" },
+        lineDirection: "left",
+        targetPoint: { x: "75%", y: "40%" },
+        targetPointSm: { x: "75%", y: "45%" }
+      }
+    ]
+  }
 
 ];
 const Select = ({
@@ -231,9 +231,9 @@ function A2_Wells_Variants() {
   }, [selectedVariant, selectedCobot]);
 
   return (
-     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}> 
-     
-  <div className="w-full px-6 py-6 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+
+      <div className="w-full px-6 py-6 md:px-12 lg:px-16 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
         {/*
         Search Button Section
         <div className="w-full max-w-4xl mx-auto mb-8">
@@ -266,7 +266,7 @@ function A2_Wells_Variants() {
             </div>
 
             {/* Scrollable Cobot Images - Single Line */}
-            <div 
+            <div
               className="overflow-x-auto scrollbar-hide pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
@@ -372,35 +372,35 @@ function A2_Wells_Variants() {
           </div>
         )}
 
-{/* Header Dropdown */}
-<div className="w-full max-w-4xl mx-auto mb-10 relative">
-  <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-    <SelectTrigger
-      className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
-      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-    >
-      <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
-      <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
-    </SelectTrigger>
-    {isDropdownOpen && (
-      <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
-        {robotSpecs.map((spec) => (
-          <div
-            key={spec.id}
-            className="px-6 py-3 md:py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-sm md:text-base font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
-            onClick={() => {
-              setSelectedVariant(spec.id);
-              setSelectedCobot(null);
-              setIsDropdownOpen(false);
-            }}
-          >
-            {spec.name}
-          </div>
-        ))}
-      </div>
-    )}
-  </Select>
-</div>
+        {/* Header Dropdown */}
+        <div className="w-full max-w-4xl mx-auto mb-10 relative">
+          <Select value={selectedVariant} onValueChange={setSelectedVariant}>
+            <SelectTrigger
+              className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+              <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
+            </SelectTrigger>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50 max-h-56 overflow-y-auto">
+                {robotSpecs.map((spec) => (
+                  <div
+                    key={spec.id}
+                    className="px-6 py-3 md:py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-sm md:text-base font-medium text-gray-700 dark:text-white hover:text-green-600 dark:hover:text-green-400"
+                    onClick={() => {
+                      setSelectedVariant(spec.id);
+                      setSelectedCobot(null);
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    {spec.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Select>
+        </div>
 
 
         {/* Main Content */}
@@ -408,24 +408,24 @@ function A2_Wells_Variants() {
           {/* Left Section - Product Info */}
           <div id="cobot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-black rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
-             <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
-  {displayName}
-</h1>
-<h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
-  Technical Specifications
-</h2>
-<p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
-  {displayDescription}
-</p>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+                {displayName}
+              </h1>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
+                Technical Specifications
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+                {displayDescription}
+              </p>
 
- <Link to="/Contact">
-  <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-    Order Now
-  </Button>
- </Link>
+              <Link to="/Contact">
+                <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                  Order Now
+                </Button>
+              </Link>
             </div>
 
-            
+
             {/* Image Gallery Selector */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
@@ -465,10 +465,10 @@ function A2_Wells_Variants() {
               {/* Robot Image with Animation */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-        src={currentSpec.gallery[0]}
-        alt={displayName}
-        className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-      />
+                  src={currentSpec.gallery[0]}
+                  alt={displayName}
+                  className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+                />
               </div>
 
               {/* SVG Lines - Only show on hover */}
@@ -534,18 +534,16 @@ function A2_Wells_Variants() {
                   >
                     <div className="text-left max-w-[120px]">
                       <div
-                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                          hoveredFeature === index 
-                            ? "text-green-600 dark:text-green-400" 
-                            : "text-gray-900 dark:text-gray-100"
-                        }`}
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${hoveredFeature === index
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-gray-900 dark:text-gray-100"
+                          }`}
                       >
                         {feature.label}
                       </div>
-                      <div 
-                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                          hoveredFeature === index ? "opacity-100" : "opacity-70"
-                        }`}
+                      <div
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${hoveredFeature === index ? "opacity-100" : "opacity-70"
+                          }`}
                       >
                         {feature.detail}
                       </div>
@@ -618,9 +616,8 @@ function A2_Wells_Variants() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${
-                    currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
-                  }`}
+                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
+                    }`}
                 >
                   {media.endsWith('.mp4') ? (
                     <video

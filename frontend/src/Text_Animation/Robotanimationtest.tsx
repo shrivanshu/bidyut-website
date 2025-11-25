@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback, useMemo, useState } from "react";
 import { loadGSAP } from "../utils/gsapLoader";
+import gsap from "gsap";
 
 export interface TargetCursorProps {
   targetSelector?: string;
@@ -94,16 +95,16 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     const scrollHandler = () => {
       if (!activeTarget || !cursorRef.current) return;
-      
+
       const mouseX = gsap.getProperty(cursorRef.current, "x") as number;
       const mouseY = gsap.getProperty(cursorRef.current, "y") as number;
-      
+
       const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
       const isStillOverTarget = elementUnderMouse && (
-        elementUnderMouse === activeTarget || 
+        elementUnderMouse === activeTarget ||
         elementUnderMouse.closest(targetSelector) === activeTarget
       );
-      
+
       if (!isStillOverTarget) {
         if (currentLeaveHandler) {
           currentLeaveHandler();
@@ -114,26 +115,26 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     window.addEventListener("scroll", scrollHandler, { passive: true });
 
     //---------------------------------------------------------------
-        // This code for onclick animation
-    
-        window.addEventListener("mousemove", moveHandler);
-        const mouseDownHandler = ():void => {
-          if (!dotRef.current) return;
-          gsap.to(dotRef.current, { scale: 0.7, duration: 0.3 });
-          gsap.to(cursorRef.current, { scale: 0.9, duration: 0.2 });
-        };
-    
-        // Animate it back to its original size
-        const mouseUpHandler = ():void => {
-          if (!dotRef.current) return;
-          gsap.to(dotRef.current, { scale: 1, duration: 0.3 });
-          gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
-        };
-    
-        window.addEventListener("mousedown", mouseDownHandler);
-        window.addEventListener("mouseup", mouseUpHandler);
-    
-        //----------------------------------------------------------------
+    // This code for onclick animation
+
+    window.addEventListener("mousemove", moveHandler);
+    const mouseDownHandler = (): void => {
+      if (!dotRef.current) return;
+      gsap.to(dotRef.current, { scale: 0.7, duration: 0.3 });
+      gsap.to(cursorRef.current, { scale: 0.9, duration: 0.2 });
+    };
+
+    // Animate it back to its original size
+    const mouseUpHandler = (): void => {
+      if (!dotRef.current) return;
+      gsap.to(dotRef.current, { scale: 1, duration: 0.3 });
+      gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
+    };
+
+    window.addEventListener("mousedown", mouseDownHandler);
+    window.addEventListener("mouseup", mouseUpHandler);
+
+    //----------------------------------------------------------------
 
     const enterHandler = (e: MouseEvent) => {
       const directTarget = e.target as Element;
@@ -331,7 +332,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
   useEffect(() => {
     if (!cursorRef.current || !spinTl.current) return;
-    
+
     if (spinTl.current.isActive()) {
       spinTl.current.kill();
       spinTl.current = gsap
@@ -341,29 +342,29 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   }, [spinDuration]);
 
   return (
-    <div 
-      ref={cursorRef} 
+    <div
+      ref={cursorRef}
       className="fixed top-0 left-0 w-0 h-0 pointer-events-none z-[9999] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
       style={{ willChange: 'transform' }}
     >
       <div ref={dotRef}
-        className="absolute left-1/2 top-1/2 w-1 h-1 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2" 
+        className="absolute left-1/2 top-1/2 w-1 h-1 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"
         style={{ willChange: 'transform' }}
       />
-      <div 
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0" 
+      <div
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0"
         style={{ willChange: 'transform' }}
       />
-      <div 
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform translate-x-1/2 -translate-y-[150%] border-l-0 border-b-0" 
+      <div
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform translate-x-1/2 -translate-y-[150%] border-l-0 border-b-0"
         style={{ willChange: 'transform' }}
       />
-      <div 
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform translate-x-1/2 translate-y-1/2 border-l-0 border-t-0" 
+      <div
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform translate-x-1/2 translate-y-1/2 border-l-0 border-t-0"
         style={{ willChange: 'transform' }}
       />
-      <div 
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform -translate-x-[150%] translate-y-1/2 border-r-0 border-t-0" 
+      <div
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-white transform -translate-x-[150%] translate-y-1/2 border-r-0 border-t-0"
         style={{ willChange: 'transform' }}
       />
     </div>

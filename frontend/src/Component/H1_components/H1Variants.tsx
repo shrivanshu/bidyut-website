@@ -35,7 +35,7 @@ const robotSearchData = [
     gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
   {
-    id: "edu-bot-2", 
+    id: "edu-bot-2",
     name: "EduBot Beta",
     image: "/media/Robot_Details.svg",
     category: "Educational",
@@ -46,7 +46,7 @@ const robotSearchData = [
   {
     id: "service-bot-1",
     name: "ServiceBot Pro",
-    image: "/media/Robot_Details.svg", 
+    image: "/media/Robot_Details.svg",
     category: "Service",
     description: "Built for reception, delivery and kiosk assistance.",
     specId: "g2-pro",
@@ -56,7 +56,7 @@ const robotSearchData = [
     id: "companion-bot-1",
     name: "CompanionBot",
     image: "/media/Robot_Details.svg",
-    category: "Companion", 
+    category: "Companion",
     description: "Social companion with voice, vision and music modes.",
     specId: "g2-pro",
     gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robott.webm"],
@@ -101,176 +101,176 @@ const robotSearchData = [
 
 const robotSpecs: RobotSpec[] = [
   {
-  "id": "h1-basic",
-  "name": "Unitree H1",
-  "description": "The Unitree H1 is a full-size universal humanoid robot standing about 180 cm tall and weighing only 47 kg. Equipped with advanced 3D LiDAR and Intel RealSense depth sensing, it achieves 360° environment perception. With a moving speed of 3.3 m/s and potential mobility exceeding 5 m/s, it is among the most powerful humanoid robots in terms of speed, maneuverability, and flexibility. The H1 also features a quick-release 864 Wh battery, hollow electrical routing without external cables, and high joint torque up to 360 N·m, making it ideal for advanced research, mobility, and dynamic real-world applications.",
-  "gallery": [
-    "/media/H1.webp",
-    "/media/h1-2_4.webp",
-    "/media/h1_2.webp",
-    "/media/h1_3.webp",
-    "/media/h1_4.webp"
-  ],
-  "features": [
-    {
-      "label": "3D LiDAR",
-      "detail": "LIVOX-MID360",
-      "position": { "top": "10%", "left": "5%" },
-      "positionSm": { "top": "24%", "left": "5%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "48%", "y": "7%" },
-      "targetPointSm": { "x": "48%", "y": "32%" }
-    },
-    {
-      "label": "Depth Camera",
-      "detail": "Intel RealSense D435i",
-      "position": { "top": "12%", "left": "75%" },
-      "positionSm": { "top": "18%", "left": "57%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "52%", "y": "6%" },
-      "targetPointSm": { "x": "51%", "y": "30%" }
-    },
-    {
-      "label": "Combined Shoulder Motors",
-      "detail": "3D spatial degrees of freedom",
-      "position": { "top": "30%", "left": "5%" },
-      "positionSm": { "top": "40%", "left": "2%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "42%", "y": "36%" }
-    },
-    {
-      "label": "Single Arm Degrees of Freedom",
-      "detail": "4 (expandable)",
-      "position": { "top": "42%", "left": "95%" },
-      "lineDirection": "left",
-      "targetPoint": { "x": "64%", "y": "24%" },
-      "targetPointSm": { "x": "62%", "y": "39%" },
-    },
-    {
-      "label": "Quick Release Battery",
-      "detail": "864 Wh, replaceable",
-      "position": { "top": "27%", "left": "81%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "58%", "y": "28%" },
-      "targetPointSm": { "x": "56%", "y": "43%" },
-    },
-    {
-      "label": "Core Motion Module",
-      "detail": "Max torque at joints: 360 N·m",
-      "position": { "top": "75%", "left": "5%" },
-      "positionSm": { "top": "72%", "left": "7%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "43%", "y": "52%" }
-    },
-    {
-      "label": "Hollow Electrical Routing",
-      "detail": "No external cables",
-      "position": { "top": "62%", "left": "80%" },
-      "positionSm": { "top": "59%", "left": "80%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "60%", "y": "52%" }
-    },
-    {
-      "label": "Single Leg Degrees of Freedom",
-      "detail": "Hip ×3 | Knee ×1 | Ankle ×1 = 5",
-      "position": { "top": "79%", "left": "80%" },
-      "positionSm": { "top": "76%", "left": "67%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "67%", "y": "76%" },
-      "targetPointSm": { "x": "65%", "y": "62%" },
-    },
-    {
-      "label": "Mobility",
-      "detail": "3.3 m/s speed (potential >5 m/s)",
-      "position": { "top": "60%", "left": "2%" },
-      "positionSm": { "top": "56%", "left": "2%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "45%", "y": "49%" }
-    }
-  ]
-},
- {
-  "id": "h1-2-basic",
-  "name": "Unitree H1-2",
-  "description": "The Unitree H1-2 is a full-size universal humanoid robot, standing at 178 cm and weighing about 70 kg. It is equipped with Intel RealSense depth sensing and 3D LiDAR for 360° perception. Featuring 27 degrees of freedom, high torque joints (up to 360 N·m at legs and 120 N·m at arms), and a peak torque density of 189 N·m/kg, it offers exceptional power and dexterity. The H1-2 integrates hollow electrical wiring without external cables, dual encoder systems for stability, and supports optional dexterous hands and higher computing power. Designed with an ergonomic bionic shape, it balances aesthetics and high performance for advanced robotics applications.",
-  "gallery": [
-    "/media/H1 - 2.webp",
-    "/media/h1-2_2.webp",
-    "/media/h1_2.webp",
-    "/media/h1_3.webp",
-    // "/media/Robot_Details.svg"
-  ],
-  "features": [
-    {
-      "label": "3D LiDAR",
-      "detail": "LIVOX-MID360",
-      "position": { "top": "16%", "left": "8%" },
-      "positionSm": { "top": "27%", "left": "5%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "49%", "y": "16%" },
-      "targetPointSm": { "x": "48%", "y": "35%" }
-    },
-    {
-      "label": "Depth Camera",
-      "detail": "Intel RealSense D435i",
-      "position": { "top": "12%", "left": "65%" },
-      "positionSm": { "top": "22%", "left": "57%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "52%", "y": "15%" },
-      "targetPointSm": { "x": "50%", "y": "34%" }
-    },
-    {
-      "label": "Shoulder Degrees of Freedom",
-      "detail": "3 (Peak torque 120 N·m, super large load)",
-      "position": { "top": "24%", "left": "73%" },
-      "positionSm": { "top": "32%", "left": "73%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "60%", "y": "28%" },
-      "targetPointSm": { "x": "60%", "y": "40%" },
-    },
-    {
-      "label": "Elbow Degrees of Freedom",
-      "detail": "1 (Improves accuracy of task execution)",
-      "position": { "top": "50%", "left": "74%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "61%", "y": "45%" },
-      "targetPointSm": { "x": "60%", "y": "48%" },
-    },
-    {
-      "label": "Wrist Degrees of Freedom",
-      "detail": "3 (Optional dexterous hands)",
-      "position": { "top": "40%", "left": "2%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "40%", "y": "50%" }
-    },
-    {
-      "label": "Hollow Electrical Wiring ",
-      "detail": "No external cables",
-      "position": { "top": "73%", "left": "66%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "58%", "y": "53%" }
-    },
-    {
-      "label": "Core Sports Module",
-      "detail": "Joint max torque: 360 N·m",
-      "position": { "top": "56%", "left": "2%" },
-      "positionSm": { "top": "60%", "left": "2%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "47%", "y": "55%" },
-      "targetPointSm": { "x": "47%", "y": "52%" },
-    },
-    {
-      "label": "Single Leg Degrees of Freedom",
-      "detail": "Hip ×3 | Knee ×1 | Ankle ×2 = 6",
-      "position": { "top": "75%", "left": "7%" },
-      "positionSm": { "top": "73%", "left": "15%" },
-      "lineDirection": "right",
-      "targetPoint": { "x": "39%", "y": "77%" },
-      "targetPointSm": { "x": "39%", "y": "62%" },
-    },
-  ]
-}
- 
+    "id": "h1-basic",
+    "name": "Unitree H1",
+    "description": "The Unitree H1 is a full-size universal humanoid robot standing about 180 cm tall and weighing only 47 kg. Equipped with advanced 3D LiDAR and Intel RealSense depth sensing, it achieves 360° environment perception. With a moving speed of 3.3 m/s and potential mobility exceeding 5 m/s, it is among the most powerful humanoid robots in terms of speed, maneuverability, and flexibility. The H1 also features a quick-release 864 Wh battery, hollow electrical routing without external cables, and high joint torque up to 360 N·m, making it ideal for advanced research, mobility, and dynamic real-world applications.",
+    "gallery": [
+      "/media/H1.webp",
+      // "/media/h1-2_4.webp",
+      "/media/h1_2.webp",
+      "/media/h1_3.webp",
+      "/media/h1_4.webp"
+    ],
+    "features": [
+      {
+        "label": "3D LiDAR",
+        "detail": "LIVOX-MID360",
+        "position": { "top": "10%", "left": "5%" },
+        "positionSm": { "top": "24%", "left": "5%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "48%", "y": "7%" },
+        "targetPointSm": { "x": "48%", "y": "32%" }
+      },
+      {
+        "label": "Depth Camera",
+        "detail": "Intel RealSense D435i",
+        "position": { "top": "12%", "left": "75%" },
+        "positionSm": { "top": "18%", "left": "57%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "52%", "y": "6%" },
+        "targetPointSm": { "x": "51%", "y": "30%" }
+      },
+      {
+        "label": "Combined Shoulder Motors",
+        "detail": "3D spatial degrees of freedom",
+        "position": { "top": "30%", "left": "5%" },
+        "positionSm": { "top": "40%", "left": "2%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "42%", "y": "36%" }
+      },
+      {
+        "label": "Single Arm Degrees of Freedom",
+        "detail": "4 (expandable)",
+        "position": { "top": "42%", "left": "95%" },
+        "lineDirection": "left",
+        "targetPoint": { "x": "64%", "y": "24%" },
+        "targetPointSm": { "x": "62%", "y": "39%" },
+      },
+      {
+        "label": "Quick Release Battery",
+        "detail": "864 Wh, replaceable",
+        "position": { "top": "27%", "left": "81%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "58%", "y": "28%" },
+        "targetPointSm": { "x": "56%", "y": "43%" },
+      },
+      {
+        "label": "Core Motion Module",
+        "detail": "Max torque at joints: 360 N·m",
+        "position": { "top": "75%", "left": "5%" },
+        "positionSm": { "top": "72%", "left": "7%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "43%", "y": "52%" }
+      },
+      {
+        "label": "Hollow Electrical Routing",
+        "detail": "No external cables",
+        "position": { "top": "62%", "left": "80%" },
+        "positionSm": { "top": "59%", "left": "80%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "60%", "y": "52%" }
+      },
+      {
+        "label": "Single Leg Degrees of Freedom",
+        "detail": "Hip ×3 | Knee ×1 | Ankle ×1 = 5",
+        "position": { "top": "79%", "left": "80%" },
+        "positionSm": { "top": "76%", "left": "67%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "67%", "y": "76%" },
+        "targetPointSm": { "x": "65%", "y": "62%" },
+      },
+      {
+        "label": "Mobility",
+        "detail": "3.3 m/s speed (potential >5 m/s)",
+        "position": { "top": "60%", "left": "2%" },
+        "positionSm": { "top": "56%", "left": "2%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "45%", "y": "49%" }
+      }
+    ]
+  },
+  {
+    "id": "h1-2-basic",
+    "name": "Unitree H1-2",
+    "description": "The Unitree H1-2 is a full-size universal humanoid robot, standing at 178 cm and weighing about 70 kg. It is equipped with Intel RealSense depth sensing and 3D LiDAR for 360° perception. Featuring 27 degrees of freedom, high torque joints (up to 360 N·m at legs and 120 N·m at arms), and a peak torque density of 189 N·m/kg, it offers exceptional power and dexterity. The H1-2 integrates hollow electrical wiring without external cables, dual encoder systems for stability, and supports optional dexterous hands and higher computing power. Designed with an ergonomic bionic shape, it balances aesthetics and high performance for advanced robotics applications.",
+    "gallery": [
+      "/media/H1 - 2.webp",
+      "/media/h1-2_2.webp",
+      "/media/h1_2.webp",
+      "/media/h1_3.webp",
+      // "/media/Robot_Details.svg"
+    ],
+    "features": [
+      {
+        "label": "3D LiDAR",
+        "detail": "LIVOX-MID360",
+        "position": { "top": "16%", "left": "8%" },
+        "positionSm": { "top": "27%", "left": "5%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "49%", "y": "16%" },
+        "targetPointSm": { "x": "48%", "y": "35%" }
+      },
+      {
+        "label": "Depth Camera",
+        "detail": "Intel RealSense D435i",
+        "position": { "top": "12%", "left": "65%" },
+        "positionSm": { "top": "22%", "left": "57%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "52%", "y": "15%" },
+        "targetPointSm": { "x": "50%", "y": "34%" }
+      },
+      {
+        "label": "Shoulder Degrees of Freedom",
+        "detail": "3 (Peak torque 120 N·m, super large load)",
+        "position": { "top": "24%", "left": "73%" },
+        "positionSm": { "top": "32%", "left": "73%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "60%", "y": "28%" },
+        "targetPointSm": { "x": "60%", "y": "40%" },
+      },
+      {
+        "label": "Elbow Degrees of Freedom",
+        "detail": "1 (Improves accuracy of task execution)",
+        "position": { "top": "50%", "left": "74%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "61%", "y": "45%" },
+        "targetPointSm": { "x": "60%", "y": "48%" },
+      },
+      {
+        "label": "Wrist Degrees of Freedom",
+        "detail": "3 (Optional dexterous hands)",
+        "position": { "top": "40%", "left": "2%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "40%", "y": "50%" }
+      },
+      {
+        "label": "Hollow Electrical Wiring ",
+        "detail": "No external cables",
+        "position": { "top": "73%", "left": "66%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "58%", "y": "53%" }
+      },
+      {
+        "label": "Core Sports Module",
+        "detail": "Joint max torque: 360 N·m",
+        "position": { "top": "56%", "left": "2%" },
+        "positionSm": { "top": "60%", "left": "2%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "47%", "y": "55%" },
+        "targetPointSm": { "x": "47%", "y": "52%" },
+      },
+      {
+        "label": "Single Leg Degrees of Freedom",
+        "detail": "Hip ×3 | Knee ×1 | Ankle ×2 = 6",
+        "position": { "top": "75%", "left": "7%" },
+        "positionSm": { "top": "73%", "left": "15%" },
+        "lineDirection": "right",
+        "targetPoint": { "x": "39%", "y": "77%" },
+        "targetPointSm": { "x": "39%", "y": "62%" },
+      },
+    ]
+  }
+
 ]
 
 const Select = ({
@@ -337,12 +337,12 @@ export default function H1Variants() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRobot, setSelectedRobot] = useState<(typeof robotSearchData[0]) | null>(null)
-  
+
   // Drag scroll state for robot images
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
-  
+
   const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
   // Derive display data from either selected search item or current variant
   const displayName = selectedRobot?.name ?? currentSpec.name
@@ -405,7 +405,7 @@ export default function H1Variants() {
     // <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <div className="w-full px-6 py-10 md:px-12 lg:px-16">
-       
+
 
         {/* Search Section - Scrollable Robot Images */}
         {isSearchOpen && (
@@ -425,7 +425,7 @@ export default function H1Variants() {
             </div>
 
             {/* Scrollable Robot Images - Single Line */}
-            <div 
+            <div
               className="overflow-x-auto scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200 dark:scrollbar-track-gray-700 pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
@@ -489,7 +489,7 @@ export default function H1Variants() {
                   </div>
                 ))}
               </div>
-              
+
               {filteredRobots.length === 0 && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 dark:text-gray-500 text-lg">
@@ -574,10 +574,10 @@ export default function H1Variants() {
             </div>
 
             <Link to="/Contact">
-  <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-    Order Now
-  </Button>
-</Link>
+              <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                Order Now
+              </Button>
+            </Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
@@ -589,7 +589,7 @@ export default function H1Variants() {
                     onClick={() => openGallery(index)}
                     className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 hover:scale-105 transition-transform duration-200 border-2 border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500"
                   >
-                    {media.endsWith('.mp4') ? (
+                    {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                       <video
                         src={media}
                         className="w-full h-full object-cover"
@@ -615,99 +615,97 @@ export default function H1Variants() {
           {/* Right Section - Robot Visualization */}
           <div className="relative">
             <div className="relative h-[700px] w-full">
-  {/* Robot Image */}
-  <div className="absolute inset-0 flex items-center justify-center">
-    <img
-  src={currentSpec.gallery[0]}
-  alt={currentSpec.name}
-  className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-/>
-  </div>
+              {/* Robot Image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img
+                  src={currentSpec.gallery[0]}
+                  alt={currentSpec.name}
+                  className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+                />
+              </div>
 
-  {/* SVG Lines */}
-  <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-    {currentSpec.features.map((feature, index) => {
-      if (hoveredFeature !== index) return null;
-      
-      // RESPONSIVE COORDINATE HANDLING
-      const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
-      const startPos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
-      const endPoint = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
+              {/* SVG Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+                {currentSpec.features.map((feature, index) => {
+                  if (hoveredFeature !== index) return null;
 
-      // Convert pixel values to percentages if needed
-      const normalizeCoord = (value: string | undefined) => {
-        if (!value) return "0%";
-        return value.includes("px") 
-          ? `${(parseInt(value) / window.innerWidth) * 100}%`
-          : value;
-      };
+                  // RESPONSIVE COORDINATE HANDLING
+                  const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+                  const startPos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+                  const endPoint = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
 
-      return (
-        <g key={index}>
-          <line
-            x1={normalizeCoord(startPos.left)}
-            y1={normalizeCoord(startPos.top)}
-            x2={normalizeCoord(endPoint.x)}
-            y2={normalizeCoord(endPoint.y)}
-            stroke="#059669"
-            strokeWidth="2"
-          />
-          <circle
-            cx={normalizeCoord(startPos.left)}
-            cy={normalizeCoord(startPos.top)}
-            r="4"
-            fill="#059669"
-          />
-          <circle
-            cx={normalizeCoord(endPoint.x)}
-            cy={normalizeCoord(endPoint.y)}
-            r="4"
-            fill="#059669"
-          />
-        </g>
-      );
-    })}
-  </svg>
+                  // Convert pixel values to percentages if needed
+                  const normalizeCoord = (value: string | undefined) => {
+                    if (!value) return "0%";
+                    return value.includes("px")
+                      ? `${(parseInt(value) / window.innerWidth) * 100}%`
+                      : value;
+                  };
 
-  {/* Feature Labels */}
-  {currentSpec.features.map((feature, index) => {
-    const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
-    const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+                  return (
+                    <g key={index}>
+                      <line
+                        x1={normalizeCoord(startPos.left)}
+                        y1={normalizeCoord(startPos.top)}
+                        x2={normalizeCoord(endPoint.x)}
+                        y2={normalizeCoord(endPoint.y)}
+                        stroke="#059669"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx={normalizeCoord(startPos.left)}
+                        cy={normalizeCoord(startPos.top)}
+                        r="4"
+                        fill="#059669"
+                      />
+                      <circle
+                        cx={normalizeCoord(endPoint.x)}
+                        cy={normalizeCoord(endPoint.y)}
+                        r="4"
+                        fill="#059669"
+                      />
+                    </g>
+                  );
+                })}
+              </svg>
 
-    return (
-      <div
-        key={index}
-        className="absolute z-10 cursor-pointer"
-        style={{
-          top: pos.top,
-          left: pos.left,
-          transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
-        }}
-        onMouseEnter={() => !isSmScreen && setHoveredFeature(index)}
-        onMouseLeave={() => !isSmScreen && setHoveredFeature(null)}
-        onClick={() => isSmScreen && setHoveredFeature(index)}
-      >
-        <div className="text-left max-w-[120px]">
-          <div
-            className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-              hoveredFeature === index 
-                ? "text-green-600 dark:text-green-400" 
-                : "text-gray-900 dark:text-gray-100"
-            }`}
-          >
-            {feature.label}
-          </div>
-          <div 
-            className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-              hoveredFeature === index ? "opacity-100" : "opacity-70"
-            }`}
-          >
-            {feature.detail}
-          </div>
-        </div>
-      </div>
-    );
-  })}
+              {/* Feature Labels */}
+              {currentSpec.features.map((feature, index) => {
+                const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+                const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+
+                return (
+                  <div
+                    key={index}
+                    className="absolute z-10 cursor-pointer"
+                    style={{
+                      top: pos.top,
+                      left: pos.left,
+                      transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
+                    }}
+                    onMouseEnter={() => !isSmScreen && setHoveredFeature(index)}
+                    onMouseLeave={() => !isSmScreen && setHoveredFeature(null)}
+                    onClick={() => isSmScreen && setHoveredFeature(index)}
+                  >
+                    <div className="text-left max-w-[120px]">
+                      <div
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${hoveredFeature === index
+                            ? "text-green-600 dark:text-green-400"
+                            : "text-gray-900 dark:text-gray-100"
+                          }`}
+                      >
+                        {feature.label}
+                      </div>
+                      <div
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${hoveredFeature === index ? "opacity-100" : "opacity-70"
+                          }`}
+                      >
+                        {feature.detail}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -743,7 +741,7 @@ export default function H1Variants() {
 
             {/* Media Display */}
             <div className="w-full h-full flex items-center justify-center">
-              {displayGallery[currentImageIndex]?.endsWith('.mp4') ? (
+              {displayGallery[currentImageIndex]?.endsWith('.mp4') || displayGallery[currentImageIndex]?.endsWith('.webm') ? (
                 <video
                   src={displayGallery[currentImageIndex]}
                   controls
@@ -773,11 +771,10 @@ export default function H1Variants() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${
-                    currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
-                  }`}
+                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
+                    }`}
                 >
-                  {media.endsWith('.mp4') ? (
+                  {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                     <video
                       src={media}
                       className="w-full h-full object-cover"

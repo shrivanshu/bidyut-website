@@ -4,7 +4,7 @@ interface CobotClassroomProps {
   onContactClick?: () => void;
 }
 
-const robotImgSrc = '/Cobo/D1-arm.webp';
+const robotImgSrc = '/Cobo/d1-arm.webp';
 
 const CoboClassroom = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark: _isDark } = useTheme();
@@ -14,8 +14,8 @@ const CoboClassroom = ({ onContactClick }: CobotClassroomProps) => {
         {/* Image first on mobile */}
         <div className="flex justify-center md:order-1 order-1 h-full">
           <div className="relative w-full h-full flex items-center justify-center">
-            <img 
-              src={robotImgSrc} 
+            <img
+              src={robotImgSrc}
               alt="Educational Robot"
               className="w-full h-full object-contain max-h-[80vh]"
             />
@@ -34,14 +34,14 @@ const CoboClassroom = ({ onContactClick }: CobotClassroomProps) => {
             </p>
           </div>
 
-            <div className="pt-4">
-              <button 
-                onClick={onContactClick}
-                className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20 cursor-target"
-              >
-                Contact Sales Team
-              </button>
-            </div>
+          <div className="pt-4">
+            <button
+              onClick={onContactClick}
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20 cursor-target"
+            >
+              Contact Sales Team
+            </button>
+          </div>
         </div>
       </div>
     </div>
