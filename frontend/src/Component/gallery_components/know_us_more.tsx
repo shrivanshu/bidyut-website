@@ -29,7 +29,7 @@ let galleryImages: GalleryImage[] = [
   { src: "/knowusmore_gallery/DSC05561.JPG.webp", title: "Workspace 7", category: "workspace" },
 
   // Technology
-  { src: "/Cobo/D1-arm.webp", title: "Robotic Arm", category: "technology" },
+  { src: "/Cobo/d1-arm.webp", title: "Robotic Arm", category: "technology" },
   { src: "/Cobo/Franka-arm.webp", title: "Franka Robotic Arm", category: "technology" },
   { src: "/media/A2-pro.webp", title: "A2 Pro Robot", category: "technology" },
 
