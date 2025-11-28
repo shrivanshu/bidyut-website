@@ -184,9 +184,8 @@ const HeroSection: React.FC = () => {
 
         {/* Description */}
         <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
-          Bidyut is the country's most advanced Robotic Edtech Company,
-          empowering schools and students in their quest for holistic
-          development.
+          Bidyut is the country's most advanced Robotic EdTech Company, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics courses in India that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+
         </p>
       </div>
 
