@@ -277,120 +277,120 @@ const robotSpecs: RobotSpec[] = [
       }
     ]
   },
-  {
-    id: "B2-W-Basic",
-    name: "B2-W Basic",
-    description:
-      "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
-    gallery: [
-      "/media/B2 BASIC.webp",
+  // {
+  //   id: "B2-W-Basic",
+  //   name: "B2-W Basic",
+  //   description:
+  //     "B2-W Basic is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and works in -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7, and comes with B2 platform, 45000 mAh battery, charger, and calibrator. Version available: B2 Basic with 360° Lidar.",
+  //   gallery: [
+  //     "/media/B2 BASIC.webp",
 
-    ],
-    features: [
-      {
-        label: "32-wire Automative-grade lidar",
-        detail: "",
-        position: { top: "1%", left: "20%" },
-        positionSm: { top: "10%", left: "20%" },
-        lineDirection: "right",
-        targetPoint: { x: "18%", y: "30%" },
-        targetPointSm: { x: "23%", y: "32%" }
-      },
-      {
-        label: "Depth Camera",
-        detail: "",
-        position: { top: "3%", left: "60%" },
-        positionSm: { top: "80%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "19%", y: "38%" },
-        targetPointSm: { x: "20%", y: "42%" }
-      },
-      {
-        label: "High resolution Optical Camera",
-        detail: "",
-        position: { top: "55%", left: "1%" },
-        positionSm: { top: "22%", left: "50%" },
-        lineDirection: "right",
-        targetPoint: { x: "19%", y: "38%" },
-        targetPointSm: { x: "20%", y: "42%" }
-      },
-      {
-        label: "M107 high performance joint module",
-        detail: "",
-        position: { top: "78%", left: "95%" },
-        positionSm: { top: "80%", left: "95%" },
-        lineDirection: "left",
-        targetPoint: { x: "79%", y: "20%" },
-        targetPointSm: { x: "80%", y: "34%" }
-      },
-      {
-        label: "Ultra large capacity battery 45Ah (2250 Wh)",
-        detail: "",
-        position: { top: "85%", left: "18%" },
-        positionSm: { top: "90%", left: "35%" },
-        lineDirection: "right",
-        targetPoint: { x: "60%", y: "27%" },
-        targetPointSm: { x: "60%", y: "38%" }
-      }
-    ]
-  },
-  {
-    id: "B2-W-Advanced",
-    name: "B2-W Advanced",
-    description:
-      "B2-W Advanced is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and operating range of -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops). The pack includes B2 platform, 45000 mAh battery, charger, calibrator, and protective bracket. Version: B2 Advanced with 360° Lidar.",
-    gallery: [
-      "/media/B2 ADVANCED WITH 3D LIDAR.webp",
+  //   ],
+  //   features: [
+  //     {
+  //       label: "32-wire Automative-grade lidar",
+  //       detail: "",
+  //       position: { top: "1%", left: "20%" },
+  //       positionSm: { top: "10%", left: "20%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "18%", y: "30%" },
+  //       targetPointSm: { x: "23%", y: "32%" }
+  //     },
+  //     {
+  //       label: "Depth Camera",
+  //       detail: "",
+  //       position: { top: "3%", left: "60%" },
+  //       positionSm: { top: "80%", left: "1%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "19%", y: "38%" },
+  //       targetPointSm: { x: "20%", y: "42%" }
+  //     },
+  //     {
+  //       label: "High resolution Optical Camera",
+  //       detail: "",
+  //       position: { top: "55%", left: "1%" },
+  //       positionSm: { top: "22%", left: "50%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "19%", y: "38%" },
+  //       targetPointSm: { x: "20%", y: "42%" }
+  //     },
+  //     {
+  //       label: "M107 high performance joint module",
+  //       detail: "",
+  //       position: { top: "78%", left: "95%" },
+  //       positionSm: { top: "80%", left: "95%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "79%", y: "20%" },
+  //       targetPointSm: { x: "80%", y: "34%" }
+  //     },
+  //     {
+  //       label: "Ultra large capacity battery 45Ah (2250 Wh)",
+  //       detail: "",
+  //       position: { top: "85%", left: "18%" },
+  //       positionSm: { top: "90%", left: "35%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "60%", y: "27%" },
+  //       targetPointSm: { x: "60%", y: "38%" }
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: "B2-W-Advanced",
+  //   name: "B2-W Advanced",
+  //   description:
+  //     "B2-W Advanced is a 75 kg quadruped robot (1098×450×645 mm) with 6.1 m/s speed, payload up to 100 kg, and operating range of -40℃~60℃. It climbs 25°/8 cm, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops). The pack includes B2 platform, 45000 mAh battery, charger, calibrator, and protective bracket. Version: B2 Advanced with 360° Lidar.",
+  //   gallery: [
+  //     "/media/B2 ADVANCED WITH 3D LIDAR.webp",
 
-    ],
-    features: [
-      {
-        label: "32-wire Automative-grade lidar",
-        detail: "",
-        position: { top: "1%", left: "20%" },
-        positionSm: { top: "10%", left: "20%" },
-        lineDirection: "right",
-        targetPoint: { x: "22%", y: "15%" },
-        targetPointSm: { x: "23%", y: "32%" }
-      },
-      {
-        label: "Depth Camera",
-        detail: "",
-        position: { top: "3%", left: "60%" },
-        positionSm: { top: "80%", left: "1%" },
-        lineDirection: "right",
-        targetPoint: { x: "21%", y: "34%" },
-        targetPointSm: { x: "20%", y: "42%" }
-      },
-      {
-        label: "High resolution Optical Camera",
-        detail: "",
-        position: { top: "55%", left: "1%" },
-        positionSm: { top: "22%", left: "50%" },
-        lineDirection: "right",
-        targetPoint: { x: "21%", y: "34%" },
-        targetPointSm: { x: "20%", y: "42%" }
-      },
-      {
-        label: "M107 high performance joint module",
-        detail: "",
-        position: { top: "78%", left: "95%" },
-        positionSm: { top: "80%", left: "95%" },
-        lineDirection: "left",
-        targetPoint: { x: "79%", y: "20%" },
-        targetPointSm: { x: "80%", y: "34%" }
-      },
-      {
-        label: "Ultra large capacity battery 45Ah (2250 Wh)",
-        detail: "",
-        position: { top: "85%", left: "18%" },
-        positionSm: { top: "90%", left: "35%" },
-        lineDirection: "right",
-        targetPoint: { x: "60%", y: "27%" },
-        targetPointSm: { x: "60%", y: "38%" }
-      }
-    ]
-  }
+  //   ],
+  //   features: [
+  //     {
+  //       label: "32-wire Automative-grade lidar",
+  //       detail: "",
+  //       position: { top: "1%", left: "20%" },
+  //       positionSm: { top: "10%", left: "20%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "22%", y: "15%" },
+  //       targetPointSm: { x: "23%", y: "32%" }
+  //     },
+  //     {
+  //       label: "Depth Camera",
+  //       detail: "",
+  //       position: { top: "3%", left: "60%" },
+  //       positionSm: { top: "80%", left: "1%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "21%", y: "34%" },
+  //       targetPointSm: { x: "20%", y: "42%" }
+  //     },
+  //     {
+  //       label: "High resolution Optical Camera",
+  //       detail: "",
+  //       position: { top: "55%", left: "1%" },
+  //       positionSm: { top: "22%", left: "50%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "21%", y: "34%" },
+  //       targetPointSm: { x: "20%", y: "42%" }
+  //     },
+  //     {
+  //       label: "M107 high performance joint module",
+  //       detail: "",
+  //       position: { top: "78%", left: "95%" },
+  //       positionSm: { top: "80%", left: "95%" },
+  //       lineDirection: "left",
+  //       targetPoint: { x: "79%", y: "20%" },
+  //       targetPointSm: { x: "80%", y: "34%" }
+  //     },
+  //     {
+  //       label: "Ultra large capacity battery 45Ah (2250 Wh)",
+  //       detail: "",
+  //       position: { top: "85%", left: "18%" },
+  //       positionSm: { top: "90%", left: "35%" },
+  //       lineDirection: "right",
+  //       targetPoint: { x: "60%", y: "27%" },
+  //       targetPointSm: { x: "60%", y: "38%" }
+  //     }
+  //   ]
+  // }
 ];
 const Select = ({
   value: _value,
