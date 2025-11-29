@@ -319,7 +319,8 @@ const SchoolHeroSection: React.FC = () => {
                   transitionDelay: isTextVisible ? '0.2s' : '0s'
                 }}
               >
-                Transform Your Classroom with Robotics, AI & Future-Ready Labs
+                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs
+
               </h1>
             </div>
 
@@ -342,7 +343,8 @@ const SchoolHeroSection: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                We offer hands-on programs in Robotics, AI, and Drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future
+                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
+
               </p>
             </div>
           </div>
@@ -390,7 +392,7 @@ const SchoolHeroSection: React.FC = () => {
               }}
             >
               <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
-                Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup    </h1>
+                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs  </h1>
             </div>
 
             {/* Subtext */}
@@ -406,7 +408,8 @@ const SchoolHeroSection: React.FC = () => {
               }}
             >
               <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
-                We offer hands-on programs in Robotics, AI, and Drones through our robotics lab setup, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future. </p>
+                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
+              </p>
             </div>
 
             {/* Responsive Image Grid */}

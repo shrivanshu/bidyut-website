@@ -6,11 +6,11 @@ export function RoboticsSchools () {
         {/* Heading */}
         <div className='mb-12 text-center lg:text-left'>
           <h2 className='text-3xl md:text-5xl font-heading font-bold dark:text-gray-300 text-gray-900 mb-2'>
-            See How Schools Are
+            See How Schools Are  Transforming with Robotics
           </h2>
-          <p className='text-lg md:text-xl font-roboto dark:text-gray-400 text-gray-600'>
-            Transforming with Robotics
-          </p>
+          {/* <p className='text-lg md:text-xl font-roboto dark:text-gray-400 text-gray-600'>
+           
+          </p> */}
         </div>
 
         <div className='grid lg:grid-cols-2 gap-12 items-stretch'>
@@ -32,14 +32,11 @@ export function RoboticsSchools () {
                 See How Schools Are Transforming with Robotics
               </p>
               <h3 className='text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900'>
-                Modern robotics labs, equipped with smart tools and vibrant
-                learning spaces
+                Modern robotics labs, equipped with smart tools and vibrant learning spaces
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-                Modern robotics labs, equipped with smart tools and vibrant
-                learning spaces, are helping students turn curiosity into
-                innovation. Join the growing movement of schools embracing
-                future-ready education.
+              Modern robotics labs, equipped with smart tools and vibrant learning spaces, are helping students turn curiosity into innovation. Our comprehensive robotics lab setup enables schools to join the growing movement of embracing future-ready education.
+
               </p>
             </div>
 
@@ -51,10 +48,7 @@ export function RoboticsSchools () {
                 Expert-led training for confident robotics and AI education
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-                With our expert-led training, teachers gain the confidence to
-                deliver robotics and AI education effectively. Supported with
-                lesson plans, hands-on practice, and continuous guidance, they
-                create engaging classrooms that spark creativity.
+               With our expert-led training, teachers gain the confidence to deliver robotics and AI education effectively. Supported with lesson plans, hands-on practice, and continuous guidance, they create engaging classrooms that spark creativity in every robotics lab in school.
               </p>
             </div>
 
@@ -66,10 +60,8 @@ export function RoboticsSchools () {
                 From robotics and AI to drones and global competitions
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-                For over 5 years, Bidyut Innovation has been revolutionizing
-                robotics education across India. We have empowered 45,000+
-                students and transformed 120+ schools with cutting-edge
-                technology and hands-on learning experiences.
+               For over 5 years, Bidyut Innovation has been revolutionizing robotics education across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology and hands-on learning experiences.
+
               </p>
             </div>
 
