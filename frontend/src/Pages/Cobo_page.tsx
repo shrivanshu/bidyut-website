@@ -5,9 +5,13 @@ import CoboDetail from '../Component/Cobo_Parts_components/CoboDetail';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import CoboHeroSection from '../Component/Cobo_Parts_components/CoboHeroSection';
 import { useNavigate } from 'react-router-dom';
+import { useCanonical } from '../hooks/useCanonical';
 
 function Cobo_page() {
   const navigate = useNavigate();
+  
+  // Set canonical URL
+  useCanonical('https://bidyutinnovation.com/Cobot');
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">

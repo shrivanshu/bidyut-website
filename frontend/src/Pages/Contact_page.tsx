@@ -4,10 +4,18 @@ import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useEffect, useState } from "react";
+import { useCanonical } from '../hooks/useCanonical';
+import { useSEO } from '../hooks/useSEO';
 
 export default function ContactPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
+  
+  useSEO({
+    title: 'Contact Bidyut Innovation | Robotics Labs & Solutions',
+    description: 'Connect with Bidyut Innovation for robotic lab setup, teacher training, humanoid robots and AI-powered industrial automation solutions.',
+    canonical: 'https://bidyutinnovation.com/Contact'
+  });
 
   // Check for success message from URL params
   const [showSuccess, setShowSuccess] = useState(false);

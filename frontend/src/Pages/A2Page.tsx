@@ -6,9 +6,13 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 import A2HeroSection from '../Component/A2Components/A2HeroSection';
 import A2ComparisonChart from '../Component/A2Components/A2ComparisonChart';
 import { useNavigate } from 'react-router-dom';
+import { useCanonical } from '../hooks/useCanonical';
 
 function A2Page() {
   const navigate = useNavigate();
+  
+  // Set canonical URL
+  useCanonical('https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2');
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">

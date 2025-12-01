@@ -5,6 +5,7 @@ import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useSEO } from '../hooks/useSEO'
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -122,6 +123,13 @@ export function getVideoForYear(year: string): string {
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
+  
+  // SEO tags
+  useSEO({
+    title: 'Bidyut Innovation – Leading Robotics Company in India.',
+    description: 'Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills.',
+    canonical: 'https://bidyutinnovation.com/About'
+  });
   // Timeline States
    const [currentIndex, setCurrentIndex] = useState(0)
     const currentItem = timelineData[currentIndex]
