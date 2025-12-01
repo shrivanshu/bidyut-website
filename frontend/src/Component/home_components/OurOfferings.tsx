@@ -41,9 +41,9 @@ const offerings: Offering[] = [
     descriptionKey: 'schoolIntegrationDesc'
   },
   {
-    image: '/OurOfferingImages/school22-optimized.webp',
-    titleKey: 'eduAutomation',
-    descriptionKey: 'eduAutomationDesc'
+    image: '/OurOfferingImages/IMG-20251128-WA0000 book.webp',
+    titleKey: 'ComputerRoboticsBooksforSchools',
+    descriptionKey: 'ComputerRoboticsBooksforSchoolsDesc'
   }
 ]
 

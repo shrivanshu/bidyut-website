@@ -27,6 +27,7 @@ let galleryImages: GalleryImage[] = [
   { src: "/knowusmore_gallery/DSC05553.JPG.webp", title: "Workspace 5", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05560.JPG.webp", title: "Workspace 6", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05561.JPG.webp", title: "Workspace 7", category: "workspace" },
+  {src:"/knowusmore_gallery/IMG-20251128-WA000-gallery.webp",title:"Workspace 7",category:"workspace"},
 
   // Technology
   { src: "/Cobo/d1-arm.webp", title: "Robotic Arm", category: "technology" },
