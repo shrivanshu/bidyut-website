@@ -190,21 +190,12 @@ const robotSpecs: RobotSpec[] = [
     gallery: ['/media/B2 BASIC.png'],
     features: [
       {
-        label: '32-wire Automative-grade lidar',
-        detail: '',
-        position: { top: '1%', left: '20%' },
-        positionSm: { top: '12%', left: '20%' },
-        lineDirection: 'right',
-        targetPoint: { x: '115', y: '26%' },
-        targetPointSm: { x: '20%', y: '37%' }
-      },
-      {
         label: 'Depth Camera',
         detail: '',
-        position: { top: '3%', left: '60%' },
+        position: { top: '5%', left: '60%' },
         positionSm: { top: '80%', left: '1%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '17%', y: '29%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -213,7 +204,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '55%', left: '1%' },
         positionSm: { top: '22%', left: '50%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '18%', y: '38%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -249,7 +240,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '1%', left: '20%' },
         positionSm: { top: '10%', left: '20%' },
         lineDirection: 'right',
-        targetPoint: { x: '22%', y: '15%' },
+        targetPoint: { x: '75%', y: '32%' },
         targetPointSm: { x: '23%', y: '32%' }
       },
       {
@@ -258,7 +249,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '3%', left: '60%' },
         positionSm: { top: '80%', left: '1%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '80%', y: '38%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -267,7 +258,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '55%', left: '1%' },
         positionSm: { top: '22%', left: '50%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '78%', y: '45%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -276,7 +267,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '78%', left: '95%' },
         positionSm: { top: '80%', left: '95%' },
         lineDirection: 'left',
-        targetPoint: { x: '79%', y: '20%' },
+        targetPoint: { x: '65%', y: '45%' },
         targetPointSm: { x: '80%', y: '34%' }
       },
       {
@@ -285,7 +276,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '85%', left: '18%' },
         positionSm: { top: '90%', left: '35%' },
         lineDirection: 'right',
-        targetPoint: { x: '60%', y: '27%' },
+        targetPoint: { x: '50%', y: '40%' },
         targetPointSm: { x: '60%', y: '38%' }
       }
     ]
@@ -298,21 +289,12 @@ const robotSpecs: RobotSpec[] = [
     gallery: ['/media/B2W.png'],
     features: [
       {
-        label: '32-wire Automative-grade lidar',
-        detail: '',
-        position: { top: '1%', left: '20%' },
-        positionSm: { top: '10%', left: '20%' },
-        lineDirection: 'right',
-        targetPoint: { x: '18%', y: '30%' },
-        targetPointSm: { x: '23%', y: '32%' }
-      },
-      {
         label: 'Depth Camera',
         detail: '',
         position: { top: '3%', left: '60%' },
         positionSm: { top: '80%', left: '1%' },
         lineDirection: 'right',
-        targetPoint: { x: '19%', y: '38%' },
+        targetPoint: { x: '19%', y: '26%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -321,7 +303,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '55%', left: '1%' },
         positionSm: { top: '22%', left: '50%' },
         lineDirection: 'right',
-        targetPoint: { x: '19%', y: '38%' },
+        targetPoint: { x: '21%', y: '35%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -366,7 +348,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '3%', left: '60%' },
         positionSm: { top: '80%', left: '1%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '20%', y: '27%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
@@ -375,7 +357,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '55%', left: '1%' },
         positionSm: { top: '22%', left: '50%' },
         lineDirection: 'right',
-        targetPoint: { x: '21%', y: '34%' },
+        targetPoint: { x: '20%', y: '34%' },
         targetPointSm: { x: '20%', y: '42%' }
       },
       {
