@@ -12,16 +12,9 @@ import { EducationSections } from "../Component/SchoolComponentsFinal/EducationS
 import { CTASection } from "../Component/SchoolComponentsFinal/CTASection";
 import { RoboticsSchools } from "../Component/SchoolComponentsFinal/RoboticsSchools";
 import Scroller from "../Component/SchoolComponentsFinal/Scroller";
-import { useCanonical } from '../hooks/useCanonical';
-import { useSEO } from '../hooks/useSEO';
+import { SEO } from '../hooks/useSEO';
 
 function FinalSchoolPage() {
-  useSEO({
-    title: 'Robotics Lab Setup for Schools | Teacher Training | Bidyut',
-    description: 'Robotics Lab Setup for schools with hands-on learning, teacher training, workshops, and drone programs. Making STREAM and AI education practical and engaging.',
-    canonical: 'https://bidyutinnovation.com/School'
-  });
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -55,6 +48,11 @@ function FinalSchoolPage() {
     <ThemeProvider>
       <>
         <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
+          <SEO
+            title="Robotics Lab Setup for Schools | Teacher Training | Bidyut"
+            description="Robotics Lab Setup for schools with hands-on learning, teacher training, workshops, and drone programs. Making STREAM and AI education practical and engaging."
+            canonical="https://bidyutinnovation.com/School"
+          />
           <Header />
 
           <SchoolHeroSection />

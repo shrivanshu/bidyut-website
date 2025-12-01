@@ -6,16 +6,19 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 import A2HeroSection from '../Component/A2Components/A2HeroSection';
 import A2ComparisonChart from '../Component/A2Components/A2ComparisonChart';
 import { useNavigate } from 'react-router-dom';
-import { useCanonical } from '../hooks/useCanonical';
+import { SEO } from '../hooks/useSEO';
 
 function A2Page() {
   const navigate = useNavigate();
   
-  // Set canonical URL
-  useCanonical('https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2');
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+        <SEO
+          title="A2 Quadruped Robot | Industry Solutions | Bidyut Innovation"
+          description="A2 quadruped robot for industrial applications. Advanced automation and industrial robotics solutions."
+          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2"
+        />
         <Header />
   <A2HeroSection/>
   <A2Variants/>

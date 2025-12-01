@@ -17,7 +17,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 import Loader from "../Component/Loader";
 import { useState, useEffect } from "react";
 import usePerformanceMonitoring from '../hooks/usePerformanceMonitoring';
-import { useSEO } from '../hooks/useSEO';
+import { SEO } from '../hooks/useSEO';
 
 
 function Home_page() {
@@ -27,12 +27,6 @@ function Home_page() {
 
   // Enable performance monitoring
   usePerformanceMonitoring();
-  
-  useSEO({
-    title: 'Hands-On Robotics Courses in India | Bidyut Innovation',
-    description: 'Explore robotics courses in India with Bidyut Innovation. Hands-on learning, robotics for kids, robotics for schools, coding & AI education.',
-    canonical: 'https://bidyutinnovation.com/'
-  });
 
   useEffect(() => {
     // Reduced loading delay for better user experience
@@ -47,6 +41,11 @@ function Home_page() {
 
   return (
     <ThemeProvider>
+      <SEO
+        title="Hands-On Robotics Courses in India | Bidyut Innovation"
+        description="Explore robotics courses in India with Bidyut Innovation. Hands-on learning, robotics for kids, robotics for schools, coding & AI education."
+        canonical="https://bidyutinnovation.com/"
+      />
       {loading && <Loader fadeOut={fadeOut} />}
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden" data-testid="home-page">
         <Header />

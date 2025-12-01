@@ -5,15 +5,17 @@ import RobotVariants from '../Component/robot_components/RobotVariants';
 import RobotDetail from '../Component/robot_components/RobotDetail';
 import Table from '../Component/G1_Table';
 import { ThemeProvider } from '../contexts/ThemeContext';
-import { useCanonical } from '../hooks/useCanonical';
+import { SEO } from '../hooks/useSEO';
 
 function Robot_page() {
-  // Set canonical URL
-  useCanonical('https://bidyutinnovation.com/Robot/Humanoid/Education/G1');
-  
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
+        <SEO
+          title="G1 Humanoid Robot | Education Programs | Bidyut Innovation"
+          description="G1 humanoid robot for robotics education. Hands-on learning in schools and institutions with advanced humanoid technology."
+          canonical="https://bidyutinnovation.com/Robot/Humanoid/Education/G1"
+        />
         <Header />
         <HeroSectionRobot />
         <RobotVariants/>

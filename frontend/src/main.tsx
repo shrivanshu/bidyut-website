@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
+import { HelmetProvider } from 'react-helmet-async';
 import { preloadCriticalChunks } from './utils/preloadStrategy';
 import { setupBfcache } from './utils/bfcache';
 
@@ -91,17 +92,7 @@ setupBfcache();
 const root = document.getElementById('root')!;
 if (import.meta.env.PROD) {
   ReactDOM.createRoot(root).render(
-    <ThemeProvider>
-      <LanguageProvider>
-        <Suspense fallback={loadingFallback}>
-          <AppRouter />
-        </Suspense>
-      </LanguageProvider>
-    </ThemeProvider>
-  );
-} else {
-  ReactDOM.createRoot(root).render(
-    <React.StrictMode>
+    <HelmetProvider>
       <ThemeProvider>
         <LanguageProvider>
           <Suspense fallback={loadingFallback}>
@@ -109,6 +100,20 @@ if (import.meta.env.PROD) {
           </Suspense>
         </LanguageProvider>
       </ThemeProvider>
+    </HelmetProvider>
+  );
+} else {
+  ReactDOM.createRoot(root).render(
+    <React.StrictMode>
+      <HelmetProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <Suspense fallback={loadingFallback}>
+              <AppRouter />
+            </Suspense>
+          </LanguageProvider>
+        </ThemeProvider>
+      </HelmetProvider>
     </React.StrictMode>
   );
 }
