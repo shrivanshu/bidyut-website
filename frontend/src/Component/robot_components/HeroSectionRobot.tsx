@@ -25,20 +25,23 @@ const HeroSection = () => {
             {/* Left part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-start'>
               <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black  dark:text-white drop-shadow-sm cursor-target'>
-                Educational
+                Let's
               </span>
               <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Robot
+                Innovate
+              </span>
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
+                Learn
               </span>
             </div>
 
             {/* Right part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-end'>
               <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Robot
+                Beyond
               </span>
               <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Unitree G1
+                Boundaries
               </span>
             </div>
           </div>
@@ -56,7 +59,7 @@ const HeroSection = () => {
         {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
           <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
-            Learn Robotics. Build the Future.
+            G1 Humanoid Educational Robot
           </h2>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
             The G1 Educational Robot – a next-generation humanoid platform for
