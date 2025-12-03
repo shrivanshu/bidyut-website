@@ -15,35 +15,6 @@ import Scroller from "../Component/SchoolComponentsFinal/Scroller";
 import { SEO } from '../hooks/useSEO';
 
 function FinalSchoolPage() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    name: "Bidyut Innovation",
-    url: "https://bidyutinnovation.com/",
-    logo: "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "9370782979",
-      contactType: ""
-    },
-    sameAs: [
-      "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
-      "https://www.linkedin.com/company/bidyutinnovation/"
-    ]
-  };
-
-  useEffect(() => {
-    const schemaJson = JSON.stringify(schema);
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = schemaJson;
-    document.head.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
-
   return (
     <ThemeProvider>
       <>
