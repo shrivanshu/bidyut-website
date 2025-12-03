@@ -77,13 +77,14 @@ const WhyBidyut: React.FC = () => {
           duration={1}
         >
           <StaggeredText 
-            text="Transform your classrooms into innovation"
+            text="Turn your classrooms into innovation hubs with fully equipped robotics labs, teacher training, and NEP 2020- aligned curriculum. Our solutions are designed to bring practical learning and creativity into every robotics lab in school.
+"
             className="block"
             staggerDelay={0.03}
             direction="up"
           />
         </AnimatedText>
-        <AnimatedText
+        {/* <AnimatedText
           direction="right"
           delay={1.2}
           duration={1}
@@ -106,7 +107,7 @@ const WhyBidyut: React.FC = () => {
             staggerDelay={0.03}
             direction="up"
           />
-        </AnimatedText>
+        </AnimatedText> */}
       </div>
 
       <div
@@ -122,7 +123,7 @@ const WhyBidyut: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText 
-            text="Transform your classrooms into innovation hubs with fully equipped labs, teacher training, and NEP 2020–aligned curriculum."
+            text="Turn your classrooms into innovation hubs with fully equipped robotics labs, teacher training, and NEP 2020- aligned curriculum. Our solutions are designed to bring practical learning and creativity into every robotics lab in school."
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"

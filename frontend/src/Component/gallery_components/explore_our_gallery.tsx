@@ -57,6 +57,7 @@ const galleryImageFiles = [
   "DSC05145.JPG.webp",
   "DSC05268.JPG.webp",
   "DSC05302.JPG.webp",
+ 
 ];
 
 const generateBaseImages = (): ImageItem[] => {

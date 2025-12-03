@@ -214,7 +214,7 @@ const StreamSchool: React.FC = () => {
           delay={1.2}
           duration={0.8}
         >
-          <span
+          <h2
             style={{
               fontFamily: "Roboto, sans-serif",
               fontSize: "clamp(16px, 5vw, 22px)",
@@ -222,7 +222,7 @@ const StreamSchool: React.FC = () => {
             }}
           >
             Where Innovation Meets{" "}
-          </span>
+          </h2>
         </AnimatedText>
         <AnimatedText
           direction="up"
@@ -278,7 +278,7 @@ const StreamSchool: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText
-            text="Empowering students with cutting-edge technology education through hands-on learning, creative projects, and real-world applications."
+            text="Empowering students with cutting-edge technology education through hands-on learning,creative projects ,and real-world applications."
             staggerDelay={0.03}
             direction="fade"
             splitBy="words"
@@ -302,7 +302,7 @@ const StreamSchool: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText
-            text="Empowering students with cutting-edge technology education through hands-on learning, creative projects, and real-world applications."
+            text="Empowering students with cutting-edge technology education through hands-on learning,creative projects ,and real-world applications."
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"

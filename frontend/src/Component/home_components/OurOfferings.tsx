@@ -41,9 +41,9 @@ const offerings: Offering[] = [
     descriptionKey: 'schoolIntegrationDesc'
   },
   {
-    image: '/OurOfferingImages/school22-optimized.webp',
-    titleKey: 'eduAutomation',
-    descriptionKey: 'eduAutomationDesc'
+    image: '/OurOfferingImages/IMG-20251128-WA0000 book.webp',
+    titleKey: 'ComputerRoboticsBooksforSchools',
+    descriptionKey: 'ComputerRoboticsBooksforSchoolsDesc'
   }
 ]
 
@@ -91,12 +91,8 @@ function OfferingsSection () {
             </span>
           </h2>
           <p className='max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-300'>
-            At Bidyut, we bring robotics and coding to classrooms through
-            STREAM-aligned labs, hands-on learning, and applied problem-solving,
-            empowering students with future-ready skills. Beyond education, we
-            also design and deliver advanced robotics solutions for industries,
-            helping businesses automate processes, improve efficiency, and
-            innovate with cutting-edge technology.
+           At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics courses in India that empower students with future-ready skills. Beyond education, we also design and deliver advanced robotics solutions for industries, helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.
+
           </p>
         </div>
 
