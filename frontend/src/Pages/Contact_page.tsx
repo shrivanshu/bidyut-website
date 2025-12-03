@@ -4,11 +4,45 @@ import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useEffect, useState } from "react";
+import { SEO } from '../hooks/useSEO';
+import { Helmet } from 'react-helmet-async';
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Bidyut Innovation Contact Page",
+  "url": "https://bidyutinnovation.com/Contact",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Bidyut Innovation",
+    "url": "https://bidyutinnovation.com",
+    "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
+    "sameAs": [
+      "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
+      "https://www.linkedin.com/company/bidyutinnovation/"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 9370782979",
+      "contactType": "customer service",
+      "email": "Info@bidyutrobotics.com",
+      "areaServed": "IN"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "901 Clifton Corporate Park",
+      "addressLocality": "Indore",
+      "addressRegion": "Madhya Pradesh",
+      "postalCode": "452010",
+      "addressCountry": "IN"
+    }
+  }
+};
 
 export default function ContactPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
-
+  
   // Check for success message from URL params
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -37,6 +71,16 @@ export default function ContactPage() {
 
   return (
     <div className={`flex flex-col min-h-screen transition-colors duration-300 ${bgColor}`}>
+      <SEO
+        title="Contact Bidyut Innovation | Robotics Labs & Solutions"
+        description="Connect with Bidyut Innovation for robotic lab setup, teacher training, humanoid robots and AI-powered industrial automation solutions."
+        canonical="https://bidyutinnovation.com/Contact"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(contactSchema)}
+        </script>
+      </Helmet>
       <main className="flex-1">
         {/* Hero Section */}
         <motion.section

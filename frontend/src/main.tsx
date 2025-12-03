@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
+import { HelmetProvider } from 'react-helmet-async';
 import { preloadCriticalChunks } from './utils/preloadStrategy';
 import { setupBfcache } from './utils/bfcache';
 
-// Lazy-load HelmetProvider to defer loading react-helmet-async until hydration
-const ReactHelmetProvider = lazy(() =>
-  import('react-helmet-async').then((mod) => ({ default: mod.HelmetProvider }))
-);
+
 const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
 const Gallery = lazy(() => import('./Pages/Gallery_page'));
@@ -94,7 +92,7 @@ setupBfcache();
 const root = document.getElementById('root')!;
 if (import.meta.env.PROD) {
   ReactDOM.createRoot(root).render(
-    <ReactHelmetProvider>
+    <HelmetProvider>
       <ThemeProvider>
         <LanguageProvider>
           <Suspense fallback={loadingFallback}>
@@ -102,12 +100,12 @@ if (import.meta.env.PROD) {
           </Suspense>
         </LanguageProvider>
       </ThemeProvider>
-    </ReactHelmetProvider>
+    </HelmetProvider>
   );
 } else {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
-      <ReactHelmetProvider>
+      <HelmetProvider>
         <ThemeProvider>
           <LanguageProvider>
             <Suspense fallback={loadingFallback}>
@@ -115,7 +113,7 @@ if (import.meta.env.PROD) {
             </Suspense>
           </LanguageProvider>
         </ThemeProvider>
-      </ReactHelmetProvider>
+      </HelmetProvider>
     </React.StrictMode>
   );
 }
