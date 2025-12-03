@@ -6,11 +6,18 @@ import H1Detail from '../Component/H1_components/H1Detail';
 import H1ComparisonChart from '../Component/H1_components/H1ComparisonChart';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../hooks/useSEO';
 function H1_page() {
   const navigate = useNavigate();
+  
   return (
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
+        <SEO
+          title="H1 Humanoid Robot | Industry Solutions | Bidyut Innovation"
+          description="H1 humanoid robot for industrial applications. Advanced robotics for automation, manufacturing, and industrial tasks."
+          canonical="https://bidyutinnovation.com/Robot/Humanoids/Industry/H1"
+        />
         <Header />
         <HeroSectionH1 />
         <H1Variants/>

@@ -5,6 +5,7 @@ import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { SEO } from '../hooks/useSEO'
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -122,6 +123,7 @@ export function getVideoForYear(year: string): string {
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
+  
   // Timeline States
    const [currentIndex, setCurrentIndex] = useState(0)
     const currentItem = timelineData[currentIndex]
@@ -1681,6 +1683,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
   // Initial scroll-triggered hero section
   return (
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
+      <SEO
+        title="Bidyut Innovation – Leading Robotics Company in India."
+        description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
+        canonical="https://bidyutinnovation.com/About"
+      />
       <Header />
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden px-4">
         <div className="relative">

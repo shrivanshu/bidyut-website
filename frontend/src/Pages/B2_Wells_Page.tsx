@@ -5,12 +5,19 @@ import B2_Wells_Details from '../Component/B2_Wells_components/B2_Wells_Details'
 import { ThemeProvider } from '../contexts/ThemeContext';
 import B2WellsHeroSection from '../Component/B2_Wells_components/B2WellsHeroSection';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../hooks/useSEO';
 
 function B2_Wells_Page() {
   const navigate = useNavigate();
+  
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+        <SEO
+          title="B2-W Quadruped Robot | Wells | Bidyut Innovation"
+          description="B2-W quadruped robot for wells inspection and industrial applications."
+          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W"
+        />
         <Header />
         <B2WellsHeroSection/>
         <B2_Wells_Variants/>
