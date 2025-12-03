@@ -5,12 +5,19 @@ import GO2VDetails from '../Component/GO2VComponents/GO2VDetails';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import GO2VHeroSection from '../Component/GO2VComponents/GO2VHeroSection';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../hooks/useSEO';
 
 function GO2VPage() {
   const navigate = useNavigate();
+  
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+        <SEO
+          title="GO2-W Quadruped Robot | Education Programs | Bidyut Innovation"
+          description="GO2-W quadruped robot for robotics education programs."
+          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2-W"
+        />
         <Header />
   <GO2VHeroSection/>
   <GO2VVariants/>

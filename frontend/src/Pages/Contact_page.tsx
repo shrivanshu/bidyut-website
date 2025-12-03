@@ -42,7 +42,7 @@ const contactSchema = {
 export default function ContactPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
-
+  
   // Check for success message from URL params
   const [showSuccess, setShowSuccess] = useState(false);
 

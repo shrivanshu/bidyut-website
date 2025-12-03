@@ -42,6 +42,11 @@ const Gallery_page: React.FC = () => {
         </script>
       </Helmet>
       <div className=" bg-white dark:bg-gray-900 transition-colors duration-300">
+        <SEO
+          title="Robotics Education in India | Bidyut Innovation Gallery"
+          description="Explore Bidyut Innovation's gallery showcasing cutting-edge robotics education in India. Hands-on STREAM, AI, and robotics programs transforming classrooms."
+          canonical="https://bidyutinnovation.com/Gallery"
+        />
         <Header />
         <main>
           <GalleryHero />
