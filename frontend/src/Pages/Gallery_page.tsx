@@ -9,6 +9,7 @@ import KnowUsMore from '../Component/gallery_components/know_us_more';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { SEO } from '../hooks/useSEO';
 import { Helmet } from 'react-helmet-async';
+import TrackingScripts from '../Component/TrackingScripts';
 
 const gallerySchema = {
   "@context": "https://schema.org",
@@ -41,6 +42,7 @@ const Gallery_page: React.FC = () => {
           {JSON.stringify(gallerySchema)}
         </script>
       </Helmet>
+      <TrackingScripts />
       <div className=" bg-white dark:bg-gray-900 transition-colors duration-300">
         <SEO
           title="Robotics Education in India | Bidyut Innovation Gallery"

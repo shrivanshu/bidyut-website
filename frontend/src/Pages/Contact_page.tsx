@@ -6,6 +6,7 @@ import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useEffect, useState } from "react";
 import { SEO } from '../hooks/useSEO';
 import { Helmet } from 'react-helmet-async';
+import TrackingScripts from '../Component/TrackingScripts';
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -81,6 +82,7 @@ export default function ContactPage() {
           {JSON.stringify(contactSchema)}
         </script>
       </Helmet>
+      <TrackingScripts />
       <main className="flex-1">
         {/* Hero Section */}
         <motion.section

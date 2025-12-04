@@ -6,6 +6,7 @@ import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { SEO } from '../hooks/useSEO'
+import TrackingScripts from "../Component/TrackingScripts"
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -807,6 +808,12 @@ export default function AboutPage() {
   if (showAboutUs || scrollY > 2400) {
     return (
       <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} transition-colors duration-500`}>
+        <SEO
+          title="About Bidyut Innovation | Robotics Education in India"
+          description="Learn about Bidyut Innovation's mission, vision, and expertise in robotics and STEM education. Transforming classrooms and empowering students across India."
+          canonical="https://bidyutinnovation.com/About"
+        />
+        <TrackingScripts />
         <Header />
         {/* Hero About Section */}
         <div

@@ -2,6 +2,7 @@
 import { lazy } from 'react';
 import Header from '../Component/Header';
 import { LazyLoad } from '../Component/LazyLoad';
+import TrackingScripts from '../Component/TrackingScripts';
 
 // Lazy load heavy components with chunk names for better caching
 const HeroSection = lazy(() => import(/* webpackChunkName: "hero" */ '../Component/home_components/heroSection'));
@@ -46,6 +47,7 @@ function Home_page() {
         description="Explore robotics courses in India with Bidyut Innovation. Hands-on learning, robotics for kids, robotics for schools, coding & AI education."
         canonical="https://bidyutinnovation.com/"
       />
+      <TrackingScripts />
       {loading && <Loader fadeOut={fadeOut} />}
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden" data-testid="home-page">
         <Header />
