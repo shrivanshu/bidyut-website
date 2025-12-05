@@ -5,7 +5,7 @@ const TrackingScripts = () => {
     <Helmet>
       {/* Google Analytics */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9M6SR35DR"></script>
-      <script>
+      <script type="text/javascript">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -14,8 +14,8 @@ const TrackingScripts = () => {
         `}
       </script>
 
-      {/* Meta Pixel Code */}
-      <script>
+      {/* Meta Pixel Code (head) */}
+      <script type="text/javascript">
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -29,14 +29,9 @@ const TrackingScripts = () => {
           fbq('track', 'PageView');
         `}
       </script>
-      <noscript>
-        <img height="1" width="1" style={{display: 'none'}}
-          src="https://www.facebook.com/tr?id=608801015294964&ev=PageView&noscript=1"
-        />
-      </noscript>
 
-      {/* Google Tag Manager */}
-      <script>
+      {/* Google Tag Manager (head) */}
+      <script type="text/javascript">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -45,13 +40,6 @@ const TrackingScripts = () => {
           })(window,document,'script','dataLayer','GTM-WZFNNWZL');
         `}
       </script>
-
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZFNNWZL"
-          height="0" width="0" style={{display: 'none', visibility: 'hidden'}}
-        ></iframe>
-      </noscript>
     </Helmet>
   );
 };
