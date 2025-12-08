@@ -14,8 +14,8 @@ function B2Page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="B2 Quadruped Robot | Industry Solutions | Bidyut Innovation"
-          description="B2 quadruped robot for industrial applications. Advanced automation, inspection, and industrial tasks."
+          title="Unitree B2 | Smart Quadruped Robot for Research & Industry"
+          description="Explore the Quadruped Robot B2, built for industrial automation, AI-driven tasks, and advanced mobility. Fast, precise and designed for tough environments."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2"
         />
         <Header />

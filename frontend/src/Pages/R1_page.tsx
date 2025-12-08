@@ -13,8 +13,8 @@ function H1_page() {
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
-          title="R1 Humanoid Robot | Education Programs | Bidyut Innovation"
-          description="R1 humanoid robot for robotics education. Advanced humanoid for schools and educational institutions."
+          title="Unitree R1 Robot |  Transform STEM Learning with Humanoids"
+          description="Explore the Unitree R1 robot, a humanoid designed for interactive STEM learning, coding, and AI skills. Engage students with creative hands-on innovation."
           canonical="https://bidyutinnovation.com/Robot/Humanoid/Education/R1"
         />
         <Header />

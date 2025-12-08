@@ -14,8 +14,8 @@ function GO2VPage() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="GO2-W Quadruped Robot | Education Programs | Bidyut Innovation"
-          description="GO2-W quadruped robot for robotics education programs."
+          title="Unitree Go2 W Robot | Agile All-Terrain Robotics Companion"
+          description="Meet the Unitree Go2 W robot — your agile, compact, and all-terrain companion perfect for robotics research, inspections, and versatile real-world tasks."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2-W"
         />
         <Header />

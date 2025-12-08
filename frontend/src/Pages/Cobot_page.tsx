@@ -15,8 +15,8 @@ function Cobot_page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="GO2 Quadruped Robot | Education Programs | Bidyut Innovation"
-          description="GO2 quadruped robot for robotics education. Hands-on learning with advanced quadruped technology."
+          title="Unitree Robot Dog GO2 | Multipurpose AI Quadruped Robot"
+          description="Explore the Robot Dog GO2 – an advanced four-legged robot designed for education, research, autonomous robotics, and engaging interactive learning experiences."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2"
         />
         <Header />

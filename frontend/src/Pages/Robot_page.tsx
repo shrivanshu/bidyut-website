@@ -12,8 +12,8 @@ function Robot_page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
-          title="G1 Humanoid Robot | Education Programs | Bidyut Innovation"
-          description="G1 humanoid robot for robotics education. Hands-on learning in schools and institutions with advanced humanoid technology."
+          title="Humanoid Education G1 | Hands-On Learning Educational Robot"
+          description="Meet the Humanoid Education G1, a smart educational robot for hands-on STREAM learning, coding, and AI exploration. Inspire creativity and transform learning."
           canonical="https://bidyutinnovation.com/Robot/Humanoid/Education/G1"
         />
         <Header />

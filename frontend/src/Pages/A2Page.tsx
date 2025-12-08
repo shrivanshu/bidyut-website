@@ -15,8 +15,8 @@ function A2Page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="A2 Quadruped Robot | Industry Solutions | Bidyut Innovation"
-          description="A2 quadruped robot for industrial applications. Advanced automation and industrial robotics solutions."
+          title="Unitree A2 | Smart Quadruped Robot Dog for Tough Tasks"
+          description="The Unitree A2 quadruped robot dog delivers high-speed agility, stability, and AI-driven performance—perfect for advanced industrial inspection and monitoring."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2"
         />
         <Header />

@@ -14,8 +14,8 @@ function B2_Wells_Page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="B2-W Quadruped Robot | Wells | Bidyut Innovation"
-          description="B2-W quadruped robot for wells inspection and industrial applications."
+          title="Unitree B2-W Inspection Robot | Next-Gen Agile Explorer"
+          description="Boost safety and efficiency with the Quadruped Industry B2‑W inspection robot—detect faults, monitor hazards, and gain accurate real-time industrial insights."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W"
         />
         <Header />

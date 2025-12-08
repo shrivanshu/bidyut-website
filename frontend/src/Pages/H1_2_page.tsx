@@ -14,8 +14,8 @@ function H1_2_page() {
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
-          title="H1-2 Humanoid Robot | Industry Solutions | Bidyut Innovation"
-          description="H1-2 humanoid robot for industrial applications. Advanced humanoid robotics for manufacturing, automation, and industry."
+          title="Unitree Humanoid Robot H1-2 | Advanced Industrial Robotics"
+          description="Discover the Unitree Humanoid Robot H1-2, a full-size industrial robot with AI intelligence, precision, and speed—designed for automation and research."
           canonical="https://bidyutinnovation.com/Robot/Humanoid/Industry/H1-2"
         />
         <Header  />
