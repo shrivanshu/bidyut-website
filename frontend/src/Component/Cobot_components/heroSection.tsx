@@ -10,21 +10,20 @@ export default function HeroSection() {
 
       {/* Top tagline */}
       <div className="text-center font-poppins mb-8">
-        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
+        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Next-Level Robotics for Education.</p>
       </div>
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target">
-          <span className="text-[#0acf83]">Thynk Limitless.</span> Learn Beyond Boundaries
+          <span className="text-[#0acf83]">Quadrupeds </span>Robot Dog GO2.
         </h1>
       </div>
 
 {/* Description paragraph */}
 <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
-    Discover a new way to build, program, and solve real-world challenges with creativity.
+    The Robot Dog GO2 is an advanced quadruped robot designed to bring robotics, AI, and programming to life. This GO2 Robot moves with realistic four-legged motion, making it perfect for students, educators, and robotics enthusiasts who want hands-on STREAM learning.
   </p>
 </div>
 
@@ -51,9 +50,7 @@ export default function HeroSection() {
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    Select from a range of high-performance educational robots designed for hands-on learning. 
-    Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
-    for secondary development and real-time demonstrations.
+Select your preferred Robot Dog GO2 model below to unlock the ideal combination of learning, coding, and hands-on robotics, designed to make STREAM education engaging and practical.
   </p>
 </div>
       </div>

@@ -30,7 +30,7 @@ const cobotSearchData = [
     name: "GO2 AIR",
     image: "/A2.webp",
     category: "Service",
-    description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
+    description: "GO2 AIR is a 15 kg smart robot  with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
     gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
@@ -176,7 +176,7 @@ RobotSpec[] = [
     id: "A2-Standard",
     name: "A2 Standard",
     description:
-      "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
+      "The Unitree A2 Standard is a powerful quadruped robot dog weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
       "/media/A2-standard.webp",
 
