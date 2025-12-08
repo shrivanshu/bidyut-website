@@ -46,7 +46,7 @@ const robotSpecs: RobotSpec[] = [
     id: 'B2-W-Basic',
     name: 'B2-W Basic Version ',
     description:
-      'B2-W Basic Version offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.',
+      'B2-W Basic Version inspection robot offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.',
     gallery: ['/media/B2 ADVANCED.webp'],
     features: [
       {
@@ -82,7 +82,7 @@ const robotSpecs: RobotSpec[] = [
     id: 'B2-W-Basic-3D-Lidar',
     name: 'B2-W Basic Version with 3D Lidar ',
     description:
-      'B2-W Basic Version with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.',
+      'B2-W Basic Version inspection robot with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.',
     gallery: ['/media/B2 ADVANCED WITH 3D LIDAR.webp'],
     features: [
       {

@@ -43,7 +43,7 @@ const robotSpecs: RobotSpec[] = [
     id: "Z1-Arm",
     name: "Z1 Arm",
     description:
-      "The Z1 Arm is a high-precision robotic arm with harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It provides high accuracy, stable performance, and robust communication for industrial and research applications.",
+      "The Z1 Arm is a high-precision robotic arm lightweight  with harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It provides high accuracy, stable performance, and robust communication for industrial and research applications.",
     gallery: [
       "/Cobo/Z1-Arm.webp",
       "/Cobo/Z!-arm.webm",
