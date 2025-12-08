@@ -170,7 +170,7 @@ const robotSpecs: RobotSpec[] = [
     id: "GO2-AIR",
     name: "GO2-AIR",
     description:
-      "Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
+      "The Robot Dog GO2 features compact Dimensions of 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).",
     gallery: [
       "/GO2/GO2 AIR.webp",
 

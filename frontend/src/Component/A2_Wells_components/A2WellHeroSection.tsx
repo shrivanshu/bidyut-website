@@ -16,15 +16,15 @@ export default function A2WellHeroSection() {
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target">
-          <span className="text-[#0acf83]">Thynk Limitless.</span> Learn Beyond Boundaries
+          <span className="text-[#0acf83]">Unitree A2‑W –</span> Advanced Autonomous Inspection Robot
         </h1>
       </div>
 
 {/* Description paragraph */}
 <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
-    Discover a new way to build, program, and solve real-world challenges with creativity.
+   The Unitree A2‑W is an advanced autonomous inspection robot engineered for industrial, logistics, and research applications. Combining legged agility with wheeled efficiency, this hybrid quadruped robot navigates complex environments, performs high-precision inspections, and automates repetitive tasks. Designed for rugged and dynamic environments, the A2‑W ensures safety, reliability, and operational efficiency across diverse real-world industrial scenarios.
+
   </p>
 </div>
 
@@ -51,9 +51,9 @@ export default function A2WellHeroSection() {
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    Select from a range of high-performance educational robots designed for hands-on learning. 
-    Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal 
-    for secondary development and real-time demonstrations.
+   Explore the technical details and capabilities of the Quadrupeds A2-W, a high-performance autonomous inspection robot designed to deliver reliable industrial operations in demanding environments.
+
+
   </p>
 </div>
       </div>

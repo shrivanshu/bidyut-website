@@ -10,21 +10,20 @@ export default function CoboHeroSection() {
 
       {/* Top tagline */}
       <div className="text-center font-subheading mb-8">
-        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
+        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Lightweight. Precise. Intelligent Automation.</p>
       </div>
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target">
-          <span className="text-[#0acf83]">Thynk Limitless.</span> Learn Beyond Boundaries
+          <span className="text-[#0acf83]">Lightweight Robotic Arm (Cobot)</span> for Smart Automation
         </h1>
       </div>
 
       {/* Description paragraph */}
       <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mt-2 px-4">
         <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-          At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
-          Discover a new way to build, program, and solve real-world challenges with creativity.
+          The Cobot is an advanced lightweight robotic arm engineered to deliver powerful automation for businesses of every scale. Featuring intuitive programming, built-in safety systems, and a compact, flexible design, it integrates smoothly into any production line to enhance productivity without disrupting existing operations.
         </p>
       </div>
 
@@ -51,9 +50,7 @@ export default function CoboHeroSection() {
         {/* Bottom description */}
         <div className="max-w-5xl mx-auto mt-2 px-4">
           <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-            Select from a range of high-performance educational robots designed for hands-on learning.
-            Each model features compact builds, powerful 8-core CPUs, and up to 100 TOPS of computing power—ideal
-            for secondary development and real-time demonstrations.
+            Discover our range of collaborative robots engineered for versatility and performance. Compare the Z1 Arm, D1 Robotic Arm, and Franka Research 3 to choose the best lightweight robotic arm model for automation needs.
           </p>
         </div>
       </div>
