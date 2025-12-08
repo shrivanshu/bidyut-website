@@ -25,10 +25,10 @@ const HeroSectionR1 = () => {
             {/* Left part */}
             <div className='flex flex-wrap  items-baseline justify-center sm:justify-start'>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white drop-shadow-sm cursor-target'>
-                Humanoid
+                Let's
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Robot
+                Innovate
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
                 Learn
@@ -121,11 +121,7 @@ const HeroSectionR1 = () => {
           </h2>
           <div className='max-w-[980px] mx-auto'>
             <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target'>
-              Select from a range of high-performance educational robots
-              designed for hands-on learning. Each model features compact
-              builds, powerful 8-core CPUs, and up to 100 TOPS of computing
-              power— ideal for secondary development and real-time
-              demonstrations.
+             Discover the Unitree R1, a high-performance educational humanoid robot designed for hands-on learning. With a compact build, an 8-core CPU, and up to 100 TOPS of computing power, it offers advanced capabilities for coding, AI exploration, and real-time demonstrations.
             </p>
           </div>
         </div>

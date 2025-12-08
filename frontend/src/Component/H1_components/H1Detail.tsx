@@ -27,15 +27,15 @@ const H1Detail: React.FC<H1DetailProps> = ({ onContactClick }) => {
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
           <div className="space-y-4">
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              Ready to revolutionize{' '}
+              Transform Tasks {' '}
 
              
-              <span className="text-green-600 dark:text-green-400">your classroom?</span>
+              <span className="text-green-600 dark:text-green-400">With Robotics</span>
 
               
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join thousands of educators who are already using GO2 Edu Series robots to inspire the next generation of innovators.
+              Accelerate your projects with the Unitree H1‑2 humanoid robot—enhance precision, expand capabilities, streamline experimentation, and achieve unmatched agility and dexterity. For a high-mobility, lightweight alternative, explore the Unitree H1 Robot.
             </p>
           </div>
 

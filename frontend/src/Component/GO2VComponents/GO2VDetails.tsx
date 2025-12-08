@@ -23,11 +23,11 @@ const GO2VDetails = ({ onContactClick }: GO2VDetailsProps) => {
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           <div className="space-y-4">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              <span className="block md:inline">Ready to revolutionize</span>{' '}
-              <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
+              <span className="block md:inline">Ready for smarter,</span>{' '}
+              <span className="text-green-600 dark:text-green-400 block md:inline">faster robotics?</span>
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join thousands of educators who are already using GO2-W robots to inspire the next generation of innovators.
+               Reach out today and connect with our team to see how the Unitree Go2 W robot can transform your workflow.
             </p>
           </div>
 

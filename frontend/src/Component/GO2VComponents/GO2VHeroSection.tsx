@@ -10,21 +10,21 @@ export default function GO2VHeroSection() {
 
       {/* Top tagline */}
       <div className="text-center font-poppins mb-8">
-        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Learn Robotics. Build the Future.</p>
+        <p className="text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target">Next-Gen All-Terrain Robotics.</p>
       </div>
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
-          <span className="text-[#0acf83]">Thynk Limitless.</span> Learn Beyond Boundaries
+          <span className="text-[#0acf83]">Unitree Go2 W robot -</span> Your All‑Terrain Robotic Companion
         </h1>
       </div>
 
 {/* Description paragraph */}
 <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-    At Bidyut, we go beyond textbooks — offering practical robotics learning powered by AI, coding, and STEAM.
-    Discover a new way to build, program, and solve real-world challenges with creativity.
+    Meet the Unitree Go2 W robot, blending wheeled efficiency with legged freedom. From smooth hallways to rugged floors, it adapts seamlessly, perfect for robotics research, inspections, and versatile real-world applications.
+
   </p>
 </div>
 
@@ -56,8 +56,8 @@ export default function GO2VHeroSection() {
 {/* Bottom description */}
 <div className="max-w-5xl mx-auto mt-2 px-4">
   <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center">
-  Our GO2V Robot is built for advanced research, industrial, and educational applications. 
-  Designed for high performance, strong payload, and versatile operation in challenging environments. With powerful computing, stability, and adaptability, it is ideal for robotics development and real-world problem-solving.
+  Our Unitree Go2 W robot is built for advanced research, industrial, and educational applications. Designed for high performance, strong payload, and versatile operation in challenging environments. With powerful computing, stability, and adaptability, it is ideal for robotics development and real-world problem-solving.
+
   </p>
 </div>
       </div>
