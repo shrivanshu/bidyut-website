@@ -39,14 +39,14 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
           }}
         >
           <div className='space-y-4'>
-            <h1 className='text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4'>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               <span className='block md:inline'>Ready to revolutionize</span>{' '}
               <span className='text-green-600 dark:text-green-400 block md:inline'>
                 your classroom?
               </span>
             </h1>
             <p className='text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300'>
-              Join thousands of educators who are already using Unitree B2
+              Join thousands  of educators who are already using Unitree B2
               Series robots to inspire the next generation of innovators.
             </p>
           </div>
