@@ -173,11 +173,11 @@ const HeroSection: React.FC = () => {
             }
           >
             <HeroHeading
-              text={["Let's Innovate Learn Beyond Boundaries"]}
+              text={["Future-Ready Robotics Courses in India"]}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={false}
-              highlight={{ text: "Let's Innovate", color: "#0acf83" }}
+              highlight={{ text: "Future-Ready", color: "#0acf83" }}
             />
           </Suspense>
         </h1>
