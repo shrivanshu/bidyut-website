@@ -57,6 +57,7 @@ const galleryImageFiles = [
   "DSC05145.JPG.webp",
   "DSC05268.JPG.webp",
   "DSC05302.JPG.webp",
+ 
 ];
 
 const generateBaseImages = (): ImageItem[] => {
@@ -260,7 +261,7 @@ export default function InteractiveGallery() {
 
                 <div className={`relative p-4 sm:p-6 shadow-2xl border transition-colors duration-300 ${isDark ? 'bg-gray-900 border-gray-700/50' : 'bg-zinc-800 border-zinc-700/50'}`}>
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-eF5tODt5MCccrIzwk2071q0bfbi9WY.webp"
+                    src="gallery/DSC05145.JPG.webp"
                     alt="Gallery Preview"
                     className="w-full h-60 sm:h-80 object-cover shadow-lg"
                   />
@@ -269,7 +270,7 @@ export default function InteractiveGallery() {
                       onClick={handleExploreClick}
                       className={`px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20 ${isDark ? 'bg-black bg-opacity-80 text-white hover:bg-opacity-95' : 'bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-95'}`}
                     >
-                      • EXPLORE
+                      • View Gallery 
                     </button>
                   </div>
                 </div>

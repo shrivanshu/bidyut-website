@@ -35,7 +35,13 @@ export const en = {
   quadrupedRobots: 'Quadruped Robots',
  ProgressTrackingDesc: 'Engineered for mobility and adaptability, our quadruped robots can navigate rough terrain, carry loads, and perform complex tasks. They are ideal for research, defense, and inspection applications.',
   roboticSolutions: 'Robotic Solutions',
-  personalizedMentorshipDesc: 'We provide customized robotic solutions tailored to your business needs. Whether it’s automation, AI integration, or specialized robotics, our solutions are built to enhance efficiency, reduce costs, and drive growth.',
+  personalizedMentorshipDesc: 'We provide customized robotic solutions tailored to your business needs. Whether it\'s automation, AI integration, or specialized robotics, our solutions are built to enhance efficiency, reduce costs, and drive growth.',
+  schoolIntegration: 'School Integration & Support',
+  schoolIntegrationDesc: 'Comprehensive support for integrating robotics into your school curriculum. We provide staff training, resource materials, and ongoing technical support to ensure successful implementation and student engagement.',
+  // eduAutomation: 'Educational Automation Solutions',
+  // eduAutomationDesc: 'Streamline school operations with intelligent automation. From administrative tasks to learning management, our solutions help educators focus on teaching while technology handles routine processes efficiently.',
+  ComputerRoboticsBooksforSchools: 'Computer & Robotics Books for Schools',
+  ComputerRoboticsBooksforSchoolsDesc: 'We provide a complete book series from Kindergarten to Class 8, covering computer fundamentals, digital literacy, coding, and robotics. Our books are designed to build future skills with activity-based learning, clear visuals, and practical exercises that make technology fun and easy for students.',
   
   // LMS Section
   advancedLms: 'Advanced Learning Management System',
@@ -90,7 +96,7 @@ export const en = {
   
   // Gallery Page
   knowUsMore: 'Know Us More',
-  discoverHeart: 'Explore the Heart of Bidyut Innovation, At Bidyut Innovation, we are driven by a single mission: to transform education and industry through technology. As a leading edutech company, we specialize in setting up state-of-the-art robotics labs in schools, providing humanoids, cobots, and quadruped robots for universities, and delivering customized robotics solutions for companies.Our passionate team is committed to building future-ready learners by fostering creativity, critical thinking, and hands-on problem-solving skills. Through AI, robotics, and interactive learning experiences, we empower students, educators, and organizations to embrace innovation and drive progress.',
+  discoverHeart: 'Explore the Heart of Bidyut Innovation. At Bidyut Innovation, we are driven by a single mission: to transform education and industry through technology. As a leading edutech company, we specialize in setting up state-of-the-art robotics labs in schools, providing humanoids, cobots, and quadruped robots for universities, and delivering customized robotics solutions for companies. Through our work, we are shaping the future of robotics education in India.Our passionate team is committed to building future-ready learners by fostering creativity, critical thinking, and hands-on problem-solving skills. Through AI, robotics, and interactive learning experiences, we empower students, educators, and organizations to embrace innovation and drive progress through robotics STEM education.',
   awardWinning: 'Award Winning',
   digitalInnovation: 'Digital Innovation',
   celebratingJourney: 'Celebrating our journey of innovation, excellence, and impact in the field of technology and education.',
@@ -166,8 +172,8 @@ export const en = {
   
   // Gallery Hero
   inspiring: 'Inspiring',
-  galleryInnovationTech: 'Innovation Through Tech',
-  galleryHeroDescription: 'For over 12 years, Bidyut Innovation has been revolutionizing robotics education across India. We have empowered 45,000+ students and transformed 30+ schools with cutting-edge technology and hands-on learning experiences.',
+  galleryInnovationTech: 'Innovation Through Tech | Robotics Education in India',
+  galleryHeroDescription: 'For over 12 years, Bidyut Innovation has been at the forefront of transforming robotics education in India. We have empowered 45,000+ students and transformed 30+ schools with cutting-edge technology and hands-on learning experiences',
   bidyutInnovation: 'Bidyut Innovation',
   studentsEmpowered: '45,000+ students',
   schoolsTransformed: '30+ schools',

@@ -35,7 +35,7 @@ const robotSearchData = [
     gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
   {
-    id: "edu-bot-2", 
+    id: "edu-bot-2",
     name: "EduBot Beta",
     image: "/media/Robot_Details.svg",
     category: "Educational",
@@ -46,7 +46,7 @@ const robotSearchData = [
   {
     id: "service-bot-1",
     name: "ServiceBot Pro",
-    image: "/media/Robot_Details.svg", 
+    image: "/media/Robot_Details.svg",
     category: "Service",
     description: "Built for reception, delivery and kiosk assistance.",
     specId: "g2-pro",
@@ -56,7 +56,7 @@ const robotSearchData = [
     id: "companion-bot-1",
     name: "CompanionBot",
     image: "/media/Robot_Details.svg",
-    category: "Companion", 
+    category: "Companion",
     description: "Social companion with voice, vision and music modes.",
     specId: "g2-pro",
     gallery: ["/media/Robot_Details.svg", "/robo-dance5.webm", "/robott.webm"],
@@ -107,7 +107,7 @@ const robotSpecs: RobotSpec[] = [
       "This educational robot features compact Dimensions of 1270 × 450 × 200 mm (Approx. 4.1 ft), weighing only 35 kg (Approx) for easy handling. It can carry a df and achieve impressive speeds up to 2 m/s , making it perfect for dynamic educational demonstrations.",
     gallery: [
       "/media/Robot_Details.svg",
-       "/media/G1+Kungfu.webp",
+      "/media/G1+Kungfu.webp",
       "/media/g1_video.webm",
       "/media/g1_video1.webm",
       // "/media/Robot_Details.svg"
@@ -143,10 +143,10 @@ const robotSpecs: RobotSpec[] = [
         detail: "Provides lasting power",
         position: { top: "30%", left: "90%" },
         positionSm: { top: "30%", left: "70%" },
-         // for sm screens
+        // for sm screens
         lineDirection: "right",
         targetPoint: { x: "59%", y: "28%" },
-         targetPointSm: { x: "50%", y: "30%" },
+        targetPointSm: { x: "50%", y: "30%" },
       },
       {
         label: "Core Motion Module",
@@ -175,7 +175,7 @@ const robotSpecs: RobotSpec[] = [
     ],
   },
 
-  
+
   {
     "id": "g1-edu-u1",
     "name": "G1 EDU U1",
@@ -281,7 +281,7 @@ const robotSpecs: RobotSpec[] = [
         "label": "3D LiDAR",
         "detail": "LIVOX-MID360 + Improved Scan Range",
         "position": { "top": "22%", "left": "10%" },
-       "positionSm": { "top": "19%", "left": "8%" },
+        "positionSm": { "top": "19%", "left": "8%" },
         "lineDirection": "right",
         "targetPoint": { "x": "48%", "y": "10%" },
         "targetPointSm": { "x": "48%", "y": "30%" },
@@ -411,7 +411,7 @@ const robotSpecs: RobotSpec[] = [
     ]
   }
 
-,
+  ,
   // {
   //   id: "g2-pro",
   //   name: "G2 Pro",
@@ -542,12 +542,12 @@ export default function RobotShowcase() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRobot, setSelectedRobot] = useState<(typeof robotSearchData[0]) | null>(null)
-  
+
   // Drag scroll state for robot images
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
-  
+
   const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
   // Derive display data from either selected search item or current variant
   const displayName = selectedRobot?.name ?? currentSpec.name
@@ -641,7 +641,7 @@ export default function RobotShowcase() {
             </div>
 
             {/* Scrollable Robot Images - Single Line */}
-            <div 
+            <div
               className="overflow-x-auto scrollbar-hide pb-2 cursor-grab active:cursor-grabbing select-none"
               style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
               onWheel={(e) => {
@@ -705,7 +705,7 @@ export default function RobotShowcase() {
                   </div>
                 ))}
               </div>
-              
+
               {filteredRobots.length === 0 && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 dark:text-gray-500 text-lg">
@@ -790,10 +790,10 @@ export default function RobotShowcase() {
             </div>
 
             <Link to="/Contact">
-  <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-    Order Now
-  </Button>
-</Link>
+              <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                Order Now
+              </Button>
+            </Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
@@ -805,7 +805,7 @@ export default function RobotShowcase() {
                     onClick={() => openGallery(index)}
                     className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 hover:scale-105 transition-transform duration-200 border-2 border-gray-200 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500"
                   >
-                    {media.endsWith('.mp4') ? (
+                    {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                       <video
                         src={media}
                         className="w-full h-full object-cover"
@@ -831,91 +831,89 @@ export default function RobotShowcase() {
           {/* Right Section - Robot Visualization */}
           <div className="relative">
             <div className="relative h-[600px] md:h-[700px] w-full">
-  {/* Robot Image */}
-  <div className="absolute inset-0 flex items-center justify-center">
-    <img
-  src={currentSpec.gallery[0]}
-      alt={currentSpec.name}
-      className="h-[300px]  md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
-    />
-  </div>
+              {/* Robot Image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img
+                  src={currentSpec.gallery[0]}
+                  alt={currentSpec.name}
+                  className="h-[300px]  md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
+                />
+              </div>
 
-  {/* SVG Lines */}
-  <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-    {currentSpec.features.map((feature, index) => {
-      if (hoveredFeature !== index) return null;
-      
-      // RESPONSIVE COORDINATE HANDLING
-      const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
-      const startPos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
-      const endPoint = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
+              {/* SVG Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+                {currentSpec.features.map((feature, index) => {
+                  if (hoveredFeature !== index) return null;
 
-      // Convert pixel values to percentages if needed
-      const normalizeCoord = (value: string | undefined) => {
-        if (!value) return "0%";
-        return value.includes("px") 
-          ? `${(parseInt(value) / window.innerWidth) * 100}%`
-          : value;
-      };
+                  // RESPONSIVE COORDINATE HANDLING
+                  const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+                  const startPos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+                  const endPoint = isSmScreen && feature.targetPointSm ? feature.targetPointSm : feature.targetPoint;
 
-      return (
-        <g key={index}>
-          <line
-            x1={normalizeCoord(startPos.left)}
-            y1={normalizeCoord(startPos.top)}
-            x2={normalizeCoord(endPoint.x)}
-            y2={normalizeCoord(endPoint.y)}
-            stroke="#059669"
-            strokeWidth="2"
-          />
-          <circle
-            cx={normalizeCoord(startPos.left)}
-            cy={normalizeCoord(startPos.top)}
-            r="4"
-            fill="#059669"
-          />
-          <circle
-            cx={normalizeCoord(endPoint.x)}
-            cy={normalizeCoord(endPoint.y)}
-            r="4"
-            fill="#059669"
-          />
-        </g>
-      );
-    })}
-  </svg>
+                  // Convert pixel values to percentages if needed
+                  const normalizeCoord = (value: string | undefined) => {
+                    if (!value) return "0%";
+                    return value.includes("px")
+                      ? `${(parseInt(value) / window.innerWidth) * 100}%`
+                      : value;
+                  };
 
-  {/* Feature Labels */}
-  {currentSpec.features.map((feature, index) => {
-    const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
-    const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+                  return (
+                    <g key={index}>
+                      <line
+                        x1={normalizeCoord(startPos.left)}
+                        y1={normalizeCoord(startPos.top)}
+                        x2={normalizeCoord(endPoint.x)}
+                        y2={normalizeCoord(endPoint.y)}
+                        stroke="#059669"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx={normalizeCoord(startPos.left)}
+                        cy={normalizeCoord(startPos.top)}
+                        r="4"
+                        fill="#059669"
+                      />
+                      <circle
+                        cx={normalizeCoord(endPoint.x)}
+                        cy={normalizeCoord(endPoint.y)}
+                        r="4"
+                        fill="#059669"
+                      />
+                    </g>
+                  );
+                })}
+              </svg>
 
-    return (
-      <div
-        key={index}
-        className="absolute z-10 cursor-pointer"
-        style={{
-          top: pos.top,
-          left: pos.left,
-          transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
-        }}
-        onMouseEnter={() => setHoveredFeature(index)}
-        onMouseLeave={() => setHoveredFeature(null)}
+              {/* Feature Labels */}
+              {currentSpec.features.map((feature, index) => {
+                const isSmScreen = typeof window !== "undefined" && window.innerWidth < 768;
+                const pos = isSmScreen && feature.positionSm ? feature.positionSm : feature.position;
+
+                return (
+                  <div
+                    key={index}
+                    className="absolute z-10 cursor-pointer"
+                    style={{
+                      top: pos.top,
+                      left: pos.left,
+                      transform: feature.lineDirection === "left" ? "translateX(-100%)" : "none",
+                    }}
+                    onMouseEnter={() => setHoveredFeature(index)}
+                    onMouseLeave={() => setHoveredFeature(null)}
                   >
                     <div className="text-left max-w-[120px]">
                       <div
-                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${
-                          hoveredFeature === index 
-                            ? "text-green-600 dark:text-green-400" 
-                            : "text-gray-900 dark:text-gray-100"
-                        }`}
+                        className={`text-sm font-bold mb-1 transition-colors leading-tight ${hoveredFeature === index
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-gray-900 dark:text-gray-100"
+                          }`}
                       >
                         {feature.label}
                       </div>
-                      <div 
-                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
-                          hoveredFeature === index ? "opacity-100" : "opacity-70"
-                        }`}
+                      <div
+                        className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${hoveredFeature === index ? "opacity-100" : "opacity-70"
+                          }`}
                       >
                         {feature.detail}
                       </div>
@@ -958,7 +956,7 @@ export default function RobotShowcase() {
 
             {/* Media Display */}
             <div className="w-full h-full flex items-center justify-center">
-              {displayGallery[currentImageIndex]?.endsWith('.mp4') ? (
+              {displayGallery[currentImageIndex]?.endsWith('.mp4') || displayGallery[currentImageIndex]?.endsWith('.webm') ? (
                 <video
                   src={displayGallery[currentImageIndex]}
                   controls
@@ -988,11 +986,10 @@ export default function RobotShowcase() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${
-                    currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
-                  }`}
+                  className={`w-12 h-12 rounded overflow-hidden border-2 transition-colors ${currentImageIndex === index ? 'border-green-400' : 'border-white/30 hover:border-white/60'
+                    }`}
                 >
-                  {media.endsWith('.mp4') ? (
+                  {media.endsWith('.mp4') || media.endsWith('.webm') ? (
                     <video
                       src={media}
                       className="w-full h-full object-cover"

@@ -75,8 +75,8 @@ const RoboticsComparisonChart: React.FC = () => {
       batteryLife: "About 2h",
       upgradedIntelligentOTA: "YES",
       secondaryDevelopment: "/",
-      warrantyPeriod: "8 months",
-      price: "US $16K",
+      warrantyPeriod: "6 months",
+      price: "Contact sales",
     },
     {
       model: "G1 EDU",
@@ -111,7 +111,7 @@ const RoboticsComparisonChart: React.FC = () => {
       batteryLife: "About 2h",
       upgradedIntelligentOTA: "YES",
       secondaryDevelopment: "YES",
-      warrantyPeriod: "18 months",
+      warrantyPeriod: "12 months",
       price: "Contact sales",
     },
   ];

@@ -5,6 +5,7 @@ import { useTheme } from "../contexts/ThemeContext"
 import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { SEO } from '../hooks/useSEO'
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -78,7 +79,7 @@ const timelineData: TimelineItem[] = [
     year: "2021",
     title: "Vision Ignited",
     description:
-      "In 2021, our journey began with a bold idea: to bring the future of robotics and technology into education, research, and industry. We envisioned a world where every student and innovator could access cutting-edge robotics.",
+      "In 2021, our journey began with a bold idea: to bring the future of robotics, technology and STREAM Education into  classrooms, research, and industry. We envisioned a world where every student and innovator could access cutting-edge robotics through a leading robotics company in India.",
   },
   {
     year: "2022",
@@ -122,64 +123,65 @@ export function getVideoForYear(year: string): string {
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
+  
   // Timeline States
-   const [currentIndex, setCurrentIndex] = useState(0)
-    const currentItem = timelineData[currentIndex]
-    const [isTransitioning, setIsTransitioning] = useState(false)
-  
-    const goToPrevious = () => {
-      if (isTransitioning || currentIndex === 0) return
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev - 1)
-        setIsTransitioning(false)
-      }, 150)
-    }
-  
-    const goToNext = () => {
-      if (isTransitioning || currentIndex === timelineData.length - 1) return
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1)
-        setIsTransitioning(false)
-      }, 150)
-    }
-  
-    const goToYear = (index: number) => {
-      if (index === currentIndex || isTransitioning) return
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setCurrentIndex(index)
-        setIsTransitioning(false)
-      }, 150)
-    }
-    // timeline
-    const [visionInView, setVisionInView] = useState(false);
-    const [missionInView, setMissionInView] = useState(false);
-    const [staticAnimated, setStaticAnimated] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const currentItem = timelineData[currentIndex]
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
-    useEffect(() => {
-      const handleScrollAnim = () => {
-        const staticSection = document.getElementById('about-static-section');
-        const visionImg = document.getElementById('vision-img-container');
-        const missionImg = document.getElementById('mission-img-container');
-        if (!staticSection || !visionImg || !missionImg) return;
-        
-        const staticRect = staticSection.getBoundingClientRect();
-        if (staticRect.top < window.innerHeight * 0.75 && !staticAnimated) {
-          setStaticAnimated(true);
-        }
-        const visionRect = visionImg.getBoundingClientRect();
-        const missionRect = missionImg.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        setVisionInView(visionRect.top < windowHeight - 100 && visionRect.bottom > 100);
-        setMissionInView(missionRect.top < windowHeight - 100 && missionRect.bottom > 100);
-      };
-      window.addEventListener('scroll', handleScrollAnim, { passive: true });
-      handleScrollAnim();
-      return () => window.removeEventListener('scroll', handleScrollAnim);
-    }, []);
-  
+  const goToPrevious = () => {
+    if (isTransitioning || currentIndex === 0) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setCurrentIndex((prev) => prev - 1)
+      setIsTransitioning(false)
+    }, 150)
+  }
+
+  const goToNext = () => {
+    if (isTransitioning || currentIndex === timelineData.length - 1) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setCurrentIndex((prev) => prev + 1)
+      setIsTransitioning(false)
+    }, 150)
+  }
+
+  const goToYear = (index: number) => {
+    if (index === currentIndex || isTransitioning) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setCurrentIndex(index)
+      setIsTransitioning(false)
+    }, 150)
+  }
+  // timeline
+  const [visionInView, setVisionInView] = useState(false);
+  const [missionInView, setMissionInView] = useState(false);
+  const [staticAnimated, setStaticAnimated] = useState(false);
+
+  useEffect(() => {
+    const handleScrollAnim = () => {
+      const staticSection = document.getElementById('about-static-section');
+      const visionImg = document.getElementById('vision-img-container');
+      const missionImg = document.getElementById('mission-img-container');
+      if (!staticSection || !visionImg || !missionImg) return;
+
+      const staticRect = staticSection.getBoundingClientRect();
+      if (staticRect.top < window.innerHeight * 0.75 && !staticAnimated) {
+        setStaticAnimated(true);
+      }
+      const visionRect = visionImg.getBoundingClientRect();
+      const missionRect = missionImg.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      setVisionInView(visionRect.top < windowHeight - 100 && visionRect.bottom > 100);
+      setMissionInView(missionRect.top < windowHeight - 100 && missionRect.bottom > 100);
+    };
+    window.addEventListener('scroll', handleScrollAnim, { passive: true });
+    handleScrollAnim();
+    return () => window.removeEventListener('scroll', handleScrollAnim);
+  }, []);
+
   const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [showWhiteScreen, setShowWhiteScreen] = useState(false)
@@ -191,7 +193,7 @@ export default function AboutPage() {
 
   const [hasVideoAnimated, setHasVideoAnimated] = useState(false)
 
-  
+
 
   // Gallery States
   const [showFullGallery, setShowFullGallery] = useState(false)
@@ -247,18 +249,18 @@ export default function AboutPage() {
       }
     }
   }, [activeTab]);
-    // Video Zoom/Rotate States
-    const [videoScrollProgress] = useState(0)
-    const [isVideoInView, setIsVideoInView] = useState(false)
+  // Video Zoom/Rotate States
+  const [videoScrollProgress] = useState(0)
+  const [isVideoInView, setIsVideoInView] = useState(false)
   const galleryContainerRef = useRef<HTMLDivElement>(null)
   const imageRefs = useRef<(HTMLDivElement | null)[]>([])
   const hasTriggeredRef = useRef(false)
   const [aboutAnimStarted, setAboutAnimStarted] = useState(false)
 
   const [animatedYear, setAnimatedYear] = useState(0);
-const [animatedClients, setAnimatedClients] = useState(0);
-const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
-  
+  const [animatedClients, setAnimatedClients] = useState(0);
+  const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
+
 
   // Language context
   // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
@@ -445,39 +447,39 @@ const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
     { id: "training", name: "Training", color: "#8B5CF6" }
   ]
 
-useEffect(() => {
-  // Animate Year
-  let yearStart = 0;
-  let clientsStart = 0;
-  let happyClientsStart = 0;
-  const yearTarget = currentYear;
-  const clientsTarget = 500;
-  const happyClientsTarget = 500;
-  const duration = 3800; // ms
-  let startTime: number | null = null;
+  useEffect(() => {
+    // Animate Year
+    let yearStart = 0;
+    let clientsStart = 0;
+    let happyClientsStart = 0;
+    const yearTarget = currentYear;
+    const clientsTarget = 500;
+    const happyClientsTarget = 500;
+    const duration = 3800; // ms
+    let startTime: number | null = null;
 
-  function animateCounter(timestamp: number) {
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 10);
+    function animateCounter(timestamp: number) {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 10);
 
-    setAnimatedYear(Math.floor(yearStart + (yearTarget - yearStart) * progress));
-    setAnimatedClients(Math.floor(clientsStart + (clientsTarget - clientsStart) * progress));
-    setAnimatedHappyClients(Math.floor(happyClientsStart + (happyClientsTarget - happyClientsStart) * progress));
+      setAnimatedYear(Math.floor(yearStart + (yearTarget - yearStart) * progress));
+      setAnimatedClients(Math.floor(clientsStart + (clientsTarget - clientsStart) * progress));
+      setAnimatedHappyClients(Math.floor(happyClientsStart + (happyClientsTarget - happyClientsStart) * progress));
 
-    if (progress < 1) {
-      requestAnimationFrame(animateCounter);
-    } else {
-      setAnimatedYear(yearTarget);
-      setAnimatedClients(clientsTarget);
-      setAnimatedHappyClients(happyClientsTarget);
+      if (progress < 1) {
+        requestAnimationFrame(animateCounter);
+      } else {
+        setAnimatedYear(yearTarget);
+        setAnimatedClients(clientsTarget);
+        setAnimatedHappyClients(happyClientsTarget);
+      }
     }
-  }
 
-  requestAnimationFrame(animateCounter);
+    requestAnimationFrame(animateCounter);
 
-  // Cleanup
-  return () => {};
-}, [currentYear]);
+    // Cleanup
+    return () => { };
+  }, [currentYear]);
 
 
   // Hero Section Effects
@@ -538,7 +540,7 @@ useEffect(() => {
       }
     }
   }, [hasVideoAnimated])
-  
+
 
   // Gallery Effects - Handle mobile vs desktop differently
   useEffect(() => {
@@ -552,7 +554,7 @@ useEffect(() => {
 
       if (isVisible && !isInGallerySection) {
         setIsInGallerySection(true)
-        
+
         if (isMobile) {
           // On mobile, show preview with auto-scroll
           setShowMobilePreview(true)
@@ -685,9 +687,9 @@ useEffect(() => {
   // Enhanced image transition function
   const transitionToImage = (newIndex: number) => {
     if (isImageTransitioning || newIndex === selectedImage) return;
-    
+
     setIsImageTransitioning(true);
-    
+
     // Smooth transition with fade out, image change, then fade in
     setTimeout(() => {
       setSelectedImage(newIndex);
@@ -746,13 +748,13 @@ useEffect(() => {
 
 
   // Gallery helper functions
-  const filteredImages = galleryImages.filter(image => 
+  const filteredImages = galleryImages.filter(image =>
     selectedCategory === "all" || image.category === selectedCategory
   )
 
   const get3DTransform = (_index: number, isHovered: boolean) => {
     if (!isHovered) return 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'
-    
+
     const randomX = (Math.random() - 0.5) * 20
     const randomY = (Math.random() - 0.5) * 20
     return `perspective(1000px) rotateX(${randomX}deg) rotateY(${randomY}deg) scale(1.05)`
@@ -808,14 +810,14 @@ useEffect(() => {
         <Header />
         {/* Hero About Section */}
         <div
-            className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[70vh] sm:min-h-screen relative overflow-hidden transition-colors duration-500 pt-12 sm:pt-14`}
-            style={{
-              transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
-              opacity: aboutAnimStarted ? 1 : 0,
-              transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
-              transformOrigin: 'center center',
-              // Add extra top margin to avoid header overlap
-            }}
+          className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[70vh] sm:min-h-screen relative overflow-hidden transition-colors duration-500 pt-12 sm:pt-14`}
+          style={{
+            transform: aboutAnimStarted ? 'scale(1) translateZ(0)' : 'scale(1.03) translateZ(0)',
+            opacity: aboutAnimStarted ? 1 : 0,
+            transition: 'transform 1000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 800ms ease-out, background-color 500ms ease-out',
+            transformOrigin: 'center center',
+            // Add extra top margin to avoid header overlap
+          }}
         >
           <div
             className="absolute inset-0 opacity-10"
@@ -830,101 +832,100 @@ useEffect(() => {
 
           <div className="flex items-center justify-center min-h-[80vh] sm:min-h-screen mt-2 sm:mt-4 md:-mt-1 px-4 sm:px-8">
             <div className="text-center max-w-6xl mx-auto relative z-10">
-              <h1 
+              <div
                 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading font-black leading-none text-transparent bg-clip-text mb-4 sm:mb-6 tracking-wider animate-in slide-in-from-bottom-4 select-none pointer-events-none uppercase"
                 style={{
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}
               >
                 About Us
+              </div>
+
+              <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
+                Bridging Technology & Intelligence for a Smarter Tomorrow – A Leading Robotics Company in India
               </h1>
-              
-              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
-                "Bridging Technology & Intelligence for a Smarter Tomorrow."
-              </h2>
-              
+
               <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
-                We revolutionize education by combining advanced robotics, AI, and hands-on learning to prepare students for the challenges of tomorrow.
-Through innovative STEM programs and intelligent automation, we're building the foundation for India's technological future, one student at a time.
+                We revolutionize education by combining advanced robotics, AI,hands-on learning and STREAM Education to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
               </p>
 
-              
-<div className="animate-in slide-in-from-bottom-4 duration-700 delay-600">
-  {/* Mobile Layout: Left-Right-Bottom */}
-  <div className="block sm:hidden -mb-8">
-    {/* Top row: Left and Right */}
-    <div className="grid grid-cols-2 gap-4 mb-3">
-      <div className="text-center">
-        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
-          {animatedYear}
-        </div>
-        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-          Current Year
-        </div>
-      </div>
-      
-      <div className="text-center">
-        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
-          {animatedClients}+
-        </div>
-        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-          Clients Served
-        </div>
-      </div>
-    </div>
-    
-    {/* Bottom row: Centered */}
-    <div className="flex justify-center mb-0">
-      <div className="text-center">
-        <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
-          {animatedHappyClients}+
-        </div>
-        <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>
-          Happy Clients
-        </div>
-      </div>
-    </div>
-  </div>
 
-  {/* Desktop/Tablet Layout: Original 3-column */}
-  <div className="hidden sm:grid sm:grid-cols-3 gap-4 md:gap-6">
-    <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
-        {animatedYear}
-      </div>
-      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-        Current Year
-      </div>
-    </div>
-    
-    <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
-        {animatedClients}+
-      </div>
-      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-        Clients Served
-      </div>
-    </div>
-    
-    <div className="text-center">
-      <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
-        {animatedHappyClients}+
-      </div>
-      <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-        Happy Clients
-      </div>
-    </div>
-  </div>
-</div>
+              <div className="animate-in slide-in-from-bottom-4 duration-700 delay-600">
+                {/* Mobile Layout: Left-Right-Bottom */}
+                <div className="block sm:hidden -mb-8">
+                  {/* Top row: Left and Right */}
+                  <div className="grid grid-cols-2 gap-4 mb-3">
+                    <div className="text-center">
+                      <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+                        {animatedYear}
+                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+                        Current Year
+                      </div>
+                    </div>
+
+                    <div className="text-center">
+                      <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+                        {animatedClients}+
+                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+                        Clients Served
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom row: Centered */}
+                  <div className="flex justify-center mb-0">
+                    <div className="text-center">
+                      <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
+                        {animatedHappyClients}+
+                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>
+                        Happy Clients
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop/Tablet Layout: Original 3-column */}
+                <div className="hidden sm:grid sm:grid-cols-3 gap-4 md:gap-6">
+                  <div className="text-center">
+                    <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+                      {animatedYear}
+                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+                      Current Year
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+                      {animatedClients}+
+                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+                      Clients Served
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
+                      {animatedHappyClients}+
+                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
+                      Happy Clients
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
         </div>
 
         {/* Video Switcher Section */}
-        <div 
-            ref={videoContainerRef}
-            className={`relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-1 sm:py-2 md:py-4 px-0 sm:px-1 md:px-2 transition-colors duration-500 mx-auto`}
+        <div
+          ref={videoContainerRef}
+          className={`relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px] w-full max-w-[1200px] overflow-visible ${isDarkTheme ? 'bg-black' : 'bg-white'} py-1 sm:py-2 md:py-4 px-0 sm:px-1 md:px-2 transition-colors duration-500 mx-auto`}
         >
           <div
             className="absolute inset-0 opacity-20"
@@ -962,13 +963,13 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 boxShadow: '0 4px 32px rgba(0,0,0,0.12)',
                 ...(activeTab === 'where-we-are'
                   ? {
-                      transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    }
+                    transform: `scale(${1.2 - videoScrollProgress * 0.6}) rotate(${videoScrollProgress * 360}deg)`,
+                    transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  }
                   : {
-                      transform: 'scale(1) rotate(0deg)',
-                      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    })
+                    transform: 'scale(1) rotate(0deg)',
+                    transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  })
               }}
             >
               <source src={videoSources[activeTab]} type="video/mp4" />
@@ -983,11 +984,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   onClick={() => setActiveTab('who-we-are')}
                   className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'who-we-are'
-                    ? 'bg-green-500 text-white shadow-2xl scale-110'
-                    : isDarkTheme
-                      ? 'bg-white text-gray-900 hover:bg-gray-100'
-                      : 'bg-black text-white hover:bg-gray-800'
-                  }`}
+                      ? 'bg-green-500 text-white shadow-2xl scale-110'
+                      : isDarkTheme
+                        ? 'bg-white text-gray-900 hover:bg-gray-100'
+                        : 'bg-black text-white hover:bg-gray-800'
+                    }`}
                   style={{ animationDelay: '1s' }}
                 >
                   <span className="inline">Who We Are</span>
@@ -997,11 +998,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   onClick={() => setActiveTab('where-we-are')}
                   className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'where-we-are'
-                    ? 'bg-green-500 text-white shadow-2xl scale-110'
-                    : isDarkTheme
-                      ? 'bg-white text-black hover:bg-gray-100'
-                      : 'bg-black text-white hover:bg-gray-800'
-                  }`}
+                      ? 'bg-green-500 text-white shadow-2xl scale-110'
+                      : isDarkTheme
+                        ? 'bg-white text-black hover:bg-gray-100'
+                        : 'bg-black text-white hover:bg-gray-800'
+                    }`}
                   style={{ animationDelay: '2s' }}
                 >
                   <span className="inline">Where We Are</span>
@@ -1013,11 +1014,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   onClick={() => setActiveTab('what-we-do')}
                   className={`relative pointer-events-auto rounded-lg sm:rounded-xl px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 font-semibold shadow-lg transition-all duration-500 ease-out text-xs sm:text-sm md:text-base lg:text-lg transform hover:scale-110 hover:shadow-2xl animate-button-bounce animate-float
                   ${activeTab === 'what-we-do'
-                    ? 'bg-green-500 text-white shadow-2xl scale-110'
-                    : isDarkTheme
-                      ? 'bg-white text-black hover:bg-gray-100'
-                      : 'bg-black text-white hover:bg-gray-800'
-                  }`}
+                      ? 'bg-green-500 text-white shadow-2xl scale-110'
+                      : isDarkTheme
+                        ? 'bg-white text-black hover:bg-gray-100'
+                        : 'bg-black text-white hover:bg-gray-800'
+                    }`}
                   style={{ animationDelay: '0s' }}
                 >
                   <span className="inline">What We Do</span>
@@ -1033,7 +1034,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
           id="about-static-section"
         >
           <div className="max-w-7xl mx-auto">
-            
+
             {/* Main Heading Block */}
             <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-7xl mx-auto">
               <h1 className={`font-heading font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
@@ -1042,10 +1043,10 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   <span className="block">Bidyut Focuses on Educating Students to act with</span>
                   <span className="block">Integrity in an increasingly digital world</span>
                 </span>
-                
+
                 {/* Tablet and Desktop: 2 professional lines */}
                 <span className="hidden md:block">
-                  <span className="block">Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world</span>
+                  <h2 className="block">Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world</h2>
                 </span>
               </h1>
             </div>
@@ -1053,7 +1054,8 @@ Through innovative STEM programs and intelligent automation, we're building the 
             {/* Description Text */}
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed px-4`}>
-                Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing like world's most advanced robotic and technological education to the children of our country.
+               Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing the world's most advanced robotic and technological education, integrated with STREAM Education, to the children of our country. As a leading  robotics company in India, we strive to make technology accessible to every student.
+
               </p>
             </div>
 
@@ -1062,7 +1064,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 {/* Vision Text - Mobile: appears first, Desktop: appears first */}
                 <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
-                  <h2 
+                  <h2
                     className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
                     style={{
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
@@ -1085,8 +1087,8 @@ Through innovative STEM programs and intelligent automation, we're building the 
                     opacity: visionInView ? 1 : 0
                   }}
                 >
-                  <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}> 
-                    <img 
+                  <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                    <img
                       src="/vision.webp"
                       alt="Our Vision"
                       className="w-full h-full object-cover"
@@ -1101,7 +1103,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
               <div className="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12">
                 {/* Mission Text - Mobile: appears first, Desktop: appears second */}
                 <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
-                  <h2 
+                  <h2
                     className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold leading-tight drop-shadow-lg mb-3 sm:mb-4 text-transparent bg-clip-text"
                     style={{
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
@@ -1125,12 +1127,12 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   }}
                 >
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
-                    <img 
-                   src="/mission.webp" 
-                      alt="Our Mission" 
-                      className="w-full h-full object-cover" 
+                    <img
+                      src="/mission.webp"
+                      alt="Our Mission"
+                      className="w-full h-full object-cover"
                     />
-                  </div>    
+                  </div>
                 </div>
               </div>
             </div>
@@ -1139,9 +1141,9 @@ Through innovative STEM programs and intelligent automation, we're building the 
         </div>
 
         {/* Our Journey Section */}
-  <div className={`relative min-h-0 sm:min-h-[70vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 sm:px-1 md:px-2 py-1 sm:py-4 md:py-6 transition-colors duration-500`}>
+        <div className={`relative min-h-0 sm:min-h-[70vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} flex flex-col items-center justify-center px-0 sm:px-1 md:px-2 py-1 sm:py-4 md:py-6 transition-colors duration-500`}>
           <div className="text-center  ">
-            <h2 
+            <h2
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-heading font-black leading-none text-transparent bg-clip-text mb-1 sm:mb-4 select-none pointer-events-none uppercase tracking-wider"
               style={{
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
@@ -1149,7 +1151,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
             >
               Our Journey
             </h2>
-            <h3 
+            <h3
               className="text-xl sm:text-2xl md:text-3xl font-subheading font-semibold leading-tight text-transparent bg-clip-text mb-1 sm:mb-3"
               style={{
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
@@ -1165,20 +1167,20 @@ Through innovative STEM programs and intelligent automation, we're building the 
           <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mb-8">
             <div className={`relative ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'} rounded-lg p-3 sm:p-4 md:p-6 shadow-2xl transition-colors duration-500`}>
               <div className={`${isDarkTheme ? 'bg-white' : 'bg-black'} rounded-lg border-2 sm:border-4 ${isDarkTheme ? 'border-gray-300' : 'border-gray-600'} overflow-hidden transition-colors duration-500`}>
-                  <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'} flex items-center justify-center transition-colors duration-500`}>
-                    <video
-                      key={currentItem.year}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className={`w-full h-full rounded transition-colors duration-500 object-contain`}
-                    >
-                      <source src={getVideoForYear(currentItem.year)} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
+                <div className={`aspect-video ${isDarkTheme ? 'bg-black' : 'bg-white'} flex items-center justify-center transition-colors duration-500`}>
+                  <video
+                    key={currentItem.year}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={`w-full h-full rounded transition-colors duration-500 object-contain`}
+                  >
+                    <source src={getVideoForYear(currentItem.year)} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
+              </div>
               <div className="flex justify-center mt-2 sm:mt-4">
                 <div className={`w-16 sm:w-24 md:w-32 h-3 sm:h-4 md:h-6 ${isDarkTheme ? 'bg-gray-600' : 'bg-gray-400'} rounded-t-lg transition-colors duration-500`}></div>
               </div>
@@ -1190,124 +1192,121 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
 
           </div>
-      
-      {/* Navigation Buttons */}
-      <div className="flex items-center justify-between w-full max-w-6xl mb-4 px-4">
-        <div className="w-12 sm:w-16 md:w-24">
-          <button
-            onClick={goToPrevious}
-            disabled={isTransitioning || currentIndex === 0}
-            className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
-            aria-label="Previous year"
-          >
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-          </button>
-        </div>
 
-        <div className="text-center flex-1">
-          <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-none transition-colors duration-500`}>
-            {currentItem.year}
-          </h3>
-        </div>
-        <div className="w-12 sm:w-16 md:w-24 flex justify-end">
-          <button
-            onClick={goToNext}
-            disabled={isTransitioning || currentIndex === timelineData.length - 1}
-            className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
-            aria-label="Next year"
-          >
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-          </button>
-        </div>
-      </div>
-
-      {/* Timeline Progress Bar - Positioned between TV structure and content */}
-      <div className={`${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'} w-full max-w-4xl mb-8`}>
-        <div className={`${isDarkTheme ? 'text-white' : 'text-black'} relative`}>
-          {/* Progress Line */}
-          <div className={`h-0.5 w-full ${isDarkTheme ? 'bg-white/20' : 'bg-black/20'}`}></div>
-
-          {/* Active Progress */}
-          <div
-            className={`h-0.5 absolute top-0 left-0 transition-all duration-700 ease-out ${isDarkTheme ? 'bg-white' : 'bg-black'}`}
-            style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
-          ></div>
-
-          {/* Year Markers */}
-          <div className="flex justify-between items-center mt-4">
-            {timelineData.map((item, index) => (
+          {/* Navigation Buttons */}
+          <div className="flex items-center justify-between w-full max-w-6xl mb-4 px-4">
+            <div className="w-12 sm:w-16 md:w-24">
               <button
-                key={item.year}
-                onClick={() => goToYear(index)}
-                disabled={isTransitioning}
-                className="relative group disabled:cursor-not-allowed"
+                onClick={goToPrevious}
+                disabled={isTransitioning || currentIndex === 0}
+                className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
+                aria-label="Previous year"
               >
-                {/* Dot */}
-                <div
-                  className={`w-3 h-3 rounded-full transition-all duration-500 ease-out transform ${
-                    index === currentIndex
-                      ? `${isDarkTheme ? 'bg-white scale-125 shadow-lg shadow-white/50' : 'bg-black scale-125 shadow-lg shadow-black/50'}`
-                      : `${isDarkTheme ? 'bg-white/40 hover:bg-white/60 hover:scale-110' : 'bg-black/40 hover:bg-black/60 hover:scale-110'}`
-                  }`}
-                  style={{
-                    position: "absolute",
-                    top: "-22px",
-                    left: "50%",
-                    transform: `translateX(-50%) ${index === currentIndex ? "scale(1.25)" : "scale(1)"}`,
-                  }}
-                ></div>
-
-                {/* Year Label */}
-                <span
-               className={`text-xs sm:text-sm transition-all duration-500 ${
-                    index === currentIndex
-                      ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
-                      : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
-                  }`}
-                >
-                  {item.year}
-                </span>
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </button>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
 
-       {/* Main Timeline Content */} 
-       <div className= {`${isDarkTheme ? ' text-white' : ' text-black'} flex items-center justify-center w-full max-w-6xl mb-16 `}>
-         {/* Year Display */}
-         <div className="text-center flex-1 relative">
-           <div
-             className={`transition-all duration-700 ease-out ${
-               isTransitioning
-                 ? "transform translate-x-8 opacity-0 scale-95"
-                 : "transform translate-x-0 opacity-100 scale-100"
-             }`}
-           >
-             {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
+            <div className="text-center flex-1">
+              <h3 className={`${isDarkTheme ? 'text-white' : 'text-black'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-none transition-colors duration-500`}>
+                {currentItem.year}
+              </h3>
+            </div>
+            <div className="w-12 sm:w-16 md:w-24 flex justify-end">
+              <button
+                onClick={goToNext}
+                disabled={isTransitioning || currentIndex === timelineData.length - 1}
+                className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
+                aria-label="Next year"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Timeline Progress Bar - Positioned between TV structure and content */}
+          <div className={`${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'} w-full max-w-4xl mb-8`}>
+            <div className={`${isDarkTheme ? 'text-white' : 'text-black'} relative`}>
+              {/* Progress Line */}
+              <div className={`h-0.5 w-full ${isDarkTheme ? 'bg-white/20' : 'bg-black/20'}`}></div>
+
+              {/* Active Progress */}
+              <div
+                className={`h-0.5 absolute top-0 left-0 transition-all duration-700 ease-out ${isDarkTheme ? 'bg-white' : 'bg-black'}`}
+                style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
+              ></div>
+
+              {/* Year Markers */}
+              <div className="flex justify-between items-center mt-4">
+                {timelineData.map((item, index) => (
+                  <button
+                    key={item.year}
+                    onClick={() => goToYear(index)}
+                    disabled={isTransitioning}
+                    className="relative group disabled:cursor-not-allowed"
+                  >
+                    {/* Dot */}
+                    <div
+                      className={`w-3 h-3 rounded-full transition-all duration-500 ease-out transform ${index === currentIndex
+                          ? `${isDarkTheme ? 'bg-white scale-125 shadow-lg shadow-white/50' : 'bg-black scale-125 shadow-lg shadow-black/50'}`
+                          : `${isDarkTheme ? 'bg-white/40 hover:bg-white/60 hover:scale-110' : 'bg-black/40 hover:bg-black/60 hover:scale-110'}`
+                        }`}
+                      style={{
+                        position: "absolute",
+                        top: "-22px",
+                        left: "50%",
+                        transform: `translateX(-50%) ${index === currentIndex ? "scale(1.25)" : "scale(1)"}`,
+                      }}
+                    ></div>
+
+                    {/* Year Label */}
+                    <span
+                      className={`text-xs sm:text-sm transition-all duration-500 ${index === currentIndex
+                          ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
+                          : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
+                        }`}
+                    >
+                      {item.year}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Main Timeline Content */}
+          <div className={`${isDarkTheme ? ' text-white' : ' text-black'} flex items-center justify-center w-full max-w-6xl mb-16 `}>
+            {/* Year Display */}
+            <div className="text-center flex-1 relative">
+              <div
+                className={`transition-all duration-700 ease-out ${isTransitioning
+                    ? "transform translate-x-8 opacity-0 scale-95"
+                    : "transform translate-x-0 opacity-100 scale-100"
+                  }`}
+              >
+                {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
                {currentItem.year}
              </div> */}
- 
-             {/* Title */}
-             <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-lg sm:text-xl md:text-2xl font-subheading font-medium mb-4 sm:mb-6 transition-all duration-700 delay-100 px-4`}>
-               {currentItem.title}
-             </h2>
- 
-             {/* Description */}
-             <p className={`${isDarkTheme ? ' text-white' : ' text-black'} text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-700 delay-200 px-4`}>
-               {currentItem.description}
-             </p>
-           </div>
-         </div>
- 
-       </div>
-     </div>
-  {/* Gallery Section */}
-        <div 
+
+                {/* Title */}
+                <h2 className={`${isDarkTheme ? ' text-white' : ' text-black'} text-lg sm:text-xl md:text-2xl font-subheading font-medium mb-4 sm:mb-6 transition-all duration-700 delay-100 px-4`}>
+                  {currentItem.title}
+                </h2>
+
+                {/* Description */}
+                <p className={`${isDarkTheme ? ' text-white' : ' text-black'} text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-700 delay-200 px-4`}>
+                  {currentItem.description}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {/* Gallery Section */}
+        <div
           ref={galleryContainerRef}
           className={`min-h-[60vh] ${isDarkTheme ? 'bg-black' : 'bg-white'} py-2 sm:py-4 transition-colors duration-500 relative overflow-hidden`}
           style={{
-            background: hoveredImageIndex !== null 
+            background: hoveredImageIndex !== null
               ? `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, ${getBackgroundGlow(galleryImages[hoveredImageIndex]?.bgColor || '#000000', true)}, transparent 50%)`
               : isDarkTheme ? '#000000' : '#ffffff'
           }}
@@ -1330,14 +1329,14 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
           <div className="max-w-7xl mx-auto px-0 sm:px-2 md:px-4 relative z-10">
             <div className="text-center mb-1 sm:mb-3 md:mb-6">
-              <h1 
+              <h2
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-black leading-none text-transparent bg-clip-text mb-0 sm:mb-1 md:mb-2 select-none pointer-events-none uppercase tracking-wider"
                 style={{
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}
               >
                 Gallery
-              </h1>
+              </h2>
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500 mb-1 sm:mb-2 md:mb-4 px-0 sm:px-2`}>
                 Explore our journey through these captivating moments of innovation and learning
               </p>
@@ -1352,13 +1351,12 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         setSelectedCategory(category.id);
                         // Only filter images, don't open any lightbox
                       }}
-                      className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
-                        selectedCategory === category.id
+                      className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${selectedCategory === category.id
                           ? 'text-white shadow-lg scale-105'
-                          : isDarkTheme 
-                            ? 'text-gray-300 bg-gray-800 hover:bg-gray-700' 
+                          : isDarkTheme
+                            ? 'text-gray-300 bg-gray-800 hover:bg-gray-700'
                             : 'text-gray-700 bg-gray-200 hover:bg-gray-300'
-                      }`}
+                        }`}
                       style={{
                         backgroundColor: selectedCategory === category.id ? category.color : undefined,
                         boxShadow: selectedCategory === category.id ? `0 10px 30px ${category.color}40` : undefined
@@ -1376,9 +1374,9 @@ Through innovative STEM programs and intelligent automation, we're building the 
               <div className="md:hidden px-0 mb-1">
                 {/* Auto-scrolling image carousel */}
                 <div className="relative overflow-hidden rounded-xl mb-2 shadow-lg">
-                  <div 
+                  <div
                     className="flex transition-transform duration-700 ease-in-out"
-                    style={{ 
+                    style={{
                       transform: `translateX(-${autoScrollIndex * 100}%)`,
                       width: `${Math.min(6, galleryImages.length) * 100}%`
                     }}
@@ -1406,17 +1404,16 @@ Through innovative STEM programs and intelligent automation, we're building the 
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Progress indicators */}
                   <div className="absolute bottom-2 right-2 flex space-x-1">
                     {Array.from({ length: Math.min(6, galleryImages.length) }).map((_, index) => (
                       <div
                         key={index}
-                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                          index === autoScrollIndex 
-                            ? 'bg-white' 
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === autoScrollIndex
+                            ? 'bg-white'
                             : 'bg-white/40'
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
@@ -1455,7 +1452,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
             {/* Full Gallery Grid */}
             {showFullGallery && (
-              <div 
+              <div
                 className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[180px] lg:auto-rows-[220px]"
                 style={{
                   opacity: galleryAnimationTrigger ? 1 : 0,
@@ -1474,8 +1471,8 @@ Through innovative STEM programs and intelligent automation, we're building the 
                     data-index={galleryImages.findIndex(img => img.src === image.src)}
                     className={`relative overflow-hidden rounded-xl shadow-xl group ${image.className} 
                       cursor-pointer transition-all duration-300 ease-out
-                      ${visibleImages[galleryImages.findIndex(img => img.src === image.src)] 
-                        ? 'translate-y-0 opacity-100 scale-100' 
+                      ${visibleImages[galleryImages.findIndex(img => img.src === image.src)]
+                        ? 'translate-y-0 opacity-100 scale-100'
                         : 'translate-y-8 opacity-0 scale-95'
                       }`}
                     style={{
@@ -1494,17 +1491,17 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         alt={image.alt}
                         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                       />
-                      
+
                       {/* Gradient overlay */}
-                      <div 
+                      <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-300"
                         style={{
                           background: `linear-gradient(135deg, ${image.bgColor}40, transparent 70%)`
                         }}
                       />
-                      
+
                       {/* Category badge */}
-                      <div 
+                      <div
                         className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
                         style={{ backgroundColor: image.bgColor }}
                       >
@@ -1540,7 +1537,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                     </div>
 
                     {/* 3D border effect */}
-                    <div 
+                    <div
                       className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-opacity-50 transition-all duration-300"
                       style={{
                         borderColor: hoveredImageIndex === galleryImages.findIndex(img => img.src === image.src) ? image.bgColor : 'transparent'
@@ -1553,7 +1550,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
 
             {/* Enhanced Lightbox Modal */}
             {selectedImage !== null && (
-              <div 
+              <div
                 className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4 pt-16 sm:pt-20"
                 onClick={() => setSelectedImage(null)}
                 onKeyDown={(e) => {
@@ -1570,7 +1567,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                 tabIndex={0}
                 style={{ overflow: 'hidden' }}
               >
-                <div 
+                <div
                   className="relative max-w-4xl w-full max-h-[90vh] bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -1589,22 +1586,20 @@ Through innovative STEM programs and intelligent automation, we're building the 
                       key={`image-${selectedImage}`}
                       src={filteredImages[selectedImage]?.src || galleryImages[0].src}
                       alt={filteredImages[selectedImage]?.alt || galleryImages[0].alt}
-                      className={`w-full h-auto max-h-[60vh] object-contain transition-all duration-500 ease-out transform ${
-                        isImageTransitioning 
-                          ? 'opacity-0 scale-95 blur-sm' 
+                      className={`w-full h-auto max-h-[60vh] object-contain transition-all duration-500 ease-out transform ${isImageTransitioning
+                          ? 'opacity-0 scale-95 blur-sm'
                           : 'opacity-100 scale-100 blur-0'
-                      }`}
+                        }`}
                     />
-                    
-                    <div 
-                      className={`absolute inset-0 opacity-20 pointer-events-none transition-all duration-500 ease-out ${
-                        isImageTransitioning ? 'opacity-0' : 'opacity-20'
-                      }`}
+
+                    <div
+                      className={`absolute inset-0 opacity-20 pointer-events-none transition-all duration-500 ease-out ${isImageTransitioning ? 'opacity-0' : 'opacity-20'
+                        }`}
                       style={{
                         background: `linear-gradient(135deg, ${filteredImages[selectedImage]?.bgColor || '#3B82F6'}, transparent 70%)`
                       }}
                     />
-                    
+
                     {/* Navigation buttons positioned over the image */}
                     <button
                       onClick={(e) => {
@@ -1615,16 +1610,15 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         }
                       }}
                       disabled={isImageTransitioning}
-                      className={`absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${
-                        isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
-                      }`}
+                      className={`absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+                        }`}
                       aria-label="Previous image"
                     >
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
-                    
+
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -1634,9 +1628,8 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         }
                       }}
                       disabled={isImageTransitioning}
-                      className={`absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${
-                        isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
-                      }`}
+                      className={`absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+                        }`}
                       aria-label="Next image"
                     >
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1646,22 +1639,21 @@ Through innovative STEM programs and intelligent automation, we're building the 
                   </div>
 
                   {/* Content */}
-                  <div className={`p-8 transition-all duration-400 ease-out ${
-                    isImageTransitioning ? 'opacity-60 transform translate-y-2' : 'opacity-100 transform translate-y-0'
-                  }`}>
+                  <div className={`p-8 transition-all duration-400 ease-out ${isImageTransitioning ? 'opacity-60 transform translate-y-2' : 'opacity-100 transform translate-y-0'
+                    }`}>
                     <div className="flex items-center gap-3 mb-4">
-                      <span 
+                      <span
                         className="px-3 py-1 rounded-full text-sm font-semibold text-white transition-colors duration-300"
                         style={{ backgroundColor: filteredImages[selectedImage]?.bgColor || '#3B82F6' }}
                       >
                         {galleryCategories.find(cat => cat.id === filteredImages[selectedImage]?.category)?.name}
                       </span>
                     </div>
-                    
+
                     <h2 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>
                       {filteredImages[selectedImage]?.alt}
                     </h2>
-                    
+
                     <p className={`text-lg leading-relaxed transition-colors duration-300 ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>
                       {filteredImages[selectedImage]?.story}
                     </p>
@@ -1681,6 +1673,11 @@ Through innovative STEM programs and intelligent automation, we're building the 
   // Initial scroll-triggered hero section
   return (
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
+      <SEO
+        title="Bidyut Innovation – Leading Robotics Company in India."
+        description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
+        canonical="https://bidyutinnovation.com/About"
+      />
       <Header />
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden px-4">
         <div className="relative">
@@ -1708,7 +1705,7 @@ Through innovative STEM programs and intelligent automation, we're building the 
                         ${isVisible ? "opacity-100" : "opacity-0"}
                       `}
                       style={{
-                            fontFamily: "'poppins', sans-serif", 
+                        fontFamily: "'poppins', sans-serif",
                         transform: digitData.transform,
                         transition: "transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 500ms ease-out",
                       }}

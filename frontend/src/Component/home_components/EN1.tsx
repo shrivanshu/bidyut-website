@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface ReviewCardProps {
   platform: 'linkedin' | 'twitter' | 'news'; // added "news" for NewsAPI
@@ -9,7 +9,7 @@ interface ReviewCardProps {
   url: string; // link to article/post
 }
 
-const EN1: React.FC<ReviewCardProps> = ({ platform, timestamp, title, content, author, url }) => {
+const EN1: React.FC<ReviewCardProps> = memo(({ platform, timestamp, title, content, author, url }) => {
   const PlatformIcon = () => {
     if (platform === 'linkedin') {
       return (
@@ -85,6 +85,6 @@ const EN1: React.FC<ReviewCardProps> = ({ platform, timestamp, title, content, a
       </div>
     </a>
   );
-};
+});
 
 export default EN1;

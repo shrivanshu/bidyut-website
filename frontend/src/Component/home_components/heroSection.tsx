@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import HeroHeading from "../../Text_Animation/HomeHeroText";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
-import { chatService } from "../../services/chatService";
+
+const HeroHeading = lazy(() => import("../../Text_Animation/HomeHeroText"));
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
 function ChatBox({
@@ -32,7 +32,7 @@ function ChatBox({
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-2 border-b bg-[#f8fefb] rounded-t-2xl">
         <div className="flex items-center gap-2">
-          <img src="/ChatBotRobot.svg" alt="Bot" className="w-6 h-6" />
+          <img src="/ChatBotRobot.svg" alt="Bot" className="w-6 h-6" loading="lazy" />
           <span className="font-semibold text-[#0ACF83] text-base">Bidyut AI</span>
         </div>
         <button
@@ -108,15 +108,19 @@ const HeroSection: React.FC = () => {
       text: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
     },
   ]);
+  const chatModuleRef = useRef<null | typeof import("../../services/chatService")>(null);
 
   const videos = ["/fnf 03.webm"];
 
-  // Handle sending message
   const handleSend = async (msg: string) => {
-    setMessages((prev) => [...prev, { from: "me" as const, text: msg }]);
+    const nextConversation = [...messages, { from: "me" as const, text: msg }];
+    setMessages(nextConversation);
 
     try {
-      const response = await chatService.sendMessage(msg, messages);
+      if (!chatModuleRef.current) {
+        chatModuleRef.current = await import("../../services/chatService");
+      }
+      const response = await chatModuleRef.current.chatService.sendMessage(msg, nextConversation);
       setMessages((prev) => [
         ...prev,
         { from: "bot" as const, text: response },
@@ -132,11 +136,6 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
-      {/* Google Fonts (you may want to move this to _document.tsx or index.html) */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet"
-      />
 
       {/* Background Videos - Optimized loading */}
       {videos.map((video, index) => (
@@ -151,9 +150,6 @@ const HeroSection: React.FC = () => {
           muted
           playsInline
           preload="metadata"
-          crossOrigin="anonymous"
-          onLoadStart={() => console.log(`Video ${index + 1} loading started`)}
-          onCanPlayThrough={() => console.log(`Video ${index + 1} ready to play`)}
         />
       ))}
 
@@ -161,28 +157,39 @@ const HeroSection: React.FC = () => {
       <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px' }}>
         {/* Small tagline */}
-        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md">
+        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '24px' }}>
           {t("learnRobotics")}
         </div>
 
         {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6">
-          <HeroHeading
-            text={["Let's Innovate Learn Beyond Boundaries"]}
-            typingSpeed={40}
-            pauseDuration={0}
-            showCursor={false}
-            highlight={{ text: "Let's Innovate", color: "#0acf83" }}
-          />
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
+          <Suspense
+            fallback={
+              <span className="inline" style={{ color: "#ffffff" }}>
+                Let's Innovate <span style={{ color: "#0acf83" }}>Learn Beyond Boundaries</span>
+              </span>
+            }
+          >
+            <HeroHeading
+              text={["Let's Innovate Learn Beyond Boundaries"]}
+              typingSpeed={40}
+              pauseDuration={0}
+              showCursor={false}
+              highlight={{ text: "Let's Innovate", color: "#0acf83" }}
+            />
+          </Suspense>
         </h1>
 
         {/* Description */}
         <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
-          Bidyut is the country's most advanced Robotic Edtech Company,
-          empowering schools and students in their quest for holistic
-          development.
+          Bidyut is the country's most advanced <a
+  href="/About"
+  target="_blank"
+  rel="noopener noreferrer"
+> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics courses in India that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+
         </p>
       </div>
 
@@ -197,7 +204,7 @@ const HeroSection: React.FC = () => {
               lineHeight: "1.3",
             }}
           >
-            <span className="font-semibold text-[#0ACF83]">Hi, I'm Buddy!</span>
+            <span className="font-semibold text-emerald-700">Hi, I'm Buddy!</span>
             <br />
             <span>
               Ask me anything 🚀
@@ -216,6 +223,7 @@ const HeroSection: React.FC = () => {
               alt="Chatbot Robot"
               className="w-20 h-20 object-contain"
               style={{ background: "transparent" }}
+              loading="lazy"
             />
           </button>
         )}

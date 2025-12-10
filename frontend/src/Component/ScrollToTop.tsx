@@ -17,9 +17,6 @@ export default function ScrollToTop() {
 
     // Scroll window to top on every route change
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    // Extra safeguards for some mobile browsers
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
   }, [pathname]);
 
   return null;

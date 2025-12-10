@@ -9,7 +9,10 @@
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "deploy": "npm run build && cd backend && pm2 restart bidyut-backend || pm2 start server.js --name bidyut-backend"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-error-boundary": "^6.0.0",
+    "react-helmet-async": "^2.0.5"
   }
 }

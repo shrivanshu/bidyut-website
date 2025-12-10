@@ -127,13 +127,17 @@ export default function EducationStream() {
           setActiveVideo(videoOptions[nextIndex]);
           
           if (pillsContainerRef.current) {
-            const visibleHeight = pillsContainerRef.current.clientHeight;
-            const itemHeight = 120;
-            const scrollPosition = (nextIndex * itemHeight) - (visibleHeight / 2) + (itemHeight / 2);
-            
-            pillsContainerRef.current.scrollTo({
-              top: Math.max(0, scrollPosition),
-              behavior: 'smooth'
+            requestAnimationFrame(() => {
+              if (pillsContainerRef.current) {
+                const visibleHeight = pillsContainerRef.current.clientHeight;
+                const itemHeight = 120;
+                const scrollPosition = (nextIndex * itemHeight) - (visibleHeight / 2) + (itemHeight / 2);
+                
+                pillsContainerRef.current.scrollTo({
+                  top: Math.max(0, scrollPosition),
+                  behavior: 'smooth'
+                });
+              }
             });
           }
 
@@ -171,7 +175,7 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills for lifelong success. </p>
+          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics courses in India, robotics for kids, robotics for schools, and interactive STREAM labs. </p>
       </motion.div>
 
       {/* Mobile Layout */}
