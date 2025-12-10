@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
@@ -10,19 +10,18 @@ export default function AwardWinning() {
   const { isDark } = useTheme()
   const { t } = useLanguage()
 
-  // Cursor-driven wave: animate letters based on mouse position
   const [cursorIndex, setCursorIndex] = useState<number | null>(null)
   const falloff = 3
-  const [scrollEnergy, setScrollEnergy] = useState(0) // grows with wheel, decays over time
+  const [scrollEnergy, setScrollEnergy] = useState(0)
   const maxAmplitude = 22
+  const lastMoveTimeRef = useRef(0)
 
-  // Decay energy smoothly
   useEffect(() => {
     if (scrollEnergy <= 0) return
     let raf: number
     const decay = () => {
       setScrollEnergy((prev) => {
-        const next = prev - 0.8 // decay rate per frame (~48px/s at 60fps)
+        const next = prev - 0.8
         return next > 0 ? next : 0
       })
       raf = requestAnimationFrame(decay)
@@ -40,6 +39,10 @@ export default function AwardWinning() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
   onMouseMove={(e: React.MouseEvent<HTMLHeadingElement>) => {
+          const now = Date.now()
+          if (now - lastMoveTimeRef.current < 16) return
+          lastMoveTimeRef.current = now
+
           const el = e.currentTarget
           const rect = el.getBoundingClientRect()
           const x = e.clientX - rect.left
@@ -114,16 +117,30 @@ export default function AwardWinning() {
       descriptionKey: "edtechExcellenceDesc",
       year: "2022",
     },
+    // {
+    //   id: 4,
+    //   imageSrc: "/award-wining/DSC05843.JPG",
+    //   titleKey: "nationalRoboticsAward",
+    //   descriptionKey: "roboticsAwardDesc",
+    //   year: "2023",
+    // },
+    // {
+    //   id: 5,
+    //   imageSrc: "/award-wining/DSC05847.JPG",
+    //   titleKey: "globalYouthEmpowerment",
+    //   descriptionKey: "youthEmpowermentDesc",
+    //   year: "2021",
+    // },
   ]
 
-  // Card position presets - responsive positioning
+  // Card position presets - responsive positioning (3 cards)
   const cardPositions = [
-    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 3 }, // center
-    { x: 200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // right
-    { x: -200, y: 20, scale: 0.9, opacity: 0.7, zIndex: 2 }, // left
+    { x: 0, y: 0, scale: 1.1, opacity: 1, zIndex: 5 }, // center
+    { x: 220, y: 20, scale: 0.9, opacity: 0.8, zIndex: 4 }, // right 1
+    { x: -220, y: 20, scale: 0.9, opacity: 0.8, zIndex: 4 }, // left 1
   ]
 
-  // Mobile card positions
+  // Mobile card positions (3 cards)
   const mobileCardPositions = [
     { x: 0, y: 0, scale: 1, opacity: 1, zIndex: 3 }, // center only
     { x: 0, y: 200, scale: 0, opacity: 0, zIndex: 1 }, // hidden
@@ -144,8 +161,7 @@ export default function AwardWinning() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Auto-rotate every 3 seconds
-  // Auto-rotate every 3 seconds (works for all screens)
+  // Auto-rotate every 3 seconds (3 cards)
 useEffect(() => {
   let interval: NodeJS.Timeout
   if (!isHovering) {

@@ -4,13 +4,25 @@ import cron from 'node-cron';
 import dotenv from 'dotenv';
 import fs from 'fs/promises';
 import path from 'path';
+import Parser from 'rss-parser';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
-const GOOGLE_AI_API_KEY = 'AIzaSyCur8DUiq_dPI5ZxAOiIT16yoEeOGLp9pI';
+const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
+
+// Initialize RSS Parser with User-Agent to avoid 403 errors
+const parser = new Parser({
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Accept-Encoding': 'gzip, deflate',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache'
+  }
+});
 
 // Session tracking for chat limits (3 chats per session)
 const sessionChatCounts = new Map(); // sessionId -> { count, lastActivity }
@@ -82,55 +94,99 @@ function isCacheValid(lastUpdated) {
   return diffInHours < 84; // 3.5 days in hours
 }
 
-// Fetch fresh news from EventRegistry API
+// Keywords to filter news articles
+const NEWS_FILTER_KEYWORDS = [
+  'robotics education',
+  'educational robotics',
+  'robotics technology',
+  'education technology',
+  'STEM robotics',
+  'robotics',
+  'robot'
+];
+
+// Check if article matches filter keywords
+function matchesKeywords(text) {
+  if (!text) return false;
+  const lowerText = text.toLowerCase();
+  return NEWS_FILTER_KEYWORDS.some(keyword => lowerText.includes(keyword.toLowerCase()));
+}
+
+// Fetch fresh news from RSS feeds
 async function fetchFreshNews() {
   try {
-    console.log('Fetching fresh news from EventRegistry...');
+    console.log('Fetching fresh news from RSS feeds...');
     
-    // Search for robotics, technology, and education news
-    const searchQueries = [
-      'robotics%20education',
-      'educational%20robotics',
-      'robotics%20technology',
-      'education%20technology',
-      'STEM%20robotics',
-      'robotics',
+    // Free RSS feeds for robotics, education, and technology news
+    const rssFeeds = [
+      'https://feeds.bloomberg.com/markets/news.rss',
+      'https://www.sciencedaily.com/rss/matter_energy/robotics.xml',
+      'https://www.techradar.com/feeds/rss/news',
+      'https://www.educationdive.com/feed/',
+      'https://www.edsurge.com/feed',
+      'https://feeds.arstechnica.com/arstechnica/index',
+      'https://feeds.wired.com/wired/index',
+      'https://feeds.theverge.com/theverge/index.xml',
+      'https://feeds.techcrunch.com/techcrunch/',
+      'https://www.reddit.com/r/robotics/.rss',
+      'https://www.reddit.com/r/learnrobotics/.rss',
+      'https://www.reddit.com/r/STEM/.rss',
     ];
     
-    let mappedArticles = [];
+    let allArticles = [];
     
-    for (const query of searchQueries) {
-      const url = `https://eventregistry.org/api/v1/article/getArticles?action=getArticles&keyword=${query}&apiKey=${NEWS_API_KEY}&lang=eng&articlesSortBy=date&articlesCount=15`;
-      
-      const response = await fetch(url);
-      if (!response.ok) {
+    for (const feedUrl of rssFeeds) {
+      try {
+        console.log(`Fetching RSS feed: ${feedUrl}`);
+        const feed = await parser.parseURL(feedUrl);
+        
+        if (feed.items && feed.items.length > 0) {
+          // Map RSS items to our Article interface
+          const articles = feed.items
+            .map((item) => {
+              // Truncate title to 80 characters
+              const title = item.title || 'No title available';
+              const truncatedTitle = title.length > 80 ? title.substring(0, 80) + '...' : title;
+              
+              // Truncate description to 250 characters
+              const description = item.contentSnippet || item.content || 'No description available';
+              const truncatedDescription = description.length > 250 ? description.substring(0, 250) + '...' : description;
+              
+              return {
+                title: truncatedTitle,
+                description: truncatedDescription,
+                url: item.link || '#',
+                source: { title: feed.title || 'Unknown Source' },
+                date: item.pubDate || new Date().toISOString(),
+                image: item.image?.url || item.media?.content?.[0]?.url || null,
+              };
+            })
+            // Filter articles based on keywords
+            .filter(article => matchesKeywords(article.title) || matchesKeywords(article.description));
+          
+          allArticles = allArticles.concat(articles);
+          console.log(`Successfully fetched ${articles.length} filtered articles from: ${feed.title}`);
+        }
+      } catch (feedError) {
+        console.error(`Error fetching feed ${feedUrl}:`, feedError.message);
         continue;
       }
-      
-      const data = await response.json();
-      
-      if (data.articles?.results && data.articles.results.length > 0) {
-        // Map EventRegistry format to our Article interface
-        mappedArticles = data.articles.results.map((article) => ({
-          title: article.title || 'No title available',
-          description: article.body || 'No description available',
-          url: article.url || '#',
-          source: { title: article.source?.title || 'Unknown Source' },
-          date: article.dateTimePub || new Date().toISOString(),
-          image: article.image || null,
-        }));
-        
-        console.log(`Successfully fetched ${mappedArticles.length} articles with query: ${query}`);
-        break; // Stop at first successful query
+    }
+
+    // Remove duplicates and limit to 12 articles
+    const uniqueArticles = [];
+    const seenUrls = new Set();
+    
+    for (const article of allArticles) {
+      if (!seenUrls.has(article.url)) {
+        seenUrls.add(article.url);
+        uniqueArticles.push(article);
+        if (uniqueArticles.length >= 12) break;
       }
     }
 
-    // Filter and limit articles
-    if (mappedArticles.length > 12) {
-      mappedArticles = mappedArticles.slice(0, 12);
-    }
-
-    return mappedArticles;
+    console.log(`Returning ${uniqueArticles.length} unique filtered articles`);
+    return uniqueArticles;
   } catch (error) {
     console.error('Error fetching news:', error);
     return [];
@@ -185,6 +241,7 @@ app.get('/api/news', async (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
+  console.log("dfkjs");
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
@@ -247,7 +304,7 @@ app.post('/api/chat', async (req, res) => {
 
     const fullPrompt = `${systemPrompt}\n\n${conversationHistory}\nUser: ${message}\nBuddy:`;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
     const text = response.text();
@@ -318,6 +375,26 @@ app.post('/api/chat/fallback', (req, res) => {
     timestamp: new Date().toISOString(),
     fallback: true
   });
+});
+
+// Manual endpoint to force update news cache
+app.post('/api/news/update', async (req, res) => {
+  try {
+    console.log('Manual news update triggered');
+    const cache = await updateNewsCache();
+    res.json({
+      success: true,
+      message: 'News cache updated successfully',
+      lastUpdated: cache.lastUpdated,
+      articlesCount: cache.articles.length
+    });
+  } catch (error) {
+    console.error('Error updating news cache:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update news cache'
+    });
+  }
 });
 
 // Schedule news updates twice a week (Monday and Thursday at 6 AM)

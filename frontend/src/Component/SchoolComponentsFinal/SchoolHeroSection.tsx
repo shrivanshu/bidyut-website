@@ -13,7 +13,7 @@ const SchoolHeroSection: React.FC = () => {
   // Progress from 0 → 1 over the hero's internal scroll (animation part)
   const [progress, setProgress] = useState(0);
   const [pinned, setPinned] = useState(false); // true while the hero is in its pinned (horizontal-only) phase
-  
+
   // Animation states for text entrance
   const [isTextVisible, setIsTextVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -158,7 +158,7 @@ const SchoolHeroSection: React.FC = () => {
       const aspectRatio = 16 / 9;
       let finalFocusW = maxFocusW;
       let finalFocusH = Math.round(finalFocusW / aspectRatio);
-      
+
       // If height is too large, adjust based on height
       if (finalFocusH > maxFocusH) {
         finalFocusH = maxFocusH;
@@ -235,23 +235,23 @@ const SchoolHeroSection: React.FC = () => {
 
       // Calculate video scaling and switching phases
       const videoScalingPhase = 500; // 500px for video to reach full size first
-      
+
       const actualScrollInHold = y - duration;
-      
+
       // Calculate video scaling progress (0-1 over first 500px)
       const scalingProgress = clamp01(actualScrollInHold / videoScalingPhase);
       setVideoScalingProgress(scalingProgress);
-      
+
       // Phase 2: Video switching (only after video is full size)
       let currentIndex = 0;
-      
+
       if (actualScrollInHold > videoScalingPhase) {
         const switchingScrollDistance = actualScrollInHold - videoScalingPhase;
-        
+
         // Calculate which video based on 500px per video (after scaling phase)
         const videoIndex = Math.floor(switchingScrollDistance / 500);
         currentIndex = Math.min(videoIndex, videosData.length - 1);
-        
+
         // Calculate transition progress within current 500px segment
         const segmentProgress = (switchingScrollDistance % 500) / 500;
         setVideoTransition(segmentProgress);
@@ -259,7 +259,7 @@ const SchoolHeroSection: React.FC = () => {
         // Still in scaling phase, stay on first video, no transitions
         setVideoTransition(0);
       }
-      
+
       if (currentIndex !== currentVideoIndex) {
         setPrevVideoIndex(currentVideoIndex);
         setCurrentVideoIndex(currentIndex);
@@ -300,49 +300,52 @@ const SchoolHeroSection: React.FC = () => {
             <div
               className="overflow-hidden"
               style={{
-                transform: isTextVisible 
-                  ? 'translateX(0) translateZ(0)' 
+                transform: isTextVisible
+                  ? 'translateX(0) translateZ(0)'
                   : 'translateX(-100%) translateZ(0)',
                 transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 transitionDelay: isTextVisible ? '0.1s' : '0s'
               }}
             >
-              <h1 
-                className="font-heading font-bold leading-tight dark:text-white" 
-                style={{ 
-                  fontSize: "44px", 
+              <h1
+                className="font-heading font-bold leading-tight dark:text-white"
+                style={{
+                  fontSize: "44px",
                   fontWeight: 700,
-                  transform: isTextVisible 
-                    ? 'translateY(0) scale(1)' 
+                  transform: isTextVisible
+                    ? 'translateY(0) scale(1)'
                     : 'translateY(15px) scale(0.98)',
                   transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   transitionDelay: isTextVisible ? '0.2s' : '0s'
                 }}
               >
-                Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup
+                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs
+
               </h1>
             </div>
-            
+
             {/* Subtext with sliding animation - Fixed glitchy behavior */}
             <div
               className="mt-2"
               style={{
-                transform: isTextVisible 
-                  ? 'translateY(0) translateZ(0)' 
+                transform: isTextVisible
+                  ? 'translateY(0) translateZ(0)'
                   : 'translateY(20px) translateZ(0)',
                 opacity: isTextVisible ? 1 : 0,
                 transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
                 transitionDelay: isTextVisible ? '0.4s' : '0s'
               }}
             >
-              <p 
-                className="text-gray-800 dark:text-gray-400" 
-                style={{ 
-                  fontSize: "18px", 
+              <p
+                className="text-gray-800 dark:text-gray-400"
+                style={{
+                  fontSize: "18px",
                   fontWeight: 500
                 }}
               >
-               We offer hands-on programs in Robotics, AI, and Drones through our robotics lab setup, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future. </p>
+                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
+
+              </p>
             </div>
           </div>
 
@@ -352,11 +355,11 @@ const SchoolHeroSection: React.FC = () => {
             const h = lerp(img.h, cardH, e);
             const left = lerp(img.left, finalLefts[i] ?? img.left, e);
             const top = imagesCenterY - h / 2 + baseYOffset; // keep the visual center fixed while resizing
-            
+
             // Hide background images when video is scaling/opening
             const videoFadeOut = Math.min(1, videoScalingProgress * 2); // Fade out during video scaling
             const finalOpacity = (1 - 0.85 * eh) * (1 - videoFadeOut);
-            
+
             return (
               <div
                 key={i}
@@ -370,80 +373,81 @@ const SchoolHeroSection: React.FC = () => {
 
           {/* Mobile: stacked view with enhanced horizontal drift and tighter spacing */}
           <div
-  className="md:hidden flex flex-col items-center  gap-6 "
-  style={{ 
-    transform: `translateX(-${easeInOutCubic(e) * 120}px) translateY(${baseYOffset}px)`,
-    opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) * (1 - Math.min(1, videoScalingProgress * 2))
-  }}
->
-  {/* Mobile Heading */}
-  <div
-    className="w-full"
-    style={{
-      transform: isTextVisible 
-        ? 'translateY(0)' 
-        : 'translateY(30px)',
-      opacity: isTextVisible ? 1 : 0,
-      transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out',
-      transitionDelay: isTextVisible ? '0.1s' : '0s'
-    }}
-  >
-    <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
-Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup    </h1>
-  </div>
+            className="md:hidden flex flex-col items-center  gap-6 "
+            style={{
+              transform: `translateX(-${easeInOutCubic(e) * 120}px) translateY(${baseYOffset}px)`,
+              opacity: (1 - 0.9 * eh) * (1 - Math.min(1, e * 0.8)) * (1 - Math.min(1, videoScalingProgress * 2))
+            }}
+          >
+            {/* Mobile Heading */}
+            <div
+              className="w-full"
+              style={{
+                transform: isTextVisible
+                  ? 'translateY(0)'
+                  : 'translateY(30px)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out',
+                transitionDelay: isTextVisible ? '0.1s' : '0s'
+              }}
+            >
+              <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
+                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs  </h1>
+            </div>
 
-  {/* Subtext */}
-  <div
-    className="w-full"
-    style={{
-      transform: isTextVisible 
-        ? 'translateY(0)' 
-        : 'translateY(20px)',
-      opacity: isTextVisible ? 1 : 0,
-      transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
-      transitionDelay: isTextVisible ? '0.3s' : '0s'
-    }}
-  >
-    <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
-   We offer hands-on programs in Robotics, AI, and Drones through our robotics lab setup, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive in the future. </p>
-  </div>
+            {/* Subtext */}
+            <div
+              className="w-full"
+              style={{
+                transform: isTextVisible
+                  ? 'translateY(0)'
+                  : 'translateY(20px)',
+                opacity: isTextVisible ? 1 : 0,
+                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out',
+                transitionDelay: isTextVisible ? '0.3s' : '0s'
+              }}
+            >
+              <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
+                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
+              </p>
+            </div>
 
-  {/* Responsive Image Grid */}
-  <div className="grid grid-cols-2 px-4 gap-6  max-w-[300px]  md:max-w-lg">
-    {[
-      "/school_images/Render.00_01_54_02.Still006.webp",
-      "/school_images/Render.00_01_51_13.Still005.webp",
-      "/school_images/C2271.00_00_33_34.Still003.webp",
-      "/school_images/C2271.00_00_25_11.Still004.webp",
-      "/school_images/C2271.00_00_21_55.Still002.webp"
-    ].map((src, i) => (
-      <div
-        key={i}
-        className="rounded-2xl overflow-hidden shadow-md w-full aspect-[3/4]"
-        style={{
-          transform: isTextVisible 
-            ? 'translateX(0) scale(1)' 
-            : `translateX(${i % 2 === 0 ? '-40px' : '40px'}) scale(0.95)`,
-          opacity: isTextVisible ? 1 : 0,
-          transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          transitionDelay: isTextVisible ? `${0.5 + i * 0.1}s` : '0s'
-        }}
-      >
-        <img
-          src={src}
-          alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms"
-          className="w-full h-full object-cover"
-        />
-      </div>
-    ))}
-  </div>
-</div>
+            {/* Responsive Image Grid */}
+            <div className="grid grid-cols-2 px-4 gap-6  max-w-[300px]  md:max-w-lg">
+              {[
+                "/school_images/Render.00_01_54_02.Still006.webp",
+                "/school_images/Render.00_01_51_13.Still005.webp",
+                "/school_images/C2271.00_00_33_34.Still003.webp",
+                "/school_images/C2271.00_00_25_11.Still004.webp",
+                "/school_images/C2271.00_00_21_55.Still002.webp"
+              ].map((src, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl overflow-hidden shadow-md w-full aspect-[3/4]"
+                  style={{
+                    transform: isTextVisible
+                      ? 'translateX(0) scale(1)'
+                      : `translateX(${i % 2 === 0 ? '-40px' : '40px'}) scale(0.95)`,
+                    opacity: isTextVisible ? 1 : 0,
+                    transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    transitionDelay: isTextVisible ? `${0.5 + i * 0.1}s` : '0s'
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
 
           {/* Focus popup: center video with rounded edges and left-corner details (appears during hold) */}
           <div
             className="absolute w-full h-full top-0 left-0 pointer-events-none flex justify-center"
-            style={{ 
+            style={{
               opacity: holdProgress > 0 && holdProgress < 0.98 ? 1 : 0, // Instant disappear at 98% - no fade effect
               paddingTop: "12rem", // Less space from top for larger video
               paddingLeft: "1rem", // Minimal space from left
@@ -504,9 +508,8 @@ Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup    
                 {videosData.map((_, index) => (
                   <div
                     key={index}
-                    className={`w-3 h-3 rounded-full transition-all duration-500 ease-out ${
-                      index === currentVideoIndex ? 'bg-white scale-125' : 'bg-white/40 scale-100'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ease-out ${index === currentVideoIndex ? 'bg-white scale-125' : 'bg-white/40 scale-100'
+                      }`}
                   />
                 ))}
               </div>
@@ -515,12 +518,12 @@ Transform Your Classroom with Robotics, AI & Future-Ready Robotics Lab Setup    
               <div className="absolute top-6 left-6 md:top-8 md:left-8 w-48 md:w-56">
                 {/* Overall progress */}
                 <div className="bg-white/20 rounded-full h-1.5 mb-3">
-                  <div 
+                  <div
                     className="bg-white rounded-full h-1.5 transition-all duration-300"
                     style={{ width: `${(holdProgress * 100)}%` }}
                   />
                 </div>
-                
+
                 {/* <p className="text-white text-[11px] md:text-[13px] opacity-75 mt-2">
                   {actualScrollInHold <= 500 ? `Video scaling: ${Math.round(videoScalingProgress * 100)}%` : `Video ${currentVideoIndex + 1} of ${videosData.length}`}
                 </p> */}

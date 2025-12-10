@@ -1,4 +1,4 @@
-import { Brain, Bot as Robot } from "lucide-react"
+import { Brain, Robot } from "./icons"
 import SplitText from "../../Text_Animation/LSMtext"
 
 export default function Component() {
@@ -10,9 +10,9 @@ export default function Component() {
   return (
     <div className="bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        
+
         {/* Header Section */}
-  <div className="flex flex-col items-center justify-center text-center mb-12 mt-4 pt-8">
+        <div className="flex flex-col items-center justify-center text-center mb-12 mt-4 pt-8">
           <SplitText
             text="Innovative Learning with Robotics & AI"
             className="md:whitespace-nowrap text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
@@ -28,20 +28,24 @@ export default function Component() {
             onLetterAnimationComplete={handleAnimationComplete}
           />
           <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-4xl font-['Poppins'] transition-colors duration-300">
-            Empowering schools with engaging robotics, coding, and AI learning.
+            Empowering schools with engaging robotics for kids, coding, and AI learning.
+
           </p>
         </div>
 
         {/* Main Content Section */}
         <div className="flex flex-col xl:flex-row items-center xl:items-start gap-8 lg:gap-12 xl:gap-16">
-          
+
           {/* Left Column */}
           <div className="flex-1 lg:w-1/2 text-center lg:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 font-['Poppins'] transition-colors duration-300">
               <span className="text-[#28C76F] font-semibold">Bidyut</span> Innovation LMS
             </h2>
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
-              Bidyut LMS brings robotics, coding, and AI to life with hands-on and gamified lessons. Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
+              Bidyut LMS brings robotics courses in India, coding solutions, and AI learning to life with hands-on and gamified lessons. With specialized learning paths designed for robotics for kids and 
+  <a  href="/School" target="_blank" rel="noopener noreferrer">
+robotics for schools </a>, Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
+
             </p>
             <a
               href="https://bidyutrobotics.com/login"
@@ -57,10 +61,10 @@ export default function Component() {
 
           {/* Right Column */}
           <div className="flex-1 xl:w-1/2 relative order-1 xl:order-2 w-full">
-            
+
             {/* Container for image and cards */}
             <div className="relative flex justify-center items-center min-h-[250px] sm:min-h-[300px] lg:min-h-[350px]">
-              
+
               {/* Background Gradient */}
               <div
                 className="absolute w-full h-full rounded-full blur-[100px] lg:blur-[140px] opacity-50 lg:opacity-70"
@@ -88,7 +92,7 @@ export default function Component() {
                   style={{
                     bottom: "-8%",
                     left: "-8%",
-                    opacity:"0.9",
+                    opacity: "0.9",
                   }}
                 >
                   <div className="flex items-center mb-2">
@@ -107,7 +111,7 @@ export default function Component() {
                   style={{
                     bottom: "5%",
                     right: "0%",
-                    opacity:"0.9",
+                    opacity: "0.9",
                   }}
                 >
                   <div className="flex items-center mb-2">

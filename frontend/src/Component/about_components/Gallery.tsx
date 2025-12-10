@@ -66,13 +66,14 @@ const Gallery = () => {
 
   // Check if user has scrolled to the gallery section
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
     const handleScroll = () => {
       if (!containerRef.current || showFullGallery) return;
 
       const container = containerRef.current;
       const rect = container.getBoundingClientRect();
       
-      // Check if the gallery section is in view (user has scrolled to it)
       const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
       
       if (isVisible && !isInGallerySection) {
@@ -80,63 +81,73 @@ const Gallery = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    const debouncedScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 100);
+    };
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', debouncedScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', debouncedScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, [isInGallerySection, showFullGallery]);
 
   // Handle wheel/scroll events to control reel progression (only when in gallery section)
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      // Only interfere with scroll when we're in gallery section AND not showing full gallery
-      if (!isInGallerySection || showFullGallery) return;
+    let isContainerInView = false;
 
-      // Only prevent default if we're actively in the reel interaction area
+    const checkContainerPosition = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      isContainerInView = rect.top <= 100 && rect.bottom >= window.innerHeight - 100;
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (!isInGallerySection || showFullGallery) return;
+      if (!isContainerInView) return;
+
       const container = containerRef.current;
       if (!container) return;
 
-      const rect = container.getBoundingClientRect();
+      e.preventDefault();
       
-      // Check if we're in the middle section where reel should be active
-      if (rect.top <= 100 && rect.bottom >= window.innerHeight - 100) {
-        e.preventDefault();
-        
-        // Accumulate scroll delta
-        accumulatedScroll.current += e.deltaY;
-        
-        // Each "step" requires a certain amount of scroll
-        const scrollStep = 300; // Adjust this to make it more/less sensitive
-        const maxScroll = scrollStep * 4; // 4 steps total (3 images + final spread)
-        
-        // Clamp the accumulated scroll
-        accumulatedScroll.current = Math.max(0, Math.min(maxScroll, accumulatedScroll.current));
-        
-        // Calculate progress (0 to 1)
-        const progress = accumulatedScroll.current / maxScroll;
-        setReelProgress(progress);
-        
-        // Calculate current reel index (0, 1, or 2)
-        const newReelIndex = Math.floor(progress * 3);
-        const clampedIndex = Math.max(0, Math.min(2, newReelIndex));
-        setCurrentReelIndex(clampedIndex);
-        
-        // Trigger gallery spread at the end
-        if (progress >= 0.95) {
-          setShowExplosion(true);
-          setTimeout(() => {
-            setShowFullGallery(true);
-            setShowExplosion(false);
-          }, 1000);
-        }
+      accumulatedScroll.current += e.deltaY;
+      
+      const scrollStep = 300;
+      const maxScroll = scrollStep * 4;
+      
+      accumulatedScroll.current = Math.max(0, Math.min(maxScroll, accumulatedScroll.current));
+      
+      const progress = accumulatedScroll.current / maxScroll;
+      setReelProgress(progress);
+      
+      const newReelIndex = Math.floor(progress * 3);
+      const clampedIndex = Math.max(0, Math.min(2, newReelIndex));
+      setCurrentReelIndex(clampedIndex);
+      
+      if (progress >= 0.95) {
+        setShowExplosion(true);
+        setTimeout(() => {
+          setShowFullGallery(true);
+          setShowExplosion(false);
+        }, 1000);
       }
     };
 
-    // Always add the wheel listener, but only prevent default conditionally
+    const handleScroll = () => {
+      requestAnimationFrame(checkContainerPosition);
+    };
+
     window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [isInGallerySection, showFullGallery]);
 

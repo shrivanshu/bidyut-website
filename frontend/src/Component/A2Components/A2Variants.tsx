@@ -30,7 +30,7 @@ const cobotSearchData = [
     name: "GO2 AIR",
     image: "/A2.webp",
     category: "Service",
-    description: "GO2 AIR is a 15 kg smart robot with advanced movement, vision, and interactive skills.",
+    description: "GO2 AIR is a 15 kg smart robot  with advanced movement, vision, and interactive skills.",
     specId: "go2-basic",
     gallery: ["/A2.webp", "/A2.webp", "/A2.webp"],
   },
@@ -176,7 +176,7 @@ RobotSpec[] = [
     id: "A2-Standard",
     name: "A2 Standard",
     description:
-      "The Unitree A2 Standard is a powerful quadruped robot weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
+      "The Unitree A2 Standard is a powerful quadruped robot dog weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.",
     gallery: [
       "/media/A2-standard.webp",
 
@@ -289,123 +289,123 @@ features: [
 
   },
   
-  {
-    id: "A2-W-Standard",
+//   {
+//     id: "A2-W-Standard",
     
-    name: "A2-W Standard",
-    description:
-      "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
-    gallery: [
-      "/media/A2-w.webp",
+//     name: "A2-W Standard",
+//     description:
+//       "The A2W with a wheeled-foot design supports a 20–25kg payload, 5h/20km travel unladen, and 2.5–3h/12.5km with 25kg. It has a dual-battery system (9000mAh/18000mAh) with 1h charging, operates in -20°C to 55°C, and handles 28cm stairs, 90cm steps, and 45° slopes. Equipped with 8-core CPU + Intel i7, LiDAR + cameras, and WiFi 6/Bluetooth 5.2, it ensures obstacle avoidance, HD transmission, OTA updates, and secondary development.",
+//     gallery: [
+//       "/media/A2-w.webp",
 
-    ],
-features: [
-  {
-    label: "LIDAR Sensor",
-    detail: "Single LiDAR for navigation & mapping",
-    position: { top: "5%", left: "15%" },
-    positionSm: { top: "5%", left: "30%" }, 
-    lineDirection: "left",
-    targetPoint: { x: "21%", y: "22%" },
-    targetPointSm: { x: "19%", y: "32%" } 
-  },
-  {
-    label: "Optical Camera",
-    detail: "Wide-angle depth camera (expandable to 2)",
-    position: { top: "3%", left: "35%" },
-    positionSm: { top: "5%", left: "45%" },
-    lineDirection: "right",
-    targetPoint: { x: "24%", y: "25%" },
-    targetPointSm: { x: "17%", y: "34%" } 
-  },
-  {
-    label: "Wheeled Legs",
-    detail: "Hybrid leg-wheel design for versatile terrain",
-    position: { top: "75%", left: "15%" },
-    positionSm: { top: "79%", left: "15%" },
-    lineDirection: "right",
-    targetPoint: { x: "45%", y: "50%" },
-    targetPointSm: { x: "6%", y: "67%" } 
-  },
-  {
-    label: "Battery Pack",
-    detail: "Dual-bay 9000mAh/18000mAh system",
-    position: { top: "5%", left: "90%" },
-    positionSm: { top: "22%", left: "65%" },
-    lineDirection: "right",
-    targetPoint: { x: "60%", y: "30%" },
-    targetPointSm: { x: "62%", y: "42%" }
-  },
-  {
-    label: "Computing Power",
-    detail: "8-core CPU + Intel i7 dual-unit system",
-    position: { top: "65%", left: "80%" },
-    positionSm: { top: "72%", left: "88%" },
-    lineDirection: "left",
-    targetPoint: { x: "65%", y: "13%" },
-    targetPointSm: { x: "57%", y: "37%" }
-  }
-]
+//     ],
+// features: [
+//   {
+//     label: "LIDAR Sensor",
+//     detail: "Single LiDAR for navigation & mapping",
+//     position: { top: "5%", left: "15%" },
+//     positionSm: { top: "5%", left: "30%" }, 
+//     lineDirection: "left",
+//     targetPoint: { x: "21%", y: "22%" },
+//     targetPointSm: { x: "19%", y: "32%" } 
+//   },
+//   {
+//     label: "Optical Camera",
+//     detail: "Wide-angle depth camera (expandable to 2)",
+//     position: { top: "3%", left: "35%" },
+//     positionSm: { top: "5%", left: "45%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "24%", y: "25%" },
+//     targetPointSm: { x: "17%", y: "34%" } 
+//   },
+//   {
+//     label: "Wheeled Legs",
+//     detail: "Hybrid leg-wheel design for versatile terrain",
+//     position: { top: "75%", left: "15%" },
+//     positionSm: { top: "79%", left: "15%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "45%", y: "50%" },
+//     targetPointSm: { x: "6%", y: "67%" } 
+//   },
+//   {
+//     label: "Battery Pack",
+//     detail: "Dual-bay 9000mAh/18000mAh system",
+//     position: { top: "5%", left: "90%" },
+//     positionSm: { top: "22%", left: "65%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "60%", y: "30%" },
+//     targetPointSm: { x: "62%", y: "42%" }
+//   },
+//   {
+//     label: "Computing Power",
+//     detail: "8-core CPU + Intel i7 dual-unit system",
+//     position: { top: "65%", left: "80%" },
+//     positionSm: { top: "72%", left: "88%" },
+//     lineDirection: "left",
+//     targetPoint: { x: "65%", y: "13%" },
+//     targetPointSm: { x: "57%", y: "37%" }
+//   }
+// ]
 
-  },
+//   },
 
-  {
-    id: "A2-W-Pro",
-    name: "A2-W Pro",
-    description:
-      "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
-    gallery: [
-      "/media/A2-w-pro.webp",
+//   {
+//     id: "A2-W-Pro",
+//     name: "A2-W Pro",
+//     description:
+//       "The A2-W Pro builds on the A2-W Standard with dual LiDAR, GPS, 4G, and a wireless vector positioning module. It features an expansion dock boosting computing power to 3 units, supports SLAM mapping, autonomous navigation, obstacle avoidance, point cloud surround view, HD transmission, and optional auto-charging, with IP56–IP67 protection (core IP67).",
+//     gallery: [
+//       "/media/A2-w-pro.webp",
 
-    ],
-features: [
-  {
-    label: "LIDAR Sensor",
-    detail: "Dual LiDAR sensors for enhanced mapping & navigation",
-    position: { top: "1%", left: "20%" },
-    positionSm: { top: "5%", left: "35%" }, 
-    lineDirection: "left",
-    targetPoint: { x: "30%", y: "12%" },
-    targetPointSm: { x: "19%", y: "32%" } 
-  },
-  {
-    label: "Optical Camera",
-    detail: "Wide-angle depth camera system, expandable to dual setup",
-    position: { top: "3%", left: "50%" },
-    positionSm: { top: "5%", left: "45%" },
-    lineDirection: "right",
-    targetPoint: { x: "35%", y: "18%" },
-    targetPointSm: { x: "17%", y: "34%" }
-  },
-  {
-    label: "Wheeled Legs",
-    detail: "Hybrid leg-wheel design with improved stability & payload handling",
-    position: { top: "85%", left: "22%" },
-    positionSm: { top: "79%", left: "15%" },
-    lineDirection: "right",
-    targetPoint: { x: "5%", y: "81%" },
-    targetPointSm: { x: "6%", y: "67%" } 
-  },
-  {
-    label: "Battery Pack",
-    detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
-    position: { top: "12%", left: "95%" },
-    positionSm: { top: "22%", left: "68%" },
-    lineDirection: "right",
-    targetPoint: { x: "70%", y: "30%" },
-    targetPointSm: { x: "62%", y: "42%" }
-  },
-  {
-    label: "Computing Power",
-    detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
-    position: { top: "90%", left: "87%" },
-    positionSm: { top: "72%", left: "88%" },
-    lineDirection: "left",
-    targetPoint: { x: "72%", y: "23%" },
-    targetPointSm: { x: "57%", y: "37%" }
-  }
-]
-  },
+//     ],
+// features: [
+//   {
+//     label: "LIDAR Sensor",
+//     detail: "Dual LiDAR sensors for enhanced mapping & navigation",
+//     position: { top: "1%", left: "20%" },
+//     positionSm: { top: "5%", left: "35%" }, 
+//     lineDirection: "left",
+//     targetPoint: { x: "30%", y: "12%" },
+//     targetPointSm: { x: "19%", y: "32%" } 
+//   },
+//   {
+//     label: "Optical Camera",
+//     detail: "Wide-angle depth camera system, expandable to dual setup",
+//     position: { top: "3%", left: "50%" },
+//     positionSm: { top: "5%", left: "45%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "35%", y: "18%" },
+//     targetPointSm: { x: "17%", y: "34%" }
+//   },
+//   {
+//     label: "Wheeled Legs",
+//     detail: "Hybrid leg-wheel design with improved stability & payload handling",
+//     position: { top: "85%", left: "22%" },
+//     positionSm: { top: "79%", left: "15%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "5%", y: "81%" },
+//     targetPointSm: { x: "6%", y: "67%" } 
+//   },
+//   {
+//     label: "Battery Pack",
+//     detail: "Dual-bay system with 9000mAh / 18000mAh capacity, supports long endurance",
+//     position: { top: "12%", left: "95%" },
+//     positionSm: { top: "22%", left: "68%" },
+//     lineDirection: "right",
+//     targetPoint: { x: "70%", y: "30%" },
+//     targetPointSm: { x: "62%", y: "42%" }
+//   },
+//   {
+//     label: "Computing Power",
+//     detail: "High-performance CPU + Intel i7 + expansion dock (3 units total)",
+//     position: { top: "90%", left: "87%" },
+//     positionSm: { top: "72%", left: "88%" },
+//     lineDirection: "left",
+//     targetPoint: { x: "72%", y: "23%" },
+//     targetPointSm: { x: "57%", y: "37%" }
+//   }
+// ]
+//   },
   
 
 ]

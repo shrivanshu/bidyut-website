@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from "react"
-import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react"
+import { Instagram, Facebook, Youtube, Linkedin } from "./InlineIcons"
 import { Link } from "react-router-dom"
 import { useLanguage } from "../contexts/OptimizedLanguageContext"
 
@@ -12,36 +12,61 @@ function AnimatedBanner({
   iLetterRef: React.RefObject<HTMLSpanElement | null>
 }) {
   const [iPosition, setIPosition] = useState({ x: 0, y: 0 })
+  
+  useEffect(() => {
+    const floatGentleKeyframes = `
+      @keyframes float-gentle {
+        0%, 100% {
+          transform: translate(-50%, -50%);
+        }
+        50% {
+          transform: translate(-50%, -80%);
+        }
+      }
+    `;
+    
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'float-gentle-keyframes';
+    styleSheet.textContent = floatGentleKeyframes;
+    
+    if (!document.getElementById('float-gentle-keyframes')) {
+      document.head.appendChild(styleSheet);
+    }
+    
+    return () => {
+      const existing = document.getElementById('float-gentle-keyframes');
+      if (existing && existing.parentNode) {
+        existing.parentNode.removeChild(existing);
+      }
+    };
+  }, []);
 
   // Update i position on scroll and resize
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout | null = null;
+
     const updateIPosition = () => {
       if (iLetterRef.current) {
         const iRect = iLetterRef.current.getBoundingClientRect()
         const screenWidth = window.innerWidth
 
-        const fontScale = iRect.height / 100; // normalize by expected height
+        const fontScale = iRect.height / 100;
         let xOffset = 2.5;
         let yMultiplier = 2;
 
         if (screenWidth < 380) {
-          // Small mobile
           xOffset = 2.7;
           yMultiplier = 45.8;
         } else if (screenWidth <= 768) {
-          // Regular mobile
           xOffset = 2.7;
           yMultiplier = 6.25;
         } else if (screenWidth < 1024) {
-          // Tablet
           xOffset = 2.5;
           yMultiplier = 1.2;
         } else if (screenWidth < 1440) {
-          // Laptop
           xOffset = 2.4;
           yMultiplier = 1.8;
         } else {
-          // Large Desktop
           xOffset = 2.4;
           yMultiplier = 2;
         }
@@ -50,41 +75,26 @@ function AnimatedBanner({
           x: iRect.left + (iRect.width / xOffset),
           y: iRect.top + (iRect.height * yMultiplier * fontScale)
         });
-        
-        // Add the static dot
-      
       }
     }
 
     const handleUpdate = () => {
-      requestAnimationFrame(updateIPosition)
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        requestAnimationFrame(updateIPosition);
+      }, 100);
     }
 
-    updateIPosition() // Initial
+    updateIPosition();
     window.addEventListener("scroll", handleUpdate, { passive: true })
     window.addEventListener("resize", handleUpdate)
 
     return () => {
       window.removeEventListener("scroll", handleUpdate)
       window.removeEventListener("resize", handleUpdate)
+      if (debounceTimer) clearTimeout(debounceTimer);
     }
   }, [iLetterRef, scrollProgress])
-
-  // Add float-gentle animation
-  const floatGentleKeyframes = `
-    @keyframes float-gentle {
-      0%, 100% {
-        transform: translate(-50%, -50%);
-      }
-      50% {
-        transform: translate(-50%, -80%);
-      }
-    }
-  `;
-
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = floatGentleKeyframes;
-  document.head.appendChild(styleSheet);
 
   // Morphing progress
   let morph = 0
@@ -114,7 +124,7 @@ function AnimatedBanner({
     // Tablet
     initialWidth = 600
     initialHeight = 140
-    dotSize = 24
+    dotSize = 20
     dotBorderRadius = 12
   } 
   else {
@@ -156,7 +166,7 @@ background: "linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #f3e8ff 100%)",
     let bottomPosition = "1.2em";  // default for mobile
     
     if (screenWidth >= 1440) {
-      bottomPosition = "5.5em";  // large desktop
+      bottomPosition = "5.9em";  // large desktop
     } else if (screenWidth >= 1024) {
       bottomPosition = "3.8em";  // laptop
     } else if (screenWidth >= 768) {
@@ -367,26 +377,96 @@ export default function Footer() {
             </div>
     
             {/* Brand with i target */}
-            <div className="flex justify-center items-center w-full">
-              <div
-                className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
-                style={{
-                  fontSize: "8.9vw",
-                  minWidth: "100vw",
-                  width: "100%",
-                  lineHeight: 1.05,
-                }}
-              >
-                <span>B</span>
-                <span ref={iLetterRef} className="relative inline-block">
-                  <span className="relative">
-                    i
-                   
-                  </span>
-                </span>
-                <span>dyut Innovation</span>
-              </div>
-            </div>
+<div className="flex justify-center items-center w-full">
+  <div
+    className="font-extrabold text-gray-400 dark:text-gray-500 tracking-wider select-none text-center"
+    style={{
+      fontSize: "8.9vw",
+      minWidth: "100vw",
+      width: "100%",
+      lineHeight: 1.05,
+
+      // GLOBAL SMOOTHING
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale",
+      fontFamily: "'Poppins', sans-serif",
+
+      // GPU RENDER (removes font artifacts)
+      transform: "translateZ(0)",
+      willChange: "transform",
+    }}
+  >
+    <span
+      style={{
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        fontFamily: "'Poppins', sans-serif",
+        transform: "translateZ(0)",
+        willChange: "transform",
+      }}
+    >
+      B
+    </span>
+
+    <span
+      ref={iLetterRef}
+      className="relative inline-block"
+      // style={{
+      //   WebkitFontSmoothing: "antialiased",
+      //   MozOsxFontSmoothing: "grayscale",
+      //   fontFamily: "'Poppins', sans-serif",
+      //   transform: "translateZ(0)",
+      //   willChange: "transform",
+      // }}
+    >
+      <span
+        className="relative"
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        i
+      </span>
+    </span>
+
+    {/* ==== dyut ==== */}
+    {"dyut ".split("").map((letter, index) => (
+      <span
+        key={index}
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        {letter}
+      </span>
+    ))}
+
+    {/* ==== Innovation ==== */}
+    {"Innovation".split("").map((letter, index) => (
+      <span
+        key={`inv-${index}`}
+        style={{
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+          fontFamily: "'Poppins', sans-serif",
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
+      >
+        {letter}
+      </span>
+    ))}
+  </div>
+</div>
+
           </div>
     
           {/* Keep your style block unchanged */}

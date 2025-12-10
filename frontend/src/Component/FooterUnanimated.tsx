@@ -58,7 +58,7 @@ export default function FooterUnanimated() {
             {/* Company */}
             <div className="glass-card theme-aware p-8">
               <h3 className="text-lg font-bold mb-4">
-                <span className="brand-heading-gradient">{t("BidyutTechnologies")}</span>
+                <span className="brand-heading-gradient">{t("Bidyut Innovations")}</span>
               </h3>
               <p className="body-color text-sm sm:text-base leading-relaxed">
                 {t("footerDescription")}

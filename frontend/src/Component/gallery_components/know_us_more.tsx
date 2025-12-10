@@ -20,22 +20,23 @@ interface GalleryImage {
 // All gallery images
 let galleryImages: GalleryImage[] = [
   // Workspace
-  { src: "/knowusmore_gallery/Copy of DSC05302.JPG", title: "Workspace 1", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05543 copy.webp", title: "Workspace 2", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05546.JPG", title: "Workspace 3", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05551.JPG", title: "Workspace 4", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05553.JPG", title: "Workspace 5", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05560.JPG", title: "Workspace 6", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05561.JPG", title: "Workspace 7", category: "workspace" },
+  { src: "/knowusmore_gallery/Copy%20of%20DSC05302.JPG.webp", title: "Workspace 1", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05543%20copy.webp", title: "Workspace 2", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05546.JPG.webp", title: "Workspace 3", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05551.JPG.webp", title: "Workspace 4", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05553.JPG.webp", title: "Workspace 5", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05560.JPG.webp", title: "Workspace 6", category: "workspace" },
+  { src: "/knowusmore_gallery/DSC05561.JPG.webp", title: "Workspace 7", category: "workspace" },
+  {src:"/knowusmore_gallery/IMG-20251128-WA000-gallery.webp",title:"Workspace 7",category:"workspace"},
 
   // Technology
-  { src: "/Cobo/D1-arm.webp", title: "Robotic Arm", category: "technology" },
+  { src: "/Cobo/d1-arm.webp", title: "Robotic Arm", category: "technology" },
   { src: "/Cobo/Franka-arm.webp", title: "Franka Robotic Arm", category: "technology" },
   { src: "/media/A2-pro.webp", title: "A2 Pro Robot", category: "technology" },
 
   // Education
-  { src: "/GO2/GO2 EDU.webp", title: "GO2 Educational Robot", category: "education" },
-  { src: "/GO2/GO2 EDU U1.webp", title: "GO2 EDU Unit 1", category: "education" },
+  { src: "/GO2/GO2%20EDU.webp", title: "GO2 Educational Robot", category: "education" },
+  { src: "/GO2/GO2%20EDU%20U1.webp", title: "GO2 EDU Unit 1", category: "education" },
   // { src: "/media/G1 EDU U1.webp", title: "G1 EDU Unit 1", category: "education" }
 ];
 
@@ -179,6 +180,10 @@ export default function KnowUsMore() {
               <div className="relative overflow-hidden rounded-2xl aspect-square">
                 <motion.img
                   src={image.src}
+                  alt={image.title}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
                   className="w-full h-full object-cover transition-transform duration-700"
                   whileHover={{ scale: 1.1 }}
                 />
