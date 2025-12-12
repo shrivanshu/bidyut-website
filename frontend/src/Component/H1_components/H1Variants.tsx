@@ -775,7 +775,7 @@ export default function H1Variants () {
                 closeGallery();
                 
               }}
-              className='relative top-4 right-4 z-10  bg-green-600/30 hover:bg-green-600/50 rounded-full p-2 transition-colors backdrop-blur-sm'
+              className='absolute top-4 right-4 z-10  bg-green-600/30 hover:bg-green-600/50 rounded-full p-2 transition-colors backdrop-blur-sm'
             >
               <X size={24} className='text-white' />
             </button>
