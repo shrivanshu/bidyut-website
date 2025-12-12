@@ -310,7 +310,7 @@ function Header() {
           <div className="flex items-center space-x-3">
             {/* Login Button */}
             <a
-              href="https://bidyutrobotics.com/login"
+              href="https://lms.bidyutinnovation.com/"
               target="_blank"
               rel="noopener noreferrer"
             >

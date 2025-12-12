@@ -39,7 +39,7 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
           }}
         >
           <div className='space-y-4'>
-            <h1 className='text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-4'>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               <span className='block md:inline'>Elevate Operations With</span>{' '}
               <span className='text-green-600 dark:text-green-400 block md:inline'>
                  Unitree B2

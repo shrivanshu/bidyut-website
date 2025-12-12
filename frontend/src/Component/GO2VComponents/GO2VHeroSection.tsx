@@ -33,7 +33,7 @@ export default function GO2VHeroSection() {
   <div className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center">
     <img 
       src="/GO2/GO2-W-U2.webp" 
-      alt="GO2V Robot" 
+      alt="Quadrupeds education G02-W - Quadruped Unitree GO2 W robot for STEM and robotics training" 
       className="w-full max-w-xl h-auto object-contain" 
     />
   </div>

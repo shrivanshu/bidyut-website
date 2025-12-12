@@ -6,6 +6,7 @@ import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { SEO } from '../hooks/useSEO'
+import { Link } from "react-router-dom"
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -325,7 +326,7 @@ export default function AboutPage() {
     },
     {
       src: "/About_us_gallery/Students 400x400/Untitled-10.webp",
-      alt: "Collaborative student project work",
+      alt: "Students collaborating on innovative robotics projects with creativity and technology at a Robotics Company in India",
       className: "row-span-1",
       category: "students",
       story: "Students collaborating on innovative projects that combine creativity with technology.",
@@ -846,7 +847,7 @@ export default function AboutPage() {
               </h1>
 
               <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
-                We revolutionize education by combining advanced robotics, AI,hands-on learning and STREAM Education to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
+                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a className="text-green-500"> <Link to="/"> STREAM Education </Link> </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
               </p>
 
 
@@ -1677,6 +1678,36 @@ export default function AboutPage() {
         title="Bidyut Innovation – Leading Robotics Company in India."
         description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
         canonical="https://bidyutinnovation.com/About"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Bidyut Innovation",
+          "url": "https://bidyutinnovation.com/About",
+          "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
+          "sameAs": [
+            "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
+            "https://www.linkedin.com/company/bidyutinnovation/"
+          ],
+          "description": "Bidyut Innovation is a leading EdTech company in India, revolutionizing education through robotics, AI, and hands-on STEM learning. We empower students with future-ready skills and provide advanced robotics solutions for schools, research, and industry.",
+          "foundingDate": "2021",
+          "awards": [
+            "National Robotics Innovation Award (2023) – Recognized for outstanding contributions to STREAM education and robotics innovation.",
+            "Global Youth Empowerment Recognition (2021) – Pioneering technology education for underserved communities.",
+            "EdTech Excellence Certificate (2022) – Top-rated educational technology provider in India."
+          ],
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "mission",
+              "value": "To create the most compelling education company of the 21st century by driving students towards conceptual, technological, and fun-based learning."
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "vision",
+              "value": "To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences."
+            }
+          ]
+        }}
       />
       <Header />
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden px-4">
