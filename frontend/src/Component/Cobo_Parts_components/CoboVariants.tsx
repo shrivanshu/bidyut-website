@@ -679,7 +679,7 @@ function CoboVariants() {
       {/* Full Screen Gallery Modal */}
       {isGalleryOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center">
-          <div className="relative w-full h-full flex items-center justify-center p-4">
+          <div className="relative w-full h-[80%] flex items-center justify-center p-4">
             {/* Close Button */}
             <button
               onClick={closeGallery}
