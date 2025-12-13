@@ -34,7 +34,7 @@ export default function HeroSection () {
         <div className='relative aspect-video rounded-lg overflow-hidden '>
           <img
             src='/media/B2-3dLidar.png'
-            alt='B2 Hero'
+            alt='Quadrupeds Industry B2 - B2 Advanced quadruped robot for industrial robotics applications'
             className='max-w-4xl h-full object-contain aspect-video mx-auto'
           />
         </div>

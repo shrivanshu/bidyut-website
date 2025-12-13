@@ -35,10 +35,7 @@ const H1Detail: React.FC<H1DetailProps> = ({ onContactClick }) => {
               
             </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-
-Transform operations with the <a  href="/Robot/Humanoid/Industry/H1" target="_blank" rel="noopener noreferrer"> Unitree H1 Robot—boost </a> efficiency, improve safety, streamline workflows, and automate complex tasks seamlessly. Our   <a  href="/Robot/Humanoid/Industry/H1-2" target="_blank" rel="noopener noreferrer">
- Unitree H1-2 </a> as well for enhanced performance and advanced features.
-            </p>
+Transform operations with our advanced humanoid robot—boost efficiency, improve safety, streamline workflows, and automate complex tasks with ease. </p>
           </div>
 
           <div className="pt-4">

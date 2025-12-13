@@ -624,7 +624,7 @@ function A2Variants() {
                     <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-600">
                       <img
                         src={cobot.image}
-                        alt={cobot.name}
+                        alt="Quadrupeds Industry A2 - Quadruped robot dog A2 used in industrial robotics applications"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
@@ -658,7 +658,7 @@ function A2Variants() {
                 <div className="flex items-start gap-4">
                   <img
                     src={selectedCobot.image}
-                    alt={selectedCobot.name}
+                    alt="Quadrupeds Industry A2 - Quadruped robot dog A2 used in industrial robotics applications"
                     className="w-24 h-24 object-cover rounded-lg"
                   />
                   <div className="flex-1">
@@ -758,7 +758,7 @@ function A2Variants() {
                     ) : (
                       <img
                         src={media}
-                        alt={`${displayName} view ${index + 1}`}
+                        alt={`Quadrupeds Industry A2 - Quadruped robot dog A2 used in industrial robotics applications - view ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     )}
@@ -778,7 +778,7 @@ function A2Variants() {
               <div className="absolute inset-0 flex items-center justify-center">
 <img
   src={variantImages[currentSpec.id] || "/A2.webp"}
-  alt={displayName}
+  alt="Quadrupeds Industry A2 - Quadruped robot dog A2 used in industrial robotics applications"
   className="h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
 />
               </div>
@@ -911,7 +911,7 @@ function A2Variants() {
               ) : (
                 <img
                   src={displayGallery[currentImageIndex]}
-                  alt={`${displayName} view ${currentImageIndex + 1}`}
+                  alt={`Quadrupeds Industry A2 - Quadruped robot dog A2 used in industrial robotics applications - view ${currentImageIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                 />
               )}

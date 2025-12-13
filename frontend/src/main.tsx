@@ -1,12 +1,12 @@
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
-import { HelmetProvider } from 'react-helmet-async';
-import { preloadCriticalChunks } from './utils/preloadStrategy';
-import { setupBfcache } from './utils/bfcache';
-
+import { NavigationProvider } from './contexts/NavigationContext';
+import ScrollToTop from './Component/ScrollToTop';
+import './index.css';
 
 const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
@@ -31,89 +31,50 @@ const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
 const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
 
-const loadingFallback = (
-  <div className="flex h-screen w-full items-center justify-center bg-white text-black">Loading...</div>
-);
 
-const AppRouter = lazy(async () => {
-  const [{ BrowserRouter, Routes, Route }, scrollModule, navigationModule] = await Promise.all([
-    import('react-router-dom').then(mod => ({
-      BrowserRouter: mod.BrowserRouter,
-      Routes: mod.Routes,
-      Route: mod.Route
-    })),
-    import('./Component/ScrollToTop'),
-    import('./contexts/NavigationContext')
-  ]);
 
-  const ScrollToTopComponent = scrollModule.default;
-  const { NavigationProvider } = navigationModule;
-
-  return {
-    default: () => (
-      <BrowserRouter>
-        <NavigationProvider>
-          <ScrollToTopComponent />
-          <Suspense fallback={loadingFallback}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/About" element={<About />} />
-              <Route path="/School" element={<FinalSchoolPage />} />
-              <Route path="/Gallery" element={<Gallery />} />
-              <Route path="/Contact" element={<Contactpage />} />
-              <Route path="/PartnerWithUs" element={<PartnerWithUs />} />
-              <Route path="/Cobot" element={<Cobo_page />} />
-              <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
-              <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
-              <Route path="/Robot/Humanoid/Education/G1" element={<Robotpage />} />
-              <Route path="/Robot/Humanoid/Education/R1" element={<R1_page />} />
-              <Route path="/Robot/Quadrupeds/Industry/B2" element={<B2Page />} />
-              <Route path="/Robot/Quadrupeds/Industry/B2-W" element={<B2_Wells_Page />} />
-              <Route path="/Robot/Quadrupeds/Industry/A2" element={<A2Page />} />
-              <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
-              <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
-              <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
-              <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
-              <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
-              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-              <Route path="/Terms&Condition" element={<TermsCondition />} />
-              <Route path="/RefundPolicy" element={<RefundPolicy />} />
-            </Routes>
-          </Suspense>
-        </NavigationProvider>
-      </BrowserRouter>
-    )
-  };
-});
-
-preloadCriticalChunks();
-setupBfcache();
-
-const root = document.getElementById('root')!;
-if (import.meta.env.PROD) {
-  ReactDOM.createRoot(root).render(
+function App() {
+  return (
     <HelmetProvider>
       <ThemeProvider>
         <LanguageProvider>
-          <Suspense fallback={loadingFallback}>
-            <AppRouter />
-          </Suspense>
+          <BrowserRouter>
+            <NavigationProvider>
+              <ScrollToTop />
+              <Suspense >
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/About" element={<About />} />
+                  <Route path="/School" element={<FinalSchoolPage />} />
+                  <Route path="/Gallery" element={<Gallery />} />
+                  <Route path="/Contact" element={<Contactpage />} />
+                  <Route path="/PartnerWithUs" element={<PartnerWithUs />} />
+                  <Route path="/Cobot" element={<Cobo_page />} />
+                  <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
+                  <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
+                  <Route path="/Robot/Humanoid/Education/G1" element={<Robotpage />} />
+                  <Route path="/Robot/Humanoid/Education/R1" element={<R1_page />} />
+                  <Route path="/Robot/Quadrupeds/Industry/B2" element={<B2Page />} />
+                  <Route path="/Robot/Quadrupeds/Industry/B2-W" element={<B2_Wells_Page />} />
+                  <Route path="/Robot/Quadrupeds/Industry/A2" element={<A2Page />} />
+                  <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
+                  <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
+                  <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
+                  <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
+                  <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
+                  <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+                  <Route path="/Terms&Condition" element={<TermsCondition />} />
+                  <Route path="/RefundPolicy" element={<RefundPolicy />} />
+                </Routes>
+              </Suspense>
+            </NavigationProvider>
+          </BrowserRouter>
         </LanguageProvider>
       </ThemeProvider>
     </HelmetProvider>
   );
-} else {
-  ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <HelmetProvider>
-        <ThemeProvider>
-          <LanguageProvider>
-            <Suspense fallback={loadingFallback}>
-              <AppRouter />
-            </Suspense>
-          </LanguageProvider>
-        </ThemeProvider>
-      </HelmetProvider>
-    </React.StrictMode>
-  );
 }
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  import.meta.env.PROD ? <App /> : <React.StrictMode><App /></React.StrictMode>
+);

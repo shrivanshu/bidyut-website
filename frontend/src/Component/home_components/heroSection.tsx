@@ -184,7 +184,7 @@ const HeroSection: React.FC = () => {
 
         {/* Description */}
         <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
-          Bidyut is the country's most advanced <a
+          Bidyut is the country's most advanced <a className="text-green-500"
   href="/About"
   target="_blank"
   rel="noopener noreferrer"
