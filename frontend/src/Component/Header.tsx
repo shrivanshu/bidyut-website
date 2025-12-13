@@ -506,7 +506,7 @@ function Header() {
             {t("contact")}
           </Link>
           <a
-            href="https://bidyutrobotics.com/login"
+            href="https://lms.bidyutinnovation.com/"
             target="_blank"
             rel="noopener noreferrer"
           >

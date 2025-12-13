@@ -39,7 +39,7 @@ const StreamSchool: React.FC = () => {
       {/* Rotating Word with Animation */}
       <div className="h-12 sm:h-14 md:h-16 mb-[-15px] relative w-full flex justify-center items-center overflow-visible"
            style={{ contain: 'layout style' }}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {/* Desktop Rotating Word */}
           <motion.h3
             key={`desktop-${currentWordIndex}-${words[currentWordIndex]}`}
