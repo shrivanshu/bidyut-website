@@ -30,7 +30,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 mt-4 md:mt-10 w-full max-w-6xl">
     <div className="relative aspect-video rounded-lg overflow-hidden ">
-  <img src="/media/B2 ADVANCED WITH 3D LIDAR.webp" alt="B2 Hero" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
+  <img src="/media/B2 ADVANCED WITH 3D LIDAR.webp" alt="Quadrupeds Industry B2-W - B2-W inspection robot deployed for industrial inspection" className="max-w-4xl h-full object-contain aspect-video mx-auto" />
     </div>
   </div>
 

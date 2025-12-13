@@ -51,7 +51,7 @@ const HeroSection = () => {
         <div className='absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]'>
           <img
             src='/media/G1 front.webp'
-            alt='Humanoid Robot'
+            alt='Humanoid education G1 - G1 educational robot for hands-on learning and robotics education'
             className='w-[100%] h-full object-contain'
           />
         </div>

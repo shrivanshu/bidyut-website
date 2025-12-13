@@ -17,6 +17,38 @@ function H1_page() {
           title="H1 Humanoid Robot | Industry Solutions | Bidyut Innovation"
           description="H1 humanoid robot for industrial applications. Advanced robotics for automation, manufacturing, and industrial tasks."
           canonical="https://bidyutinnovation.com/Robot/Humanoids/Industry/H1"
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Unitree H1 Robot",
+            "image": "https://bidyutinnovation.com/media/H1.webp",
+            "description": "Unitree H1 Robot is a full-size advanced humanoid designed for research, automation, and AI development, featuring high-torque joints, 3D perception, and agile human-like mobility for real-world industrial and educational applications.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Unitree"
+            },
+            "url": "https://bidyutinnovation.com/Robot/Humanoids/Industry/H1",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://bidyutinnovation.com/Robot/Humanoids/Industry/H1",
+              "seller": {
+                "@type": "Organization",
+                "name": "Bidyut Innovation",
+                "url": "https://bidyutinnovation.com",
+                "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
+                "telephone": "+91-9370782979",
+                "email": "Info@bidyutrobotics.com",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "901 Clifton Corporate Park, 11/6, AB Road, Sector A, Slice 6, Aranya Nagar, VijayNagar",
+                  "addressLocality": "Indore",
+                  "addressRegion": "Madhya Pradesh",
+                  "postalCode": "452010",
+                  "addressCountry": "IN"
+                }
+              }
+            }
+          }}
         />
         <Header />
         <HeroSectionH1 />

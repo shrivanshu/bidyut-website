@@ -40,7 +40,7 @@ export default function EducationStream() {
     },
     {
       src: "/stream_video/Art.webm",
-      thumbnail: "/stream_video/stream_video/Art.webm",
+      thumbnail: "/stream_video/Art.webm",
       title: t('Art'),
       description: t('artsDescription')
     },
@@ -68,7 +68,16 @@ export default function EducationStream() {
   useEffect(() => {
     const currentVideo = videoRefs.current[currentVideoIndex];
     if (currentVideo) {
-      currentVideo.play().catch(console.error);
+      // Wait for video to be ready
+      const playVideo = async () => {
+        try {
+          currentVideo.load(); // Reload the video source
+          await currentVideo.play();
+        } catch (error) {
+          console.error("Video play failed:", error);
+        }
+      };
+      playVideo();
     }
     
     // Pause other videos
@@ -80,26 +89,31 @@ export default function EducationStream() {
   }, [currentVideoIndex]);
 
   const handleVideoClick = (video: VideoOption, index: number) => {
+    // Update state first
+    setActiveVideo(video);
+    setCurrentVideoIndex(index);
+    
     const nextVideo = videoRefs.current[index];
     if (nextVideo) {
-      // Ensure the video is ready to play
+      // Reset and prepare video
       nextVideo.currentTime = 0;
+      nextVideo.load(); // Reload the video source
+      
+      // Try to play the video
       const playPromise = nextVideo.play();
       if (playPromise !== undefined) {
-        playPromise.then(() => {
-          setActiveVideo(video);
-          setCurrentVideoIndex(index);
-        }).catch(error => {
+        playPromise.catch(error => {
           console.error("Video play failed:", error);
-          setActiveVideo(video);
-          setCurrentVideoIndex(index);
+          // Try reloading the video source
+          setTimeout(() => {
+            nextVideo.load();
+            nextVideo.play().catch(console.error);
+          }, 100);
         });
       }
-    } else {
-      setActiveVideo(video);
-      setCurrentVideoIndex(index);
     }
     
+    // Handle scrolling
     if (pillsContainerRef.current) {
       const containerHeight = pillsContainerRef.current.scrollHeight;
       const visibleHeight = pillsContainerRef.current.clientHeight;
@@ -199,14 +213,17 @@ export default function EducationStream() {
                   className={`absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto transition-opacity duration-300 ${
                     index === currentVideoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
-                  src={video.src}
                   playsInline
                   muted
                   controls={false}
-                  autoPlay={index === currentVideoIndex}
                   loop
-                  preload="auto"
-                />
+                  preload="metadata"
+                  onError={(e) => console.error('Video error:', e)}
+                  onLoadStart={() => console.log('Video loading started:', video.src)}
+                >
+                  <source src={video.src} type="video/webm" />
+                  <p>Your browser doesn't support video playback.</p>
+                </video>
               ))}
               <div className="sheen pointer-events-none" />
               <div className={`progress-bar ${!autoRotate ? 'paused' : ''}`} key={`mobile-pb-${currentVideoIndex}`} />
@@ -336,17 +353,20 @@ export default function EducationStream() {
                       ref={(el) => {
                         videoRefs.current[index] = el;
                       }}
-                      src={video.src}
                       className={`absolute inset-0 m-auto max-w-full max-h-full w-auto h-auto transition-opacity duration-300 ${
                         index === currentVideoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                       }`}
-                      autoPlay={index === currentVideoIndex}
                       muted
                       loop
                       playsInline
                       controls={false}
-                      preload="auto"
-                    />
+                      preload="metadata"
+                      onError={(e) => console.error('Video error:', e)}
+                      onLoadStart={() => console.log('Video loading started:', video.src)}
+                    >
+                      <source src={video.src} type="video/webm" />
+                      <p>Your browser doesn't support video playback.</p>
+                    </video>
                   ))}
                   <div className="sheen pointer-events-none" />
                   <div className={`progress-bar ${!autoRotate ? 'paused' : ''}`} key={`desk-pb-${currentVideoIndex}`} />

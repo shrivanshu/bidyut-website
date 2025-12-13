@@ -629,7 +629,7 @@ export default function H1Variants () {
                     ) : (
                       <img
                         src={media}
-                        alt={`${displayName} view ${index + 1}`}
+                        alt={`Humanoid industry H1 - Industrial humanoid Unitree H1 Robot with advanced mobility and 3D LiDAR - view ${index + 1}`}
                         className='w-full h-full object-cover'
                       />
                     )}
@@ -651,7 +651,7 @@ export default function H1Variants () {
               <div className='absolute inset-0 flex items-center justify-center'>
                 <img
                   src={currentSpec.gallery[0]}
-                  alt={currentSpec.name}
+                  alt='Humanoid industry H1 - Industrial humanoid Unitree H1 Robot with advanced mobility and 3D LiDAR'
                   className='h-[300px] sm:h-[400px] md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105'
                 />
               </div>
@@ -767,14 +767,15 @@ export default function H1Variants () {
       {/* Full Screen Gallery Modal */}
       {isGalleryOpen && (
         <div className='fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center'>
-          <div className='relative w-full h-full flex items-center justify-center p-4'>
+          <div className='relative w-full h-[80%] flex items-center justify-center p-4'>
             {/* Close Button */}
             <button
               onClick={e => {
                 e.stopPropagation()
-                closeGallery()
+                closeGallery();
+                
               }}
-              className='absolute top-4 right-4 z-10 bg-green-600/30 hover:bg-green-600/50 rounded-full p-2 transition-colors backdrop-blur-sm'
+              className='absolute top-4 right-4 z-10  bg-green-600/30 hover:bg-green-600/50 rounded-full p-2 transition-colors backdrop-blur-sm'
             >
               <X size={24} className='text-white' />
             </button>

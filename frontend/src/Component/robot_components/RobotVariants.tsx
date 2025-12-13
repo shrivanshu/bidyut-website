@@ -689,7 +689,7 @@ export default function RobotShowcase() {
                     <div className="aspect-square mb-3 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-600">
                       <img
                         src={robot.image}
-                        alt={robot.name}
+                        alt="Humanoid education G1 - G1 educational robot for hands-on learning and robotics education"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
@@ -724,7 +724,7 @@ export default function RobotShowcase() {
                 <div className="flex items-start gap-4">
                   <img
                     src={selectedRobot.image}
-                    alt={selectedRobot.name}
+                    alt="Humanoid education G1 - G1 educational robot for hands-on learning and robotics education"
                     className="w-24 h-24 object-cover rounded-lg"
                   />
                   <div className="flex-1">
@@ -815,7 +815,7 @@ export default function RobotShowcase() {
                     ) : (
                       <img
                         src={media}
-                        alt={`${displayName} view ${index + 1}`}
+                        alt={`Humanoid education G1 - G1 educational robot for hands-on learning and robotics education - view ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     )}
@@ -835,7 +835,7 @@ export default function RobotShowcase() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
                   src={currentSpec.gallery[0]}
-                  alt={currentSpec.name}
+                  alt="Humanoid education G1 - G1 educational robot for hands-on learning and robotics education"
                   className="h-[300px]  md:h-[500px] lg:h-full w-auto object-contain animate-pulse hover:animate-none transition-all duration-300 hover:scale-105"
                 />
               </div>
@@ -929,7 +929,7 @@ export default function RobotShowcase() {
       {/* Full Screen Gallery Modal */}
       {isGalleryOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center">
-          <div className="relative w-full h-full flex items-center justify-center p-4">
+          <div className="relative w-full h-[80%] flex items-center justify-center p-4">
             {/* Close Button */}
             <button
               onClick={closeGallery}
@@ -967,7 +967,7 @@ export default function RobotShowcase() {
               ) : (
                 <img
                   src={displayGallery[currentImageIndex]}
-                  alt={`${displayName} view ${currentImageIndex + 1}`}
+                  alt={`Humanoid education G1 - G1 educational robot for hands-on learning and robotics education - view ${currentImageIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                 />
               )}

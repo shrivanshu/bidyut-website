@@ -30,7 +30,7 @@ export default function HeroSection() {
       {/* Video container */}
   <div className="mb-8 -mt-4 md:-mt-12 w-full max-w-6xl">
         <div className="relative aspect-video rounded-lg overflow-hidden ">
-            <img src="/GO2/GO2 EDU2.webp" alt="GO2 EDU2" className="w-full max-w-2xl h-full object-contain aspect-video mx-auto mt-10" />
+            <img src="/GO2/GO2 EDU2.webp" alt="Quadrupeds education G02 - Educational quadruped Robot Dog GO2 for hands-on learning" className="w-full max-w-2xl h-full object-contain aspect-video mx-auto mt-10" />
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export default function HeroSection() {
   <div className="-mt-10 mb-4 text-center">
   {/* Gradient Heading */}
   <h2
-  className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading font-heading font-semibold leading-none text-transparent bg-clip-text mb-0"
+  className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-heading  font-semibold leading-none text-transparent bg-clip-text mb-0"
   style={{
     backgroundImage:
       "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 30%, rgba(255,255,255,0.6) 87%, #FFFFFF 100%)",

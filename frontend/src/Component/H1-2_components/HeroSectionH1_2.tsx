@@ -51,7 +51,7 @@ const HeroSectionH1_2 = () => {
         <div className='absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]'>
           <img
             src='/media/H1 - 2_hero.webp'
-            alt='Humanoid Robot'
+            alt='Humanoid Industry H1-2 - Unitree H1-2 humanoid robot for industrial automation and AI research'
             className='w-[100%] h-full object-contain'
           />
         </div>
