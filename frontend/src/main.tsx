@@ -75,6 +75,15 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  import.meta.env.PROD ? <App /> : <React.StrictMode><App /></React.StrictMode>
-);
+const rootElement = document.getElementById('root')!;
+
+// Check if we're in a pre-rendering environment
+if (rootElement.hasChildNodes()) {
+  // Hydrate for SSR/pre-rendered content
+  ReactDOM.hydrateRoot(rootElement, <App />);
+} else {
+  // Normal render for client-side
+  ReactDOM.createRoot(rootElement).render(
+    import.meta.env.PROD ? <App /> : <React.StrictMode><App /></React.StrictMode>
+  );
+}

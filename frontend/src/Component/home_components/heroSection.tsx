@@ -168,12 +168,12 @@ const HeroSection: React.FC = () => {
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
-                Next-Gen <span style={{ color: "#0acf83" }}> Robotics Courses in India</span>
+                Next-Gen <span style={{ color: "#0acf83" }}>Robotics for Schools</span>
               </span>
             }
           >
             <HeroHeading
-              text={["Next-Gen Robotics Courses in India"]}
+              text={["Next-Gen Robotics for Schools"]}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={false}
@@ -188,7 +188,7 @@ const HeroSection: React.FC = () => {
   href="/About"
   target="_blank"
   rel="noopener noreferrer"
-> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics courses in India that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
 
         </p>
       </div>
