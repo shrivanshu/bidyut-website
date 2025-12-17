@@ -1,5 +1,6 @@
 import Header from "../Component/Header";
 import FooterUnanimated from "../Component/FooterUnanimated";
+import { SEO } from '../hooks/useSEO';
 
 const sectionTitle = (title: string) => (
 	<h2
@@ -12,6 +13,11 @@ const sectionTitle = (title: string) => (
 const PrivacyPolicy = () => {
 	return (
 		<>
+			<SEO
+				title="Privacy Policy | Bidyut Innovation"
+				description="Privacy Policy for Bidyut Innovation. Learn how we collect, use, and protect your personal information when using our robotics education platform."
+				canonical="https://bidyutinnovation.com/PrivacyPolicy"
+			/>
 			<Header />
 			{/* Page wrapper adds space for fixed header and supports light/dark theme */}
 			<div className="min-h-screen bg-white dark:bg-black pt-24 md:pt-28">

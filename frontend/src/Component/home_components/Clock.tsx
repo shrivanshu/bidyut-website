@@ -50,9 +50,9 @@ const Clock: React.FC = () => {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Main Title */}
         <div className="space-y-2">
-          <h1 className="text-5xl font-bold text-gray-800 dark:text-white leading-tight font-['Poppins'] transition-colors duration-300">
+          <h2 className="text-5xl font-bold text-gray-800 dark:text-white leading-tight font-['Poppins'] transition-colors duration-300">
             Celebrating Bonds Through Bots –
-          </h1>
+          </h2>
           <h2 className="text-4xl md:text-5xl font-bold font-['Poppins']">
             <span className="text-emerald-500">Friendship Day</span>{" "}
             <span className="text-gray-800 dark:text-white transition-colors duration-300">Special!</span>

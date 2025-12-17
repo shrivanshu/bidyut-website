@@ -14,41 +14,10 @@ function H1_2_page() {
    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
-          title="H1-2 Humanoid Robot | Industry Solutions | Bidyut Innovation"
-          description="H1-2 humanoid robot for industrial applications. Advanced humanoid robotics for manufacturing, automation, and industry."
+          title="Unitree Humanoid Robot H1-2 | Advanced Industrial Robotics"
+          description="Discover the Unitree Humanoid Robot H1-2, a full-size industrial robot with AI intelligence, precision, and speed—designed for automation and research."
           canonical="https://bidyutinnovation.com/Robot/Humanoid/Industry/H1-2"
-          schema={{
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Unitree H1-2 Robot",
-            "image": "https://bidyutinnovation.com/media/H1%20-%202.webp",
-            "description": "Unitree H1-2 Robot is a full-size Universal Humanoid Robot built for industrial and research applications, featuring advanced mobility, 3D perception, high-torque joints, and human-like agility for AI, automation, and educational purposes",
-            "brand": {
-              "@type": "Brand",
-              "name": "Unitree"
-            },
-            "url": "https://bidyutinnovation.com/Robot/Humanoid/Industry/H1-2",
-            "offers": {
-              "@type": "Offer",
-              "url": "https://bidyutinnovation.com/Robot/Humanoid/Industry/H1-2",
-              "seller": {
-                "@type": "Organization",
-                "name": "Bidyut Innovation",
-                "url": "https://bidyutinnovation.com",
-                "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-                "telephone": "+91-9370782979",
-                "email": "Info@bidyutrobotics.com",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "901 Clifton Corporate Park, 11/6, AB Road, Sector A, Slice 6, Aranya Nagar, VijayNagar",
-                  "addressLocality": "Indore",
-                  "addressRegion": "Madhya Pradesh",
-                  "postalCode": "452010",
-                  "addressCountry": "IN"
-                }
-              }
-            }
-          }}
+
         />
         <Header  />
         <HeroSectionH1_2 />

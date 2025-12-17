@@ -5,11 +5,17 @@ import InspectionDetails from '../Component/Inspection_components/InspectionDeta
 import { ThemeProvider } from '../contexts/ThemeContext';
 import InspectionHeroSection from '../Component/Inspection_components/InspectionHeroSection';
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '../hooks/useSEO';
 
 function Inspection_page() {
   const navigate = useNavigate();
   return (
     <ThemeProvider>
+      <SEO
+        title="Industrial Inspection Robots | Automated Quality Control | Bidyut"
+        description="Advanced inspection robots for industrial quality control. AI-powered automated inspection systems for manufacturing and infrastructure monitoring."
+        canonical="https://bidyutinnovation.com/Robot/Solutions/Inspection"
+      />
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />
         <InspectionHeroSection/>

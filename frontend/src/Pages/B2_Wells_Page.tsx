@@ -14,41 +14,10 @@ function B2_Wells_Page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="B2-W Quadruped Robot | Wells | Bidyut Innovation"
-          description="B2-W quadruped robot for wells inspection and industrial applications."
+          title="Unitree B2-W Inspection Robot | Next-Gen Agile Explorer"
+          description="Boost safety and efficiency with the Quadruped Industry B2‑W inspection robot—detect faults, monitor hazards, and gain accurate real-time industrial insights."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W"
-          schema={{
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Unitree B2-W Quadruped Robot",
-            "image": "https://bidyutinnovation.com/media/B2%20ADVANCED%20WITH%203D%20LIDAR.webp",
-            "description": "Unitree B2-W is an industrial quadruped inspection robot with agile mobility, shock-absorbing tires, high-speed performance, and advanced sensing for automation, inspection, and logistics.",
-            "brand": {
-              "@type": "Brand",
-              "name": "Unitree"
-            },
-            "url": "https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W",
-            "offers": {
-              "@type": "Offer",
-              "url": "https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W",
-              "seller": {
-                "@type": "Organization",
-                "name": "Bidyut Innovation",
-                "url": "https://bidyutinnovation.com",
-                "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-                "telephone": "+91-9370782979",
-                "email": "Info@bidyutrobotics.com",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "901 Clifton Corporate Park, 11/6, AB Road, Sector A, Slice 6, Aranya Nagar, VijayNagar",
-                  "addressLocality": "Indore",
-                  "addressRegion": "Madhya Pradesh",
-                  "postalCode": "452010",
-                  "addressCountry": "IN"
-                }
-              }
-            }
-          }}
+
         />
         <Header />
         <B2WellsHeroSection/>

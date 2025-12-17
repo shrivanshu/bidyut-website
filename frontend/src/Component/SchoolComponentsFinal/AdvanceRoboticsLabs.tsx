@@ -199,7 +199,7 @@ export default function AdvanceRoboticsLabs() {
                 <div className="space-y-6 p-4 rounded-lg">
                   <div>
                     <h2 className="text-3xl lg:text-4xl font-heading font-bold text-white mb-4">{image.title}</h2>
-                    <h2 className="text-xl lg:text-2xl font-subheading font-semibold text-gray-200 mb-6">{image.subtitle}</h2>
+                    <h3 className="text-xl lg:text-2xl font-subheading font-semibold text-gray-200 mb-6">{image.subtitle}</h3>
                     <p className="text-base lg:text-lg text-gray-300 leading-relaxed mb-8">
                       {image.description}
                     </p>

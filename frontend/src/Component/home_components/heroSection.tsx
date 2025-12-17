@@ -168,16 +168,16 @@ const HeroSection: React.FC = () => {
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
-                Let's Innovate <span style={{ color: "#0acf83" }}>Learn Beyond Boundaries</span>
+                Next-Gen <span style={{ color: "#0acf83" }}> Robotics Courses in India</span>
               </span>
             }
           >
             <HeroHeading
-              text={["Let's Innovate Learn Beyond Boundaries"]}
+              text={["Next-Gen Robotics Courses in India"]}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={false}
-              highlight={{ text: "Let's Innovate", color: "#0acf83" }}
+              highlight={{ text: "Next-Gen", color: "#0acf83" }}
             />
           </Suspense>
         </h1>

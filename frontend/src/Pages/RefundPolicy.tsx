@@ -1,10 +1,16 @@
 
 import Header from "../Component/Header";
 import FooterUnanimated from "../Component/FooterUnanimated";
+import { SEO } from '../hooks/useSEO';
 
 const CookiePolicy = () => {
     return (
 		<>
+			<SEO
+				title="Refund Policy | Bidyut Innovation"
+				description="Refund and Returns Policy for Bidyut Innovation. Learn about our policy for digital products and robotics education services."
+				canonical="https://bidyutinnovation.com/RefundPolicy"
+			/>
 			<Header />
 			{/* Page wrapper adds space for fixed header and supports light/dark theme */}
 			<div className="min-h-screen bg-white dark:bg-black pt-24 md:pt-28">

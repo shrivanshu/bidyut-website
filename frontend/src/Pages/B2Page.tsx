@@ -14,41 +14,10 @@ function B2Page() {
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
-          title="B2 Quadruped Robot | Industry Solutions | Bidyut Innovation"
-          description="B2 quadruped robot for industrial applications. Advanced automation, inspection, and industrial tasks."
+          title="Unitree B2 | Smart Quadruped Robot for Research & Industry"
+          description="Explore the Quadruped Robot B2, built for industrial automation, AI-driven tasks, and advanced mobility. Fast, precise and designed for tough environments."
           canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2"
-          schema={{
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Unitree B2 Quadruped Robot",
-            "image": "https://bidyutinnovation.com/media/B2-3dLidar.png",
-            "description": "Unitree B2 Advanced is a high-performance industrial quadruped robot designed for automation, inspection, and logistics, featuring agile mobility, heavy payload capacity, and advanced sensing for real-world operations.",
-            "brand": {
-              "@type": "Brand",
-              "name": "Unitree"
-            },
-            "url": "https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2",
-            "offers": {
-              "@type": "Offer",
-              "url": "https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2",
-              "seller": {
-                "@type": "Organization",
-                "name": "Bidyut Innovation",
-                "url": "https://bidyutinnovation.com",
-                "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-                "telephone": "+91-9370782979",
-                "email": "Info@bidyutrobotics.com",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "901 Clifton Corporate Park, 11/6, AB Road, Sector A, Slice 6, Aranya Nagar, VijayNagar",
-                  "addressLocality": "Indore",
-                  "addressRegion": "Madhya Pradesh",
-                  "postalCode": "452010",
-                  "addressCountry": "IN"
-                }
-              }
-            }
-          }}
+
         />
         <Header />
         <B2HeroSection/>
