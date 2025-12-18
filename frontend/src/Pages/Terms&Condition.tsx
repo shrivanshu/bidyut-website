@@ -2,6 +2,7 @@ import { useTheme } from '../contexts/ThemeContext';
 
 import Header from "../Component/Header";
 import FooterUnanimated from "../Component/FooterUnanimated";
+import { SEO } from '../hooks/useSEO';
 
 const TermsCondition = () => {
 	const { isDark } = useTheme();
@@ -16,6 +17,11 @@ const TermsCondition = () => {
 
 	return (
 		<>
+			<SEO
+				title="Terms & Conditions | Bidyut Innovation"
+				description="Terms and Conditions for Bidyut Innovation. Read our terms of service for using our robotics education platform and payment gateway."
+				canonical="https://bidyutinnovation.com/Terms&Condition"
+			/>
 			<Header />
 			{/* Page wrapper adds space for fixed header and supports light/dark theme */}
 			<div className="min-h-screen bg-white dark:bg-black pt-24 md:pt-28">

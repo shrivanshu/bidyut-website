@@ -164,7 +164,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
@@ -188,7 +188,7 @@ const HeroSection: React.FC = () => {
   href="/About"
   target="_blank"
   rel="noopener noreferrer"
-> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics courses in India that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
 
         </p>
       </div>

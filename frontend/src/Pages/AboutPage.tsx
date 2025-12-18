@@ -6,7 +6,7 @@ import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { SEO } from '../hooks/useSEO'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 const videoZoomStyle = `
   @keyframes videoZoomIn {
@@ -847,7 +847,7 @@ export default function AboutPage() {
               </h1>
 
               <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
-                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a className="text-green-500"> <Link to="/"> STREAM Education </Link> </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
+                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a  href="/School" className="text-green-500">  STREAM Education  </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
               </p>
 
 
@@ -1038,7 +1038,7 @@ export default function AboutPage() {
 
             {/* Main Heading Block */}
             <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-7xl mx-auto">
-              <h1 className={`font-heading font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
+              <h2 className={`font-heading font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
                 {/* Mobile only: 3 lines */}
                 <span className="block md:hidden">
                   <span className="block">Bidyut Focuses on Educating Students to act with</span>
@@ -1049,7 +1049,7 @@ export default function AboutPage() {
                 <span className="hidden md:block">
                   <h2 className="block">Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world</h2>
                 </span>
-              </h1>
+              </h2>
             </div>
 
             {/* Description Text */}

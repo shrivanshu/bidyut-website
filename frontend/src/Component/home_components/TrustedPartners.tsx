@@ -524,7 +524,7 @@ export default function TrustedPartners() {
               transition={{ duration: 0.6 }}
               viewport={{ once: false, amount: 0.3 }}
             >
-              <h1 className="text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4">Trusted Partners</h1>
+              <h2 className="text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4">Trusted Partners</h2>
               <p className="text-xl lg:text-2xl text-gray-500 dark:text-gray-300 mb-8">list of companies</p>
             </motion.div>
 

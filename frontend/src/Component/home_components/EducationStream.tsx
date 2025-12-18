@@ -189,7 +189,7 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics courses in India, robotics for kids, robotics for schools, and interactive STREAM labs. </p>
+A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.          </p>
       </motion.div>
 
       {/* Mobile Layout */}
@@ -285,7 +285,7 @@ export default function EducationStream() {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="mb-4 sticky top-0 bg-gray-50 dark:bg-black py-4 z-10">
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                <h3 className="text-5xl font-bold text-gray-800 dark:text-white mb-2">
                   STREAM
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
