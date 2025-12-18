@@ -19,7 +19,7 @@ export function RoboticsSchools () {
             <div className='rounded-2xl overflow-hidden flex-grow'>
               <img
                 src='/school_images/WhatsApp Image 2025-09-22 at 7.45.54 PM.webp'
-                alt='Modern robotics lab with red and purple LED lighting'
+                alt='Students actively engaged in hands-on robotics learning in a fully equipped robotics lab setup'
                 className='w-full h-full min-h-[600px] object-cover'
               />
             </div>
@@ -60,7 +60,7 @@ export function RoboticsSchools () {
                 From robotics and AI to drones and global competitions
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-               For over 5 years, Bidyut Innovation has been revolutionizing robotics education across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology and hands-on learning experiences.
+               For over 5 years, Bidyut Innovation has been revolutionizing  <a href="/" className='text-green-500'> robotics education </a> across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology and hands-on learning experiences.
 
               </p>
             </div>

@@ -254,7 +254,7 @@ export default function TrustedPartnersShowcase() {
         transition={{ duration: 1, delay: 0.5 }}
         className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10"
       >
-        <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
+        <h2 className="text-4xl md:text-6xl font-bold text-white text-center">
           Our Trusted{" "}
           <motion.span
             initial={{ opacity: 0 }}
@@ -264,7 +264,7 @@ export default function TrustedPartnersShowcase() {
           >
             Global Partners
           </motion.span>
-        </h1>
+        </h2>
       </motion.div>
 
       {/* 3D Canvas */}

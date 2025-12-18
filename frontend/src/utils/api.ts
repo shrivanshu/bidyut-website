@@ -1,10 +1,10 @@
 // API Configuration
 const API_CONFIG = {
   development: {
-    BASE_URL: 'https://news-api-bidyut-theta.vercel.app'
+    BASE_URL: 'https://news.bidyutinnovation.com'
   },
   production: {
-    BASE_URL: 'https://news-api-bidyut-theta.vercel.app' // Use relative URLs in production (same domain)
+    BASE_URL: 'https://news.bidyutinnovation.com' // Use relative URLs in production (same domain)
   }
 };
 

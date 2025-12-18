@@ -22,12 +22,12 @@ const H1_2_page = lazy(() => import('./Pages/H1_2_page'));
 const R1_page = lazy(() => import('./Pages/R1_page'));
 const B2_Wells_Page = lazy(() => import('./Pages/B2_Wells_Page'));
 const A2_Wells_Page = lazy(() => import('./Pages/A2_Wells_Page'));
-const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
+// const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
 const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy'));
 const TermsCondition = lazy(() => import('./Pages/Terms&Condition'));
 const RefundPolicy = lazy(() => import('./Pages/RefundPolicy'));
 const GO2VPage = lazy(() => import('./Pages/GO2VPage'));
-const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
+// const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
 const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
 
@@ -60,8 +60,8 @@ function App() {
                   <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
                   <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
                   <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
-                  <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
-                  <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
+                  {/* <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} /> */}
+                  {/* <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} /> */}
                   <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
                   <Route path="/Terms&Condition" element={<TermsCondition />} />
                   <Route path="/RefundPolicy" element={<RefundPolicy />} />
@@ -75,6 +75,15 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  import.meta.env.PROD ? <App /> : <React.StrictMode><App /></React.StrictMode>
-);
+const rootElement = document.getElementById('root')!;
+
+// Check if we're in a pre-rendering environment
+if (rootElement.hasChildNodes()) {
+  // Hydrate for SSR/pre-rendered content
+  ReactDOM.hydrateRoot(rootElement, <App />);
+} else {
+  // Normal render for client-side
+  ReactDOM.createRoot(rootElement).render(
+    import.meta.env.PROD ? <App /> : <React.StrictMode><App /></React.StrictMode>
+  );
+}

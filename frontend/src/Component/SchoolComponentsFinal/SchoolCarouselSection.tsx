@@ -4,32 +4,32 @@ const schoolImages = {
   'Robotics Project': {
     name: 'Advanced Robotics Project',
     src: '/school_images/C2271.00_00_25_11.Still004.webp',
-    desc: 'Students working on advanced robotics projects'
+    desc: 'Teacher guiding students during a hands-on robotics learning session'
   },
   'AI Workshop': {
     name: 'Artificial Intelligence Workshop',
     src: '/school_images/C2271.00_00_33_34.Still003.webp',
-    desc: 'Interactive AI learning session with students'
+    desc: 'Students participating in an interactive robotics lesson with teacher'
   },
   'Tech Lab': {
     name: 'Technology Integration Lab',
     src: '/school_images/IMG_9899.JPG',
-    desc: 'Advanced technology learning environment'
+    desc: 'Teachers learning robotics concepts during an interactive seminar'
   },
   'Innovation Lab': {
     name: 'Innovation Laboratory',
     src: '/About_us_gallery/Students 400x400/Untitled-10.webp',
-    desc: 'Students collaborating in innovation lab'
+    desc: 'Students collaborating on hands-on robotics and STEM projects with innovative technology'
   },
   'STEM Workshop': {
     name: 'STEM Learning Workshop',
     src: '/About_us_gallery/Training 400x800/h.webp',
-    desc: 'Hands-on STEM learning experience'
+    desc: 'Hands-on robotics workshop integrating theory with practical activities'
   },
   'Project Development': {
     name: 'Student Project Development',
     src: '/About_us_gallery/Students 400x400/Untitled-7.webp',
-    desc: 'Students developing innovative projects'
+    desc: 'Young innovators discovering new possibilities in robotics and engineering with a top robotics company in India'
   }
 }
 
@@ -111,7 +111,7 @@ export default function SchoolCarousel () {
         </a>
       </div>
       {/* Title text */}
-      <div
+      <h2
         className='absolute text-gray-900'
         style={
           {
@@ -130,7 +130,7 @@ export default function SchoolCarousel () {
         }
       >
         Robotics Lab
-      </div>
+      </h2>
       {/* Bottom right text */}
       <div
         className='absolute text-gray-900'

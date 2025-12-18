@@ -4,6 +4,7 @@ import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/OptimizedLanguageContext";
 import { useEffect, useState } from "react";
+import { SEO } from '../hooks/useSEO';
 
 export default function PartnerWithUsPage() {
   const { isDark } = useTheme();
@@ -37,6 +38,11 @@ export default function PartnerWithUsPage() {
 
   return (
     <div className={`flex flex-col min-h-screen transition-colors duration-300 ${bgColor}`}>
+      <SEO
+        title="Partner With Bidyut Innovation | Robotics Education Partnerships"
+        description="Join Bidyut Innovation as a partner in robotics education and industrial solutions. Grow together in transforming technology education across India."
+        canonical="https://bidyutinnovation.com/PartnerWithUs"
+      />
       <main className="flex-1">
         {/* Hero Section */}
         <motion.section

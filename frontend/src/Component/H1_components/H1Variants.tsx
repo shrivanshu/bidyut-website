@@ -590,12 +590,12 @@ export default function H1Variants () {
             className='space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300'
           >
             <div className='space-y-6'>
-              <h1 className='text-5xl md:text-6xl font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight'>
+              <h2 className='text-5xl md:text-6xl font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight'>
                 {displayName}
-              </h1>
-              <h2 className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium'>
-                Technical Specifications
               </h2>
+              <h3 className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium'>
+                Technical Specifications
+              </h3>
               <p className='text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl'>
                 {displayDescription}
               </p>
@@ -629,7 +629,7 @@ export default function H1Variants () {
                     ) : (
                       <img
                         src={media}
-                        alt={`Humanoid industry H1 - Industrial humanoid Unitree H1 Robot with advanced mobility and 3D LiDAR - view ${index + 1}`}
+                        alt="Industrial humanoid Unitree H1 Robot with advanced mobility and 3D LiDAR"
                         className='w-full h-full object-cover'
                       />
                     )}

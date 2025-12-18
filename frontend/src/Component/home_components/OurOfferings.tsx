@@ -7,43 +7,51 @@ interface Offering {
   image: string
   titleKey: string
   descriptionKey: string
+  alt: string
 }
 
 const offerings: Offering[] = [
   {
     image: '/OurOfferingImages/D1-arm-optimized.webp',
     titleKey: 'collaborativeLearning',
-    descriptionKey: 'collaborativeLearningDesc'
+    descriptionKey: 'collaborativeLearningDesc',
+    alt: 'Collaborative robot (cobot) working safely alongside humans, designed for easy programming, flexibility, and increasing productivity in industrial settings'
   },
   {
     image: '/OurOfferingImages/G1 Basic-optimized.webp',
     titleKey: 'collaboration',
-    descriptionKey: 'collabrationDesc'
+    descriptionKey: 'collabrationDesc',
+    alt: 'Advanced humanoid robot interacting, assisting, and engaging with people in real-world environments'
   },
   {
     image: '/OurOfferingImages/our offering-optimized.webp',
     titleKey: 'learningExperience',
-    descriptionKey: 'learningexpisDesc'
+    descriptionKey: 'learningexpisDesc',
+    alt: 'Students learning in a fully equipped robotics lab for STREAM education'
   },
   {
     image: '/OurOfferingImages/GO2 AIR-optimized.webp',
     titleKey: 'quadrupedRobots',
-    descriptionKey: 'ProgressTrackingDesc'
+    descriptionKey: 'ProgressTrackingDesc',
+    alt: 'Quadruped robot with four legs, designed for mobility and robotics applications'
   },
   {
     image: '/OurOfferingImages/A2-W-optimized.webp',
     titleKey: 'roboticSolutions',
-    descriptionKey: 'personalizedMentorshipDesc'
+    descriptionKey: 'personalizedMentorshipDesc',
+    alt: 'Quadruped four-legged wheeled robot for advanced mobility'
   },
   {
     image: '/OurOfferingImages/school11-optimized.webp',
     titleKey: 'schoolIntegration',
-    descriptionKey: 'schoolIntegrationDesc'
+    descriptionKey: 'schoolIntegrationDesc',
+    alt: 'Students actively engaged in hands-on learning during robotics courses in India'
   },
   {
     image: '/OurOfferingImages/IMG-20251128-WA0000 book.webp',
     titleKey: 'ComputerRoboticsBooksforSchools',
-    descriptionKey: 'ComputerRoboticsBooksforSchoolsDesc'
+    descriptionKey: 'ComputerRoboticsBooksforSchoolsDesc',
+    alt: 'Complete series of computer and robotics books for school children from kindergarten to class 8'
   }
 ]
 
@@ -91,7 +99,7 @@ function OfferingsSection () {
             </span>
           </h2>
           <p className='max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-300'>
-           At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics courses in India that empower students with future-ready skills. Beyond education, we also design and deliver advanced robotics solutions for industries, helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.
+           At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics for schools that empower students with future-ready skills. Beyond education, we also design and deliver advanced robotics solutions for industries, helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.
 
           </p>
         </div>
@@ -141,7 +149,7 @@ function OfferingsSection () {
                     <div className='relative h-52 md:h-60 overflow-hidden'>
                       <img
                         src={item.image}
-                        alt={t(item.titleKey)}
+                        alt={item.alt}
                         className='w-full h-full object-contain transition-transform duration-500 will-change-transform group-hover:scale-105'
                         loading='lazy'
                         decoding='async'
