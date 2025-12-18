@@ -189,7 +189,7 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for schools, robotics for kids, robotics for schools, and interactive STREAM labs. </p>
+A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.          </p>
       </motion.div>
 
       {/* Mobile Layout */}

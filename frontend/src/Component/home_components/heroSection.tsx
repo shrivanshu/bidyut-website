@@ -164,20 +164,20 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Hero Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
-                Next-Gen <span style={{ color: "#0acf83" }}>Robotics for Schools</span>
+                Let's Innovate <span style={{ color: "#0acf83" }}>Learn Beyond Boundaries</span>
               </span>
             }
           >
             <HeroHeading
-              text={["Next-Gen Robotics for Schools"]}
+              text={["Let's Innovate Learn Beyond Boundaries"]}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={false}
-              highlight={{ text: "Next-Gen", color: "#0acf83" }}
+              highlight={{ text: "Let's Innovate", color: "#0acf83" }}
             />
           </Suspense>
         </h1>
