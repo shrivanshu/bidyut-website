@@ -250,13 +250,13 @@ const pageMetaTags = {
       "The Unitree A2‑W quadruped robot is an autonomous inspection robot designed to detect faults, monitor hazards, and provide real-time industrial insights.",
   },
 
-  "/Robot/Quadrupeds/Education/G02": {
+  "/Robot/Quadrupeds/Education/GO2": {
     title: "Unitree Robot Dog GO2 | Multipurpose AI Quadruped Robot",
     description:
       "Explore the Robot Dog GO2 – an advanced four-legged robot designed for education, research, autonomous robotics, and engaging interactive learning experiences.",
   },
 
-  "/Robot/Quadrupeds/Education/G02-W": {
+  "/Robot/Quadrupeds/Education/GO2-W": {
     title: "Unitree Go2 W Robot | Agile All-Terrain Robotics Companion",
     description:
       "Meet the Unitree Go2 W robot — your agile, compact, and all-terrain companion perfect for robotics research, inspections, and versatile real-world tasks.",

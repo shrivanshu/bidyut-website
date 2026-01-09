@@ -25,10 +25,10 @@ const A2_Wells_Details = ({ onContactClick }: CobotClassroomProps) => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               <span className="block md:inline">Ready to Transform </span>{' '}
               <span className="text-green-600 dark:text-green-400 block md:inline">Industrial Inspections?</span>
-            </h1>
+            </h2>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
               Join engineers, researchers, and industrial teams already using the Unitree A2‑W Autonomous Inspection Robot to automate inspection workflows, enhance safety, collect high-quality data, and improve operational efficiency across complex industrial sites.
 

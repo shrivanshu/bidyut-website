@@ -28,9 +28,37 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
+    <link
+      rel="preload"
+      as="font"
+      href="https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfedw.woff2"
+      type="font/woff2"
+      crossorigin
+    />
     <style>
       body {
         font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      }
+      /* Critical CSS for LCP heading */
+      .font-heading {
+        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        font-display: swap;
+      }
+      /* Critical CSS for LCP paragraph */
+      .lcp-desc {
+        color: #fff;
+        font-size: 1rem;
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        padding-left: 0.5rem;
+        padding-right: 1rem;
+        min-height: 48px;
       }
     </style>
     <noscript>
@@ -44,13 +72,21 @@
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <!-- <title>Bidyut Innovation</title> -->
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9M6SR35DR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-C9M6SR35DR');
+    <!-- Google Analytics: Deferred for performance -->
+    <script id="gtag-init" defer>
+      window.addEventListener('load', function() {
+        var gtagScript = document.createElement('script');
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-C9M6SR35DR';
+        gtagScript.async = true;
+        document.head.appendChild(gtagScript);
+        gtagScript.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-C9M6SR35DR');
+        };
+      });
     </script>
 
   </head>
