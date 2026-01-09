@@ -15,7 +15,7 @@ function H1_page() {
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
           title="Unitree H1 Robot | Next-Gen Humanoid Robotics Power"
-          description="Discover the full-size Unitree H1 humanoid robot, built for industrial automation, research, and advanced AI applications. Fast, precise, and ready to perform."
+          description="Discover the full-size Unitree H1  robot, built for industrial automation, research, and advanced AI applications. Fast, precise, and ready to perform."
           canonical="https://bidyutinnovation.com/Robot/Humanoids/Industry/H1"
 
         />

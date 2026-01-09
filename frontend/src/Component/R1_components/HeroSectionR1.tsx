@@ -58,9 +58,9 @@ const HeroSectionR1 = () => {
 
         {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
-          <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
+          <h1 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
             Unitree R1 Robot for Education
-          </h2>
+          </h1>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
             The Unitree R1 Robot is a next-generation humanoid platform designed
             for practical learning, AI exploration, and hands-on robotics
