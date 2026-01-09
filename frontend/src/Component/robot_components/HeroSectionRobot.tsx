@@ -58,9 +58,9 @@ const HeroSection = () => {
 
         {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
-          <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
+          <h1 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
             G1 Humanoid Educational Robot
-          </h2>
+          </h1>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
             The G1 Educational Robot – a next-generation humanoid platform for
             AI-driven learning, coding, and robotics innovation. Designed for

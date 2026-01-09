@@ -16,7 +16,7 @@ export default function A2WellHeroSection() {
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
         <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target">
-          <span className="text-[#0acf83]">Unitree A2‑W –</span> Advanced Autonomous Inspection Robot
+          <span className="text-[#0acf83]">Unitree A2‑W </span> Advanced Autonomous Inspection Robot
         </h1>
       </div>
 

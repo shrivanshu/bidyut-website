@@ -42,7 +42,7 @@ export default function Component() {
               <span className="text-[#28C76F] font-semibold">Bidyut</span> Innovation LMS
             </h2>
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
-              Bidyut LMS brings robotics for schools, coding solutions, and AI learning to life with hands-on and gamified lessons. With specialized learning paths designed for robotics for kids and  
+            Bidyut LMS brings robotics, coding, and AI to life with hands-on and gamified lessons. With specialized learning paths designed for robotics for kids and  
   {" "} <a className="text-green-500" href="/School" target="_blank" rel="noopener noreferrer">
 robotics for schools </a>, Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
 

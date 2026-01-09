@@ -30,14 +30,14 @@ const RobotClassroom: React.FC<RobotClassroomProps> = () => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               Ready to revolutionize{' '}
 
              
               <span className="text-green-600 dark:text-green-400">your classroom?</span>
 
               
-            </h1>
+            </h2>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
              Empower your classroom with the G1 educational robot—enhance learning, inspire creativity, and prepare students for the future of robotics.
             </p>
