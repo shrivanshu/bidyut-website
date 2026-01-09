@@ -111,7 +111,7 @@ const HeroSectionH1_2 = () => {
       {/* Humanoid Section */}
       <div className='text-center px-6 '>
         <div className='max-w-[1440px] mx-auto'>
-          <h1
+          <h2
             className='text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-semibold leading-none text-transparent bg-clip-text -mb-3 sm:-mb-4 md:-mb-5'
             style={{
               backgroundImage:
@@ -119,7 +119,7 @@ const HeroSectionH1_2 = () => {
             }}
           >
             Humanoid
-          </h1>
+          </h2>
 
           <div className='max-w-[980px] mx-auto'>
             <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target'>

@@ -157,7 +157,7 @@ const HeroSection: React.FC = () => {
       <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ height: '400px' }}>
+      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px' }}>
         {/* Small tagline */}
         <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '24px' }}>
           {t("learnRobotics")}
@@ -221,8 +221,6 @@ const HeroSection: React.FC = () => {
             <img
               src="/ChatBotRobot.svg"
               alt="Chatbot Robot"
-              width={80}
-              height={80}
               className="w-20 h-20 object-contain"
               style={{ background: "transparent" }}
               loading="lazy"

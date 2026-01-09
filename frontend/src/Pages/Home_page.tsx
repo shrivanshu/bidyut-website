@@ -42,29 +42,9 @@ function Home_page() {
   return (
     <ThemeProvider>
       <SEO
-        title="Robotics for Schools & STREAM Learning |  Bidyut Innovation"
-        description="Robotics for schools, teacher training, and STREAM learning. Explore humanoid, quadruped, and Unitree robots with AI-powered solutions for automation. "
+        title="Hands-On Robotics Courses in India | Bidyut Innovation"
+        description="Explore robotics courses in India with Bidyut Innovation. Hands-on learning, robotics for kids, robotics for schools, coding & AI education."
         canonical="https://bidyutinnovation.com/"
-        schema={{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Bidyut Innovation",
-  "url": "https://bidyutinnovation.com",
-  "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-  "description": "Bidyut Innovation is India's leading Robotic EdTech Company, empowering schools and students through hands-on robotics, coding, AI, and STREAM-aligned programs. We provide advanced robotics solutions for education and industry, fostering creativity, problem-solving, and future-ready skills.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+91 9370782979",
-    "contactType": "Customer Service",
-    "email": "Info@bidyutrobotics.com"
-  },
-  "sameAs": [
-    "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
-    "https://www.linkedin.com/company/bidyutinnovation/",
-    "https://www.facebook.com/share/15bB1RccVgV/"
-  ]
-}
-}
       />
       {loading && <Loader fadeOut={fadeOut} />}
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden" data-testid="home-page">

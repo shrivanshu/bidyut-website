@@ -24,38 +24,23 @@ const HeroSectionH1 = () => {
           <div className='max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-2'>
             {/* Left part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-start'>
-              <span
-                className='text-xl sm:text-3xl md:text-[50px] font-heading font-semibold text-black dark:text-white drop-shadow-sm cursor-target'
-                style={{ minHeight: '60px', display: 'inline-block' }}
-              >
+              <span className='text-xl sm:text-3xl md:text-[50px] font-heading font-semibold text-black dark:text-white drop-shadow-sm cursor-target'>
                 Let's
               </span>
-              <span
-                className='text-xl sm:text-3xl md:text-[50px] font-heading font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'
-                style={{ minHeight: '60px', display: 'inline-block' }}
-              >
+              <span className='text-xl sm:text-3xl md:text-[50px] font-heading font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
                 Innovate
               </span>{' '}
-              <span
-                className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'
-                style={{ minHeight: '60px', display: 'inline-block' }}
-              >
+              <span className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
                 Learn
               </span>
             </div>
 
             {/* Right part */}
             <div className='flex flex-wrap items-baseline justify-center md:justify-start md:-ml-32'>
-              <span
-                className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'
-                style={{ minHeight: '60px', display: 'inline-block' }}
-              >
+              <span className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
                 Beyond
               </span>
-              <span
-                className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'
-                style={{ minHeight: '60px', display: 'inline-block' }}
-              >
+              <span className='text-xl sm:text-3xl md:text-[47px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
                 Boundaries
               </span>
             </div>
@@ -76,10 +61,7 @@ const HeroSectionH1 = () => {
           <h1 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
             Next-Gen Unitree H1 Robot
           </h1>
-          <p
-            className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'
-            style={{ minHeight: '48px' }}
-          >
+          <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
             At Bidyut Innovation, we are shaping the future of robotics in
             India. The Unitree H1 Robot, a full-size humanoid robot, offers
             advanced mobility, perception, and human-like motion. Built for

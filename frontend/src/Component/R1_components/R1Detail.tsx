@@ -26,14 +26,14 @@ const R1Detail: React.FC<R1DetailProps> = ({ onContactClick }) => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               Bring Innovation to{' '}
 
              
               <span className="text-green-600 dark:text-green-400">your classroom?</span>
 
               
-            </h2>
+            </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
               Join thousands of educators who are already  using the Unitree R1 Robot to enhance hands-on learning and inspire the next generation of innovators.
             </p>

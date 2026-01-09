@@ -1,12 +1,13 @@
-import React from "react";
-import Footer from "../Component/FooterUnanimated";
-import Header from "../Component/Header";
-import GalleryHero from "../Component/gallery_components/gallery_hero";
-import ExploreOurGallery from "../Component/gallery_components/explore_our_gallery";
-import AwardWinning from "../Component/gallery_components/award_wining";
-import KnowUsMore from "../Component/gallery_components/know_us_more";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import { SEO } from "../hooks/useSEO";
+
+import React from 'react';
+import Footer from '../Component/FooterUnanimated';
+import Header from '../Component/Header';
+import GalleryHero from '../Component/gallery_components/gallery_hero';
+import ExploreOurGallery from '../Component/gallery_components/explore_our_gallery';
+import AwardWinning from '../Component/gallery_components/award_wining';
+import KnowUsMore from '../Component/gallery_components/know_us_more';
+import { ThemeProvider } from '../contexts/ThemeContext';
+import { SEO } from '../hooks/useSEO';
 
 const Gallery_page: React.FC = () => {
   return (
@@ -18,26 +19,19 @@ const Gallery_page: React.FC = () => {
         schema={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Bidyut Innovation Gallery",
-          url: "https://bidyutinnovation.com/Gallery",
-          description:
-            "Explore Bidyut Innovation's gallery showcasing over 12 years of achievements in robotics and technology education. Discover student projects, advanced robotics workspaces, AI and STEM learning environments, and innovative solutions that have transformed 30+ schools and empowered 45,000+ students across India.",
-          mainEntity: {
-            "@type": "EducationalOrganization",
-            name: "Bidyut Innovation",
-            url: "https://bidyutinnovation.com/Gallery",
-            logo: "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-            sameAs: [
+          "name": "Bidyut Innovation Gallery",
+          "url": "https://bidyutinnovation.com/Gallery",
+          "description": "Explore Bidyut Innovation's gallery showcasing over 12 years of achievements in robotics and technology education. Discover student projects, advanced robotics workspaces, AI and STEM learning environments, and innovative solutions that have transformed 30+ schools and empowered 45,000+ students across India.",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Bidyut Innovation",
+            "url": "https://bidyutinnovation.com",
+            "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
+            "sameAs": [
               "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
-              "https://www.linkedin.com/company/bidyutinnovation/",
-              "https://www.facebook.com/share/15bB1RccVgV/",
-            ],
-            award: [
-              "National Robotics Innovation Award (2023) – Recognized for outstanding contributions to STREAM education and robotics innovation.",
-              "Global Youth Empowerment Recognition (2021) – Pioneering technology education for underserved communities.",
-              "EdTech Excellence Certificate (2022) – Top-rated educational technology provider in India.",
-            ],
-          },
+              "https://www.linkedin.com/company/bidyutinnovation/"
+            ]
+          }
         }}
       />
       <div className=" bg-white dark:bg-gray-900 transition-colors duration-300">

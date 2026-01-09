@@ -39,12 +39,12 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
           }}
         >
           <div className='space-y-4'>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               <span className='block md:inline'>Elevate Operations With</span>{' '}
               <span className='text-green-600 dark:text-green-400 block md:inline'>
                  Unitree B2
               </span>
-            </h2>
+            </h1>
             <p className='text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300'>
               Optimize industrial and research applications with the Unitree B2 Quadruped Robot—engineered for performance and reliability.
             </p>

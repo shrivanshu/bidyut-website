@@ -25,10 +25,10 @@ const CobotClassroom = ({ onContactClick }: CobotClassroomProps) => {
         {/* Content */}
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
           <div className="space-y-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
               <span className="block md:inline">Ready to revolutionize</span>{' '}
               <span className="text-green-600 dark:text-green-400 block md:inline">your classroom?</span>
-            </h2>
+            </h1>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
               Revolutionize teaching with the Unitree GO2 Robot Dog, delivering practical AI, robotics, and STREAM experiences that inspire student creativity and problem-solving.
             </p>
