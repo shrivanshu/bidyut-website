@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
 			<SEO
 				title="Privacy Policy | Bidyut Innovation"
 				description="Privacy Policy for Bidyut Innovation. Learn how we collect, use, and protect your personal information when using our robotics education platform."
-				canonical="https://bidyutinnovation.com/PrivacyPolicy"
+				canonical="https://bidyutinnovation.com/privacypolicy"
 			/>
 			<Header />
 			{/* Page wrapper adds space for fixed header and supports light/dark theme */}

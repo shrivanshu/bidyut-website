@@ -44,27 +44,27 @@ function App() {
               <Suspense >
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/About" element={<About />} />
-                  <Route path="/School" element={<FinalSchoolPage />} />
-                  <Route path="/Gallery" element={<Gallery />} />
-                  <Route path="/Contact" element={<Contactpage />} />
-                  <Route path="/PartnerWithUs" element={<PartnerWithUs />} />
-                  <Route path="/Cobot" element={<Cobo_page />} />
-                  <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
-                  <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
-                  <Route path="/Robot/Humanoid/Education/G1" element={<Robotpage />} />
-                  <Route path="/Robot/Humanoid/Education/R1" element={<R1_page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/B2" element={<B2Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/B2-W" element={<B2_Wells_Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/A2" element={<A2Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
-                  <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
-                  <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
-                  {/* <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} /> */}
-                  {/* <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} /> */}
-                  <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-                  <Route path="/Terms&Condition" element={<TermsCondition />} />
-                  <Route path="/RefundPolicy" element={<RefundPolicy />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/school" element={<FinalSchoolPage />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/contact" element={<Contactpage />} />
+                  <Route path="/partnerwithus" element={<PartnerWithUs />} />
+                  <Route path="/cobot" element={<Cobo_page />} />
+                  <Route path="/robot/humanoids/industry/h1" element={<H1_page />} />
+                  <Route path="/robot/humanoid/industry/h1-2" element={<H1_2_page />} />
+                  <Route path="/robot/humanoid/education/g1" element={<Robotpage />} />
+                  <Route path="/robot/humanoid/education/r1" element={<R1_page />} />
+                  <Route path="/robot/quadrupeds/industry/b2" element={<B2Page />} />
+                  <Route path="/robot/quadrupeds/industry/b2-w" element={<B2_Wells_Page />} />
+                  <Route path="/robot/quadrupeds/industry/a2" element={<A2Page />} />
+                  <Route path="/robot/quadrupeds/industry/a2-w" element={<A2_Wells_Page />} />
+                  <Route path="/robot/quadrupeds/education/go2" element={<Cobotpage />} />
+                  <Route path="/robot/quadrupeds/education/go2-w" element={<GO2VPage />} />
+                  {/* <Route path="/robot/solutions/firefighting" element={<Firefighting />} /> */}
+                  {/* <Route path="/robot/solutions/inspection" element={<Inspection_page />} /> */}
+                  <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-and-condition" element={<TermsCondition />} />
+                  <Route path="/refundpolicy" element={<RefundPolicy />} />
                 </Routes>
               </Suspense>
             </NavigationProvider>

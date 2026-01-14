@@ -46,6 +46,13 @@ function Home_page() {
         description="Explore robotics courses in India with Bidyut Innovation. Hands-on learning, robotics for kids, robotics for schools, coding & AI education."
         canonical="https://bidyutinnovation.com/"
       />
+      {/* Hidden SEO content for crawlers */}
+      <div className="sr-only">
+        <h1>Bidyut Innovation - Leading Robotics Education Platform in India</h1>
+        <p>Bidyut Innovation offers comprehensive robotics education programs for schools, students, and educational institutions across India. Our hands-on robotics courses combine STREAM learning (Science, Technology, Robotics, Engineering, Arts, Mathematics) with practical applications in artificial intelligence, coding, and automation.</p>
+        <p>We provide cutting-edge robotics solutions including humanoid robots, quadruped robots, collaborative robots (cobots), and specialized educational kits designed for different age groups and skill levels. Our Learning Management System (LMS) enables seamless online and offline learning experiences.</p>
+        <p>Partner with Bidyut Innovation to transform education through robotics, prepare students for future careers in technology, and build innovation-driven learning environments. Explore our robot models including H1, H1-2, G1, R1 humanoids, B2, A2, GO2 quadrupeds, and industrial cobots for various applications.</p>
+      </div>
       {loading && <Loader fadeOut={fadeOut} />}
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen overflow-x-hidden" data-testid="home-page">
         <Header />
