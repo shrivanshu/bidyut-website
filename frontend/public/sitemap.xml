@@ -2,138 +2,128 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bidyutinnovation.com/</loc>
-    <lastmod>2025-10-09</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bidyutinnovation.com/About</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/about</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bidyutinnovation.com/School</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/school</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bidyutinnovation.com/Gallery</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/gallery</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority> 
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Contact</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Humanoids/Industry/H1</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Humanoid/Industry/H1-2</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Humanoid/Education/G1</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Humanoid/Education/R1</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2-W</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2-W</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/Robot/Solutions/Firefighting</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
-    <loc>https://bidyutinnovation.com/Robot/Solutions/Inspection</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/contact</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/humanoids/industry/h1</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/humanoid/industry/h1-2</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/humanoid/education/g1</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/humanoid/education/r1</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/industry/b2</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/industry/b2-w</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/industry/a2</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/industry/a2-w</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/education/go2</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/quadrupeds/education/go2-w</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/solutions/firefighting</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bidyutinnovation.com/Cobot</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/robot/solutions/inspection</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bidyutinnovation.com/PrivacyPolicy</loc>
-    <lastmod>2025-10-09</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://bidyutinnovation.com/cobot</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
   <url>
-    <loc>https://bidyutinnovation.com/Terms&amp;Condition</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/privacypolicy</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  
   <url>
-    <loc>https://bidyutinnovation.com/RefundPolicy</loc>
-    <lastmod>2025-10-09</lastmod>
+    <loc>https://bidyutinnovation.com/terms-and-condition</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  
+  <url>
+    <loc>https://bidyutinnovation.com/refundpolicy</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
