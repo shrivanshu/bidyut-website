@@ -16,8 +16,7 @@ function GO2VPage() {
         <SEO
           title="Unitree Go2 W Robot | Agile All-Terrain Robotics Companion"
           description="Meet the Unitree Go2 W robot — your agile, compact, and all-terrain companion perfect for robotics research, inspections, and versatile real-world tasks."
-          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2-W"
-
+          canonical="https://bidyutinnovation.com/robot/quadrupeds/education/go2-w"
         />
         <Header />
   <GO2VHeroSection/>

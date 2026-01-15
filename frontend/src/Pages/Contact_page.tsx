@@ -41,7 +41,7 @@ export default function ContactPage() {
       <SEO
         title="Contact Bidyut Innovation | Robotics Labs & Solutions"
         description="Connect with Bidyut Innovation for robotic lab setup, teacher training, humanoid robots and AI-powered industrial automation solutions."
-        canonical="https://bidyutinnovation.com/Contact"
+        canonical="https://bidyutinnovation.com/contact"
         schema={{
           "@context": "https://schema.org",
           "@type": "ContactPage",

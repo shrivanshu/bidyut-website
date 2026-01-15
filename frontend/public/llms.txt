@@ -1,0 +1,47 @@
+# Bidyut Innovation - Robotics Education Platform
+
+> Leading robotics company in India providing STREAM education, AI learning, and hands-on robotics solutions for schools, universities, and industries.
+
+## About Us
+
+Bidyut Innovation is a pioneering EdTech and robotics company transforming education through advanced robotics, artificial intelligence, and hands-on STREAM learning programs. We empower students with future-ready skills and provide cutting-edge robotics solutions for educational institutions and industrial applications.
+
+## Our Products
+
+### Educational Robots
+- Humanoid Education G1: Interactive STEM learning robot
+- Unitree R1: Advanced educational humanoid for coding and AI
+- Robot Dog GO2: Multipurpose AI quadruped for education
+
+### Industrial Robots
+- Unitree H1: Full-size humanoid for industrial automation
+- Unitree H1-2: Advanced industrial robotics platform
+- Unitree B2: Smart quadruped for research and industry
+- Unitree A2: High-performance quadruped robot dog
+- B2-W & A2-W: Autonomous inspection robots
+
+### Collaborative Robots
+- Cobot: Lightweight robotic arm for smart automation
+
+## Services
+
+- Robotics Lab Setup for Schools
+- Teacher Training Programs
+- STREAM Education Curriculum
+- Hands-on Workshops
+- Drone Programs
+- AI and Coding Education
+
+## Contact
+
+- Website: https://bidyutinnovation.com
+- Email: Info@bidyutrobotics.com
+- Phone: +91 9370782979
+- Address: 901 Clifton Corporate Park, Indore, Madhya Pradesh 452010, India
+
+## Social Media
+
+- Instagram: https://www.instagram.com/bidyutinnovation
+- LinkedIn: https://www.linkedin.com/company/bidyutinnovation/
+- YouTube: https://www.youtube.com/@BidyutRobotics
+- Facebook: https://www.facebook.com/bidyutinnovation

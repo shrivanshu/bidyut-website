@@ -21,7 +21,7 @@ function FinalSchoolPage() {
           <SEO
             title="Robotics Lab Setup for Schools | Teacher Training | Bidyut"
             description="Robotics Lab Setup for schools with hands-on learning, teacher training, workshops, and drone programs. Making STREAM and AI education practical and engaging."
-            canonical="https://bidyutinnovation.com/School"
+            canonical="https://bidyutinnovation.com/school"
            
           />
           <Header />

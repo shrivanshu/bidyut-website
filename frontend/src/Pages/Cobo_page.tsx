@@ -16,8 +16,12 @@ function Cobo_page() {
         <SEO
           title="Cobot Lightweight Robotic Arm Robot for Smart Automation"
           description="Upgrade your automation with a lightweight robotic arm cobot designed for fast deployment, high precision, and safe collaboration in modern workspaces."
-          canonical="https://bidyutinnovation.com/Cobot"
+          canonical="https://bidyutinnovation.com/cobot"
         />
+        <div className="sr-only">
+          <h1>Collaborative Robot (Cobot) - Lightweight Robotic Arm for Smart Automation</h1>
+          <p>Upgrade your industrial automation with our advanced collaborative robot (cobot) featuring a lightweight robotic arm design. Engineered for fast deployment, high precision, and safe human-robot collaboration, our cobot solutions transform modern workspaces with intelligent automation, flexible programming, and industry-leading safety features for manufacturing, assembly, packaging, and quality control applications.</p>
+        </div>
         <Header />
         <CoboHeroSection/>
         <CoboVariants/>
