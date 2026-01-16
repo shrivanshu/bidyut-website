@@ -138,33 +138,36 @@ const HeroSection: React.FC = () => {
     <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
 
       {/* Background Videos - Optimized loading */}
-      {videos.map((video, index) => (
-        <video
-          key={index}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            index === currentVideoIndex ? "opacity-100" : "opacity-0"
-          }`}
-          src={video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
-      ))}
+      <div className="absolute inset-0 w-full h-full" style={{ aspectRatio: '16/9' }}>
+        {videos.map((video, index) => (
+          <video
+            key={index}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentVideoIndex ? "opacity-100" : "opacity-0"
+            }`}
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            style={{ aspectRatio: '16/9' }}
+          />
+        ))}
+      </div>
 
       {/* Overlay - Same dark overlay for both light and dark mode for consistent video visibility */}
       <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px' }}>
+      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px', contain: 'layout' }}>
         {/* Small tagline */}
-        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '24px' }}>
+        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '28px', height: '28px', lineHeight: '28px' }}>
           {t("learnRobotics")}
         </div>
 
         {/* Hero Heading */}
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '160px', contain: 'layout style' }}>
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
@@ -183,7 +186,7 @@ const HeroSection: React.FC = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
+        <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4" style={{ minHeight: '120px' }}>
           Bidyut is the country's most advanced <a className="text-green-500"
   href="/About"
   target="_blank"
@@ -194,7 +197,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Floating Chatbot Button with Bot Image and Speech Bubble */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" style={{ width: '110px', height: chatOpen ? 'auto' : '140px', contain: 'layout' }}>
         {/* Speech Bubble - smaller width */}
         {!chatOpen && (
           <div
@@ -202,6 +205,7 @@ const HeroSection: React.FC = () => {
             style={{
               fontFamily: "inherit",
               lineHeight: "1.3",
+              height: '52px',
             }}
           >
             <span className="font-semibold text-emerald-700">Hi, I'm Buddy!</span>
@@ -217,13 +221,16 @@ const HeroSection: React.FC = () => {
             onClick={() => setChatOpen(true)}
             className="focus:outline-none"
             aria-label="Open Chatbot"
+            style={{ width: '80px', height: '80px' }}
           >
             <img
               src="/ChatBotRobot.svg"
               alt="Chatbot Robot"
               className="w-20 h-20 object-contain"
-              style={{ background: "transparent" }}
+              style={{ background: "transparent", width: '80px', height: '80px' }}
               loading="lazy"
+              width="80"
+              height="80"
             />
           </button>
         )}

@@ -76,8 +76,8 @@ function Header() {
   return (
     <>
       {/* Floating Glass Navbar */}
-      <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center">
-        <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
+      <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center" style={{ height: '88px', contain: 'layout' }}>
+        <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between" style={{ height: '72px' }}>
           {/* Logo */}
           <Link
             to="/"
@@ -88,7 +88,9 @@ function Header() {
               src="/bidyut_logo_green 1.svg"
               alt="Bidyut Logo"
               className="h-14 w-auto mr-2 transition-transform group-hover:scale-105"
-              style={{ maxHeight: "56px" }}
+              style={{ maxHeight: "56px", width: 'auto', height: '56px' }}
+              width="140"
+              height="56"
             />
           </Link>
 

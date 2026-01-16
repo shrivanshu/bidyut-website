@@ -18,6 +18,23 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
+/* Font preload optimization - prevent FOIT/FOUT */
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+  src: local('Poppins');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  src: local('Roboto');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-display: swap;
+  src: local('Nunito Sans');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

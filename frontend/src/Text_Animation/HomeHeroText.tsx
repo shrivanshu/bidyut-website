@@ -160,8 +160,8 @@ const HomeHeroText = ({
       ref: containerRef,
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       style: {
-        willChange: 'contents', // Hint browser about content changes
-        transform: 'translateZ(0)', // Force hardware acceleration
+        contain: 'layout style',
+        minHeight: '1.2em',
         ...props.style
       },
       ...props,
