@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense, useCallback, memo } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const HeroHeading = lazy(() => import("../../Text_Animation/HomeHeroText"));
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
-function ChatBox({
+const ChatBox = memo(function ChatBox({
   open,
   onClose,
   messages,
@@ -19,10 +19,22 @@ function ChatBox({
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (messagesEndRef.current && open) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages, open]);
+
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    if (input.trim()) {
+      onSend(input);
+      setInput("");
+    }
+  }, [input, onSend]);
+
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  }, []);
 
   if (!open) return null;
   return (
@@ -73,20 +85,14 @@ function ChatBox({
       {/* Input */}
       <form
         className="flex items-center border-t px-2 py-2 bg-white rounded-b-2xl"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (input.trim()) {
-            onSend(input);
-            setInput("");
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         <input
           type="text"
           className="flex-1 rounded-full border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#0ACF83] transition"
           placeholder="Type your message..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
         />
         <button type="submit" className="ml-2 bg-[#0ACF83] rounded-full p-2 hover:bg-[#099e66] transition">
           <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
@@ -96,7 +102,7 @@ function ChatBox({
       </form>
     </div>
   );
-}
+});
 
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -109,10 +115,35 @@ const HeroSection: React.FC = () => {
     },
   ]);
   const chatModuleRef = useRef<null | typeof import("../../services/chatService")>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const videos = ["/fnf 03.webm"];
 
-  const handleSend = async (msg: string) => {
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleChatOpen = useCallback(() => setChatOpen(true), []);
+  const handleChatClose = useCallback(() => setChatOpen(false), []);
+
+  const handleSend = useCallback(async (msg: string) => {
     const nextConversation = [...messages, { from: "me" as const, text: msg }];
     setMessages(nextConversation);
 
@@ -132,15 +163,16 @@ const HeroSection: React.FC = () => {
         { from: "bot" as const, text: "Sorry, I encountered an error. Please try again." },
       ]);
     }
-  };
+  }, [messages]);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
 
       {/* Background Videos - Optimized loading */}
       <div className="absolute inset-0 w-full h-full" style={{ aspectRatio: '16/9' }}>
         {videos.map((video, index) => (
           <video
+            ref={index === currentVideoIndex ? videoRef : null}
             key={index}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentVideoIndex ? "opacity-100" : "opacity-0"
@@ -150,8 +182,10 @@ const HeroSection: React.FC = () => {
             loop
             muted
             playsInline
-            preload="metadata"
-            style={{ aspectRatio: '16/9' }}
+            preload="none"
+            style={{ aspectRatio: '16/9', contentVisibility: 'auto' }}
+            disablePictureInPicture
+            onError={(e) => e.currentTarget.load()}
           />
         ))}
       </div>
@@ -218,7 +252,7 @@ const HeroSection: React.FC = () => {
         {/* Bot Image Button (bigger, only when chatbox is closed) */}
         {!chatOpen && (
           <button
-            onClick={() => setChatOpen(true)}
+            onClick={handleChatOpen}
             className="focus:outline-none"
             aria-label="Open Chatbot"
             style={{ width: '80px', height: '80px' }}
@@ -238,7 +272,7 @@ const HeroSection: React.FC = () => {
         <div className="relative w-full flex justify-end">
           <ChatBox
             open={chatOpen}
-            onClose={() => setChatOpen(false)}
+            onClose={handleChatClose}
             messages={messages}
             onSend={handleSend}
           />

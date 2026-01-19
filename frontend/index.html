@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="frame-ancestors 'self'"
-    />
     <link
       rel="icon"
       type="image/png"
@@ -22,7 +18,6 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/fnf 03.webm" as="video" type="video/webm" />
     <link
       rel="preload"
       as="style"
@@ -31,16 +26,19 @@
     />
     <style>
       /* Critical CSS - Reserve space for fonts to prevent CLS */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+        margin: 0;
+        font-family: Roboto, system-ui, -apple-system, sans-serif;
       }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      h1 {
+        font-family: Poppins, system-ui, sans-serif;
+        font-weight: 700;
       }
-      /* Reserve header space */
       header {
         height: 88px;
       }
+      #root { min-height: 100vh; }
     </style>
     <noscript>
       <link
@@ -50,7 +48,6 @@
     </noscript>
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Bidyut Innovation" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <title>Bidyut Innovation</title>
     <!-- Google Analytics -->
