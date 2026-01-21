@@ -220,12 +220,13 @@ const HeroSection: React.FC = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4" style={{ minHeight: '120px' }}>
+        <p className="text-white text-base sm:text-lg max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4" style={{ minHeight: '120px' }}>
           Bidyut is the country's most advanced <a className="text-green-500"
   href="/About"
   target="_blank"
   rel="noopener noreferrer"
-> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools and colleges that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready. Our solutions are designed to spark curiosity, strengthen problem-solving skills, and encourage innovation from an early age through well-structured robotic classes. By combining technology with experiential learning, Bidyut Innovation helps students become confident, future-ready thinkers prepared for real-world challenges.
+
 
         </p>
       </div>

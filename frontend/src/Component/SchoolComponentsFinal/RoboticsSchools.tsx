@@ -60,7 +60,7 @@ export function RoboticsSchools () {
                 From robotics and AI to drones and global competitions
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-               For over 5 years, Bidyut Innovation has been revolutionizing  <a href="/" className='text-green-500'> robotics education </a> across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology and hands-on learning experiences.
+              For over 5 years, Bidyut Innovation has been revolutionizing robotics education across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology, robotics kits for schools, robotics courses, and hands-on learning experiences.
 
               </p>
             </div>

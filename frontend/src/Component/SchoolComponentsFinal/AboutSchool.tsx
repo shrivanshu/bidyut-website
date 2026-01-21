@@ -38,7 +38,7 @@ export function AboutSchool() {
         >
           <p className="text-lg md:text-xl lg:text-2xl font-body mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
             <StaggeredText 
-              text="We help students and teachers unlock creativity ,innovation,and hands-on learning through robotics, AI,and STREAM education."
+              text="We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and STREAM education including robotics courses and coding at schools."
               staggerDelay={0.03}
               direction="fade"
               splitBy="words"

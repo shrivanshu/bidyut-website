@@ -75,9 +75,9 @@ export default function EducationStream() {
           if (document.visibilityState === 'visible') {
             await currentVideo.play();
           }
-        } catch (error) {
+        } catch (error: unknown) {
           // Silently handle autoplay restrictions
-          if (error.name !== 'AbortError' && error.name !== 'NotAllowedError') {
+          if (error instanceof Error && error.name !== 'AbortError' && error.name !== 'NotAllowedError') {
             console.error("Video play failed:", error);
           }
         }
@@ -186,7 +186,8 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.          </p>
+A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.By emphasizing experiential learning, students not only understand theoretical concepts but also apply them in real-world scenarios, making learning both fun and impactful. Our STREAM approach encourages students to explore their curiosity, experiment with technology, and create projects that demonstrate their understanding.
+        </p>
       </motion.div>
 
       {/* Mobile Layout */}
@@ -216,7 +217,7 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                   loop
                   preload="none"
                   disablePictureInPicture
-                  onError={(e) => {
+                  onError={() => {
                     // Silently handle video errors
                   }}
                   onLoadStart={() => {
@@ -364,7 +365,7 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                       controls={false}
                       preload="none"
                     disablePictureInPicture
-                      onError={(e) => {
+                      onError={() => {
                         // Silently handle video errors
                       }}
                       onLoadStart={() => {

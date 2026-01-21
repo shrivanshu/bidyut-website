@@ -29,12 +29,7 @@ const StreamSchool: React.FC = () => {
 
   return (
     <section
-      className={`w-full ${isDark ? 'bg-black' : 'bg-white'} transition-colors duration-300 flex flex-col items-center justify-center text-center py-12 sm:py-16 md:py-20 overflow-hidden`}
-      style={{
-        touchAction: 'pan-y',
-        overscrollBehavior: 'none',
-        WebkitOverflowScrolling: 'touch'
-      }}
+      className={`w-full ${isDark ? 'bg-black' : 'bg-white'} transition-colors duration-300 flex flex-col items-center justify-center text-center py-12 sm:py-16 md:py-20`}
     >
       {/* Rotating Word with Animation */}
       <div className="h-12 sm:h-14 md:h-16 mb-[-15px] relative w-full flex justify-center items-center overflow-visible"
