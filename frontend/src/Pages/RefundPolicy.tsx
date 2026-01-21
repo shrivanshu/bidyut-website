@@ -9,7 +9,7 @@ const RefundPolicy = () => {
 			<SEO
 				title="Refund and Returns Policy | Bidyut Innovation - Digital Products & Robotics Services"
 				description="Understand Bidyut Innovation's refund policy for digital products and robotics education services. We provide clear guidelines on non-tangible goods, refund eligibility, and customer support for all purchases made through our platform."
-				canonical="https://bidyutinnovation.com/refundpolicy"
+				canonical=""
 			/>
 			<Header />
 			<div className="min-h-screen bg-white dark:bg-black pt-24 md:pt-28">
