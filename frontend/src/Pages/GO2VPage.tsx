@@ -9,19 +9,20 @@ import { SEO } from '../hooks/useSEO';
 
 function GO2VPage() {
   const navigate = useNavigate();
-  
+
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
           title="Unitree Go2 W Robot | Agile All-Terrain Robotics Companion"
-          description="Meet the Unitree Go2 W robot — your agile, compact, and all-terrain companion perfect for robotics research, inspections, and versatile real-world tasks."
+          description="Meet the Unitree Go2 W robot — your agile, compact companion for robotics research."
           canonical="https://bidyutinnovation.com/robot/quadrupeds/education/go2-w"
         />
+        <h1 className="sr-only">Unitree Go2 W Robot</h1>
         <Header />
-  <GO2VHeroSection/>
-  <GO2VVariants/>
-  <GO2VDetails onContactClick={() => navigate('/Contact')} />
+        <GO2VHeroSection />
+        <GO2VVariants />
+        <GO2VDetails onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>

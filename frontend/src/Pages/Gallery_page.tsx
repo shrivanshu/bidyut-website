@@ -34,6 +34,7 @@ const Gallery_page: React.FC = () => {
           }
         }}
       />
+      <h1 className="sr-only">Robotics Education Gallery</h1>
       <div className=" bg-white dark:bg-gray-900 transition-colors duration-300">
         <Header />
         <main>

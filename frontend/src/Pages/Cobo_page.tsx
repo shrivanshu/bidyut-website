@@ -9,7 +9,7 @@ import { SEO } from '../hooks/useSEO';
 
 function Cobo_page() {
   const navigate = useNavigate();
-  
+
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
@@ -19,13 +19,13 @@ function Cobo_page() {
           canonical="https://bidyutinnovation.com/cobot"
         />
         <div className="sr-only">
-          <h1>Collaborative Robot (Cobot) - Lightweight Robotic Arm for Smart Automation</h1>
+          <h1>Collaborative Robot (Cobot)</h1>
           <p>Upgrade your industrial automation with our advanced collaborative robot (cobot) featuring a lightweight robotic arm design. Engineered for fast deployment, high precision, and safe human-robot collaboration, our cobot solutions transform modern workspaces with intelligent automation, flexible programming, and industry-leading safety features for manufacturing, assembly, packaging, and quality control applications.</p>
         </div>
         <Header />
-        <CoboHeroSection/>
-        <CoboVariants/>
-  <CoboDetail onContactClick={() => navigate('/Contact')} />
+        <CoboHeroSection />
+        <CoboVariants />
+        <CoboDetail onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>

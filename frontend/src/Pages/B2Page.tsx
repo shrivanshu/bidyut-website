@@ -9,23 +9,23 @@ import { SEO } from '../hooks/useSEO';
 
 function B2Page() {
   const navigate = useNavigate();
-  
+
   return (
     <ThemeProvider>
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <SEO
           title="Unitree B2 | Smart Quadruped Robot for Research & Industry"
-          description="Explore the Quadruped Robot B2, built for industrial automation, AI-driven tasks, and advanced mobility. Fast, precise and designed for tough environments."
+          description="Explore the Quadruped Robot B2 for industrial automation and AI-driven mobility."
           canonical="https://bidyutinnovation.com/robot/quadrupeds/industry/b2"
         />
         <div className="sr-only">
-          <h1>Unitree B2 Quadruped Robot - Industrial Automation and Research Solution</h1>
+          <h1>Unitree B2 Quadruped Robot</h1>
           <p>The Unitree B2 quadruped robot is engineered for industrial automation, AI-driven tasks, and advanced mobility applications. Designed to operate in challenging environments, the B2 delivers exceptional speed, precision, and reliability for inspection, monitoring, logistics, and research projects across various industries.</p>
         </div>
         <Header />
-        <B2HeroSection/>
-        <B2Variants/>
-  <B2Details onContactClick={() => navigate('/Contact')} />
+        <B2HeroSection />
+        <B2Variants />
+        <B2Details onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>

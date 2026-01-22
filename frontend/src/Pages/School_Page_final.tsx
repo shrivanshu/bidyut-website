@@ -22,8 +22,9 @@ function FinalSchoolPage() {
             title="Robotics Lab Setup for Schools | Teacher Training | Bidyut"
             description="Robotics Lab Setup for schools with hands-on learning, teacher training, workshops, and drone programs. Making STREAM and AI education practical and engaging."
             canonical="https://bidyutinnovation.com/school"
-           
+
           />
+          <h1 className="sr-only">Robotics Lab Setup for Schools</h1>
           <Header />
 
           <SchoolHeroSection />

@@ -124,7 +124,7 @@ export function getVideoForYear(year: string): string {
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
-  
+
   // Timeline States
   const [currentIndex, setCurrentIndex] = useState(0)
   const currentItem = timelineData[currentIndex]
@@ -808,6 +808,12 @@ export default function AboutPage() {
   if (showAboutUs || scrollY > 2400) {
     return (
       <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} transition-colors duration-500`}>
+        <SEO
+          title="Bidyut Innovation – Leading Robotics Company in India"
+          description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
+          canonical="https://bidyutinnovation.com/about"
+        />
+        <h1 className="sr-only">About Bidyut Innovation</h1>
         <Header />
         {/* Hero About Section */}
         <div
@@ -842,12 +848,12 @@ export default function AboutPage() {
                 About Us
               </div>
 
-              <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
+              <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
                 Bridging Technology & Intelligence for a Smarter Tomorrow – A Leading Robotics Company in India
-              </h1>
+              </h2>
 
               <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
-                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a  href="/School" className="text-green-500">  STREAM Education  </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
+                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a href="/School" className="text-green-500">  STREAM Education  </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
               </p>
 
 
@@ -1055,7 +1061,7 @@ export default function AboutPage() {
             {/* Description Text */}
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed px-4`}>
-               Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing the world's most advanced robotic and technological education, integrated with STREAM Education, to the children of our country. As a leading  robotics company in India, we strive to make technology accessible to every student.
+                Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing the world's most advanced robotic and technological education, integrated with STREAM Education, to the children of our country. As a leading  robotics company in India, we strive to make technology accessible to every student.
 
               </p>
             </div>
@@ -1248,8 +1254,8 @@ export default function AboutPage() {
                     {/* Dot */}
                     <div
                       className={`w-3 h-3 rounded-full transition-all duration-500 ease-out transform ${index === currentIndex
-                          ? `${isDarkTheme ? 'bg-white scale-125 shadow-lg shadow-white/50' : 'bg-black scale-125 shadow-lg shadow-black/50'}`
-                          : `${isDarkTheme ? 'bg-white/40 hover:bg-white/60 hover:scale-110' : 'bg-black/40 hover:bg-black/60 hover:scale-110'}`
+                        ? `${isDarkTheme ? 'bg-white scale-125 shadow-lg shadow-white/50' : 'bg-black scale-125 shadow-lg shadow-black/50'}`
+                        : `${isDarkTheme ? 'bg-white/40 hover:bg-white/60 hover:scale-110' : 'bg-black/40 hover:bg-black/60 hover:scale-110'}`
                         }`}
                       style={{
                         position: "absolute",
@@ -1262,8 +1268,8 @@ export default function AboutPage() {
                     {/* Year Label */}
                     <span
                       className={`text-xs sm:text-sm transition-all duration-500 ${index === currentIndex
-                          ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
-                          : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
+                        ? `${isDarkTheme ? 'text-white font-medium' : 'text-black font-medium'}`
+                        : `${isDarkTheme ? 'text-white/60 hover:text-white/80' : 'text-black/60 hover:text-black/80'}`
                         }`}
                     >
                       {item.year}
@@ -1280,8 +1286,8 @@ export default function AboutPage() {
             <div className="text-center flex-1 relative">
               <div
                 className={`transition-all duration-700 ease-out ${isTransitioning
-                    ? "transform translate-x-8 opacity-0 scale-95"
-                    : "transform translate-x-0 opacity-100 scale-100"
+                  ? "transform translate-x-8 opacity-0 scale-95"
+                  : "transform translate-x-0 opacity-100 scale-100"
                   }`}
               >
                 {/* <div className={`${isDarkTheme ? ' text-white' : ' text-black'} text-[8rem] md:text-[12rem] font-bold leading-none mb-8 transition-all duration-700`}>
@@ -1353,10 +1359,10 @@ export default function AboutPage() {
                         // Only filter images, don't open any lightbox
                       }}
                       className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${selectedCategory === category.id
-                          ? 'text-white shadow-lg scale-105'
-                          : isDarkTheme
-                            ? 'text-gray-300 bg-gray-800 hover:bg-gray-700'
-                            : 'text-gray-700 bg-gray-200 hover:bg-gray-300'
+                        ? 'text-white shadow-lg scale-105'
+                        : isDarkTheme
+                          ? 'text-gray-300 bg-gray-800 hover:bg-gray-700'
+                          : 'text-gray-700 bg-gray-200 hover:bg-gray-300'
                         }`}
                       style={{
                         backgroundColor: selectedCategory === category.id ? category.color : undefined,
@@ -1412,8 +1418,8 @@ export default function AboutPage() {
                       <div
                         key={index}
                         className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === autoScrollIndex
-                            ? 'bg-white'
-                            : 'bg-white/40'
+                          ? 'bg-white'
+                          : 'bg-white/40'
                           }`}
                       />
                     ))}
@@ -1588,8 +1594,8 @@ export default function AboutPage() {
                       src={filteredImages[selectedImage]?.src || galleryImages[0].src}
                       alt={filteredImages[selectedImage]?.alt || galleryImages[0].alt}
                       className={`w-full h-auto max-h-[60vh] object-contain transition-all duration-500 ease-out transform ${isImageTransitioning
-                          ? 'opacity-0 scale-95 blur-sm'
-                          : 'opacity-100 scale-100 blur-0'
+                        ? 'opacity-0 scale-95 blur-sm'
+                        : 'opacity-100 scale-100 blur-0'
                         }`}
                     />
 

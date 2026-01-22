@@ -9,7 +9,7 @@ import { SEO } from '../hooks/useSEO';
 export default function ContactPage() {
   const { isDark } = useTheme();
   const { t } = useLanguage();
-  
+
   // Check for success message from URL params
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -112,7 +112,8 @@ export default function ContactPage() {
           {/* Hero Content */}
           <div className="relative z-10 flex items-center justify-center h-full">
             <div className="text-center px-6">
-              <motion.h1
+              <h1 className="sr-only">Contact Bidyut Innovation</h1>
+              <motion.h2
                 variants={fadeIn}
                 initial="hidden"
                 animate="show"
@@ -120,7 +121,7 @@ export default function ContactPage() {
                 style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)" }}
               >
                 {t("meetOurTeam")}
-              </motion.h1>
+              </motion.h2>
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "140px" }}
@@ -157,9 +158,9 @@ export default function ContactPage() {
                   innovation — Bidyut makes it happen.
                 </p>
 
-                <form 
-                  className="space-y-8" 
-                  action="https://api.staticforms.xyz/submit" 
+                <form
+                  className="space-y-8"
+                  action="https://api.staticforms.xyz/submit"
                   method="POST"
                 >
                   {/* Hidden fields for StaticForms configuration */}

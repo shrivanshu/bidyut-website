@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import { SEO } from '../hooks/useSEO';
 function H1_2_page() {
   const navigate = useNavigate();
-  
+
   return (
-   <ThemeProvider>
+    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
           title="Unitree Humanoid Robot H1-2 | Advanced Industrial Robotics"
@@ -19,14 +19,14 @@ function H1_2_page() {
           canonical="https://bidyutinnovation.com/robot/humanoid/industry/h1-2"
         />
         <div className="sr-only">
-          <h1>Unitree H1-2 Humanoid Robot - Advanced Industrial Automation Solution</h1>
+          <h1>Unitree H1-2 Humanoid Robot</h1>
           <p>The Unitree Humanoid Robot H1-2 is a full-size industrial robot featuring advanced AI intelligence, exceptional precision, and high-speed performance. Designed for industrial automation, manufacturing, logistics, and research applications, the H1-2 delivers cutting-edge robotics technology for demanding industrial environments.</p>
         </div>
-        <Header  />
+        <Header />
         <HeroSectionH1_2 />
-        <H1_2Variants/>
+        <H1_2Variants />
         <H1Detail onContactClick={() => navigate('/Contact')} />
-  <H1ComparisonChart/>
+        <H1ComparisonChart />
         <Footer />
       </div>
     </ThemeProvider>

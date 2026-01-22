@@ -8,23 +8,23 @@ import { useNavigate } from 'react-router-dom';
 import { SEO } from '../hooks/useSEO';
 function H1_page() {
   const navigate = useNavigate();
-  
+
   return (
-   <ThemeProvider>
+    <ThemeProvider>
       <div className="App bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <SEO
-          title="Unitree R1 Robot |  Transform STEM Learning with Humanoids"
-          description="Explore the Unitree R1 robot, a humanoid designed for interactive STEM learning, coding, and AI skills. Engage students with creative hands-on innovation."
+          title="Unitree R1 Robot | Transform STEM Learning with Humanoids"
+          description="Explore the Unitree R1 robot, designed for interactive STEM learning and AI skills."
           canonical="https://bidyutinnovation.com/robot/humanoid/education/r1"
         />
         <div className="sr-only">
-          <h1>Unitree R1 Humanoid Robot - Interactive STEM Learning Platform</h1>
+          <h1>Unitree R1 Educational Robot</h1>
           <p>The Unitree R1 robot is an advanced humanoid designed specifically for interactive STEM education, coding instruction, and AI skill development. This educational robot engages students through hands-on innovation, creative problem-solving, and practical robotics experience that prepares them for future technology careers.</p>
         </div>
         <Header />
         <HeroSectionR1 />
-        <R1Variants/>
-  <R1Detail onContactClick={() => navigate('/Contact')} />
+        <R1Variants />
+        <R1Detail onContactClick={() => navigate('/Contact')} />
         <Footer />
       </div>
     </ThemeProvider>
