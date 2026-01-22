@@ -15,9 +15,9 @@ export default function GO2VHeroSection() {
 
       {/* Main headline */}
       <div className="text-center mb-8 max-w-4xl">
-        <h1 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
+        <h2 className="text-3xl md:text-6xl lg:text-7xl dark:text-white font-poppins font-semibold text-gray-900 leading-tight cursor-target">
           <span className="text-[#0acf83]">Unitree Go2 W robot -</span> Your All‑Terrain Robotic Companion
-        </h1>
+        </h2>
       </div>
 
 {/* Description paragraph */}

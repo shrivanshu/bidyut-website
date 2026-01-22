@@ -22,12 +22,12 @@ const H1_2_page = lazy(() => import('./Pages/H1_2_page'));
 const R1_page = lazy(() => import('./Pages/R1_page'));
 const B2_Wells_Page = lazy(() => import('./Pages/B2_Wells_Page'));
 const A2_Wells_Page = lazy(() => import('./Pages/A2_Wells_Page'));
-// const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
+const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
 const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy'));
 const TermsCondition = lazy(() => import('./Pages/Terms&Condition'));
 const RefundPolicy = lazy(() => import('./Pages/RefundPolicy'));
 const GO2VPage = lazy(() => import('./Pages/GO2VPage'));
-// const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
+const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
 const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
 
@@ -60,8 +60,15 @@ function App() {
                   <Route path="/robot/quadrupeds/industry/a2-w" element={<A2_Wells_Page />} />
                   <Route path="/robot/quadrupeds/education/go2" element={<Cobotpage />} />
                   <Route path="/robot/quadrupeds/education/go2-w" element={<GO2VPage />} />
-                  {/* <Route path="/robot/solutions/firefighting" element={<Firefighting />} /> */}
-                  {/* <Route path="/robot/solutions/inspection" element={<Inspection_page />} /> */}
+                  <Route path="/robot/solutions/firefighting" element={<Firefighting />} />
+                  <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
+                  <Route path="/robot/solutions/inspection" element={<Inspection_page />} />
+                  <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
+                  <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
+                  <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
+                  <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+                  <Route path="/Terms&Condition" element={<TermsCondition />} />
+                  <Route path="/RefundPolicy" element={<RefundPolicy />} />
                   <Route path="/privacypolicy" element={<PrivacyPolicy />} />
                   <Route path="/terms-and-condition" element={<TermsCondition />} />
                   <Route path="/refundpolicy" element={<RefundPolicy />} />

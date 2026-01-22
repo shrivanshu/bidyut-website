@@ -96,4 +96,37 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+<<<<<<< HEAD
+=======
+  <url>
+    <loc>https://bidyutinnovation.com/robot/solutions/firefighting</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/robot/solutions/inspection</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/privacypolicy</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/terms-and-condition</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://bidyutinnovation.com/refundpolicy</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+>>>>>>> 7daebe31b72d046dc2e8feff628c3589f857454b
 </urlset>
