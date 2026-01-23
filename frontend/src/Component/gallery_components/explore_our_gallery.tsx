@@ -79,7 +79,7 @@ const generateBaseImages = (): ImageItem[] => {
     const file = galleryImageFiles[i];
     images.push({
       id: i + 1,
-      src: `/gallery/${file}`,
+      src: `/gallery${file}`,
       alt: file,
       title: file,
       size: sizes[(row + col) % sizes.length],

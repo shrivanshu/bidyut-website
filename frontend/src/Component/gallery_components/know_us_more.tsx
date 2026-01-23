@@ -23,7 +23,7 @@ let galleryImages: GalleryImage[] = [
   { src: "/knowusmore_gallery/Copy%20of%20DSC05302.JPG.webp", title: "Workspace 1", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05543%20copy.webp", title: "Workspace 2", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05546.JPG.webp", title: "Workspace 3", category: "workspace" },
-  { src: "/knowusmore_gallery/DSC05551.JPG.webp", title: "Workspace 4", category: "workspace" },
+  { src: "/knowusmore_DSC05551.JPG.webp", title: "Workspace 4", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05553.JPG.webp", title: "Workspace 5", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05560.JPG.webp", title: "Workspace 6", category: "workspace" },
   { src: "/knowusmore_gallery/DSC05561.JPG.webp", title: "Workspace 7", category: "workspace" },

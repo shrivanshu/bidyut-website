@@ -1,13 +1,3 @@
-# Remove trailing slashes
-/about/                                   /about                                    301!
-/school/                                  /school                                   301!
-/gallery/                                 /gallery                                  301!
-/contact/                                 /contact                                  301!
-/cobot/                                   /cobot                                    301!
-/privacypolicy/                           /privacypolicy                            301!
-/terms-and-condition/                     /terms-and-condition                      301!
-/refundpolicy/                            /refundpolicy                             301!
-/partnerwithus/                           /partnerwithus                            301!
 
 # Uppercase to lowercase redirects
 /About                                    /about                                    301
