@@ -6,6 +6,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import ScrollToTop from './Component/ScrollToTop';
+import TrailingSlashRedirect from './Component/TrailingSlashRedirect';
 import './index.css';
 
 const Home = lazy(() => import('./Pages/Home_page'));
@@ -41,6 +42,7 @@ function App() {
           <BrowserRouter>
             <NavigationProvider>
               <ScrollToTop />
+              <TrailingSlashRedirect />
               <Suspense >
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -51,9 +53,9 @@ function App() {
                   <Route path="/partnerwithus" element={<PartnerWithUs />} />
                   <Route path="/cobot" element={<Cobo_page />} />
                   <Route path="/robot/humanoids/industry/h1" element={<H1_page />} />
-                  <Route path="/robot/humanoid/industry/h1-2" element={<H1_2_page />} />
-                  <Route path="/robot/humanoid/education/g1" element={<Robotpage />} />
-                  <Route path="/robot/humanoid/education/r1" element={<R1_page />} />
+                  <Route path="/robot/humanoids/industry/h1-2" element={<H1_2_page />} />
+                  <Route path="/robot/humanoids/education/g1" element={<Robotpage />} />
+                  <Route path="/robot/humanoids/education/r1" element={<R1_page />} />
                   <Route path="/robot/quadrupeds/industry/b2" element={<B2Page />} />
                   <Route path="/robot/quadrupeds/industry/b2-w" element={<B2_Wells_Page />} />
                   <Route path="/robot/quadrupeds/industry/a2" element={<A2Page />} />

@@ -1,12 +1,24 @@
+# Remove trailing slashes
+/about/                                   /about                                    301!
+/school/                                  /school                                   301!
+/gallery/                                 /gallery                                  301!
+/contact/                                 /contact                                  301!
+/cobot/                                   /cobot                                    301!
+/privacypolicy/                           /privacypolicy                            301!
+/terms-and-condition/                     /terms-and-condition                      301!
+/refundpolicy/                            /refundpolicy                             301!
+/partnerwithus/                           /partnerwithus                            301!
+
+# Uppercase to lowercase redirects
 /About                                    /about                                    301
 /School                                   /school                                   301
 /Gallery                                  /gallery                                  301
 /Contact                                  /contact                                  301
 /Cobot                                    /cobot                                    301
 /Robot/Humanoids/Industry/H1              /robot/humanoids/industry/h1              301
-/Robot/Humanoid/Industry/H1-2             /robot/humanoid/industry/h1-2             301
-/Robot/Humanoid/Education/G1              /robot/humanoid/education/g1              301
-/Robot/Humanoid/Education/R1              /robot/humanoid/education/r1              301
+/Robot/Humanoids/Industry/H1-2             /robot/humanoids/industry/h1-2            301
+/Robot/Humanoids/Education/G1              /robot/humanoids/education/g1              301
+/Robot/Humanoids/Education/R1              /robot/humanoids/education/r1              301
 /Robot/Quadrupeds/Industry/B2             /robot/quadrupeds/industry/b2             301
 /Robot/Quadrupeds/Industry/B2-W           /robot/quadrupeds/industry/b2-w           301
 /Robot/Quadrupeds/Industry/A2             /robot/quadrupeds/industry/a2             301
