@@ -1,0 +1,32 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "The Future of Robotics in Education",
+      "excerpt": "Discover how robotics is transforming classroom learning and preparing students for the future.",
+      "date": "2024-01-15",
+      "author": "Bidyut Innovation",
+      "category": "education",
+      "image": "/media/G1 front.webp",
+      "readTime": "5 min read",
+      "tags": ["education", "robotics", "stem"],
+      "fullContent": "<p>Robotics is revolutionizing the way we teach and learn. Students need hands-on experience with real-world problems and solutions. Through building and programming robots, students develop critical thinking skills and creativity.</p><p>Our robotics programs are designed to be accessible and transformative. Whether students are building their first robot or competing at national levels, our curriculum supports learning at every stage.</p>",
+      "description": "Robotics is revolutionizing the way we teach and learn. Students need hands-on experience with real-world problems and solutions."
+    },
+    {
+      "id": 2,
+      "title": "AI and Machine Learning in Robots",
+      "excerpt": "Explore the role of artificial intelligence in modern robotics systems.",
+      "date": "2024-01-10",
+      "author": "Bidyut Innovation",
+      "category": "technology",
+      "image": "/media/H1.webp",
+      "readTime": "7 min read",
+      "tags": ["ai", "ml", "robotics"],
+      "fullContent": "<p>Artificial Intelligence (AI) and Machine Learning (ML) are transforming the capabilities of modern robots.</p><p>These technologies enable robots to learn from experience, adapt to new situations, and make intelligent decisions.</p>",
+      "description": "Artificial Intelligence (AI) and Machine Learning (ML) are transforming the capabilities of modern robots."
+    }
+  ]
+}
+
+

@@ -292,6 +292,7 @@ function Header() {
             
             {[
               { href: "/gallery", label: t("gallery") },
+              { href: "/blog", label: "Blog" },
               { href: "/contact", label: t("contact") },
             ].map((item) => (
               <Link
@@ -496,6 +497,16 @@ function Header() {
             }`}
           >
             {t("gallery")}
+          </Link>
+          <Link
+            to="/blog"
+            className={`font-medium transition-colors ${
+              isActive("/blog")
+                ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
+                : "dark:text-gray-300 hover:text-[#00F5A0]"
+            }`}
+          >
+            Blog
           </Link>
           <Link
             to="/contact"

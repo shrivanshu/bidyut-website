@@ -31,6 +31,8 @@ const GO2VPage = lazy(() => import('./Pages/GO2VPage'));
 const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
 const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
+const Blog = lazy(() => import('./Pages/Blog_page'));
+const BlogPost = lazy(() => import('./Pages/BlogPost_page'));
 
 
 
@@ -49,6 +51,8 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/school" element={<FinalSchoolPage />} />
                   <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:id" element={<BlogPost />} />
                   <Route path="/contact" element={<Contactpage />} />
                   <Route path="/partnerwithus" element={<PartnerWithUs />} />
                   <Route path="/cobot" element={<Cobo_page />} />
