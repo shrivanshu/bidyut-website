@@ -116,7 +116,7 @@ const BlogPost_page: React.FC = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold dark:text-white text-black mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-black mb-6 leading-tight">
                 {post.title}
               </h1>
 
@@ -150,7 +150,7 @@ const BlogPost_page: React.FC = () => {
                 className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-6 text-lg"
                 dangerouslySetInnerHTML={{
                   __html: (post.fullContent || '')
-                    .replace(/<h3>/g, '<h3 class="text-3xl font-bold text-black dark:text-white mt-10 mb-4">')
+                    .replace(/<h3>/g, '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">')
                     .replace(/<p>/g, '<p class="mb-6 text-justify leading-8 text-base md:text-lg">')
                     .replace(/<ul>/g, '<ul class="list-disc list-inside mb-6 space-y-3 ml-4">')
                     .replace(/<li>/g, '<li class="text-gray-700 dark:text-gray-300 mb-2 text-base md:text-lg">')
@@ -178,7 +178,7 @@ const BlogPost_page: React.FC = () => {
             </div>
 
             {/* Author Bio */}
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 mb-16 shadow-lg border border-gray-200 dark:border-gray-600">
+            {/* <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 mb-16 shadow-lg border border-gray-200 dark:border-gray-600">
               <div className="flex items-start gap-6">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] flex items-center justify-center flex-shrink-0 shadow-lg">
                   <span className="text-white font-bold text-3xl">
@@ -194,7 +194,7 @@ const BlogPost_page: React.FC = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Call to Action */}
             <div className="bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] rounded-xl p-10 text-center shadow-2xl">
