@@ -208,19 +208,19 @@ const pageMetaTags = {
       "Discover the full-size Unitree H1 robot, built for industrial automation, research, and advanced AI applications. Fast, precise, and ready to perform.",
   },
 
-  "/Robot/Humanoid/Industry/H1-2": {
+  "/Robot/Humanoids/Industry/H1-2": {
     title: "Unitree Humanoid Robot H1-2 | Advanced Industrial Robotics",
     description:
       "Discover the Unitree Humanoid Robot H1-2, a full-size industrial robot with AI intelligence, precision, and speed—designed for automation and research.",
   },
 
-  "/Robot/Humanoid/Education/G1": {
+  "/Robot/Humanoids/Education/G1": {
     title: "Humanoid Education G1 | Hands-On Learning Educational Robot",
     description:
       "Meet the Humanoid Education G1, a smart educational robot for hands-on STREAM learning, coding, and AI exploration. Inspire creativity and transform learning.",
   },
 
-  "/Robot/Humanoid/Education/R1": {
+  "/Robot/Humanoids/Education/R1": {
     title: "Unitree R1 Robot |  Transform STEM Learning with Humanoids",
     description:
       "Explore the Unitree R1 robot, a humanoid designed for interactive STEM learning, coding, and AI skills. Engage students with creative hands-on innovation.",
