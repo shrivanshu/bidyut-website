@@ -53,7 +53,7 @@ function App() {
                   <Route path="/partnerwithus" element={<PartnerWithUs />} />
                   <Route path="/cobot" element={<Cobo_page />} />
                   <Route path="/robot/humanoids/industry/h1" element={<H1_page />} />
-                  <Route path="/robot/humanoids/industry/h1-2" element={<H1_2_page />} />
+                   <Route path="/robot/humanoids/industry/h1-2" element={<H1_2_page />} />
                   <Route path="/robot/humanoids/education/g1" element={<Robotpage />} />
                   <Route path="/robot/humanoids/education/r1" element={<R1_page />} />
                   <Route path="/robot/quadrupeds/industry/b2" element={<B2Page />} />
