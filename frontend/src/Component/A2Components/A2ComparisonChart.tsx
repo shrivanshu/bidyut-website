@@ -361,11 +361,11 @@ const A2ComparisonChart: React.FC = () => {
           <div className="border border-emerald-500/20 rounded-lg overflow-x-auto bg-black/40 backdrop-blur-sm shadow-xl shadow-emerald-500/10">
             <table className="w-full border-collapse min-w-[800px]">
               <tbody>
-                {allGroups.map(({ title, items }) => {
+                {allGroups.map(({ title, items }, idx) => {
                   if (!showMoreSpecs && !alwaysShowGroups.includes(title)) {
                     return null;
                   }
-                  return renderGroup(title, items);
+                  return <React.Fragment key={idx}>{renderGroup(title, items)}</React.Fragment>;
                 })}
               </tbody>
             </table>

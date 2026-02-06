@@ -148,7 +148,7 @@ function Header() {
                               H1
                             </Link>
                             <Link
-                              to="/robot/humanoid/industry/h1-2"
+                              to="/robot/humanoids/industry/h1-2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               H1-2
@@ -164,13 +164,13 @@ function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <Link
-                              to="/robot/humanoid/education/g1"
+                              to="/robot/humanoids/education/g1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G1
                             </Link>
                             <Link
-                              to="/robot/humanoid/education/r1"
+                              to="/robot/humanoids/education/r1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               R1
@@ -439,14 +439,14 @@ function Header() {
                     label: "Industry",
                     children: [
                       { label: "H1", href: "/robot/humanoids/industry/h1" },
-                      { label: "H1-2", href: "/robot/humanoid/industry/h1-2" },
+                      { label: "H1-2", href: "/robot/humanoids/industry/h1-2" },
                     ],
                   },
                   {
                     label: "Education",
                     children: [
-                      { label: "G1", href: "/robot/humanoid/education/g1" },
-                      { label: "R1", href: "/robot/humanoid/education/r1" },
+                      { label: "G1", href: "/robot/humanoids/education/g1" },
+                      { label: "R1", href: "/robot/humanoids/education/r1" },
                     ],
                   },
                 ],

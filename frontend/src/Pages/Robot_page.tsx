@@ -14,7 +14,7 @@ function Robot_page() {
         <SEO
           title="Humanoid Education G1 | Hands-On Learning Educational Robot"
           description="Meet the Humanoid Education G1, a smart educational robot for hands-on STREAM learning, coding, and AI exploration. Inspire creativity and transform learning."
-          canonical="https://bidyutinnovation.com/robot/humanoid/education/g1"
+          canonical="https://bidyutinnovation.com/robot/humanoids/education/g1"
         />
         <div className="sr-only">
           <h1>Humanoid Education G1 Robot - Advanced Educational Robotics Platform</h1>
