@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Footer from '../Component/FooterUnanimated';
 import Header from '../Component/Header';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import { SEO } from '../hooks/useSEO';
 
 interface BlogPost {
   id: number;
@@ -19,6 +20,21 @@ interface BlogPost {
   tags: string[];
 }
 
+const blogMetaData: Record<string, { title: string; description: string }> = {
+  'best-robotics-lab-for-schools-in-india-–-powered-by-bidyut-innovation': {
+    title: 'Best Robotics Lab for Schools in India | Bidyut Innovation',
+    description: 'Upgrade your school with a best robotics lab from Bidyut Innovation. Practical STREAM learning, teacher support, and affordable solutions for students.'
+  },
+  'benefits-of-robotics-for-kids-in-stream-education': {
+    title: 'Why Robotics for Kids Is Essential in STREAM Education',
+    description: 'Robotics for kids in STREAM education helps them develop creativity, problem-solving, teamwork, and critical thinking through hands-on learning'
+  },
+  'the-future-of-robotics-in-education': {
+    title: 'Robotics Education in India |Transform Learning and Skills',
+    description: 'Explore how robotics education in India boosts creativity, critical thinking, and future-ready skills, preparing students to excel in a tech-driven world.'
+  }
+};
+
 const BlogPost_page: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -26,7 +42,6 @@ const BlogPost_page: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch blog data from JSON file
     fetch('/blog/blogs.json')
       .then((res) => res.json())
       .then((data) => {
@@ -35,7 +50,9 @@ const BlogPost_page: React.FC = () => {
           : data?.blog
           ? [data.blog]
           : [];
-        const foundPost = blogs.find((blog: BlogPost) => blog.id === parseInt(id || '0'));
+        const foundPost = blogs.find((blog: BlogPost) => 
+          blog.title.toLowerCase().replace(/\s+/g, '-') === id
+        );
         setPost(foundPost || null);
         setLoading(false);
       })
@@ -48,6 +65,10 @@ const BlogPost_page: React.FC = () => {
   if (!post) {
     return (
       <ThemeProvider>
+        <SEO
+          title="Blog Post | Bidyut Innovation"
+          description="Read our latest blog posts about robotics and STEM education"
+        />
         <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
           <Header />
           <main className="pt-32 pb-20 px-4 md:px-8 lg:px-16 max-w-4xl mx-auto">
@@ -76,9 +97,18 @@ const BlogPost_page: React.FC = () => {
     );
   }
 
+  const metaData = blogMetaData[id || ''] || {
+    title: post.title,
+    description: post.excerpt
+  };
+
   return (
     <ThemeProvider>
-      
+      <SEO
+        title={metaData.title}
+        description={metaData.description}
+        canonical={`https://bidyutinnovation.com/blog/${id}`}
+      />
       <div className="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />
         <main className="pt-40 pb-20">

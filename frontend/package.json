@@ -23,9 +23,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build ",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "optimize": "node optimize-performance.js"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",

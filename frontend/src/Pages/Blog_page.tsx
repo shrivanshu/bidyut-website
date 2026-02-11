@@ -44,57 +44,152 @@ const Blog_page: React.FC = () => {
         description="Insights and updates from Bidyut Innovation"
         canonical="https://bidyutinnovation.com/blog"
       />
-      <div className="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+      <div className="min-h-screen bg-black text-white">
         <Header />
-        <main className="pt-40 pb-20">
-          <section className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto mb-12">
-            <div className="text-center mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 dark:text-white text-black">Our Blog</h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Insights, news and stories about robotics education and STEM learning.
-              </p>
+        <main className="pt-24">
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-400">Loading...</p>
             </div>
-
-            {loading ? (
-              <div className="text-center py-12">
-                <p className="text-gray-600 dark:text-gray-400">Loading...</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post) => (
-                  <article
-                    key={post.id}
-                    className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="h-48 w-full overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect fill="%23333" width="400" height="200"/%3E%3C/text%3E%3C/svg%3E';
-                        }}
-                      />
+          ) : (
+            <>
+              {/* Hero Section */}
+              {posts.length > 0 && (
+                <div className="container mx-auto px-4">
+                  <div className="sticky rounded-3xl overflow-hidden">
+                    <img 
+                      src={posts[0].image}
+                      alt={posts[0].title}
+                      className="w-full h-[400px] md:h-[500px] object-cover"
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450"%3E%3Crect fill="%23333" width="800" height="450"/%3E%3C/svg%3E';
+                      }}
+                    />
+                    
+                    <div className="sticky bottom-60 left-8 right-8 md:left-[45%] md:right-8 md:max-w-3xl bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 rounded-3xl p-8 md:p-5 shadow-2xl">
+                      <span className="inline-block text-xs font-bold tracking-wider text-gray-300 bg-white/10 px-3 py-1 rounded mb-4">
+                        {posts[0].category || 'education'}
+                      </span>
+                      
+                      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+                        {posts[0].title}
+                      </h1>
+                      
+                      <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6">
+                        {posts[0].excerpt}
+                      </p>
+                      
+                      <button 
+                        onClick={() => navigate(`/blog/${posts[0].title.toLowerCase().replace(/\s+/g, '-')}`)}
+                        className="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                      >
+                        Read More
+                      </button>
                     </div>
-                    <div className="p-6">
-                      <h2 className="text-xl font-bold dark:text-white text-black mb-2">{post.title}</h2>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">{post.excerpt}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()}</div>
-                        <button
-                          onClick={() => navigate(`/blog/${post.id}`)}
-                          className="text-[#00F5A0] font-semibold"
-                        >
-                          Read More →
-                        </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Recent Posts Section */}
+              <div className="container mx-auto px-4 mb-5 -mt-32">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                  <h2 className="text-3xl md:text-4xl font-bold">Our Recent Post</h2>
+                 
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Featured Post - Left Side - Full Height */}
+                  {posts.length > 1 && (
+                    <div className="lg:col-span-3">
+                      <div className="bg-zinc-900 rounded-3xl overflow-hidden h-full min-h-[400px]">
+                        <div className="grid md:grid-cols-2 gap-0 h-full">
+                          <div className="relative h-48 md:h-full min-h-[250px]"> 
+                            <img 
+                              src={posts[1].image}
+                              alt={posts[1].title}
+                              className="w-[700px] h-[400px] object-cover m-5"
+                              onError={(e) => {
+                                const img = e.target as HTMLImageElement;
+                                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="600"%3E%3Crect fill="%23333" width="800" height="600"/%3E%3C/svg%3E';
+                              }}
+                            />
+                          </div>
+                          
+                          <div className="p-6 md:p-8 flex flex-col justify-center">
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3 text-xs text-gray-400">
+                                <span className="font-bold text-[#00F5A0]">{posts[1].category || 'education'}</span>
+                                <span>•</span>
+                                <span>{new Date(posts[1].date).toLocaleDateString()}</span>
+                              </div>
+                              
+                              <h3 className="text-xl md:text-2xl font-bold leading-tight">
+                                {posts[1].title}
+                              </h3>
+                              
+                              <p className="text-gray-400 text-sm leading-relaxed">
+                                {posts[1].excerpt}
+                              </p>
+                              
+                              <button 
+                                onClick={() => navigate(`/blog/${posts[1].title.toLowerCase().replace(/\s+/g, '-')}`)}
+                                className="text-[#00F5A0] font-semibold text-sm hover:text-[#00d68f] transition-colors inline-flex items-center gap-2"
+                              >
+                                Read More →
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </article>
-                ))}
+                  )}
+
+                  {/* Small Posts Grid - Right Side - Match Left Height */}
+                  <div className="flex flex-col gap-6">
+                    {posts.slice(2, 5).map((post) => (
+                      <div key={post.id} className="bg-zinc-900 rounded-3xl overflow-hidden flex-1">
+                        <div className="relative h-56">
+                          <img 
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const img = e.target as HTMLImageElement;
+                              img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23333" width="400" height="300"/%3E%3C/svg%3E';
+                            }}
+                          />
+                        </div>
+                        
+                        <div className="p-6 space-y-3">
+                          <div className="flex items-center gap-3 text-xs text-gray-400">
+                            <span className="font-bold text-[#00F5A0]">{post.category || 'education'}</span>
+                            <span>•</span>
+                            <span>{new Date(post.date).toLocaleDateString()}</span>
+                          </div>
+                          
+                          <h3 className="text-base font-bold leading-tight line-clamp-2">
+                            {post.title}
+                          </h3>
+                          
+                          <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                            {post.excerpt}
+                          </p>
+                          
+                          <button 
+                            onClick={() => navigate(`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`)}
+                            className="text-[#00F5A0] font-semibold text-sm hover:text-[#00d68f] transition-colors inline-flex items-center gap-2"
+                          >
+                            Read More →
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            )}
-          </section>
+            </>
+          )}
         </main>
         <Footer />
       </div>

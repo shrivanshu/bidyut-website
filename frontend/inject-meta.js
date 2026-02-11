@@ -261,6 +261,24 @@ const pageMetaTags = {
     description:
       "Meet the Unitree Go2 W robot — your agile, compact, and all-terrain companion perfect for robotics research, inspections, and versatile real-world tasks.",
   },
+
+  "/blog/best-robotics-lab-for-schools-in-india-–-powered-by-bidyut-innovation": {
+    title: "Best Robotics Lab for Schools in India | Bidyut Innovation",
+    description:
+      "Upgrade your school with a best robotics lab from Bidyut Innovation. Practical STREAM learning, teacher support, and affordable solutions for students.",
+  },
+
+  "/blog/benefits-of-robotics-for-kids-in-stream-education": {
+    title: "Why Robotics for Kids Is Essential in STREAM Education",
+    description:
+      "Robotics for kids in STREAM education helps them develop creativity, problem-solving, teamwork, and critical thinking through hands-on learning",
+  },
+
+  "/blog/the-future-of-robotics-in-education": {
+    title: "Robotics Education in India |Transform Learning and Skills",
+    description:
+      "Explore how robotics education in India boosts creativity, critical thinking, and future-ready skills, preparing students to excel in a tech-driven world.",
+  },
 };
 
 /* ----------------------------------------

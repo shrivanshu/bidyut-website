@@ -1,4 +1,5 @@
-import { Mail, Phone } from "lucide-react";
+import { LazyLoad } from "../Component/LazyLoad";
+import { Mail, Phone } from "../Component/InlineIcons";
 import { motion } from "framer-motion";
 import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
@@ -91,6 +92,9 @@ export default function ContactPage() {
               className="absolute inset-0 w-full h-full object-cover rounded-b-[80px]"
               style={{ objectPosition: "center top" }}
               loading="eager"
+              fetchPriority="high"
+              width="1920"
+              height="1080"
             />
 
             {/* Fade Overlay */}
@@ -269,23 +273,25 @@ export default function ContactPage() {
         {/* Map */}
         <section className={`py-20 ${bgColor}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl"
-              whileHover={{ scale: 1.01 }}
-            >
-              {/* Lazy load map */}
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.112244725711!2d75.8954432100689!3d22.76121537594634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd17098eaaab%3A0x46844082efeaf98b!2sBidyut%20Innovation%20%7C%20Robotics%20for%20Schools%2C%20Colleges%20%26%20Industries!5e0!3m2!1sen!2sin!4v1754397370428!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Bidyut Technologies Office Location - Indore"
-                className="absolute inset-0 hover:brightness-110 transition-all duration-300"
-              />
-            </motion.div>
+            <LazyLoad>
+              <motion.div
+                className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.01 }}
+              >
+                {/* Lazy load map */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.112244725711!2d75.8954432100689!3d22.76121537594634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd17098eaaab%3A0x46844082efeaf98b!2sBidyut%20Innovation%20%7C%20Robotics%20for%20Schools%2C%20Colleges%20%26%20Industries!5e0!3m2!1sen!2sin!4v1754397370428!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Bidyut Technologies Office Location - Indore"
+                  className="absolute inset-0 hover:brightness-110 transition-all duration-300"
+                />
+              </motion.div>
+            </LazyLoad>
           </div>
         </section>
       </main>
