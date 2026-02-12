@@ -7,6 +7,7 @@ import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import ScrollToTop from './Component/ScrollToTop';
 import TrailingSlashRedirect from './Component/TrailingSlashRedirect';
+import Loader from './Component/Loader';
 import './index.css';
 
 const Home = lazy(() => import('./Pages/Home_page'));
@@ -45,7 +46,7 @@ function App() {
             <NavigationProvider>
               <ScrollToTop />
               <TrailingSlashRedirect />
-              <Suspense >
+              <Suspense fallback={<Loader fadeOut={false} />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />

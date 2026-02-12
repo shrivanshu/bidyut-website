@@ -155,7 +155,7 @@ export default function KnowUsMore() {
         animate={isInView ? "visible" : "hidden"}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl w-full px-4"
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           {filteredImages.map((image, index) => (
             <motion.div
               key={`${image.src}-${selectedCategory}`}
