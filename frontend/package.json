@@ -24,12 +24,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node inject-meta.js",
-    "prebuild": "npm run optimize:images && npm run optimize:assets",
     "preview": "vite preview",
-    "test": "vitest",
-    "optimize": "node optimize-performance.js",
-    "optimize:assets": "node optimize-assets.js",
-    "optimize:images": "node optimize-images.js"
+    "test": "vitest"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
