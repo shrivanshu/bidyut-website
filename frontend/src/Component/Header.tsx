@@ -250,34 +250,6 @@ function Header() {
                     </div>
                   </div>
                   {/* Solutions */}
-                  {/* <div className="relative group/child">
-                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                      Solutions
-                      <ChevronRight className="h-4 w-4 ml-2" />
-                    </button> */}
-
-                  {/* Solutions Submenu */}
-                  {/* <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
-                      <div className="py-2"> */}
-
-                  {/* Firefighting (disabled for now) */}
-                  {/* <div className="relative group/sub">
-                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           Firefighting Solution
-                          </button>
-                        </div> */}
-
-                  {/* Inspection (disabled for now) */}
-                  {/* <div className="relative group/sub">
-                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           Inspection Solution
-                          </button>
-                        </div> */}
-
-                  {/* </div>
-                    </div> */}
-                  {/* </div> */}
-                  {/* Solutions */}
                   <div
                     className="relative group/child cursor-pointer"
                     onClick={() => navigate("/cobot")}
@@ -290,7 +262,8 @@ function Header() {
               </div>
             </div>
             
-            {[
+            {[              { href: "/blog", label: "Blog" },
+
               { href: "/gallery", label: t("gallery") },
               { href: "/contact", label: t("contact") },
             ].map((item) => (
@@ -425,6 +398,16 @@ function Header() {
             }`}
           >
             {t("school")}
+          </Link>
+          <Link
+            to="/blog"
+            className={`font-medium transition-colors ${
+              isActive("/blog")
+                ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
+                : "dark:text-gray-300 hover:text-[#00F5A0]"
+            }`}
+          >
+            Blog
           </Link>
 
           {/* Robots Dropdown */}
