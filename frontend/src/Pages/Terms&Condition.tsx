@@ -20,7 +20,7 @@ const TermsCondition = () => {
 			<SEO
 				title="Terms & Conditions | Bidyut Innovation"
 				description="Terms and Conditions for Bidyut Innovation. Read our terms of service for using our robotics education platform and payment gateway."
-				canonical="https://bidyutinnovation.com/Terms&Condition"
+				canonical="https://bidyutinnovation.com/terms-and-condition"
 			/>
 			<Header />
 			{/* Page wrapper adds space for fixed header and supports light/dark theme */}

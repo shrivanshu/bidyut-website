@@ -1677,7 +1677,7 @@ export default function AboutPage() {
       <SEO
         title="Bidyut Innovation – Leading Robotics Company in India."
         description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
-        canonical="https://bidyutinnovation.com/About"
+        canonical="https://bidyutinnovation.com/about"
         schema={{
           "@context": "https://schema.org",
           "@type": "Organization",

@@ -76,7 +76,7 @@ export default function FooterUnanimated() {
                   { key: "home", href: "/" },
                   { key: "aboutUs", href: "/About" },
                   { key: "school", href: "/School" },
-                  { key: "robots", href: "/Robot/Humanoid/Education/G1" },
+                  { key: "robots", href: "/Robot/Humanoids/Education/G1" },
                   { key: "contact", href: "/Contact" },
                   { key: "gallery", href: "/Gallery" },
                 ].map((link) => (

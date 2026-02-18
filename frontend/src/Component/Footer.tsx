@@ -259,11 +259,11 @@ export default function Footer() {
                   <ul className="space-y-3">
                     {[
                       { key: "home", href: "/" },
-                      { key: "aboutUs", href: "/About" },
+                      { key: "aboutUs", href: "/about" },
                       { key: "school", href: "/school" },
                       { key: "robots", href: "/robot" },
-                      { key: "contact", href: "/Contact" },
-                      { key: "gallery", href: "/Gallery" },
+                      { key: "contact", href: "/contact" },
+                      { key: "gallery", href: "/gallery" },
                     ].map((link) => (
                       <li key={link.key}>
                         <Link
@@ -357,18 +357,18 @@ export default function Footer() {
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <span className="font-medium title-color">Copyright © 2024</span>
                   <Link
-                    to="/PrivacyPolicy"
+                    to="/privacypolicy"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("privacyPolicy")}
                   </Link>
                   <Link
-                    to="/Terms&Condition"
+                    to="/terms-and-condition"
                     className="link-color hover:text-emerald-500 transition-colors underline"
                   >
                     {t("termsOfService")}
                   </Link>
-                  <Link to="/RefundPolicy" className="link-color hover:text-emerald-500 transition-colors underline">
+                  <Link to="/refundpolicy" className="link-color hover:text-emerald-500 transition-colors underline">
                   {t("Refund Policy")}
                 </Link>
                 </div>

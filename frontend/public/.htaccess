@@ -1,0 +1,36 @@
+RewriteEngine On
+
+# Security Headers - HSTS
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 301 Redirects from PascalCase to lowercase
+RewriteRule ^About$ /about [R=301,L]
+RewriteRule ^School$ /school [R=301,L]
+RewriteRule ^Gallery$ /gallery [R=301,L]
+RewriteRule ^Contact$ /contact [R=301,L]
+RewriteRule ^Cobot$ /cobot [R=301,L]
+RewriteRule ^Robot/Humanoids/Industry/H1$ /robot/humanoids/industry/h1 [R=301,L]
+RewriteRule ^Robot/Humanoid/Industry/H1-2$ /robot/humanoid/industry/h1-2 [R=301,L]
+RewriteRule ^Robot/Humanoid/Education/G1$ /robot/humanoid/education/g1 [R=301,L]
+RewriteRule ^Robot/Humanoid/Education/R1$ /robot/humanoid/education/r1 [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Industry/B2$ /robot/quadrupeds/industry/b2 [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Industry/B2-W$ /robot/quadrupeds/industry/b2-w [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Industry/A2$ /robot/quadrupeds/industry/a2 [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Industry/A2-W$ /robot/quadrupeds/industry/a2-w [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Education/GO2$ /robot/quadrupeds/education/go2 [R=301,L]
+RewriteRule ^Robot/Quadrupeds/Education/GO2-W$ /robot/quadrupeds/education/go2-w [R=301,L]
+RewriteRule ^PrivacyPolicy$ /privacypolicy [R=301,L]
+RewriteRule ^Terms&Condition$ /terms-and-condition [R=301,L]
+RewriteRule ^RefundPolicy$ /refundpolicy [R=301,L]
+RewriteRule ^PartnerWithUs$ /partnerwithus [R=301,L]
+
+# SPA fallback
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

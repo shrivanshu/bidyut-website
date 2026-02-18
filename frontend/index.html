@@ -3,17 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="frame-ancestors 'self'"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+   
     <link
       rel="icon"
-      type="image/png"
-      sizes="64x64"
+      type="image/svg+xml"
       href="/bidyut_logo_green 1.svg"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="preload"
       href="/bidyut_logo_green 1.svg"
@@ -25,25 +22,35 @@
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <style>
+      /* Critical CSS - Reserve space for fonts to prevent CLS */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        margin: 0;
+        font-family: Roboto, system-ui, -apple-system, sans-serif;
       }
+      h1 {
+        font-family: Poppins, system-ui, sans-serif;
+        font-weight: 700;
+      }
+      header {
+        height: 88px;
+      }
+      #root { min-height: 100vh; }
     </style>
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap"
       />
     </noscript>
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Bidyut Innovation" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
+
     <link rel="manifest" href="/manifest.json" />
-    <title>Bidyut Innovation</title>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9M6SR35DR"></script>
     <script>

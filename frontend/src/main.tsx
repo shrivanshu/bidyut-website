@@ -6,7 +6,10 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/OptimizedLanguageContext';
 import { NavigationProvider } from './contexts/NavigationContext';
 import ScrollToTop from './Component/ScrollToTop';
+import TrailingSlashRedirect from './Component/TrailingSlashRedirect';
 import './index.css';
+import Blog_page from './Pages/Blog_page';
+import BlogPost_page from './Pages/BlogPost_page';
 
 const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
@@ -22,15 +25,14 @@ const H1_2_page = lazy(() => import('./Pages/H1_2_page'));
 const R1_page = lazy(() => import('./Pages/R1_page'));
 const B2_Wells_Page = lazy(() => import('./Pages/B2_Wells_Page'));
 const A2_Wells_Page = lazy(() => import('./Pages/A2_Wells_Page'));
-// const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
+const Inspection_page = lazy(() => import('./Pages/Inspection_page'));
 const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy'));
 const TermsCondition = lazy(() => import('./Pages/Terms&Condition'));
 const RefundPolicy = lazy(() => import('./Pages/RefundPolicy'));
 const GO2VPage = lazy(() => import('./Pages/GO2VPage'));
-// const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
+const Firefighting = lazy(() => import('./Pages/FirefightingPage'));
 const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
-
 
 
 function App() {
@@ -41,30 +43,41 @@ function App() {
           <BrowserRouter>
             <NavigationProvider>
               <ScrollToTop />
+              <TrailingSlashRedirect />
               <Suspense >
                 <Routes>
+                  {/* Blog routes */}
+                  <Route path="/blog" element={<Blog_page />} />
+                  <Route path="/blog/:id" element={<BlogPost_page />} />
                   <Route path="/" element={<Home />} />
-                  <Route path="/About" element={<About />} />
-                  <Route path="/School" element={<FinalSchoolPage />} />
-                  <Route path="/Gallery" element={<Gallery />} />
-                  <Route path="/Contact" element={<Contactpage />} />
-                  <Route path="/PartnerWithUs" element={<PartnerWithUs />} />
-                  <Route path="/Cobot" element={<Cobo_page />} />
-                  <Route path="/Robot/Humanoids/Industry/H1" element={<H1_page />} />
-                  <Route path="/Robot/Humanoid/Industry/H1-2" element={<H1_2_page />} />
-                  <Route path="/Robot/Humanoid/Education/G1" element={<Robotpage />} />
-                  <Route path="/Robot/Humanoid/Education/R1" element={<R1_page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/B2" element={<B2Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/B2-W" element={<B2_Wells_Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/A2" element={<A2Page />} />
-                  <Route path="/Robot/Quadrupeds/Industry/A2-W" element={<A2_Wells_Page />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/school" element={<FinalSchoolPage />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/contact" element={<Contactpage />} />
+                  <Route path="/partnerwithus" element={<PartnerWithUs />} />
+                  <Route path="/cobot" element={<Cobo_page />} />
+                  <Route path="/robot/humanoids/industry/h1" element={<H1_page />} />
+                  <Route path="/robot/humanoids/industry/h1-2" element={<H1_2_page />} />
+                  <Route path="/robot/humanoids/education/g1" element={<Robotpage />} />
+                  <Route path="/robot/humanoids/education/r1" element={<R1_page />} />
+                  <Route path="/robot/quadrupeds/industry/b2" element={<B2Page />} />
+                  <Route path="/robot/quadrupeds/industry/b2-w" element={<B2_Wells_Page />} />
+                  <Route path="/robot/quadrupeds/industry/a2" element={<A2Page />} />
+                  <Route path="/robot/quadrupeds/industry/a2-w" element={<A2_Wells_Page />} />
+                  <Route path="/robot/quadrupeds/education/go2" element={<Cobotpage />} />
+                  <Route path="/robot/quadrupeds/education/go2-w" element={<GO2VPage />} />
+                  <Route path="/robot/solutions/firefighting" element={<Firefighting />} />
+                  <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} />
+                  <Route path="/robot/solutions/inspection" element={<Inspection_page />} />
+                  <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} />
                   <Route path="/Robot/Quadrupeds/Education/GO2" element={<Cobotpage />} />
                   <Route path="/Robot/Quadrupeds/Education/GO2-W" element={<GO2VPage />} />
-                  {/* <Route path="/Robot/Solutions/Firefighting" element={<Firefighting />} /> */}
-                  {/* <Route path="/Robot/Solutions/Inspection" element={<Inspection_page />} /> */}
                   <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
                   <Route path="/Terms&Condition" element={<TermsCondition />} />
                   <Route path="/RefundPolicy" element={<RefundPolicy />} />
+                  <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-and-condition" element={<TermsCondition />} />
+                  <Route path="/refundpolicy" element={<RefundPolicy />} />
                 </Routes>
               </Suspense>
             </NavigationProvider>

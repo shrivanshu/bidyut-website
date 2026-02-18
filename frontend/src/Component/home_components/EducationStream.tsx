@@ -68,13 +68,18 @@ export default function EducationStream() {
   useEffect(() => {
     const currentVideo = videoRefs.current[currentVideoIndex];
     if (currentVideo) {
-      // Wait for video to be ready
       const playVideo = async () => {
         try {
-          currentVideo.load(); // Reload the video source
-          await currentVideo.play();
-        } catch (error) {
-          console.error("Video play failed:", error);
+          currentVideo.load();
+          // Only play if user has interacted with page
+          if (document.visibilityState === 'visible') {
+            await currentVideo.play();
+          }
+        } catch (error: unknown) {
+          // Silently handle autoplay restrictions
+          if (error instanceof Error && error.name !== 'AbortError' && error.name !== 'NotAllowedError') {
+            console.error("Video play failed:", error);
+          }
         }
       };
       playVideo();
@@ -89,26 +94,18 @@ export default function EducationStream() {
   }, [currentVideoIndex]);
 
   const handleVideoClick = (video: VideoOption, index: number) => {
-    // Update state first
     setActiveVideo(video);
     setCurrentVideoIndex(index);
     
     const nextVideo = videoRefs.current[index];
     if (nextVideo) {
-      // Reset and prepare video
       nextVideo.currentTime = 0;
-      nextVideo.load(); // Reload the video source
+      nextVideo.load();
       
-      // Try to play the video
-      const playPromise = nextVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("Video play failed:", error);
-          // Try reloading the video source
-          setTimeout(() => {
-            nextVideo.load();
-            nextVideo.play().catch(console.error);
-          }, 100);
+      // Only attempt autoplay if page is visible
+      if (document.visibilityState === 'visible') {
+        nextVideo.play().catch(() => {
+          // Silently handle autoplay restrictions
         });
       }
     }
@@ -189,7 +186,8 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.          </p>
+A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.By emphasizing experiential learning, students not only understand theoretical concepts but also apply them in real-world scenarios, making learning both fun and impactful. Our STREAM approach encourages students to explore their curiosity, experiment with technology, and create projects that demonstrate their understanding.
+        </p>
       </motion.div>
 
       {/* Mobile Layout */}
@@ -217,9 +215,14 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                   muted
                   controls={false}
                   loop
-                  preload="metadata"
-                  onError={(e) => console.error('Video error:', e)}
-                  onLoadStart={() => console.log('Video loading started:', video.src)}
+                  preload="none"
+                  disablePictureInPicture
+                  onError={() => {
+                    // Silently handle video errors
+                  }}
+                  onLoadStart={() => {
+                    // Remove console log to reduce noise
+                  }}
                 >
                   <source src={video.src} type="video/webm" />
                   <p>Your browser doesn't support video playback.</p>
@@ -360,9 +363,14 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                       loop
                       playsInline
                       controls={false}
-                      preload="metadata"
-                      onError={(e) => console.error('Video error:', e)}
-                      onLoadStart={() => console.log('Video loading started:', video.src)}
+                      preload="none"
+                    disablePictureInPicture
+                      onError={() => {
+                        // Silently handle video errors
+                      }}
+                      onLoadStart={() => {
+                        // Remove console log to reduce noise
+                      }}
                     >
                       <source src={video.src} type="video/webm" />
                       <p>Your browser doesn't support video playback.</p>

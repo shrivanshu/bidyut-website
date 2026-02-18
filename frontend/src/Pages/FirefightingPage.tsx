@@ -15,7 +15,7 @@ function FirefightingPage() {
       <SEO
         title="Firefighting Robots | Industrial Safety Solutions | Bidyut"
         description="Advanced firefighting robots for industrial safety. Autonomous fire suppression systems with AI-powered detection and response capabilities."
-        canonical="https://bidyutinnovation.com/Robot/Solutions/Firefighting"
+        canonical="https://bidyutinnovation.com/robot/solutions/firefighting"
       />
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />

@@ -76,8 +76,8 @@ function Header() {
   return (
     <>
       {/* Floating Glass Navbar */}
-      <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center">
-        <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between">
+      <header className="w-full fixed top-0 left-0 z-[9999] flex justify-center" style={{ height: '88px', contain: 'layout' }}>
+        <div className="max-w-[90%] w-full mt-4 rounded-lg bg-black/20 backdrop-blur-lg border border-white/10 shadow-lg px-6 py-2 flex items-center justify-between" style={{ height: '72px' }}>
           {/* Logo */}
           <Link
             to="/"
@@ -88,7 +88,9 @@ function Header() {
               src="/bidyut_logo_green 1.svg"
               alt="Bidyut Logo"
               className="h-14 w-auto mr-2 transition-transform group-hover:scale-105"
-              style={{ maxHeight: "56px" }}
+              style={{ maxHeight: "56px", width: 'auto', height: '56px' }}
+              width="140"
+              height="56"
             />
           </Link>
 
@@ -96,8 +98,8 @@ function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             {[
               { href: "/", label: t("home") },
-              { href: "/About", label: t("aboutUs") },
-              { href: "/School", label: t("school") },
+              { href: "/about", label: t("aboutUs") },
+              { href: "/school", label: t("school") },
             ].map((item) => (
               <Link
                 key={item.href}
@@ -140,13 +142,13 @@ function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <Link
-                              to="/Robot/Humanoids/Industry/H1"
+                              to="/robot/humanoids/industry/h1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               H1
                             </Link>
                             <Link
-                              to="/Robot/Humanoid/Industry/H1-2"
+                              to="/robot/humanoids/industry/h1-2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               H1-2
@@ -162,13 +164,13 @@ function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <Link
-                              to="/Robot/Humanoid/Education/G1"
+                              to="/robot/humanoids/education/g1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G1
                             </Link>
                             <Link
-                              to="/Robot/Humanoid/Education/R1"
+                              to="/robot/humanoids/education/r1"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               R1
@@ -197,25 +199,25 @@ function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <Link
-                              to="/Robot/Quadrupeds/Industry/B2"
+                              to="/robot/quadrupeds/industry/b2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               B2
                             </Link>
                             <Link
-                              to="/Robot/Quadrupeds/Industry/B2-W"
+                              to="/robot/quadrupeds/industry/b2-w"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               B2-W
                             </Link>
                             <Link
-                              to="/Robot/Quadrupeds/Industry/A2"
+                              to="/robot/quadrupeds/industry/a2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               A2
                             </Link>
                             <Link
-                              to="/Robot/Quadrupeds/Industry/A2-W"
+                              to="/robot/quadrupeds/industry/a2-w"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               A2-W
@@ -231,13 +233,13 @@ function Header() {
                           </button>
                           <div className="absolute top-0 left-full mt-0 ml-1 w-40 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300">
                             <Link
-                              to="/Robot/Quadrupeds/Education/GO2"
+                              to="/robot/quadrupeds/education/go2"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G02
                             </Link>
                             <Link
-                              to="/Robot/Quadrupeds/Education/GO2-W"
+                              to="/robot/quadrupeds/education/go2-w"
                               className="block px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]"
                             >
                               G02-W
@@ -248,37 +250,9 @@ function Header() {
                     </div>
                   </div>
                   {/* Solutions */}
-                  {/* <div className="relative group/child">
-                    <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                      Solutions
-                      <ChevronRight className="h-4 w-4 ml-2" />
-                    </button> */}
-
-                  {/* Solutions Submenu */}
-                  {/* <div className="absolute top-0 left-full mt-0 ml-1 w-48 bg-black/40 backdrop-blur-md rounded-lg shadow-lg border border-[#00F5A0]/30 opacity-0 invisible group-hover/child:opacity-100 group-hover/child:visible transition-all duration-300">
-                      <div className="py-2"> */}
-
-                  {/* Firefighting (disabled for now) */}
-                  {/* <div className="relative group/sub">
-                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           Firefighting Solution
-                          </button>
-                        </div> */}
-
-                  {/* Inspection (disabled for now) */}
-                  {/* <div className="relative group/sub">
-                          <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
-                           Inspection Solution
-                          </button>
-                        </div> */}
-
-                  {/* </div>
-                    </div> */}
-                  {/* </div> */}
-                  {/* Solutions */}
                   <div
                     className="relative group/child cursor-pointer"
-                    onClick={() => navigate("/Cobot")}
+                    onClick={() => navigate("/cobot")}
                   >
                     <button className="flex w-full items-center justify-between px-4 py-2 text-sm hover:bg-[#00F5A0]/10 hover:text-[#00F5A0]">
                       Cobot
@@ -288,9 +262,10 @@ function Header() {
               </div>
             </div>
             
-            {[
-              { href: "/Gallery", label: t("gallery") },
-              { href: "/Contact", label: t("contact") },
+            {[              { href: "/blog", label: "Blog" },
+
+              { href: "/gallery", label: t("gallery") },
+              { href: "/contact", label: t("contact") },
             ].map((item) => (
               <Link
                 key={item.href}
@@ -405,9 +380,9 @@ function Header() {
             {t("home")}
           </Link>
           <Link
-            to="/About"
+            to="/about"
             className={`font-medium transition-colors ${
-              isActive("/About")
+              isActive("/about")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
                 : "dark:text-gray-300 hover:text-[#00F5A0]"
             }`}
@@ -415,14 +390,24 @@ function Header() {
             {t("aboutUs")}
           </Link>
           <Link
-            to="/School"
+            to="/school"
             className={`font-medium transition-colors ${
-              isActive("/School")
+              isActive("/school")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
                 : "dark:text-gray-300 hover:text-[#00F5A0]"
             }`}
           >
             {t("school")}
+          </Link>
+          <Link
+            to="/blog"
+            className={`font-medium transition-colors ${
+              isActive("/blog")
+                ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
+                : "dark:text-gray-300 hover:text-[#00F5A0]"
+            }`}
+          >
+            Blog
           </Link>
 
           {/* Robots Dropdown */}
@@ -435,15 +420,15 @@ function Header() {
                   {
                     label: "Industry",
                     children: [
-                      { label: "H1", href: "/Robot/Humanoids/Industry/H1" },
-                      { label: "H1-2", href: "/Robot/Humanoid/Industry/H1-2" },
+                      { label: "H1", href: "/robot/humanoids/industry/h1" },
+                      { label: "H1-2", href: "/robot/humanoids/industry/h1-2" },
                     ],
                   },
                   {
                     label: "Education",
                     children: [
-                      { label: "G1", href: "/Robot/Humanoid/Education/G1" },
-                      { label: "R1", href: "/Robot/Humanoid/Education/R1" },
+                      { label: "G1", href: "/robot/humanoids/education/g1" },
+                      { label: "R1", href: "/robot/humanoids/education/r1" },
                     ],
                   },
                 ],
@@ -454,25 +439,25 @@ function Header() {
                   {
                     label: "Industry",
                     children: [
-                      { label: "B2", href: "/Robot/Quadrupeds/Industry/B2" },
+                      { label: "B2", href: "/robot/quadrupeds/industry/b2" },
                       {
                         label: "B2-W",
-                        href: "/Robot/Quadrupeds/Industry/B2-W",
+                        href: "/robot/quadrupeds/industry/b2-w",
                       },
-                      { label: "A2", href: "/Robot/Quadrupeds/Industry/A2" },
+                      { label: "A2", href: "/robot/quadrupeds/industry/a2" },
                       {
                         label: "A2-W",
-                        href: "/Robot/Quadrupeds/Industry/A2-W",
+                        href: "/robot/quadrupeds/industry/a2-w",
                       },
                     ],
                   },
                   {
                     label: "Education",
                     children: [
-                      { label: "GO2", href: "/Robot/Quadrupeds/Education/GO2" },
+                      { label: "GO2", href: "/robot/quadrupeds/education/go2" },
                       {
                         label: "GO2-W",
-                        href: "/Robot/Quadrupeds/Education/GO2-W",
+                        href: "/robot/quadrupeds/education/go2-w",
                       },
                     ],
                   },
@@ -480,15 +465,15 @@ function Header() {
               },
               {
                 label: "Cobot",
-                href: "/Cobot",
+                href: "/cobot",
               },
             ]}
           />
 
           <Link
-            to="/Gallery"
+            to="/gallery"
             className={`font-medium transition-colors ${
-              isActive("/Gallery")
+              isActive("/gallery")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
                 : "dark:text-gray-300 hover:text-[#00F5A0]"
             }`}
@@ -496,9 +481,9 @@ function Header() {
             {t("gallery")}
           </Link>
           <Link
-            to="/Contact"
+            to="/contact"
             className={`font-medium transition-colors ${
-              isActive("/Contact")
+              isActive("/contact")
                 ? "text-[#00F5A0] border-l-4 border-[#00F5A0] pl-2"
                 : "dark:text-gray-300 hover:text-[#00F5A0]"
             }`}

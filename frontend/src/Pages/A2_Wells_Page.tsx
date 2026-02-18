@@ -16,9 +16,12 @@ function A2_Wells_Page() {
         <SEO
           title="Unitree A2‑W | Autonomous Inspection Robot for Industry"
           description="The Unitree A2‑W quadruped robot is an autonomous inspection robot designed to detect faults, monitor hazards, and provide real-time industrial insights."
-          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2-W"
-
+          canonical="https://bidyutinnovation.com/robot/quadrupeds/industry/a2-w"
         />
+        <div className="sr-only">
+          <h1>Unitree A2-W Autonomous Inspection Robot - Industrial Monitoring Solution</h1>
+          <p>The Unitree A2-W quadruped robot is an advanced autonomous inspection robot engineered to detect faults, monitor hazards, and deliver real-time industrial insights. Perfect for industrial facilities, manufacturing plants, and infrastructure monitoring, the A2-W provides reliable autonomous inspection capabilities in challenging environments.</p>
+        </div>
         <Header />
         <A2WellHeroSection/>
         <A2_Wells_Variants/>

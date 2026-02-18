@@ -16,9 +16,12 @@ function B2_Wells_Page() {
         <SEO
           title="Unitree B2-W Inspection Robot | Next-Gen Agile Explorer"
           description="Boost safety and efficiency with the Quadruped Industry B2‑W inspection robot—detect faults, monitor hazards, and gain accurate real-time industrial insights."
-          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/B2-W"
-
+          canonical="https://bidyutinnovation.com/robot/quadrupeds/industry/b2-w"
         />
+        <div className="sr-only">
+          <h1>Unitree B2-W Inspection Robot - Next-Generation Industrial Explorer</h1>
+          <p>Enhance safety and operational efficiency with the Unitree B2-W quadruped inspection robot. This next-generation agile explorer detects faults, monitors hazards, and provides accurate real-time industrial insights for manufacturing, energy, and infrastructure sectors requiring advanced autonomous inspection capabilities.</p>
+        </div>
         <Header />
         <B2WellsHeroSection/>
         <B2_Wells_Variants/>

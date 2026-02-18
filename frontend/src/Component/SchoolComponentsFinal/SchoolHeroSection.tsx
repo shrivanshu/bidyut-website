@@ -343,8 +343,7 @@ const SchoolHeroSection: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
-
+We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive robotics kits for schools and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
               </p>
             </div>
           </div>
@@ -408,8 +407,7 @@ const SchoolHeroSection: React.FC = () => {
               }}
             >
               <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
-                We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive kits and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
-              </p>
+We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive robotics kits for schools and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.     </p>
             </div>
 
             {/* Responsive Image Grid */}

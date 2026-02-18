@@ -15,7 +15,7 @@ const Gallery_page: React.FC = () => {
       <SEO
         title="Robotics Education in India | Bidyut Innovation Gallery"
         description="Explore Bidyut Innovation's gallery showcasing cutting-edge robotics education in India. Hands-on STREAM, AI, and robotics programs transforming classrooms."
-        canonical="https://bidyutinnovation.com/Gallery"
+        canonical="https://bidyutinnovation.com/gallery"
         schema={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",

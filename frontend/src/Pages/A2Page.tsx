@@ -15,9 +15,12 @@ function A2Page() {
       <SEO
         title="Unitree A2 | Smart Quadruped Robot Dog for Tough Tasks"
         description="The Unitree A2 quadruped robot dog delivers high-speed agility, stability, and AI-driven performance—perfect for advanced industrial inspection and monitoring."
-        canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Industry/A2"
-
+        canonical="https://bidyutinnovation.com/robot/quadrupeds/industry/a2"
       />
+      <div className="sr-only">
+        <h1>Unitree A2 Quadruped Robot Dog - High-Performance Industrial Solution</h1>
+        <p>The Unitree A2 quadruped robot dog combines high-speed agility, exceptional stability, and AI-driven performance for advanced industrial applications. Perfect for inspection, monitoring, surveillance, and autonomous navigation in challenging environments, the A2 delivers reliable performance for industries requiring robust mobile robotics solutions.</p>
+      </div>
       <Header />
       <A2HeroSection/>
       <A2Variants/>

@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense, useCallback, memo } from "react";
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const HeroHeading = lazy(() => import("../../Text_Animation/HomeHeroText"));
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
-function ChatBox({
+const ChatBox = memo(function ChatBox({
   open,
   onClose,
   messages,
@@ -19,10 +19,22 @@ function ChatBox({
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (messagesEndRef.current && open) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages, open]);
+
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    if (input.trim()) {
+      onSend(input);
+      setInput("");
+    }
+  }, [input, onSend]);
+
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  }, []);
 
   if (!open) return null;
   return (
@@ -73,20 +85,14 @@ function ChatBox({
       {/* Input */}
       <form
         className="flex items-center border-t px-2 py-2 bg-white rounded-b-2xl"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (input.trim()) {
-            onSend(input);
-            setInput("");
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         <input
           type="text"
           className="flex-1 rounded-full border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#0ACF83] transition"
           placeholder="Type your message..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
         />
         <button type="submit" className="ml-2 bg-[#0ACF83] rounded-full p-2 hover:bg-[#099e66] transition">
           <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
@@ -96,7 +102,7 @@ function ChatBox({
       </form>
     </div>
   );
-}
+});
 
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -109,10 +115,35 @@ const HeroSection: React.FC = () => {
     },
   ]);
   const chatModuleRef = useRef<null | typeof import("../../services/chatService")>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const videos = ["/fnf 03.webm"];
 
-  const handleSend = async (msg: string) => {
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleChatOpen = useCallback(() => setChatOpen(true), []);
+  const handleChatClose = useCallback(() => setChatOpen(false), []);
+
+  const handleSend = useCallback(async (msg: string) => {
     const nextConversation = [...messages, { from: "me" as const, text: msg }];
     setMessages(nextConversation);
 
@@ -132,39 +163,45 @@ const HeroSection: React.FC = () => {
         { from: "bot" as const, text: "Sorry, I encountered an error. Please try again." },
       ]);
     }
-  };
+  }, [messages]);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-screen flex items-center justify-center text-center font-poppins overflow-hidden">
 
       {/* Background Videos - Optimized loading */}
-      {videos.map((video, index) => (
-        <video
-          key={index}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            index === currentVideoIndex ? "opacity-100" : "opacity-0"
-          }`}
-          src={video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
-      ))}
+      <div className="absolute inset-0 w-full h-full" style={{ aspectRatio: '16/9' }}>
+        {videos.map((video, index) => (
+          <video
+            ref={index === currentVideoIndex ? videoRef : null}
+            key={index}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentVideoIndex ? "opacity-100" : "opacity-0"
+            }`}
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            style={{ aspectRatio: '16/9', contentVisibility: 'auto' }}
+            disablePictureInPicture
+            onError={(e) => e.currentTarget.load()}
+          />
+        ))}
+      </div>
 
       {/* Overlay - Same dark overlay for both light and dark mode for consistent video visibility */}
       <div className="absolute inset-0 bg-gray-900/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px' }}>
+      <div className="relative z-10 max-w-4xl px-4 flex flex-col items-center justify-center" style={{ minHeight: '400px', contain: 'layout' }}>
         {/* Small tagline */}
-        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '24px' }}>
+        <div className="text-white dark:text-gray-100 font-semibold text-sm sm:text-base tracking-wide mb-6 drop-shadow-md" style={{ minHeight: '28px', height: '28px', lineHeight: '28px' }}>
           {t("learnRobotics")}
         </div>
 
         {/* Hero Heading */}
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '120px' }}>
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold leading-tight text-white drop-shadow-lg mb-6" style={{ minHeight: '160px', contain: 'layout style' }}>
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
@@ -183,18 +220,19 @@ const HeroSection: React.FC = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4">
+        <p className="text-white text-base sm:text-lg max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4" style={{ minHeight: '120px' }}>
           Bidyut is the country's most advanced <a className="text-green-500"
   href="/About"
   target="_blank"
   rel="noopener noreferrer"
-> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready.
+> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools and colleges that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready. Our solutions are designed to spark curiosity, strengthen problem-solving skills, and encourage innovation from an early age through well-structured robotic classes. By combining technology with experiential learning, Bidyut Innovation helps students become confident, future-ready thinkers prepared for real-world challenges.
+
 
         </p>
       </div>
 
       {/* Floating Chatbot Button with Bot Image and Speech Bubble */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" style={{ width: '110px', height: chatOpen ? 'auto' : '140px', contain: 'layout' }}>
         {/* Speech Bubble - smaller width */}
         {!chatOpen && (
           <div
@@ -202,6 +240,7 @@ const HeroSection: React.FC = () => {
             style={{
               fontFamily: "inherit",
               lineHeight: "1.3",
+              height: '52px',
             }}
           >
             <span className="font-semibold text-emerald-700">Hi, I'm Buddy!</span>
@@ -214,16 +253,19 @@ const HeroSection: React.FC = () => {
         {/* Bot Image Button (bigger, only when chatbox is closed) */}
         {!chatOpen && (
           <button
-            onClick={() => setChatOpen(true)}
+            onClick={handleChatOpen}
             className="focus:outline-none"
             aria-label="Open Chatbot"
+            style={{ width: '80px', height: '80px' }}
           >
             <img
               src="/ChatBotRobot.svg"
               alt="Chatbot Robot"
               className="w-20 h-20 object-contain"
-              style={{ background: "transparent" }}
+              style={{ background: "transparent", width: '80px', height: '80px' }}
               loading="lazy"
+              width="80"
+              height="80"
             />
           </button>
         )}
@@ -231,7 +273,7 @@ const HeroSection: React.FC = () => {
         <div className="relative w-full flex justify-end">
           <ChatBox
             open={chatOpen}
-            onClose={() => setChatOpen(false)}
+            onClose={handleChatClose}
             messages={messages}
             onSend={handleSend}
           />

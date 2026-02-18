@@ -17,8 +17,7 @@ function Cobot_page() {
         <SEO
           title="Unitree Robot Dog GO2 | Multipurpose AI Quadruped Robot"
           description="Explore the Robot Dog GO2 – an advanced four-legged robot designed for education, research, autonomous robotics, and engaging interactive learning experiences."
-          canonical="https://bidyutinnovation.com/Robot/Quadrupeds/Education/GO2"
-
+          canonical="https://bidyutinnovation.com/robot/quadrupeds/education/go2"
         />
         <Header />
         <HeroSection/>

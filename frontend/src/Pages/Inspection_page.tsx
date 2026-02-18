@@ -14,7 +14,7 @@ function Inspection_page() {
       <SEO
         title="Industrial Inspection Robots | Automated Quality Control | Bidyut"
         description="Advanced inspection robots for industrial quality control. AI-powered automated inspection systems for manufacturing and infrastructure monitoring."
-        canonical="https://bidyutinnovation.com/Robot/Solutions/Inspection"
+        canonical="https://bidyutinnovation.com/robot/solutions/inspection"
       />
       <div className="App bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Header />

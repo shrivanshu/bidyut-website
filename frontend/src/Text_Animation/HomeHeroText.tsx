@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementType, useEffect, useRef, useState, createElement } from "react";
+import { ElementType, useEffect, useRef, useState, createElement, memo } from "react";
 
 interface TextTypeProps {
   highlight?: { text: string, color: string };
@@ -24,7 +24,7 @@ interface TextTypeProps {
   reverseMode?: boolean;
 }
 
-const HomeHeroText = ({
+const HomeHeroText = memo(function HomeHeroText({
   text,
   as: Component = "div",
   typingSpeed = 50,
@@ -45,7 +45,7 @@ const HomeHeroText = ({
   reverseMode = false,
   highlight,
   ...props
-}: TextTypeProps & React.HTMLAttributes<HTMLElement>) => {
+}: TextTypeProps & React.HTMLAttributes<HTMLElement>) {
   const [displayedText, setDisplayedText] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -122,6 +122,7 @@ const HomeHeroText = ({
 
   useEffect(() => {
     if (!isVisible) return;
+    if (!loop && currentTextIndex === textArray.length - 1 && currentCharIndex >= textArray[currentTextIndex].length) return;
 
     const currentText = textArray[currentTextIndex];
     const processedText = reverseMode ? currentText.split("").reverse().join("") : currentText;
@@ -141,14 +142,14 @@ const HomeHeroText = ({
         if (currentCharIndex < processedText.length) {
           setDisplayedText(displayedText + processedText[currentCharIndex]);
           setCurrentCharIndex((prev) => prev + 1);
-        } else if (textArray.length > 1) {
+        } else if (textArray.length > 1 && loop) {
           setTimeout(() => setIsDeleting(true), pauseDuration);
         }
       }
     }, currentCharIndex === 0 && !isDeleting && displayedText === "" ? initialDelay : (isDeleting ? deletingSpeed : (variableSpeed ? getRandomSpeed() : typingSpeed)));
 
     return () => clearTimeout(timeout);
-  }, [currentCharIndex, displayedText, isDeleting, currentTextIndex, isVisible]);
+  }, [currentCharIndex, displayedText, isDeleting, currentTextIndex, isVisible, loop, textArray, reverseMode, pauseDuration, initialDelay, deletingSpeed, typingSpeed, variableSpeed, onSentenceComplete]);
 
   const shouldHideCursor =
     hideCursorWhileTyping &&
@@ -160,8 +161,8 @@ const HomeHeroText = ({
       ref: containerRef,
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       style: {
-        willChange: 'contents', // Hint browser about content changes
-        transform: 'translateZ(0)', // Force hardware acceleration
+        contain: 'layout style',
+        minHeight: '1.2em',
         ...props.style
       },
       ...props,
@@ -212,6 +213,6 @@ const HomeHeroText = ({
       </span>
     )
   );
-};
+});
 
 export default HomeHeroText;
