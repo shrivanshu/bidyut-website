@@ -60,7 +60,7 @@ const Blog_page: React.FC = () => {
         canonical='https://bidyutinnovation.com/blog'
       />
 
-      <div className='min-h-screen bg-black text-white'>
+      <div className='min-h-screen bg-white dark:bg-black text-black dark:text-white'>
         <Header />
         <main className='pt-24'>
           {/* HERO SECTION */}
@@ -77,7 +77,7 @@ const Blog_page: React.FC = () => {
                   }}
                 />
 
-                <div className='sticky bottom-60 left-8 right-8 md:left-[35%] md:right-8 md:max-w-5xl bg-white rounded-xl p-8 md:p-5 shadow-2xl'>
+                <div className='sticky bottom-48 md:bottom-60 left-8 right-8 md:left-[35%] md:right-8 md:max-w-5xl bg-white rounded-xl p-8 md:p-5 shadow-2xl'>
                   <span className='inline-block text-xs font-bold tracking-wider text-gray-600 bg-gray-100 px-3 py-1 rounded mb-4'>
                     {heroPost.category || 'education'}
                   </span>
@@ -112,7 +112,7 @@ const Blog_page: React.FC = () => {
               {/* FEATURED POST */}
               {featuredPost && (
                 <div className='lg:col-span-3'>
-                  <div className='bg-black rounded-3xl overflow-hidden min-h-[400px]'>
+                  <div className='bg-white dark:bg-black rounded-3xl overflow-hidden min-h-[400px]'>
                     <div className='grid md:grid-cols-2 gap-0'>
                       <div className='relative h-48 md:h-full md:p-5'>
                         <img
@@ -128,7 +128,7 @@ const Blog_page: React.FC = () => {
 
                       <div className='p-6 md:p-10 flex flex-col justify-center'>
                         <div className='space-y-5'>
-                          <div className='flex items-center gap-3 text-base text-gray-400'>
+                          <div className='flex items-center gap-3 text-base text-gray-600 dark:text-gray-400'>
                             <span className='font-bold text-[#00F5A0]'>
                               {featuredPost.category || 'education'}
                             </span>
@@ -138,11 +138,11 @@ const Blog_page: React.FC = () => {
                             </span>
                           </div>
 
-                          <h3 className='text-3xl md:text-4xl font-bold leading-tight'>
+                          <h3 className='text-3xl md:text-4xl font-bold leading-tight text-black dark:text-white'>
                             {featuredPost.title}
                           </h3>
 
-                          <p className='text-gray-300 text-lg leading-relaxed text-justify'>
+                          <p className='text-gray-700 dark:text-gray-300 text-lg leading-relaxed text-justify'>
                             {featuredPost.excerpt}
                           </p>
 
@@ -164,7 +164,7 @@ const Blog_page: React.FC = () => {
                 {gridPosts.map(post => (
                   <div
                     key={post.id}
-                    className='bg-black rounded-xl overflow-hidden'
+                    className='bg-white dark:bg-black rounded-xl overflow-hidden'
                   >
                     <div className='relative h-56 md:h-80'>
                       <img
@@ -179,7 +179,7 @@ const Blog_page: React.FC = () => {
                     </div>
 
                     <div className='p-6 space-y-4'>
-                      <div className='flex items-center gap-3 text-base text-gray-400'>
+                      <div className='flex items-center gap-3 text-base text-gray-600 dark:text-gray-400'>
                         <span className='font-bold text-[#00F5A0]'>
                           {post.category || 'education'}
                         </span>
@@ -187,11 +187,11 @@ const Blog_page: React.FC = () => {
                         <span>{new Date(post.date).toLocaleDateString()}</span>
                       </div>
 
-                      <h3 className='text-xl md:text-xl font-bold leading-tight w-full'>
+                      <h3 className='text-xl md:text-xl font-bold leading-tight w-full text-black dark:text-white'>
                         {post.title}
                       </h3>
 
-                      <p className='text-gray-300 text-base leading-relaxed text-justify'>
+                      <p className='text-gray-700 dark:text-gray-300 text-base leading-relaxed text-justify'>
                         {post.excerpt}
                       </p>
 
