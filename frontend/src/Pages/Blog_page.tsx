@@ -112,9 +112,9 @@ const Blog_page: React.FC = () => {
               {/* FEATURED POST */}
               {featuredPost && (
                 <div className='lg:col-span-3'>
-                  <div className='bg-white dark:bg-black rounded-3xl overflow-hidden min-h-[400px]'>
-                    <div className='grid md:grid-cols-2 gap-0'>
-                      <div className='relative h-48 md:h-full md:p-5'>
+                  <div className='bg-white dark:bg-black rounded-3xl overflow-hidden'>
+                    <div className='grid md:grid-cols-2 gap-0 md:items-start'>
+                      <div className='relative h-48 md:h-auto md:p-5'>
                         <img
                           src={featuredPost.image}
                           alt={featuredPost.title}
@@ -126,7 +126,7 @@ const Blog_page: React.FC = () => {
                         />
                       </div>
 
-                      <div className='p-6 md:p-10 flex flex-col justify-center'>
+                      <div className='p-6 md:p-10 md:pt-5 flex flex-col justify-start'>
                         <div className='space-y-5'>
                           <div className='flex items-center gap-3 text-base text-gray-600 dark:text-gray-400'>
                             <span className='font-bold text-[#00F5A0]'>
@@ -138,7 +138,7 @@ const Blog_page: React.FC = () => {
                             </span>
                           </div>
 
-                          <h3 className='text-3xl md:text-4xl font-bold leading-tight text-black dark:text-white'>
+                          <h3 className='text-3xl md:text-3xl font-bold leading-tight text-black dark:text-white'>
                             {featuredPost.title}
                           </h3>
 
