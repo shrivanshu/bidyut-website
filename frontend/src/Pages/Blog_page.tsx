@@ -57,16 +57,53 @@ const Blog_page: React.FC = () => {
 
     while (cards.length < 3 && seed) {
       const nextIndex = cards.length + 1
+      const isRoboticsSample = nextIndex === 2
+      const isInteractiveSample = nextIndex === 3
       cards.push({
         ...seed,
         id: 9000 + nextIndex,
-        title: `Sample Blog Title ${nextIndex}`,
-        excerpt:
-          'Sample excerpt. Replace this text and image with your own content.',
+        title: isRoboticsSample
+          ? 'The Role of Robotics Labs in Transforming STREAM Education in Schools'
+          : isInteractiveSample
+          ? 'How Robotics is Making Learning Fun and Interactive in Schools'
+          : `Sample Blog Title ${nextIndex}`,
+        excerpt: isRoboticsSample
+          ? "The way we learn is changing fast in the 21st century. The old ways of teaching are not good enough to get students ready for a world that's all about technology."
+          : isInteractiveSample
+          ? 'Education is rapidly evolving, and traditional teaching methods are no longer enough to keep students fully engaged in the classroom. Today’s learners are curious, tech-savvy, and eager to explore.'
+          : 'Sample excerpt. Replace this text and image with your own content.'
       })
     }
 
-    return cards
+    return cards.map(post => {
+      if (
+        post.title ===
+        'The Role of Robotics Labs in Transforming STREAM Education in Schools'
+      ) {
+        return {
+          ...post,
+          excerpt: post.excerpt.replace(
+            'Schools are starting to use interesting ways of teaching that help students be creative, think critically and get hands-on experience.',
+            ''
+          ).trim()
+        }
+      }
+
+      if (
+        post.title ===
+        'How Robotics is Making Learning Fun and Interactive in Schools'
+      ) {
+        return {
+          ...post,
+          excerpt: post.excerpt.replace(
+            'the world through hands-on experiences.',
+            ''
+          ).trim()
+        }
+      }
+
+      return post
+    })
   }, [gridPosts, featuredPost, heroPost])
 
   return (
