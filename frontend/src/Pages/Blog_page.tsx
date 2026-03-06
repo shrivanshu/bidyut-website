@@ -75,7 +75,35 @@ const Blog_page: React.FC = () => {
       })
     }
 
-    return cards
+    return cards.map(post => {
+      if (
+        post.title ===
+        'The Role of Robotics Labs in Transforming STREAM Education in Schools'
+      ) {
+        return {
+          ...post,
+          excerpt: post.excerpt.replace(
+            'Schools are starting to use interesting ways of teaching that help students be creative, think critically and get hands-on experience.',
+            ''
+          ).trim()
+        }
+      }
+
+      if (
+        post.title ===
+        'How Robotics is Making Learning Fun and Interactive in Schools'
+      ) {
+        return {
+          ...post,
+          excerpt: post.excerpt.replace(
+            'the world through hands-on experiences.',
+            ''
+          ).trim()
+        }
+      }
+
+      return post
+    })
   }, [gridPosts, featuredPost, heroPost])
 
   return (
