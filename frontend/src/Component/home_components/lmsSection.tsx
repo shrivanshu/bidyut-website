@@ -48,7 +48,7 @@ robotics for schools </a>, Students learn by building and programming, while tea
 
             </p>
             <a
-              href="https://bidyutrobotics.com/login"
+              href="https://lms.bidyutinnovation.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
