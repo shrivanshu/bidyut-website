@@ -234,6 +234,8 @@ export default function TrustedPartners () {
       return
     }
     lastCollisionCheckRef.current = now
+    // Globe keeps rotating, so measure logo positions on each collision tick.
+    updateLogoMetrics()
 
     const arrowMetrics = arrowMetricsRef.current
     if (!arrowMetrics.width || !arrowMetrics.height) {
@@ -258,7 +260,7 @@ export default function TrustedPartners () {
         actualArrowTipX - metrics.centerX,
         actualArrowTipY - metrics.centerY
       )
-      const collisionRadius = metrics.radius + 24
+      const collisionRadius = metrics.radius + 56
       if (distance <= collisionRadius && distance < closestDistance) {
         hoveredLogoKey = logoKey
         closestDistance = distance
@@ -279,43 +281,12 @@ export default function TrustedPartners () {
       return null
     }
 
-    const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
-    const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
-    const deltaX = clientX - arrowStartX
-    const deltaY = clientY - arrowStartY
-    const distance = Math.hypot(deltaX, deltaY)
-
-    if (distance === 0) return null
-
-    let maxLength = 420
-    if (globeRef.current) {
-      const globeRect = globeRef.current.getBoundingClientRect()
-      const bounds = [
-        [globeRect.left, globeRect.top],
-        [globeRect.right, globeRect.top],
-        [globeRect.left, globeRect.bottom],
-        [globeRect.right, globeRect.bottom],
-        [globeRect.left, globeRect.top + globeRect.height / 2],
-        [globeRect.right, globeRect.top + globeRect.height / 2]
-      ] as const
-
-      maxLength =
-        Math.max(
-          ...bounds.map(([x, y]) =>
-            Math.hypot(x - arrowStartX, y - arrowStartY)
-          )
-        ) + 24
-    }
-    const clampedDistance = Math.min(distance, maxLength)
-    const normalizedX = deltaX / distance
-    const normalizedY = deltaY / distance
-    const x = 10 + normalizedX * clampedDistance
-    const y = 50 + normalizedY * clampedDistance
-
     const scaleX = arrowMetrics.width / 220
     const scaleY = arrowMetrics.height / 100
-    const tipX = arrowMetrics.left + x * scaleX
-    const tipY = arrowMetrics.top + y * scaleY
+    const x = (clientX - arrowMetrics.left) / scaleX
+    const y = (clientY - arrowMetrics.top) / scaleY
+    const tipX = clientX
+    const tipY = clientY
 
     return { x, y, tipX, tipY }
   }
@@ -440,16 +411,13 @@ export default function TrustedPartners () {
   }
 
   const handleGlobeMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isActive) setIsActive(true)
+    if (!isActive) return
     setArrowTargetFromPoint(e.clientX, e.clientY)
   }
 
   const handleGlobeClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.button !== 0) return
-    if (!isActive) {
-      setIsActive(true)
-      scheduleMetricsUpdate()
-    }
+    if (!isActive) return
     setArrowTargetFromPoint(e.clientX, e.clientY, true)
   }
 
@@ -539,6 +507,31 @@ export default function TrustedPartners () {
   return (
     <section className='min-h-screen flex items-center justify-center p-2 sm:p-8 bg-white dark:bg-black select-none'>
       <style>{`
+        @keyframes globe-spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .globe-spin {
+          animation: globe-spin 60s linear infinite;
+          transform-origin: center center;
+        }
+
+        .logo-active img,
+        .logo-active svg {
+          transition: transform 220ms ease;
+          transform-origin: center center;
+        }
+
+        .logo-active img,
+        .logo-active svg {
+          transform: scale(1.22);
+        }
+
         @keyframes wave-flow {
           0% {
             stroke-dashoffset: 0;
@@ -742,18 +735,17 @@ export default function TrustedPartners () {
           >
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: 0 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 360 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{
                 opacity: { duration: 0.8, delay: 0.6 },
-                scale: { duration: 0.8, delay: 0.6 },
-                rotate: {
-                  duration: 60,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: 'linear'
-                }
+                scale: { duration: 0.8, delay: 0.6 }
               }}
               viewport={{ once: false, amount: 0.3 }}
-              className='relative flex items-center justify-center'
+              className='relative flex items-center justify-center globe-spin'
+              style={{
+                animationPlayState:
+                  isActive && hoveredLogo ? 'paused' : 'running'
+              }}
             >
               <svg
                 width='100%'
@@ -848,9 +840,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[16vw] left-6 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute top-[16vw] left-6 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'accenture'
-                    ? 'scale-[2] z-50 shadow-xl'
+                    ? 'logo-active z-50 shadow-xl'
                     : 'hover:scale-105'
                 }`}
               >
@@ -879,9 +871,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute top-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'acg'
-                    ? 'scale-[2] z-50 shadow-xl'
+                    ? 'logo-active z-50 shadow-xl'
                     : 'hover:scale-105'
                 }`}
               >
@@ -910,8 +902,8 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute right-[1vw] top-42 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
-                  hoveredLogo === 'hcl' ? 'scale-[2] z-50' : 'hover:scale-105'
+                className={`absolute right-[1vw] top-42 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
+                  hoveredLogo === 'hcl' ? 'logo-active z-50' : 'hover:scale-105'
                 }`}
               >
                 <img
@@ -939,8 +931,8 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
-                  hoveredLogo === 'iisc' ? 'scale-[2] z-50' : 'hover:scale-105'
+                className={`absolute bottom-[22vw] right-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
+                  hoveredLogo === 'iisc' ? 'logo-active z-50' : 'hover:scale-105'
                 }`}
               >
                 <img
@@ -968,9 +960,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[22vw] left-12 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute bottom-[22vw] left-12 -translate-x-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'iitKanpur'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1000,9 +992,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-16 left-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute top-16 left-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'nxtwave'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1032,8 +1024,8 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-24 right-40 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
-                  hoveredLogo === 'orica' ? 'scale-[2] z-50' : 'hover:scale-105'
+                className={`absolute top-24 right-40 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
+                  hoveredLogo === 'orica' ? 'logo-active z-50' : 'hover:scale-105'
                 }`}
               >
                 <img
@@ -1061,9 +1053,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[22vw] right-[12vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute top-[22vw] right-[12vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'plaksha'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1092,9 +1084,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-[19vw] left-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute bottom-[19vw] left-[22vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'iitRoorkee'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1123,9 +1115,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute left-[12vw] top-38 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute left-[12vw] top-38 -translate-y-1/2 w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'iitBombay'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1154,9 +1146,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-[16vw] left-[19vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out ${
+                className={`absolute top-[16vw] left-[19vw] w-[10vw] h-[10vw] sm:w-16 sm:h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10 transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'infinitudeit'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1185,9 +1177,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-8 right-56 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute top-8 right-56 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'larsenToubro'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1217,9 +1209,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-16 right-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute bottom-16 right-28 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'wtvision'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1249,9 +1241,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-8 left-34 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute bottom-8 left-34 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'nippon'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1281,9 +1273,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-24 left-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute bottom-24 left-20 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'phytec'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1313,8 +1305,8 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-24 left-38 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
-                  hoveredLogo === 'uber' ? 'scale-[2] z-50' : 'hover:scale-105'
+                className={`absolute top-24 left-38 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
+                  hoveredLogo === 'uber' ? 'logo-active z-50' : 'hover:scale-105'
                 }`}
               >
                 <svg width='18' height='18' viewBox='0 0 24 24' fill='#000000'>
@@ -1340,9 +1332,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute bottom-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute bottom-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'airbnb'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1369,9 +1361,9 @@ export default function TrustedPartners () {
                   }
                 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className={`absolute top-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out ${
+                className={`absolute top-1/4 right-14 w-12 h-12 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center transition-transform duration-300 ease-out logo-node ${
                   hoveredLogo === 'dropbox'
-                    ? 'scale-[2] z-50'
+                    ? 'logo-active z-50'
                     : 'hover:scale-105'
                 }`}
               >
@@ -1386,3 +1378,6 @@ export default function TrustedPartners () {
     </section>
   )
 }
+
+
+
