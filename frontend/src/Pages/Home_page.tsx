@@ -8,7 +8,7 @@ const HeroSection = lazy(() => import(/* webpackChunkName: "hero" */ '../Compone
 const OfferingsCarousel = lazy(() => import(/* webpackChunkName: "offerings" */ '../Component/home_components/OurOfferings'));
 const EducationStream = lazy(() => import(/* webpackChunkName: "edu-stream" */ '../Component/home_components/EducationStream'));
 const LmsSection = lazy(() => import(/* webpackChunkName: "lms" */ '../Component/home_components/lmsSection'));
-const EducationNews = lazy(() => import(/* webpackChunkName: "edu-news" */ '../Component/home_components/EducationNews'));
+// const EducationNews = lazy(() => import(/* webpackChunkName: "edu-news" */ '../Component/home_components/EducationNews'));
 const TestimonialSection = lazy(() => import(/* webpackChunkName: "testimonials" */ '../Component/home_components/TestimonialSection'));
 const TrustedPartners = lazy(() => import(/* webpackChunkName: "partners" */ '../Component/home_components/TrustedPartners'));
 const Footer = lazy(() => import(/* webpackChunkName: "footer" */ '../Component/Footer'));
@@ -89,7 +89,7 @@ function Home_page() {
             </div>
           </div>
         }>
-          <EducationNews />
+          {/* <EducationNews /> */}
         </LazyLoad>
         <LazyLoad fallback={
           <div className="min-h-[40vh] flex items-center justify-center p-4">
@@ -170,3 +170,4 @@ function Home_page() {
 }
 
 export default Home_page;
+
