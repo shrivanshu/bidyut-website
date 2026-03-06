@@ -8,6 +8,8 @@ import { NavigationProvider } from './contexts/NavigationContext';
 import ScrollToTop from './Component/ScrollToTop';
 import TrailingSlashRedirect from './Component/TrailingSlashRedirect';
 import './index.css';
+import Blog_page from './Pages/Blog_page';
+import BlogPost_page from './Pages/BlogPost_page';
 
 const Home = lazy(() => import('./Pages/Home_page'));
 const About = lazy(() => import('./Pages/AboutPage'));
@@ -33,7 +35,6 @@ const Cobo_page = lazy(() => import('./Pages/Cobo_page'));
 const FinalSchoolPage = lazy(() => import('./Pages/School_Page_final'));
 
 
-
 function App() {
   return (
     <HelmetProvider>
@@ -45,6 +46,9 @@ function App() {
               <TrailingSlashRedirect />
               <Suspense >
                 <Routes>
+                  {/* Blog routes */}
+                  <Route path="/blog" element={<Blog_page />} />
+                  <Route path="/blog/:id" element={<BlogPost_page />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/school" element={<FinalSchoolPage />} />

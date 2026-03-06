@@ -15,7 +15,7 @@ function H1_page() {
         <SEO
           title="Unitree R1 Robot |  Transform STEM Learning with Humanoids"
           description="Explore the Unitree R1 robot, a humanoid designed for interactive STEM learning, coding, and AI skills. Engage students with creative hands-on innovation."
-          canonical="https://bidyutinnovation.com/robot/humanoid/education/r1"
+          canonical="https://bidyutinnovation.com/robot/humanoids/education/r1"
         />
         <div className="sr-only">
           <h1>Unitree R1 Humanoid Robot - Interactive STEM Learning Platform</h1>

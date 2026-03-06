@@ -16,7 +16,7 @@ function H1_2_page() {
         <SEO
           title="Unitree Humanoid Robot H1-2 | Advanced Industrial Robotics"
           description="Discover the Unitree Humanoid Robot H1-2, a full-size industrial robot with AI intelligence, precision, and speed—designed for automation and research."
-          canonical="https://bidyutinnovation.com/robot/humanoid/industry/h1-2"
+          canonical="https://bidyutinnovation.com/robot/humanoids/industry/h1-2"
         />
         <div className="sr-only">
           <h1>Unitree H1-2 Humanoid Robot - Advanced Industrial Automation Solution</h1>

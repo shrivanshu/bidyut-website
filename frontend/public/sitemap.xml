@@ -36,6 +36,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+ 
   <url>
     <loc>https://bidyutinnovation.com/robot/humanoids/industry/h1</loc>
     <lastmod>2025-01-14</lastmod>
@@ -96,18 +97,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://bidyutinnovation.com/robot/solutions/firefighting</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bidyutinnovation.com/robot/solutions/inspection</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+ 
   <url>
     <loc>https://bidyutinnovation.com/privacypolicy</loc>
     <lastmod>2025-01-14</lastmod>
