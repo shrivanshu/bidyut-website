@@ -69,7 +69,7 @@ const BlogPost_page: React.FC = () => {
           title="Blog Post | Bidyut Innovation"
           description="Read our latest blog posts about robotics and STEM education"
         />
-        <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="bg-white dark:bg-black transition-colors duration-300">
           <Header />
           <main className="pt-32 pb-20 px-4 md:px-8 lg:px-16 max-w-4xl mx-auto">
             <div className="text-center py-12">
@@ -109,7 +109,7 @@ const BlogPost_page: React.FC = () => {
         description={metaData.description}
         canonical={`https://bidyutinnovation.com/blog/${id}`}
       />
-      <div className="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+      <div className="bg-white dark:bg-black transition-colors duration-300 min-h-screen">
         <Header />
         <main className="pt-40 pb-20">
           {/* Back to Blog Button */}
@@ -175,9 +175,9 @@ const BlogPost_page: React.FC = () => {
             </div>
 
             {/* Article Body */}
-            <div className="mb-16 prose-lg">
+            <div className="mb-16 prose-lg bg-white dark:bg-black p-8 rounded-xl">
               <div
-                className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-6 text-lg"
+                className="text-black dark:text-gray-300 leading-relaxed space-y-6 text-lg"
                 dangerouslySetInnerHTML={{
                   __html: (post.fullContent || '')
                     .replace(/<h3>/g, '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">')
@@ -191,15 +191,15 @@ const BlogPost_page: React.FC = () => {
             </div>
 
             {/* Tags */}
-            <div className="mb-16 pb-12 border-b-2 border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-bold text-gray-600 dark:text-gray-400 mb-6 uppercase tracking-widest">
+            <div className="mb-16 pb-12 border-b-2 border-gray-200 dark:border-gray-700 bg-black dark:bg-black p-8 rounded-xl">
+              <h3 className="text-lg font-bold text-gray-400 dark:text-gray-400 mb-6 uppercase tracking-widest">
                 📌 Tags
               </h3>
               <div className="flex flex-wrap gap-3">
                 {(post.tags || []).map((tag) => (
                   <span
                     key={tag}
-                    className="px-5 py-2 rounded-full text-sm font-semibold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-[#00F5A0] hover:to-[#00C6FF] hover:text-black transition-all duration-300 cursor-pointer shadow-md"
+                    className="px-5 py-2 rounded-full text-sm font-semibold bg-gray-800 dark:bg-gray-800 text-gray-300 dark:text-gray-300 hover:bg-gradient-to-r hover:from-[#00F5A0] hover:to-[#00C6FF] hover:text-black transition-all duration-300 cursor-pointer shadow-md"
                   >
                     #{tag}
                   </span>

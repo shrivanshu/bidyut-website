@@ -52,10 +52,10 @@ const robotSpecs: RobotSpec[] = [
     {
       "label": "Humanoid Binocular Camera",
       "detail": "Ultra-wide-angle visual perception",
-      "position": { "top": "8%", "left": "5%" },
+      "position": { "top": "8%", "left": "4%" },
       "positionSm": { "top": "10%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "48%", "y": "9%" },
+      "targetPoint": { "x": "50%", "y": "8%" },
       "targetPointSm": { "x": "48%", "y": "32%" }
     },
     {
@@ -63,7 +63,7 @@ const robotSpecs: RobotSpec[] = [
       "detail": "4 Mic Array",
       "position": { "top": "26%", "left": "5%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "49%", "y": "17%" },
+      "targetPoint": { "x": "46%", "y": "18%" },
       "targetPointSm": { "x": "49%", "y": "35%" }
     },
     {
@@ -79,9 +79,9 @@ const robotSpecs: RobotSpec[] = [
       "label": "Smart Battery",
       "detail": "Quick-release, fast replacement",
       "position": { "top": "22%", "left": "92%" },
-      "positionSm": { "top": "22%", "left": "72%" },
+      "positionSm": { "top": "24%", "left": "72%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "58%", "y": "25%" },
+      "targetPoint": { "x": "57%", "y": "25%" },
       "targetPointSm": { "x": "58%", "y": "39%" },
     },
     {
@@ -95,7 +95,7 @@ const robotSpecs: RobotSpec[] = [
     {
       "label": "Single Arm Degrees of Freedom",
       "detail": "Shoulder ×3 | Elbow ×2",
-      "position": { "top": "42%", "left": "5%" },
+      "position": { "top": "44%", "left": "5%" },
       "lineDirection": "right",
       "targetPoint": { "x": "42%", "y": "40%" },
       "targetPointSm": { "x": "42%", "y": "45%" }
@@ -105,7 +105,7 @@ const robotSpecs: RobotSpec[] = [
       "detail": "2 DOF",
       "position": { "top": "52%", "left": "76%" },
       "lineDirection": "right",
-      "targetPoint": { "x": "52%", "y": "45%" }
+      "targetPoint": { "x": "56%", "y": "36%" }
     },
     {
       "label": "Single Leg Degrees of Freedom",
@@ -113,13 +113,13 @@ const robotSpecs: RobotSpec[] = [
       "position": { "top": "66%", "left": "76%" },
       "lineDirection": "right",
       "targetPoint": { "x": "62%", "y": "69%" },
-      "targetPointSm": { "x": "62%", "y": "59%" },
+      "targetPointSm": { "x": "52%", "y": "59%" },
     },
     {
       "label": "Huge Power",
       "detail": "Joint max torque ~2 kg·m (arm joint)",
       "position": { "top": "80%", "left": "5%" },
-      "positionSm": { "top": "60%", "left": "5%" },
+      "positionSm": { "top": "80%", "left": "5%" },
       "lineDirection": "right",
       "targetPoint": { "x": "45%", "y": "65%" },
       "targetPointSm": { "x": "45%", "y": "55%" },

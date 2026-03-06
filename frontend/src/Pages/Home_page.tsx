@@ -8,7 +8,7 @@ const HeroSection = lazy(() => import(/* webpackChunkName: "hero" */ '../Compone
 const OfferingsCarousel = lazy(() => import(/* webpackChunkName: "offerings" */ '../Component/home_components/OurOfferings'));
 const EducationStream = lazy(() => import(/* webpackChunkName: "edu-stream" */ '../Component/home_components/EducationStream'));
 const LmsSection = lazy(() => import(/* webpackChunkName: "lms" */ '../Component/home_components/lmsSection'));
-const EducationNews = lazy(() => import(/* webpackChunkName: "edu-news" */ '../Component/home_components/EducationNews'));
+// const EducationNews = lazy(() => import(/* webpackChunkName: "edu-news" */ '../Component/home_components/EducationNews'));
 const TestimonialSection = lazy(() => import(/* webpackChunkName: "testimonials" */ '../Component/home_components/TestimonialSection'));
 const TrustedPartners = lazy(() => import(/* webpackChunkName: "partners" */ '../Component/home_components/TrustedPartners'));
 const Footer = lazy(() => import(/* webpackChunkName: "footer" */ '../Component/Footer'));
@@ -76,20 +76,6 @@ function Home_page() {
           </div>
         }>
           <OfferingsCarousel />
-        </LazyLoad>
-        <LazyLoad fallback={
-          <div className="min-h-[40vh] flex items-center justify-center p-4">
-            <div className="w-full max-w-4xl space-y-4">
-              <div className="h-8 bg-gray-200 dark:bg-gray-800 rounded w-1/4 animate-pulse" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="h-32 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
-                ))}
-              </div>
-            </div>
-          </div>
-        }>
-          <EducationNews />
         </LazyLoad>
         <LazyLoad fallback={
           <div className="min-h-[40vh] flex items-center justify-center p-4">
@@ -170,3 +156,4 @@ function Home_page() {
 }
 
 export default Home_page;
+

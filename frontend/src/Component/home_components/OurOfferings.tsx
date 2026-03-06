@@ -55,6 +55,30 @@ const offerings: Offering[] = [
   }
 ]
 
+const fallbackCopy: Record<string, string> = {
+  collaborativeLearning: 'Collaborative Learning',
+  collaborativeLearningDesc:
+    'Hands-on robotics learning that helps students build, test, and solve real-world problems together.',
+  collaboration: 'Advanced Collaboration',
+  collabrationDesc:
+    'Human-friendly robots and practical activities that improve teamwork, creativity, and technical confidence.',
+  learningExperience: 'Future Learning Experience',
+  learningexpisDesc:
+    'STREAM-focused labs, coding, and robotics modules designed for active classroom engagement.',
+  quadrupedRobots: 'Quadruped Robots',
+  ProgressTrackingDesc:
+    'Advanced four-legged platforms for education, demonstrations, and applied robotics exploration.',
+  roboticSolutions: 'Robotic Solutions',
+  personalizedMentorshipDesc:
+    'Scalable robotics solutions for institutions and industries to improve automation and efficiency.',
+  schoolIntegration: 'School Integration',
+  schoolIntegrationDesc:
+    'Complete support for setting up robotics labs, curriculum alignment, and teacher enablement.',
+  ComputerRoboticsBooksforSchools: 'Computer & Robotics Books',
+  ComputerRoboticsBooksforSchoolsDesc:
+    'Age-appropriate books from kindergarten to class 8 that simplify coding and robotics foundations.'
+}
+
 function OfferingsSection () {
   const { t } = useLanguage()
   const [index, setIndex] = useState(0)
@@ -87,6 +111,12 @@ function OfferingsSection () {
     return { x, scale, rotateY, zIndex, opacity }
   }
 
+  const getSafeTranslation = (key: string) => {
+    const value = t(key)
+    if (!value || value === key) return fallbackCopy[key] || key
+    return value
+  }
+
   return (
     <section className='relative w-full py-16 md:py-20 bg-white dark:bg-black'>
       <div className='container mx-auto px-4'>
@@ -99,16 +129,24 @@ function OfferingsSection () {
             </span>
           </h2>
           <p className='max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-300'>
-           At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics for schools and colleges that empower students with future-ready skills. From building and programming robots to exploring coding concepts and automation, our robotic labs for schools and colleges provide a dynamic, interactive learning environment that makes education engaging and impactful.  Beyond education, we also design and provide advanced robotics solutions for industries, including robots for industrial applications helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.
-
-
+            At Bidyut, we bring robotics and coding to classrooms through
+            STREAM-aligned labs, hands-on learning, and applied problem-solving,
+            offering robotics for schools and colleges that empower students
+            with future-ready skills. From building and programming robots to
+            exploring coding concepts and automation, our robotic labs for
+            schools and colleges provide a dynamic, interactive learning
+            environment that makes education engaging and impactful. Beyond
+            education, we also design and provide advanced robotics solutions
+            for industries, including robots for industrial applications helping
+            businesses automate processes, improve efficiency, and innovate with
+            cutting-edge technology.
           </p>
         </div>
 
         {/* Curved carousel with all cards */}
         <div className='relative'>
           <div
-            className='relative h-[160px] md:h-[120px] w-full overflow-visible'
+            className='relative h-[420px] md:h-[480px] w-full overflow-visible'
             style={{ perspective: '1400px' }}
           >
             {ordered.map((cardIndex, orderPos) => {
@@ -125,8 +163,8 @@ function OfferingsSection () {
                 <button
                   key={`${cardIndex}-${orderPos}`}
                   onClick={() => (isCenter ? next() : goTo(cardIndex))}
-                  className='group absolute top-1/2 left-1/2 -translate-y-1/2 focus:outline-none'
-                  aria-label={`View ${t(item.titleKey)}`}
+                  className='group absolute top-[5%] left-1/2 -translate-y-1/2 focus:outline-none'
+                  aria-label={`View ${getSafeTranslation(item.titleKey)}`}
                   style={{
                     transform: `translateX(calc(${x}vw - 50%))`,
                     transformStyle: 'preserve-3d',
@@ -162,10 +200,10 @@ function OfferingsSection () {
                     </div>
                     <div className='p-5 md:p-6 h-[calc(100%-15rem)] flex flex-col'>
                       <h3 className='text-base md:text-lg font-semibold text-gray-900 dark:text-white'>
-                        {t(item.titleKey)}
+                        {getSafeTranslation(item.titleKey)}
                       </h3>
                       <p className='mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-4'>
-                        {t(item.descriptionKey)}
+                        {getSafeTranslation(item.descriptionKey)}
                       </p>
                     </div>
                   </div>

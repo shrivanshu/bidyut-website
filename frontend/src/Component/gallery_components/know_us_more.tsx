@@ -244,12 +244,6 @@ export default function KnowUsMore() {
                   )}
                 </AnimatePresence>
 
-                {/* Floating Badge */}
-                <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm
-                  ${isDark ? 'bg-black/40 text-white' : 'bg-white/80 text-gray-900'} 
-                  ${hoveredIndex === index ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>
-                  #{index + 1}
-                </div>
               </div>
 
               {/* Glow Effect */}
