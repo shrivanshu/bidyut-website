@@ -139,6 +139,7 @@ const robotSpecs: RobotSpec[] = [
         label: 'Single Arm Control',
         detail: 'Shoulder: 3 | Elbow: 2 | Wrist: 2',
         position: { top: '45%', left: '7%' },
+          positionSm: { top: '45%', left: '1%' }, // for sm screens
         lineDirection: 'right',
         targetPoint: { x: '38%', y: '33%' }
       },
@@ -164,9 +165,10 @@ const robotSpecs: RobotSpec[] = [
         label: 'Hollow Joint Wiring',
         detail: 'No external cables',
         position: { top: '50%', left: '95%' },
-        positionSm: { top: '50%', left: '85%' },
+        positionSm: { top: '50%', left: '88%' },
         lineDirection: 'left',
-        targetPoint: { x: '61%', y: '45%' }
+        targetPoint: { x: '61%', y: '45%' },
+        targetPointSm: { x: '61%', y: '45%' }
       },
       {
         label: 'Leg Control System',
@@ -240,10 +242,11 @@ const robotSpecs: RobotSpec[] = [
       {
         label: 'Hollow Joint Wiring',
         detail: 'No external cables',
-        position: { top: '45%', left: '90%' },
-        positionSm: { top: '50%', left: '95%' },
+        position: { top: '47%', left: '90%' },
+        positionSm: { top: '53%', left: '88%' },
         lineDirection: 'left',
-        targetPoint: { x: '58%', y: '45%' }
+        targetPoint: { x: '61%', y: '45%' },
+        targetPointSm: { x: '61%', y: '48%' }
       },
       {
         label: 'Leg Control System',
