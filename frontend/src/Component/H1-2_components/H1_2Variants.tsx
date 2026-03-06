@@ -205,7 +205,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '10%', left: '5%' },
         positionSm: { top: '24%', left: '5%' },
         lineDirection: 'right',
-        targetPoint: { x: '48%', y: '7%' },
+        targetPoint: { x: '50%', y: '8%' },
         targetPointSm: { x: '48%', y: '32%' }
       },
       {
@@ -223,14 +223,14 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '30%', left: '5%' },
         positionSm: { top: '40%', left: '2%' },
         lineDirection: 'right',
-        targetPoint: { x: '42%', y: '36%' }
+        targetPoint: { x: '40%', y: '17%' }
       },
       {
         label: 'Single Arm Degrees of Freedom',
         detail: '4 (expandable)',
         position: { top: '42%', left: '95%' },
         lineDirection: 'left',
-        targetPoint: { x: '64%', y: '24%' },
+        targetPoint: { x: '65%', y: '26%' },
         targetPointSm: { x: '62%', y: '39%' }
       },
       {
@@ -238,7 +238,7 @@ const robotSpecs: RobotSpec[] = [
         detail: '864 Wh, replaceable',
         position: { top: '27%', left: '81%' },
         lineDirection: 'right',
-        targetPoint: { x: '58%', y: '28%' },
+        targetPoint: { x: '53%', y: '28%' },
         targetPointSm: { x: '56%', y: '43%' }
       },
       {
@@ -272,7 +272,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '60%', left: '2%' },
         positionSm: { top: '56%', left: '2%' },
         lineDirection: 'right',
-        targetPoint: { x: '45%', y: '49%' }
+        targetPoint: { x: '46%', y: '47%' }
       }
     ]
   }
