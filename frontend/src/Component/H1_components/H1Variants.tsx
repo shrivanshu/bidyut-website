@@ -142,7 +142,7 @@ const robotSpecs: RobotSpec[] = [
         positionSm: { top: '40%', left: '2%' },
         lineDirection: 'right',
         targetPoint: { x: '42%', y: '17%' },
-        targetPointSm: { x: '51%', y: '30%' }
+        targetPointSm: { x: '43%', y: '36%' }
       },
       {
         label: 'Single Arm Degrees of Freedom',
@@ -150,7 +150,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '42%', left: '95%' },
         lineDirection: 'left',
         targetPoint: { x: '68%', y: '30%' },
-        targetPointSm: { x: '62%', y: '39%' }
+        targetPointSm: { x: '62%', y: '40%' }
       },
       {
         label: 'Quick Release Battery',
@@ -158,7 +158,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '27%', left: '81%' },
         lineDirection: 'right',
         targetPoint: { x: '55%', y: '28%' },
-        targetPointSm: { x: '56%', y: '43%' }
+        targetPointSm: { x: '54%', y: '38%' }
       },
       {
         label: 'Core Motion Module',
@@ -166,7 +166,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '75%', left: '5%' },
         positionSm: { top: '72%', left: '7%' },
         lineDirection: 'right',
-        targetPoint: { x: '43%', y: '52%' }
+        targetPoint: { x: '45%', y: '51%' }
       },
       {
         label: 'Hollow Electrical Routing',
@@ -174,7 +174,8 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '62%', left: '80%' },
         positionSm: { top: '59%', left: '80%' },
         lineDirection: 'right',
-        targetPoint: { x: '60%', y: '52%' }
+        targetPoint: { x: '60%', y: '52%' },
+        targetPointSm: { x: '58%', y: '52%' }
       },
       {
         label: 'Single Leg Degrees of Freedom',
@@ -183,7 +184,7 @@ const robotSpecs: RobotSpec[] = [
         positionSm: { top: '76%', left: '67%' },
         lineDirection: 'right',
         targetPoint: { x: '67%', y: '76%' },
-        targetPointSm: { x: '65%', y: '62%' }
+        targetPointSm: { x: '62%', y: '63%' }
       },
       {
         label: 'Mobility',
@@ -192,7 +193,7 @@ const robotSpecs: RobotSpec[] = [
         positionSm: { top: '56%', left: '2%' },
         lineDirection: 'right',
         targetPoint: { x: '48%', y: '47%' },
-        targetPointSm: { x: '65%', y: '62%' }
+        targetPointSm: { x: '49%', y: '49%' }
       }
     ]
   },
@@ -234,7 +235,7 @@ const robotSpecs: RobotSpec[] = [
         positionSm: { top: '32%', left: '73%' },
         lineDirection: 'right',
         targetPoint: { x: '60%', y: '31%' },
-        targetPointSm: { x: '60%', y: '40%' }
+        targetPointSm: { x: '56%', y: '40%' }
       },
       {
         label: 'Elbow Degrees of Freedom',
@@ -242,21 +243,23 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '50%', left: '74%' },
         lineDirection: 'right',
         targetPoint: { x: '61%', y: '43%' },
-        targetPointSm: { x: '60%', y: '48%' }
+        targetPointSm: { x: '58%', y: '46%' }
       },
       {
         label: 'Wrist Degrees of Freedom',
         detail: '3 (Optional dexterous hands)',
         position: { top: '40%', left: '2%' },
         lineDirection: 'right',
-        targetPoint: { x: '39%', y: '51%' }
+        targetPoint: { x: '39%', y: '51%' }, 
+        targetPointSm: { x: '41%', y: '50%' }
       },
       {
         label: 'Hollow Electrical Wiring ',
         detail: 'No external cables',
         position: { top: '73%', left: '66%' },
         lineDirection: 'right',
-        targetPoint: { x: '58%', y: '53%' }
+        targetPoint: { x: '58%', y: '53%' }, 
+        targetPointSm: { x: '56%', y: '52%' }
       },
       {
         label: 'Core Sports Module',
@@ -274,7 +277,7 @@ const robotSpecs: RobotSpec[] = [
         positionSm: { top: '73%', left: '15%' },
         lineDirection: 'right',
         targetPoint: { x: '39%', y: '77%' },
-        targetPointSm: { x: '39%', y: '62%' }
+        targetPointSm: { x: '41%', y: '62%' }
       }
     ]
   }
