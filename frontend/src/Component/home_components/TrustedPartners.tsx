@@ -57,13 +57,15 @@ const vijayaConventLogo = "/schools/VIJAYA CONVENT SENIOR SEC SCHOOL.webp"
 export default function TrustedPartners() {
   const [arrowEndX, setArrowEndX] = useState(140)
   const [arrowEndY, setArrowEndY] = useState(50)
-  const [isActive, setIsActive] = useState(false) // make the arrow active by default so users can immediately move it
+  const [isActive, setIsActive] = useState(false)
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null)
   const [showSchoolLogos, setShowSchoolLogos] = useState(false)
   const [currentSchoolLogoSet, setCurrentSchoolLogoSet] = useState(0)
   const arrowRef = useRef<SVGSVGElement>(null)
+  const globeRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number | null>(null)
   const targetPositionRef = useRef({ x: 140, y: 50 })
+  const currentPositionRef = useRef({ x: 140, y: 50 })
   const logoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const lastCollisionCheckRef = useRef<number>(0)
   const arrowMetricsRef = useRef({ left: 0, top: 0, width: 0, height: 0 })
@@ -240,68 +242,87 @@ export default function TrustedPartners() {
     const actualArrowTipY = arrowTipY ?? arrowMetrics.top + arrowEndY * scaleY
 
     let hoveredLogoKey: string | null = null
+    let closestDistance = Number.POSITIVE_INFINITY
 
     Object.entries(logoMetricsRef.current).forEach(([logoKey, metrics]) => {
       if (!metrics) return
       const distance = Math.hypot(actualArrowTipX - metrics.centerX, actualArrowTipY - metrics.centerY)
-      const collisionRadius = metrics.radius + 60
-      if (distance <= collisionRadius) {
+      const collisionRadius = metrics.radius + 24
+      if (distance <= collisionRadius && distance < closestDistance) {
         hoveredLogoKey = logoKey
+        closestDistance = distance
       }
     })
 
     setHoveredLogo(hoveredLogoKey)
   }
 
+  const getArrowTargetFromPoint = (clientX: number, clientY: number) => {
+    let arrowMetrics = arrowMetricsRef.current
+    if ((!arrowMetrics.width || !arrowMetrics.height) && arrowRef.current) {
+      updateArrowMetrics()
+      arrowMetrics = arrowMetricsRef.current
+    }
+    if (!arrowMetrics.width || !arrowMetrics.height) {
+      scheduleMetricsUpdate()
+      return null
+    }
+
+    const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
+    const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
+    const deltaX = clientX - arrowStartX
+    const deltaY = clientY - arrowStartY
+    const distance = Math.hypot(deltaX, deltaY)
+
+    if (distance === 0) return null
+
+    const maxLength = 420
+    const clampedDistance = Math.min(distance, maxLength)
+    const normalizedX = deltaX / distance
+    const normalizedY = deltaY / distance
+    const x = 10 + normalizedX * clampedDistance
+    const y = 50 + normalizedY * clampedDistance
+
+    const scaleX = arrowMetrics.width / 220
+    const scaleY = arrowMetrics.height / 100
+    const tipX = arrowMetrics.left + x * scaleX
+    const tipY = arrowMetrics.top + y * scaleY
+
+    return { x, y, tipX, tipY }
+  }
+
+  const setArrowTargetFromPoint = (clientX: number, clientY: number, immediate = false) => {
+    const target = getArrowTargetFromPoint(clientX, clientY)
+    if (!target) return
+
+    targetPositionRef.current = { x: target.x, y: target.y }
+    if (immediate) {
+      currentPositionRef.current = { x: target.x, y: target.y }
+      setArrowEndX(target.x)
+      setArrowEndY(target.y)
+    }
+    checkArrowLogoCollision(target.tipX, target.tipY)
+  }
+
   useEffect(() => {
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (!isActive) return
-      const arrowMetrics = arrowMetricsRef.current
-      if (!arrowMetrics.width || !arrowMetrics.height) {
-        scheduleMetricsUpdate()
-        return
-      }
-      try {
-        const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
-        const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
-
-        const deltaX = e.clientX - arrowStartX
-        const deltaY = e.clientY - arrowStartY
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-
-        if (distance > 0) {
-          const normalizedX = deltaX / distance
-          const normalizedY = deltaY / distance
-
-          const newEndX = 10 + normalizedX * distance
-          const newEndY = 50 + normalizedY * distance
-
-          targetPositionRef.current = { x: newEndX, y: newEndY }
-
-          const scaleX = arrowMetrics.width / 220
-          const scaleY = arrowMetrics.height / 100
-          const actualArrowTipX = arrowMetrics.left + newEndX * scaleX
-          const actualArrowTipY = arrowMetrics.top + newEndY * scaleY
-
-          checkArrowLogoCollision(actualArrowTipX, actualArrowTipY)
-        }
-      } catch (error) {
-        console.error("Mouse move error:", error)
-      }
+      setArrowTargetFromPoint(e.clientX, e.clientY)
     }
 
     const smoothUpdate = () => {
       if (!isActive) return
       try {
-        const current = { x: arrowEndX, y: arrowEndY }
+        const current = currentPositionRef.current
         const target = targetPositionRef.current
 
         const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
-        const easingFactor = 0.15
+        const easingFactor = 0.2
 
         const newX = lerp(current.x, target.x, easingFactor)
         const newY = lerp(current.y, target.y, easingFactor)
 
+        currentPositionRef.current = { x: newX, y: newY }
         setArrowEndX(newX)
         setArrowEndY(newY)
 
@@ -324,11 +345,16 @@ export default function TrustedPartners() {
 
     const handleGlobalClick = (e: MouseEvent) => {
       if (e.button !== 0) return
+      const targetNode = e.target as Node
 
-      if (isActive && arrowRef.current && !arrowRef.current.contains(e.target as Node)) {
+      const clickedArrow = arrowRef.current?.contains(targetNode)
+      const clickedGlobe = globeRef.current?.contains(targetNode)
+
+      if (isActive && !clickedArrow && !clickedGlobe) {
         setIsActive(false)
         setHoveredLogo(null)
         targetPositionRef.current = { x: 140, y: 50 }
+        currentPositionRef.current = { x: 140, y: 50 }
         setArrowEndX(140)
         setArrowEndY(50)
       }
@@ -347,7 +373,7 @@ export default function TrustedPartners() {
         cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [isActive, arrowEndX, arrowEndY])
+  }, [isActive])
 
   const handleArrowClick = (e: React.MouseEvent) => {
     if (e.button !== 0) return
@@ -358,37 +384,24 @@ export default function TrustedPartners() {
     try {
       if (!isActive) {
         setIsActive(true)
-        const arrowMetrics = arrowMetricsRef.current
-        if (!arrowMetrics.width || !arrowMetrics.height) {
-          scheduleMetricsUpdate()
-          return
-        }
-        const arrowStartX = arrowMetrics.left + (10 * arrowMetrics.width) / 220
-        const arrowStartY = arrowMetrics.top + (50 * arrowMetrics.height) / 100
-
-        const deltaX = e.clientX - arrowStartX
-        const deltaY = e.clientY - arrowStartY
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-
-        if (distance > 0) {
-          const normalizedX = deltaX / distance
-          const normalizedY = deltaY / distance
-
-          const newEndX = 10 + normalizedX * distance
-          const newEndY = 50 + normalizedY * distance
-
-          setArrowEndX(newEndX)
-          setArrowEndY(newEndY)
-        }
+        scheduleMetricsUpdate()
+        setArrowTargetFromPoint(e.clientX, e.clientY, true)
       } else {
-        setIsActive(false)
-        setHoveredLogo(null)
-        setArrowEndX(140)
-        setArrowEndY(50)
+        setArrowTargetFromPoint(e.clientX, e.clientY, true)
       }
     } catch (error) {
       console.error("Arrow click error:", error)
     }
+  }
+
+  const handleGlobeMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isActive) setIsActive(true)
+    setArrowTargetFromPoint(e.clientX, e.clientY)
+  }
+
+  const handleGlobeClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isActive || e.button !== 0) return
+    setArrowTargetFromPoint(e.clientX, e.clientY, true)
   }
 
   // Logo interchange effect
@@ -593,6 +606,7 @@ export default function TrustedPartners() {
                 height="100"
                 viewBox="0 0 220 100"
                 className="text-gray-900 dark:text-white overflow-visible transition-all duration-500 ease-out cursor-pointer"
+                onMouseDown={handleArrowClick}
                 onClick={handleArrowClick}
               >
                 <path
@@ -612,7 +626,12 @@ export default function TrustedPartners() {
             </motion.div>
           </div>
 
-          <div className="relative flex items-center justify-center">
+          <div
+            ref={globeRef}
+            className="relative flex items-center justify-center"
+            onMouseMove={handleGlobeMouseMove}
+            onClick={handleGlobeClick}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: 0 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 360 }}
