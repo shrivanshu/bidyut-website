@@ -276,7 +276,23 @@ export default function TrustedPartners() {
 
     if (distance === 0) return null
 
-    const maxLength = 420
+    let maxLength = 420
+    if (globeRef.current) {
+      const globeRect = globeRef.current.getBoundingClientRect()
+      const bounds = [
+        [globeRect.left, globeRect.top],
+        [globeRect.right, globeRect.top],
+        [globeRect.left, globeRect.bottom],
+        [globeRect.right, globeRect.bottom],
+        [globeRect.left, globeRect.top + globeRect.height / 2],
+        [globeRect.right, globeRect.top + globeRect.height / 2],
+      ] as const
+
+      maxLength =
+        Math.max(
+          ...bounds.map(([x, y]) => Math.hypot(x - arrowStartX, y - arrowStartY))
+        ) + 24
+    }
     const clampedDistance = Math.min(distance, maxLength)
     const normalizedX = deltaX / distance
     const normalizedY = deltaY / distance
