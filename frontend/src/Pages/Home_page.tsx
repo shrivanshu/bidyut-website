@@ -80,20 +80,6 @@ function Home_page() {
         <LazyLoad fallback={
           <div className="min-h-[40vh] flex items-center justify-center p-4">
             <div className="w-full max-w-4xl space-y-4">
-              <div className="h-8 bg-gray-200 dark:bg-gray-800 rounded w-1/4 animate-pulse" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="h-32 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
-                ))}
-              </div>
-            </div>
-          </div>
-        }>
-          {/* <EducationNews /> */}
-        </LazyLoad>
-        <LazyLoad fallback={
-          <div className="min-h-[40vh] flex items-center justify-center p-4">
-            <div className="w-full max-w-4xl space-y-4">
               <div className="h-8 bg-gray-200 dark:bg-gray-800 rounded w-1/3 animate-pulse" />
               <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
             </div>
