@@ -51,6 +51,23 @@ const Blog_page: React.FC = () => {
   const heroPost = useMemo(() => posts[0] || null, [posts])
   const featuredPost = useMemo(() => posts[1] || null, [posts])
   const gridPosts = useMemo(() => posts.slice(2, 5), [posts])
+  const rowPosts = useMemo(() => {
+    const cards = [...gridPosts]
+    const seed = gridPosts[0] || featuredPost || heroPost
+
+    while (cards.length < 3 && seed) {
+      const nextIndex = cards.length + 1
+      cards.push({
+        ...seed,
+        id: 9000 + nextIndex,
+        title: `Sample Blog Title ${nextIndex}`,
+        excerpt:
+          'Sample excerpt. Replace this text and image with your own content.',
+      })
+    }
+
+    return cards
+  }, [gridPosts, featuredPost, heroPost])
 
   return (
     <ThemeProvider>
@@ -160,8 +177,8 @@ const Blog_page: React.FC = () => {
               )}
 
               {/* SMALL GRID POSTS */}
-              <div className='flex flex-col gap-6 md:ml-5'>
-                {gridPosts.map(post => (
+              <div className='lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6'>
+                {rowPosts.map(post => (
                   <div
                     key={post.id}
                     className='bg-white dark:bg-black rounded-xl overflow-hidden'
@@ -178,7 +195,7 @@ const Blog_page: React.FC = () => {
                       />
                     </div>
 
-                    <div className='p-6 space-y-4'>
+                    <div className='w-full pt-6 pb-6 space-y-4'>
                       <div className='flex items-center gap-3 text-base text-gray-600 dark:text-gray-400'>
                         <span className='font-bold text-[#00F5A0]'>
                           {post.category || 'education'}
