@@ -198,7 +198,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '10%', left: '85%' },
         positionSm: { top: '17%', left: '63%' },
         lineDirection: 'right',
-        targetPoint: { x: '51%', y: '12%' },
+        targetPoint: { x: '51%', y: '8%' },
         targetPointSm: { x: '50%', y: '30%' }
       },
       {
@@ -207,7 +207,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '25%', left: '8%' },
         positionSm: { top: '23%', left: '9%' },
         lineDirection: 'right',
-        targetPoint: { x: '49%', y: '13%' },
+        targetPoint: { x: '49%', y: '10%' },
         targetPointSm: { x: '48%', y: '30%' }
       },
       {
@@ -234,16 +234,16 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '85%', left: '5%' },
         positionSm: { top: '75%', left: '5%' },
         lineDirection: 'right',
-        targetPoint: { x: '44%', y: '67%' },
-        targetPointSm: { x: '42%', y: '67%' }
+        targetPoint: { x: '40%', y: '60%' },
+        targetPointSm: { x: '30%', y: '67%' }
       },
       {
         label: 'Hollow Joint Wiring',
         detail: 'No external cables',
-        position: { top: '47%', left: '90%' },
+        position: { top: '45%', left: '90%' },
         positionSm: { top: '50%', left: '95%' },
         lineDirection: 'left',
-        targetPoint: { x: '61%', y: '45%' }
+        targetPoint: { x: '58%', y: '45%' }
       },
       {
         label: 'Leg Control System',
@@ -277,7 +277,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '12%', left: '84%' },
         positionSm: { top: '22%', left: '84%' },
         lineDirection: 'right',
-        targetPoint: { x: '50%', y: '18%' },
+        targetPoint: { x: '55%', y: '6%' },
         targetPointSm: { x: '50%', y: '31%' }
       },
       {
@@ -294,7 +294,7 @@ const robotSpecs: RobotSpec[] = [
         detail: 'Optional 5-Finger Hand | Higher Precision Force Control',
         position: { top: '47%', left: '5%' },
         lineDirection: 'right',
-        targetPoint: { x: '40%', y: '37%' }
+        targetPoint: { x: '35%', y: '37%' }
       },
       {
         label: 'Battery Upgrade',
@@ -302,7 +302,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '32%', left: '82%' },
         positionSm: { top: '49%', left: '82%' },
         lineDirection: 'right',
-        targetPoint: { x: '57%', y: '32%' },
+        targetPoint: { x: '59%', y: '24%' },
         targetPointSm: { x: '56%', y: '40%' }
       }
     ]
@@ -329,7 +329,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '65%', left: '88%' },
         positionSm: { top: '60%', left: '74%' },
         lineDirection: 'right',
-        targetPoint: { x: '58%', y: '65%' }
+        targetPoint: { x: '60%', y: '65%' }
       }
     ]
   },
@@ -352,7 +352,7 @@ const robotSpecs: RobotSpec[] = [
         detail: 'Force & Tactile Feedback for Hands',
         position: { top: '48%', left: '4%' },
         lineDirection: 'right',
-        targetPoint: { x: '39%', y: '38%' }
+        targetPoint: { x: '36%', y: '38%' }
       }
     ]
   },
@@ -378,7 +378,7 @@ const robotSpecs: RobotSpec[] = [
         position: { top: '20%', left: '12%' },
         positionSm: { top: '32%', left: '0%' },
         lineDirection: 'right',
-        targetPoint: { x: '51%', y: '6%' },
+        targetPoint: { x: '49%', y: '6%' },
         targetPointSm: { x: '45%', y: '36%' }
       }
     ]
