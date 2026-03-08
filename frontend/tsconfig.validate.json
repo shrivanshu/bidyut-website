@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist-validate",
+    "noEmit": false,
+    "declaration": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "scripts/validateTranslations.ts",
+    "src/utils/translationValidator.ts",
+    "src/locales/**/*.ts"
+  ]
+}

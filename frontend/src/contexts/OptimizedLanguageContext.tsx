@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export type Language = 'en' | 'hi' | 'bn' | 'ja' | 'mr' | 'gu' | 'ta' | 'te' | 'kn' | 'ru' | 'zh';
 
@@ -43,6 +43,7 @@ interface LanguageProviderProps {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+  const languageChangeSeq = useRef(0);
 
   const loadLocale = async (lang: Language) => {
     if (loadedTranslations[lang]) return;
@@ -81,10 +82,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     initLanguage();
   }, []);
 
-  const changeLanguage = (lang: Language) => {
-    loadLocale(lang);
-    setCurrentLanguage(lang);
+  const changeLanguage = async (lang: Language) => {
+    const seq = ++languageChangeSeq.current;
     localStorage.setItem("language", lang);
+    await loadLocale(lang);
+
+    // Ignore stale async completions if user switched language again quickly.
+    if (seq !== languageChangeSeq.current) return;
+
+    setCurrentLanguage(lang);
     document.documentElement.lang = lang;
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
   };

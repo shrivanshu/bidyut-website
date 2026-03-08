@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 export function RoboticsSchools () {
+  const { t } = useLanguage();
   return (
     <section className='py-16 px-4 dark:bg-black bg-white'>
       <div className='max-w-7xl mx-auto'>
         {/* Heading */}
         <div className='mb-12 text-center lg:text-left'>
           <h2 className='text-3xl md:text-5xl font-heading font-bold dark:text-gray-300 text-gray-900 mb-2'>
-            See How Schools Are  Transforming with Robotics
+            {t("schoolRoboticsSectionHeading")}
           </h2>
           {/* <p className='text-lg md:text-xl font-roboto dark:text-gray-400 text-gray-600'>
            
@@ -19,7 +21,7 @@ export function RoboticsSchools () {
             <div className='rounded-2xl overflow-hidden flex-grow'>
               <img
                 src='/school_images/WhatsApp Image 2025-09-22 at 7.45.54 PM.webp'
-                alt='Students actively engaged in hands-on robotics learning in a fully equipped robotics lab setup'
+                alt={t("schoolRoboticsImageAlt")}
                 className='w-full h-full min-h-[600px] object-cover'
               />
             </div>
@@ -29,38 +31,38 @@ export function RoboticsSchools () {
           <div className='space-y-8'>
             <div className='space-y-4 pb-8 border-b border-gray-200'>
               <p className='text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide'>
-                See How Schools Are Transforming with Robotics
+                {t("schoolRoboticsBlock1Label")}
               </p>
               <h3 className='text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900'>
-                Modern robotics labs, equipped with smart tools and vibrant learning spaces
+                {t("schoolRoboticsBlock1Title")}
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-              Modern robotics labs, equipped with smart tools and vibrant learning spaces, are helping students turn curiosity into innovation. Our comprehensive robotics lab setup enables schools to join the growing movement of embracing future-ready education.
+                {t("schoolRoboticsBlock1Description")}
 
               </p>
             </div>
 
             <div className='space-y-4 pb-8 border-b border-gray-200'>
               <p className='text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide'>
-                Empower Teachers, Inspire Students
+                {t("schoolRoboticsBlock2Label")}
               </p>
               <h3 className='text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900'>
-                Expert-led training for confident robotics and AI education
+                {t("schoolRoboticsBlock2Title")}
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-               With our expert-led training, teachers gain the confidence to deliver robotics and AI education effectively. Supported with lesson plans, hands-on practice, and continuous guidance, they create engaging classrooms that spark creativity in every robotics lab in school.
+                {t("schoolRoboticsBlock2Description")}
               </p>
             </div>
 
             <div className='space-y-4 pb-8 border-b border-gray-200 last:border-b-0'>
               <p className='text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide'>
-                Building Future-Ready Skills
+                {t("schoolRoboticsBlock3Label")}
               </p>
               <h3 className='text-xl md:text-2xl font-subheading dark:text-gray-300 font-bold text-gray-900'>
-                From robotics and AI to drones and global competitions
+                {t("schoolRoboticsBlock3Title")}
               </h3>
               <p className='text-gray-600 dark:text-gray-400'>
-              For over 5 years, Bidyut Innovation has been revolutionizing robotics education across India. We have empowered 45,000+ students and transformed 120+ schools with cutting-edge technology, robotics kits for schools, robotics courses, and hands-on learning experiences.
+                {t("schoolRoboticsBlock3Description")}
 
               </p>
             </div>
@@ -81,7 +83,7 @@ export function RoboticsSchools () {
                   transition
                 '
                 >
-                  View More
+                  {t("schoolRoboticsViewMore")}
                 </button>
               </Link>
             </div>
@@ -91,3 +93,4 @@ export function RoboticsSchools () {
     </section>
   )
 }
+

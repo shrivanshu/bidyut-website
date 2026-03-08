@@ -1,45 +1,44 @@
 import React, { useState, useEffect } from 'react'
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
-const schoolImages = {
-  'Robotics Project': {
-    name: 'Advanced Robotics Project',
+const schoolImageConfigs = [
+  {
     src: '/school_images/C2271.00_00_25_11.Still004.webp',
-    desc: 'Teacher guiding students during a hands-on robotics learning session'
+    descKey: 'schoolCarouselImage1Desc'
   },
-  'AI Workshop': {
-    name: 'Artificial Intelligence Workshop',
+  {
     src: '/school_images/C2271.00_00_33_34.Still003.webp',
-    desc: 'Students participating in an interactive robotics lesson with teacher'
+    descKey: 'schoolCarouselImage2Desc'
   },
-  'Tech Lab': {
-    name: 'Technology Integration Lab',
+  {
     src: '/school_images/IMG_9899.JPG',
-    desc: 'Teachers learning robotics concepts during an interactive seminar'
+    descKey: 'schoolCarouselImage3Desc'
   },
-  'Innovation Lab': {
-    name: 'Innovation Laboratory',
+  {
     src: '/About_us_gallery/Students 400x400/Untitled-10.webp',
-    desc: 'Students collaborating on hands-on robotics and STEM projects with innovative technology'
+    descKey: 'schoolCarouselImage4Desc'
   },
-  'STEM Workshop': {
-    name: 'STEM Learning Workshop',
+  {
     src: '/About_us_gallery/Training 400x800/h.webp',
-    desc: 'Hands-on robotics workshop integrating theory with practical activities'
+    descKey: 'schoolCarouselImage5Desc'
   },
-  'Project Development': {
-    name: 'Student Project Development',
+  {
     src: '/About_us_gallery/Students 400x400/Untitled-7.webp',
-    desc: 'Young innovators discovering new possibilities in robotics and engineering with a top robotics company in India'
+    descKey: 'schoolCarouselImage6Desc'
   }
-}
+]
 
 const rand = (max: number, min: number): number => {
   return +(min + (max - min) * Math.random()).toFixed(2)
 }
 
 export default function SchoolCarousel () {
-  const entries = Object.entries(schoolImages)
-  const n = entries.length
+  const { t } = useLanguage();
+  const schoolImages = schoolImageConfigs.map((config) => ({
+    src: config.src,
+    desc: t(config.descKey)
+  }));
+  const n = schoolImages.length
   const [k, setK] = useState(0)
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
@@ -104,7 +103,7 @@ export default function SchoolCarousel () {
           cursor: 'pointer'
         }}
       >
-        Discover how we make learning fun
+        {t("schoolCarouselTopText")}
         <a>
           {' '}
           <button className='text-gray-900'> →</button>{' '}
@@ -129,7 +128,7 @@ export default function SchoolCarousel () {
           } as React.CSSProperties
         }
       >
-        Robotics Lab
+        {t("schoolCarouselTitle")}
       </h2>
       {/* Bottom right text */}
       <div
@@ -147,7 +146,7 @@ export default function SchoolCarousel () {
           textAlign: 'right'
         }}
       >
-        <div>Empowering Schools with Future-Ready Labs</div>
+        <div>{t("schoolCarouselBottomText")}</div>
       </div>
       <style>{`
         @property --p {
@@ -402,9 +401,9 @@ export default function SchoolCarousel () {
           } as React.CSSProperties
         }
       >
-        {entries.map(([name, schoolImage], i) => (
+        {schoolImages.map((schoolImage, i) => (
           <article
-            key={name}
+            key={i}
             className='carousel-article'
             style={
               {

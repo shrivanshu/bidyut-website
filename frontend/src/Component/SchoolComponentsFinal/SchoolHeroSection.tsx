@@ -1,5 +1,6 @@
-"use client";
+﻿"use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 // Vertically scrolling page controls a sticky, horizontal animation.
 // - No vertical movement while animating (fixed overlay while pinned)
@@ -8,9 +9,10 @@ import React, { useEffect, useRef, useState } from "react";
 // - Text moves fully off-screen to the left by the end
 // - Extra: During the hold region, center card pops up into a rounded video with details
 const SchoolHeroSection: React.FC = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Progress from 0 → 1 over the hero's internal scroll (animation part)
+  // Progress from 0 â†’ 1 over the hero's internal scroll (animation part)
   const [progress, setProgress] = useState(0);
   const [pinned, setPinned] = useState(false); // true while the hero is in its pinned (horizontal-only) phase
 
@@ -72,32 +74,32 @@ const SchoolHeroSection: React.FC = () => {
     {
       src: "/school_hero_video/hero section video/01.webm",
       poster: "/school_images/C2271.00_00_21_55.Still002.webp",
-      title: "Robotics Lab Highlight",
-      description: "Hands-on robotics, AI and drone programs that transform classrooms."
+      title: t("schoolHeroVideo1Title"),
+      description: t("schoolHeroVideo1Description")
     },
     {
       src: "/school_hero_video/hero section video/C2271.webm",
       poster: "/school_images/C2271.00_00_25_11.Still004.webp",
-      title: "Creative Arts Integration",
-      description: "Combining technology with creative arts for holistic learning experiences."
+      title: t("schoolHeroVideo2Title"),
+      description: t("schoolHeroVideo2Description")
     },
     {
       src: "/school_hero_video/hero section video/School lab video.webm",
       poster: "/school_images/C2271.00_00_33_34.Still003.webp",
-      title: "Advanced Science Labs",
-      description: "State-of-the-art science equipment for experimental learning."
+      title: t("schoolHeroVideo3Title"),
+      description: t("schoolHeroVideo3Description")
     },
     {
       src: "/school_hero_video/hero section video/IMG_1791.webm",
       poster: "/school_images/Render.00_01_51_13.Still005.webp",
-      title: "Technology Workshop",
-      description: "Modern technology integration across all learning modules."
+      title: t("schoolHeroVideo4Title"),
+      description: t("schoolHeroVideo4Description")
     },
     {
       src: "/school_hero_video/hero section video/Engineering.webm",
       poster: "/school_images/Render.00_01_54_02.Still006.webp",
-      title: "Engineering Concepts",
-      description: "Foundation engineering principles through interactive projects."
+      title: t("schoolHeroVideo5Title"),
+      description: t("schoolHeroVideo5Description")
     }
   ] as const;
 
@@ -136,7 +138,7 @@ const SchoolHeroSection: React.FC = () => {
       const d = Math.max(700, Math.round(vh * 1.2));
       // Hold: separated into video scaling and video switching phases
       // Phase 1: Video reaches full size (500px)
-      // Phase 2: Video switching (500px per video × 5 videos = 2500px)
+      // Phase 2: Video switching (500px per video Ã— 5 videos = 2500px)
       const videoScalingPhase = 500; // 500px for video to reach full size
       const videoSwitchingPhase = 500 * videosData.length; // 500px per video
       const hold = videoScalingPhase + videoSwitchingPhase; // Total: 500 + 2500 = 3000px
@@ -319,7 +321,7 @@ const SchoolHeroSection: React.FC = () => {
                   transitionDelay: isTextVisible ? '0.2s' : '0s'
                 }}
               >
-                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs
+                {t("schoolHeroHeading")}
 
               </h1>
             </div>
@@ -343,7 +345,7 @@ const SchoolHeroSection: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive robotics kits for schools and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.
+                {t("schoolHeroDescription")}
               </p>
             </div>
           </div>
@@ -365,7 +367,7 @@ We offer hands-on programs in robotics lab setup, AI, and drones, along with exp
                 className="absolute hidden md:block rounded-[24px] overflow-hidden shadow-lg will-change-transform"
                 style={{ left: `${left}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`, opacity: finalOpacity }}
               >
-                <img src={img.src} alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms" className="w-full h-full object-cover" />
+                <img src={img.src} alt={t("schoolHeroImageAlt")} className="w-full h-full object-cover" />
               </div>
             );
           })}
@@ -391,7 +393,7 @@ We offer hands-on programs in robotics lab setup, AI, and drones, along with exp
               }}
             >
               <h1 className="text-center dark:text-white  font-bold leading-snug text-[22px] sm:text-[26px] md:text-[30px]">
-                Transform Your Classroom with Robotics Lab Setup, AI & Future-Ready Labs  </h1>
+                {t("schoolHeroHeading")}  </h1>
             </div>
 
             {/* Subtext */}
@@ -407,7 +409,8 @@ We offer hands-on programs in robotics lab setup, AI, and drones, along with exp
               }}
             >
               <p className="text-gray-800 dark:text-gray-400 text-[14px] sm:text-[16px] font-medium text-center">
-We offer hands-on programs in robotics lab setup, AI, and drones, along with expert teacher training and access to global competitions—empowering students with the skills they need to thrive. Our robotics labs provide interactive robotics kits for schools and structured lessons, turning classrooms into innovation hubs while ensuring seamless integration with school curricula.     </p>
+                {t("schoolHeroDescription")}
+              </p>
             </div>
 
             {/* Responsive Image Grid */}
@@ -433,7 +436,7 @@ We offer hands-on programs in robotics lab setup, AI, and drones, along with exp
                 >
                   <img
                     src={src}
-                    alt="Robotics lab setup showcasing hands-on robotics, AI, and drone programs that transform classrooms"
+                    alt={t("schoolHeroImageAlt")}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -535,3 +538,4 @@ We offer hands-on programs in robotics lab setup, AI, and drones, along with exp
 };
 
 export default SchoolHeroSection;
+

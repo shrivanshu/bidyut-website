@@ -1,20 +1,22 @@
-"use client";
+﻿"use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import RotatingText from './RotatingText';
 import { useTheme } from '../../contexts/ThemeContext';
 import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const StreamSchool: React.FC = () => {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
   
   const words = [
-    "Science",
-    "Technology",
-    "Research",
-    "Education",
-    "Art",
-    "Mathematics",
+    t("schoolStreamWordScience"),
+    t("schoolStreamWordTechnology"),
+    t("schoolStreamWordResearch"),
+    t("schoolStreamWordEducation"),
+    t("schoolStreamWordArt"),
+    t("schoolStreamWordMathematics"),
   ];
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -163,7 +165,7 @@ const StreamSchool: React.FC = () => {
               fontWeight: 500,
             }}
           >
-            Where Innovation Meets{" "}
+            {t("schoolStreamTaglinePrefix")}{" "}
           </span>
         </AnimatedText>
         <AnimatedText
@@ -174,12 +176,13 @@ const StreamSchool: React.FC = () => {
           <div className="bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-6 py-0.5 rounded-full ml-2 shadow-lg">
             <RotatingText
               texts={[
-                'Education',
-                'Technology', 
-                'Innovation',
-                'Learning',
-                'Discovery',
-                'Excellence'
+
+                t("schoolStreamRotating1"),
+                t("schoolStreamRotating2"), 
+                t("schoolStreamRotating3"),
+                t("schoolStreamRotating4"),
+                t("schoolStreamRotating5"),
+                t("schoolStreamRotating6")
               ]}
               mainClassName="inline-block"
               splitBy="characters"
@@ -216,7 +219,7 @@ const StreamSchool: React.FC = () => {
               fontWeight: 500,
             }}
           >
-            Where Innovation Meets{" "}
+            {t("schoolStreamTaglinePrefix")}{" "}
           </h2>
         </AnimatedText>
         <AnimatedText
@@ -227,12 +230,12 @@ const StreamSchool: React.FC = () => {
           <div className="bg-gradient-to-r from-[#00F5A0] to-[#00C6FF] px-4 py-0.5 rounded-full ml-1 shadow-lg">
             <RotatingText
               texts={[
-                'Education',
-                'Technology', 
-                'Innovation',
-                'Learning',
-                'Discovery',
-                'Excellence'
+                t("schoolStreamRotating1"),
+                t("schoolStreamRotating2"), 
+                t("schoolStreamRotating3"),
+                t("schoolStreamRotating4"),
+                t("schoolStreamRotating5"),
+                t("schoolStreamRotating6")
               ]}
               mainClassName="inline-block"
               splitBy="characters"
@@ -273,7 +276,7 @@ const StreamSchool: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText
-            text="Empowering students with cutting-edge technology education through hands-on learning,creative projects ,and real-world applications."
+            text={t("schoolStreamParagraph")}
             staggerDelay={0.03}
             direction="fade"
             splitBy="words"
@@ -297,7 +300,7 @@ const StreamSchool: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText
-            text="Empowering students with cutting-edge technology education through hands-on learning,creative projects ,and real-world applications."
+            text={t("schoolStreamParagraph")}
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"
@@ -309,3 +312,4 @@ const StreamSchool: React.FC = () => {
 };
 
 export default StreamSchool;
+

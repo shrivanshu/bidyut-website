@@ -26,7 +26,14 @@ const allLanguages = {
 const CRITICAL_KEYS = [
   'home', 'aboutUs', 'contact', 'school', 'robots',
   'learnRobotics', 'heroDescription', 'scheduleDemoCall',
-  'getInTouch', 'sendMessage', 'ourOfferings'
+  'getInTouch', 'sendMessage', 'ourOfferings',
+  // hero section additions
+  'heroHeading', 'heroHighlight', 'heroLongDescription', 'offeringsIntro',
+  'altCollaborativeLearning','altCollaboration','altLearningExperience','altQuadrupedRobots',
+  'altRoboticSolutions','altSchoolIntegration','altComputerRoboticsBooksforSchools',
+  'streamLongDescription', 'exploreStreamComponents', 'streamTitle', 'selectComponent', 'videoFallback',
+  // chat keys
+  'chatSpeechBubbleGreeting', 'chatSpeechBubblePrompt', 'chatWelcomeBanner', 'chatInitialMessage'
 ];
 
 // Technical keys that need domain expertise

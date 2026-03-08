@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { testimonialData, type Testimonial } from './testimonials';
+import { getTestimonials, type Testimonial } from './testimonials';
 import HomeHeroText from '../../Text_Animation/HomeHeroText';
 import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
@@ -43,19 +43,19 @@ const gridPositions = [
 const CENTER_INDEX = 5; // Center position in the grid
 
 const TestimonialSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
-    // Set Dr. Sarah Mitchell as the default center testimonial
-    const drSarah = testimonialData[0]; // Dr. Sarah Mitchell
-    const otherTestimonials = shuffleArray([...testimonialData.slice(1)]).slice(0, 10);
-    
+    const localizedTestimonials = getTestimonials(t);
+    const featuredTestimonial = localizedTestimonials[0];
+    const otherTestimonials = shuffleArray([...localizedTestimonials.slice(1)]).slice(0, 10);
+
     const arrangedTestimonials = [...otherTestimonials];
-    arrangedTestimonials.splice(CENTER_INDEX, 0, drSarah);
-    
+    arrangedTestimonials.splice(CENTER_INDEX, 0, featuredTestimonial);
+
     setTestimonials(arrangedTestimonials);
-  }, []);
+  }, [currentLanguage]);
 
   const handleSelectTestimonial = (selectedIndex: number) => {
     if (selectedIndex === CENTER_INDEX) return;
@@ -75,6 +75,9 @@ const TestimonialSection: React.FC = () => {
   }
 
   const centerCardData = testimonials[CENTER_INDEX];
+  const headingPrefix = t('whatOurPartnersSayPrefix');
+  const headingHighlight = t('whatOurPartnersSayHighlight');
+  const headingText = [headingPrefix, headingHighlight].filter(Boolean).join(' ');
 
   return (
     <section className="relative w-full bg-gray-50 dark:bg-black py-20 px-4 flex flex-col items-center font-sans overflow-hidden transition-colors duration-300">
@@ -91,8 +94,8 @@ const TestimonialSection: React.FC = () => {
       <div className="text-center mb-16 relative z-10 max-w-4xl">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight transition-colors duration-300">
           <HomeHeroText
-            text={`${t('whatOurPartnersSay').split(' ')[0]} ${t('whatOurPartnersSay').split(' ')[1]} ${t('whatOurPartnersSay').split(' ').slice(2).join(' ')}`}
-            highlight={{ text: t('whatOurPartnersSay').split(' ').slice(2).join(' '), color: '#10b981' }}
+            text={headingText}
+            highlight={headingHighlight ? { text: headingHighlight, color: '#10b981' } : undefined}
             typingSpeed={40}
             pauseDuration={0}
             showCursor={false}
@@ -101,7 +104,7 @@ const TestimonialSection: React.FC = () => {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-          See how Bidyut is reshaping education and industry with innovative robotics solutions that inspire learning and drive transformation
+          {t('partnersTestimonialDescription')}
         </p>
       </div>
 

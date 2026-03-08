@@ -23,7 +23,6 @@ const PLACEHOLDER_SVG =
 const Blog_page: React.FC = () => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState<BlogPost[]>([])
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/blog/blogs.json')
@@ -36,9 +35,8 @@ const Blog_page: React.FC = () => {
             ? [data.blog]
             : []
         setPosts(blogData)
-        setLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => {})
   }, [])
 
   const handleNavigation = useCallback(

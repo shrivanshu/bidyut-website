@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const WhyBidyut: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <section className="w-full bg-white dark:bg-black relative font-['Roboto'] min-h-[200px] md:min-h-[300px] pb-10 mt-0 md:mt-4">
       {/* Heading */}
@@ -21,7 +23,7 @@ const WhyBidyut: React.FC = () => {
           duration={0.8}
         >
           <StaggeredText 
-            text="Why Choose Bidyut" 
+            text={t("schoolWhyHeadingLine1")} 
             className="block"
             staggerDelay={0.08}
             direction="up"
@@ -33,7 +35,7 @@ const WhyBidyut: React.FC = () => {
           duration={0.8}
         >
           <StaggeredText 
-            text="Innovation?" 
+            text={t("schoolWhyHeadingLine2")} 
             className="block"
             staggerDelay={0.08}
             direction="up"
@@ -54,7 +56,7 @@ const WhyBidyut: React.FC = () => {
           duration={1}
         >
           <StaggeredText 
-            text="Why Choose Bidyut Innovation?"
+            text={t("schoolWhyHeadingMobile")}
             staggerDelay={0.05}
             direction="up"
           />
@@ -77,8 +79,7 @@ const WhyBidyut: React.FC = () => {
           duration={1}
         >
           <StaggeredText 
-            text="Turn your classrooms into innovation hubs with fully equipped robotics labs, teacher training, and NEP 2020- aligned curriculum. Our solutions are designed to bring practical learning and creativity into every robotics lab in school.
-"
+            text={t("schoolWhyDescription")}
             className="block"
             staggerDelay={0.03}
             direction="up"
@@ -123,7 +124,7 @@ const WhyBidyut: React.FC = () => {
           duration={1.2}
         >
           <StaggeredText 
-            text="Turn your classrooms into innovation hubs with fully equipped robotics labs, teacher training, and NEP 2020- aligned curriculum. Our solutions are designed to bring practical learning and creativity into every robotics lab in school."
+            text={t("schoolWhyDescription")}
             staggerDelay={0.02}
             direction="fade"
             splitBy="words"
