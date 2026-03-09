@@ -163,7 +163,7 @@ export default function ContactPage() {
                   method="POST"
                 >
                   {/* Hidden fields for StaticForms configuration */}
-                  <input type="hidden" name="accessKey" value="sf_m38f9317i2e053l3h9937cf7" />
+                  <input type="hidden" name="accessKey" value="sf_0a3fh4llai9mg0d7j4i5gd8h" />
                   <input type="hidden" name="redirectTo" value="https://bidyutinnovation.com/contact?success=true" />
                   {/* Name */}
                   <div className="relative">
