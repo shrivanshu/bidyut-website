@@ -15,6 +15,7 @@ const ChatBox = memo(function ChatBox({
   messages: { from: "me" | "bot"; text: string }[];
   onSend: (msg: string) => void;
 }) {
+  const { t } = useLanguage();
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +57,7 @@ const ChatBox = memo(function ChatBox({
       </div>
       {/* Welcome Banner */}
       <div className="bg-[#0ACF83] text-white text-xs text-center py-1 px-2 font-medium rounded-b-lg rounded-t-none">
-        How can I help you today? Ask me anything about robotics, coding, or Bidyut Innovation!
+        {t('chatWelcomeBanner')}
       </div>
       {/* Messages */}
       <div
@@ -90,7 +91,7 @@ const ChatBox = memo(function ChatBox({
         <input
           type="text"
           className="flex-1 rounded-full border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#0ACF83] transition"
-          placeholder="Type your message..."
+          placeholder={t('chatPlaceholder')}
           value={input}
           onChange={handleInputChange}
         />
@@ -108,17 +109,19 @@ const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const [currentVideoIndex] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
-  const [messages, setMessages] = useState<{ from: "me" | "bot"; text: string }[]>([
-    {
-      from: "bot" as const,
-      text: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
-    },
-  ]);
+  const [messages, setMessages] = useState<{ from: "me" | "bot"; text: string }[]>([]);
   const chatModuleRef = useRef<null | typeof import("../../services/chatService")>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   const videos = ["/fnf 03.webm"];
+
+  useEffect(() => {
+    setMessages([{
+      from: "bot" as const,
+      text: t('chatInitialMessage'),
+    }]);
+  }, [t]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -205,29 +208,23 @@ const HeroSection: React.FC = () => {
           <Suspense
             fallback={
               <span className="inline" style={{ color: "#ffffff" }}>
-                Let's Innovate <span style={{ color: "#0acf83" }}>Learn Beyond Boundaries</span>
+                {t("heroHeadingFallback")}
               </span>
             }
           >
             <HeroHeading
-              text={["Let's Innovate Learn Beyond Boundaries"]}
+              text={[t("heroHeading")]}
               typingSpeed={40}
               pauseDuration={0}
               showCursor={false}
-              highlight={{ text: "Let's Innovate", color: "#0acf83" }}
+              highlight={{ text: t("heroHighlight"), color: "#0acf83" }}
             />
           </Suspense>
         </h1>
 
         {/* Description */}
         <p className="text-white text-base sm:text-lg max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2 sm:px-4" style={{ minHeight: '120px' }}>
-          Bidyut is the country's most advanced <a className="text-green-500"
-  href="/About"
-  target="_blank"
-  rel="noopener noreferrer"
-> Robotic EdTech Company </a>, empowering schools and students in their quest for holistic development. We offer hands-on robotics education and robotics for schools and colleges that integrate coding solutions, AI learning, and STREAM labs to help students become future-ready. Our solutions are designed to spark curiosity, strengthen problem-solving skills, and encourage innovation from an early age through well-structured robotic classes. By combining technology with experiential learning, Bidyut Innovation helps students become confident, future-ready thinkers prepared for real-world challenges.
-
-
+          {t('heroLongDescription')}
         </p>
       </div>
 
@@ -243,10 +240,10 @@ const HeroSection: React.FC = () => {
               height: '52px',
             }}
           >
-            <span className="font-semibold text-emerald-700">Hi, I'm Buddy!</span>
+            <span className="font-semibold text-emerald-700">{t('chatSpeechBubbleGreeting')}</span>
             <br />
             <span>
-              Ask me anything 🚀
+              {t('chatSpeechBubblePrompt')}
             </span>
           </div>
         )}

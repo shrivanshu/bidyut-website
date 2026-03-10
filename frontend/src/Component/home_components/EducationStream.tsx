@@ -186,7 +186,7 @@ export default function EducationStream() {
           />
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
-A future-ready learning approach that blends Science, Technology, Reading, Engineering, Arts, and Mathematics. STREAM fosters creativity, critical thinking, and problem-solving while equipping learners with practical, real-world skills through our robotics for kids, robotics for schools, and interactive STREAM labs.By emphasizing experiential learning, students not only understand theoretical concepts but also apply them in real-world scenarios, making learning both fun and impactful. Our STREAM approach encourages students to explore their curiosity, experiment with technology, and create projects that demonstrate their understanding.
+          {t('streamLongDescription')}
         </p>
       </motion.div>
 
@@ -225,7 +225,7 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                   }}
                 >
                   <source src={video.src} type="video/webm" />
-                  <p>Your browser doesn't support video playback.</p>
+                  <p>{t('videoFallback')}</p>
                 </video>
               ))}
               <div className="sheen pointer-events-none" />
@@ -240,7 +240,7 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
 
         <div className="w-full">
           <p className="text-center font-semibold text-gray-600 dark:text-gray-400 text-sm mb-4 transition-colors duration-300">
-            Explore STREAM Education Components
+            {t('exploreStreamComponents')}
           </p>
           <div className="grid grid-cols-2 gap-3">
             {videoOptions.map((video, index) => (
@@ -289,10 +289,10 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
             >
               <div className="mb-4 sticky top-0 bg-gray-50 dark:bg-black py-4 z-10">
                 <h3 className="text-5xl font-bold text-gray-800 dark:text-white mb-2">
-                  STREAM
+                  {t('streamTitle')}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  Select a component to explore
+                  {t('selectComponent')}
                 </p>
               </div>
               
@@ -373,7 +373,7 @@ A future-ready learning approach that blends Science, Technology, Reading, Engin
                       }}
                     >
                       <source src={video.src} type="video/webm" />
-                      <p>Your browser doesn't support video playback.</p>
+                      <p>{t('videoFallback')}</p>
                     </video>
                   ))}
                   <div className="sheen pointer-events-none" />

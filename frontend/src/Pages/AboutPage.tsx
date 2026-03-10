@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useTheme } from "../contexts/ThemeContext"
+import { useLanguage } from "../contexts/OptimizedLanguageContext"
 import Header from "../Component/Header"
 import FooterUnanimated from "../Component/FooterUnanimated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -75,36 +76,6 @@ interface TimelineItem {
   description: string
 }
 
-const timelineData: TimelineItem[] = [
-  {
-    year: "2021",
-    title: "Vision Ignited",
-    description:
-      "In 2021, our journey began with a bold idea: to bring the future of robotics, technology and STREAM Education into  classrooms, research, and industry. We envisioned a world where every student and innovator could access cutting-edge robotics through a leading robotics company in India.",
-  },
-  {
-    year: "2022",
-    title: "Building the Future of Learning",
-    description:
-      "By 2022, we launched Robotics Labs for Schools, giving young learners hands-on exposure to innovation. Our early programs inspired curiosity, creativity, and problem-solving through interactive robotics education.",
-  },
-  {
-    year: "2023",
-    title: "Expanding Horizons & Incorporation",
-    description: "2023 was a landmark year. We officially became a Private Limited Company, strengthening our structure and vision for long-term impact. Alongside this milestone, we scaled our offerings to universities and R&D centers, introducing humanoid robots, quadrupeds, and collaborative robots (cobots). These advanced systems helped students and researchers push the boundaries of robotics exploration.",
-  },
-  {
-    year: "2024",
-    title: "Driving Industry Transformation",
-    description: "2024 was the year of industry collaboration. We began delivering tailored robotics solutions for companies, empowering businesses with automation, efficiency, and next-generation robotics technology.",
-  },
-  {
-    year: "2025",
-    title: "Leading the Robotics Revolution",
-    description: "Today, in 2025, we stand as a trusted Edutech & Robotics innovation partner—bridging schools, universities, and industries with cutting-edge solutions that shape the future of technology and learning.",
-  },
-]
-
 export function getVideoForYear(year: string): string {
   switch (year) {
     case "2021":
@@ -124,6 +95,90 @@ export function getVideoForYear(year: string): string {
 export default function AboutPage() {
   // Theme from context
   const { isDark: isDarkTheme } = useTheme()
+  const { t } = useLanguage()
+
+  const timelineData: TimelineItem[] = [
+    {
+      year: "2021",
+      title: t("visionIgnited"),
+      description: t("aboutTimeline2021Description"),
+    },
+    {
+      year: "2022",
+      title: t("buildingFutureOfLearning"),
+      description: t("roboticsLabsDescription"),
+    },
+    {
+      year: "2023",
+      title: t("aboutTimeline2023Title"),
+      description: t("aboutTimeline2023Description"),
+    },
+    {
+      year: "2024",
+      title: t("aboutTimeline2024Title"),
+      description: t("aboutTimeline2024Description"),
+    },
+    {
+      year: "2025",
+      title: t("aboutTimeline2025Title"),
+      description: t("currentStatusDescription"),
+    },
+  ]
+
+  const aboutHeadingLine1 = `${t("bidyutFocuses")} ${t("educatingStudents")} ${t("actWithIntegrity")}`
+  const aboutHeadingFull = `${t("bidyutFocuses")} ${t("educatingStudents")} ${t("actWithIntegrity")} ${t("digitalWorld")}`
+
+  const renderAboutHeroDescription = () => {
+    const template = t("aboutHeroDescription")
+    const placeholder = "{streamEducation}"
+
+    if (!template.includes(placeholder)) {
+      return template
+    }
+
+    const [before, after] = template.split(placeholder)
+
+    return (
+      <>
+        {before}
+        <a href="/School" className="text-green-500">
+          {t("streamEducation")}
+        </a>
+        {after}
+      </>
+    )
+  }
+
+  const aboutSeoSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Bidyut Innovation",
+    url: "https://bidyutinnovation.com/About",
+    logo: "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
+    sameAs: [
+      "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
+      "https://www.linkedin.com/company/bidyutinnovation/",
+    ],
+    description: t("aboutSeoOrganizationDescription"),
+    foundingDate: "2021",
+    awards: [
+      `${t("nationalRoboticsAward")} (2023) - ${t("roboticsAwardDesc")}.`,
+      `${t("globalYouthEmpowerment")} (2021) - ${t("youthEmpowermentDesc")}.`,
+      `${t("edtechExcellence")} (2022) - ${t("edtechExcellenceDesc")}.`,
+    ],
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "mission",
+        value: t("missionStatement"),
+      },
+      {
+        "@type": "PropertyValue",
+        name: "vision",
+        value: t("visionStatement"),
+      },
+    ],
+  }
   
   // Timeline States
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -262,9 +317,6 @@ export default function AboutPage() {
   const [animatedClients, setAnimatedClients] = useState(0);
   const [animatedHappyClients, setAnimatedHappyClients] = useState(0);
 
-
-  // Language context
-  // const { t } = useLanguage() // Commented out since using hardcoded text for exact design match
 
   // Video sources (use local files from /about_video)
   const videoSources: { [key: string]: string } = {
@@ -440,13 +492,15 @@ export default function AboutPage() {
 
   // Gallery categories
   const galleryCategories = [
-    { id: "all", name: "All", color: "#6B7280" },
-    { id: "events", name: "Events", color: "#10B981" },
-    { id: "projects", name: "Projects", color: "#3B82F6" },
-    { id: "robots", name: "Robots", color: "#EF4444" },
-    { id: "students", name: "Students", color: "#F59E0B" },
-    { id: "training", name: "Training", color: "#8B5CF6" }
+    { id: "all", name: t("all"), color: "#6B7280" },
+    { id: "events", name: t("aboutCategoryEvents"), color: "#10B981" },
+    { id: "projects", name: t("aboutCategoryProjects"), color: "#3B82F6" },
+    { id: "robots", name: t("aboutCategoryRobots"), color: "#EF4444" },
+    { id: "students", name: t("aboutCategoryStudents"), color: "#F59E0B" },
+    { id: "training", name: t("aboutCategoryTraining"), color: "#8B5CF6" }
   ]
+
+  const aboutPhotosWaitingText = t("aboutPhotosWaiting").replace("{count}", String(galleryImages.length))
 
   useEffect(() => {
     // Animate Year
@@ -839,15 +893,15 @@ export default function AboutPage() {
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}
               >
-                About Us
+                {t("aboutUs")}
               </div>
 
               <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} mb-6 sm:mb-8 font-subheading font-light leading-tight animate-in slide-in-from-bottom-4 delay-200 transition-colors duration-500 px-2`}>
-                Bridging Technology & Intelligence for a Smarter Tomorrow – A Leading Robotics Company in India
+                {t("aboutHeroHeading")}
               </h1>
 
               <p className={`text-sm sm:text-base md:text-lg lg:text-xl ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} leading-relaxed max-w-4xl mx-auto mb-3 sm:mb-12 animate-in slide-in-from-bottom-4 delay-400 transition-colors duration-500 px-2`}>
-                We revolutionize education by combining advanced robotics, AI,hands-on learning and <a  href="/School" className="text-green-500">  STREAM Education  </a>  to prepare students for the challenges of tomorrow. Through innovative STEM programs and intelligent automation, Bidyut is building the foundation for India's technological future, one student at a time. As a top robotics company in India, we empower children to explore, learn, and innovate with confidence.
+                {renderAboutHeroDescription()}
               </p>
 
 
@@ -860,18 +914,14 @@ export default function AboutPage() {
                       <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
                         {animatedYear}
                       </div>
-                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                        Current Year
-                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>{t("aboutCurrentYear")}</div>
                     </div>
 
                     <div className="text-center">
                       <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
                         {animatedClients}+
                       </div>
-                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                        Clients Served
-                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>{t("aboutClientsServed")}</div>
                     </div>
                   </div>
 
@@ -881,9 +931,7 @@ export default function AboutPage() {
                       <div className={`text-3xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-1 transition-colors duration-500`}>
                         {animatedHappyClients}+
                       </div>
-                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>
-                        Happy Clients
-                      </div>
+                      <div className={`text-sm ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500 mb-0`}>{t("happyClients")}</div>
                     </div>
                   </div>
                 </div>
@@ -894,27 +942,21 @@ export default function AboutPage() {
                     <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
                       {animatedYear}
                     </div>
-                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                      Current Year
-                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>{t("aboutCurrentYear")}</div>
                   </div>
 
                   <div className="text-center">
                     <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
                       {animatedClients}+
                     </div>
-                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                      Clients Served
-                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>{t("aboutClientsServed")}</div>
                   </div>
 
                   <div className="text-center">
                     <div className={`text-4xl md:text-5xl lg:text-6xl font-heading font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2 transition-colors duration-500`}>
                       {animatedHappyClients}+
                     </div>
-                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>
-                      Happy Clients
-                    </div>
+                    <div className={`text-base md:text-lg ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-500`}>{t("happyClients")}</div>
                   </div>
                 </div>
               </div>
@@ -953,7 +995,7 @@ export default function AboutPage() {
               muted
               autoPlay
               playsInline
-              aria-label="Video player"
+              aria-label={t("aboutVideoPlayer")}
               className="w-full h-full object-contain transition-all duration-500 ease-out bg-black rounded-2xl"
               style={{
                 width: '100%',
@@ -974,7 +1016,7 @@ export default function AboutPage() {
               }}
             >
               <source src={videoSources[activeTab]} type="video/mp4" />
-              Your browser does not support the video tag.
+              {t("videoFallback")}
             </video>
 
             {/* Unique video tab buttons with animated indicator */}
@@ -992,7 +1034,7 @@ export default function AboutPage() {
                     }`}
                   style={{ animationDelay: '1s' }}
                 >
-                  <span className="inline">Who We Are</span>
+                  <span className="inline">{t("aboutWhoWeAre")}</span>
                 </button>
                 <button
                   ref={whereWeAreBtnRef}
@@ -1006,7 +1048,7 @@ export default function AboutPage() {
                     }`}
                   style={{ animationDelay: '2s' }}
                 >
-                  <span className="inline">Where We Are</span>
+                  <span className="inline">{t("aboutWhereWeAre")}</span>
                 </button>
               </div>
               <div className="w-full flex justify-center pb-1 sm:pb-2 md:pb-3">
@@ -1022,7 +1064,7 @@ export default function AboutPage() {
                     }`}
                   style={{ animationDelay: '0s' }}
                 >
-                  <span className="inline">What We Do</span>
+                  <span className="inline">{t("aboutWhatWeDo")}</span>
                 </button>
               </div>
             </div>
@@ -1041,13 +1083,13 @@ export default function AboutPage() {
               <h2 className={`font-heading font-bold leading-tight tracking-tight ${isDarkTheme ? 'text-white' : 'text-black'} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-4 drop-shadow-lg`}>
                 {/* Mobile only: 3 lines */}
                 <span className="block md:hidden">
-                  <span className="block">Bidyut Focuses on Educating Students to act with</span>
-                  <span className="block">Integrity in an increasingly digital world</span>
+                  <span className="block">{aboutHeadingLine1}</span>
+                  <span className="block">{t("digitalWorld")}</span>
                 </span>
 
                 {/* Tablet and Desktop: 2 professional lines */}
                 <span className="hidden md:block">
-                  <h2 className="block">Bidyut Focuses on Educating Students to act with Integrity in an increasingly digital world</h2>
+                  <h2 className="block">{aboutHeadingFull}</h2>
                 </span>
               </h2>
             </div>
@@ -1055,7 +1097,7 @@ export default function AboutPage() {
             {/* Description Text */}
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed px-4`}>
-               Bidyut's imperative is to bring the future of education to you on a mission to uplift the education system of India by providing the world's most advanced robotic and technological education, integrated with STREAM Education, to the children of our country. As a leading  robotics company in India, we strive to make technology accessible to every student.
+                {t("aboutDescription")}
 
               </p>
             </div>
@@ -1071,10 +1113,10 @@ export default function AboutPage() {
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                     }}
                   >
-                    Our Vision
+                    {t("ourVision")}
                   </h2>
                   <p className={`text-base sm:text-lg leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
-                    To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences.
+                    {t("visionStatement")}
                   </p>
                 </div>
 
@@ -1091,7 +1133,7 @@ export default function AboutPage() {
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
                     <img
                       src="/vision.webp"
-                      alt="Our Vision"
+                      alt={t("ourVision")}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -1110,10 +1152,10 @@ export default function AboutPage() {
                       backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                     }}
                   >
-                    Our Mission
+                    {t("ourMission")}
                   </h2>
                   <p className={`text-base sm:text-lg leading-relaxed ${isDarkTheme ? 'text-gray-400' : 'text-gray-600'}`}>
-                    To create the most Compelling Education Company of the 21st century by driving the students towards Conceptual, Technological & Fun based Learning.
+                    {t("missionStatement")}
                   </p>
                 </div>
 
@@ -1130,7 +1172,7 @@ export default function AboutPage() {
                   <div className={`w-full aspect-[4/3] overflow-hidden rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'}`}>
                     <img
                       src="/mission.webp"
-                      alt="Our Mission"
+                      alt={t("ourMission")}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -1150,7 +1192,7 @@ export default function AboutPage() {
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
               }}
             >
-              Our Journey
+              {t("aboutJourney")}
             </h2>
             <h3
               className="text-xl sm:text-2xl md:text-3xl font-subheading font-semibold leading-tight text-transparent bg-clip-text mb-1 sm:mb-3"
@@ -1158,10 +1200,10 @@ export default function AboutPage() {
                 backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
               }}
             >
-              DRIVEN BY PURPOSE, GUIDED BY INNOVATION
+              {t("aboutJourneySubtitle")}
             </h3>
             <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-700'} text-base sm:text-lg max-w-4xl mx-auto leading-relaxed transition-colors duration-500 px-4`}>
-              Pioneering the Future of Energy - From vision to reality, we have redefined the energy landscape through relentless innovation and steadfast commitment. With each leap forward, we’ve pushed the limits of what energy can do—creating sustainable progress and inspiring change across the globe.
+              {t("aboutJourneyDescription")}
             </p>
           </div>
 
@@ -1178,7 +1220,7 @@ export default function AboutPage() {
                     className={`w-full h-full rounded transition-colors duration-500 object-contain`}
                   >
                     <source src={getVideoForYear(currentItem.year)} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    {t("videoFallback")}
                   </video>
                 </div>
               </div>
@@ -1201,7 +1243,7 @@ export default function AboutPage() {
                 onClick={goToPrevious}
                 disabled={isTransitioning || currentIndex === 0}
                 className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
-                aria-label="Previous year"
+                aria-label={t("aboutPreviousYear")}
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </button>
@@ -1217,7 +1259,7 @@ export default function AboutPage() {
                 onClick={goToNext}
                 disabled={isTransitioning || currentIndex === timelineData.length - 1}
                 className={`p-2 sm:p-3 rounded-full border ${isDarkTheme ? 'border-white/20 hover:border-white/40 text-white' : 'border-black/20 hover:border-black/40 text-black'} transition-all duration-200 hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100`}
-                aria-label="Next year"
+                aria-label={t("aboutNextYear")}
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </button>
@@ -1336,10 +1378,10 @@ export default function AboutPage() {
                   backgroundImage: "linear-gradient(180deg, #000000 0%, #333333 20%, #808080 50%, #C0C0C0 80%, #E8E8E8 100%)"
                 }}
               >
-                Gallery
+                {t("gallery")}
               </h2>
               <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed transition-colors duration-500 mb-1 sm:mb-2 md:mb-4 px-0 sm:px-2`}>
-                Explore our journey through these captivating moments of innovation and learning
+                {t("exploreJourneyText")}
               </p>
 
               {/* Category Filter Buttons - Show only on desktop or after exploring on mobile */}
@@ -1432,10 +1474,10 @@ export default function AboutPage() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    Tap to explore full gallery
+                    {t("aboutTapToExplore")}
                   </button>
                   <p className="text-gray-500 text-xs mt-0.5">
-                    {galleryImages.length} photos waiting to be discovered
+                    {aboutPhotosWaitingText}
                   </p>
                 </div>
               </div>
@@ -1445,7 +1487,7 @@ export default function AboutPage() {
               <div className="flex justify-center items-center min-h-[60vh]">
                 <div className="text-center">
                   <div className={`w-80 h-96 rounded-lg ${isDarkTheme ? 'bg-gray-800' : 'bg-gray-200'} flex items-center justify-center transition-colors duration-500`}>
-                    <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg transition-colors duration-500`}>Scroll down to enter gallery</p>
+                    <p className={`${isDarkTheme ? 'text-gray-400' : 'text-gray-600'} text-lg transition-colors duration-500`}>{t("aboutScrollToEnterGallery")}</p>
                   </div>
                 </div>
               </div>
@@ -1575,6 +1617,7 @@ export default function AboutPage() {
                   {/* Close button - Visible and well positioned */}
                   <button
                     onClick={() => setSelectedImage(null)}
+                    aria-label={t("aboutCloseImage")}
                     className="absolute top-4 right-4 z-30 w-12 h-12 rounded-full bg-black/80 text-white hover:bg-black transition-all duration-200 flex items-center justify-center text-2xl font-light shadow-lg backdrop-blur-sm"
                   >
                     ×
@@ -1613,7 +1656,7 @@ export default function AboutPage() {
                       disabled={isImageTransitioning}
                       className={`absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                         }`}
-                      aria-label="Previous image"
+                      aria-label={t("aboutPreviousImage")}
                     >
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -1631,7 +1674,7 @@ export default function AboutPage() {
                       disabled={isImageTransitioning}
                       className={`absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/80 text-white hover:bg-black active:bg-black transition-all duration-200 flex items-center justify-center shadow-lg backdrop-blur-sm hover:scale-110 active:scale-100 ${isImageTransitioning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                         }`}
-                      aria-label="Next image"
+                      aria-label={t("aboutNextImage")}
                     >
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -1675,39 +1718,10 @@ export default function AboutPage() {
   return (
     <div className={`${isDarkTheme ? 'bg-black' : 'bg-white'} min-h-[600vh] transition-colors duration-500`} style={{ scrollBehavior: "smooth" }}>
       <SEO
-        title="Bidyut Innovation – Leading Robotics Company in India."
-        description="Bidyut, a top robotics company in India, empowers students with hands-on learning, STREAM education, AI, and robotics programs to build future-ready skills."
+        title={t("aboutSeoTitle")}
+        description={t("aboutSeoDescription")}
         canonical="https://bidyutinnovation.com/about"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Bidyut Innovation",
-          "url": "https://bidyutinnovation.com/About",
-          "logo": "https://bidyutinnovation.com/bidyut_logo_green%201.svg",
-          "sameAs": [
-            "https://www.instagram.com/bidyutinnovation?igsh=ZGIzZnRodjVpdHR5",
-            "https://www.linkedin.com/company/bidyutinnovation/"
-          ],
-          "description": "Bidyut Innovation is a leading EdTech company in India, revolutionizing education through robotics, AI, and hands-on STEM learning. We empower students with future-ready skills and provide advanced robotics solutions for schools, research, and industry.",
-          "foundingDate": "2021",
-          "awards": [
-            "National Robotics Innovation Award (2023) – Recognized for outstanding contributions to STREAM education and robotics innovation.",
-            "Global Youth Empowerment Recognition (2021) – Pioneering technology education for underserved communities.",
-            "EdTech Excellence Certificate (2022) – Top-rated educational technology provider in India."
-          ],
-          "additionalProperty": [
-            {
-              "@type": "PropertyValue",
-              "name": "mission",
-              "value": "To create the most compelling education company of the 21st century by driving students towards conceptual, technological, and fun-based learning."
-            },
-            {
-              "@type": "PropertyValue",
-              "name": "vision",
-              "value": "To prepare every child for a technological and challenging world ahead by fostering innovation through personalized learning experiences."
-            }
-          ]
-        }}
+        schema={aboutSeoSchema}
       />
       <Header />
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden px-4">
@@ -1757,3 +1771,9 @@ export default function AboutPage() {
     </div>
   )
 }
+
+
+
+
+
+

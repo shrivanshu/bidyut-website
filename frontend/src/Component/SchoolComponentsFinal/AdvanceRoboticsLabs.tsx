@@ -1,10 +1,12 @@
-"use client"
+﻿"use client"
 
 // import { ArrowRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 export default function AdvanceRoboticsLabs() {
+  const { t } = useLanguage();
   const [selectedIndex, setSelectedIndex] = useState(0)
   const mobileScrollRef = useRef<HTMLDivElement>(null)
   const mainScrollRef = useRef<HTMLDivElement>(null)
@@ -12,50 +14,50 @@ export default function AdvanceRoboticsLabs() {
   const roboticsData = [
     {
       src: "/school_images/project/Copy of DSC03498.webp",
-      alt: "Schools Transforming with Robotics",
-      title: "See How Schools Are Transforming with Robotics",
-      subtitle: "Bottling Plant",
-      description: "Our student-built functional bottling plant, created using our components, brings engineering and robotics to life. Students turn ideas into working systems, learning problem-solving, automation, and innovation along the way.",
+      alt: t("schoolAdvanced1Alt"),
+      title: t("schoolAdvanced1Title"),
+      subtitle: t("schoolAdvanced1Subtitle"),
+      description: t("schoolAdvanced1Description"),
       features: ["Smart Robotics Labs", "Interactive Learning Spaces", "Innovation-Driven Curriculum"]
     },
     {
       src: "/school_images/project/Copy of fce7c3fb-d89a-42f7-b574-6882a3960378.webp",
-      alt: "Teacher Training and Support",
-      title: "Empower Teachers, Inspire Students",
-      subtitle: "AI Color Sorter ",
-      description: "Using the magic of computer vision, this smart shooter automatically identifies and sorts objects by color. It’s a brilliant demonstration of how AI can bring speed and accuracy to simple, everyday tasks.",
+      alt: t("schoolAdvanced2Alt"),
+      title: t("schoolAdvanced2Title"),
+      subtitle: t("schoolAdvanced2Subtitle"),
+      description: t("schoolAdvanced2Description"),
       features: ["Comprehensive Training Programs", "Lesson Plans & Resources", "Continuous Support & Guidance"]
     },
     {
       src: "/school_images/project/Copy of f0f7f6ab-01b4-402b-96bc-8f9ac6fa8dfa.webp",
-      alt: "Building Future-Ready Skills",
-      title: "Building Future Ready Skills",
-      subtitle: "Robotic Arm",
-      description: "Powered by a micro:bit brain and precision gears, this arm responds to its environment. It’s a hands-on showcase of robotics, coding, and real-world problem-solving brought to life.",
+      alt: t("schoolAdvanced3Alt"),
+      title: t("schoolAdvanced3Title"),
+      subtitle: t("schoolAdvanced3Subtitle"),
+      description: t("schoolAdvanced3Description"),
       features: ["Robotics & AI Education", "Drone Technology", "Global Competition Preparation"]
     },
     {
       src: "/school_images/project/Copy of 1204RR_M12 - Edited.webp",
-      alt: "Advanced Robotics Project",
-      title: "Hands On Robotics Projects",
-      subtitle: "Cuckoo clock",
-      description: "Encounter. Watch as this clever clock senses your presence with an IR sensor. The door swings open, and the cuckoo emerges, creating a delightful surprise that blends tradition with technology.",
+      alt: t("schoolAdvanced4Alt"),
+      title: t("schoolAdvanced4Title"),
+      subtitle: t("schoolAdvanced4Subtitle"),
+      description: t("schoolAdvanced4Description"),
       features: ["Project-Based Learning", "Real-World Applications", "Advanced Robotics Tools"]
     },
     {
       src: "/school_images/project/Copy of ai.webp",
-      alt: "AI Learning Session",
-      title: "AI & Machine Learning Labs",
-      subtitle: "AI Dancing Robot",
-      description: "This project showcases the integration of computer vision and robotics. AI robot identifies human presence. Upon recognition, it triggers a dynamic sequence of pre-programmed dance moves, creating an interactive experience that demonstrates how machines can perceive and respond to their environment.",
+      alt: t("schoolAdvanced5Alt"),
+      title: t("schoolAdvanced5Title"),
+      subtitle: t("schoolAdvanced5Subtitle"),
+      description: t("schoolAdvanced5Description"),
       features: ["AI Programming", "Machine Learning Models", "Computer Vision Projects"]
     },
     {
       src: "/school_images/project/Copy of DSC05157 - Edited.webp",
-      alt: "STEM Workshop",
-      title: "STEM Innovation Workshops",
-      subtitle: "Hydraulic Pump",
-      description: "Harness the Power of Pressure. This hydraulic timer uses the force of water to measure intervals. By pressing the pump, you control the flow of time itself, demonstrating fundamental principles of physics in a hands-on way.",
+      alt: t("schoolAdvanced6Alt"),
+      title: t("schoolAdvanced6Title"),
+      subtitle: t("schoolAdvanced6Subtitle"),
+      description: t("schoolAdvanced6Description"),
       features: ["Interdisciplinary Learning", "Creative Problem Solving", "Innovation Challenges"]
     }
   ]
@@ -260,3 +262,4 @@ export default function AdvanceRoboticsLabs() {
     </div>
   )
 }
+

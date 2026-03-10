@@ -1,6 +1,8 @@
 import { AnimatedText, StaggeredText } from "../animations/TextAnimations";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 export function AboutSchool() {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -23,7 +25,7 @@ export function AboutSchool() {
         >
           <h2 className="text-4xl md:text-6xl lg:text-6xl font-heading font-bold text-white mb-6 text-balance">
             <StaggeredText 
-              text="Empowering Schools to Build the Future"
+              text={t("schoolAboutHeading")}
               staggerDelay={0.08}
               direction="up"
               splitBy="words"
@@ -38,7 +40,7 @@ export function AboutSchool() {
         >
           <p className="text-lg md:text-xl lg:text-2xl font-body mt-16 text-white/90 mb-8 max-w-4xl mx-auto text-pretty leading-relaxed">
             <StaggeredText 
-              text="We help students and teachers unlock creativity, innovation, and hands-on learning through robotics, AI, and STREAM education including robotics courses and coding at schools."
+              text={t("schoolAboutDescription")}
               staggerDelay={0.03}
               direction="fade"
               splitBy="words"
