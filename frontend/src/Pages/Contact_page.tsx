@@ -151,10 +151,9 @@ export default function ContactPage() {
                   </motion.div>
                 )}
 
-                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>Contact Us</h2>
+                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>{t("contactUs")}</h2>
                 <p className={`${subTextColor} mb-10`}>
-                  Let’s power up your innovation journey together. From idea to
-                  innovation — Bidyut makes it happen.
+                  {t("contactPageSubtitle")}
                 </p>
 
                 <form 

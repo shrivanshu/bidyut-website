@@ -256,6 +256,17 @@ export const te = {
   // Contact Page
   meetOurTeam: 'మా అద్భుతమైన టీమ్‌ను కలుసుకోండి',
   contactHeroDescription: 'మీ నవాచార ప్రయాణానికి కలిసి శక్తిని అందించండి. ఆలోచన నుండి నవాచారం వరకు — బిద్యుత్ దీన్ని సాధ్యం చేస్తుంది.',
+  contactUs: 'మమ్మల్ని సంప్రదించండి',
+  contactPageSubtitle: 'మనమందరం కలిసి మీ నవాత్మక ప్రయాణానికి శక్తినిచ్చేద్దాం. ఆలోచన నుంచి ఆవిష్కరణ వరకు — బిద్యుత్ సాధ్యమ చేస్తుంది.',
+  yourNameLabel: 'మీ పేరు',
+  yourEmailLabel: 'మీ ఇమెయిల్',
+  yourMessageLabel: 'మీ సందేశం',
+  sendMessageButton: 'సందేశం పంపండి',
+  ourStudio: 'మా స్టూడియో',
+  studioDescription: 'ఆవిష్కరణను సాంకేతికతతో కలిపి అసాధారణ పరిష్కారాలను సృష్టిస్తాము.',
+  addressLabel: 'చిరునామా',
+  businessHoursLabel: 'పని సమయాలు',
+  businessHoursTime: 'సోమ - శుక్ర: ఉదయం 9:00 - సాయంత్రం 6:00\nశని - ఆది: ఉదయం 10:00 - మధ్యాహ్నం 4:00',
   
   // About Page  
   visionIgnited: 'దృష్టి మండింది',

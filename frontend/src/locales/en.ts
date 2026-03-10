@@ -240,6 +240,8 @@ export const en = {
   
   // Contact Page
   meetOurTeam: 'Meet Our Amazing Team',
+  contactUs: 'Contact Us',
+  contactPageSubtitle: "Let's power up your innovation journey together. From idea to innovation — Bidyut makes it happen.",
   contactHeroDescription: "Let's power up your innovation journey together. From idea to innovation — Bidyut makes it happen.",
   yourNameLabel: 'Your Name',
   yourEmailLabel: 'Your Email',
@@ -411,6 +413,20 @@ export const en = {
   schoolScrollerItem10: 'Community Service',
   schoolScrollerItem11: 'Sports & Wellness',
   schoolScrollerItem12: 'Future Careers',
+
+  // Blog Page
+  blogPageTitle: 'Blog | Bidyut Innovation',
+  blogPageDescription: 'Insights and updates from Bidyut Innovation',
+  ourRecentPost: 'Our Recent Post',
+  readMore: 'Read More',
+  readMoreArrow: 'Read More →',
+  education: 'education',
+  sampleBlogTitle: 'Sample Blog Title',
+  sampleExcerpt: 'Sample excerpt. Replace this text and image with your own content.',
+  roboticsLabsTransformTitle: 'The Role of Robotics Labs in Transforming STREAM Education in Schools',
+  roboticsLabsTransformExcerpt: "The way we learn is changing fast in the 21st century. The old ways of teaching are not good enough to get students ready for a world that's all about technology.",
+  roboticsInteractiveTitle: 'How Robotics is Making Learning Fun and Interactive in Schools',
+  roboticsInteractiveExcerpt: 'Education is rapidly evolving, and traditional teaching methods are no longer enough to keep students fully engaged in the classroom. Today\'s learners are curious, tech-savvy, and eager to explore.',
 };
 
 

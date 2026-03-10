@@ -255,7 +255,18 @@ export const gu = {
   
   // Contact Page
   meetOurTeam: 'અમારી અદ્ભુત ટીમને મળો',
+  contactUs: 'અમારો સંપર્ક કરો',
+  contactPageSubtitle: 'ચાલો એકસાથે તમારી નવીનતાની યાત્રાને શક્તિ આપીએ. વિચારથી નવીનતા સુધી — બિદ્યુત તેને શક્ય બનાવે છે.',
   contactHeroDescription: 'ચાલો એકસાથે તમારી નવીનતાની યાત્રાને શક્તિ આપીએ. વિચારથી નવીનતા સુધી — બિદ્યુત તેને શક્ય બનાવે છે.',
+  yourNameLabel: 'તમારું નામ',
+  yourEmailLabel: 'તમારું ઇમેઇલ',
+  yourMessageLabel: 'તમારો સંદેશ',
+  sendMessageButton: 'સંદેશ મોકલો',
+  ourStudio: 'અમારું સ્ટુડિયો',
+  studioDescription: 'નવત્ય અને ટેકનોલોજીને જોડીને અદભૂત ઉકેલો બનાવીએ છીએ.',
+  addressLabel: 'સરનામું',
+  businessHoursLabel: 'કાર્ય સમય',
+  businessHoursTime: 'સોમ - શુક્ર: સવારે 9:00 - સાંજે 6:00\nશનિ - રવિ: સવારે 10:00 - બપોરે 4:00',
   
   // About Page  
   visionIgnited: 'દ્રષ્ટિ પ્રકાશિત',

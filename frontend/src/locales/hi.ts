@@ -256,6 +256,8 @@ export const hi = {
   
   // Contact Page
   meetOurTeam: 'हमारी अद्भुत टीम से मिलें',
+  contactUs: 'हमसे संपर्क करें',
+  contactPageSubtitle: 'आइए आपकी नवाचार यात्रा को एक साथ शक्ति प्रदान करें। विचार से नवाचार तक — बिद्युत इसे संभव बनाता है।',
   contactHeroDescription: 'आइए आपकी नवाचार यात्रा को एक साथ शक्ति प्रदान करें। विचार से नवाचार तक — बिद्युत इसे संभव बनाता है।',
   yourNameLabel: 'आपका नाम',
   yourEmailLabel: 'आपका ईमेल',

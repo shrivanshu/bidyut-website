@@ -255,7 +255,20 @@ export const mr = {
   
   // Contact Page
   meetOurTeam: 'आमच्या अप्रतिम टीमला भेटा',
-  contactHeroDescription: 'चला एकत्र तुमच्या नवोन्मेषाच्या प्रवासाला शक्ती देऊ. कल्पनेपासून नवोन्मेषापर्यंत — बिद्युत हे शक्य करते.',
+  contactUs: 'आमच्याशी संपर्क करा',
+  contactHeroDescription: 'चला एकत्र तुमच्या नवकल्पना प्रवासाला गती देऊया. कल्पनेपासून नवकल्पनापर्यंत — बिद्युत ते घडवून आणते.',
+  contactPageSubtitle: 'चला एकत्र तुमच्या नवकल्पना प्रवासाला गती देऊया. कल्पनेपासून नवकल्पनापर्यंत — बिद्युत ते घडवून आणते.',
+  yourNameLabel: 'तुमचे पूर्ण नाव',
+  yourEmailLabel: 'आम्ही तुम्हाला येथे परत संपर्क करू',
+  yourMessageLabel: 'आम्ही कशी मदत करू शकतो ते सांगा',
+  sendMessageButton: 'संदेश पाठवा',
+  ourStudio: 'आमचा स्टुडिओ',
+  studioDescription: 'नवकल्पना आणि तंत्रज्ञान जोडून असाधारण उपाय तयार करणे.',
+  addressLabel: 'पत्ता',
+  phoneLabel: 'फोन',
+  emailLabel: 'ईमेल',
+  businessHoursLabel: 'कार्य वेळा',
+  businessHoursTime: 'सोम - शुक्र: सकाळ 9:00 - संध्याकाळ 6:00\nशनि - रवि: सकाळ 10:00 - दुपार 4:00',
   
   // About Page  
   visionIgnited: 'दृष्टी प्रज्वलित',

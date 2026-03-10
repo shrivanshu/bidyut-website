@@ -240,10 +240,21 @@ export const ru = {
   schoolsTransformed: '30+ школ',
   exploreProgram: 'Исследуйте программу',
   partnerWithUs: 'Стать нашим партнером',
-  
+
   // Contact Page
   meetOurTeam: 'Познакомьтесь с нашей замечательной командой',
+  contactUs: 'Свяжитесь с нами',
+  contactPageSubtitle: 'Давайте вместе зарядим ваше инновационное путешествие. От идеи до реализации — Bidyut сделает это.',
   contactHeroDescription: 'Давайте вместе зарядим энергией ваше инновационное путешествие. От идеи до инновации — Bidyut делает это возможным.',
+  yourNameLabel: 'Ваше имя',
+  yourEmailLabel: 'Ваш email',
+  yourMessageLabel: 'Ваше сообщение',
+  sendMessageButton: 'Отправить сообщение',
+  ourStudio: 'Наш офис',
+  studioDescription: 'Соединяем инновации и технологии, создавая выдающиеся решения.',
+  addressLabel: 'Адрес',
+  businessHoursLabel: 'Часы работы',
+  businessHoursTime: 'Пн - Пт: 9:00 - 18:00\nСб - Вс: 10:00 - 16:00',
   
   // About Page  
   visionIgnited: 'Зажженное видение',

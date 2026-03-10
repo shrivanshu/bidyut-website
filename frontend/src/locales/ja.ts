@@ -243,7 +243,18 @@ export const ja = {
   
   // Contact Page
   meetOurTeam: '私たちの素晴らしいチームに会う',
+  contactUs: 'お問い合わせ',
+  contactPageSubtitle: '一緒にあなたのイノベーションの旅に力を与えましょう。アイデアからイノベーションまで — Bidyutがそれを可能にします。',
   contactHeroDescription: '一緒にあなたのイノベーションの旅に力を与えましょう。アイデアからイノベーションまで — Bidyutがそれを可能にします。',
+  yourNameLabel: 'お名前',
+  yourEmailLabel: 'メールアドレス',
+  yourMessageLabel: 'メッセージ',
+  sendMessageButton: '送信',
+  ourStudio: '私たちのスタジオ',
+  studioDescription: '革新とテクノロジーをつなぎ、卓越したソリューションを生み出します。',
+  addressLabel: '住所',
+  businessHoursLabel: '営業時間',
+  businessHoursTime: '月〜金: 9:00 - 18:00\n土〜日: 10:00 - 16:00',
   
   // About Page  
   visionIgnited: 'ビジョン点火',

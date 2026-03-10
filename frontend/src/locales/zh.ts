@@ -240,10 +240,21 @@ export const zh = {
   schoolsTransformed: '30多所学校',
   exploreProgram: '探索计划',
   partnerWithUs: '与我们合作',
-  
+
   // Contact Page
   meetOurTeam: '认识我们的精彩团队',
+  contactUs: '联系我们',
+  contactPageSubtitle: '让我们一起为您的创新之旅注入动力。从想法到创新 — Bidyut 让这一切发生。',
   contactHeroDescription: '让我们一起为您的创新之旅注入活力。从想法到创新 — Bidyut 让它成为可能。',
+  yourNameLabel: '您的姓名',
+  yourEmailLabel: '您的邮箱',
+  yourMessageLabel: '您的留言',
+  sendMessageButton: '发送留言',
+  ourStudio: '我们的工作室',
+  studioDescription: '连接创新与技术，创造非凡解决方案。',
+  addressLabel: '地址',
+  businessHoursLabel: '营业时间',
+  businessHoursTime: '周一至周五：9:00 - 18:00\n周六至周日：10:00 - 16:00',
   
   // About Page  
   visionIgnited: '点燃愿景',

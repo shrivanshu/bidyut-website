@@ -254,6 +254,8 @@ export const bn = {
   
   // Contact Page
   meetOurTeam: 'আমাদের অসাধারণ টিমের সাথে দেখা করুন',
+  contactUs: 'যোগাযোগ করুন',
+  contactPageSubtitle: 'চলুন একসাথে আপনার উদ্ভাবনের যাত্রাকে শক্তি দিই। ধারণা থেকে উদ্ভাবন পর্যন্ত — Bidyut তা সম্ভব করে।',
   contactHeroDescription: 'আসুন একসাথে আপনার উদ্ভাবনের যাত্রাকে শক্তি দিই। ধারণা থেকে উদ্ভাবন পর্যন্ত, Bidyut তা বাস্তবে রূপ দেয়।',
   yourNameLabel: 'আপনার নাম',
   yourEmailLabel: 'আপনার ইমেল',

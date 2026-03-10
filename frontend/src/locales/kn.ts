@@ -244,6 +244,17 @@ export const kn = {
   // Contact Page
   meetOurTeam: 'ನಮ್ಮ ಅದ್ಭುತ ತಂಡವನ್ನು ಭೇಟಿಯಾಗಿ',
   contactHeroDescription: 'ನಿಮ್ಮ ನಾವೀನ್ಯತೆಯ ಪ್ರಯಾಣಕ್ಕೆ ಒಟ್ಟಾಗಿ ಶಕ್ತಿ ನೀಡೋಣ. ಕಲ್ಪನೆಯಿಂದ ನಾವೀನ್ಯತೆಯವರೆಗೆ — ಬಿದ್ಯುತ್ ಅದನ್ನು ಸಾಧ್ಯವಾಗಿಸುತ್ತದೆ.',
+  contactUs: 'ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ',
+  contactPageSubtitle: 'ನಾವು ಸೇರಿ ನಿಮ್ಮ ನಾವೀನ್ಯ ಯಾತ್ರೆಗೆ ಶಕ್ತಿ ನೀಡೋಣ. ಕಲ್ಪನೆಯಿಂದ ಆವಿಷ್ಕಾರವರೆಗೆ — ಬಿಡ್ಯುಟ್ ಅದನ್ನು ಸಾಧ್ಯವಾಗಿಸುತ್ತದೆ.',
+  yourNameLabel: 'ನಿಮ್ಮ ಹೆಸರು',
+  yourEmailLabel: 'ನಿಮ್ಮ ಇಮೇಲ್',
+  yourMessageLabel: 'ನಿಮ್ಮ ಸಂದೇಶ',
+  sendMessageButton: 'ಸಂದೇಶ ಕಳುಹಿಸಿ',
+  ourStudio: 'ನಮ್ಮ ಸ್ಟುಡಿಯೋ',
+  studioDescription: 'ನವೀನತೆ ಮತ್ತು ತಂತ್ರಜ್ಞಾನವನ್ನು ಸಂಪರ್ಕಿಸಿ ವಿಶಿಷ್ಟ ಪರಿಹಾರಗಳನ್ನು ಸೃಷ್ಟಿಸುತ್ತೇವೆ.',
+  addressLabel: 'ವಿಳಾಸ',
+  businessHoursLabel: 'ಕಾರ್ಯ ಸಮಯ',
+  businessHoursTime: 'ಸೋಮ - ಶುಕ್ರ: ಬೆಳಿಗ್ಗೆ 9:00 - ಸಂಜೆ 6:00\nಶನಿ - ಭಾನು: ಬೆಳಿಗ್ಗೆ 10:00 - ಮಧ್ಯಾಹ್ನ 4:00',
   
   // About Page  
   visionIgnited: 'ದೃಷ್ಟಿ ಪ್ರಜ್ವಲಿತ',
