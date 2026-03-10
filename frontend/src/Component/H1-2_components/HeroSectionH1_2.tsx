@@ -1,9 +1,11 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest'
 import React from 'react'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 const HeroSectionH1_2 = () => {
   // Detect md and up screens
   const [isMd, setIsMd] = React.useState(false)
+  const { t } = useLanguage()
   React.useEffect(() => {
     const checkScreen = () => setIsMd(window.innerWidth >= 768)
     checkScreen()
@@ -25,23 +27,23 @@ const HeroSectionH1_2 = () => {
             {/* Left part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-start'>
               <span className='text-xl sm:text-3xl md:text-[55px] font-heading font-semibold text-black dark:text-white drop-shadow-sm cursor-target'>
-                Let's
+                {t('h1HeroLets')}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-heading font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Innovate
+                {t('h1HeroInnovate')}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Learn
+                {t('h1HeroLearn')}
               </span>
             </div>
 
             {/* Right part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-end'>
               <span className='text-xl sm:text-3xl md:text-[55px] font-heading font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Beyond
+                {t('h1HeroBeyond')}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-heading font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Boundaries
+                {t('h1HeroBoundaries')}
               </span>
             </div>
           </div>
@@ -59,15 +61,10 @@ const HeroSectionH1_2 = () => {
         {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
           <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
-            Unitree H1-2 Advanced Humanoid Robot
+            {t('h12HeroTitle')}
           </h2>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
-            At Bidyut Innovation, we are pioneering the future of robotics in
-            India. The Unitree H1-2 Robot, a full-size humanoid robot, combines
-            advanced mobility, perception, and human-like motion. Designed for
-            industrial research, AI development, and dynamic automation, this
-            humanoid robot empowers engineers, innovators, and researchers with
-            unmatched performance and agility.
+            {t('h12HeroDescription')}
           </p>
         </div>
 
