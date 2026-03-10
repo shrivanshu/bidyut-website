@@ -8,7 +8,8 @@ import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import GalleryText from '../../Text_Animation/GalleryText'
 export default function AwardWinning() {
   const { isDark } = useTheme()
-  const { t } = useLanguage()
+  const { t, currentLanguage } = useLanguage()
+  const useAnimatedHeading = currentLanguage === 'en'
 
   const [cursorIndex, setCursorIndex] = useState<number | null>(null)
   const falloff = 3
@@ -187,7 +188,14 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12  lg:mb-20">
-          {renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)}
+          {useAnimatedHeading ? (
+            renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)
+          ) : (
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <span className="text-green-500">{t('awardWinning')}</span>{' '}
+              <span className={isDark ? 'text-white' : 'text-gray-900'}>{t('digitalInnovation')}</span>
+            </h1>
+          )}
           <motion.p
             className={`cursor-pointer select-none text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
             initial={{ opacity: 0, y: 20 }}

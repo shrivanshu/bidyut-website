@@ -109,8 +109,8 @@ export default function KnowUsMore() {
           className="text-5xl md:text-7xl font-heading font-bold tracking-tight transition-colors duration-300 mb-6"
         >
           <span className="text-green-400 drop-shadow-lg">{t('knowUsMore').split(' ')[0]} </span>
-          <span className="text-green-500 drop-shadow-lg">{t('knowUsMore').split(' ')[1]} </span>
-          <span className={`${isDark ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>{t('knowUsMore').split(' ')[2]}</span>
+          <span className="text-green-500 drop-shadow-lg">{t('knowUsMore').split(' ')[1] ?? ''} </span>
+          <span className={`${isDark ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>{t('knowUsMore').split(' ')[2] ?? ''}</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}

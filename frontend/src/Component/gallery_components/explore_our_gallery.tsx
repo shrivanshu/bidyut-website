@@ -134,7 +134,8 @@ export default function InteractiveGallery() {
   const dragX = useMotionValue(0)
   const dragY = useMotionValue(0)
   const { isDark } = useTheme();
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
+  const useAnimatedHeading = currentLanguage === 'en';
   // Handle mobile detection and window resize
   useEffect(() => {
     const checkMobile = () => {
@@ -224,18 +225,24 @@ export default function InteractiveGallery() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8">
               <div style={{position: 'relative', height: '100px'}} className="sm:h-[120px] lg:h-[140px]">
-                <GalleryText
-                  text={t('exploreOurGalleryTitle')}
-                  flex={true}
-                  alpha={false}
-                  stroke={false}
-                  width={true}
-                  weight={true}
-                  italic={true}
-                  textColor={isDark ? '#ffffff' : '#222222'}
-                  strokeColor="#ff0000"
-                  minFontSize={20}
-                />
+                {useAnimatedHeading ? (
+                  <GalleryText
+                    text={t('exploreOurGalleryTitle')}
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor={isDark ? '#ffffff' : '#222222'}
+                    strokeColor="#ff0000"
+                    minFontSize={20}
+                  />
+                ) : (
+                  <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-heading font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    {t('exploreOurGalleryTitle')}
+                  </h1>
+                )}
               </div>
 
               <div className={`max-w-md space-y-4 lg:space-y-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -307,18 +314,24 @@ export default function InteractiveGallery() {
             >
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-60 bg-black/50 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-4 border border-white/10 pointer-events-none">
                 <div style={{position: 'relative', height: '40px'}} className="sm:h-[50px]">
-                  <GalleryText
-                    text={t('infiniteGalleryTitle')}
-                    flex={true}
-                    alpha={false}
-                    stroke={false}
-                    width={true}
-                    weight={true}
-                    italic={true}
-                    textColor="#ffffff"
-                    strokeColor="#ff0000"
-                    minFontSize={12}
-                  />
+                  {useAnimatedHeading ? (
+                    <GalleryText
+                      text={t('infiniteGalleryTitle')}
+                      flex={true}
+                      alpha={false}
+                      stroke={false}
+                      width={true}
+                      weight={true}
+                      italic={true}
+                      textColor="#ffffff"
+                      strokeColor="#ff0000"
+                      minFontSize={12}
+                    />
+                  ) : (
+                    <h2 className="text-white text-xl sm:text-2xl font-semibold">
+                      {t('infiniteGalleryTitle')}
+                    </h2>
+                  )}
                 </div>
                 <p className="text-xs sm:text-sm text-zinc-400 mt-1 sm:mt-2 leading-relaxed">
                   {t('infiniteGallerySubtitle')}
