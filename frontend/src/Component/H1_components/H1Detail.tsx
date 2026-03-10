@@ -1,12 +1,14 @@
 
 import React from 'react';
 import robotImgSrc from '/media/H1 - 2.webp'; 
+import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
 interface H1DetailProps {
   onContactClick?: () => void;
 }
 
 const H1Detail: React.FC<H1DetailProps> = ({ onContactClick }) => {
+  const { t } = useLanguage();
   
   return (
     // <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
@@ -27,15 +29,11 @@ const H1Detail: React.FC<H1DetailProps> = ({ onContactClick }) => {
         <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              Ready to revolutionize {' '}
-
-             
-              <span className="text-green-600 dark:text-green-400"> your workplace?</span>
-
-              
+              {t('h1DetailHeading')} <span className="text-green-600 dark:text-green-400">{t('h1DetailHeadingHighlight')}</span>
             </h2>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-Transform operations with our advanced humanoid robot—boost efficiency, improve safety, streamline workflows, and automate complex tasks with ease. </p>
+              {t('h1DetailDescription')}
+            </p>
           </div>
 
           <div className="pt-4">
@@ -43,11 +41,9 @@ Transform operations with our advanced humanoid robot—boost efficiency, improv
               onClick={onContactClick}
               className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold cursor-target px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20"
             >
-              Contact Sales Team
+              {t('h1DetailCta')}
             </button>
           </div>
-
-         
         </div>
       </div>
     </div>

@@ -266,6 +266,27 @@ export const ja = {
   closeGallery: 'ギャラリーを閉じる',
   previousAward: '前の受賞',
   nextAward: '次の受賞',
+
+  // H1 Page
+  h1HeroLets: 'さあ',
+  h1HeroInnovate: 'イノベート',
+  h1HeroLearn: '学ぶ',
+  h1HeroBeyond: '境界を越えて',
+  h1HeroBoundaries: '',
+  h1HeroTitle: '次世代ユニツリー H1 ロボット',
+  h1HeroDescription: 'Bidyut Innovation はインドのロボティクスの未来を形作っています。フルサイズのヒューマノイドである Unitree H1 は、高度なモビリティ、認識、人間らしい動きを提供します。研究者とイノベーターのために設計され、AI 実験、実世界の自動化、ダイナミックなロボティクス開発を強力に支援します。',
+  h1HumanoidDescription: '産業と研究用途のための高性能フルサイズヒューマノイドをラインアップ。各モデルは先進の 3D LiDAR、強力な CPU、高トルク関節を備え、AI 開発や自動化、ダイナミックなロボティクス実験に最適です。',
+  h1DetailHeading: '職場を革新する準備はできていますか',
+  h1DetailHeadingHighlight: '?',
+  h1DetailDescription: '高度なヒューマノイドで業務を変革し、効率を高め、安全性を向上させ、ワークフローを最適化し、複雑なタスクを容易に自動化します。',
+  h1DetailCta: '営業チームに連絡',
+  h1VariantsPlaceholder: 'お好みのバリアントを選択',
+  technicalSpecifications: '技術仕様',
+  orderNow: '今すぐ注文',
+  h1SpecNameh1basic: 'ユニツリー H1',
+  h1SpecDesch1basic: 'ユニツリー H1 は全高約180cm・47kgのフルサイズ汎用ヒューマノイドです。3D LiDAR と Intel RealSense により360°認識を実現し、3.3m/s（潜在的に5m/s超）の速度、864Wh クイックリリースバッテリー、ケーブルレス配線、最大360 N·mの関節トルクを備え、研究・モビリティ・ダイナミック応用に最適です。',
+  h1SpecNameh12basic: 'ユニツリー H1-2',
+  h1SpecDesch12basic: 'ユニツリー H1-2 は全高178cm・約70kg、27自由度のフルサイズヒューマノイド。3D LiDAR + RealSense で360°認識、高トルク関節（脚360 N·m、腕120 N·m）、デュアルエンコーダ、ケーブルレス配線、オプションの巧みなハンドと高演算能力を備え、先進的ロボット応用に最適です。',
   
   // About Page  
   visionIgnited: 'ビジョン点火',

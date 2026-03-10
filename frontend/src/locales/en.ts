@@ -253,6 +253,27 @@ export const en = {
   businessHoursLabel: 'Business Hours',
   businessHoursTime: 'Mon - Fri: 9:00 AM - 6:00 PM\nSat - Sun: 10:00 AM - 4:00 PM',
 
+  // H1 Page
+  h1HeroLets: "Let's",
+  h1HeroInnovate: 'Innovate',
+  h1HeroLearn: 'Learn',
+  h1HeroBeyond: 'Beyond',
+  h1HeroBoundaries: 'Boundaries',
+  h1HeroTitle: 'Next-Gen Unitree H1 Robot',
+  h1HeroDescription: 'At Bidyut Innovation, we are shaping the future of robotics in India. The Unitree H1 Robot, a full-size humanoid robot, offers advanced mobility, perception, and human-like motion. Built for researchers and innovators, it enables AI experiments, real-world automation, and dynamic robotics development with unmatched power and agility.',
+  h1HumanoidDescription: 'Select from a range of high-performance full-size humanoid robots built for industrial and research applications. Each model features advanced 3D LiDAR, powerful CPUs, and high joint torque—ideal for AI development, real-world automation, and dynamic humanoid robotics experiments.',
+  h1DetailHeading: 'Ready to revolutionize',
+  h1DetailHeadingHighlight: 'your workplace?',
+  h1DetailDescription: 'Transform operations with our advanced humanoid robot—boost efficiency, improve safety, streamline workflows, and automate complex tasks with ease.',
+  h1DetailCta: 'Contact Sales Team',
+  h1VariantsPlaceholder: 'Choose your preferred variants',
+  technicalSpecifications: 'Technical Specifications',
+  orderNow: 'Order Now',
+  h1SpecNameh1basic: 'Unitree H1',
+  h1SpecDesch1basic: 'The Unitree H1 Robot is a full-size universal humanoid standing about 180 cm and 47 kg. With 3D LiDAR and Intel RealSense depth sensing it achieves 360° perception. Speeds up to 3.3 m/s (potentially 5 m/s), quick-release 864 Wh battery, hollow wiring, and joint torque up to 360 N·m make it ideal for advanced research, mobility, and dynamic real-world applications.',
+  h1SpecNameh12basic: 'Unitree H1-2',
+  h1SpecDesch12basic: 'The Unitree H1-2 is a full-size humanoid (178 cm, ~70 kg) with 27 DoF, 3D LiDAR + Intel RealSense for 360° perception, high torque joints (legs up to 360 N·m, arms 120 N·m), dual encoders, hollow wiring, optional dexterous hands and higher computing. Designed for powerful, ergonomic performance in advanced robotics applications.',
+
   // Gallery Page
   exploreOurGalleryTitle: 'Explore Our Gallery',
   exploreOurGalleryDescription: 'Discover our architectural vision through an interactive experience. Each image tells a story of innovation, creativity, and thoughtful design.',
