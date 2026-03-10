@@ -255,6 +255,17 @@ export const ja = {
   addressLabel: '住所',
   businessHoursLabel: '営業時間',
   businessHoursTime: '月〜金: 9:00 - 18:00\n土〜日: 10:00 - 16:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'ギャラリーを探検する',
+  exploreOurGalleryDescription: 'インタラクティブ体験を通じて私たちのビジョンをご覧ください。各画像が革新と創造性、緻密なデザインの物語を伝えます。',
+  exploreGalleryCTA: 'ギャラリーを見る',
+  viewGalleryButton: '• ギャラリーを表示',
+  infiniteGalleryTitle: '無限ギャラリー',
+  infiniteGallerySubtitle: 'ドラッグして閲覧 • シームレスに広がる無限空間',
+  closeGallery: 'ギャラリーを閉じる',
+  previousAward: '前の受賞',
+  nextAward: '次の受賞',
   
   // About Page  
   visionIgnited: 'ビジョン点火',

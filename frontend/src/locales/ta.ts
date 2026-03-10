@@ -267,6 +267,17 @@ export const ta = {
   addressLabel: 'முகவரி',
   businessHoursLabel: 'வேலை நேரங்கள்',
   businessHoursTime: 'தி - வெள்: காலை 9:00 - மாலை 6:00\nசனி - ஞாயி: காலை 10:00 - மதியம் 4:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'எங்கள் கேலரியை ஆராயுங்கள்',
+  exploreOurGalleryDescription: 'ஒரு இன்டர்அக்டிவ் அனுபவத்தின் மூலம் எங்கள் பார்வையை அறியுங்கள். ஒவ்வொரு படமும் புதுமை, படைப்பாற்றல், யோசித்த வடிவமைப்பின் கதையை சொல்கிறது.',
+  exploreGalleryCTA: 'கேலரியை காண்க',
+  viewGalleryButton: '• கேலரியைப் பார்க்க',
+  infiniteGalleryTitle: 'முடிவற்ற கேலரி',
+  infiniteGallerySubtitle: 'இழுத்து பார்க்கவும் • இடைவெளியில்லா டைலிங் கொண்ட முடிவற்ற இடம்',
+  closeGallery: 'கேலரியை மூடு',
+  previousAward: 'முந்தைய விருது',
+  nextAward: 'அடுத்த விருது',
   
   // About Page  
   visionIgnited: 'பார்வை பற்றவைக்கப்பட்டது',

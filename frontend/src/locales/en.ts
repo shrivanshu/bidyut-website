@@ -252,6 +252,17 @@ export const en = {
   addressLabel: 'Address',
   businessHoursLabel: 'Business Hours',
   businessHoursTime: 'Mon - Fri: 9:00 AM - 6:00 PM\nSat - Sun: 10:00 AM - 4:00 PM',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'Explore Our Gallery',
+  exploreOurGalleryDescription: 'Discover our architectural vision through an interactive experience. Each image tells a story of innovation, creativity, and thoughtful design.',
+  exploreGalleryCTA: 'Explore Gallery',
+  viewGalleryButton: '• View Gallery',
+  infiniteGalleryTitle: 'Infinite Gallery',
+  infiniteGallerySubtitle: 'Drag to view • Infinite space with seamless tiling',
+  closeGallery: 'Close Gallery',
+  previousAward: 'Previous award',
+  nextAward: 'Next award',
   
   // About Page  
   visionIgnited: 'Vision Ignited',

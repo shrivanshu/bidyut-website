@@ -268,7 +268,18 @@ export const hi = {
   addressLabel: 'पता',
   businessHoursLabel: 'व्यावसायिक घंटे',
   businessHoursTime: 'सोम - शुक्र: सुबह 9:00 - शाम 6:00\nशनि - रवि: सुबह 10:00 - शाम 4:00',
-  
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'हमारी गैलरी देखें',
+  exploreOurGalleryDescription: 'एक इंटरएक्टिव अनुभव के माध्यम से हमारा विज़न जानें। हर तस्वीर नवाचार, रचनात्मकता और सोच-समझकर किए गए डिज़ाइन की कहानी कहती है।',
+  exploreGalleryCTA: 'गैलरी देखें',
+  viewGalleryButton: '• गैलरी देखें',
+  infiniteGalleryTitle: 'अनंत गैलरी',
+  infiniteGallerySubtitle: 'देखने के लिए ड्रैग करें • निर्बाध टाइलिंग वाला अनंत स्पेस',
+  closeGallery: 'गैलरी बंद करें',
+  previousAward: 'पिछला पुरस्कार',
+  nextAward: 'अगला पुरस्कार',
+
   // About Page  
   visionIgnited: 'दृष्टि प्रज्वलित',
   buildingFutureOfLearning: 'सीखने के भविष्य का निर्माण',

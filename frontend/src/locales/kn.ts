@@ -255,6 +255,17 @@ export const kn = {
   addressLabel: 'ವಿಳಾಸ',
   businessHoursLabel: 'ಕಾರ್ಯ ಸಮಯ',
   businessHoursTime: 'ಸೋಮ - ಶುಕ್ರ: ಬೆಳಿಗ್ಗೆ 9:00 - ಸಂಜೆ 6:00\nಶನಿ - ಭಾನು: ಬೆಳಿಗ್ಗೆ 10:00 - ಮಧ್ಯಾಹ್ನ 4:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'ನಮ್ಮ ಗ್ಯಾಲರಿಯನ್ನು ಅನ್ವೇಷಿಸಿ',
+  exploreOurGalleryDescription: 'ಒಂದು ಸಂವಹನಾತ್ಮಕ ಅನುಭವದ ಮೂಲಕ ನಮ್ಮ ದೃಷ್ಟಿಯನ್ನು ಅನ್ವೇಷಿಸಿ. ಪ್ರತಿಯೊಂದು ಚಿತ್ರವೂ ನವೀನತೆ, ಸೃಜನಶೀಲತೆ ಮತ್ತು ಆಲೋಚಿತ ವಿನ್ಯಾಸದ ಕಥೆಯನ್ನು ಹೇಳುತ್ತದೆ.',
+  exploreGalleryCTA: 'ಗ್ಯಾಲರಿಯನ್ನು ವೀಕ್ಷಿಸಿ',
+  viewGalleryButton: '• ಗ್ಯಾಲರಿ ವೀಕ್ಷಿಸಿ',
+  infiniteGalleryTitle: 'ಅನಂತ ಗ್ಯಾಲರಿ',
+  infiniteGallerySubtitle: 'ವೀಕ್ಷಿಸಲು ಎಳೆರಿ • ನಿರಂತರ ಟೈಲಿಂಗ್‌ನ ಅನಂತ ಸ್ಥಳ',
+  closeGallery: 'ಗ್ಯಾಲರಿಯನ್ನು ಮುಚ್ಚಿ',
+  previousAward: 'ಹಿಂದಿನ ಪ್ರಶಸ್ತಿ',
+  nextAward: 'ಮುಂದಿನ ಪ್ರಶಸ್ತಿ',
   
   // About Page  
   visionIgnited: 'ದೃಷ್ಟಿ ಪ್ರಜ್ವಲಿತ',

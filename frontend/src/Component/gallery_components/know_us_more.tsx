@@ -217,7 +217,7 @@ export default function KnowUsMore() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-green-400 text-sm font-medium capitalize px-3 py-1 bg-black/40 rounded-full backdrop-blur-sm">
-                          {image.category}
+                          {t(image.category)}
                         </span>
                         <motion.div
                           whileHover={{ scale: 1.1 }}

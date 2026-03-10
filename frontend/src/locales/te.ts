@@ -267,6 +267,17 @@ export const te = {
   addressLabel: 'చిరునామా',
   businessHoursLabel: 'పని సమయాలు',
   businessHoursTime: 'సోమ - శుక్ర: ఉదయం 9:00 - సాయంత్రం 6:00\nశని - ఆది: ఉదయం 10:00 - మధ్యాహ్నం 4:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'మా గ్యాలరీని అన్వేషించండి',
+  exploreOurGalleryDescription: 'ఇంటరాక్టివ్ అనుభవం ద్వారా మా దృక్కోణాన్ని అన్వేషించండి. ప్రతి చిత్రం నవాత్మకత, సృజనాత్మకత, ఆలోచనాత్మక రూపకల్పన కథను చెబుతుంది.',
+  exploreGalleryCTA: 'గ్యాలరీ చూడండి',
+  viewGalleryButton: '• గ్యాలరీ చూడండి',
+  infiniteGalleryTitle: 'అనంత గ్యాలరీ',
+  infiniteGallerySubtitle: 'చూడడానికి డ్రాగ్ చేయండి • నిరాటంకంగా అమర్చిన అనంత స్థలం',
+  closeGallery: 'గ్యాలరీ మూసివేయండి',
+  previousAward: 'మునుపటి అవార్డు',
+  nextAward: 'తదుపరి అవార్డు',
   
   // About Page  
   visionIgnited: 'దృష్టి మండింది',

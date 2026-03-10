@@ -255,6 +255,17 @@ export const ru = {
   addressLabel: 'Адрес',
   businessHoursLabel: 'Часы работы',
   businessHoursTime: 'Пн - Пт: 9:00 - 18:00\nСб - Вс: 10:00 - 16:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'Исследуйте нашу галерею',
+  exploreOurGalleryDescription: 'Откройте наше видение через интерактивный опыт. Каждое изображение рассказывает историю инноваций, творчества и продуманного дизайна.',
+  exploreGalleryCTA: 'Исследовать галерею',
+  viewGalleryButton: '• Смотреть галерею',
+  infiniteGalleryTitle: 'Бесконечная галерея',
+  infiniteGallerySubtitle: 'Перетаскивайте для просмотра • Бесконечное пространство с бесшовной плиткой',
+  closeGallery: 'Закрыть галерею',
+  previousAward: 'Предыдущая награда',
+  nextAward: 'Следующая награда',
   
   // About Page  
   visionIgnited: 'Зажженное видение',

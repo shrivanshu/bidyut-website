@@ -269,6 +269,17 @@ export const mr = {
   emailLabel: 'ईमेल',
   businessHoursLabel: 'कार्य वेळा',
   businessHoursTime: 'सोम - शुक्र: सकाळ 9:00 - संध्याकाळ 6:00\nशनि - रवि: सकाळ 10:00 - दुपार 4:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'आमची गॅलरी पाहा',
+  exploreOurGalleryDescription: 'परस्परसंवादी अनुभवातून आमचे दृष्टिकोन जाणून घ्या. प्रत्येक चित्र नवकल्पना, सर्जनशीलता आणि विचारपूर्वक डिझाइनची कथा सांगते.',
+  exploreGalleryCTA: 'गॅलरी पहा',
+  viewGalleryButton: '• गॅलरी पहा',
+  infiniteGalleryTitle: 'अनंत गॅलरी',
+  infiniteGallerySubtitle: 'पाहण्यासाठी ड्रॅग करा • अखंड टायलींग असलेली अनंत जागा',
+  closeGallery: 'गॅलरी बंद करा',
+  previousAward: 'मागील पुरस्कार',
+  nextAward: 'पुढील पुरस्कार',
   
   // About Page  
   visionIgnited: 'दृष्टी प्रज्वलित',

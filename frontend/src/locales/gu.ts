@@ -267,6 +267,17 @@ export const gu = {
   addressLabel: 'સરનામું',
   businessHoursLabel: 'કાર્ય સમય',
   businessHoursTime: 'સોમ - શુક્ર: સવારે 9:00 - સાંજે 6:00\nશનિ - રવિ: સવારે 10:00 - બપોરે 4:00',
+
+  // Gallery Page
+  exploreOurGalleryTitle: 'અમારી ગેલેરી શોધો',
+  exploreOurGalleryDescription: 'એક ઇન્ટરેક્ટિવ અનુભવે અમારી દ્રષ્ટિ શોધો. દરેક ચિત્ર નવીનતા, સર્જનાત્મકતા અને વિચારપૂર્વકના ડિઝાઇનની વાર્તા કહે છે.',
+  exploreGalleryCTA: 'ગેલેરી જુઓ',
+  viewGalleryButton: '• ગેલેરી જુઓ',
+  infiniteGalleryTitle: 'અસીમ ગેલેરી',
+  infiniteGallerySubtitle: 'જુવા માટે ખેંચો • સતત ટાઇલિંગ સાથેનું અસીમ સ્થાન',
+  closeGallery: 'ગેલેરી બંધ કરો',
+  previousAward: 'પાછલું એવોર્ડ',
+  nextAward: 'આગલું એવોર્ડ',
   
   // About Page  
   visionIgnited: 'દ્રષ્ટિ પ્રકાશિત',
