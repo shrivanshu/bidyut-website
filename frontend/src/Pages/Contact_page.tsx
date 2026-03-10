@@ -151,10 +151,9 @@ export default function ContactPage() {
                   </motion.div>
                 )}
 
-                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>Contact Us</h2>
+                <h2 className={`text-3xl font-heading font-bold mb-4 ${textColor}`}>{t("contactUs")}</h2>
                 <p className={`${subTextColor} mb-10`}>
-                  Let’s power up your innovation journey together. From idea to
-                  innovation — Bidyut makes it happen.
+                  {t("contactPageSubtitle")}
                 </p>
 
                 <form 
@@ -163,7 +162,7 @@ export default function ContactPage() {
                   method="POST"
                 >
                   {/* Hidden fields for StaticForms configuration */}
-                  <input type="hidden" name="accessKey" value="sf_m38f9317i2e053l3h9937cf7" />
+                  <input type="hidden" name="accessKey" value="sf_0a3fh4llai9mg0d7j4i5gd8h" />
                   <input type="hidden" name="redirectTo" value="https://bidyutinnovation.com/contact?success=true" />
                   {/* Name */}
                   <div className="relative">

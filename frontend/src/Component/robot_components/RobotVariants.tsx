@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface RobotSpec {
   id: string
@@ -509,8 +510,15 @@ const SelectValue = ({
   placeholder: string
   value?: string
 }) => {
+  const { t } = useLanguage()
   const currentSpec = robotSpecs.find(spec => spec.id === value)
-  return <span>{currentSpec?.name || placeholder}</span>
+  const specKey = value ? value.replace(/[^a-zA-Z0-9]/g, '') : ''
+  const translated =
+    value && t(`g1SpecName${specKey}`) !== `g1SpecName${specKey}`
+      ? t(`g1SpecName${specKey}`)
+      : currentSpec?.name
+
+  return <span>{translated || placeholder}</span>
 }
 
 const Button = ({
@@ -529,6 +537,7 @@ const Button = ({
 
 export default function RobotShowcase () {
   const { isDark } = useTheme()
+  const { t } = useLanguage()
   const [selectedVariant, setSelectedVariant] = useState('g1-basic')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -546,12 +555,79 @@ export default function RobotShowcase () {
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
 
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '')
+  const toCamelKey = (value: string) => {
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    if (!parts.length) return sanitizeKey(value)
+    return parts
+      .map((part, idx) =>
+        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+      )
+      .join('')
+  }
+  const toPascalKey = (value: string) => {
+    const camel = toCamelKey(value)
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+  }
+  const translateWithKeyVariants = (
+    prefix: string,
+    id: string,
+    fallback: string,
+    extraIds: string[] = []
+  ) => {
+    const baseIds = [id, ...extraIds]
+    const candidates: string[] = []
+    baseIds.forEach(value => {
+      candidates.push(
+        `${prefix}${sanitizeKey(value)}`,
+        `${prefix}${toCamelKey(value)}`,
+        `${prefix}${toPascalKey(value)}`,
+        `${prefix}${value}`
+      )
+    })
+    for (const key of candidates) {
+      const translated = t(key)
+      if (translated !== key) return translated
+    }
+    return fallback
+  }
+  const getTranslatedRobot = (robot: (typeof robotSearchData)[0]) => {
+    const robotKey = sanitizeKey(robot.id)
+    return {
+      name: translateWithFallback(`g1RobotName${robotKey}`, robot.name),
+      category: translateWithFallback(
+        `g1RobotCategory${robotKey}`,
+        robot.category
+      ),
+      description: translateWithFallback(
+        `g1RobotDesc${robotKey}`,
+        robot.description
+      )
+    }
+  }
+
   const currentSpec =
     robotSpecs.find(spec => spec.id === selectedVariant) || robotSpecs[0]
+  const specKey = selectedVariant.replace(/[^a-zA-Z0-9]/g, '')
+
   // Derive display data from either selected search item or current variant
-  const displayName = selectedRobot?.name ?? currentSpec.name
+  const displayName =
+    (selectedRobot ? getTranslatedRobot(selectedRobot).name : null) ??
+    translateWithKeyVariants('g1SpecName', selectedVariant, currentSpec.name, [
+      currentSpec.name
+    ])
   const displayDescription =
-    selectedRobot?.description ?? currentSpec.description
+    (selectedRobot ? getTranslatedRobot(selectedRobot).description : null) ??
+    translateWithKeyVariants(
+      'g1SpecDesc',
+      selectedVariant,
+      currentSpec.description,
+      [currentSpec.name]
+    )
   const displayGallery = (selectedRobot as any)?.gallery?.length
     ? (selectedRobot as any).gallery
     : currentSpec.gallery
@@ -636,7 +712,10 @@ export default function RobotShowcase () {
               <div className='relative'>
                 <input
                   type='text'
-                  placeholder='Search robots by name, category, or description...'
+                  placeholder={translateWithFallback(
+                    'g1SearchPlaceholder',
+                    'Search robots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className='w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300'
@@ -676,7 +755,9 @@ export default function RobotShowcase () {
               }}
             >
               <div className='flex gap-6 min-w-max'>
-                {filteredRobots.map(robot => (
+                {filteredRobots.map(robot => {
+                  const translated = getTranslatedRobot(robot)
+                  return (
                   <div
                     key={robot.id}
                     onClick={() => {
@@ -703,32 +784,41 @@ export default function RobotShowcase () {
                       />
                     </div>
                     <h3 className='font-semibold text-gray-900 dark:text-gray-100 text-sm mb-1 truncate'>
-                      {robot.name}
+                      {translated.name}
                     </h3>
                     <p className='text-xs text-green-600 dark:text-green-400 font-medium mb-1'>
-                      {robot.category}
+                      {translated.category}
                     </p>
                     <p className='text-xs text-gray-600 dark:text-gray-400 line-clamp-2'>
-                      {robot.description}
+                      {translated.description}
                     </p>
                   </div>
-                ))}
+                  )
+                })}
               </div>
 
               {filteredRobots.length === 0 && (
                 <div className='text-center py-12'>
                   <div className='text-gray-400 dark:text-gray-500 text-lg'>
-                    No robots found matching your search.
+                    {translateWithFallback(
+                      'g1SearchNoResults',
+                      'No robots found matching your search.'
+                    )}
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm mt-2'>
-                    Try different keywords or browse all robots.
+                    {translateWithFallback(
+                      'g1SearchTryDifferentKeywords',
+                      'Try different keywords or browse all robots.'
+                    )}
                   </p>
                 </div>
               )}
             </div>
 
             {/* Selected Robot Display */}
-            {selectedRobot && (
+            {selectedRobot && (() => {
+              const translated = getTranslatedRobot(selectedRobot)
+              return (
               <div className='mt-6 p-6 bg-white dark:bg-gray-700 rounded-xl border-2 border-black dark:border-gray-400'>
                 <div className='flex items-start gap-4'>
                   <img
@@ -738,17 +828,17 @@ export default function RobotShowcase () {
                   />
                   <div className='flex-1'>
                     <h3 className='text-xl font-bold text-gray-900 dark:text-gray-100 mb-1'>
-                      {selectedRobot.name}
+                      {translated.name}
                     </h3>
                     <p
                       className={`font-medium mb-2 ${
                         isDark ? 'text-green-400' : 'text-green-600'
                       }`}
                     >
-                      {selectedRobot.category}
+                      {translated.category}
                     </p>
                     <p className='text-gray-600 dark:text-gray-300'>
-                      {selectedRobot.description}
+                      {translated.description}
                     </p>
                   </div>
                   <button
@@ -759,7 +849,8 @@ export default function RobotShowcase () {
                   </button>
                 </div>
               </div>
-            )}
+              )
+            })()}
           </div>
         )}
 
@@ -771,14 +862,25 @@ export default function RobotShowcase () {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue
-                placeholder='Choose your preferred variants'
+                placeholder={translateWithFallback(
+                  'g1VariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
                 value={selectedVariant}
               />
               <ChevronDown className='h-5 w-5 opacity-50 dark:opacity-70' />
             </SelectTrigger>
             {isDropdownOpen && (
               <div className='absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50'>
-                {robotSpecs.map(spec => (
+                {robotSpecs.map(spec => {
+                  const key = spec.id.replace(/[^a-zA-Z0-9]/g, '')
+                  const translatedName = translateWithKeyVariants(
+                    'g1SpecName',
+                    spec.id,
+                    spec.name,
+                    [spec.name]
+                  )
+                  return (
                   <div
                     key={spec.id}
                     className='px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400'
@@ -787,9 +889,10 @@ export default function RobotShowcase () {
                       setIsDropdownOpen(false)
                     }}
                   >
-                    {spec.name}
+                    {translatedName}
                   </div>
-                ))}
+                )
+                })}
               </div>
             )}
           </Select>
@@ -807,7 +910,10 @@ export default function RobotShowcase () {
                 {displayName}
               </h2>
               <h3 className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium'>
-                Technical Specifications
+                {translateWithFallback(
+                  'technicalSpecifications',
+                  'Technical Specifications'
+                )}
               </h3>
               <p className='text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl'>
                 {displayDescription}
@@ -816,14 +922,14 @@ export default function RobotShowcase () {
 
             <Link to='/Contact'>
               <Button className='bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer'>
-                Order Now
+                {translateWithFallback('orderNow', 'Order Now')}
               </Button>
             </Link>
 
             {/* Image Gallery Selector */}
             <div className='space-y-4'>
               <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
-                Gallery
+                {translateWithFallback('g1GalleryHeading', 'Gallery')}
               </h3>
               <div className='flex gap-3 flex-wrap'>
                 {displayGallery.map((media: any, index: number) => (
@@ -958,7 +1064,12 @@ export default function RobotShowcase () {
                             : 'text-gray-900 dark:text-gray-100'
                         }`}
                       >
-                        {feature.label}
+                        {translateWithKeyVariants(
+                          'g1FeatureLabel',
+                          `${selectedVariant}-${index}`,
+                          feature.label,
+                          [currentSpec.name]
+                        )}
                       </div>
                       <div
                         className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
@@ -967,7 +1078,12 @@ export default function RobotShowcase () {
                             : 'opacity-70'
                         }`}
                       >
-                        {feature.detail}
+                        {translateWithKeyVariants(
+                          'g1FeatureDetail',
+                          `${selectedVariant}-${index}`,
+                          feature.detail,
+                          [currentSpec.name]
+                        )}
                       </div>
                     </div>
                   </div>

@@ -3,6 +3,7 @@
 import type React from 'react'
 import { motion } from 'framer-motion'
 import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 // Import partner logos
 const accentureLogo = '/trustedPartners_logos/Accenture-logo.webp'
@@ -58,6 +59,7 @@ const vedanshLogo = '/schools/vedansh.webp'
 const vijayaConventLogo = '/schools/VIJAYA CONVENT SENIOR SEC SCHOOL.webp'
 
 export default function TrustedPartners () {
+  const { t } = useLanguage()
   const [arrowEndX, setArrowEndX] = useState(140)
   const [arrowEndY, setArrowEndY] = useState(50)
   const [isActive, setIsActive] = useState(false)
@@ -479,7 +481,7 @@ export default function TrustedPartners () {
   const getCurrentAltText = (logoType: string) => {
     if (showSchoolLogos) {
       const currentSet = schoolLogoNames[currentSchoolLogoSet]
-      return currentSet[logoType as keyof typeof currentSet] || 'School Logo'
+      return currentSet[logoType as keyof typeof currentSet] || t('schoolLogoAlt')
     } else {
       switch (logoType) {
         case 'accenture':
@@ -499,7 +501,7 @@ export default function TrustedPartners () {
         case 'plaksha':
           return 'Plaksha'
         default:
-          return 'Partner Logo'
+          return t('partnerLogoAlt')
       }
     }
   }
@@ -600,10 +602,10 @@ export default function TrustedPartners () {
               viewport={{ once: false, amount: 0.3 }}
             >
               <h2 className='text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4'>
-                Trusted Partners
+                {t('trustedPartners')}
               </h2>
-              <p className='text-xl lg:text-2xl text-gray-500 dark:text-gray-300 mb-8'>
-                list of companies
+              <p className='text-base lg:text-lg leading-relaxed text-gray-500 dark:text-gray-300 mb-8 max-w-xl'>
+                {t('partnersDescription')}
               </p>
             </motion.div>
 
@@ -632,7 +634,7 @@ export default function TrustedPartners () {
                     30+
                   </div>
                   <div className='text-sm text-gray-700 dark:text-gray-200 mt-1'>
-                    Partners
+                    {t('partnersStatPartners')}
                   </div>
                 </motion.div>
 
@@ -646,7 +648,7 @@ export default function TrustedPartners () {
                     50M+
                   </div>
                   <div className='text-sm text-gray-700 dark:text-gray-200 mt-1'>
-                    Users
+                    {t('partnersStatUsers')}
                   </div>
                 </motion.div>
 
@@ -660,7 +662,7 @@ export default function TrustedPartners () {
                     99.9%
                   </div>
                   <div className='text-sm text-gray-700 dark:text-gray-200 mt-1'>
-                    Uptime
+                    {t('partnersStatUptime')}
                   </div>
                 </motion.div>
               </div>

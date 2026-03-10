@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface RobotSpec {
   id: string
@@ -334,6 +335,7 @@ const Button = ({
 
 export default function H1Variants () {
   const { isDark } = useTheme()
+  const { t } = useLanguage()
   const [selectedVariant, setSelectedVariant] = useState('g1-basic')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -353,10 +355,14 @@ export default function H1Variants () {
 
   const currentSpec =
     robotSpecs.find(spec => spec.id === selectedVariant) || robotSpecs[0]
-  // Derive display data from either selected search item or current variant
-  const displayName = selectedRobot?.name ?? currentSpec.name
+  const specKey = currentSpec.id.replace(/[^a-zA-Z0-9]/g, '')
+  // Derive display data from either selected search item or current variant, with translations
+  const displayName =
+    selectedRobot?.name ?? t(`h1SpecName${specKey}`) ?? currentSpec.name
   const displayDescription =
-    selectedRobot?.description ?? currentSpec.description
+    selectedRobot?.description ??
+    t(`h1SpecDesc${specKey}`) ??
+    currentSpec.description
   const displayGallery = (selectedRobot as any)?.gallery?.length
     ? (selectedRobot as any).gallery
     : currentSpec.gallery
@@ -563,7 +569,7 @@ export default function H1Variants () {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue
-                placeholder='Choose your preferred variants'
+                placeholder={t('h1VariantsPlaceholder')}
                 value={selectedVariant}
               />
               <ChevronDown className='h-5 w-5 opacity-50 dark:opacity-70' />
@@ -599,7 +605,7 @@ export default function H1Variants () {
                 {displayName}
               </h2>
               <h3 className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium'>
-                Technical Specifications
+                {t('technicalSpecifications')}
               </h3>
               <p className='text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl'>
                 {displayDescription}
@@ -608,14 +614,14 @@ export default function H1Variants () {
 
             <Link to='/Contact'>
               <Button className='bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer'>
-                Order Now
+                {t('orderNow')}
               </Button>
             </Link>
 
             {/* Image Gallery Selector */}
             <div className='space-y-4'>
               <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
-                Gallery
+                {t('gallery')}
               </h3>
               <div className='flex gap-3 flex-wrap'>
                 {displayGallery.map((media: any, index: number) => (

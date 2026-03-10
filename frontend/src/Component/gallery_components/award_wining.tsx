@@ -8,7 +8,8 @@ import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import GalleryText from '../../Text_Animation/GalleryText'
 export default function AwardWinning() {
   const { isDark } = useTheme()
-  const { t } = useLanguage()
+  const { t, currentLanguage } = useLanguage()
+  const useAnimatedHeading = currentLanguage === 'en'
 
   const [cursorIndex, setCursorIndex] = useState<number | null>(null)
   const falloff = 3
@@ -187,7 +188,14 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12  lg:mb-20">
-          {renderInteractiveWavy(t('Award Winning '), t('digitalInnovation'), isDark)}
+          {useAnimatedHeading ? (
+            renderInteractiveWavy(t('awardWinning'), t('digitalInnovation'), isDark)
+          ) : (
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <span className="text-green-500">{t('awardWinning')}</span>{' '}
+              <span className={isDark ? 'text-white' : 'text-gray-900'}>{t('digitalInnovation')}</span>
+            </h1>
+          )}
           <motion.p
             className={`cursor-pointer select-none text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
             initial={{ opacity: 0, y: 20 }}
@@ -207,7 +215,7 @@ useEffect(() => {
               <button 
                 onClick={goPrev}
                 className={`absolute left-4 z-10 p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
-                aria-label="Previous award"
+                aria-label={t('previousAward')}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -216,7 +224,7 @@ useEffect(() => {
               <button 
                 onClick={goNext}
                 className={`absolute right-4 z-10 p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
-                aria-label="Next award"
+                aria-label={t('nextAward')}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -264,18 +272,24 @@ useEffect(() => {
                     {/* Content */}
                     <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow text-center">
                       <div style={{position: 'relative', height: '60px'}}>
-                        <GalleryText
-                          text={t(award.titleKey)}
-                          flex={true}
-                          alpha={false}
-                          stroke={false}
-                          width={true}
-                          weight={true}
-                          italic={true}
-                          textColor={isDark ? '#ffffff' : '#222222'}
-                          strokeColor="#ff0000"
-                          minFontSize={22}
-                        />
+                        {useAnimatedHeading ? (
+                          <GalleryText
+                            text={t(award.titleKey)}
+                            flex={true}
+                            alpha={false}
+                            stroke={false}
+                            width={true}
+                            weight={true}
+                            italic={true}
+                            textColor={isDark ? '#ffffff' : '#222222'}
+                            strokeColor="#ff0000"
+                            minFontSize={22}
+                          />
+                        ) : (
+                          <h3 className={`text-lg sm:text-xl font-semibold leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            {t(award.titleKey)}
+                          </h3>
+                        )}
                       </div>
                       <p className={`text-xs sm:text-sm leading-relaxed flex-grow mb-3 sm:mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {t(award.descriptionKey)}
@@ -299,7 +313,7 @@ useEffect(() => {
       onClick={goPrev}
       className={`p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 
         ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
-      aria-label="Previous award"
+      aria-label={t('previousAward')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -324,7 +338,7 @@ useEffect(() => {
       onClick={goNext}
       className={`p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 
         ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
-      aria-label="Next award"
+      aria-label={t('nextAward')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

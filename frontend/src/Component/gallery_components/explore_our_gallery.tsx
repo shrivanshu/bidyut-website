@@ -3,6 +3,7 @@
 
 import { useState, useRef, useMemo, useEffect } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 import GalleryText from '../../Text_Animation/GalleryText';
 
@@ -132,7 +133,9 @@ export default function InteractiveGallery() {
   const containerRef = useRef<HTMLDivElement>(null)
   const dragX = useMotionValue(0)
   const dragY = useMotionValue(0)
-
+  const { isDark } = useTheme();
+  const { t, currentLanguage } = useLanguage();
+  const useAnimatedHeading = currentLanguage === 'en';
   // Handle mobile detection and window resize
   useEffect(() => {
     const checkMobile = () => {
@@ -204,7 +207,6 @@ export default function InteractiveGallery() {
     dragY.set(0)
   }
 
-  const { isDark } = useTheme();
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}> 
       <div className="absolute inset-0 opacity-8">
@@ -223,24 +225,29 @@ export default function InteractiveGallery() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8">
               <div style={{position: 'relative', height: '100px'}} className="sm:h-[120px] lg:h-[140px]">
-                <GalleryText
-                  text="Explore Our Gallery"
-                  flex={true}
-                  alpha={false}
-                  stroke={false}
-                  width={true}
-                  weight={true}
-                  italic={true}
-                  textColor={isDark ? '#ffffff' : '#222222'}
-                  strokeColor="#ff0000"
-                  minFontSize={20}
-                />
+                {useAnimatedHeading ? (
+                  <GalleryText
+                    text={t('exploreOurGalleryTitle')}
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor={isDark ? '#ffffff' : '#222222'}
+                    strokeColor="#ff0000"
+                    minFontSize={20}
+                  />
+                ) : (
+                  <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-heading font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    {t('exploreOurGalleryTitle')}
+                  </h1>
+                )}
               </div>
 
               <div className={`max-w-md space-y-4 lg:space-y-6 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 <p className="leading-relaxed text-base lg:text-lg">
-                  Discover our architectural vision through an interactive experience. Each image tells a story of
-                  innovation, creativity, and thoughtful design.
+                  {t('exploreOurGalleryDescription')}
                 </p>
 
                 <button
@@ -248,7 +255,7 @@ export default function InteractiveGallery() {
                   className={`inline-flex items-center gap-3 text-sm tracking-wider border-b-2 pb-2 transition-all duration-300 group ${isDark ? 'border-green-400 hover:border-white' : 'border-green-600 hover:border-gray-900'}`}
                 >
                   <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                  <span>Explore Gallery</span>
+                  <span>{t('exploreGalleryCTA')}</span>
                 </button>
               </div>
             </div>
@@ -270,7 +277,7 @@ export default function InteractiveGallery() {
                       onClick={handleExploreClick}
                       className={`px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-lg backdrop-blur-sm border border-white/20 ${isDark ? 'bg-black bg-opacity-80 text-white hover:bg-opacity-95' : 'bg-white bg-opacity-80 text-gray-900 hover:bg-opacity-95'}`}
                     >
-                      • View Gallery 
+                      {t('viewGalleryButton')}
                     </button>
                   </div>
                 </div>
@@ -289,7 +296,7 @@ export default function InteractiveGallery() {
               className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[99999] w-10 h-10 sm:w-12 sm:h-12 bg-white text-zinc-900 flex items-center justify-center hover:bg-zinc-100 transition-colors cursor-pointer shadow-lg backdrop-blur-sm text-sm sm:text-base"
               style={{ pointerEvents: 'all', transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden', perspective: '1000px' }}
               tabIndex={0}
-              aria-label="Close Gallery"
+              aria-label={t('closeGallery')}
             >
               ✕
             </button>
@@ -307,21 +314,27 @@ export default function InteractiveGallery() {
             >
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-60 bg-black/50 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-4 border border-white/10 pointer-events-none">
                 <div style={{position: 'relative', height: '40px'}} className="sm:h-[50px]">
-                  <GalleryText
-                    text="Infinite Gallery"
-                    flex={true}
-                    alpha={false}
-                    stroke={false}
-                    width={true}
-                    weight={true}
-                    italic={true}
-                    textColor="#ffffff"
-                    strokeColor="#ff0000"
-                    minFontSize={12}
-                  />
+                  {useAnimatedHeading ? (
+                    <GalleryText
+                      text={t('infiniteGalleryTitle')}
+                      flex={true}
+                      alpha={false}
+                      stroke={false}
+                      width={true}
+                      weight={true}
+                      italic={true}
+                      textColor="#ffffff"
+                      strokeColor="#ff0000"
+                      minFontSize={12}
+                    />
+                  ) : (
+                    <h2 className="text-white text-xl sm:text-2xl font-semibold">
+                      {t('infiniteGalleryTitle')}
+                    </h2>
+                  )}
                 </div>
                 <p className="text-xs sm:text-sm text-zinc-400 mt-1 sm:mt-2 leading-relaxed">
-                  Drag to View • Infinite space with seamless tiling
+                  {t('infiniteGallerySubtitle')}
                 </p>
               </div>
               <motion.div

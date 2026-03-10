@@ -25,7 +25,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "validate-translations": "tsc -p tsconfig.validate.json && node -e \"require('fs').renameSync('dist-validate/scripts/validateTranslations.js','dist-validate/scripts/validateTranslations.cjs');\" && node dist-validate/scripts/validateTranslations.cjs"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
@@ -41,6 +42,7 @@
     "sharp": "^0.34.4",
     "tailwindcss": "^3.4.3",
     "terser": "^5.44.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",
     "vitest": "^1.3.1"

@@ -129,17 +129,7 @@ function OfferingsSection () {
             </span>
           </h2>
           <p className='max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-300'>
-            At Bidyut, we bring robotics and coding to classrooms through
-            STREAM-aligned labs, hands-on learning, and applied problem-solving,
-            offering robotics for schools and colleges that empower students
-            with future-ready skills. From building and programming robots to
-            exploring coding concepts and automation, our robotic labs for
-            schools and colleges provide a dynamic, interactive learning
-            environment that makes education engaging and impactful. Beyond
-            education, we also design and provide advanced robotics solutions
-            for industries, including robots for industrial applications helping
-            businesses automate processes, improve efficiency, and innovate with
-            cutting-edge technology.
+            {t('offeringsIntro')}
           </p>
         </div>
 

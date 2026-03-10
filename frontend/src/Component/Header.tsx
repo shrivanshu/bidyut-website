@@ -262,7 +262,7 @@ function Header() {
               </div>
             </div>
             
-            {[              { href: "/blog", label: "Blog" },
+            {[              { href: "/blog", label: t("blog") },
 
               { href: "/gallery", label: t("gallery") },
               { href: "/contact", label: t("contact") },
@@ -407,7 +407,7 @@ function Header() {
                 : "dark:text-gray-300 hover:text-[#00F5A0]"
             }`}
           >
-            Blog
+            {t("blog")}
           </Link>
 
           {/* Robots Dropdown */}

@@ -1,12 +1,35 @@
 import { Brain, Robot } from "./icons"
 import SplitText from "../../Text_Animation/LSMtext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 export default function Component() {
+  const { t } = useLanguage();
 
   const handleAnimationComplete = () => {
     console.log('All letters have animated!');
   };
 
+  const renderLmsDescription = () => {
+    const placeholder = '{roboticsForSchoolsLink}';
+    const text = t('lmsDescription');
+    const parts = text.split(placeholder);
+
+    if (parts.length === 1) {
+      return text;
+    }
+
+    return parts.map((part, index) => (
+      <span key={`lms-desc-${index}`}>
+        {part}
+        {index < parts.length - 1 ? (
+          <a className="text-green-500" href="/School" target="_blank" rel="noopener noreferrer">
+            {t('roboticsForSchoolsLinkText')}
+          </a>
+        ) : null}
+      </span>
+    ));
+  };
+  
   return (
     <div className="bg-white dark:bg-black text-[#212121] dark:text-white overflow-hidden relative transition-colors duration-300">
       <div className="relative z-10 px-4 py-8 md:px-8 lg:px-16 max-w-7xl mx-auto">
@@ -14,7 +37,7 @@ export default function Component() {
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center text-center mb-12 mt-4 pt-8">
           <SplitText
-            text="Innovative Learning with Robotics & AI"
+            text={t('advancedLms')}
             className="md:whitespace-nowrap text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-['Poppins'] transition-colors duration-300"
             delay={100}
             duration={0.6}
@@ -28,8 +51,7 @@ export default function Component() {
             onLetterAnimationComplete={handleAnimationComplete}
           />
           <p className="text-lg md:text-xl text-[#6B7280] dark:text-gray-300 mt-10 max-w-4xl font-['Poppins'] transition-colors duration-300">
-            Empowering schools with engaging robotics for kids, coding, and AI learning.
-
+            {t('lmsSubtitle')}
           </p>
         </div>
 
@@ -39,13 +61,10 @@ export default function Component() {
           {/* Left Column */}
           <div className="flex-1 lg:w-1/2 text-center lg:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 font-['Poppins'] transition-colors duration-300">
-              <span className="text-[#28C76F] font-semibold">Bidyut</span> Innovation LMS
+              <span className="text-[#28C76F] font-semibold">Bidyut</span> {t('bidyutSmartLms')}
             </h2>
             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-normal mb-6 leading-relaxed max-w-lg lg:max-w-xl mx-auto lg:mx-0 font-['Poppins'] transition-colors duration-300">
-              Bidyut LMS brings robotics for schools, coding solutions, and AI learning to life with hands-on and gamified lessons. With specialized learning paths designed for robotics for kids and  
-  {" "} <a className="text-green-500" href="/School" target="_blank" rel="noopener noreferrer">
-robotics for schools </a>, Students learn by building and programming, while teachers track progress in real time—anytime, anywhere.
-
+              {renderLmsDescription()}
             </p>
             <a
               href="https://lms.bidyutinnovation.com/"
@@ -53,7 +72,7 @@ robotics for schools </a>, Students learn by building and programming, while tea
               rel="noopener noreferrer"
             >
               <button className="bg-white border-2 border-gradient px-6 py-3 rounded-md text-base font-semibold shadow-md transition-all duration-300 font-['Poppins'] hover:shadow-lg transform hover:scale-105 relative overflow-hidden group">
-                <span className="text-gradient-animated relative z-10">Login to LMS</span>
+                <span className="text-gradient-animated relative z-10">{t('loginToLms')}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#28C76F] to-[#20B2AA] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
               </button>
             </a>
@@ -77,7 +96,7 @@ robotics for schools </a>, Students learn by building and programming, while tea
               <div className="relative w-full max-w-[105%] sm:max-w-[110%] md:max-w-[95%] lg:max-w-[600px] xl:max-w-[675px]">
                 <img
                   src="/LMS.webp"
-                  alt="Laptop displaying LMS interface"
+                  alt={t('lmsLaptopAlt')}
                   className="w-full h-auto object-contain z-10 transform transition-transform duration-300 hover:scale-105"
                   style={{
                     filter: "drop-shadow(0 0 250px rgba(16, 247, 120, 0.4)) saturate(0.9)",
@@ -98,11 +117,11 @@ robotics for schools </a>, Students learn by building and programming, while tea
                   <div className="flex items-center mb-2">
                     <Brain className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
                     <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
-                      Personalized Learning Paths
+                      {t('personalizedLearningPaths')}
                     </h3>
                   </div>
                   <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    AI tailors each child’s learning path to match their unique style.
+                    {t('aiDrivenSystem')}
                   </p>
                 </div>
 
@@ -117,11 +136,11 @@ robotics for schools </a>, Students learn by building and programming, while tea
                   <div className="flex items-center mb-2">
                     <Robot className="w-5 h-5 xl:w-6 xl:h-6 text-[#28C76F] mr-2 flex-shrink-0" />
                     <h3 className="text-sm xl:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
-                      Robotics Lab Simulation
+                      {t('roboticsLabSimulation')}
                     </h3>
                   </div>
                   <p className="text-xs xl:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    Build and code robots virtually, with real-time feedback and challenges.
+                    {t('practiceVirtual')}
                   </p>
                 </div>
               </div>
@@ -134,11 +153,11 @@ robotics for schools </a>, Students learn by building and programming, while tea
                   <div className="flex items-center mb-3">
                     <Brain className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
                     <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
-                      Personalized Learning Paths
+                      {t('personalizedLearningPaths')}
                     </h3>
                   </div>
                   <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    AI tailors each child’s learning path to match their unique style.
+                    {t('aiDrivenSystem')}
                   </p>
                 </div>
 
@@ -146,11 +165,11 @@ robotics for schools </a>, Students learn by building and programming, while tea
                   <div className="flex items-center mb-3">
                     <Robot className="w-6 h-6 text-[#28C76F] mr-3 flex-shrink-0" />
                     <h3 className="text-sm md:text-md font-semibold text-[#28C76F] font-['Poppins'] leading-tight">
-                      Robotics Lab Simulation
+                      {t('roboticsLabSimulation')}
                     </h3>
                   </div>
                   <p className="text-xs md:text-sm text-[#6B7280] dark:text-gray-300 font-normal font-['Poppins'] leading-relaxed">
-                    Build and code robots virtually, with real-time feedback and challenges.
+                    {t('practiceVirtual')}
                   </p>
                 </div>
               </div>
