@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface RobotSpec {
   id: string
@@ -509,8 +510,15 @@ const SelectValue = ({
   placeholder: string
   value?: string
 }) => {
+  const { t } = useLanguage()
   const currentSpec = robotSpecs.find(spec => spec.id === value)
-  return <span>{currentSpec?.name || placeholder}</span>
+  const specKey = value ? value.replace(/[^a-zA-Z0-9]/g, '') : ''
+  const translated =
+    value && t(`g1SpecName${specKey}`) !== `g1SpecName${specKey}`
+      ? t(`g1SpecName${specKey}`)
+      : currentSpec?.name
+
+  return <span>{translated || placeholder}</span>
 }
 
 const Button = ({
@@ -529,6 +537,7 @@ const Button = ({
 
 export default function RobotShowcase () {
   const { isDark } = useTheme()
+  const { t } = useLanguage()
   const [selectedVariant, setSelectedVariant] = useState('g1-basic')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -546,12 +555,22 @@ export default function RobotShowcase () {
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
 
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+
   const currentSpec =
     robotSpecs.find(spec => spec.id === selectedVariant) || robotSpecs[0]
+  const specKey = selectedVariant.replace(/[^a-zA-Z0-9]/g, '')
+
   // Derive display data from either selected search item or current variant
-  const displayName = selectedRobot?.name ?? currentSpec.name
+  const displayName =
+    selectedRobot?.name ??
+    translateWithFallback(`g1SpecName${specKey}`, currentSpec.name)
   const displayDescription =
-    selectedRobot?.description ?? currentSpec.description
+    selectedRobot?.description ??
+    translateWithFallback(`g1SpecDesc${specKey}`, currentSpec.description)
   const displayGallery = (selectedRobot as any)?.gallery?.length
     ? (selectedRobot as any).gallery
     : currentSpec.gallery
@@ -636,7 +655,10 @@ export default function RobotShowcase () {
               <div className='relative'>
                 <input
                   type='text'
-                  placeholder='Search robots by name, category, or description...'
+                  placeholder={translateWithFallback(
+                    'g1SearchPlaceholder',
+                    'Search robots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className='w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300'
@@ -718,10 +740,16 @@ export default function RobotShowcase () {
               {filteredRobots.length === 0 && (
                 <div className='text-center py-12'>
                   <div className='text-gray-400 dark:text-gray-500 text-lg'>
-                    No robots found matching your search.
+                    {translateWithFallback(
+                      'g1SearchNoResults',
+                      'No robots found matching your search.'
+                    )}
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm mt-2'>
-                    Try different keywords or browse all robots.
+                    {translateWithFallback(
+                      'g1SearchTryDifferentKeywords',
+                      'Try different keywords or browse all robots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -771,14 +799,23 @@ export default function RobotShowcase () {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue
-                placeholder='Choose your preferred variants'
+                placeholder={translateWithFallback(
+                  'g1VariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
                 value={selectedVariant}
               />
               <ChevronDown className='h-5 w-5 opacity-50 dark:opacity-70' />
             </SelectTrigger>
             {isDropdownOpen && (
               <div className='absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50'>
-                {robotSpecs.map(spec => (
+                {robotSpecs.map(spec => {
+                  const key = spec.id.replace(/[^a-zA-Z0-9]/g, '')
+                  const translatedName = translateWithFallback(
+                    `g1SpecName${key}`,
+                    spec.name
+                  )
+                  return (
                   <div
                     key={spec.id}
                     className='px-6 py-4 hover:bg-green-50 dark:hover:bg-green-900/20 cursor-pointer transition-all duration-200 first:rounded-t-xl last:rounded-b-xl text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400'
@@ -787,9 +824,10 @@ export default function RobotShowcase () {
                       setIsDropdownOpen(false)
                     }}
                   >
-                    {spec.name}
+                    {translatedName}
                   </div>
-                ))}
+                )
+                })}
               </div>
             )}
           </Select>
@@ -807,7 +845,10 @@ export default function RobotShowcase () {
                 {displayName}
               </h2>
               <h3 className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium'>
-                Technical Specifications
+                {translateWithFallback(
+                  'technicalSpecifications',
+                  'Technical Specifications'
+                )}
               </h3>
               <p className='text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl'>
                 {displayDescription}
@@ -816,7 +857,7 @@ export default function RobotShowcase () {
 
             <Link to='/Contact'>
               <Button className='bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer'>
-                Order Now
+                {translateWithFallback('orderNow', 'Order Now')}
               </Button>
             </Link>
 
