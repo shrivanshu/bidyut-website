@@ -272,18 +272,24 @@ useEffect(() => {
                     {/* Content */}
                     <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow text-center">
                       <div style={{position: 'relative', height: '60px'}}>
-                        <GalleryText
-                          text={t(award.titleKey)}
-                          flex={true}
-                          alpha={false}
-                          stroke={false}
-                          width={true}
-                          weight={true}
-                          italic={true}
-                          textColor={isDark ? '#ffffff' : '#222222'}
-                          strokeColor="#ff0000"
-                          minFontSize={22}
-                        />
+                        {useAnimatedHeading ? (
+                          <GalleryText
+                            text={t(award.titleKey)}
+                            flex={true}
+                            alpha={false}
+                            stroke={false}
+                            width={true}
+                            weight={true}
+                            italic={true}
+                            textColor={isDark ? '#ffffff' : '#222222'}
+                            strokeColor="#ff0000"
+                            minFontSize={22}
+                          />
+                        ) : (
+                          <h3 className={`text-lg sm:text-xl font-semibold leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            {t(award.titleKey)}
+                          </h3>
+                        )}
                       </div>
                       <p className={`text-xs sm:text-sm leading-relaxed flex-grow mb-3 sm:mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {t(award.descriptionKey)}
