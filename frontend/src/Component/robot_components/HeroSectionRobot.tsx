@@ -1,9 +1,13 @@
+"use client"
+
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest'
 import React from 'react'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 const HeroSection = () => {
-  // Detect md and up screens
   const [isMd, setIsMd] = React.useState(false)
+  const { t } = useLanguage()
+
   React.useEffect(() => {
     const checkScreen = () => setIsMd(window.innerWidth >= 768)
     checkScreen()
@@ -14,66 +18,52 @@ const HeroSection = () => {
   return (
     <>
       <div className='min-h-[120vh] bg-white pt-8 dark:bg-black relative overflow-hidden'>
-        {/* Custom Cursor - Only show on md and up */}
-        {isMd && (
-          <Robotanimationtest spinDuration={2} hideDefaultCursor={true} />
-        )}
+        {isMd && <Robotanimationtest spinDuration={2} hideDefaultCursor />}
 
-        {/* Split Header Text - Above the image */}
         <div className='absolute top-[14%] md:top-[20%] left-0 md:left-5 right-0 md:right-5 z-20 px-4 md:px-14'>
           <div className='max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-2'>
-            {/* Left part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-start'>
-              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black  dark:text-white drop-shadow-sm cursor-target'>
-                Let's
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold text-black dark:text-white drop-shadow-sm cursor-target'>
+                {t('h1HeroLets')}
               </span>
-              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Innovate
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
+                {t('h1HeroInnovate')}
               </span>
-              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Learn
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
+                {t('h1HeroLearn')}
               </span>
             </div>
 
-            {/* Right part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-end'>
-              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Beyond
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
+                {t('h1HeroBeyond')}
               </span>
-              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold  text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Boundaries
+              <span className='text-xl sm:text-3xl font-heading md:text-[55px] font-semibold text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
+                {t('h1HeroBoundaries')}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Robot Image - Reduced size for better spacing */}
         <div className='absolute top-[32%] md:top-[10%] left-0 right-0 z-10 flex items-center justify-center h-[80%]'>
           <img
             src='/media/G1 front.webp'
-            alt='Humanoid education G1 - G1 educational robot for hands-on learning and robotics education'
+            alt='Humanoid education G1 - educational robot for hands-on learning and robotics education'
             className='w-[100%] h-full object-contain'
           />
         </div>
 
-        {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
           <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
-            G1 Humanoid Educational Robot
+            {t('g1HeroTitle')}
           </h2>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
-            The G1 Educational Robot – a next-generation humanoid platform for
-            AI-driven learning, coding, and robotics innovation. Designed for
-            students, educators, and innovators, this advanced educational robot
-            empowers learners with hands-on experience, creativity, and
-            problem-solving skills.
+            {t('g1HeroDescription')}
           </p>
         </div>
 
-        {/* G1 and UNITREE Labels - Better positioned */}
         <div className='absolute top-[86%] md:top-[68%] -left-[35%] md:left-0 -right-8 md:right-0 z-15 h-[200px]'>
           <div className='max-w-[1440px] mx-auto px-6 relative h-full'>
-            {/* G1 Label - Smaller and higher */}
             <div className='absolute left-36 -top-16'>
               <span
                 className='text-[100px] md:text-[120px] lg:text-[290px] font-bold leading-none text-transparent bg-clip-text opacity-70 drop-shadow-lg cursor-target'
@@ -87,7 +77,6 @@ const HeroSection = () => {
               </span>
             </div>
 
-            {/* UNITREE Text - Smaller and repositioned */}
             <div className='absolute right-[3%] -top-56 h-[190px] flex items-center'>
               <span
                 className='text-[50px] md:text-[60px] lg:text-[97px] font-bold text-transparent bg-clip-text opacity-90 drop-shadow-lg cursor-target'
@@ -107,7 +96,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Humanoid Section */}
       <div className='text-center px-6 '>
         <div className='max-w-[1440px] mx-auto'>
           <h2
@@ -121,11 +109,7 @@ const HeroSection = () => {
           </h2>
           <div className='max-w-[980px] mx-auto'>
             <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target'>
-              Select from a range of high-performance educational robots
-              designed for hands-on learning. Each model features compact
-              builds, powerful 8-core CPUs, and up to 100 TOPS of computing
-              power— ideal for secondary development and real-time
-              demonstrations.
+              {t('g1HumanoidDescription')}
             </p>
           </div>
         </div>
