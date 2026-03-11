@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 interface RobotSpec {
   id: string
@@ -158,6 +159,47 @@ const Button = ({
 
 function A2_Wells_Variants() {
   const { isDark } = useTheme();
+  const { t } = useLanguage();
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key);
+    return translated === key ? fallback : translated;
+  };
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '');
+  const toCamelKey = (value: string) => {
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean);
+    if (!parts.length) return sanitizeKey(value);
+    return parts
+      .map((part, idx) =>
+        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+      )
+      .join('');
+  };
+  const toPascalKey = (value: string) => {
+    const camel = toCamelKey(value);
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel;
+  };
+  const translateWithKeyVariants = (
+    prefix: string,
+    id: string,
+    fallback: string,
+    extraIds: string[] = []
+  ) => {
+    const baseIds = [id, ...extraIds];
+    const candidates: string[] = [];
+    baseIds.forEach((value) => {
+      candidates.push(
+        `${prefix}${sanitizeKey(value)}`,
+        `${prefix}${toCamelKey(value)}`,
+        `${prefix}${toPascalKey(value)}`,
+        `${prefix}${value}`
+      );
+    });
+    for (const key of candidates) {
+      const translated = t(key);
+      if (translated !== key) return translated;
+    }
+    return fallback;
+  };
   const [selectedVariant, setSelectedVariant] = useState("go2-basic");
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -174,8 +216,14 @@ function A2_Wells_Variants() {
 
   const currentSpec = robotSpecs.find((spec) => spec.id === (selectedCobot?.specId || selectedVariant)) || robotSpecs[0];
   // Derive display data from either selected search item or current variant
-  const displayName = selectedCobot?.name ?? currentSpec.name;
-  const displayDescription = selectedCobot?.description ?? currentSpec.description;
+  const displayName =
+    selectedCobot?.name ??
+    translateWithKeyVariants('a2wSpecName', currentSpec.id, currentSpec.name, [currentSpec.name]);
+  const displayDescription =
+    selectedCobot?.description ??
+    translateWithKeyVariants('a2wSpecDesc', currentSpec.id, currentSpec.description, [
+      currentSpec.name,
+    ]);
   const displayGallery = selectedCobot?.gallery?.length ? selectedCobot.gallery : currentSpec.gallery;
 
   // Filter cobots based on search query
@@ -256,7 +304,10 @@ function A2_Wells_Variants() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search cobots by name, category, or description..."
+                  placeholder={translateWithFallback(
+                    'a2wSearchPlaceholder',
+                    'Search cobots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300"
@@ -331,10 +382,13 @@ function A2_Wells_Variants() {
               {filteredCobots.length === 0 && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 dark:text-gray-500 text-lg">
-                    No cobots found matching your search.
+                    {translateWithFallback('a2wSearchNoResults', 'No cobots found matching your search.')}
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
-                    Try different keywords or browse all cobots.
+                    {translateWithFallback(
+                      'a2wSearchTryDifferentKeywords',
+                      'Try different keywords or browse all cobots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -379,7 +433,13 @@ function A2_Wells_Variants() {
               className="w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+              <SelectValue
+                placeholder={translateWithFallback(
+                  'a2wVariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
+                value={selectedVariant}
+              />
               <ChevronDown className="h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70" />
             </SelectTrigger>
             {isDropdownOpen && (
@@ -412,7 +472,7 @@ function A2_Wells_Variants() {
                 {displayName}
               </h2>
               <h3 className="text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium">
-                Technical Specifications
+                {translateWithFallback('technicalSpecifications', 'Technical Specifications')}
               </h3>
               <p className="text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
                 {displayDescription}
@@ -420,7 +480,7 @@ function A2_Wells_Variants() {
 
               <Link to="/Contact">
                 <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                  Order Now
+                  {translateWithFallback('orderNow', 'Order Now')}
                 </Button>
               </Link>
             </div>
@@ -428,7 +488,9 @@ function A2_Wells_Variants() {
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                {translateWithFallback('a2wGalleryHeading', 'Gallery')}
+              </h3>
               <div className="flex gap-3 flex-wrap">
                 {displayGallery.map((media, index) => (
                   <button
@@ -539,13 +601,18 @@ function A2_Wells_Variants() {
                           : "text-gray-900 dark:text-gray-100"
                           }`}
                       >
-                        {feature.label}
+                        {translateWithKeyVariants('a2wFeatureLabel', feature.label, feature.label)}
                       </div>
                       <div
                         className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${hoveredFeature === index ? "opacity-100" : "opacity-70"
                           }`}
                       >
-                        {feature.detail}
+                        {translateWithKeyVariants(
+                          'a2wFeatureDetail',
+                          feature.detail,
+                          feature.detail,
+                          [feature.label]
+                        )}
                       </div>
                     </div>
                   </div>

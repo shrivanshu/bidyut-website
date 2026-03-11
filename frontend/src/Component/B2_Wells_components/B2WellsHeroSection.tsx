@@ -59,7 +59,7 @@ export default function HeroSection() {
       "linear-gradient(180deg, #b2b2b2 0%, #b2b2b2 36%, rgba(255,255,255,0.5) 87%, #FFFFFF 100%)",
   }}
   >
-    Quadruped
+    {translateWithFallback('b2wHeroLargeLabel', 'Quadruped')}
   </h2>
 
 {/* Bottom description */}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 interface H1Spec {
   model?: string;
@@ -49,6 +50,27 @@ interface H1Spec {
 }
 
 const A2ComparisonChart: React.FC = () => {
+  const { t } = useLanguage();
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key);
+    return translated === key ? fallback : translated;
+  };
+  const translateLabel = (key: string, fallback: string) =>
+    translateWithFallback(
+      `a2Comparison${key.charAt(0).toUpperCase()}${key.slice(1)}`,
+      fallback
+    );
+  const translateGroupTitle = (titleKey: string, fallback: string) =>
+    translateWithFallback(`a2ComparisonGroup${titleKey}`, fallback);
+  const translateModel = (model?: string) =>
+    model ? translateWithFallback(`a2ComparisonModel${model.replace(/\\s+/g, "")}`, model) : "";
+  const translateButton = (isExpanded: boolean) =>
+    isExpanded
+      ? translateWithFallback("a2ComparisonShowLess", "Show Less Specifications")
+      : translateWithFallback("a2ComparisonShowMore", "Show More Specifications");
+  const translateHeading = () =>
+    translateWithFallback("a2ComparisonHeading", "A2 Series Comparison");
+
   const [showMoreSpecs, setShowMoreSpecs] = useState(false);
 
   const specifications: H1Spec[] = [
@@ -212,13 +234,13 @@ const A2ComparisonChart: React.FC = () => {
   };
 
   const allGroups = [
-    { title: "Mechanical Parameters", items: group1Labels },
-    { title: "Electrical Characteristics", items: group2Labels },
-    { title: "Performance Metrics", items: group3Labels },
-    { title: "Other", items: group4Labels },
+    { titleKey: "Mechanical", title: "Mechanical Parameters", items: group1Labels },
+    { titleKey: "Electrical", title: "Electrical Characteristics", items: group2Labels },
+    { titleKey: "Performance", title: "Performance Metrics", items: group3Labels },
+    { titleKey: "Other", title: "Other", items: group4Labels },
   ];
 
-  const alwaysShowGroups = ["Mechanical Parameters", "Electrical Characteristics"];
+  const alwaysShowGroups = ["Mechanical", "Electrical"];
 
   const renderGroup = (title: string, items: { [key: string]: string }) => {
     const entries = Object.entries(items);
@@ -260,7 +282,7 @@ const A2ComparisonChart: React.FC = () => {
         {/* Mobile Layout */}
         <div className="block lg:hidden">
           <h2 className="text-xl font-heading font-bold mb-4 text-center text-black dark:text-white">
-            A2 Series Comparison
+            {translateHeading()}
           </h2>
 
           {specifications.map((spec) => (
@@ -268,15 +290,15 @@ const A2ComparisonChart: React.FC = () => {
               <div className="flex flex-col items-center mb-4">
                 <img
                   src="/A2.webp"
-                  alt={spec.model}
+                  alt={translateModel(spec.model)}
                   className="w-32 h-32 mb-2 object-contain"
                 />
                 <span className="font-bold text-black dark:text-white text-lg">
-                  {spec.model}
+                  {translateModel(spec.model)}
                 </span>
               </div>
 
-              {allGroups.map(({ title, items }) => {
+              {allGroups.map(({ titleKey, title, items }) => {
                 const hasData = Object.keys(items).some(
                   (key) =>
                     spec[key as keyof H1Spec] !== undefined &&
@@ -284,17 +306,17 @@ const A2ComparisonChart: React.FC = () => {
                 );
                 if (!hasData) return null;
 
-                if (!showMoreSpecs && !alwaysShowGroups.includes(title)) {
+                if (!showMoreSpecs && !alwaysShowGroups.includes(titleKey)) {
                   return null;
                 }
 
                 return (
                   <div
-                    key={title}
+                    key={titleKey}
                     className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 backdrop-blur-sm border border-emerald-500/30 rounded-lg p-4 mb-4 shadow-lg"
                   >
                     <h3 className="text-lg font-subheading font-semibold mb-3 text-blue-400 border-b border-gray-700 pb-2">
-                      {title}
+                      {translateGroupTitle(titleKey, title)}
                     </h3>
                     <div className="space-y-3">
                       {Object.entries(items).map(([key, label]) => {
@@ -306,7 +328,7 @@ const A2ComparisonChart: React.FC = () => {
                             className="flex justify-between items-start py-2 border-b border-gray-800 last:border-b-0"
                           >
                             <span className="text-gray-300 text-sm flex-1 pr-4">
-                              {label}
+                              {translateLabel(key, label)}
                             </span>
                             <span className="text-white text-sm font-medium text-right flex-1">
                               {value}
@@ -327,9 +349,7 @@ const A2ComparisonChart: React.FC = () => {
               className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-green-700 transition"
               onClick={() => setShowMoreSpecs((prev) => !prev)}
             >
-              {showMoreSpecs
-                ? "Show Less Specifications"
-                : "Show More Specifications"}
+              {translateButton(showMoreSpecs)}
             </button>
           </div>
         </div>
@@ -347,7 +367,7 @@ const A2ComparisonChart: React.FC = () => {
               >
                 <img
                   src="/A2.webp"
-                  alt={spec.model}
+                  alt={translateModel(spec.model)}
                   className="w-32 h-32 mb-2 object-contain"
                 />
                 <span className="font-bold text-black dark:text-white text-lg">
@@ -361,14 +381,18 @@ const A2ComparisonChart: React.FC = () => {
           <div className="border border-emerald-500/20 rounded-lg overflow-x-auto bg-black/40 backdrop-blur-sm shadow-xl shadow-emerald-500/10">
             <table className="w-full border-collapse min-w-[800px]">
               <tbody>
-                {allGroups.map(({ title, items }, idx) => {
-                  if (!showMoreSpecs && !alwaysShowGroups.includes(title)) {
-                    return null;
-                  }
-                  return <React.Fragment key={idx}>{renderGroup(title, items)}</React.Fragment>;
-                })}
-              </tbody>
-            </table>
+            {allGroups.map(({ titleKey, title, items }, idx) => {
+              if (!showMoreSpecs && !alwaysShowGroups.includes(titleKey)) {
+                return null;
+              }
+              return (
+                <React.Fragment key={idx}>
+                  {renderGroup(translateGroupTitle(titleKey, title), items)}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
           </div>
 
           {/* Show More Button */}
@@ -377,9 +401,7 @@ const A2ComparisonChart: React.FC = () => {
               className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-green-700 transition"
               onClick={() => setShowMoreSpecs((prev) => !prev)}
             >
-              {showMoreSpecs
-                ? "Show Less Specifications"
-                : "Show More Specifications"}
+              {translateButton(showMoreSpecs)}
             </button>
           </div>
         </div>
