@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface RobotSpec {
   id: string
@@ -451,7 +452,48 @@ const Button = ({
 
 function B2Variants () {
   const { isDark } = useTheme()
-  const [selectedVariant, setSelectedVariant] = useState('go2-basic')
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '')
+  const toCamelKey = (value: string) => {
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    if (!parts.length) return sanitizeKey(value)
+    return parts
+      .map((part, idx) =>
+        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+      )
+      .join('')
+  }
+  const toPascalKey = (value: string) => {
+    const camel = toCamelKey(value)
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+  }
+  const translateWithKeyVariants = (
+    prefix: string,
+    id: string,
+    fallback: string,
+    extraIds: string[] = []
+  ) => {
+    const baseIds = [id, ...extraIds]
+    const candidates: string[] = []
+    baseIds.forEach(value => {
+      candidates.push(
+        `${prefix}${sanitizeKey(value)}`,
+        `${prefix}${toCamelKey(value)}`,
+        `${prefix}${toPascalKey(value)}`,
+        `${prefix}${value}`
+      )
+    })
+    for (const key of candidates) {
+      const translated = t(key)
+      if (translated !== key) return translated
+    }
+    return fallback
+  }
+  const [selectedVariant, setSelectedVariant] = useState('B2-Advanced')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
@@ -473,9 +515,19 @@ function B2Variants () {
       spec => spec.id === (selectedCobot?.specId || selectedVariant)
     ) || robotSpecs[0]
   // Derive display data from either selected search item or current variant
-  const displayName = selectedCobot?.name ?? currentSpec.name
+  const displayName =
+    selectedCobot?.name ??
+    translateWithKeyVariants('b2SpecName', currentSpec.id, currentSpec.name, [
+      currentSpec.name
+    ])
   const displayDescription =
-    selectedCobot?.description ?? currentSpec.description
+    selectedCobot?.description ??
+    translateWithKeyVariants(
+      'b2SpecDesc',
+      currentSpec.id,
+      currentSpec.description,
+      [currentSpec.name]
+    )
   const displayGallery = selectedCobot?.gallery?.length
     ? selectedCobot.gallery
     : currentSpec.gallery
@@ -574,7 +626,10 @@ function B2Variants () {
               <div className='relative'>
                 <input
                   type='text'
-                  placeholder='Search cobots by name, category, or description...'
+                  placeholder={translateWithFallback(
+                    'b2SearchPlaceholder',
+                    'Search cobots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className='w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300'
@@ -653,10 +708,16 @@ function B2Variants () {
               {filteredCobots.length === 0 && (
                 <div className='text-center py-12'>
                   <div className='text-gray-400 dark:text-gray-500 text-lg'>
-                    No cobots found matching your search.
+                    {translateWithFallback(
+                      'b2SearchNoResults',
+                      'No cobots found matching your search.'
+                    )}
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm mt-2'>
-                    Try different keywords or browse all cobots.
+                    {translateWithFallback(
+                      'b2SearchTryDifferentKeywords',
+                      'Try different keywords or browse all cobots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -680,10 +741,16 @@ function B2Variants () {
                         isDark ? 'text-green-400' : 'text-green-600'
                       }`}
                     >
-                      {selectedCobot.category}
+                      {translateWithFallback(
+                        `b2RobotCategory${sanitizeKey(selectedCobot.id)}`,
+                        selectedCobot.category
+                      )}
                     </p>
                     <p className='text-gray-600 dark:text-gray-300'>
-                      {selectedCobot.description}
+                      {translateWithFallback(
+                        `b2RobotDesc${sanitizeKey(selectedCobot.id)}`,
+                        selectedCobot.description
+                      )}
                     </p>
                   </div>
                   <button
@@ -706,7 +773,10 @@ function B2Variants () {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue
-                placeholder='Choose your preferred variants'
+                placeholder={translateWithFallback(
+                  'b2VariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
                 value={selectedVariant}
               />
               <ChevronDown className='h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70' />

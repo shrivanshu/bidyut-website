@@ -190,65 +190,174 @@ const BlogPost_page: React.FC = () => {
               <div
                 className='text-black dark:text-gray-300 leading-relaxed space-y-6 text-lg'
                 dangerouslySetInnerHTML={{
-                  __html: (post.fullContent || '')
-                    .replace(
-                      /<h3>/g,
-                      '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">'
-                    )
-                    .replace(
-                      /<p>/g,
-                      '<p class="mb-6 text-justify leading-8 text-base md:text-lg">'
-                    )
-                    .replace(
-                      /<ul>/g,
-                      '<ul class="list-disc list-inside mb-6 space-y-3 ml-4">'
-                    )
-                    .replace(
-                      /<li>/g,
-                      '<li class="text-gray-700 dark:text-gray-300 mb-2 text-base md:text-lg">'
-                    )
-                    .replace(
-                      /<strong>/g,
-                      '<strong class="font-bold text-black dark:text-white">'
-                    )
-                    // Only replace these phrases inside paragraph text so headings stay normal.
-                    .replace(/<p[^>]*>[\s\S]*?<\/p>/g, paragraph =>
-                      paragraph
+                  __html: (() => {
+                    let roboticsLabsInSchoolsReplaced = false
+                    let roboticsLabReplaced = false
+                    let roboticsInSchoolsFutureReplaced = false
+                    let roboticsInSchoolsReplaced = false
+                    let roboticsLabsReplaced = false
+                    let roboticsInEducationReplaced = false
+                    let roboticsForKidsReplaced = false
+                    let roboticsEducationInIndiaReplaced = false
+                    let bidyutInnovationReplaced = false
+                    let streamEducationReplaced = false
+
+                    return (
+                      (post.fullContent || '')
                         .replace(
-                          /(robotics labs in schools|robotics lab)/gi,
-                          match =>
-                            `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<h3>/g,
+                          '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">'
                         )
                         .replace(
-                          /robotics for kids/gi,
-                          match =>
-                            `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<p>/g,
+                          '<p class="mb-6 text-justify leading-8 text-base md:text-lg">'
                         )
                         .replace(
-                          /robotics education in india/gi,
-                          match =>
-                            `<a href="/gallery" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<ul>/g,
+                          '<ul class="list-disc list-inside mb-6 space-y-3 ml-4">'
                         )
                         .replace(
-                          /robotics in schools/gi,
-                          match =>
-                            `<a href="/education" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<li>/g,
+                          '<li class="text-gray-700 dark:text-gray-300 mb-2 text-base md:text-lg">'
                         )
                         .replace(
-                          /stream education/gi,
-                          match =>
-                            `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<strong>/g,
+                          '<strong class="font-bold text-black dark:text-white">'
                         )
+                        // Only replace these phrases inside paragraph text so headings stay normal.
+                        .replace(/<p[^>]*>[\s\S]*?<\/p>/g, paragraph => {
+                          const updated = paragraph
+                            .replace(/robotics labs? in schools/gi, match => {
+                              if (roboticsLabsInSchoolsReplaced) return match
+                              roboticsLabsInSchoolsReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics labs/gi, match => {
+                              if (roboticsLabsReplaced) return match
+                              // Only apply within the specific sentence about robotics labs changing STREAM learning
+                              if (
+                                !/Robotics labs are changing the way we learn STREAM, which is Science, Technology, Robotics, Engineering, Arts and Mathematics\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsLabsReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in schools/gi, match => {
+                              if (roboticsInSchoolsFutureReplaced) return match
+                              // Only apply within the specific sentence about exposure to technology
+                              if (
+                                !/Introducing robotics in schools gives students early exposure to these technologies\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInSchoolsFutureReplaced = true
+                              return `<a href="http://localhost:3000/blog/the-role-of-robotics-labs-in-transforming-stream-education-in-schools" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in education/gi, match => {
+                              if (roboticsInEducationReplaced) return match
+                              // Only apply within the specific sentence about robotics in education impact
+                              if (
+                                !/This is where robotics in education is making a powerful impact\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInEducationReplaced = true
+                              return `<a href="http://localhost:3000/blog/the-future-of-robotics-in-education:-transforming-learning-in-india" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in schools/gi, match => {
+                              if (roboticsInSchoolsReplaced) return match
+                              // Only apply within the specific sentence about teaching robotics in schools
+                              if (
+                                !/So it is an idea to teach robotics in schools and colleges\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInSchoolsReplaced = true
+                              return `<a href="http://localhost:3000/blog/best-robotics-lab-for-schools-in-india-%E2%80%93-powered-by-bidyut-innovation" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics lab/gi, match => {
+                              if (roboticsLabReplaced) return match
+                              // Only apply within the specific paragraph about teacher training
+                              if (
+                                !/A robotics lab is successful only when teachers feel confident using it\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsLabReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics for kids/gi, match => {
+                              if (roboticsForKidsReplaced) return match
+                              // Only apply within the specific sentence about imagination + creativity
+                              if (
+                                !/Robotics for kids is not about writing code, it is also about using your imagination\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsForKidsReplaced = true
+                              return `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/Robotics education in India/gi, match => {
+                              if (roboticsEducationInIndiaReplaced) return match
+                              // Only apply within the specific sentence about robotics education becoming important
+                              if (
+                                !/Robotics education in India is getting more important every day\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsEducationInIndiaReplaced = true
+                              return `<a href="/gallery/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/STREAM education/gi, match => {
+                              if (streamEducationReplaced) return match
+                              // Only apply within the specific sentence about STREAM education
+                              if (
+                                !/For a long time, people focused on STEM, but now many teachers are adopting STREAM education\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              streamEducationReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/Bidyut Innovation/gi, match => {
+                              if (bidyutInnovationReplaced) return match
+                              // Only apply within the specific section about understanding school requirements
+                              if (
+                                !/Every school is different\. Bidyut Innovation studies:/i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              bidyutInnovationReplaced = true
+                              return `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+
+                          return updated
+                        })
                         .replace(
-                          /bidyut innovation/gi,
-                          match =>
-                            `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<a /g,
+                          '<a class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold" '
                         )
                     )
-                    .replace(
-                      /<a /g,
-                      '<a class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold" '
-                    )
+                  })()
                 }}
               />
             </div>

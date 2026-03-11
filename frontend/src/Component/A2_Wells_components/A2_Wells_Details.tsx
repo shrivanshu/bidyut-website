@@ -1,4 +1,5 @@
 import { useTheme } from '../../contexts/ThemeContext';
+import { useLanguage } from '../../contexts/OptimizedLanguageContext';
 
 interface CobotClassroomProps {
   onContactClick?: () => void;
@@ -8,14 +9,23 @@ const robotImgSrc = '/media/A2-w.webp';
 
 const A2_Wells_Details = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark: _isDark } = useTheme();
+  const { t } = useLanguage();
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key);
+    return translated === key ? fallback : translated;
+  };
+
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-black min-h-screen flex items-center justify-center p-6 transition-colors duration-300 select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+    <div
+      className="bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-black min-h-screen flex items-center justify-center p-6 transition-colors duration-300 select-text"
+      style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}
+    >
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Image first on mobile */}
         <div className="flex justify-center md:order-1 order-1 h-full">
           <div className="relative w-full h-full flex items-center justify-center">
-            <img 
-              src={robotImgSrc} 
+            <img
+              src={robotImgSrc}
               alt="Educational Robot"
               className="w-full h-full object-contain max-h-[80vh]"
             />
@@ -23,26 +33,35 @@ const A2_Wells_Details = ({ onContactClick }: CobotClassroomProps) => {
         </div>
 
         {/* Content */}
-        <div className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text" style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}>
+        <div
+          className="space-y-6 md:order-2 order-2 text-center md:text-left w-full h-full flex flex-col justify-center select-text"
+          style={{ userSelect: 'text', WebkitUserSelect: 'text', msUserSelect: 'text' }}
+        >
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              <span className="block md:inline">Ready to Transform </span>{' '}
-              <span className="text-green-600 dark:text-green-400 block md:inline">Industrial Inspections?</span>
+              <span className="block md:inline">
+                {translateWithFallback('a2wDetailHeading', 'Ready to Transform')}
+              </span>{' '}
+              <span className="text-green-600 dark:text-green-400 block md:inline">
+                {translateWithFallback('a2wDetailHeadingHighlight', 'Industrial Inspections?')}
+              </span>
             </h2>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300">
-              Join engineers, researchers, and industrial teams already using the Unitree A2‑W Autonomous Inspection Robot to automate inspection workflows, enhance safety, collect high-quality data, and improve operational efficiency across complex industrial sites.
-
+              {translateWithFallback(
+                'a2wDetailDescription',
+                'Join engineers, researchers, and industrial teams already using the Unitree A2‑W Autonomous Inspection Robot to automate inspection workflows, enhance safety, collect high-quality data, and improve operational efficiency across complex industrial sites.'
+              )}
             </p>
           </div>
 
-            <div className="pt-4">
-              <button 
-                onClick={onContactClick}
-                className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20 cursor-target"
-              >
-                Contact Sales Team
-              </button>
-            </div>
+          <div className="pt-4">
+            <button
+              onClick={onContactClick}
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20 cursor-target"
+            >
+              {translateWithFallback('a2wDetailCta', 'Contact Sales Team')}
+            </button>
+          </div>
         </div>
       </div>
     </div>

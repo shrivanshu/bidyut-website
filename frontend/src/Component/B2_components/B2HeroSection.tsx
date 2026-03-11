@@ -1,6 +1,12 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 export default function HeroSection () {
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
   return (
     <section className='min-h-screen bg-gray-50 dark:bg-black flex flex-col items-center justify-center px-4 pt-32 pb-16 relative'>
       {/* Target Cursor Effect - hidden on mobile */}
@@ -11,21 +17,33 @@ export default function HeroSection () {
       {/* Top tagline */}
       <div className='text-center font-poppins mb-8'>
         <p className='text-sm md:text-xl font-semibold dark:text-white  text-black tracking-wide cursor-target'>
-          Smart Robotics for Real-World Challenges.
+          {translateWithFallback(
+            'b2HeroTagline',
+            'Smart Robotics for Real-World Challenges.'
+          )}
         </p>
       </div>
 
       {/* Main headline */}
       <div className='text-center mb-8 max-w-4xl'>
         <h1 className='text-3xl md:text-6xl lg:text-7xl dark:text-white font-heading font-semibold text-gray-900 leading-tight cursor-target'>
-          <span className='text-[#0acf83]'>B2 Advanced Industrial </span> Quadruped Robot
+          <span className='text-[#0acf83]'>
+            {translateWithFallback(
+              'b2HeroHighlight',
+              'B2 Advanced Industrial '
+            )}
+          </span>{' '}
+          {translateWithFallback('b2HeroTitle', 'Quadruped Robot')}
         </h1>
       </div>
 
       {/* Description paragraph */}
       <div className='max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mt-2 px-4'>
         <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center'>
-         The B2 Industrial quadruped robot is a next-generation four-legged robot designed for industrial automation, inspection, logistics, and real-world operational tasks.This quadruped robot brings advanced robotics capabilities directly to your workspace, enabling efficient, safe, and high-performance operations.
+          {translateWithFallback(
+            'b2HeroDescription',
+            'The B2 Industrial quadruped robot is a next-generation four-legged robot designed for industrial automation, inspection, logistics, and real-world operational tasks. This quadruped robot brings advanced robotics capabilities directly to your workspace, enabling efficient, safe, and high-performance operations.'
+          )}
         </p>
       </div>
 
@@ -56,7 +74,10 @@ export default function HeroSection () {
         {/* Bottom description */}
         <div className='max-w-5xl mx-auto mt-2 px-4'>
           <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target text-justify sm:text-center md:text-center'>
-           Explore our range of industrial quadruped robots, engineered for precision, agility, and reliability. Each configuration is designed to meet diverse operational requirements, providing robust performance, intelligent mobility, and seamless integration for inspection, logistics, automation, and other real-world industrial applications.
+            {translateWithFallback(
+              'b2HeroBottomDescription',
+              'Explore our range of industrial quadruped robots, engineered for precision, agility, and reliability. Each configuration is designed to meet diverse operational requirements, providing robust performance, intelligent mobility, and seamless integration for inspection, logistics, automation, and other real-world industrial applications.'
+            )}
           </p>
         </div>
       </div>

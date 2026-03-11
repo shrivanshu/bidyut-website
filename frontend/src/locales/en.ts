@@ -284,10 +284,56 @@ export const en = {
   g1SearchPlaceholder: 'Search robots by name, category, or description...',
   g1SearchNoResults: 'No robots found matching your search.',
   g1SearchTryDifferentKeywords: 'Try different keywords or browse all robots.',
+  g1SpecNameg1basic: 'G1 Basic',
+  g1SpecDescg1basic:
+    'This compact educational robot measures 1270 × 450 × 200 mm (approx. 4.1 ft), weighs about 35 kg, carries light payloads, and can reach speeds up to 2 m/s—ideal for lively classroom demos.',
+  g1SpecNameg1EduU1: 'G1 EDU U1',
+  g1SpecDescg1EduU1:
+    'Advanced educational humanoid with optional three‑finger hands, extra wrist and waist freedom, and stronger 120 N·m knee torque. Optional NVIDIA Jetson Orin boosts computing for higher-level research.',
+  g1SpecNameg1EduU2: 'G1 EDU U2',
+  g1SpecDescg1EduU2:
+    'Extends U1 with a 10,500mAh battery, upgraded AI modules, and more flexible joints—built for intensive coursework and real-world robotics contests.',
+  g1SpecNameg1EduU3: 'G1 EDU U3',
+  g1SpecDescg1EduU3:
+    'Adds advanced locomotion control, multi-camera SLAM vision, and reinforced joints to endure demanding research environments.',
+  g1SpecNameg1EduU4: 'G1 EDU U4',
+  g1SpecDescg1EduU4:
+    'Integrates Jetson Orin NX, brings haptic feedback for hand control, and supports cloud-based simulation training.',
+  g1SpecNameg1EduU5: 'G1 EDU U5',
+  g1SpecDescg1EduU5:
+    'Focuses on collaborative research with voice AI, advanced gesture recognition, and richer human–robot interaction modules.',
+  g1SpecNameg1EduU6: 'G1 EDU U6',
+  g1SpecDescg1EduU6:
+    'Flagship EDU model combining all upgrades with AI-driven decision making, cloud–edge hybrid control, and maximum safety for lab and competition deployment.',
   h1SpecNameh1basic: 'Unitree H1',
   h1SpecDesch1basic: 'The Unitree H1 Robot is a full-size universal humanoid standing about 180 cm and 47 kg. With 3D LiDAR and Intel RealSense depth sensing it achieves 360° perception. Speeds up to 3.3 m/s (potentially 5 m/s), quick-release 864 Wh battery, hollow wiring, and joint torque up to 360 N·m make it ideal for advanced research, mobility, and dynamic real-world applications.',
   h1SpecNameh12basic: 'Unitree H1-2',
   h1SpecDesch12basic: 'The Unitree H1-2 is a full-size humanoid (178 cm, ~70 kg) with 27 DoF, 3D LiDAR + Intel RealSense for 360° perception, high torque joints (legs up to 360 N·m, arms 120 N·m), dual encoders, hollow wiring, optional dexterous hands and higher computing. Designed for powerful, ergonomic performance in advanced robotics applications.',
+  // R1 Page
+  r1HeroLets: "Let's",
+  r1HeroInnovate: 'Innovate',
+  r1HeroLearn: 'Learn',
+  r1HeroBeyond: 'Beyond',
+  r1HeroBoundaries: 'Boundaries',
+  r1HeroTitle: 'Unitree R1 Robot for Education',
+  r1HeroDescription:
+    'The Unitree R1 Robot is a next-generation humanoid platform designed for practical learning, AI exploration, and hands-on robotics education. Built for students, educators, and innovators, the Unitree R1 Robot transforms classrooms with interactive coding, STEAM learning, and real-world problem-solving experiences.',
+  r1HumanoidHeading: 'Humanoid',
+  r1HumanoidDescription:
+    'Discover the Unitree R1, a high-performance educational humanoid robot designed for hands-on learning. With a compact build, an 8-core CPU, and up to 100 TOPS of computing power, it offers advanced capabilities for coding, AI exploration, and real-time demonstrations.',
+  r1DetailHeading: 'Bring Innovation to',
+  r1DetailHeadingHighlight: 'your classroom?',
+  r1DetailDescription:
+    'Join thousands of educators who are already using the Unitree R1 Robot to enhance hands-on learning and inspire the next generation of innovators.',
+  r1DetailCta: 'Contact Sales Team',
+  r1VariantsPlaceholder: 'Choose your preferred variants',
+  r1SearchPlaceholder: 'Search robots by name, category, or description...',
+  r1SearchNoResults: 'No robots found matching your search.',
+  r1SearchTryDifferentKeywords: 'Try different keywords or browse all robots.',
+  r1SpecNamer1basic: 'Unitree R1',
+  r1SpecDescr1basic:
+    'The Unitree R1 Robot is a compact full-featured humanoid robot, measuring 1210 × 357 × 190 mm and weighing about 25 kg. It features 24 degrees of freedom (expandable up to 40 for the EDU version), 6 DOF per leg, and 5 DOF per arm (3 at the shoulder and 2 at the elbow). Equipped with a humanoid binocular camera for ultra-wide-angle vision, a 4-microphone array for voice interaction, and stereo dual speakers, it is designed for dynamic educational and research applications. The R1 integrates hollow and internal wiring, a smart quick-release battery, an 8-core CPU computing module, and supports OTA upgrades, making it a versatile and powerful educational humanoid platform.',
+  r1GalleryHeading: 'Gallery',
 
   // Gallery Page
   exploreOurGalleryTitle: 'Explore Our Gallery',
@@ -461,6 +507,204 @@ export const en = {
   schoolScrollerItem11: 'Sports & Wellness',
   schoolScrollerItem12: 'Future Careers',
 
+  // B2 Page
+  b2HeroTagline: 'Smart Robotics for Real-World Challenges.',
+  b2HeroHighlight: 'B2 Advanced Industrial ',
+  b2HeroTitle: 'Quadruped Robot',
+  b2HeroDescription:
+    'The B2 Industrial quadruped robot is a next-generation four-legged robot designed for industrial automation, inspection, logistics, and real-world operational tasks. This quadruped robot brings advanced robotics capabilities directly to your workspace, enabling efficient, safe, and high-performance operations.',
+  b2HeroBottomDescription:
+    'Explore our range of industrial quadruped robots, engineered for precision, agility, and reliability. Each configuration is designed to meet diverse operational requirements, providing robust performance, intelligent mobility, and seamless integration for inspection, logistics, automation, and other real-world industrial applications.',
+  b2VariantsPlaceholder: 'Choose your preferred variants',
+  b2SearchPlaceholder: 'Search cobots by name, category, or description...',
+  b2SearchNoResults: 'No cobots found matching your search.',
+  b2SearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  b2GalleryHeading: 'Gallery',
+  b2DetailHeading: 'Elevate Operations With',
+  b2DetailHeadingHighlight: 'Unitree B2',
+  b2DetailDescription:
+    'Optimize industrial and research applications with the Unitree B2 Quadruped Robot—engineered for performance and reliability.',
+  b2DetailCta: 'Contact Sales Team',
+  b2SpecNameB2Advanced: 'B2 Advanced',
+  b2SpecDescB2Advanced:
+    'B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).',
+
+  // B2-W Page
+  b2wHeroTagline: 'Industrial Intelligence on Four Legs.',
+  b2wHeroHighlight: 'B2-W Industrial Quadruped',
+  b2wHeroTitle: 'Inspection Robot',
+  b2wHeroDescription:
+    'The B2-W Industrial Quadruped Robot is a cutting-edge four-legged inspection robot designed for advanced industrial applications, including automation, inspection, logistics, and other real-world operational tasks. The B2-W combines a robust build, agile mobility, and powerful onboard computing, enabling efficient, safe, and high-performance operations in complex industrial environments.',
+  b2wHeroBottomDescription:
+    'Select from a range of industrial quadruped robots, crafted for exceptional precision, adaptability, and dependability. Each variant is engineered to address diverse operational demands, ensuring powerful performance, autonomous mobility, and effortless integration for inspection, logistics, automation, and other practical industrial uses.',
+  b2wHeroLargeLabel: 'Quadruped',
+  b2wVariantsPlaceholder: 'Choose your preferred variants',
+  b2wSearchPlaceholder: 'Search cobots by name, category, or description...',
+  b2wSearchNoResults: 'No cobots found matching your search.',
+  b2wSearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  b2wGalleryHeading: 'Gallery',
+  b2wDetailHeading: 'Transform Workflows with',
+  b2wDetailHeadingHighlight: ' B2-W Robot',
+  b2wDetailDescription:
+    'Transform industrial operations with the Unitree B2-W Quadruped Robot—engineered for high performance and smart automation',
+  b2wDetailCta: 'Contact Sales Team',
+  b2wSpecNameB2WBasic: 'B2-W Basic Version',
+  b2wSpecDescB2WBasic:
+    'B2-W Basic Version inspection robot offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W Basic Version with 3D Lidar',
+  b2wSpecDescB2WBasic3DLidar:
+    'B2-W Basic Version inspection robot with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.',
+  b2wFeatureLabelShockAbsorbingTires: 'Shock Absorbing Tires',
+  b2wFeatureDetailShockAbsorbingTires: 'Equipped with 4 high-reliability tires',
+  b2wFeatureLabelStairClimbing: 'Stair Climbing',
+  b2wFeatureDetailStairClimbing: 'Climbs 16 cm steps with ease',
+  b2wFeatureLabelHighSpeedPerformance: 'High-Speed Performance',
+  b2wFeatureDetailHighSpeedPerformance: 'Maximum speed of 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D Lidar Navigation',
+  b2wFeatureDetail3DLidarNavigation: '32-line radar with SDK integration',
+  b2wFeatureLabelStairClimbingAbility: 'Stair Climbing Ability',
+  b2wFeatureDetailStairClimbingAbility: 'Climbs 16 cm steps, 5 m/s max speed',
+  b2wFeatureDetailHighReliability4WheelDesign: 'High reliability, 4-wheel design',
+
+  // A2 Page
+  a2HeroTagline: 'Powerful Robots for Real-World Challenges.',
+  a2HeroHighlight: 'Unitree A2 –',
+  a2HeroTitle: 'Advanced Quadruped Robot Dog',
+  a2HeroDescription:
+    'The Unitree A2 is an advanced quadruped robot dog built for industrial operations, offering agile mobility, powerful computing, and robust performance for automation, inspection, logistics, and demanding real-world applications with efficiency and safety.',
+  a2HeroLargeLabel: 'Unitree A2',
+  a2HeroBottomDescription:
+    'Unitree A2 is an advanced quadruped robot built for research, industrial, and educational applications. It comes in four variants – A2 Standard, A2 Pro, A2-W Standard, and A2-W Pro – each designed for high performance, strong payload, and versatile operation in different environments. With powerful computing, stability, and adaptability, the A2 is ideal for robotics development and real-world problem-solving.',
+  a2DetailHeading: 'Ready to Transform',
+  a2DetailHeadingHighlight: 'Learning and Research?',
+  a2DetailDescription:
+    'Join educators, researchers, and innovators who are already using the Unitree A2 Quadruped Robot Dog to inspire creativity, teach hands-on robotics, and tackle real-world challenges.',
+  a2DetailCta: 'Contact Sales Team',
+  a2VariantsPlaceholder: 'Choose your preferred variants',
+  a2SearchPlaceholder: 'Search cobots by name, category, or description...',
+  a2SearchNoResults: 'No cobots found matching your search.',
+  a2SearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  a2GalleryHeading: 'Gallery',
+  a2SpecNameA2Standard: 'A2 Standard',
+  a2SpecDescA2Standard:
+    'The Unitree A2 Standard is a powerful quadruped robot dog weighing 37kg with a 25kg payload capacity (max 100kg). It offers up to 5 hours / 20km runtime, speeds of 3.7m/s (max ~5m/s), and can climb slopes of 45° or steps up to 100cm. With dual 9000mAh batteries, LiDAR, cameras, WiFi 6, Bluetooth 5.2, and dual CPUs (8-core + Intel i7), it ensures stability, obstacle avoidance, OTA updates, and seamless secondary development.',
+  a2SpecNameA2Pro: 'A2 Pro',
+  a2SpecDescA2Pro:
+    'The Unitree A2 Pro builds on the A2 Standard with dual LiDARs, GPS, 4G, and a wireless vector positioning module for precise navigation. With three built-in computing units and an advanced expansion dock, it supports SLAM mapping, autonomous navigation, obstacle avoidance, HD imaging, and more. Its rugged design ensures durability with an IP56–IP67 protection rating.',
+  a2FeatureLabelLiDARSensor: 'LiDAR Sensor',
+  a2FeatureDetailLiDARSensor: 'Single LiDAR for obstacle avoidance & mapping',
+  a2FeatureLabelWideAngleCamera: 'Wide-Angle Camera',
+  a2FeatureDetailWideAngleCamera: 'HD wide-angle vision, expandable to dual cameras',
+  a2FeatureLabelBatteryPack: 'Battery Pack',
+  a2FeatureDetailBatteryPack: 'Dual 9000mAh batteries, 5h runtime, 20km range',
+  a2FeatureLabelJointModule: 'Joint Module',
+  a2FeatureDetailJointModule: 'High-torque motor joints enable stair & slope climbing',
+  a2FeatureLabelPayloadArea: 'Payload Area',
+  a2FeatureDetailPayloadArea: 'Carries up to 25kg payload (max 100kg)',
+  a2FeatureLabelDualLiDARSensors: 'Dual LiDAR Sensors',
+  a2FeatureDetailDualLiDARSensors: 'Enhanced perception with two LiDAR units for improved mapping and navigation',
+  a2FeatureLabelGPSModule: 'GPS Module',
+  a2FeatureDetailGPSModule: 'Integrated GPS for precise outdoor positioning and navigation',
+  a2FeatureLabel4GCommunication: '4G Communication',
+  a2FeatureDetail4GCommunication: 'Seamless remote connectivity through built-in 4G module',
+  a2FeatureLabelWirelessVectorPositioning: 'Wireless Vector Positioning',
+  a2FeatureDetailWirelessVectorPositioning: 'Companion module for wireless vector-based positioning support',
+  a2FeatureLabelHighComputingDock: 'High-Computing Dock',
+  a2FeatureDetailHighComputingDock: 'Expansion dock increases built-in computing power to three units',
+
+  // A2 Page - SEO and comparison
+  a2SeoTitle: 'Unitree A2 | Smart Quadruped Robot Dog for Tough Tasks',
+  a2SeoDescription:
+    'The Unitree A2 quadruped robot dog delivers high-speed agility, stability, and AI-driven performance - perfect for advanced industrial inspection and monitoring.',
+  a2SrHeading: 'Unitree A2 Quadruped Robot Dog - High-Performance Industrial Solution',
+  a2SrDescription:
+    'The Unitree A2 quadruped robot dog combines high-speed agility, exceptional stability, and AI-driven performance for advanced industrial applications. Perfect for inspection, monitoring, surveillance, and autonomous navigation in challenging environments, the A2 delivers reliable performance for industries requiring robust mobile robotics solutions.',
+  a2ComparisonHeading: 'A2 Series Comparison',
+  a2ComparisonShowMore: 'Show More Specifications',
+  a2ComparisonShowLess: 'Show Less Specifications',
+  a2ComparisonGroupMechanical: 'Mechanical Parameters',
+  a2ComparisonGroupElectrical: 'Electrical Characteristics',
+  a2ComparisonGroupPerformance: 'Performance Metrics',
+  a2ComparisonGroupOther: 'Other',
+  a2ComparisonModelA2: 'A2',
+  a2ComparisonModelA2Pro: 'A2 Pro',
+  a2ComparisonSizeStandard: 'Size Standard',
+  a2ComparisonSizeLyingProne: 'Size (Lying Prone)',
+  a2ComparisonMaterial: 'Material',
+  a2ComparisonWeightWithoutBattery: 'Weight (without battery)',
+  a2ComparisonWeightWithBattery: 'Weight (with battery)',
+  a2ComparisonDegreeOfFreedom: 'Degrees of Freedom (joint motors)',
+  a2ComparisonJointBearings: 'Joint Bearings',
+  a2ComparisonJointMotora: 'Joint Motors',
+  a2ComparisonMaxJointTorque: 'Max Joint Torque',
+  a2ComparisonRangeOfMotion: 'Range of Motion',
+  a2ComparisonSupplyVoltage: 'Supply Voltage',
+  a2ComparisonJointEncoder: 'Joint Encoder',
+  a2ComparisonCoolingSystem: 'Cooling System',
+  a2ComparisonPowerSupply: 'Power Supply',
+  a2ComparisonBatteryCapacity: 'Battery Capacity',
+  a2ComparisonWifiBluetooth: 'Wi-Fi 6, Bluetooth 5.2',
+  a2ComparisonSpeaker: 'Speaker',
+  a2ComparisonMicrophone: 'Microphone',
+  a2ComparisonFrontLight: 'Front Light',
+  a2ComparisonWirelessVectorModule: 'Wireless vector follow module',
+  a2ComparisonGps: 'GPS',
+  a2ComparisonFourG: '4G',
+  a2ComparisonSensor: 'Sensor',
+  a2ComparisonControlCompute: 'Control & Compute',
+  a2ComparisonExternalInterfaces: 'External Interfaces',
+  a2ComparisonOperatingTemperature: 'Operating Temperature',
+  a2ComparisonBatteryLifeNoLoad: 'Battery Life (No Load)',
+  a2ComparisonBatteryLifeWithLoad: 'Battery Life (with 25kg Load)',
+  a2ComparisonMaxStandingLoad: 'Max Standing Load',
+  a2ComparisonContinuousWalkingLoad: 'Continuous Walking Load',
+  a2ComparisonSlopeWalkingCapability: 'Slope Walking Capability',
+  a2ComparisonStairClimbingCapability: 'Stair Climbing Capability',
+  a2ComparisonMaxClimbHeight: 'Max Climb Height',
+  a2ComparisonMovingSpeed: 'Speed',
+  a2ComparisonReplaceWheelLeg: 'Replace Wheel-leg',
+  a2ComparisonIngressProtectionRating: 'Ingress Protection Rating',
+  a2ComparisonSmartOtaUpgrade: 'Smart OTA Upgrade',
+  a2ComparisonSecondaryDevelopment: 'Secondary Development',
+  a2ComparisonWarranty: 'Warranty',
+  a2ComparisonContinuousUpgrades: 'Continuous Upgrades',
+
+  // A2-W Page
+  a2wHeroTagline: 'Learn Robotics. Build the Future.',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: 'Advanced Autonomous Inspection Robot',
+  a2wHeroDescription:
+    'The Unitree A2‑W is an advanced autonomous inspection robot engineered for industrial, logistics, and research applications. Combining legged agility with wheeled efficiency, this hybrid quadruped robot navigates complex environments, performs high-precision inspections, and automates repetitive tasks. Designed for rugged and dynamic environments, the A2‑W ensures safety, reliability, and operational efficiency across diverse real-world industrial scenarios.',
+  a2wHeroLargeLabel: 'Quadruped',
+  a2wHeroBottomDescription:
+    'Explore the technical details and capabilities of the Quadrupeds A2-W, a high-performance autonomous inspection robot designed to deliver reliable industrial operations in demanding environments.',
+  a2wVariantsPlaceholder: 'Choose your preferred variants',
+  a2wSearchPlaceholder: 'Search cobots by name, category, or description...',
+  a2wSearchNoResults: 'No cobots found matching your search.',
+  a2wSearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  a2wGalleryHeading: 'Gallery',
+  a2wSpecNameA2WStandard: 'Unitree A2-W Standard Version',
+  a2wSpecDescA2WStandard:
+    'The Unitree A2-W Standard Version is a wheeled-foot quadruped robot designed for high performance and versatility. It offers a 20-25kg payload capacity, up to 20km range, and 4-5 hours continuous runtime (unladen). Equipped with advanced computing cores, perception sensors, and robust mobility, it supports secondary development, intelligent OTA updates, and provides comprehensive ecosystem support for research and industrial applications.',
+  a2wFeatureLabelMobilityPayload: 'Mobility & Payload',
+  a2wFeatureDetailMobilityPayload: '20-25kg payload, climbs 28cm stairs & 90cm steps, 45° slope capability',
+  a2wFeatureLabelBatteryRuntime: 'Battery & Runtime',
+  a2wFeatureDetailBatteryRuntime: 'Dual-bay 9000/18000 mAh system, 4-5h runtime, 1h charging',
+  a2wFeatureLabelComputingPower: 'Computing Power',
+  a2wFeatureDetailComputingPower: '8-core CPU + Intel Core i7 for user development',
+  a2wFeatureLabelPerceptionControl: 'Perception & Control',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + wide-angle cameras, dual encoders, stable obstacle avoidance',
+  a2wFeatureLabelConnectivityInterfaces: 'Connectivity & Interfaces',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V power',
+  a2wDetailHeading: 'Ready to Transform',
+  a2wDetailHeadingHighlight: 'Industrial Inspections?',
+  a2wDetailDescription:
+    'Join engineers, researchers, and industrial teams already using the Unitree A2‑W Autonomous Inspection Robot to automate inspection workflows, enhance safety, collect high-quality data, and improve operational efficiency across complex industrial sites.',
+  a2wDetailCta: 'Contact Sales Team',
+  b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
+  b2SpecDescB2Advancedwith3DLidar:
+    'B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.',
+
   // Blog Page
   blogPageTitle: 'Blog | Bidyut Innovation',
   blogPageDescription: 'Insights and updates from Bidyut Innovation',
@@ -473,6 +717,107 @@ export const en = {
   roboticsLabsTransformExcerpt: "The way we learn is changing fast in the 21st century. The old ways of teaching are not good enough to get students ready for a world that's all about technology.",
   roboticsInteractiveTitle: 'How Robotics is Making Learning Fun and Interactive in Schools',
   roboticsInteractiveExcerpt: 'Education is rapidly evolving, and traditional teaching methods are no longer enough to keep students fully engaged in the classroom. Today\'s learners are curious, tech-savvy, and eager to explore.',
+
+  // GO2 Education Page
+  go2HeroTagline: 'Next-Level Robotics for Education.',
+  go2HeroHighlight: 'Quadrupeds ',
+  go2HeroTitle: 'Robot Dog GO2.',
+  go2HeroDescription:
+    'The Robot Dog GO2 is an advanced quadruped robot designed to bring robotics, AI, and programming to life. This GO2 Robot moves with realistic four-legged motion, making it perfect for students, educators, and robotics enthusiasts who want hands-on STREAM learning.',
+  go2HeroLargeLabel: 'Unitree GO2',
+  go2HeroBottomDescription:
+    'Select your preferred Robot Dog GO2 model below to unlock the ideal combination of learning, coding, and hands-on robotics, designed to make STREAM education engaging and practical.',
+  go2DetailHeading: 'Ready to revolutionize',
+  go2DetailHeadingHighlight: 'your classroom?',
+  go2DetailDescription:
+    'Revolutionize teaching with the Unitree GO2 Robot Dog, delivering practical AI, robotics, and STREAM experiences that inspire student creativity and problem-solving.',
+  go2DetailCta: 'Contact Sales Team',
+  go2VariantDropdownPlaceholder: 'Choose your preferred variants',
+  go2SearchPlaceholder: 'Search cobots by name, category, or description...',
+  go2SearchNoResults: 'No cobots found matching your search.',
+  go2SearchNoResultsHelper: 'Try different keywords or browse all cobots.',
+  go2GalleryHeading: 'Gallery',
+  // GO2 Variant Names & Descriptions
+  go2SpecNameGO2AIR: 'GO2-AIR',
+  go2SpecDescGO2AIR:
+    'The Robot Dog GO2 features compact Dimensions of 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).',
+  go2SpecNameGO2PRO: 'GO2-PRO',
+  go2SpecDescGO2PRO:
+    'Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).',
+  go2SpecNameGO2EDUU1: 'GO2 EDU U1',
+  go2SpecDescGO2EDUU1:
+    'Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.',
+  go2SpecNameGO2EDUU2: 'GO2 EDU U2',
+  go2SpecDescGO2EDUU2:
+    'Similar to U1 with enhanced computing and sensors: 100 Tops AI power, 4G connectivity, advanced obstacle avoidance, and extended runtime for education scenarios.',
+  go2SpecNameGO2EDUU3: 'GO2 EDU U3',
+  go2SpecDescGO2EDUU3:
+    '15 kg AI robot with 100 Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.',
+  go2SpecNameGO2EDUU4: 'GO2 EDU U4',
+  go2SpecDescGO2EDUU4:
+    'High-performance quadruped with AI vision, voice control, long battery life, advanced mobility, and rich expansion for labs and research.',
+  go2SpecNameGO2WU1: 'GO2-W U1',
+  go2SpecDescGO2WU1:
+    'Compact quadruped with 4D lidar, depth camera, AI computing, precise mobility, designed for wheeled-foot hybrid scenarios.',
+  go2SpecNameGO2WU2: 'GO2-W U2',
+  go2SpecDescGO2WU2:
+    'High-performance quadruped with 4D lidar, depth camera, 100 Tops AI power, and agile mobility for inspection tasks.',
+  go2SpecNameGO2WU3: 'GO2-W U3',
+  go2SpecDescGO2WU3:
+    '4D & 3D lidar, depth camera, 100 Tops AI, agile terrain handling; ideal for complex environments requiring rich perception.',
+  go2SpecNameGO2WU4: 'GO2-W U4',
+  go2SpecDescGO2WU4:
+    '18 kg quadruped with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, advanced obstacle avoidance and mapping.',
+  go2SpecNameGO2WU5: 'GO2-W U5',
+  go2SpecDescGO2WU5:
+    '18 kg quadruped with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and enhanced obstacle avoidance for security and patrol.',
+  go2SpecNameGO2ENTU1: 'GO2 ENT-U1',
+  go2SpecDescGO2ENTU1:
+    'GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras with fill lights.',
+  go2SpecNameGO2ENTU2: 'GO2 ENT-U2',
+  go2SpecDescGO2ENTU2:
+    'Same as U1 with enterprise-grade reliability: dual-link comms, HD video, ruggedized screen, wide-angle cameras with lighting.',
+  go2SpecNameGO2ENTU3: 'GO2 ENT-U3',
+  go2SpecDescGO2ENTU3:
+    'Adds 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes for emergency response.',
+  go2SpecNameGO2ENTU4: 'GO2 ENT-U4',
+  go2SpecDescGO2ENTU4:
+    'GO2 Edu features, dual-camera screen remote, capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control for security scenarios.',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'Next-Gen All-Terrain Robotics.',
+  go2wHeroHighlight: 'Unitree Go2 W robot -',
+  go2wHeroTitle: 'Your All-Terrain Robotic Companion',
+  go2wHeroDescription:
+    'Meet the Unitree Go2 W robot, blending wheeled efficiency with legged freedom. From smooth hallways to rugged floors, it adapts seamlessly, perfect for robotics research, inspections, and versatile real-world applications.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'Our Unitree Go2 W robot is built for advanced research, industrial, and educational applications. Designed for high performance, strong payload, and versatile operation in challenging environments. With powerful computing, stability, and adaptability, it is ideal for robotics development and real-world problem-solving.',
+  go2wDetailHeading: 'Ready for smarter,',
+  go2wDetailHeadingHighlight: 'faster robotics?',
+  go2wDetailDescription:
+    'Reach out today and connect with our team to see how the Unitree Go2 W robot can transform your workflow.',
+  go2wDetailCta: 'Contact Sales Team',
+  go2wVariantDropdownPlaceholder: 'Choose your preferred variants',
+  go2wSearchPlaceholder: 'Search cobots by name, category, or description...',
+  go2wSearchNoResults: 'No cobots found matching your search.',
+  go2wSearchNoResultsHelper: 'Try different keywords or browse all cobots.',
+  go2wGalleryHeading: 'Gallery',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'The Unitree Go2 W robot features compact dimensions of 70 × 43 × 50 cm, weight 18 kg, payload ~3 kg, maximum speed 2.5 m/s, 16 joint motors, computing power 40 TOPS, gradient climb 35°, climbing height 70 cm, obstacle avoidance via 4D-LiDAR (360° × 90°). Battery 15000 mAh with charger, runtime up to 2–3 h. Includes calibrator, label controller, remote controller, and RealSense D435i depth camera.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    'Dimensions 70 × 43 × 50 cm, weight 18 kg, payload ~3 kg, maximum speed 2.5 m/s, 16 joint motors, computing power 100 TOPS, gradient climb 35°, climbing height 70 cm, 4D-LiDAR (360° × 90°), 15000 mAh battery with 2–3 h runtime, accessories: calibrator, label controller, remote controller, RealSense D435i.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    'Upgraded with 4D & 3D LiDAR, depth camera, 100 TOPS AI power; agile terrain handling for complex inspection and mapping tasks.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 kg quadruped with 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, depth camera, advanced obstacle avoidance; extended sensing for harsh environments.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 kg quadruped with 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, dual-optical gimbal, depth camera, advanced obstacle avoidance; suited for patrol and security roles.',
 };
 
 

@@ -1,7 +1,13 @@
 import Robotanimationtest from '../../Text_Animation/Robotanimationtest'
 import React from 'react'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 const HeroSectionR1 = () => {
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
   // Detect md and up screens
   const [isMd, setIsMd] = React.useState(false)
   React.useEffect(() => {
@@ -25,23 +31,23 @@ const HeroSectionR1 = () => {
             {/* Left part */}
             <div className='flex flex-wrap  items-baseline justify-center sm:justify-start'>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white drop-shadow-sm cursor-target'>
-                Let's
+                {translateWithFallback('r1HeroLets', "Let's")}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Innovate
+                {translateWithFallback('r1HeroInnovate', 'Innovate')}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Learn
+                {translateWithFallback('r1HeroLearn', 'Learn')}
               </span>
             </div>
 
             {/* Right part */}
             <div className='flex flex-wrap items-baseline justify-center sm:justify-end'>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-[#00ffa3] ml-2 drop-shadow-sm cursor-target'>
-                Beyond
+                {translateWithFallback('r1HeroBeyond', 'Beyond')}
               </span>
               <span className='text-xl sm:text-3xl md:text-[55px] font-semibold font-heading text-black dark:text-white ml-2 drop-shadow-sm cursor-target'>
-                Boundaries
+                {translateWithFallback('r1HeroBoundaries', 'Boundaries')}
               </span>
             </div>
           </div>
@@ -59,14 +65,16 @@ const HeroSectionR1 = () => {
         {/* Learn Robotics Text - Behind the image */}
         <div className='absolute top-[25%] md:top-[30%] font-poppins left-[5%] z-5 max-w-[400px]'>
           <h2 className='text-[21px] md:text-[24px] font-bold text-black dark:text-white mb-4 cursor-target'>
-            Unitree R1 Robot for Education
+            {translateWithFallback(
+              'r1HeroTitle',
+              'Unitree R1 Robot for Education'
+            )}
           </h2>
           <p className='text-[15px] md:text-[17px] font-semibold leading-[1.9] text-[#00000070] dark:text-white cursor-target'>
-            The Unitree R1 Robot is a next-generation humanoid platform designed
-            for practical learning, AI exploration, and hands-on robotics
-            education. Built for students, educators, and innovators, the
-            Unitree R1 Robot transforms classrooms with interactive coding,
-            STEAM learning, and real-world problem-solving experiences.
+            {translateWithFallback(
+              'r1HeroDescription',
+              'The Unitree R1 Robot is a next-generation humanoid platform designed for practical learning, AI exploration, and hands-on robotics education. Built for students, educators, and innovators, the Unitree R1 Robot transforms classrooms with interactive coding, STEAM learning, and real-world problem-solving experiences.'
+            )}
           </p>
         </div>
 
@@ -121,7 +129,10 @@ const HeroSectionR1 = () => {
           </h2>
           <div className='max-w-[980px] mx-auto'>
             <p className='text-gray-500 font-semibold text-xs sm:text-sm md:text-base leading-relaxed cursor-target'>
-             Discover the Unitree R1, a high-performance educational humanoid robot designed for hands-on learning. With a compact build, an 8-core CPU, and up to 100 TOPS of computing power, it offers advanced capabilities for coding, AI exploration, and real-time demonstrations.
+              {translateWithFallback(
+                'r1HumanoidDescription',
+                'Discover the Unitree R1, a high-performance educational humanoid robot designed for hands-on learning. With a compact build, an 8-core CPU, and up to 100 TOPS of computing power, it offers advanced capabilities for coding, AI exploration, and real-time demonstrations.'
+              )}
             </p>
           </div>
         </div>
