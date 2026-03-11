@@ -1,4 +1,4 @@
-export const hi = {
+﻿export const hi = {
   // Header
   home: 'होम',
   aboutUs: 'हमारे बारे में',
@@ -600,12 +600,6 @@ b2HeroHighlight: 'B2 एडवांस्ड इंडस्ट्रियल 
   a2SearchNoResults: "आपकी खोज से मेल खाता कोई कॉबोट नहीं मिला.",
   a2SearchTryDifferentKeywords: "अन्य कीवर्ड आज़माएं या सभी कॉबोट देखें.",
   a2GalleryHeading: "गैलरी",
-  a2SpecNameA2Standard: "A2 स्टैंडर्ड",
-  a2SpecDescA2Standard:
-    "Unitree A2 Standard एक 37 किग्रा क्वाड्रुपेड रोबोट डॉग है, 25 किग्रा (अधिकतम 100 किग्रा) पेलोड के साथ। यह 5 घंटे/20 किमी रनटाइम, 3.7 m/s (अधिकतम ~5 m/s) गति, 45° ढलान या 100 सेमी सीढ़ी चढ़ सकता है। ड्यूल 9000mAh बैटरियों, LiDAR, कैमरा, WiFi 6, Bluetooth 5.2 और ड्यूल CPUs (8-कोर + Intel i7) के साथ स्थिरता, बाधा अवॉइडेंस, OTA अपडेट व सेकेंडरी डेवलपमेंट सक्षम करता है।",
-  a2SpecNameA2Pro: "A2 प्रो",
-  a2SpecDescA2Pro:
-    "Unitree A2 Pro, A2 Standard पर आधारित है और ड्यूल LiDAR, GPS, 4G तथा वायरलेस वेक्टर पोज़िशनिंग मॉड्यूल जोड़ता है। तीन बिल्ट-इन कम्प्यूटिंग यूनिट व एडवांस्ड एक्सपेंशन डॉक के साथ यह SLAM मैपिंग, स्वायत्त नेविगेशन, बाधा अवॉइडेंस, HD इमेजिंग आदि को सपोर्ट करता है। IP56–IP67 सुरक्षा रेटिंग के साथ टिकाऊ डिज़ाइन प्रदान करता है।",
   a2FeatureLabelLiDARSensor: "LiDAR सेंसर",
   a2FeatureDetailLiDARSensor: "बाधा अवॉइडेंस व मैपिंग के लिए सिंगल LiDAR",
   a2FeatureLabelWideAngleCamera: "वाइड-एंगल कैमरा",
@@ -684,22 +678,19 @@ b2HeroHighlight: 'B2 एडवांस्ड इंडस्ट्रियल 
   a2ComparisonWarranty: "वारंटी",
   a2ComparisonContinuousUpgrades: "निरंतर अपग्रेड",
 
-<<<<<<< Updated upstream
   // Blog Page
   blogPageTitle: 'ब्लॉग | बिद्युत इनोवेशन',
   blogPageDescription: 'बिद्युत इनोवेशन से अंतर्दृष्टि और अपडेट',
   ourRecentPost: 'हमारी हाल की पोस्ट',
   readMore: 'और पढ़ें',
   readMoreArrow: 'और पढ़ें →',
-  education: 'शिक्षा',
   sampleBlogTitle: 'नमूना ब्लॉग शीर्षक',
   sampleExcerpt: 'नमूना अंश। इस पाठ और छवि को अपनी सामग्री से बदलें।',
   roboticsLabsTransformTitle: 'स्कूलों में STREAM शिक्षा को बदलने में रोबोटिक्स लैब्स की भूमिका',
   roboticsLabsTransformExcerpt: '21वीं सदी में हमारे सीखने का तरीका तेजी से बदल रहा है। पुराने शिक्षण तरीके उस दुनिया के लिए छात्रों को तैयार करने के लिए पर्याप्त नहीं हैं जो पूरी तरह से प्रौद्योगिकी पर आधारित है।',
   roboticsInteractiveTitle: 'कैसे रोबोटिक्स स्कूलों में सीखने को मजेदार और इंटरैक्टिव बना रहा है',
   roboticsInteractiveExcerpt: 'शिक्षा तेजी से विकसित हो रही है, और पारंपरिक शिक्षण विधियां अब छात्रों को कक्षा में पूरी तरह से व्यस्त रखने के लिए पर्याप्त नहीं हैं। आज के शिक्षार्थी जिज्ञासु, तकनीक-प्रेमी और खोजने के लिए उत्सुक हैं।',
-};
-=======
+
   // A2-W Page
   a2wHeroTagline: "रोबोटिक्स सीखें. भविष्य बनाएं.",
   a2wHeroHighlight: "Unitree A2‑W –",
@@ -791,4 +782,3 @@ b2HeroHighlight: 'B2 एडवांस्ड इंडस्ट्रियल 
   go2wSpecDescGO2WU5:
     "18 किग्रा क्वाड्रुपेड, 100 TOPS एआई, 4D व Hesai XT16 3D LiDAR, ड्यूल-ऑप्टिकल गिम्बल, डेप्थ कैमरा; पेट्रोल/सुरक्षा अनुप्रयोगों के लिए उपयुक्त।",
 };
->>>>>>> Stashed changes
