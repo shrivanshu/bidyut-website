@@ -503,6 +503,42 @@ export const bn = {
   schoolScrollerItem11: 'খেলাধুলা ও সুস্থতা',
   schoolScrollerItem12: 'ভবিষ্যৎ পেশা',
 
+  // B2-W Page
+  b2wHeroTagline: 'চার পায়ের উপর শিল্প বুদ্ধিমত্তা।',
+  b2wHeroHighlight: 'B2-W ইন্ডাস্ট্রিয়াল কোয়াড্রুপেড',
+  b2wHeroTitle: 'ইনস্পেকশন রোবট',
+  b2wHeroDescription:
+    'B2-W ইন্ডাস্ট্রিয়াল কোয়াড্রুপেড রোবট উন্নত শিল্প অ্যাপ্লিকেশনের জন্য তৈরি—অটোমেশন, পরিদর্শন, লজিস্টিকস ও বাস্তব অপারেশন। মজবুত গঠন, চটপটে গতিশীলতা ও শক্তিশালী অনবোর্ড কম্পিউটিং মিলিয়ে জটিল পরিবেশে নিরাপদ ও উচ্চ-কার্যকারিতা নিশ্চিত করে।',
+  b2wHeroBottomDescription:
+    'উৎকৃষ্ট নির্ভুলতা, অভিযোজনশীলতা ও নির্ভরযোগ্যতার জন্য ডিজাইন করা আমাদের শিল্প কোয়াড্রুপেড রোবটের পরিসর বেছে নিন। প্রতিটি ভ্যারিয়েন্ট ভিন্ন অপারেশনাল চাহিদা পূরণ করে, পরিদর্শন, লজিস্টিকস ও অটোমেশনের জন্য শক্তিশালী পারফরম্যান্স ও মসৃণ ইন্টিগ্রেশন দেয়।',
+  b2wVariantsPlaceholder: 'আপনার পছন্দের ভ্যারিয়েন্ট নির্বাচন করুন',
+  b2wSearchPlaceholder: 'নাম, ক্যাটাগরি বা বর্ণনা দিয়ে কোবট খুঁজুন...',
+  b2wSearchNoResults: 'আপনার অনুসন্ধানের সাথে মেলে এমন কোনো কোবট পাওয়া যায়নি।',
+  b2wSearchTryDifferentKeywords: 'ভিন্ন কীওয়ার্ড চেষ্টা করুন অথবা সব কোবট দেখুন।',
+  b2wGalleryHeading: 'গ্যালারি',
+  b2wDetailHeading: 'ওয়ার্কফ্লো রূপান্তর করুন',
+  b2wDetailHeadingHighlight: ' B2-W রোবটের সাথে',
+  b2wDetailDescription:
+    'Unitree B2-W কোয়াড্রুপেড রোবট দিয়ে শিল্প অপারেশন রূপান্তর করুন—উচ্চ পারফরম্যান্স ও স্মার্ট অটোমেশনের জন্য নির্মিত।',
+  b2wDetailCta: 'সেলস টিমের সাথে যোগাযোগ করুন',
+  b2wSpecNameB2WBasic: 'B2-W বেসিক ভার্সন',
+  b2wSpecDescB2WBasic:
+    'B2-W বেসিক ভার্সন 75 কেজি প্ল্যাটফর্ম, 1098×450×745 মিমি আকার, 4 শক-অ্যাবজর্ভিং টায়ার, 40 কেজি লোড ক্ষমতা, 16 সেমি সিঁড়ি ওঠা, 5 m/s গতি এবং বহুগুণ ডেপথ + HD ক্যামেরা ইন্টিগ্রেশন দেয়।',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W বেসিক ভার্সন (3D লাইডারসহ)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D লাইডারসহ B2-W বেসিক ভার্সন 75 কেজি, 1098×450×745 মিমি, 4 শক-অ্যাবজর্ভিং টায়ার, 16 সেমি সিঁড়ি ওঠা, 5 m/s সর্বোচ্চ গতি, 40 কেজি লোড, একাধিক ডেপথ ও HD ক্যামেরা এবং 32-লাইন 3D রাডার (SDK) সমন্বিত।',
+  b2wFeatureLabelShockAbsorbingTires: 'শক অ্যাবজর্ভিং টায়ার',
+  b2wFeatureDetailShockAbsorbingTires: '৪টি উচ্চ নির্ভরযোগ্যতার টায়ার',
+  b2wFeatureLabelStairClimbing: 'সিঁড়ি ওঠা',
+  b2wFeatureDetailStairClimbing: 'সহজে ১৬ সেমি সিঁড়ি ওঠে',
+  b2wFeatureLabelHighSpeedPerformance: 'উচ্চ গতি কর্মক্ষমতা',
+  b2wFeatureDetailHighSpeedPerformance: 'সর্বোচ্চ গতি ৫ m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D লাইডার নেভিগেশন',
+  b2wFeatureDetail3DLidarNavigation: 'SDK ইন্টিগ্রেশনসহ ৩২-লাইন রাডার',
+  b2wFeatureLabelStairClimbingAbility: 'সিঁড়ি ওঠার সক্ষমতা',
+  b2wFeatureDetailStairClimbingAbility: '১৬ সেমি সিঁড়ি, ৫ m/s সর্বোচ্চ গতি',
+  b2wFeatureDetailHighReliability4WheelDesign: 'উচ্চ নির্ভরযোগ্যতার ৪-চাকা নকশা',
+
   // Blog Page
   blogPageTitle: 'ব্লগ | বিদ্যুৎ ইনোভেশন',
   blogPageDescription: 'বিদ্যুৎ ইনোভেশন থেকে অন্তর্দৃষ্টি এবং আপডেট',

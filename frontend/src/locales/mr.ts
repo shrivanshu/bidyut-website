@@ -533,5 +533,40 @@ export const mr = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 मिमी, 60 किग्रॅ) 5 m/s वेग, उभे असताना 100 किग्रॅ व चालताना 40 किग्रॅ पेलोड; -20°C ते 55°C कार्य; 45° उतार आणि 25 से.मी. अडथळा चढतो; Intel i5/i7 आणि Nvidia Jetson Orin NX (100 TOPS) संचालित.',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 मिमी, 60 किग्रॅ) 5 m/s वेग, 100 किग्रॅ पेलोड, -20℃~55℃ रेंज; 45°/25 से.मी. अडथळा पार; 360°×90° 3D-Lidar अव्हॉइडन्स; Intel i5/i7 + Jetson Orin NX (100 TOPS) वर चालतो—औद्योगिक ऑटोमेशन आणि शहरी विकासासाठी योग्य.',
+  // B2-W Page
+  b2wHeroTagline: 'चार पायांवर औद्योगिक बुद्धिमत्ता.',
+  b2wHeroHighlight: 'B2-W औद्योगिक क्वाड्रुपेड',
+  b2wHeroTitle: 'तपासणी रोबोट',
+  b2wHeroDescription:
+    'B2-W औद्योगिक क्वाड्रुपेड रोबोट हा ऑटोमेशन, तपासणी, लॉजिस्टिक्स आणि वास्तविक ऑपरेशन्ससारख्या प्रगत औद्योगिक अनुप्रयोगांसाठी डिझाइन केलेला अत्याधुनिक चार-पायांचा रोबोट आहे. मजबूत बांधणी, चपळ गतिशीलता आणि शक्तिशाली ऑनबोर्ड कम्प्युटिंगमुळे तो जटिल वातावरणातही सुरक्षित आणि उच्च-कार्यक्षमतेने कार्य करतो.',
+  b2wHeroBottomDescription:
+    'उत्कृष्ट अचूकता, अनुकूलता आणि विश्वसनीयता यासाठी तयार केलेल्या आमच्या औद्योगिक क्वाड्रुपेड रोबोट्सच्या श्रेणीतून निवडा. प्रत्येक व्हेरियंट विविध ऑपरेशनल गरजा पूर्ण करते आणि तपासणी, लॉजिस्टिक्स व ऑटोमेशनसाठी मजबूत कार्यप्रदर्शन व सुलभ एकत्रीकरण देते.',
+  b2wVariantsPlaceholder: 'आपला आवडता व्हेरियंट निवडा',
+  b2wSearchPlaceholder: 'नाव, श्रेणी किंवा वर्णनाने कॉबोट शोधा...',
+  b2wSearchNoResults: 'आपल्या शोधाशी जुळणारा कोणताही कॉबोट आढळला नाही.',
+  b2wSearchTryDifferentKeywords: 'इतर कीवर्ड वापरून पहा किंवा सर्व कॉबोट पाहा.',
+  b2wGalleryHeading: 'गॅलरी',
+  b2wDetailHeading: 'वर्कफ्लो बदलून टाका',
+  b2wDetailHeadingHighlight: ' B2-W रोबोटसह',
+  b2wDetailDescription:
+    'Unitree B2-W क्वाड्रुपेड रोबोटसह औद्योगिक ऑपरेशन्स रूपांतरित करा—उच्च कार्यक्षमता आणि स्मार्ट ऑटोमेशनसाठी डिझाइन केलेले.',
+  b2wDetailCta: 'सेल्स टीमशी संपर्क करा',
+  b2wSpecNameB2WBasic: 'B2-W बेसिक व्हर्जन',
+  b2wSpecDescB2WBasic:
+    'B2-W बेसिक व्हर्जन 75kg प्लॅटफॉर्म, 1098×450×745 मिमी आकार, 4 शॉक-अॅब्सॉर्बिंग टायर्स, 40kg लोड, 16 सेमी जिने चढणे, 5 m/s गती आणि मल्टिपल डेप्थ + HD कॅमेरा इंटिग्रेशन देते.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W बेसिक (3D लिडारसह)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D लिडारसह B2-W बेसिक: 75kg, 1098×450×745 मिमी, 4 शॉक-अॅब्सॉर्बिंग टायर्स, 16 सेमी जिने, 5 m/s कमाल गती, 40kg लोड, अनेक डेप्थ/HD कॅमेरे आणि 32-लाइन 3D रडार (SDK).',
+  b2wFeatureLabelShockAbsorbingTires: 'शॉक-अॅब्सॉर्बिंग टायर्स',
+  b2wFeatureDetailShockAbsorbingTires: '४ उच्च-विश्वासार्ह टायर्स',
+  b2wFeatureLabelStairClimbing: 'जिने चढणे',
+  b2wFeatureDetailStairClimbing: '१६ सेमी जिने सहज चढतो',
+  b2wFeatureLabelHighSpeedPerformance: 'हाय-स्पीड कार्यक्षमता',
+  b2wFeatureDetailHighSpeedPerformance: 'कमाल गती 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D लिडार नेव्हिगेशन',
+  b2wFeatureDetail3DLidarNavigation: 'SDK इंटिग्रेशनसह 32-लाइन रडार',
+  b2wFeatureLabelStairClimbingAbility: 'जिने चढण्याची क्षमता',
+  b2wFeatureDetailStairClimbingAbility: '१६ सेमी जिने, 5 m/s कमाल गती',
+  b2wFeatureDetailHighReliability4WheelDesign: 'उच्च विश्वसनीयतेची ४-चाकांची रचना',
 };
 

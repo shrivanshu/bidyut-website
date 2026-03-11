@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface RobotSpec {
   id: string
@@ -150,8 +151,39 @@ const SelectValue = ({
   placeholder: string
   value?: string
 }) => {
+  const { t } = useLanguage()
+  const translateWithKeyVariants = (id: string, fallback: string) => {
+    const sanitizeKey = (val: string) => val.replace(/[^a-zA-Z0-9]/g, '')
+    const toCamelKey = (val: string) => {
+      const parts = val.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+      if (!parts.length) return sanitizeKey(val)
+      return parts
+        .map((part, idx) =>
+          idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+        )
+        .join('')
+    }
+    const toPascalKey = (val: string) => {
+      const camel = toCamelKey(val)
+      return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+    }
+    const candidates = [
+      `b2wSpecName${sanitizeKey(id)}`,
+      `b2wSpecName${toCamelKey(id)}`,
+      `b2wSpecName${toPascalKey(id)}`,
+      `b2wSpecName${id}`
+    ]
+    for (const key of candidates) {
+      const translated = t(key)
+      if (translated !== key) return translated
+    }
+    return fallback
+  }
   const currentSpec = robotSpecs.find(spec => spec.id === value)
-  return <span>{currentSpec?.name || placeholder}</span>
+  const name = currentSpec
+    ? translateWithKeyVariants(currentSpec.id, currentSpec.name)
+    : placeholder
+  return <span>{name}</span>
 }
 
 const Button = ({
@@ -170,7 +202,48 @@ const Button = ({
 
 function B2_Wells_Variants () {
   const { isDark } = useTheme()
-  const [selectedVariant, setSelectedVariant] = useState('go2-basic')
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '')
+  const toCamelKey = (value: string) => {
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    if (!parts.length) return sanitizeKey(value)
+    return parts
+      .map((part, idx) =>
+        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+      )
+      .join('')
+  }
+  const toPascalKey = (value: string) => {
+    const camel = toCamelKey(value)
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+  }
+  const translateWithKeyVariants = (
+    prefix: string,
+    id: string,
+    fallback: string,
+    extraIds: string[] = []
+  ) => {
+    const baseIds = [id, ...extraIds]
+    const candidates: string[] = []
+    baseIds.forEach(value => {
+      candidates.push(
+        `${prefix}${sanitizeKey(value)}`,
+        `${prefix}${toCamelKey(value)}`,
+        `${prefix}${toPascalKey(value)}`,
+        `${prefix}${value}`
+      )
+    })
+    for (const key of candidates) {
+      const translated = t(key)
+      if (translated !== key) return translated
+    }
+    return fallback
+  }
+  const [selectedVariant, setSelectedVariant] = useState('B2-W-Basic')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
@@ -192,9 +265,19 @@ function B2_Wells_Variants () {
       spec => spec.id === (selectedCobot?.specId || selectedVariant)
     ) || robotSpecs[0]
   // Derive display data from either selected search item or current variant
-  const displayName = selectedCobot?.name ?? currentSpec.name
+  const displayName =
+    selectedCobot?.name ??
+    translateWithKeyVariants('b2wSpecName', currentSpec.id, currentSpec.name, [
+      currentSpec.name
+    ])
   const displayDescription =
-    selectedCobot?.description ?? currentSpec.description
+    selectedCobot?.description ??
+    translateWithKeyVariants(
+      'b2wSpecDesc',
+      currentSpec.id,
+      currentSpec.description,
+      [currentSpec.name]
+    )
   const displayGallery = selectedCobot?.gallery?.length
     ? selectedCobot.gallery
     : currentSpec.gallery
@@ -293,7 +376,10 @@ function B2_Wells_Variants () {
               <div className='relative'>
                 <input
                   type='text'
-                  placeholder='Search cobots by name, category, or description...'
+                  placeholder={translateWithFallback(
+                    'b2wSearchPlaceholder',
+                    'Search cobots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className='w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300'
@@ -372,10 +458,16 @@ function B2_Wells_Variants () {
               {filteredCobots.length === 0 && (
                 <div className='text-center py-12'>
                   <div className='text-gray-400 dark:text-gray-500 text-lg'>
-                    No cobots found matching your search.
+                    {translateWithFallback(
+                      'b2wSearchNoResults',
+                      'No cobots found matching your search.'
+                    )}
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm mt-2'>
-                    Try different keywords or browse all cobots.
+                    {translateWithFallback(
+                      'b2wSearchTryDifferentKeywords',
+                      'Try different keywords or browse all cobots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -420,12 +512,15 @@ function B2_Wells_Variants () {
         {/* Header Dropdown */}
         <div className='w-full max-w-4xl mx-auto mb-10 relative'>
           <Select value={selectedVariant} onValueChange={setSelectedVariant}>
-            <SelectTrigger
-              className='w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white'
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              <SelectValue
-                placeholder='Choose your preferred variants'
+          <SelectTrigger
+            className='w-full bg-white dark:bg-black border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-sm md:text-base lg:text-lg text-gray-900 dark:text-white'
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            <SelectValue
+                placeholder={translateWithFallback(
+                  'b2wVariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
                 value={selectedVariant}
               />
               <ChevronDown className='h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70' />
@@ -442,7 +537,12 @@ function B2_Wells_Variants () {
                       setIsDropdownOpen(false)
                     }}
                   >
-                    {spec.name}
+                    {translateWithKeyVariants(
+                      'b2wSpecName',
+                      spec.id,
+                      spec.name,
+                      [spec.name]
+                    )}
                   </div>
                 ))}
               </div>
@@ -462,7 +562,10 @@ function B2_Wells_Variants () {
                 {displayName}
               </h2>
               <h3 className='text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-medium'>
-                Technical Specifications
+                {translateWithFallback(
+                  'technicalSpecifications',
+                  'Technical Specifications'
+                )}
               </h3>
               <p className='text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl'>
                 {displayDescription}
@@ -470,7 +573,7 @@ function B2_Wells_Variants () {
 
               <Link to='/Contact'>
                 <Button className='bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer'>
-                  Order Now
+                  {translateWithFallback('orderNow', 'Order Now')}
                 </Button>
               </Link>
             </div>
@@ -478,7 +581,7 @@ function B2_Wells_Variants () {
             {/* Image Gallery Selector */}
             <div className='space-y-4'>
               <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200'>
-                Gallery
+                {translateWithFallback('b2wGalleryHeading', 'Gallery')}
               </h3>
               <div className='flex gap-3 flex-wrap'>
                 {displayGallery.map((media, index) => (
@@ -619,7 +722,11 @@ function B2_Wells_Variants () {
                             : 'text-gray-900 dark:text-gray-100'
                         }`}
                       >
-                        {feature.label}
+                        {translateWithKeyVariants(
+                          'b2wFeatureLabel',
+                          feature.label,
+                          feature.label
+                        )}
                       </div>
                       <div
                         className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
@@ -628,7 +735,12 @@ function B2_Wells_Variants () {
                             : 'opacity-70'
                         }`}
                       >
-                        {feature.detail}
+                        {translateWithKeyVariants(
+                          'b2wFeatureDetail',
+                          feature.detail,
+                          feature.detail,
+                          [feature.label]
+                        )}
                       </div>
                     </div>
                   </div>

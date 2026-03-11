@@ -519,5 +519,40 @@ export const kn = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 ಮಿಮೀ, 60 ಕೆ.ಜಿ.) 5 m/s ವೇಗ, 100 ಕೆ.ಜಿ. (ಉಭಯ) ಮತ್ತು 40 ಕೆ.ಜಿ. (ನಡೆಯುವಾಗ) ಪೇಲೋಡ್; -20°C ರಿಂದ 55°C ಕಾರ್ಯ; 45° ಸ್ಲೋಪ್ ಮತ್ತು 25 ಸೆಂ. ಅಡೆತಡೆ ಏರಬಹುದು; Intel i5/i7 ಮತ್ತು Nvidia Jetson Orin NX (100 TOPS) ಸಂಚಾಲಿತ.',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 ಮಿಮೀ, 60 ಕೆ.ಜಿ.) 5 m/s ವೇಗ, 100 ಕೆ.ಜಿ. ಪೇಲೋಡ್, -20℃~55℃ ವ್ಯಾಪ್ತಿ; 45°/25 ಸೆಂ. ಅಡೆತಡೆ ಪಾರಾಗುತ್ತದೆ, 360°×90° 3D-Lidar ತಡೆತಪ್ಪಿಸುವಿಕೆ, Intel i5/i7 + Jetson Orin NX (100 TOPS) ಮೇಲೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ—ಕೈಗಾರಿಕಾ ಆಟೋಮೇಶನ್ ಮತ್ತು ನಗರ ಅಭಿವೃದ್ಧಿಗೆ ಸೂಕ್ತ.',
+  // B2-W Page
+  b2wHeroTagline: 'ನಾಲ್ಕು ಕಾಲುಗಳಲ್ಲಿ ಕೈಗಾರಿಕಾ ಬುದ್ಧಿವಂತಿಕೆ.',
+  b2wHeroHighlight: 'B2-W ಇಂಡಸ್ಟ್ರಿಯಲ್ ಕ್ವಾಡ್ರೂಪೆಡ್',
+  b2wHeroTitle: 'ಪರಿಶೀಲನಾ ರೋಬೋಟ್',
+  b2wHeroDescription:
+    'B2-W ಇಂಡಸ್ಟ್ರಿಯಲ್ ಕ್ವಾಡ್ರೂಪೆಡ್ ರೋಬೋಟ್ ಪ್ರಗತಿಯಾದ ಕೈಗಾರಿಕಾ ಉಪಯೋಗಗಳಿಗೆ—ಆಟೋಮೇಶನ್, ಇನ್‌ಸ್ಪೆಕ್ಷನ್, ಲಾಜಿಸ್ಟಿಕ್ಸ್ ಮತ್ತು ನೈಜ ಕಾರ್ಯಗಳಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ನಾಲ್ಕು ಕಾಲಿನ ರೋಬೋಟ್. ದೃಢ ವಿನ್ಯಾಸ, ಚುರುಕು ಚಲನೆ ಮತ್ತು ಬಲವಾದ ಆನ್‌ಬೋರ್ಡ್ ಕಂಪ್ಯೂಟಿಂಗ್‌ನಿಂದ ಸಂಕೀರ್ಣ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲೂ ಸುರಕ್ಷಿತ ಹಾಗೂ ಉನ್ನತ ಕಾರ್ಯಕ್ಷಮತೆ ನೀಡುತ್ತದೆ.',
+  b2wHeroBottomDescription:
+    'ನಿಖರತೆ, ಹೊಂದಿಕೊಳ್ಳುವಿಕೆ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹತೆಗೆ ವಿನ್ಯಾಸಗೊಂಡ ಕೈಗಾರಿಕಾ ಕ್ವಾಡ್ರೂಪೆಡ್‌ಗಳ нашей ಶ್ರೇಣಿಯನ್ನು ಆರಿಸಿ. ಪ್ರತಿ ರೂಪಾಂತರ ವಿಭಿನ್ನ ಕಾರ್ಯಾಚರಣೆ ಅಗತ್ಯಗಳನ್ನು ಪೂರೈಸಿ, ಪರಿಶೀಲನೆ, ಲಾಜಿಸ್ಟಿಕ್ಸ್ ಮತ್ತು ಆಟೋಮೇಶನ್‌ಗೆ ಬಲವಾದ ಪ್ರದರ್ಶನ ಮತ್ತು ಸುಗಮ ಏಕೀಕರಣ ನೀಡುತ್ತದೆ.',
+  b2wVariantsPlaceholder: 'ನಿಮ್ಮ ಇಚ್ಛಿತ ರೂಪಾಂತರ ಆಯ್ಕೆಮಾಡಿ',
+  b2wSearchPlaceholder: 'ಹೆಸರು, ವರ್ಗ ಅಥವಾ ವಿವರಣೆಯಿಂದ ಕೋಬಾಟ್ ಹುಡುಕಿ...',
+  b2wSearchNoResults: 'ಹುಡುಕಾಟಕ್ಕೆ ತಕ್ಕ ಕೋಬಾಟ್ ಸಿಕ್ಕಿಲ್ಲ.',
+  b2wSearchTryDifferentKeywords: 'ಬೇರೆ ಕೀವರ್ಡ್ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಕೋಬಾಟ್‌ಗಳನ್ನು ನೋಡಿ.',
+  b2wGalleryHeading: 'ಗ್ಯಾಲರಿ',
+  b2wDetailHeading: 'ವರ್ಕ್‌ಫ್ಲೋ ಪರಿವರ್ತನೆ',
+  b2wDetailHeadingHighlight: ' B2-W ರೋಬೋಟ್ ಜೊತೆ',
+  b2wDetailDescription:
+    'Unitree B2-W ಕ್ವಾಡ್ರೂಪೆಡ್ ಜೊತೆ ಕೈಗಾರಿಕಾ ಕಾರ್ಯಾಚರಣೆ ಪರಿವರ್ತಿಸಿ—ಉನ್ನತ ಕಾರ್ಯಕ್ಷಮತೆ ಮತ್ತು ಸ್ಮಾರ್ಟ್ ಆಟೋಮೇಶನ್‌ಗಾಗಿ ವಿನ್ಯಾಸ.',
+  b2wDetailCta: 'ಮಾರಾಟ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ',
+  b2wSpecNameB2WBasic: 'B2-W ಬೇಸಿಕ್ ವರ್ಸನ್',
+  b2wSpecDescB2WBasic:
+    'B2-W ಬೇಸಿಕ್: 75kg ಪ್ಲಾಟ್‌ಫಾರ್ಮ್, 1098×450×745 ಮಿಮೀ, 4 ಶಾಕ್-ಅಬ್ಸಾರ್ಬಿಂಗ್ ಟೈರ್, 40kg ಲೋಡ್, 16ಸೆ.ಮೀ ಮೆಟ್ಟಿಲೇರಿಕೆ, 5 m/s ವೇಗ, ಮಲ್ಟಿಪಲ್ ಡೆಪ್ತ್ + HD ಕ್ಯಾಮೆರಾ.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W ಬೇಸಿಕ್ (3D ಲೈಡಾರ್ ಜೊತೆ)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D ಲೈಡಾರ್ ಸಹಿತ B2-W ಬೇಸಿಕ್: 75kg, 1098×450×745 ಮಿಮೀ, 4 ಶಾಕ್-ಅಬ್ಸಾರ್ಬಿಂಗ್ ಟೈರ್, 16ಸೆ.ಮೀ ಮೆಟ್ಟಿಲು, 5 m/s ಗರಿಷ್ಠ ವೇಗ, 40kg ಲೋಡ್, ಅನೇಕ ಡೆಪ್ತ್/HD ಕ್ಯಾಮೆರಾ, 32-ಲೈನ್ 3D ರೇಡಾರ್ (SDK).',
+  b2wFeatureLabelShockAbsorbingTires: 'ಶಾಕ್ ಅಬ್ಸಾರ್ಬಿಂಗ್ ಟೈರ್',
+  b2wFeatureDetailShockAbsorbingTires: '4 ઉચ્ચ વિશ્વಾಸಾರ್ಹ ಟೈರ್',
+  b2wFeatureLabelStairClimbing: 'ಮೆಟ್ಟಿಲೇರಿಕೆ',
+  b2wFeatureDetailStairClimbing: '16ಸೆ.ಮೀ ಮೆಟ್ಟಿಲುಗಳನ್ನು ಸುಲಭವಾಗಿ ಏರುತ್ತದೆ',
+  b2wFeatureLabelHighSpeedPerformance: 'ಹೈ-ಸ್ಪೀಡ್ ಕಾರ್ಯಕ್ಷಮತೆ',
+  b2wFeatureDetailHighSpeedPerformance: 'ಗರಿಷ್ಠ ವೇಗ 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D ಲೈಡಾರ್ ನಾವಿಗೇಶನ್',
+  b2wFeatureDetail3DLidarNavigation: 'SDK ಇಂಟಿಗ್ರೇಶನ್‌ನ 32-ಲೈನ್ ರೇಡಾರ್',
+  b2wFeatureLabelStairClimbingAbility: 'ಮೆಟ್ಟಿಲೇರಿಕೆ ಸಾಮರ್ಥ್ಯ',
+  b2wFeatureDetailStairClimbingAbility: '16ಸೆ.ಮೀ ಮೆಟ್ಟಿಲು, 5 m/s ಗರಿಷ್ಠ ವೇಗ',
+  b2wFeatureDetailHighReliability4WheelDesign: 'ಉನ್ನತ ವಿಶ್ವಾಸಾರ್ಹ 4-ಚಕ್ರ ವಿನ್ಯಾಸ',
 };
 

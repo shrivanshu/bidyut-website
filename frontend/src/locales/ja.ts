@@ -538,5 +538,40 @@ export const ja = {
   b2SpecDescB2Advanced: 'B2 Advanced（1098 × 450 × 645 mm、60 kg）は 5 m/s の速度、100 kg（静止）/40 kg（歩行）ペイロード、-20°C〜55°C 動作、45° 斜面と 25 cm 障害を登坂。Intel i5/i7 と Nvidia Jetson Orin NX（100 TOPS）を搭載。',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar（1098×450×645 mm、60 kg）は 5 m/s 速度、100 kg ペイロード、-20℃〜55℃ 動作。45°/25 cm 障害を克服し、360°×90° 3D-Lidar 回避、Intel i5/i7 + Jetson Orin NX（100 TOPS）で駆動—産業オートメーションや都市開発に適合。',
+  // B2-W Page
+  b2wHeroTagline: '4本足で動く産業インテリジェンス。',
+  b2wHeroHighlight: 'B2-W インダストリアルクアッドロペッド',
+  b2wHeroTitle: '検査ロボット',
+  b2wHeroDescription:
+    'B2-W インダストリアルクアッドロペッドは、オートメーション、点検、物流など高度な産業用途のために設計された最先端の4足検査ロボットです。頑丈な構造、俊敏な機動性、強力なオンボードコンピューティングで、複雑な環境でも安全かつ高性能な運用を可能にします。',
+  b2wHeroBottomDescription:
+    '精度・適応性・信頼性に優れた産業用クアッドロペッドのラインアップからお選びください。各バリアントは多様な運用要件に応え、点検・物流・自動化で強力なパフォーマンスとスムーズな統合を提供します。',
+  b2wVariantsPlaceholder: 'お好みのバリアントを選択',
+  b2wSearchPlaceholder: '名前・カテゴリー・説明でコボットを検索...',
+  b2wSearchNoResults: '検索条件に一致するコボットが見つかりません。',
+  b2wSearchTryDifferentKeywords: '別のキーワードを試すか、すべてのコボットを見る。',
+  b2wGalleryHeading: 'ギャラリー',
+  b2wDetailHeading: 'ワークフローを変革',
+  b2wDetailHeadingHighlight: ' B2-W ロボットとともに',
+  b2wDetailDescription:
+    'Unitree B2-W クアッドロペッドで産業オペレーションを強化—高性能とスマート自動化のために設計。',
+  b2wDetailCta: '営業チームに問い合わせ',
+  b2wSpecNameB2WBasic: 'B2-W ベーシックバージョン',
+  b2wSpecDescB2WBasic:
+    'B2-W ベーシックは 75kg プラットフォーム、1098×450×745 mm、4つの衝撃吸収タイヤ、40kg 積載、16cm 段差登坂、5 m/s 速度、複数の深度＋HDカメラを搭載します。',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W ベーシック（3Dライダー付）',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D ライダー付き B2-W ベーシックは 75kg、1098×450×745 mm、4 衝撃吸収タイヤ、16cm 段差、5 m/s 最高速度、40kg 積載、複数の深度・HD カメラと 32 ライン 3D レーダー（SDK）を備えます。',
+  b2wFeatureLabelShockAbsorbingTires: '衝撃吸収タイヤ',
+  b2wFeatureDetailShockAbsorbingTires: '高信頼の4本タイヤを装備',
+  b2wFeatureLabelStairClimbing: '段差登坂',
+  b2wFeatureDetailStairClimbing: '16cm の段差を軽快に昇る',
+  b2wFeatureLabelHighSpeedPerformance: '高速性能',
+  b2wFeatureDetailHighSpeedPerformance: '最高速度 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D ライダーナビゲーション',
+  b2wFeatureDetail3DLidarNavigation: 'SDK 連携の32ラインレーダー',
+  b2wFeatureLabelStairClimbingAbility: '段差走破性',
+  b2wFeatureDetailStairClimbingAbility: '16cm 段差、最高 5 m/s',
+  b2wFeatureDetailHighReliability4WheelDesign: '高信頼性の4輪設計',
 };
 

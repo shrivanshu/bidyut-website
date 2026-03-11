@@ -531,5 +531,40 @@ export const gu = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 મિમી, 60 કિગ્રા) 5 m/s ઝડપ, 100 કિગ્રા (ઉભા) અને 40 કિગ્રા (ચાલતા) પેલોડ; -20°C થી 55°C કાર્ય; 45° ઢાળ અને 25 સેમી અવરોધ ચડે; Intel i5/i7 અને Nvidia Jetson Orin NX (100 TOPS)થી સંચાલિત.',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 મિમી, 60 કિગ્રા) 5 m/s ઝડપ, 100 કિગ્રા પેલોડ, -20℃~55℃ રેન્જ આપે છે; 45°/25 સેમી અવરોધ પાર કરે છે, 360°×90° 3D-Lidar અવોઇડન્સ સાથે, Intel i5/i7 + Jetson Orin NX (100 TOPS) પર ચાલે છે—ઔદ્યોગિક ઓટોમેશન અને અર્બન ડેવલપમેન્ટ માટે યોગ્ય.',
+  // B2-W Page
+  b2wHeroTagline: 'ચારે પગ પર ઉદ્યોગિક બુદ્ધિમત્તા.',
+  b2wHeroHighlight: 'B2-W ઇન્ડસ્ટ્રીયલ ક્વાડ્રુપેડ',
+  b2wHeroTitle: 'ઇન્સ્પેક્શન રોબોટ',
+  b2wHeroDescription:
+    'B2-W ઇન્ડસ્ટ્રીયલ ક્વાડ્રુપેડ રોબોટ આધુનિક ઉદ્યોગ માટે ડિઝાઇન થયેલો ચાર પગનો ઇન્સ્પેક્શન રોબોટ છે—ઓટોમેશન, નિરીક્ષણ, લોજિસ્ટિક્સ અને વાસ્તવિક ઓપરેશન્સ માટે. મજબૂત બાંધકામ, ચપળ ગતિ અને શક્તિશાળી ઓનબોર્ડ કમ્પ્યુટિંગ સાથે, તે જટિલ પરિસ્થિતિઓમાં સુરક્ષિત અને હાઈ-પરફોર્મન્સ કામગીરી આપે છે.',
+  b2wHeroBottomDescription:
+    'ઉત્તમ ચોકસાઈ, અનુકૂલનશીલતા અને વિશ્વસનીયતા માટે બનાવાયેલા અમારા ઉદ્યોગિક ક્વાડ્રુપેડ રોબોટ્સની શ્રેણી પસંદ કરો. દરેક વર્ઝન અલગ ઓપરેશનલ જરૂરિયાતો પૂર્ણ કરે છે અને ઇન્સ્પેક્શન, લોજિસ્ટિક્સ અને ઓટોમેશન માટે મજબૂત પરફોર્મન્સ અને સરળ એકીકરણ આપે છે.',
+  b2wVariantsPlaceholder: 'તમારો પસંદનો વેરિએન્ટ પસંદ કરો',
+  b2wSearchPlaceholder: 'નામ, કેટેગરી અથવા વર્ણનથી કોબોટ શોધો...',
+  b2wSearchNoResults: 'તમારી શોધને મેળ ખાતો કોઈ કોબોટ મળ્યો નથી.',
+  b2wSearchTryDifferentKeywords: 'અન્ય કીવર્ડ અજમાવો અથવા બધા કોબોટ જુઓ.',
+  b2wGalleryHeading: 'ગેલેરી',
+  b2wDetailHeading: 'વર્કફ્લો રૂપાંતર કરો',
+  b2wDetailHeadingHighlight: ' B2-W રોબોટ સાથે',
+  b2wDetailDescription:
+    'Unitree B2-W ક્વાડ્રુપેડ રોબોટ સાથે ઉદ્યોગિક કામગીરી રૂપાંતર કરો—ઉચ્ચ પ્રદર્શન અને સ્માર્ટ ઓટોમેશન માટે ડિઝાઇન કરાયેલ.',
+  b2wDetailCta: 'સેલ્સ ટીમનો સંપર્ક કરો',
+  b2wSpecNameB2WBasic: 'B2-W બેસિક વર્ઝન',
+  b2wSpecDescB2WBasic:
+    'B2-W બેસિક વર્ઝન 75 કિગ્રા પ્લેટફોર્મ, 1098×450×745 મિમિ કદ, 4 શોક-એબ્સોર્બિંગ ટાયર્સ, 40 કિગ્રા લોડ, 16 સેમી સીડીઓ, 5 m/s ગતિ અને મલ્ટિપલ ડેપ્થ + HD કેમેરા ઇન્ટિગ્રેશન આપે છે.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W બેસિક વર્ઝન (3D લાઇડાર સાથે)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D લાઇડાર સાથેનું B2-W બેસિક વર્ઝન 75 કિગ્રા, 1098×450×745 મિમિ, 4 શોક-એબ્સોર્બિંગ ટાયર્સ, 16 સેમી સીડીઓ, 5 m/s મહત્તમ ગતિ, 40 કિગ્રા લોડ, બહુ-ડેપ્થ અને HD કેમેરા અને 32-લાઇન 3D રડાર (SDK) ધરાવે છે.',
+  b2wFeatureLabelShockAbsorbingTires: 'શોક એબ્સોર્બિંગ ટાયર્સ',
+  b2wFeatureDetailShockAbsorbingTires: '4 ઉચ્ચ વિશ્વસનીય ટાયર્સ',
+  b2wFeatureLabelStairClimbing: 'સીડીઓ ચડવું',
+  b2wFeatureDetailStairClimbing: 'સરળતાથી 16 સેમી સીડીઓ ચડે છે',
+  b2wFeatureLabelHighSpeedPerformance: 'ઉચ્ચ ગતિ કાર્યક્ષમતા',
+  b2wFeatureDetailHighSpeedPerformance: 'મહત્તમ ગતિ 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D લાઇડાર નેવિગેશન',
+  b2wFeatureDetail3DLidarNavigation: 'SDK ઇન્ટિગ્રેશન સાથે 32-લાઇન રડાર',
+  b2wFeatureLabelStairClimbingAbility: 'સીડીઓ ચડવાની ક્ષમતા',
+  b2wFeatureDetailStairClimbingAbility: '16 સેમી સીડીઓ, 5 m/s મહત્તમ ગતિ',
+  b2wFeatureDetailHighReliability4WheelDesign: 'ઉચ્ચ વિશ્વસનીયતાવાળો 4-ચક્કાવાળો ડિઝાઇન',
 };
 

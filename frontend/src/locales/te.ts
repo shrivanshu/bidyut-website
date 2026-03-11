@@ -531,5 +531,40 @@ export const te = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 మిమీ, 60 కిలో) 5 m/s వేగం, 100 కిలో (నిలిచి) మరియు 40 కిలో (నడుస్తూ) పేలోడ్; -20°C నుండి 55°C వరకు పనిచేస్తుంది; 45° స్లోప్ మరియు 25 సెం.మీ అడ్డంకిని ఎక్కుతుంది; Intel i5/i7 మరియు Nvidia Jetson Orin NX (100 TOPS) తో శక్తి పొందుతుంది.',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 మిమీ, 60 కిలో) 5 m/s వేగం, 100 కిలో పేలోడ్, -20℃~55℃ శ్రేణి; 45°/25 సెం.మీ అడ్డంకి దాటుతుంది, 360°×90° 3D-Lidar తప్పించుకోలు, Intel i5/i7 + Jetson Orin NX (100 TOPS) పై నడుస్తుంది—పరిశ్రమ ఆటోమేషన్ మరియు నగరాభివృద్ధికి అనువైనది.',
+  // B2-W Page
+  b2wHeroTagline: 'నాలుగు కాళ్లపై పరిశ్రమ నైపుణ్యం.',
+  b2wHeroHighlight: 'B2-W ఇండస్ట్రియల్ క్వాడ్రుపెడ్',
+  b2wHeroTitle: 'ఇన్స్పెక్షన్ రోబోట్',
+  b2wHeroDescription:
+    'B2-W ఇండస్ట్రియల్ క్వాడ్రుపెడ్ రోబోట్ ఆటోమేషన్, ఇన్స్పెక్షన్, లాజిస్టిక్స్ మరియు వాస్తవ ఆపరేషన్ల కోసం రూపొందించిన ఆధునిక నాలుగు కాళ్ల రోబోట్. బలమైన నిర్మాణం, చురుకైన కదలిక, శక్తివంతమైన ఆన్‌బోర్డ్ కంప్యూటింగ్‌ వల్ల క్లిష్ట వాతావరణాల్లో సురక్షిత, అధిక పనితీరు అందిస్తుంది.',
+  b2wHeroBottomDescription:
+    'ఖచ్చితత్వం, అనువర్తనం, విశ్వసనీయత కోసం రూపొందించిన మా పరిశ్రమ క్వాడ్రుపెడ్‌ల శ్రేణి నుండి ఎంపిక చేసుకోండి. ప్రతి వేరియంట్ భిన్న ఆపరేషనల్ అవసరాలను తీర్చుతూ ఇన్స్పెక్షన్, లాజిస్టిక్స్, ఆటోమేషన్ కోసం బలమైన పనితీరు మరియు సులభ సమీకరణ ఇస్తుంది.',
+  b2wVariantsPlaceholder: 'మీకు నచ్చిన వేరియంట్‌ను ఎంచుకోండి',
+  b2wSearchPlaceholder: 'పేరు, వర్గం లేదా వివరణతో కొబోట్‌ను వెతకండి...',
+  b2wSearchNoResults: 'మీ శోధనకు సరితూగే కొబోట్‌లు లేవు.',
+  b2wSearchTryDifferentKeywords: 'భిన్న కీవర్డ్‌లు ప్రయత్నించండి లేదా అన్ని కొబోట్‌లను చూడండి.',
+  b2wGalleryHeading: 'గ్యాలరీ',
+  b2wDetailHeading: 'వర్క్‌ఫ్లో మార్చండి',
+  b2wDetailHeadingHighlight: ' B2-W రోబోట్‌తో',
+  b2wDetailDescription:
+    'Unitree B2-W క్వాడ్రుపెడ్ రోబోట్‌తో పరిశ్రమ ఆపరేషన్లను రూపాంతరం చేయండి—అధిక పనితీరు మరియు స్మార్ట్ ఆటోమేషన్ కోసం రూపుదిద్దింది.',
+  b2wDetailCta: 'సేల్స్ జట్టును సంప్రదించండి',
+  b2wSpecNameB2WBasic: 'B2-W బేసిక్ వెర్షన్',
+  b2wSpecDescB2WBasic:
+    'B2-W Basic: 75kg ప్లాట్‌ఫారమ్, 1098×450×745 మిమీ, 4 షాక్-అబ్జార్బింగ్ టైర్లు, 40kg లోడ్, 16సెం.మీ మెట్లు, 5 m/s, మల్టిపుల్ డెప్త్ + HD కెమెరాలు.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W బేసిక్ (3D Lidarతో)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D Lidarతో B2-W Basic: 75kg, 1098×450×745 మిమీ, 4 షాక్-అబ్జార్బింగ్ టైర్లు, 16సెం.మీ మెట్లు, 5 m/s గరిష్ట వేగం, 40kg లోడ్, అనేక డెప్త్/HD కెమెరాలు, 32-లైన్ 3D రాడార్ (SDK).',
+  b2wFeatureLabelShockAbsorbingTires: 'షాక్ అబ్జార్బింగ్ టైర్లు',
+  b2wFeatureDetailShockAbsorbingTires: '4 నమ్మదగిన టైర్లు',
+  b2wFeatureLabelStairClimbing: 'మెట్లు ఎక్కడం',
+  b2wFeatureDetailStairClimbing: '16సెం.మీ మెట్లు సులభంగా ఎక్కుతుంది',
+  b2wFeatureLabelHighSpeedPerformance: 'అధిక వేగ పనితీరు',
+  b2wFeatureDetailHighSpeedPerformance: 'గరిష్ట వేగం 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D Lidar నావిగేషన్',
+  b2wFeatureDetail3DLidarNavigation: 'SDK కలిగిన 32-లైన్ రాడార్',
+  b2wFeatureLabelStairClimbingAbility: 'మెట్లు ఎక్కే సామర్థ్యం',
+  b2wFeatureDetailStairClimbingAbility: '16సెం.మీ మెట్లు, 5 m/s గరిష్ట వేగం',
+  b2wFeatureDetailHighReliability4WheelDesign: 'అత్యంత నమ్మదగిన 4-చక్ర రూపకల్పన',
 };
 

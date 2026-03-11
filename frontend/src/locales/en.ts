@@ -528,6 +528,42 @@ export const en = {
   b2SpecNameB2Advanced: 'B2 Advanced',
   b2SpecDescB2Advanced:
     'B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).',
+
+  // B2-W Page
+  b2wHeroTagline: 'Industrial Intelligence on Four Legs.',
+  b2wHeroHighlight: 'B2-W Industrial Quadruped',
+  b2wHeroTitle: 'Inspection Robot',
+  b2wHeroDescription:
+    'The B2-W Industrial Quadruped Robot is a cutting-edge four-legged inspection robot designed for advanced industrial applications, including automation, inspection, logistics, and other real-world operational tasks. The B2-W combines a robust build, agile mobility, and powerful onboard computing, enabling efficient, safe, and high-performance operations in complex industrial environments.',
+  b2wHeroBottomDescription:
+    'Select from a range of industrial quadruped robots, crafted for exceptional precision, adaptability, and dependability. Each variant is engineered to address diverse operational demands, ensuring powerful performance, autonomous mobility, and effortless integration for inspection, logistics, automation, and other practical industrial uses.',
+  b2wVariantsPlaceholder: 'Choose your preferred variants',
+  b2wSearchPlaceholder: 'Search cobots by name, category, or description...',
+  b2wSearchNoResults: 'No cobots found matching your search.',
+  b2wSearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  b2wGalleryHeading: 'Gallery',
+  b2wDetailHeading: 'Transform Workflows with',
+  b2wDetailHeadingHighlight: ' B2-W Robot',
+  b2wDetailDescription:
+    'Transform industrial operations with the Unitree B2-W Quadruped Robot—engineered for high performance and smart automation',
+  b2wDetailCta: 'Contact Sales Team',
+  b2wSpecNameB2WBasic: 'B2-W Basic Version',
+  b2wSpecDescB2WBasic:
+    'B2-W Basic Version inspection robot offers a 75kg platform, 1098×450×745 mm size, 4 shock-absorbing tires, 40 kg load capacity, 16 cm stair climbing, 5 m/s speed, and multiple depth + HD camera integration for perception.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W Basic Version with 3D Lidar',
+  b2wSpecDescB2WBasic3DLidar:
+    'B2-W Basic Version inspection robot with 3D Lidar weighs 75kg, measures 1098×450×745 mm, features 4 shock-absorbing tires, climbs 16 cm stairs, 5 m/s max speed, 40 kg load capacity, multiple depth and HD cameras, and 32-line 3D radar with SDK.',
+  b2wFeatureLabelShockAbsorbingTires: 'Shock Absorbing Tires',
+  b2wFeatureDetailShockAbsorbingTires: 'Equipped with 4 high-reliability tires',
+  b2wFeatureLabelStairClimbing: 'Stair Climbing',
+  b2wFeatureDetailStairClimbing: 'Climbs 16 cm steps with ease',
+  b2wFeatureLabelHighSpeedPerformance: 'High-Speed Performance',
+  b2wFeatureDetailHighSpeedPerformance: 'Maximum speed of 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D Lidar Navigation',
+  b2wFeatureDetail3DLidarNavigation: '32-line radar with SDK integration',
+  b2wFeatureLabelStairClimbingAbility: 'Stair Climbing Ability',
+  b2wFeatureDetailStairClimbingAbility: 'Climbs 16 cm steps, 5 m/s max speed',
+  b2wFeatureDetailHighReliability4WheelDesign: 'High reliability, 4-wheel design',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar:
     'B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.',

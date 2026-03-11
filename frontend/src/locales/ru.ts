@@ -538,5 +538,40 @@ export const ru = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 мм, 60 кг) — скорость 5 м/с, полезная нагрузка 100 кг (стоя) и 40 кг (в движении), работа при -20°C..55°C, преодолевает уклон 45° и препятствия 25 см; на базе Intel i5/i7 и Nvidia Jetson Orin NX (100 TOPS).',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 мм, 60 кг) — скорость 5 м/с, нагрузка 100 кг, диапазон -20℃~55℃; преодолевает 45°/25 см, использует 360°×90° 3D‑Lidar для обхода препятствий, работает на Intel i5/i7 + Jetson Orin NX (100 TOPS); подходит для промышленной автоматизации и городского развития.',
+  // B2-W Page
+  b2wHeroTagline: 'Индустриальный интеллект на четырех ногах.',
+  b2wHeroHighlight: 'B2-W промышленный квадропед',
+  b2wHeroTitle: 'Инспекционный робот',
+  b2wHeroDescription:
+    'B2-W — передовой четырехногий инспекционный робот для автоматизации, инспекции, логистики и реальных производственных задач. Прочное шасси, маневренность и мощное бортовое вычисление обеспечивают безопасную и высокопроизводительную работу в сложных условиях.',
+  b2wHeroBottomDescription:
+    'Выберите из линейки промышленных квадропедов, созданных для точности, адаптивности и надежности. Каждый вариант рассчитан на разные требования, обеспечивая мощную работу и бесшовную интеграцию для инспекции, логистики и автоматизации.',
+  b2wVariantsPlaceholder: 'Выберите предпочитаемый вариант',
+  b2wSearchPlaceholder: 'Ищите коботов по имени, категории или описанию...',
+  b2wSearchNoResults: 'Поиск не дал результатов.',
+  b2wSearchTryDifferentKeywords: 'Попробуйте другие ключевые слова или просмотрите все коботы.',
+  b2wGalleryHeading: 'Галерея',
+  b2wDetailHeading: 'Трансформируйте процессы',
+  b2wDetailHeadingHighlight: ' вместе с B2-W',
+  b2wDetailDescription:
+    'Трансформируйте промышленные операции с Unitree B2-W Quadruped — создан для высокой производительности и умной автоматизации.',
+  b2wDetailCta: 'Связаться с отделом продаж',
+  b2wSpecNameB2WBasic: 'B2-W базовая версия',
+  b2wSpecDescB2WBasic:
+    'B2-W Basic: платформа 75 кг, 1098×450×745 мм, 4 амортизирующих колеса, груз до 40 кг, подъем 16 см, скорость 5 м/с, несколько depth + HD камер.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W базовая (с 3D Lidar)',
+  b2wSpecDescB2WBasic3DLidar:
+    'B2-W Basic с 3D Lidar: 75 кг, 1098×450×745 мм, 4 амортизирующих колеса, 16 см ступени, 5 м/с, груз 40 кг, depth/HD камеры и 32-линейный 3D радар (SDK).',
+  b2wFeatureLabelShockAbsorbingTires: 'Амортизирующие шины',
+  b2wFeatureDetailShockAbsorbingTires: '4 надёжные шины',
+  b2wFeatureLabelStairClimbing: 'Подъём по ступеням',
+  b2wFeatureDetailStairClimbing: 'Легко преодолевает ступени 16 см',
+  b2wFeatureLabelHighSpeedPerformance: 'Высокая скорость',
+  b2wFeatureDetailHighSpeedPerformance: 'Максимальная скорость 5 м/с',
+  b2wFeatureLabel3DLidarNavigation: '3D Lidar навигация',
+  b2wFeatureDetail3DLidarNavigation: '32-линейный радар с SDK-интеграцией',
+  b2wFeatureLabelStairClimbingAbility: 'Возможность подъёма по ступеням',
+  b2wFeatureDetailStairClimbingAbility: '16 см ступени, до 5 м/с',
+  b2wFeatureDetailHighReliability4WheelDesign: 'Надёжная 4-колёсная конструкция',
 };
 

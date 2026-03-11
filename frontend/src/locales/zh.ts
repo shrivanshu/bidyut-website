@@ -517,5 +517,40 @@ export const zh = {
   b2SpecDescB2Advanced: 'B2 Advanced（1098 × 450 × 645 mm，60 kg），速度 5 m/s，负载 100 kg（站立）/40 kg（行走），工作温度 -20°C 至 55°C，可攀爬 45° 斜坡与 25 cm 障碍；搭载 Intel i5/i7 与 Nvidia Jetson Orin NX（100 TOPS）。',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar（1098×450×645 mm，60 kg），速度 5 m/s，负载 100 kg，工作范围 -20℃~55℃；可越 45°/25 cm，配备 360°×90° 3D-Lidar 避障，运行于 Intel i5/i7 + Jetson Orin NX（100 TOPS），适用于工业自动化与城市开发。',
+  // B2-W Page
+  b2wHeroTagline: '四足承载的工业智能。',
+  b2wHeroHighlight: 'B2-W 工业四足机器人',
+  b2wHeroTitle: '巡检机器人',
+  b2wHeroDescription:
+    'B2-W 工业四足机器人面向高级工业应用，如自动化、巡检、物流及现场作业。坚固结构、灵活机动和强大车载计算能力，让其在复杂环境中也能安全高效运行。',
+  b2wHeroBottomDescription:
+    '选择我们为精准、敏捷和可靠性打造的工业四足机器人系列。每个版本满足不同作业需求，为巡检、物流与自动化提供强劲性能与无缝集成。',
+  b2wVariantsPlaceholder: '选择您偏好的版本',
+  b2wSearchPlaceholder: '按名称、类别或描述搜索 cobot...',
+  b2wSearchNoResults: '未找到匹配的 cobot。',
+  b2wSearchTryDifferentKeywords: '尝试其他关键词或浏览全部 cobot。',
+  b2wGalleryHeading: '图库',
+  b2wDetailHeading: '重塑工作流程',
+  b2wDetailHeadingHighlight: ' 携手 B2-W 机器人',
+  b2wDetailDescription:
+    '使用 Unitree B2-W 四足机器人优化工业与科研应用——为高性能与可靠性而生。',
+  b2wDetailCta: '联系销售团队',
+  b2wSpecNameB2WBasic: 'B2-W 基础版',
+  b2wSpecDescB2WBasic:
+    'B2-W 基础版：75kg 平台，1098×450×745 mm，4 个减震轮胎，40kg 载荷，16cm 台阶攀爬，5 m/s 速度，多组深度+HD 摄像头。',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W 基础版（含 3D 激光雷达）',
+  b2wSpecDescB2WBasic3DLidar:
+    '含 3D Lidar 的 B2-W 基础版：75kg，1098×450×745 mm，4 个减震轮胎，16cm 台阶，5 m/s 最高速度，40kg 载荷，深度/HD 摄像头与 32 线 3D 雷达（SDK）。',
+  b2wFeatureLabelShockAbsorbingTires: '减震轮胎',
+  b2wFeatureDetailShockAbsorbingTires: '配备 4 条高可靠轮胎',
+  b2wFeatureLabelStairClimbing: '台阶攀爬',
+  b2wFeatureDetailStairClimbing: '轻松攀爬 16cm 台阶',
+  b2wFeatureLabelHighSpeedPerformance: '高速性能',
+  b2wFeatureDetailHighSpeedPerformance: '最高速度 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D 激光导航',
+  b2wFeatureDetail3DLidarNavigation: '32 线雷达，支持 SDK 集成',
+  b2wFeatureLabelStairClimbingAbility: '台阶攀爬能力',
+  b2wFeatureDetailStairClimbingAbility: '16cm 台阶，最高 5 m/s',
+  b2wFeatureDetailHighReliability4WheelDesign: '高可靠的四轮设计',
 };
 

@@ -534,5 +534,40 @@ export const ta = {
   b2SpecDescB2Advanced: 'B2 Advanced (1098 × 450 × 645 மிமீ, 60 கிலோ) 5 m/s வேகம், 100 கிலோ (நின்று) மற்றும் 40 கிலோ (நடக்கும் போது) பೇலோடு; -20°C முதல் 55°C வரை வேலை; 45° சரிவு மற்றும் 25 செ.மீ. தடையை ஏறுகிறது; Intel i5/i7 மற்றும் Nvidia Jetson Orin NX (100 TOPS) மூலம் இயக்கப்படுகிறது.',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar (1098×450×645 மிமீ, 60 கிலோ) 5 m/s வேகம், 100 கிலோ பayload, -20℃~55℃ வரம்பு; 45°/25 செ.மீ. தடையை கடக்கிறது, 360°×90° 3D-Lidar தடைவிலக்கு கொண்டது, Intel i5/i7 + Jetson Orin NX (100 TOPS) மூலம் இயங்குகிறது—தொழில் ஆட்டோமேஷன் மற்றும் நகர மேம்பாட்டிற்கு ஏற்றது.',
+  // B2-W Page
+  b2wHeroTagline: 'நான்கு கால்களில் இயங்கும் தொழில்துறை நுண்ணறிவு.',
+  b2wHeroHighlight: 'B2-W தொழில்துறை நான்குக்கால்',
+  b2wHeroTitle: 'ஆய்வு ரோபோட்',
+  b2wHeroDescription:
+    'B2-W தொழில்துறை நான்குக்கால் ஆய்வு ரோபோட்—ஆட்டோமேஷன், ஆய்வு, லாஜிஸ்டிக்ஸ் மற்றும் நிஜ செயல்பாடுகளுக்காக வடிவமைக்கப்பட்ட முன்னேறிய ரோபோட். வலுவான கட்டமைப்பு, சுறுசுறுப்பு இயக்கம், சக்திவாய்ந்த ஆன்-போர்ட் கணிப்புடன், சிக்கலான சூழல்களிலும் பாதுகாப்பான உயர் செயல்திறன் வழங்குகிறது.',
+  b2wHeroBottomDescription:
+    'துல்லியம், பொருத்தம் மற்றும் நம்பகத்தன்மைக்காக வடிவமைக்கப்பட்ட நமது தொழில்துறை நான்குக்கால் ரோபோட் வரிசையில் இருந்து தேர்வு செய்யுங்கள். ஒவ்வொரு வடிவமும் பல்வேறு செயல்பாட்டு தேவைகளை பூர்த்தி செய்து ஆய்வு, லாஜிஸ்டிக்ஸ், ஆட்டோமேஷனுக்காக வலுவான செயல்திறன் மற்றும் மென்மையான ஒருங்கிணைப்பை வழங்குகிறது.',
+  b2wVariantsPlaceholder: 'உங்கள் விருப்பமான வடிவத்தைத் தேர்ந்தெடுக்கவும்',
+  b2wSearchPlaceholder: 'பெயர், வகை அல்லது விளக்கத்தின் மூலம் கோபோட் தேடவும்...',
+  b2wSearchNoResults: 'உங்கள் தேடலுக்கு பொருந்தும் கோபோட் இல்லை.',
+  b2wSearchTryDifferentKeywords: 'வேறு முக்கியச்சொற்கள் முயற்சிக்கவும் அல்லது அனைத்து கோபோட்டுகளையும் பார்க்கவும்.',
+  b2wGalleryHeading: 'கேலரி',
+  b2wDetailHeading: 'வேலைப்போக்கை மாற்றுங்கள்',
+  b2wDetailHeadingHighlight: ' B2-W ரோபோட்டுடன்',
+  b2wDetailDescription:
+    'Unitree B2-W நான்குக்கால் ரோபோட்டுடன் தொழில்துறை செயல்பாடுகளை மாற்றுங்கள்—உயர் செயல்திறன் மற்றும் ஸ்மார்ட் ஆட்டோமேஷனுக்காக உருவாக்கப்பட்டது.',
+  b2wDetailCta: 'விற்பனை குழுவை தொடர்பு கொள்ளவும்',
+  b2wSpecNameB2WBasic: 'B2-W அடிப்படை பதிப்பு',
+  b2wSpecDescB2WBasic:
+    'B2-W Basic: 75kg, 1098×450×745 மிமீ, 4 அதிர்வு உறிஞ்சி டயர்கள், 40kg சுமை, 16செ.மீ படிக்கட்டி, 5 m/s வேகம், பல டெப்த் + HD கேமரா.',
+  b2wSpecNameB2WBasic3DLidar: 'B2-W அடிப்படை (3D Lidar உடன்)',
+  b2wSpecDescB2WBasic3DLidar:
+    '3D Lidar உடன் B2-W Basic: 75kg, 1098×450×745 மிமீ, 4 அதிர்வு உறிஞ்சி டயர்கள், 16செ.மீ படிக்கட்டி, 5 m/s, 40kg சுமை, பல டெப்த்/HD கேமரா, 32-லைன் 3D ரேடார் (SDK).',
+  b2wFeatureLabelShockAbsorbingTires: 'அதிர்வு உறிஞ்சி டயர்கள்',
+  b2wFeatureDetailShockAbsorbingTires: '4 உயர் நம்பகத்தன்மை டயர்கள்',
+  b2wFeatureLabelStairClimbing: 'படிக்கட்டி ஏறுதல்',
+  b2wFeatureDetailStairClimbing: '16செ.மீ படிக்கட்டிகளை எளிதாக ஏறுகிறது',
+  b2wFeatureLabelHighSpeedPerformance: 'அதிக வேக செயல்திறன்',
+  b2wFeatureDetailHighSpeedPerformance: 'அதிகபட்ச வேகம் 5 m/s',
+  b2wFeatureLabel3DLidarNavigation: '3D Lidar வழிசெலுத்தல்',
+  b2wFeatureDetail3DLidarNavigation: 'SDK இணைப்புடன் 32-லைன் ரேடார்',
+  b2wFeatureLabelStairClimbingAbility: 'படிக்கட்டி ஏறும் திறன்',
+  b2wFeatureDetailStairClimbingAbility: '16செ.மீ படிக்கட்டி, 5 m/s அதிகபட்ச வேகம்',
+  b2wFeatureDetailHighReliability4WheelDesign: 'உயர் நம்பகத்தன்மை 4-சக்கர வடிவம்',
 };
 
