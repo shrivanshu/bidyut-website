@@ -784,6 +784,41 @@ export const en = {
   go2SpecNameGO2ENTU4: 'GO2 ENT-U4',
   go2SpecDescGO2ENTU4:
     'GO2 Edu features, dual-camera screen remote, capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control for security scenarios.',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'Next-Gen All-Terrain Robotics.',
+  go2wHeroHighlight: 'Unitree Go2 W robot -',
+  go2wHeroTitle: 'Your All-Terrain Robotic Companion',
+  go2wHeroDescription:
+    'Meet the Unitree Go2 W robot, blending wheeled efficiency with legged freedom. From smooth hallways to rugged floors, it adapts seamlessly, perfect for robotics research, inspections, and versatile real-world applications.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'Our Unitree Go2 W robot is built for advanced research, industrial, and educational applications. Designed for high performance, strong payload, and versatile operation in challenging environments. With powerful computing, stability, and adaptability, it is ideal for robotics development and real-world problem-solving.',
+  go2wDetailHeading: 'Ready for smarter,',
+  go2wDetailHeadingHighlight: 'faster robotics?',
+  go2wDetailDescription:
+    'Reach out today and connect with our team to see how the Unitree Go2 W robot can transform your workflow.',
+  go2wDetailCta: 'Contact Sales Team',
+  go2wVariantDropdownPlaceholder: 'Choose your preferred variants',
+  go2wSearchPlaceholder: 'Search cobots by name, category, or description...',
+  go2wSearchNoResults: 'No cobots found matching your search.',
+  go2wSearchNoResultsHelper: 'Try different keywords or browse all cobots.',
+  go2wGalleryHeading: 'Gallery',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'The Unitree Go2 W robot features compact dimensions of 70 × 43 × 50 cm, weight 18 kg, payload ~3 kg, maximum speed 2.5 m/s, 16 joint motors, computing power 40 TOPS, gradient climb 35°, climbing height 70 cm, obstacle avoidance via 4D-LiDAR (360° × 90°). Battery 15000 mAh with charger, runtime up to 2–3 h. Includes calibrator, label controller, remote controller, and RealSense D435i depth camera.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    'Dimensions 70 × 43 × 50 cm, weight 18 kg, payload ~3 kg, maximum speed 2.5 m/s, 16 joint motors, computing power 100 TOPS, gradient climb 35°, climbing height 70 cm, 4D-LiDAR (360° × 90°), 15000 mAh battery with 2–3 h runtime, accessories: calibrator, label controller, remote controller, RealSense D435i.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    'Upgraded with 4D & 3D LiDAR, depth camera, 100 TOPS AI power; agile terrain handling for complex inspection and mapping tasks.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 kg quadruped with 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, depth camera, advanced obstacle avoidance; extended sensing for harsh environments.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 kg quadruped with 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, dual-optical gimbal, depth camera, advanced obstacle avoidance; suited for patrol and security roles.',
 };
 
 

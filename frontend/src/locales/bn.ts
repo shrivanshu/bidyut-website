@@ -704,5 +704,40 @@ export const bn = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'রোবট ডগ GO2 এর কমপ্যাক্ট আকার 70 × 31 × 40 সেমি, ওজন 15 কেজি, পে-লোড 7 কেজি (সর্বোচ্চ 10 কেজি), সর্বোচ্চ গতি 2.5 মি/সে, 8000 mAh ব্যাটারি 1–2 ঘণ্টা রানটাইমসহ, 1280 × 720 px ক্যামেরা 120° FOV-সহ, 30° ঢাল আরোহন, 15 সেমি সিঁড়ি আরোহন এবং 4D LiDAR (360° × 90°) দিয়ে বাধা এড়ানো।',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'নেক্সট-জেন অল-টেরেন রোবোটিক্স।',
+  go2wHeroHighlight: 'Unitree Go2 W রোবট -',
+  go2wHeroTitle: 'আপনার অল-টেরেন রোবোটিক সঙ্গী',
+  go2wHeroDescription:
+    'Unitree Go2 W রোবট চাকার দক্ষতা ও পায়ের স্বাধীনতাকে মিশিয়ে দেয়। মসৃণ করিডর থেকে রাগেড ফ্লোর—নিঃশ্বাসে মানিয়ে নেয়; রোবোটিক্স গবেষণা, পরিদর্শন ও বাস্তব ব্যবহারে উপযোগী।',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'আমাদের Unitree Go2 W রোবট উন্নত গবেষণা, শিল্প ও শিক্ষামূলক প্রয়োগের জন্য তৈরি। উচ্চ পারফরম্যান্স, শক্তিশালী পেলোড ও চ্যালেঞ্জিং পরিবেশে বহুমুখী অপারেশনের জন্য ডিজাইন; স্থিতিশীল ও অভিযোজ্য কম্পিউটিংসহ।',
+  go2wDetailHeading: 'আরও স্মার্ট ও দ্রুত রোবোটিক্সের জন্য',
+  go2wDetailHeadingHighlight: 'প্রস্তুত?',
+  go2wDetailDescription:
+    'আজই আমাদের সঙ্গে যোগাযোগ করুন এবং দেখুন কীভাবে Unitree Go2 W আপনার ওয়ার্কফ্লো বদলাতে পারে।',
+  go2wDetailCta: 'সেলস টিমের সাথে কথা বলুন',
+  go2wVariantDropdownPlaceholder: 'আপনার পছন্দের ভ্যারিয়েন্ট বেছে নিন',
+  go2wSearchPlaceholder: 'নাম, শ্রেণি বা বিবরণ দিয়ে কোবট খুঁজুন...',
+  go2wSearchNoResults: 'আপনার খোঁজে কোনো কোবট পাওয়া যায়নি।',
+  go2wSearchNoResultsHelper: 'অন্য কীওয়ার্ড চেষ্টা করুন বা সব কোবট ব্রাউজ করুন।',
+  go2wGalleryHeading: 'গ্যালারি',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 সেমি, 18 কেজি, পেলোড ~3 কেজি, সর্বোচ্চ গতি 2.5 m/s, 16 জয়েন্ট মোটর, 40 TOPS কম্পিউট, 35° গ্রেডিয়েন্ট, 70 সেমি স্টেপ, 4D LiDAR (360° × 90°), 15000 mAh ব্যাটারি 2–3 ঘণ্টা, RealSense D435i ও রিমোট/ক্যালিব্রেটর অন্তর্ভুক্ত।',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 সেমি, 18 কেজি, পেলোড ~3 কেজি, 2.5 m/s, 16 জয়েন্ট মোটর, 100 TOPS AI, 35° গ্রেডিয়েন্ট, 70 সেমি স্টেপ, 4D LiDAR (360° × 90°), 15000 mAh ব্যাটারি 2–3 ঘণ্টা, RealSense D435i ও রিমোট/ক্যালিব্রেটর অন্তর্ভুক্ত।',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D ও 3D LiDAR, ডেপথ ক্যামেরা, 100 TOPS AI সহ উন্নত মডেল—জটিল পরিদর্শন ও ম্যাপিংয়ের জন্য চটপটে গতি।',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 কেজি কোয়াড্রুপেড, 100 TOPS AI, 4D ও Hesai XT16 3D LiDAR, ডেপথ ক্যামেরা; কঠিন পরিবেশে উন্নত বাধা পরিহার।',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 কেজি কোয়াড্রুপেড, 100 TOPS AI, 4D ও Hesai XT16 3D LiDAR, ডুয়াল-অপটিক্যাল গিম্বল, ডেপথ ক্যামেরা; পেট্রোল/নিরাপত্তা কাজে উপযোগী।',
 };
 
