@@ -284,6 +284,27 @@ export const en = {
   g1SearchPlaceholder: 'Search robots by name, category, or description...',
   g1SearchNoResults: 'No robots found matching your search.',
   g1SearchTryDifferentKeywords: 'Try different keywords or browse all robots.',
+  g1SpecNameg1basic: 'G1 Basic',
+  g1SpecDescg1basic:
+    'This compact educational robot measures 1270 × 450 × 200 mm (approx. 4.1 ft), weighs about 35 kg, carries light payloads, and can reach speeds up to 2 m/s—ideal for lively classroom demos.',
+  g1SpecNameg1EduU1: 'G1 EDU U1',
+  g1SpecDescg1EduU1:
+    'Advanced educational humanoid with optional three‑finger hands, extra wrist and waist freedom, and stronger 120 N·m knee torque. Optional NVIDIA Jetson Orin boosts computing for higher-level research.',
+  g1SpecNameg1EduU2: 'G1 EDU U2',
+  g1SpecDescg1EduU2:
+    'Extends U1 with a 10,500mAh battery, upgraded AI modules, and more flexible joints—built for intensive coursework and real-world robotics contests.',
+  g1SpecNameg1EduU3: 'G1 EDU U3',
+  g1SpecDescg1EduU3:
+    'Adds advanced locomotion control, multi-camera SLAM vision, and reinforced joints to endure demanding research environments.',
+  g1SpecNameg1EduU4: 'G1 EDU U4',
+  g1SpecDescg1EduU4:
+    'Integrates Jetson Orin NX, brings haptic feedback for hand control, and supports cloud-based simulation training.',
+  g1SpecNameg1EduU5: 'G1 EDU U5',
+  g1SpecDescg1EduU5:
+    'Focuses on collaborative research with voice AI, advanced gesture recognition, and richer human–robot interaction modules.',
+  g1SpecNameg1EduU6: 'G1 EDU U6',
+  g1SpecDescg1EduU6:
+    'Flagship EDU model combining all upgrades with AI-driven decision making, cloud–edge hybrid control, and maximum safety for lab and competition deployment.',
   h1SpecNameh1basic: 'Unitree H1',
   h1SpecDesch1basic: 'The Unitree H1 Robot is a full-size universal humanoid standing about 180 cm and 47 kg. With 3D LiDAR and Intel RealSense depth sensing it achieves 360° perception. Speeds up to 3.3 m/s (potentially 5 m/s), quick-release 864 Wh battery, hollow wiring, and joint torque up to 360 N·m make it ideal for advanced research, mobility, and dynamic real-world applications.',
   h1SpecNameh12basic: 'Unitree H1-2',
