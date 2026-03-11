@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronLeft, ChevronRight, X, Search } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/OptimizedLanguageContext"
 
 interface RobotSpec {
   id: string
@@ -31,7 +32,7 @@ const robotSearchData = [
     image: "/media/Robot_Details.svg",
     category: "Educational",
     description: "Alpha unit for classrooms with quick-swap modules.",
-    specId: "g1-basic",
+    specId: "r1-basic",
     gallery: ["/media/Robot_Details.svg", "/robot.webm", "/robo-dance5.webm"],
   },
 ]
@@ -185,7 +186,44 @@ const Button = ({
 
 export default function R1Variants() {
   const { isDark } = useTheme()
-  const [selectedVariant, setSelectedVariant] = useState("g1-basic")
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '')
+  const toCamelKey = (value: string) => {
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    if (!parts.length) return sanitizeKey(value)
+    return parts
+      .map((part, idx) =>
+        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+      )
+      .join('')
+  }
+  const toPascalKey = (value: string) => {
+    const camel = toCamelKey(value)
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+  }
+  const translateWithKeyVariants = (prefix: string, id: string, fallback: string, extraIds: string[] = []) => {
+    const baseIds = [id, ...extraIds]
+    const candidates: string[] = []
+    baseIds.forEach(value => {
+      candidates.push(
+        `${prefix}${sanitizeKey(value)}`,
+        `${prefix}${toCamelKey(value)}`,
+        `${prefix}${toPascalKey(value)}`,
+        `${prefix}${value}`
+      )
+    })
+    for (const key of candidates) {
+      const translated = t(key)
+      if (translated !== key) return translated
+    }
+    return fallback
+  }
+
+  const [selectedVariant, setSelectedVariant] = useState("r1-basic")
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
@@ -202,8 +240,12 @@ export default function R1Variants() {
   
   const currentSpec = robotSpecs.find((spec) => spec.id === selectedVariant) || robotSpecs[0]
   // Derive display data from either selected search item or current variant
-  const displayName = selectedRobot?.name ?? currentSpec.name
-  const displayDescription = selectedRobot?.description ?? currentSpec.description
+  const displayName =
+    selectedRobot?.name ??
+    translateWithKeyVariants('r1SpecName', currentSpec.id, currentSpec.name, [currentSpec.name])
+  const displayDescription =
+    selectedRobot?.description ??
+    translateWithKeyVariants('r1SpecDesc', currentSpec.id, currentSpec.description, [currentSpec.name])
   const displayGallery = (selectedRobot as any)?.gallery?.length ? (selectedRobot as any).gallery : currentSpec.gallery
 
   // Filter robots based on search query
@@ -272,7 +314,10 @@ export default function R1Variants() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search robots by name, category, or description..."
+                  placeholder={translateWithFallback(
+                    'r1SearchPlaceholder',
+                    'Search robots by name, category, or description...'
+                  )}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-6 py-4 pl-12 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-green-500 dark:focus:border-green-400 transition-colors duration-300"
@@ -350,10 +395,16 @@ export default function R1Variants() {
               {filteredRobots.length === 0 && (
                 <div className="text-center py-12">
                   <div className="text-gray-400 dark:text-gray-500 text-lg">
-                    No robots found matching your search.
+                    {translateWithFallback(
+                      'r1SearchNoResults',
+                      'No robots found matching your search.'
+                    )}
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
-                    Try different keywords or browse all robots.
+                    {translateWithFallback(
+                      'r1SearchTryDifferentKeywords',
+                      'Try different keywords or browse all robots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -373,10 +424,16 @@ export default function R1Variants() {
                       {selectedRobot.name}
                     </h3>
                     <p className={`font-medium mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>
-                      {selectedRobot.category}
+                      {translateWithFallback(
+                        `r1RobotCategory${sanitizeKey(selectedRobot.id)}`,
+                        selectedRobot.category
+                      )}
                     </p>
                     <p className="text-gray-600 dark:text-gray-300">
-                      {selectedRobot.description}
+                      {translateWithFallback(
+                        `r1RobotDesc${sanitizeKey(selectedRobot.id)}`,
+                        selectedRobot.description
+                      )}
                     </p>
                   </div>
                   <button
@@ -398,7 +455,13 @@ export default function R1Variants() {
               className="w-full bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-400 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 px-6 py-2 md:py-4 flex items-center justify-between text-lg text-gray-900 dark:text-gray-100"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              <SelectValue placeholder="Choose your preferred variants" value={selectedVariant} />
+              <SelectValue
+                placeholder={translateWithFallback(
+                  'r1VariantsPlaceholder',
+                  'Choose your preferred variants'
+                )}
+                value={selectedVariant}
+              />
               <ChevronDown className="h-5 w-5 opacity-50 dark:opacity-70" />
             </SelectTrigger>
             {isDropdownOpen && (
@@ -426,19 +489,23 @@ export default function R1Variants() {
           <div id="robot-details" className="space-y-8 p-8 bg-gray-50/30 dark:bg-gray-800/30 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 transition-colors duration-300">
             <div className="space-y-6">
               <h2 className="text-5xl md:text-6xl font-bold text-[#0ACF83] dark:text-gray-100 tracking-tight">{displayName}</h2>
-              <h3 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">Technical Specifications</h3>
+              <h3 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">
+                {translateWithFallback('technicalSpecifications', 'Technical Specifications')}
+              </h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">{displayDescription}</p>
             </div>
 
             <Link to="/Contact">
   <Button className="bg-[#0ACF83] hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-600 text-white px-5 md:px-10 py-2 md:py-3 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-    Order Now
+    {translateWithFallback('orderNow', 'Order Now')}
   </Button>
 </Link>
 
             {/* Image Gallery Selector */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Gallery</h3>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                {translateWithFallback('r1GalleryHeading', 'Gallery')}
+              </h3>
               <div className="flex gap-3 flex-wrap">
                 {displayGallery.map((media: any, index: number) => (
                   <button

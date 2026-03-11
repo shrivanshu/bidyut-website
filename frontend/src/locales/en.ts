@@ -309,6 +309,31 @@ export const en = {
   h1SpecDesch1basic: 'The Unitree H1 Robot is a full-size universal humanoid standing about 180 cm and 47 kg. With 3D LiDAR and Intel RealSense depth sensing it achieves 360° perception. Speeds up to 3.3 m/s (potentially 5 m/s), quick-release 864 Wh battery, hollow wiring, and joint torque up to 360 N·m make it ideal for advanced research, mobility, and dynamic real-world applications.',
   h1SpecNameh12basic: 'Unitree H1-2',
   h1SpecDesch12basic: 'The Unitree H1-2 is a full-size humanoid (178 cm, ~70 kg) with 27 DoF, 3D LiDAR + Intel RealSense for 360° perception, high torque joints (legs up to 360 N·m, arms 120 N·m), dual encoders, hollow wiring, optional dexterous hands and higher computing. Designed for powerful, ergonomic performance in advanced robotics applications.',
+  // R1 Page
+  r1HeroLets: "Let's",
+  r1HeroInnovate: 'Innovate',
+  r1HeroLearn: 'Learn',
+  r1HeroBeyond: 'Beyond',
+  r1HeroBoundaries: 'Boundaries',
+  r1HeroTitle: 'Unitree R1 Robot for Education',
+  r1HeroDescription:
+    'The Unitree R1 Robot is a next-generation humanoid platform designed for practical learning, AI exploration, and hands-on robotics education. Built for students, educators, and innovators, the Unitree R1 Robot transforms classrooms with interactive coding, STEAM learning, and real-world problem-solving experiences.',
+  r1HumanoidHeading: 'Humanoid',
+  r1HumanoidDescription:
+    'Discover the Unitree R1, a high-performance educational humanoid robot designed for hands-on learning. With a compact build, an 8-core CPU, and up to 100 TOPS of computing power, it offers advanced capabilities for coding, AI exploration, and real-time demonstrations.',
+  r1DetailHeading: 'Bring Innovation to',
+  r1DetailHeadingHighlight: 'your classroom?',
+  r1DetailDescription:
+    'Join thousands of educators who are already using the Unitree R1 Robot to enhance hands-on learning and inspire the next generation of innovators.',
+  r1DetailCta: 'Contact Sales Team',
+  r1VariantsPlaceholder: 'Choose your preferred variants',
+  r1SearchPlaceholder: 'Search robots by name, category, or description...',
+  r1SearchNoResults: 'No robots found matching your search.',
+  r1SearchTryDifferentKeywords: 'Try different keywords or browse all robots.',
+  r1SpecNamer1basic: 'Unitree R1',
+  r1SpecDescr1basic:
+    'The Unitree R1 Robot is a compact full-featured humanoid robot, measuring 1210 × 357 × 190 mm and weighing about 25 kg. It features 24 degrees of freedom (expandable up to 40 for the EDU version), 6 DOF per leg, and 5 DOF per arm (3 at the shoulder and 2 at the elbow). Equipped with a humanoid binocular camera for ultra-wide-angle vision, a 4-microphone array for voice interaction, and stereo dual speakers, it is designed for dynamic educational and research applications. The R1 integrates hollow and internal wiring, a smart quick-release battery, an 8-core CPU computing module, and supports OTA upgrades, making it a versatile and powerful educational humanoid platform.',
+  r1GalleryHeading: 'Gallery',
 
   // Gallery Page
   exploreOurGalleryTitle: 'Explore Our Gallery',

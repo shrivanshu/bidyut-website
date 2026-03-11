@@ -317,6 +317,28 @@ export const ja = {
   h1SpecNameh12basic: 'ユニツリー H1-2',
   h1SpecDesch12basic: 'ユニツリー H1-2 は全高178cm・約70kg、27自由度のフルサイズヒューマノイド。3D LiDAR + RealSense で360°認識、高トルク関節（脚360 N·m、腕120 N·m）、デュアルエンコーダ、ケーブルレス配線、オプションの巧みなハンドと高演算能力を備え、先進的ロボット応用に最適です。',
   
+  // R1 Page
+  r1HeroLets: 'さあ',
+  r1HeroInnovate: '革新し',
+  r1HeroLearn: '学ぼう',
+  r1HeroBeyond: '境界を越えて',
+  r1HeroBoundaries: '境界',
+  r1HeroTitle: '教育向け Unitree R1 ロボット',
+  r1HeroDescription: 'Unitree R1 は実践的学習、AI 探索、ロボット教育のために設計された次世代ヒューマノイドプラットフォームです。インタラクティブなコーディング、STEAM 学習、実世界の課題解決で教室を変革します。',
+  r1HumanoidHeading: 'Humanoid',
+  r1HumanoidDescription: 'Unitree R1 を発見してください。ハンズオン学習のための高性能教育ヒューマノイドです。コンパクトな設計、8 コア CPU、最大 100 TOPS の計算力で、コーディング、AI 探索、リアルタイムデモを強力に支援します。',
+  r1DetailHeading: '革新を',
+  r1DetailHeadingHighlight: 'あなたの教室へ',
+  r1DetailDescription: 'すでに Unitree R1 でハンズオン学習を強化し、次世代のイノベーターを育てている多くの教育者に加わりましょう。',
+  r1DetailCta: '営業チームに連絡',
+  r1VariantsPlaceholder: 'お好みのバリアントを選択',
+  r1SearchPlaceholder: '名前・カテゴリ・説明でロボットを検索...',
+  r1SearchNoResults: '該当するロボットが見つかりませんでした。',
+  r1SearchTryDifferentKeywords: '別のキーワードを試すか、すべてのロボットをご覧ください。',
+  r1SpecNamer1basic: 'Unitree R1',
+  r1SpecDescr1basic: 'Unitree R1 はコンパクトなフル機能ヒューマノイド（1210 × 357 × 190 mm、約 25 kg）。24 DoF（EDU で 40 まで拡張可）、脚 6 DoF、腕 5 DoF、広角バイノキュラーカメラ、4 マイクアレイ、ステレオスピーカー、中空/内蔵配線、スマートクイックリリースバッテリー、8 コア CPU モジュール、OTA 対応で、教育・研究向けの強力なプラットフォームです。',
+  r1GalleryHeading: 'ギャラリー',
+
   // About Page  
   visionIgnited: 'ビジョン点火',
   buildingFutureOfLearning: '学習の未来を構築',

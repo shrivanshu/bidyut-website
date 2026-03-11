@@ -315,6 +315,28 @@ export const zh = {
   businessHoursLabel: '营业时间',
   businessHoursTime: '周一至周五：9:00 - 18:00\n周六至周日：10:00 - 16:00',
   
+  // R1 Page
+  r1HeroLets: '让我们',
+  r1HeroInnovate: '创新',
+  r1HeroLearn: '学习',
+  r1HeroBeyond: '超越',
+  r1HeroBoundaries: '边界',
+  r1HeroTitle: '教育型 Unitree R1 机器人',
+  r1HeroDescription: 'Unitree R1 是为实践学习、AI 探索和机器人教育打造的新一代类人平台。通过交互式编程、STEAM 学习和真实问题解决，助力课堂变革。',
+  r1HumanoidHeading: 'Humanoid',
+  r1HumanoidDescription: '探索 Unitree R1——面向实践学习的高性能教育类人机器人。紧凑机身、8 核 CPU、最高 100 TOPS 算力，为编程、AI 探索和实时演示提供先进能力。',
+  r1DetailHeading: '把创新带到',
+  r1DetailHeadingHighlight: '你的课堂？',
+  r1DetailDescription: '成千上万的教师已在使用 Unitree R1 提升实践教学，激励下一代创新者，加入他们吧。',
+  r1DetailCta: '联系销售团队',
+  r1VariantsPlaceholder: '选择您的首选型号',
+  r1SearchPlaceholder: '按名称、类别或描述搜索机器人...',
+  r1SearchNoResults: '未找到匹配的机器人。',
+  r1SearchTryDifferentKeywords: '尝试其他关键词或浏览全部机器人。',
+  r1SpecNamer1basic: 'Unitree R1',
+  r1SpecDescr1basic: 'Unitree R1 是一款紧凑的全功能类人机器人（1210 × 357 × 190 毫米，约 25 公斤）。24 个自由度（EDU 版本可扩展至 40），每条腿 6 个 DoF，每只手臂 5 个 DoF，配备超广角双目摄像头、4 麦克风阵列、立体扬声器、空心/内走线、智能快拆电池、8 核 CPU 计算模块并支持 OTA——为教学与科研提供强大平台。',
+  r1GalleryHeading: '画廊',
+
   // About Page  
   visionIgnited: '点燃愿景',
   buildingFutureOfLearning: '构建学习的未来',
