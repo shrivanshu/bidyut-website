@@ -616,6 +616,11 @@ export const ja = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + 広角カメラ、デュアルエンコーダー、安定した障害物回避',
   a2wFeatureLabelConnectivityInterfaces: '接続性 & インターフェース',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V 電源',
+  a2wDetailHeading: '産業検査を変革する準備は',
+  a2wDetailHeadingHighlight: 'できていますか？',
+  a2wDetailDescription:
+    'エンジニア、研究者、産業チームは既に Unitree A2‑W 自律巡検ロボットを使い、検査ワークフローを自動化し、安全性を高め、高品質データを収集し、複雑な現場での運用効率を向上させています。',
+  a2wDetailCta: '営業チームに連絡する',
   a2DetailHeading: '変革の準備はできていますか',
   a2DetailHeadingHighlight: '学習と研究で？',
   a2DetailDescription:

@@ -674,5 +674,10 @@ export const ta = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + wide-angle கேமரா, இரட்டை என்கோடர், நிலையான தடையின்மைக் கட்டுப்பாடு',
   a2wFeatureLabelConnectivityInterfaces: 'இணைப்பு & இடைமுகங்கள்',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V மின்சாரம்',
+  a2wDetailHeading: 'தொழில்துறை ஆய்வை மாற்ற தயாரா',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'பொறியாளர்கள், ஆராய்ச்சியாளர்கள் மற்றும் தொழில்துறை அணிகள் Unitree A2‑W தன்னாட்சி ஆய்வு ரோபோட்டை பயன்படுத்தி ஆய்வு பணிச்சூழல்களை தானியக்கப்படுத்தி, பாதுகாப்பை உயர்த்தி, உயர்தர தரவைப் பெறவும் சிக்கலான தளங்களில் செயல்திறனை மேம்படுத்தவும் செய்கின்றனர்.',
+  a2wDetailCta: 'விற்பனை அணியை தொடர்பு கொள்ளுங்கள்',
 };
 

@@ -657,5 +657,10 @@ export const zh = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + 广角摄像头，双编码器，稳定避障',
   a2wFeatureLabelConnectivityInterfaces: '连接与接口',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB‑C×4, 12V/24V 电源',
+  a2wDetailHeading: '准备好变革工业巡检',
+  a2wDetailHeadingHighlight: '了吗？',
+  a2wDetailDescription:
+    '工程师、研究者和工业团队已在使用 Unitree A2‑W 自主巡检机器人来自动化巡检流程、提升安全、采集高质量数据，并在复杂场景下提高运营效率。',
+  a2wDetailCta: '联系销售团队',
 };
 

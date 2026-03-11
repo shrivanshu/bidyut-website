@@ -671,5 +671,10 @@ export const te = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + వైడ్-యాంగిల్ కెమెరాలు, డ్యూయల్ ఎన్కోడర్లు, స్థిరమైన అడ్డంకి నివారణ',
   a2wFeatureLabelConnectivityInterfaces: 'కనెక్టివిటీ & ఇంటర్‌ఫేస్‌లు',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V పవర్',
+  a2wDetailHeading: 'పరిశ్రమ తనిఖీలను మార్చడానికి సిద్ధమేనా',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'ఇంజనీర్లు, పరిశోధకులు మరియు పరిశ్రమ బృందాలు Unitree A2‑W స్వాయత్త పరిశీలన రోబోట్‌ను ఉపయోగించి తనిఖీ వర్క్‌ఫ్లోలను ఆటోమేట్ చేస్తున్నారు, భద్రతను పెంచుతున్నారు, అధిక నాణ్యత డేటా సేకరిస్తున్నారు మరియు క్లిష్టమైన సైట్లలో ఆపరేషనల్ సామర్థ్యాన్ని మెరుగుపరుస్తున్నారు.',
+  a2wDetailCta: 'సేల్స్ జట్టును సంప్రదించండి',
 };
 

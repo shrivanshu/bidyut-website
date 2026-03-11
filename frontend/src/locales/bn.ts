@@ -676,5 +676,10 @@ export const bn = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + ওয়াইড-অ্যাঙ্গেল ক্যামেরা, ডুয়াল এনকোডার, স্থিতিশীল বাধা এড়ানো',
   a2wFeatureLabelConnectivityInterfaces: 'কানেক্টিভিটি ও ইন্টারফেস',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V পাওয়ার',
+  a2wDetailHeading: 'শিল্প পরিদর্শন বদলাতে প্রস্তুত',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'ইঞ্জিনিয়ার, গবেষক ও শিল্প দলগুলো Unitree A2‑W স্বায়ত্তশাসিত পরিদর্শন রোবট ব্যবহার করছে পরিদর্শন ওয়ার্কফ্লো স্বয়ংক্রিয় করতে, নিরাপত্তা বাড়াতে, উচ্চ মানের ডেটা সংগ্রহ করতে ও জটিল সাইটে দক্ষতা উন্নত করতে।',
+  a2wDetailCta: 'সেলস টিমের সাথে যোগাযোগ করুন',
 };
 

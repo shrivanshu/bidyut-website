@@ -659,5 +659,10 @@ export const kn = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + ವೈಡ್-ಆಂಗಲ್ ಕ್ಯಾಮೆರಾಗಳು, ಡ್ಯುಯಲ್ ಎನ್ಕೋಡರ್, ಸ್ಥಿರ ಅಡೆತಡೆ ತಪ್ಪಿಸುವಿಕೆ',
   a2wFeatureLabelConnectivityInterfaces: 'ಕನೆಕ್ಟಿವಿಟಿ ಮತ್ತು ಇಂಟರ್‌ಫೇಸ್‌ಗಳು',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V ವಿದ್ಯುತ್',
+  a2wDetailHeading: 'ಕೈಗಾರಿಕಾ ಪರಿಶೀಲನೆಗಳನ್ನು ಬದಲಿಸಲು ಸಿದ್ಧವೇ',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'ಇಂಜಿನಿಯರ್‌ಗಳು, ಸಂಶೋಧಕರು ಮತ್ತು ಕೈಗಾರಿಕಾ ತಂಡಗಳು ಈಗಾಗಲೇ Unitree A2‑W ಸ್ವಾಯತ್ತ ಪರಿಶೀಲನಾ ರೋಬೋಟ್ ಬಳಸಿ ವರ್ಕ್‌ಫ್ಲೋಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸುತ್ತಿದ್ದಾರೆ, ಸುರಕ್ಷತೆ ಹೆಚ್ಚಿಸುತ್ತಿದ್ದಾರೆ, ಉನ್ನತ ಗುಣಮಟ್ಟದ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಸಂಕೀರ್ಣ ಸ್ಥಳಗಳಲ್ಲಿ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಸುಧಾರಿಸುತ್ತಿದ್ದಾರೆ.',
+  a2wDetailCta: 'ಮಾರಾಟ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ',
 };
 

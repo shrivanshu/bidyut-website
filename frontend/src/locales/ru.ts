@@ -678,5 +678,10 @@ export const ru = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + широкоугольные камеры, двойные энкодеры, стабильное обход препятствий',
   a2wFeatureLabelConnectivityInterfaces: 'Связь и интерфейсы',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB‑C×4, питание 12V/24V',
+  a2wDetailHeading: 'Готовы изменить промышленные инспекции',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'Инженеры, исследователи и промышленные команды уже используют автономного инспекционного робота Unitree A2‑W, чтобы автоматизировать проверки, повысить безопасность, собирать качественные данные и улучшать эффективность на сложных объектах.',
+  a2wDetailCta: 'Связаться с отделом продаж',
 };
 

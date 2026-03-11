@@ -671,5 +671,10 @@ export const gu = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + વાઇડ-એંગલ કેમેરા, ડ્યુઅલ એન્કોડર, સ્થિર અવરોધ નિવારણ',
   a2wFeatureLabelConnectivityInterfaces: 'કનેક્ટિવિટી અને ઇન્ટરફેસ',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V પાવર',
+  a2wDetailHeading: 'ઇન્ડસ્ટ્રિયલ ઈન્સ્પેક્શન બદલીને તૈયાર છો',
+  a2wDetailHeadingHighlight: '?',
+  a2wDetailDescription:
+    'ઇજનેરો, સંશોધકો અને ઔદ્યોગિક ટીમો પહેલેથી Unitree A2‑W સ્વાયત્ત ઇન્સ્પેક્શન રોબોટથી ઇન્સ્પેક્શન વર્કફ્લો ઓટોમેટ કરી રહી છે, સુરક્ષા વધારી રહી છે, ઉચ્ચ ગુણવત્તાનો ડેટા એકત્ર કરી રહી છે અને જટિલ સાઇટ્સ પર કાર્યક્ષમતા સુધારી રહી છે.',
+  a2wDetailCta: 'સેલ્સ ટીમનો સંપર્ક કરો',
 };
 
