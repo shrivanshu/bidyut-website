@@ -473,7 +473,6 @@ export const bn = {
   ourRecentPost: 'আমাদের সাম্প্রতিক পোস্ট',
   readMore: 'আরও পড়ুন',
   readMoreArrow: 'আরও পড়ুন →',
-  education: 'শিক্ষা',
   sampleBlogTitle: 'নমুনা ব্লগ শিরোনাম',
   sampleExcerpt: 'নমুনা অংশ। এই পাঠ্য এবং ছবি আপনার নিজস্ব বিষয়বস্তু দিয়ে প্রতিস্থাপন করুন।',
   roboticsLabsTransformTitle: 'স্কুলে STREAM শিক্ষা রূপান্তরে রোবোটিক্স ল্যাবের ভূমিকা',

@@ -612,7 +612,6 @@ export default function RobotShowcase () {
 
   const currentSpec =
     robotSpecs.find(spec => spec.id === selectedVariant) || robotSpecs[0]
-  const specKey = selectedVariant.replace(/[^a-zA-Z0-9]/g, '')
 
   // Derive display data from either selected search item or current variant
   const displayName =
@@ -873,7 +872,6 @@ export default function RobotShowcase () {
             {isDropdownOpen && (
               <div className='absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 border-2 border-black dark:border-gray-400 rounded-xl shadow-xl z-50'>
                 {robotSpecs.map(spec => {
-                  const key = spec.id.replace(/[^a-zA-Z0-9]/g, '')
                   const translatedName = translateWithKeyVariants(
                     'g1SpecName',
                     spec.id,

@@ -265,8 +265,6 @@ export const mr = {
   ourStudio: 'आमचा स्टुडिओ',
   studioDescription: 'नवकल्पना आणि तंत्रज्ञान जोडून असाधारण उपाय तयार करणे.',
   addressLabel: 'पत्ता',
-  phoneLabel: 'फोन',
-  emailLabel: 'ईमेल',
   businessHoursLabel: 'कार्य वेळा',
   businessHoursTime: 'सोम - शुक्र: सकाळ 9:00 - संध्याकाळ 6:00\nशनि - रवि: सकाळ 10:00 - दुपार 4:00',
 

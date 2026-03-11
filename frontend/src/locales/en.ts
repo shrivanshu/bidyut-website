@@ -467,7 +467,6 @@ export const en = {
   ourRecentPost: 'Our Recent Post',
   readMore: 'Read More',
   readMoreArrow: 'Read More →',
-  education: 'education',
   sampleBlogTitle: 'Sample Blog Title',
   sampleExcerpt: 'Sample excerpt. Replace this text and image with your own content.',
   roboticsLabsTransformTitle: 'The Role of Robotics Labs in Transforming STREAM Education in Schools',

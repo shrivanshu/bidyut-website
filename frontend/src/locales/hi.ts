@@ -479,7 +479,6 @@ export const hi = {
   ourRecentPost: 'हमारी हाल की पोस्ट',
   readMore: 'और पढ़ें',
   readMoreArrow: 'और पढ़ें →',
-  education: 'शिक्षा',
   sampleBlogTitle: 'नमूना ब्लॉग शीर्षक',
   sampleExcerpt: 'नमूना अंश। इस पाठ और छवि को अपनी सामग्री से बदलें।',
   roboticsLabsTransformTitle: 'स्कूलों में STREAM शिक्षा को बदलने में रोबोटिक्स लैब्स की भूमिका',
