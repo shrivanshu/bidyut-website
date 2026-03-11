@@ -700,5 +700,8 @@ export const ja = {
   go2SearchNoResults: '条件に合うコボットが見つかりませんでした。',
   go2SearchNoResultsHelper: '別のキーワードを試すか、一覧を確認してください。',
   go2GalleryHeading: 'ギャラリー',
+  go2SpecNameGO2AIR: 'GO2-AIR',
+  go2SpecDescGO2AIR:
+    'ロボットドッグ GO2 のコンパクトサイズは 70 × 31 × 40 cm、重量 15 kg、ペイロード 7 kg（最大 10 kg）、最高速度 2.5 m/s、8000 mAh バッテリーで 1–2 時間駆動、1280 × 720 px カメラ（120° FOV）、30° の勾配登坂、15 cm の段差を乗り越え、4D LiDAR（360° × 90°）で障害物回避。',
 };
 

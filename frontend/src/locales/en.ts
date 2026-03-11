@@ -738,6 +738,52 @@ export const en = {
   go2SearchNoResults: 'No cobots found matching your search.',
   go2SearchNoResultsHelper: 'Try different keywords or browse all cobots.',
   go2GalleryHeading: 'Gallery',
+  // GO2 Variant Names & Descriptions
+  go2SpecNameGO2AIR: 'GO2-AIR',
+  go2SpecDescGO2AIR:
+    'The Robot Dog GO2 features compact Dimensions of 70 × 31 × 40 cm, Weight 15 kg, Payload 7 kg (max. 10 kg), Maximum speed 2.5 m/s, Battery 8000 mAh with 1–2 h runtime, Camera 1280 × 720 px with 120° FOV, Gradient climb 30°, Climbing height 15 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).',
+  go2SpecNameGO2PRO: 'GO2-PRO',
+  go2SpecDescGO2PRO:
+    'Dimensions 75 × 35 × 45 cm, Weight 18 kg, Payload 12 kg (maximum 15 kg), Maximum speed 3.0 m/s, Battery 12000 mAh with 2–3 h runtime, Camera 1920 × 1080 px with 130° FOV, Gradient climb 35°, Climbing height 18 cm, Obstacle avoidance via 4D-Lidar (360° × 90°).',
+  go2SpecNameGO2EDUU1: 'GO2 EDU U1',
+  go2SpecDescGO2EDUU1:
+    'Dimensions 70 × 31 × 40 cm, Weight 15 kg, Payload 8–10 kg (recommended 8 kg), Maximum speed 3.7 m/s, Computing unit NVIDIA Jetson Orin Nano 8GB (40 TOPS), Vision system Front Camera 1280 × 720 px (FOV 120°) + RealSense D435i Depth Camera, Gradient climb 40°, Climbing height 16 cm, Obstacle avoidance via 4D-LiDAR (360° × 90°), Battery 15000 mAh ×1 with charger & calibrator, Control via Remote Controller + Label Controller.',
+  go2SpecNameGO2EDUU2: 'GO2 EDU U2',
+  go2SpecDescGO2EDUU2:
+    'Similar to U1 with enhanced computing and sensors: 100 Tops AI power, 4G connectivity, advanced obstacle avoidance, and extended runtime for education scenarios.',
+  go2SpecNameGO2EDUU3: 'GO2 EDU U3',
+  go2SpecDescGO2EDUU3:
+    '15 kg AI robot with 100 Tops computing, 4G, dual 3D LiDAR (Livox Mid-360), depth camera, voice control, obstacle avoidance, creative motion, 4h battery, and remote/app control.',
+  go2SpecNameGO2EDUU4: 'GO2 EDU U4',
+  go2SpecDescGO2EDUU4:
+    'High-performance quadruped with AI vision, voice control, long battery life, advanced mobility, and rich expansion for labs and research.',
+  go2SpecNameGO2WU1: 'GO2-W U1',
+  go2SpecDescGO2WU1:
+    'Compact quadruped with 4D lidar, depth camera, AI computing, precise mobility, designed for wheeled-foot hybrid scenarios.',
+  go2SpecNameGO2WU2: 'GO2-W U2',
+  go2SpecDescGO2WU2:
+    'High-performance quadruped with 4D lidar, depth camera, 100 Tops AI power, and agile mobility for inspection tasks.',
+  go2SpecNameGO2WU3: 'GO2-W U3',
+  go2SpecDescGO2WU3:
+    '4D & 3D lidar, depth camera, 100 Tops AI, agile terrain handling; ideal for complex environments requiring rich perception.',
+  go2SpecNameGO2WU4: 'GO2-W U4',
+  go2SpecDescGO2WU4:
+    '18 kg quadruped with 100 Tops AI, 4D & Hesai XT16 3D lidar, depth camera, advanced obstacle avoidance and mapping.',
+  go2SpecNameGO2WU5: 'GO2-W U5',
+  go2SpecDescGO2WU5:
+    '18 kg quadruped with 100 Tops AI, 4D & Hesai XT16 3D lidar, dual-optical gimbal, depth camera, and enhanced obstacle avoidance for security and patrol.',
+  go2SpecNameGO2ENTU1: 'GO2 ENT-U1',
+  go2SpecDescGO2ENTU1:
+    'GO2 Edu features, screen remote, dual-link comms (5.8G + 4G), 1080P HD video, explosion-proof screen, dual wide-angle cameras with fill lights.',
+  go2SpecNameGO2ENTU2: 'GO2 ENT-U2',
+  go2SpecDescGO2ENTU2:
+    'Same as U1 with enterprise-grade reliability: dual-link comms, HD video, ruggedized screen, wide-angle cameras with lighting.',
+  go2SpecNameGO2ENTU3: 'GO2 ENT-U3',
+  go2SpecDescGO2ENTU3:
+    'Adds 30W searchlight, red/blue warning lights, 500–800 m megaphone with voice/TTS, strobe/lighting modes for emergency response.',
+  go2SpecNameGO2ENTU4: 'GO2 ENT-U4',
+  go2SpecDescGO2ENTU4:
+    'GO2 Edu features, dual-camera screen remote, capture net gun (electric shock fire, 8–10 m range, 9 m² net, quick release, laser aiming), app control for security scenarios.',
 };
 
 

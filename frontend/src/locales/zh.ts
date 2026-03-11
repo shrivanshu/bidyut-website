@@ -682,5 +682,8 @@ export const zh = {
   go2SearchNoResults: '未找到符合条件的机器人。',
   go2SearchNoResultsHelper: '尝试其它关键词或浏览全部机器人。',
   go2GalleryHeading: '画廊',
+  go2SpecNameGO2AIR: 'GO2-AIR',
+  go2SpecDescGO2AIR:
+    '机器人犬 GO2 的紧凑尺寸为 70 × 31 × 40 cm，重量 15 kg，载荷 7 kg（最大 10 kg），最高速度 2.5 m/s，8000 mAh 电池可续航 1–2 小时，1280 × 720 px 相机，120° 视角，爬坡 30°，可跨越 15 cm 台阶，4D LiDAR（360° × 90°）实现障碍规避。',
 };
 
