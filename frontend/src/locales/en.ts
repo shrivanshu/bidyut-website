@@ -718,6 +718,26 @@ export const en = {
   roboticsLabsTransformExcerpt: "The way we learn is changing fast in the 21st century. The old ways of teaching are not good enough to get students ready for a world that's all about technology.",
   roboticsInteractiveTitle: 'How Robotics is Making Learning Fun and Interactive in Schools',
   roboticsInteractiveExcerpt: 'Education is rapidly evolving, and traditional teaching methods are no longer enough to keep students fully engaged in the classroom. Today\'s learners are curious, tech-savvy, and eager to explore.',
+
+  // GO2 Education Page
+  go2HeroTagline: 'Next-Level Robotics for Education.',
+  go2HeroHighlight: 'Quadrupeds ',
+  go2HeroTitle: 'Robot Dog GO2.',
+  go2HeroDescription:
+    'The Robot Dog GO2 is an advanced quadruped robot designed to bring robotics, AI, and programming to life. This GO2 Robot moves with realistic four-legged motion, making it perfect for students, educators, and robotics enthusiasts who want hands-on STREAM learning.',
+  go2HeroLargeLabel: 'Unitree GO2',
+  go2HeroBottomDescription:
+    'Select your preferred Robot Dog GO2 model below to unlock the ideal combination of learning, coding, and hands-on robotics, designed to make STREAM education engaging and practical.',
+  go2DetailHeading: 'Ready to revolutionize',
+  go2DetailHeadingHighlight: 'your classroom?',
+  go2DetailDescription:
+    'Revolutionize teaching with the Unitree GO2 Robot Dog, delivering practical AI, robotics, and STREAM experiences that inspire student creativity and problem-solving.',
+  go2DetailCta: 'Contact Sales Team',
+  go2VariantDropdownPlaceholder: 'Choose your preferred variants',
+  go2SearchPlaceholder: 'Search cobots by name, category, or description...',
+  go2SearchNoResults: 'No cobots found matching your search.',
+  go2SearchNoResultsHelper: 'Try different keywords or browse all cobots.',
+  go2GalleryHeading: 'Gallery',
 };
 
 

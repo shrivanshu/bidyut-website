@@ -662,5 +662,25 @@ export const zh = {
   a2wDetailDescription:
     '工程师、研究者和工业团队已在使用 Unitree A2‑W 自主巡检机器人来自动化巡检流程、提升安全、采集高质量数据，并在复杂场景下提高运营效率。',
   a2wDetailCta: '联系销售团队',
+
+  // GO2 Education Page
+  go2HeroTagline: '面向教育的下一代机器人技术。',
+  go2HeroHighlight: '四足 ',
+  go2HeroTitle: '机器人犬 GO2。',
+  go2HeroDescription:
+    '机器人犬 GO2 是一款先进的四足机器人，让机器人、AI 与编程栩栩如生。其逼真的四足运动，非常适合学生、教师和爱好者进行实践性的 STREAM 学习。',
+  go2HeroLargeLabel: 'Unitree GO2',
+  go2HeroBottomDescription:
+    '在下方选择你喜欢的 GO2 机器人犬型号，获得学习、编程与动手机器人体验的理想组合，让 STREAM 教育更有趣、更实用。',
+  go2DetailHeading: '准备好变革',
+  go2DetailHeadingHighlight: '你的课堂了吗？',
+  go2DetailDescription:
+    '借助 Unitree GO2 机器人犬革新教学——通过实践性的 AI、机器人与 STREAM 体验，激发学生的创造力和解决问题的能力。',
+  go2DetailCta: '联系销售团队',
+  go2VariantDropdownPlaceholder: '选择你喜欢的机型',
+  go2SearchPlaceholder: '按名称、类别或描述搜索机器人…',
+  go2SearchNoResults: '未找到符合条件的机器人。',
+  go2SearchNoResultsHelper: '尝试其它关键词或浏览全部机器人。',
+  go2GalleryHeading: '画廊',
 };
 

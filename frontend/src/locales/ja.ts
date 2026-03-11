@@ -681,5 +681,24 @@ export const ja = {
   a2ComparisonSecondaryDevelopment: '二次開発',
   a2ComparisonWarranty: '保証',
   a2ComparisonContinuousUpgrades: '継続的アップグレード',
+  // GO2 Education Page
+  go2HeroTagline: '教育のための次世代ロボティクス。',
+  go2HeroHighlight: '四足歩行 ',
+  go2HeroTitle: 'ロボットドッグ GO2。',
+  go2HeroDescription:
+    'ロボットドッグ GO2 は、ロボティクス・AI・プログラミングを体感できる先進的な四足ロボットです。リアルな四足歩行により、学生や教育者、ロボット愛好家が実践的に STREAM を学ぶのに最適です。',
+  go2HeroLargeLabel: 'Unitree GO2',
+  go2HeroBottomDescription:
+    '下からお気に入りのロボットドッグ GO2 モデルを選び、学習・コーディング・実践ロボティクスの最適な組み合わせで STREAM 教育をさらに魅力的にしましょう。',
+  go2DetailHeading: '変革する準備は',
+  go2DetailHeadingHighlight: 'できましたか？',
+  go2DetailDescription:
+    'Unitree GO2 ロボットドッグで教育を刷新しましょう。実践的な AI・ロボティクス・STREAM 体験で、学生の創造性と問題解決力を引き出します。',
+  go2DetailCta: '営業チームに相談する',
+  go2VariantDropdownPlaceholder: 'お好みのバリアントを選択',
+  go2SearchPlaceholder: '名前・カテゴリ・説明でコボットを検索...',
+  go2SearchNoResults: '条件に合うコボットが見つかりませんでした。',
+  go2SearchNoResultsHelper: '別のキーワードを試すか、一覧を確認してください。',
+  go2GalleryHeading: 'ギャラリー',
 };
 
