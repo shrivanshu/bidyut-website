@@ -193,7 +193,14 @@ const BlogPost_page: React.FC = () => {
                   __html: (() => {
                     let roboticsLabsInSchoolsReplaced = false
                     let roboticsLabReplaced = false
+                    let roboticsInSchoolsFutureReplaced = false
+                    let roboticsInSchoolsReplaced = false
+                    let roboticsLabsReplaced = false
+                    let roboticsInEducationReplaced = false
+                    let roboticsForKidsReplaced = false
+                    let roboticsEducationInIndiaReplaced = false
                     let bidyutInnovationReplaced = false
+                    let streamEducationReplaced = false
 
                     return (
                       (post.fullContent || '')
@@ -225,6 +232,58 @@ const BlogPost_page: React.FC = () => {
                               roboticsLabsInSchoolsReplaced = true
                               return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
                             })
+                            .replace(/robotics labs/gi, match => {
+                              if (roboticsLabsReplaced) return match
+                              // Only apply within the specific sentence about robotics labs changing STREAM learning
+                              if (
+                                !/Robotics labs are changing the way we learn STREAM, which is Science, Technology, Robotics, Engineering, Arts and Mathematics\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsLabsReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in schools/gi, match => {
+                              if (roboticsInSchoolsFutureReplaced) return match
+                              // Only apply within the specific sentence about exposure to technology
+                              if (
+                                !/Introducing robotics in schools gives students early exposure to these technologies\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInSchoolsFutureReplaced = true
+                              return `<a href="http://localhost:3000/blog/the-role-of-robotics-labs-in-transforming-stream-education-in-schools" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in education/gi, match => {
+                              if (roboticsInEducationReplaced) return match
+                              // Only apply within the specific sentence about robotics in education impact
+                              if (
+                                !/This is where robotics in education is making a powerful impact\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInEducationReplaced = true
+                              return `<a href="http://localhost:3000/blog/the-future-of-robotics-in-education:-transforming-learning-in-india" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics in schools/gi, match => {
+                              if (roboticsInSchoolsReplaced) return match
+                              // Only apply within the specific sentence about teaching robotics in schools
+                              if (
+                                !/So it is an idea to teach robotics in schools and colleges\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsInSchoolsReplaced = true
+                              return `<a href="http://localhost:3000/blog/best-robotics-lab-for-schools-in-india-%E2%80%93-powered-by-bidyut-innovation" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
                             .replace(/robotics lab/gi, match => {
                               if (roboticsLabReplaced) return match
                               // Only apply within the specific paragraph about teacher training
@@ -236,6 +295,45 @@ const BlogPost_page: React.FC = () => {
                                 return match
                               }
                               roboticsLabReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics for kids/gi, match => {
+                              if (roboticsForKidsReplaced) return match
+                              // Only apply within the specific sentence about imagination + creativity
+                              if (
+                                !/Robotics for kids is not about writing code, it is also about using your imagination\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsForKidsReplaced = true
+                              return `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/Robotics education in India/gi, match => {
+                              if (roboticsEducationInIndiaReplaced) return match
+                              // Only apply within the specific sentence about robotics education becoming important
+                              if (
+                                !/Robotics education in India is getting more important every day\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsEducationInIndiaReplaced = true
+                              return `<a href="/gallery/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/STREAM education/gi, match => {
+                              if (streamEducationReplaced) return match
+                              // Only apply within the specific sentence about STREAM education
+                              if (
+                                !/For a long time, people focused on STEM, but now many teachers are adopting STREAM education\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              streamEducationReplaced = true
                               return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
                             })
                             .replace(/Bidyut Innovation/gi, match => {
