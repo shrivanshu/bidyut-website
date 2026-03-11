@@ -190,65 +190,76 @@ const BlogPost_page: React.FC = () => {
               <div
                 className='text-black dark:text-gray-300 leading-relaxed space-y-6 text-lg'
                 dangerouslySetInnerHTML={{
-                  __html: (post.fullContent || '')
-                    .replace(
-                      /<h3>/g,
-                      '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">'
-                    )
-                    .replace(
-                      /<p>/g,
-                      '<p class="mb-6 text-justify leading-8 text-base md:text-lg">'
-                    )
-                    .replace(
-                      /<ul>/g,
-                      '<ul class="list-disc list-inside mb-6 space-y-3 ml-4">'
-                    )
-                    .replace(
-                      /<li>/g,
-                      '<li class="text-gray-700 dark:text-gray-300 mb-2 text-base md:text-lg">'
-                    )
-                    .replace(
-                      /<strong>/g,
-                      '<strong class="font-bold text-black dark:text-white">'
-                    )
-                    // Only replace these phrases inside paragraph text so headings stay normal.
-                    .replace(/<p[^>]*>[\s\S]*?<\/p>/g, paragraph =>
-                      paragraph
+                  __html: (() => {
+                    let roboticsLabsInSchoolsReplaced = false
+                    let roboticsLabReplaced = false
+                    let bidyutInnovationReplaced = false
+
+                    return (
+                      (post.fullContent || '')
                         .replace(
-                          /(robotics labs in schools|robotics lab)/gi,
-                          match =>
-                            `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<h3>/g,
+                          '<h3 class="text-2xl font-bold text-black dark:text-white mt-10 mb-4">'
                         )
                         .replace(
-                          /robotics for kids/gi,
-                          match =>
-                            `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<p>/g,
+                          '<p class="mb-6 text-justify leading-8 text-base md:text-lg">'
                         )
                         .replace(
-                          /robotics education in india/gi,
-                          match =>
-                            `<a href="/gallery" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<ul>/g,
+                          '<ul class="list-disc list-inside mb-6 space-y-3 ml-4">'
                         )
                         .replace(
-                          /robotics in schools/gi,
-                          match =>
-                            `<a href="/education" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<li>/g,
+                          '<li class="text-gray-700 dark:text-gray-300 mb-2 text-base md:text-lg">'
                         )
                         .replace(
-                          /stream education/gi,
-                          match =>
-                            `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<strong>/g,
+                          '<strong class="font-bold text-black dark:text-white">'
                         )
+                        // Only replace these phrases inside paragraph text so headings stay normal.
+                        .replace(/<p[^>]*>[\s\S]*?<\/p>/g, paragraph => {
+                          const updated = paragraph
+                            .replace(/robotics labs? in schools/gi, match => {
+                              if (roboticsLabsInSchoolsReplaced) return match
+                              roboticsLabsInSchoolsReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/robotics lab/gi, match => {
+                              if (roboticsLabReplaced) return match
+                              // Only apply within the specific paragraph about teacher training
+                              if (
+                                !/A robotics lab is successful only when teachers feel confident using it\./i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              roboticsLabReplaced = true
+                              return `<a href="/school" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+                            .replace(/Bidyut Innovation/gi, match => {
+                              if (bidyutInnovationReplaced) return match
+                              // Only apply within the specific section about understanding school requirements
+                              if (
+                                !/Every school is different\. Bidyut Innovation studies:/i.test(
+                                  paragraph
+                                )
+                              ) {
+                                return match
+                              }
+                              bidyutInnovationReplaced = true
+                              return `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                            })
+
+                          return updated
+                        })
                         .replace(
-                          /bidyut innovation/gi,
-                          match =>
-                            `<a href="/" class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold">${match}</a>`
+                          /<a /g,
+                          '<a class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold" '
                         )
                     )
-                    .replace(
-                      /<a /g,
-                      '<a class="text-[#00F5A0] hover:text-[#00C6FF] font-semibold" '
-                    )
+                  })()
                 }}
               />
             </div>
