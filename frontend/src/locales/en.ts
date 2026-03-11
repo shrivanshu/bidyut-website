@@ -507,6 +507,31 @@ export const en = {
   schoolScrollerItem11: 'Sports & Wellness',
   schoolScrollerItem12: 'Future Careers',
 
+  // B2 Page
+  b2HeroTagline: 'Smart Robotics for Real-World Challenges.',
+  b2HeroHighlight: 'B2 Advanced Industrial ',
+  b2HeroTitle: 'Quadruped Robot',
+  b2HeroDescription:
+    'The B2 Industrial quadruped robot is a next-generation four-legged robot designed for industrial automation, inspection, logistics, and real-world operational tasks. This quadruped robot brings advanced robotics capabilities directly to your workspace, enabling efficient, safe, and high-performance operations.',
+  b2HeroBottomDescription:
+    'Explore our range of industrial quadruped robots, engineered for precision, agility, and reliability. Each configuration is designed to meet diverse operational requirements, providing robust performance, intelligent mobility, and seamless integration for inspection, logistics, automation, and other real-world industrial applications.',
+  b2VariantsPlaceholder: 'Choose your preferred variants',
+  b2SearchPlaceholder: 'Search cobots by name, category, or description...',
+  b2SearchNoResults: 'No cobots found matching your search.',
+  b2SearchTryDifferentKeywords: 'Try different keywords or browse all cobots.',
+  b2GalleryHeading: 'Gallery',
+  b2DetailHeading: 'Elevate Operations With',
+  b2DetailHeadingHighlight: 'Unitree B2',
+  b2DetailDescription:
+    'Optimize industrial and research applications with the Unitree B2 Quadruped Robot—engineered for performance and reliability.',
+  b2DetailCta: 'Contact Sales Team',
+  b2SpecNameB2Advanced: 'B2 Advanced',
+  b2SpecDescB2Advanced:
+    'B2 Advanced is a high-performance quadruped robot with dimensions 1098 × 450 × 645 mm, weight 60 kg, payload up to 100 kg (standing) and 40 kg (walking), and max speed 5 m/s. It operates from -20°C to 55°C, climbs 45° slopes and 25 cm obstacles, powered by Intel i5/i7 and Nvidia Jetson Orin NX (100 Tops).',
+  b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
+  b2SpecDescB2Advancedwith3DLidar:
+    'B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.',
+
   // Blog Page
   blogPageTitle: 'Blog | Bidyut Innovation',
   blogPageDescription: 'Insights and updates from Bidyut Innovation',

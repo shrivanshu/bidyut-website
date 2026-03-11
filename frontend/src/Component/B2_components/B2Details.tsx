@@ -1,4 +1,5 @@
 import { useTheme } from '../../contexts/ThemeContext'
+import { useLanguage } from '../../contexts/OptimizedLanguageContext'
 
 interface CobotClassroomProps {
   onContactClick?: () => void
@@ -8,6 +9,11 @@ const robotImgSrc = '/media/B2-3dLidar.png'
 
 const B2Details = ({ onContactClick }: CobotClassroomProps) => {
   const { isDark: _isDark } = useTheme()
+  const { t } = useLanguage()
+  const translateWithFallback = (key: string, fallback: string) => {
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
   return (
     <div
       className='bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-black min-h-screen flex items-center justify-center p-6 transition-colors duration-300 select-text'
@@ -40,13 +46,18 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
         >
           <div className='space-y-4'>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 dark:text-gray-100 leading-tight transition-colors duration-300">
-              <span className='block md:inline'>Elevate Operations With</span>{' '}
+              <span className='block md:inline'>
+                {translateWithFallback('b2DetailHeading', 'Elevate Operations With')}
+              </span>{' '}
               <span className='text-green-600 dark:text-green-400 block md:inline'>
-                 Unitree B2
+                 {translateWithFallback('b2DetailHeadingHighlight', 'Unitree B2')}
               </span>
             </h1>
             <p className='text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto md:mx-0 transition-colors duration-300'>
-              Optimize industrial and research applications with the Unitree B2 Quadruped Robot—engineered for performance and reliability.
+              {translateWithFallback(
+                'b2DetailDescription',
+                'Optimize industrial and research applications with the Unitree B2 Quadruped Robot—engineered for performance and reliability.'
+              )}
             </p>
           </div>
 
@@ -55,7 +66,7 @@ const B2Details = ({ onContactClick }: CobotClassroomProps) => {
               onClick={onContactClick}
               className='bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-500/20 cursor-target'
             >
-              Contact Sales Team
+              {translateWithFallback('b2DetailCta', 'Contact Sales Team')}
             </button>
           </div>
         </div>

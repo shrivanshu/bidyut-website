@@ -498,5 +498,24 @@ export const zh = {
   schoolScrollerItem11: '运动与健康',
   schoolScrollerItem12: '未来职业',
 
+  // B2 Page
+  b2HeroTagline: '面向真实工业挑战的智能机器人。',
+  b2HeroHighlight: 'B2 高级工业版 ',
+  b2HeroTitle: '四足机器人',
+  b2HeroDescription: 'B2 工业四足机器人是为工业自动化、巡检、物流及真实作业而设计的下一代四足机器人。它将先进的机器人能力直接带到您的工作现场，实现高效、安全和高性能的运行。',
+  b2HeroBottomDescription: '探索我们的工业四足机器人系列——为精度、灵活性与可靠性而设计。每种配置都可满足多样化需求，在巡检、物流和自动化场景中提供强劲性能与无缝集成。',
+  b2VariantsPlaceholder: '选择您喜欢的型号',
+  b2SearchPlaceholder: '按名称、类别或描述搜索机器人...',
+  b2SearchNoResults: '未找到匹配的机器人。',
+  b2SearchTryDifferentKeywords: '尝试其他关键词或浏览全部机器人。',
+  b2GalleryHeading: '画廊',
+  b2DetailHeading: '提升运营',
+  b2DetailHeadingHighlight: '携手 Unitree B2',
+  b2DetailDescription: '使用 Unitree B2 四足机器人优化工业与科研应用——为性能与可靠性而生。',
+  b2DetailCta: '联系销售团队',
+  b2SpecNameB2Advanced: 'B2 Advanced',
+  b2SpecDescB2Advanced: 'B2 Advanced（1098 × 450 × 645 mm，60 kg），速度 5 m/s，负载 100 kg（站立）/40 kg（行走），工作温度 -20°C 至 55°C，可攀爬 45° 斜坡与 25 cm 障碍；搭载 Intel i5/i7 与 Nvidia Jetson Orin NX（100 TOPS）。',
+  b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
+  b2SpecDescB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar（1098×450×645 mm，60 kg），速度 5 m/s，负载 100 kg，工作范围 -20℃~55℃；可越 45°/25 cm，配备 360°×90° 3D-Lidar 避障，运行于 Intel i5/i7 + Jetson Orin NX（100 TOPS），适用于工业自动化与城市开发。',
 };
 
