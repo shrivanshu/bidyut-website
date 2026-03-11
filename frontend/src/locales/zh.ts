@@ -621,5 +621,13 @@ export const zh = {
   a2ComparisonSecondaryDevelopment: '二次开发',
   a2ComparisonWarranty: '质保',
   a2ComparisonContinuousUpgrades: '持续升级',
+
+  // A2 variants (names and descriptions)
+  a2SpecNameA2Standard: 'A2 标准版',
+  a2SpecDescA2Standard:
+    'Unitree A2 标准版重 37kg，可承载 25kg（最高 100kg）负载。续航可达 5 小时 / 20km，速度 3.7 m/s（最高约 5 m/s），可爬 45° 坡或 100cm 台阶。配备双 9000mAh 电池、LiDAR、摄像头、WiFi 6、Bluetooth 5.2 及双 CPU（8 核 + Intel i7），保障稳定性、避障、OTA 更新与二次开发。',
+  a2SpecNameA2Pro: 'A2 专业版',
+  a2SpecDescA2Pro:
+    'Unitree A2 Pro 基于标准版，增加双 LiDAR、GPS、4G 与无线矢量定位模块，实现精准导航。三组内置计算单元与高级扩展底座支持 SLAM 建图、自主导航、避障、高清成像等功能。坚固设计具备 IP56–IP67 防护等级，耐用可靠。',
 };
 
