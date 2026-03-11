@@ -637,5 +637,13 @@ export const mr = {
   a2ComparisonSecondaryDevelopment: 'द्वितीय विकास',
   a2ComparisonWarranty: 'हमी',
   a2ComparisonContinuousUpgrades: 'सतत अपग्रेड',
+
+  // A2 variants (names and descriptions)
+  a2SpecNameA2Standard: 'A2 स्टँडर्ड',
+  a2SpecDescA2Standard:
+    'Unitree A2 Standard हा 37 किग्रॅ वजनाचा, 25 किग्रॅ (कमाल 100 किग्रॅ) पेलोड क्षमतेचा शक्तिशाली चौपाया रोबोट डॉग आहे. तो 5 तास / 20 किमी रनटाइम, 3.7 m/s (कमाल ~5 m/s) वेग देतो आणि 45° उतार किंवा 100 सेमी पायऱ्या चढू शकतो. ड्युअल 9000mAh बॅटरी, LiDAR, कॅमेरे, WiFi 6, Bluetooth 5.2 आणि ड्युअल CPU (8-कोर + Intel i7) यांसह तो स्थिरता, अडथळा टाळणे, OTA अपडेट आणि सेकंडरी डेव्हलपमेंट सुनिश्चित करतो.',
+  a2SpecNameA2Pro: 'A2 प्रो',
+  a2SpecDescA2Pro:
+    'Unitree A2 Pro हा A2 Standard वर आधारित असून ड्युअल LiDAR, GPS, 4G आणि वायरलेस व्हेक्टर पोजिशनिंग मॉड्यूल जोडतो. तीन इनबिल्ट कम्प्यूटिंग युनिट्स आणि एक्सपॅन्शन डॉक्सह तो SLAM मॅपिंग, स्वयंचलित नेव्हिगेशन, अडथळा टाळणे, HD इमेजिंग इत्यादींना समर्थन देतो. IP56–IP67 रेटिंगसह मजबूत डिझाइन दीर्घकालीन विश्वसनीयता देते.',
 };
 

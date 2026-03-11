@@ -582,6 +582,12 @@ export const ja = {
   a2HeroLargeLabel: 'Unitree A2',
   a2HeroBottomDescription:
     'Unitree A2 は研究・産業・教育用途のために作られた先進的な四足ロボットです。A2 Standard、A2 Pro、A2-W Standard、A2-W Pro の4バリアントを用意し、高性能・高ペイロード・多用途運用に対応。強力な計算能力と安定性、適応性により、ロボティクス開発と現場課題の解決に最適です。',
+  a2SpecNameA2Standard: 'A2 スタンダード',
+  a2SpecDescA2Standard:
+    'Unitree A2 Standard は 37kg、25kg（最大100kg）まで運べるパワフルな四足ロボットドッグです。最大 5 時間 / 20km の連続歩行、3.7m/s（最大約5m/s）の速度、45° の斜面や最大 100cm の段差を登れます。デュアル 9000mAh バッテリー、LiDAR、カメラ、WiFi 6、Bluetooth 5.2、8コア＋Intel i7 のデュアル CPU を備え、安定性・障害物回避・OTA アップデート・二次開発をサポートします。',
+  a2SpecNameA2Pro: 'A2 プロ',
+  a2SpecDescA2Pro:
+    'Unitree A2 Pro は A2 Standard をベースにデュアル LiDAR、GPS、4G、ワイヤレスベクターポジショニングモジュールを追加。内蔵 3 コンピューティングユニットと拡張ドックで SLAM マッピング、自律ナビ、障害物回避、HD 画像伝送などを実現。IP56–IP67 の堅牢設計で高い信頼性を提供します。',
   a2DetailHeading: '変革の準備はできていますか',
   a2DetailHeadingHighlight: '学習と研究で？',
   a2DetailDescription:
