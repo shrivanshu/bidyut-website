@@ -711,4 +711,9 @@
   a2wFeatureDetailPerceptionControl: "LiDAR + वाइड-एंगल कैमरे, ड्यूल एन्कोडर, स्थिर बाधा अवॉइडेंस",
   a2wFeatureLabelConnectivityInterfaces: "कनेक्टिविटी व इंटरफेस",
   a2wFeatureDetailConnectivityInterfaces: "WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V पावर",
+  a2wDetailHeading: "इंडस्ट्रियल इंस्पेक्शन को बदलने के लिए तैयार",
+  a2wDetailHeadingHighlight: "हैं?",
+  a2wDetailDescription:
+    "इंजीनियर, शोधकर्ता और औद्योगिक टीमें Unitree A2‑W स्वायत्त निरीक्षण रोबोट का उपयोग करके निरीक्षण वर्कफ़्लो ऑटोमेट कर रही हैं, सुरक्षा बढ़ा रही हैं, उच्च-गुणवत्ता डेटा एकत्र कर रही हैं और जटिल साइटों पर परिचालन दक्षता सुधार रही हैं।",
+  a2wDetailCta: "सेल्स टीम से संपर्क करें",
 };

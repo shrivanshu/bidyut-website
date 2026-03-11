@@ -696,6 +696,11 @@ export const en = {
   a2wFeatureDetailPerceptionControl: 'LiDAR + wide-angle cameras, dual encoders, stable obstacle avoidance',
   a2wFeatureLabelConnectivityInterfaces: 'Connectivity & Interfaces',
   a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V power',
+  a2wDetailHeading: 'Ready to Transform',
+  a2wDetailHeadingHighlight: 'Industrial Inspections?',
+  a2wDetailDescription:
+    'Join engineers, researchers, and industrial teams already using the Unitree A2‑W Autonomous Inspection Robot to automate inspection workflows, enhance safety, collect high-quality data, and improve operational efficiency across complex industrial sites.',
+  a2wDetailCta: 'Contact Sales Team',
   b2SpecNameB2Advancedwith3DLidar: 'B2 Advanced with 3D Lidar',
   b2SpecDescB2Advancedwith3DLidar:
     'B2 Advanced with 3D Lidar is a 60 kg quadruped robot (1098×450×645 mm) with 5 m/s speed, payload up to 100 kg, and -20℃~55℃ working range. It climbs 45°/25 cm, uses 3D-Lidar (360°×90°) for obstacle avoidance, and runs on Intel i5/i7 + Nvidia Jetson Orin NX (100 Tops). Suitable for industrial automation and urban development.',

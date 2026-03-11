@@ -645,5 +645,38 @@ export const mr = {
   a2SpecNameA2Pro: 'A2 प्रो',
   a2SpecDescA2Pro:
     'Unitree A2 Pro हा A2 Standard वर आधारित असून ड्युअल LiDAR, GPS, 4G आणि वायरलेस व्हेक्टर पोजिशनिंग मॉड्यूल जोडतो. तीन इनबिल्ट कम्प्यूटिंग युनिट्स आणि एक्सपॅन्शन डॉक्सह तो SLAM मॅपिंग, स्वयंचलित नेव्हिगेशन, अडथळा टाळणे, HD इमेजिंग इत्यादींना समर्थन देतो. IP56–IP67 रेटिंगसह मजबूत डिझाइन दीर्घकालीन विश्वसनीयता देते.',
+
+  // A2-W Page
+  a2wHeroTagline: 'रोबोटिक्स शिका. भविष्य घडवा.',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: 'उन्नत स्वायत्त निरीक्षण रोबोट',
+  a2wHeroDescription:
+    'Unitree A2‑W हा उद्योग, लॉजिस्टिक्स आणि संशोधनासाठी तयार केलेला स्वायत्त निरीक्षण रोबोट आहे. पायांची चपळता आणि चाकांची कार्यक्षमता यांचा संगम असलेला हा हायब्रिड चौपाया रोबोट जटिल वातावरणात मार्गक्रमण करतो, उच्च-अचूक निरीक्षण करतो आणि पुनरावृत्ती कार्ये स्वयंचलित करतो. कठीण व गतिमान परिस्थितींमध्येही सुरक्षा, विश्वसनीयता आणि कार्यक्षमता सुनिश्चित करतो.',
+  a2wHeroLargeLabel: 'क्वाड्रुपेड',
+  a2wHeroBottomDescription:
+    'कठीण औद्योगिक वातावरणासाठी डिझाइन केलेल्या उच्च-कार्यक्षम स्वायत्त निरीक्षण रोबोट A2‑W चे तांत्रिक तपशील शोधा.',
+  a2wVariantsPlaceholder: 'आपली पसंतीची आवृत्ती निवडा',
+  a2wSearchPlaceholder: 'नाव, श्रेणी किंवा वर्णनानुसार कोबोट शोधा...',
+  a2wSearchNoResults: 'आपल्या शोधाशी जुळणारा कोणताही कोबोट सापडला नाही.',
+  a2wSearchTryDifferentKeywords: 'इतर कीवर्ड वापरा किंवा सर्व कोबोट पाहा.',
+  a2wGalleryHeading: 'गॅलरी',
+  a2wSpecNameA2WStandard: 'Unitree A2-W स्टँडर्ड आवृत्ती',
+  a2wSpecDescA2WStandard:
+    'Unitree A2-W स्टँडर्ड हा चाकांसह चार पायांचा रोबोट आहे, उच्च कार्यक्षमता आणि बहुपयोगितेसाठी तयार. 20–25 किग्रॅ पेलोड, 20 किमी रेंज आणि 4–5 तास (बिना लोड) रनटाइम देते. प्रगत कम्प्यूटिंग कोर, सेन्सर आणि मजबूत मोबिलिटीसह तो सेकंडरी डेव्हलपमेंट, स्मार्ट OTA अपडेट आणि संशोधन/औद्योगिक वापरांना समर्थन देतो.',
+  a2wFeatureLabelMobilityPayload: 'मोबिलिटी आणि पेलोड',
+  a2wFeatureDetailMobilityPayload: '20–25 किग्रॅ पेलोड, 28 से.मी. पायऱ्या / 90 से.मी. स्टेप, 45° उतार क्षमता',
+  a2wFeatureLabelBatteryRuntime: 'बॅटरी आणि रनटाइम',
+  a2wFeatureDetailBatteryRuntime: 'ड्युअल-बे 9000/18000 mAh, 4–5 तास रनटाइम, 1 तास चार्ज',
+  a2wFeatureLabelComputingPower: 'कम्प्यूटिंग शक्ती',
+  a2wFeatureDetailComputingPower: '8-कोर CPU + Intel Core i7 (वापरकर्ता डेव्हलपमेंटसाठी)',
+  a2wFeatureLabelPerceptionControl: 'परसेप्शन आणि नियंत्रण',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + वाइड-ॲंगल कॅमेरे, ड्युअल एन्कोडर, स्थिर अडथळा टाळणी',
+  a2wFeatureLabelConnectivityInterfaces: 'कनेक्टिव्हिटी आणि इंटरफेस',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V पॉवर',
+  a2wDetailHeading: 'औद्योगिक निरीक्षण बदलायला तयार',
+  a2wDetailHeadingHighlight: 'आहात का?',
+  a2wDetailDescription:
+    'इंजिनिअर, संशोधक आणि औद्योगिक टीम्स Unitree A2‑W स्वायत्त निरीक्षण रोबोट वापरून वर्कफ्लो ऑटोमेट करत आहेत, सुरक्षा वाढवत आहेत, उच्च-गुणवत्तेचा डेटा गोळा करत आहेत आणि गुंतागुंतीच्या साइट्सवर कार्यक्षमता सुधारत आहेत.',
+  a2wDetailCta: 'सेल्स टीमशी संपर्क करा',
 };
 
