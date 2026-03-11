@@ -643,5 +643,33 @@ export const gu = {
   a2SpecNameA2Pro: 'A2 પ્રો',
   a2SpecDescA2Pro:
     'Unitree A2 Pro, A2 Standard પર આધારિત છે અને ડ્યુઅલ LiDAR, GPS, 4G અને વાયરલેસ વેક્ટર પોઝિશનિંગ મોડ્યુલ ઉમેરે છે ચોક્સાઈભર્યા નેવિગેશન માટે. ત્રણ બિલ્ટ-ઇન કમ્પ્યુટિંગ યુનિટ અને અદ્યતન એક્સપેન્શન ડોક સાથે તે SLAM મેપિંગ, સ્વાયત્ત નેવિગેશન, અવરોધ ટાળવું, HD ઇમેજિંગ વગેરેને સપોર્ટ કરે છે. IP56–IP67 રેટિંગ સાથેનું મજબૂત ડિઝાઇન લાંબાગાળાની વિશ્વસનીયતા આપે છે.',
+
+  // A2-W page
+  a2wHeroTagline: 'રોબોટિક્સ શીખો. ભવિષ્ય બનાવો.',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: 'અદ્યતન સ્વાયત્ત ઇન્સ્પેક્શન રોબોટ',
+  a2wHeroDescription:
+    'Unitree A2‑W ઉદ્યોગ, લોજિસ્ટિક્સ અને સંશોધન માટે બનાવાયેલ અદ્યતન સ્વાયત્ત ઇન્સ્પેક્શન રોબોટ છે. પગોની ચપળતા અને વ્હીલની કાર્યક્ષમતા જોડીને આ હાઇબ્રિડ ચતુષ્પદ જટિલ પરિસ્થિતિઓમાં નેવિગેટ કરે છે, ઉચ્ચ-સુચક ઇન્સ્પેક્શન કરે છે અને પુનરાવર્તિત કાર્યો ઑટોમેટ કરે છે. કઠિન અને ગતિશીલ પરિસ્થિતિઓ માટે ડિઝાઇન થયેલ, A2‑W સલામતી, વિશ્વસનીયતા અને કાર્યક્ષમતા આપે છે.',
+  a2wHeroLargeLabel: 'ક્વાડ્રુપેડ',
+  a2wHeroBottomDescription:
+    'કઠિન ઉદ્યોગ પરિસ્થિતિઓ માટે ડિઝાઇન કરાયેલ ઉચ્ચ-પ્રદર્શન સ્વાયત્ત ઇન્સ્પેક્શન રોબોટ A2‑W ના ટેક્નિકલ ડિટેલ્સ શોધો.',
+  a2wVariantsPlaceholder: 'તમારો પસંદીદા વેરિઅન્ટ પસંદ કરો',
+  a2wSearchPlaceholder: 'નામ, વર્ગ અથવા વર્ણન દ્વારા કોબોટ શોધો...',
+  a2wSearchNoResults: 'તમારી શોધને મેળ ખાતો કોઈ કોબોટ નથી.',
+  a2wSearchTryDifferentKeywords: 'બીજા કીવર્ડ અજમાવો અથવા બધા કોબોટ જુઓ.',
+  a2wGalleryHeading: 'ગેલેરી',
+  a2wSpecNameA2WStandard: 'Unitree A2-W સ્ટાન્ડર્ડ વર્ઝન',
+  a2wSpecDescA2WStandard:
+    'Unitree A2-W સ્ટાન્ડર્ડ એક વ્હીલ્ડ-ફૂટ ચતુષ્પદ રોબોટ છે, ઉચ્ચ પ્રદર્શન અને બહુમુખીતા માટે. 20–25 કિગ્રા પેલોડ, 20 કિમી રેન્જ અને 4–5 કલાક (બિન-લોડ) રનટાઇમ આપે છે. અદ્યતન કમ્પ્યુટિંગ કૉર, પરસેપ્શન સેન્સર અને મજબૂત મૉબિલિટી સાથે તે સેકન્ડરી ડેવલપમેન્ટ, સ્માર્ટ OTA અપડેટ્સ અને સંશોધન/ઉદ્યોગ એપ્લિકેશનને સપોર્ટ કરે છે.',
+  a2wFeatureLabelMobilityPayload: 'મોબિલિટી અને પેલોડ',
+  a2wFeatureDetailMobilityPayload: '20–25 કિગ્રા પેલોડ, 28 સેમી સીડીઓ / 90 સેમી સ્ટેપ્સ, 45° ઢોળાવ ક્ષમતા',
+  a2wFeatureLabelBatteryRuntime: 'બેટરી અને રનટાઇમ',
+  a2wFeatureDetailBatteryRuntime: 'ડ્યુઅલ-બે 9000/18000 mAh સિસ્ટમ, 4–5 કલાક રનટાઇમ, 1 કલાક ચાર્જિંગ',
+  a2wFeatureLabelComputingPower: 'કમ્પ્યુટિંગ શક્તિ',
+  a2wFeatureDetailComputingPower: '8-કોર CPU + Intel Core i7 યૂઝર ડેવલપમેન્ટ માટે',
+  a2wFeatureLabelPerceptionControl: 'પરસેપ્શન અને નિયંત્રણ',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + વાઇડ-એંગલ કેમેરા, ડ્યુઅલ એન્કોડર, સ્થિર અવરોધ નિવારણ',
+  a2wFeatureLabelConnectivityInterfaces: 'કનેક્ટિવિટી અને ઇન્ટરફેસ',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V પાવર',
 };
 

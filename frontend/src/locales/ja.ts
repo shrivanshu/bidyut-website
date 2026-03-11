@@ -588,6 +588,34 @@ export const ja = {
   a2SpecNameA2Pro: 'A2 プロ',
   a2SpecDescA2Pro:
     'Unitree A2 Pro は A2 Standard をベースにデュアル LiDAR、GPS、4G、ワイヤレスベクターポジショニングモジュールを追加。内蔵 3 コンピューティングユニットと拡張ドックで SLAM マッピング、自律ナビ、障害物回避、HD 画像伝送などを実現。IP56–IP67 の堅牢設計で高い信頼性を提供します。',
+
+  // A2-W page
+  a2wHeroTagline: 'ロボティクスを学び、未来をつくる。',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: '高度な自律巡検ロボット',
+  a2wHeroDescription:
+    'Unitree A2‑W は産業・物流・研究向けに設計された高度な自律巡検ロボットです。脚の機動力と車輪の効率を組み合わせたハイブリッド四足機が、複雑な環境を走破し、高精度の検査を行い、反復作業を自動化します。過酷で動的な環境でも、安全性・信頼性・運用効率を実現します。',
+  a2wHeroLargeLabel: 'Quadruped',
+  a2wHeroBottomDescription:
+    '厳しい産業環境で安定稼働する高性能自律巡検ロボット A2‑W の技術仕様と能力をチェックしましょう。',
+  a2wVariantsPlaceholder: 'お好みのバリアントを選択',
+  a2wSearchPlaceholder: '名前・カテゴリ・説明でコボットを検索...',
+  a2wSearchNoResults: '条件に合うコボットが見つかりませんでした。',
+  a2wSearchTryDifferentKeywords: '別のキーワードで検索するか、すべてのコボットを確認してください。',
+  a2wGalleryHeading: 'ギャラリー',
+  a2wSpecNameA2WStandard: 'Unitree A2-W スタンダード版',
+  a2wSpecDescA2WStandard:
+    'Unitree A2-W スタンダードは高性能と多用途性を備えたホイール付き四足ロボットです。20–25kg のペイロード、20km 走行、無負荷で 4–5 時間の連続稼働。高度な計算コア、認識センサー、強力なモビリティを備え、研究・産業向けの二次開発や OTA アップデートをサポートします。',
+  a2wFeatureLabelMobilityPayload: 'モビリティ & ペイロード',
+  a2wFeatureDetailMobilityPayload: '20–25kg ペイロード、28cm 階段 / 90cm ステップ、45° 斜面対応',
+  a2wFeatureLabelBatteryRuntime: 'バッテリー & 稼働時間',
+  a2wFeatureDetailBatteryRuntime: 'デュアル 9000/18000 mAh、4–5 時間稼働、1 時間充電',
+  a2wFeatureLabelComputingPower: '計算能力',
+  a2wFeatureDetailComputingPower: '8 コア CPU + Intel Core i7（ユーザ開発向け）',
+  a2wFeatureLabelPerceptionControl: '認識 & 制御',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + 広角カメラ、デュアルエンコーダー、安定した障害物回避',
+  a2wFeatureLabelConnectivityInterfaces: '接続性 & インターフェース',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V 電源',
   a2DetailHeading: '変革の準備はできていますか',
   a2DetailHeadingHighlight: '学習と研究で？',
   a2DetailDescription:

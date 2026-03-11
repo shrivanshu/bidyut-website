@@ -648,5 +648,33 @@ export const bn = {
   a2SpecNameA2Pro: 'A2 প্রো',
   a2SpecDescA2Pro:
     'Unitree A2 Pro, A2 Standard-এর উপর ভিত্তি করে ডুয়াল LiDAR, GPS, 4G এবং ওয়্যারলেস ভেক্টর পজিশনিং মডিউল যোগ করে সুনির্দিষ্ট নেভিগেশনের জন্য। তিনটি বিল্ট-ইন কম্পিউটিং ইউনিট ও উন্নত এক্সপ্যানশন ডক সহ এটি SLAM ম্যাপিং, স্বয়ংক্রিয় নেভিগেশন, বাধা এড়ানো, HD ইমেজিং ইত্যাদি সমর্থন করে। IP56–IP67 রেটিংয়ের মজবুত ডিজাইন দীর্ঘস্থায়ী নির্ভরযোগ্যতা দেয়।',
+
+  // A2-W page
+  a2wHeroTagline: 'রোবোটিক্স শিখুন। ভবিষ্যৎ গড়ুন।',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: 'উন্নত স্বায়ত্তশাসিত পরিদর্শন রোবট',
+  a2wHeroDescription:
+    'Unitree A2‑W একটি উন্নত স্বায়ত্তশাসিত পরিদর্শন রোবট, যা শিল্প, লজিস্টিক্স ও গবেষণার জন্য ডিজাইন করা। পায়ের চটপটে গতি ও চাকার দক্ষতা মিলিয়ে এই হাইব্রিড কোয়াড্রুপেড জটিল পরিবেশে নেভিগেট করে, নির্ভুল পরিদর্শন করে এবং পুনরাবৃত্ত কাজ স্বয়ংক্রিয় করে। কঠিন ও গতিশীল পরিবেশের জন্য তৈরি, A2‑W নিরাপত্তা, নির্ভরযোগ্যতা ও কার্যদক্ষতা নিশ্চিত করে।',
+  a2wHeroLargeLabel: 'কোয়াড্রুপেড',
+  a2wHeroBottomDescription:
+    'চাহিদাপূর্ণ শিল্প পরিবেশের জন্য তৈরি উচ্চ-কার্যক্ষম স্বায়ত্তশাসিত পরিদর্শন রোবট A2‑W এর প্রযুক্তিগত সক্ষমতাগুলো অন্বেষণ করুন।',
+  a2wVariantsPlaceholder: 'আপনার পছন্দের ভ্যারিয়েন্ট নির্বাচন করুন',
+  a2wSearchPlaceholder: 'নাম, শ্রেণি বা বর্ণনা দিয়ে কোবট খুঁজুন...',
+  a2wSearchNoResults: 'আপনার অনুসন্ধানের সাথে মেলে এমন কোনো কোবট পাওয়া যায়নি।',
+  a2wSearchTryDifferentKeywords: 'অন্য কীওয়ার্ড চেষ্টা করুন অথবা সব কোবট দেখুন।',
+  a2wGalleryHeading: 'গ্যালারি',
+  a2wSpecNameA2WStandard: 'Unitree A2-W স্ট্যান্ডার্ড সংস্করণ',
+  a2wSpecDescA2WStandard:
+    'Unitree A2-W স্ট্যান্ডার্ড একটি চাকা-সহ চার-পায়ের রোবট, উচ্চ পারফরম্যান্স ও বহুমুখিতার জন্য। এটি 20–25 কেজি পে-লোড, 20 কিমি রেঞ্জ এবং 4–5 ঘন্টা (বিনা লোড) রানটাইম দেয়। উন্নত কম্পিউটিং কোর, পারসেপশন সেন্সর ও শক্তিশালী গতিশীলতা সহ গবেষণা ও শিল্পের জন্য সেকেন্ডারি ডেভেলপমেন্ট ও OTA আপডেট সমর্থন করে।',
+  a2wFeatureLabelMobilityPayload: 'মোবিলিটি ও পে-লোড',
+  a2wFeatureDetailMobilityPayload: '20–25 কেজি পে-লোড, 28 সেমি সিঁড়ি / 90 সেমি ধাপ, 45° ঢাল সক্ষমতা',
+  a2wFeatureLabelBatteryRuntime: 'ব্যাটারি ও রানটাইম',
+  a2wFeatureDetailBatteryRuntime: 'ডুয়াল-বেয 9000/18000 mAh, 4–5 ঘন্টা রানটাইম, 1 ঘন্টা চার্জ',
+  a2wFeatureLabelComputingPower: 'কম্পিউটিং ক্ষমতা',
+  a2wFeatureDetailComputingPower: '8-কোর CPU + Intel Core i7 ব্যবহারকারী ডেভেলপমেন্টের জন্য',
+  a2wFeatureLabelPerceptionControl: 'পারসেপশন ও নিয়ন্ত্রণ',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + ওয়াইড-অ্যাঙ্গেল ক্যামেরা, ডুয়াল এনকোডার, স্থিতিশীল বাধা এড়ানো',
+  a2wFeatureLabelConnectivityInterfaces: 'কানেক্টিভিটি ও ইন্টারফেস',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB-C×4, 12V/24V পাওয়ার',
 };
 

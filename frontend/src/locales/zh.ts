@@ -629,5 +629,33 @@ export const zh = {
   a2SpecNameA2Pro: 'A2 专业版',
   a2SpecDescA2Pro:
     'Unitree A2 Pro 基于标准版，增加双 LiDAR、GPS、4G 与无线矢量定位模块，实现精准导航。三组内置计算单元与高级扩展底座支持 SLAM 建图、自主导航、避障、高清成像等功能。坚固设计具备 IP56–IP67 防护等级，耐用可靠。',
+
+  // A2-W page
+  a2wHeroTagline: '学习机器人，创造未来。',
+  a2wHeroHighlight: 'Unitree A2‑W –',
+  a2wHeroTitle: '先进的自主巡检机器人',
+  a2wHeroDescription:
+    'Unitree A2‑W 是为工业、物流和科研设计的先进自主巡检机器人。结合腿式机动性与轮式效率，这款混合四足机器人可在复杂环境中行进，完成高精度巡检并自动化重复任务。面向严苛、动态场景而设计，确保安全、可靠与高效运营。',
+  a2wHeroLargeLabel: 'Quadruped',
+  a2wHeroBottomDescription:
+    '探索 A2‑W 的技术细节与能力——一款为苛刻工业环境打造的高性能自主巡检机器人。',
+  a2wVariantsPlaceholder: '选择您偏好的版本',
+  a2wSearchPlaceholder: '按名称、类别或描述搜索 cobot...',
+  a2wSearchNoResults: '未找到匹配的 cobot。',
+  a2wSearchTryDifferentKeywords: '尝试其他关键词或查看全部 cobot。',
+  a2wGalleryHeading: '图库',
+  a2wSpecNameA2WStandard: 'Unitree A2-W 标准版',
+  a2wSpecDescA2WStandard:
+    'Unitree A2-W 标准版是一款轮足混合的四足机器人，兼具高性能与多用途。提供 20–25kg 载荷、最高 20km 续航、无载连续运行 4–5 小时。配备高级计算核心、感知传感器与强劲机动性，支持二次开发、智能 OTA 升级，适用于科研与工业场景。',
+  a2wFeatureLabelMobilityPayload: '机动性与载荷',
+  a2wFeatureDetailMobilityPayload: '20–25kg 载荷，爬 28cm 台阶 / 90cm 跨步，45° 坡度能力',
+  a2wFeatureLabelBatteryRuntime: '电池与续航',
+  a2wFeatureDetailBatteryRuntime: '双槽 9000/18000 mAh，续航 4–5 小时，充电 1 小时',
+  a2wFeatureLabelComputingPower: '计算能力',
+  a2wFeatureDetailComputingPower: '8 核 CPU + Intel Core i7，便于用户开发',
+  a2wFeatureLabelPerceptionControl: '感知与控制',
+  a2wFeatureDetailPerceptionControl: 'LiDAR + 广角摄像头，双编码器，稳定避障',
+  a2wFeatureLabelConnectivityInterfaces: '连接与接口',
+  a2wFeatureDetailConnectivityInterfaces: 'WiFi 6, Bluetooth 5.2, RS485×2, CAN×2, GbE×2, USB‑C×4, 12V/24V 电源',
 };
 
