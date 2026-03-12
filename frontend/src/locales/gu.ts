@@ -734,5 +734,25 @@ export const gu = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 કિગ્રા ક્વાડ્રુપેડ, 100 TOPS AI, 4D અને Hesai XT16 3D LiDAR, ડ્યુઅલ-ઓપ્ટિકલ ગિમ્બલ, ડેપ્થ કેમેરા; પેટ્રોલ/સિક્યુરિટી ઉપયોગ માટે યોગ્ય.',
+
+  // Cobo parts page
+  coboHeroTagline: 'હલકું. સચોટ. બુદ્ધિશાળી ઓટોમેશન.',
+  coboHeroHighlight: 'લાઇટવેઇટ રોબોટિક આર્મ (કોબોટ)',
+  coboHeroTitle: 'સ્માર્ટ ઓટોમેશન માટે',
+  coboHeroDescription:
+    'કોબોટ દરેક કદના વ્યવસાયોને શક્તિશાળી ઓટોમેશન આપવા માટે બનેલું હલકું રોબોટિક આર્મ છે. સરળ પ્રોગ્રામિંગ, બિલ્ટ-ઇન સલામતી અને કોમ્પેક્ટ લવચીક ડિઝાઇન સાથે તે કોઈપણ પ્રોડક્શન લાઇનમાં સહેલાઈથી ફિટ થાય છે અને ઉત્પાદકતા વધારે છે.',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'બહુમુખી કામગીરી માટે ડિઝાઇન કરેલ અમારા સહકારી રોબોટ્સ જુઓ—Z1 Arm, D1 Robotic Arm અને Franka Research 3 ની તુલના કરો અને તમારી જરૂરિયાત માટે શ્રેષ્ઠ લાઇટવેઇટ આર્મ પસંદ કરો.',
+  coboDetailHeading: 'બદલાવ માટે તૈયાર',
+  coboDetailHeadingHighlight: 'તમારી પ્રોડક્શન લાઇન?',
+  coboDetailDescription:
+    'હજારો વ્યવસાયો પહેલેથી અમારા લાઇટવેઇટ કોબોટથી કાર્યક્ષમતા અને ચોકસાઇ વધારી રહ્યા છે—તમે પણ ઓટોમેશનને આગળના સ્તરે લઈ જાવ.',
+  coboDetailCta: 'સેલ્સ ટીમનો સંપર્ક કરો',
+  coboVariantDropdownPlaceholder: 'પસંદીદા વેરિઅન્ટ પસંદ કરો',
+  coboSearchPlaceholder: 'નામ, કેટેગરી અથવા વર્ણનથી કોબોટ શોધો...',
+  coboSearchNoResults: 'તમારી શોધને કોઈ કોબોટ મળ્યો નથી.',
+  coboSearchNoResultsHelper: 'બીજા કીવર્ડ અજમાવો અથવા બધા કોબોટ જુઓ.',
+  coboGalleryHeading: 'ગેલેરી',
 };
 

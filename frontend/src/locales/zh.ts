@@ -720,5 +720,25 @@ export const zh = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 kg，100 TOPS AI，4D 与 Hesai XT16 3D LiDAR，双光学云台；适合安防巡逻。',
+
+  // Cobo parts page
+  coboHeroTagline: '轻量·精确·智能自动化。',
+  coboHeroHighlight: '轻量化协作机械臂（Cobot）',
+  coboHeroTitle: '助力智慧自动化',
+  coboHeroDescription:
+    'Cobot 是为各类规模企业提供强大自动化而设计的轻量机械臂。简单编程、内置安全、紧凑灵活的设计，可无缝融入任何产线，提高效率而不扰乱现有流程。',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    '了解我们多功能的协作机器人。比较 Z1 Arm、D1 Robotic Arm、Franka Research 3，挑选最适合的轻量机械臂方案。',
+  coboDetailHeading: '准备好变革',
+  coboDetailHeadingHighlight: '你的产线了吗？',
+  coboDetailDescription:
+    '成千上万的企业已在使用我们的轻量 Cobot 提升效率与精度——现在就把自动化带到新高度。',
+  coboDetailCta: '联系销售团队',
+  coboVariantDropdownPlaceholder: '选择你喜欢的型号',
+  coboSearchPlaceholder: '按名称、类别或描述搜索 Cobot…',
+  coboSearchNoResults: '未找到符合条件的 Cobot。',
+  coboSearchNoResultsHelper: '换个关键词或浏览全部 Cobot。',
+  coboGalleryHeading: '画廊',
 };
 

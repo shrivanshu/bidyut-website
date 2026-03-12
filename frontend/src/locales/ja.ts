@@ -719,5 +719,25 @@ export const ja = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 kg、100 TOPS AI、4D & Hesai XT16 3D LiDAR、デュアル光学ジンバル; 警備・巡回に適するモデル。',
+
+  // Cobo parts page
+  coboHeroTagline: '軽量。高精度。スマートな自動化。',
+  coboHeroHighlight: '軽量ロボットアーム（コボット）',
+  coboHeroTitle: 'スマートオートメーションのために',
+  coboHeroDescription:
+    'コボットはあらゆる規模の企業に強力な自動化を提供するために設計された軽量ロボットアームです。簡単なプログラミング、内蔵安全機構、コンパクトで柔軟な設計により、既存ラインを止めずに生産性を高めます。',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    '多用途な性能を持つ協働ロボットをチェック。Z1 Arm、D1 Robotic Arm、Franka Research 3 を比較して、ニーズに合う最適な軽量アームを選びましょう。',
+  coboDetailHeading: '変革する準備は',
+  coboDetailHeadingHighlight: 'できましたか？',
+  coboDetailDescription:
+    '何千もの企業がすでに当社の軽量コボットで効率と精度を高めています。あなたも自動化を次のステージへ。',
+  coboDetailCta: '営業チームに相談する',
+  coboVariantDropdownPlaceholder: '希望のバリアントを選択',
+  coboSearchPlaceholder: '名前・カテゴリ・説明でコボットを検索...',
+  coboSearchNoResults: '条件に合うコボットが見つかりませんでした。',
+  coboSearchNoResultsHelper: '別のキーワードを試すか、一覧を確認してください。',
+  coboGalleryHeading: 'ギャラリー',
 };
 

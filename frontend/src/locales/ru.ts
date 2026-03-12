@@ -723,5 +723,25 @@ export const ru = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 кг, 100 TOPS AI, 4D и Hesai XT16 3D LiDAR, двойной оптический подвес; подходит для охраны и патруля.',
+
+  // Cobo parts page
+  coboHeroTagline: 'Лёгкие. Точные. Умная автоматизация.',
+  coboHeroHighlight: 'Лёгкая роботизированная рука (кобот)',
+  coboHeroTitle: 'для умной автоматизации',
+  coboHeroDescription:
+    'Кобот — лёгкая роботизированная рука, созданная для мощной автоматизации любых масштабов бизнеса. Простое программирование, встроенная безопасность и компактный гибкий дизайн позволяют легко встроить его в любую линию и повысить продуктивность без остановок.',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'Ознакомьтесь с нашими коллаборативными роботами: сравните Z1 Arm, D1 Robotic Arm и Franka Research 3 и выберите лучший лёгкий роботизированный манипулятор под ваши задачи.',
+  coboDetailHeading: 'Готовы преобразить',
+  coboDetailHeadingHighlight: 'свою линию?',
+  coboDetailDescription:
+    'Тысячи компаний уже повышают эффективность и точность с нашими лёгкими коботами — переходите на следующий уровень автоматизации.',
+  coboDetailCta: 'Связаться с отделом продаж',
+  coboVariantDropdownPlaceholder: 'Выберите нужный вариант',
+  coboSearchPlaceholder: 'Ищите коботов по имени, категории или описанию...',
+  coboSearchNoResults: 'Коботы по запросу не найдены.',
+  coboSearchNoResultsHelper: 'Попробуйте другие слова или просмотрите все коботы.',
+  coboGalleryHeading: 'Галерея',
 };
 

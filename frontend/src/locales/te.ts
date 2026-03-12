@@ -734,5 +734,25 @@ export const te = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 కిలో, 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, డ్యూయల్-ఆప్టికల్ గింబల్; భద్రత/పెట్రోల్ పాత్రలకు అనుకూలం.',
+
+  // Cobo parts page
+  coboHeroTagline: 'తేలిక. ఖచ్చితత్వం. తెలివైన ఆటోమేషన్.',
+  coboHeroHighlight: 'లైట్‌వైట్ రోబోటిక్ ఆర్మ్ (కోబోట్)',
+  coboHeroTitle: 'స్మార్ట్ ఆటోమేషన్ కోసం',
+  coboHeroDescription:
+    'కోబోట్ అనేది శక్తివంతమైన ఆటోమేషన్ అందించడానికి రూపొందించిన తేలికైన రోబోటిక్ ఆర్మ్. సులభమైన ప్రోగ్రామింగ్, బిల్ట్-ఇన్ భద్రత, కాంపాక్ట్ మరియు అనువైన డిజైన్‌తో ఇది ఏ ఉత్పత్తి లైన్‌లోనైనా సులభంగా విలీనం అవుతుంది మరియు ఉత్పాదకతను పెంచుతుంది.',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'బహుముఖ పనితీరు కోసం రూపుదిద్దుకున్న మా సహకార రోబోట్లను చూడండి. Z1 Arm, D1 Robotic Arm, Franka Research 3లను పోల్చి, మీ అవసరానికి సరైన తేలికైన ఆర్మ్‌ను ఎంచుకోండి.',
+  coboDetailHeading: 'మార్పుకు సిద్ధమా',
+  coboDetailHeadingHighlight: 'మీ ఉత్పత్తి లైన్?',
+  coboDetailDescription:
+    'వేలాది వ్యాపారాలు ఇప్పటికే మా లైట్‌వైట్ కోబోట్‌లతో సామర్థ్యాన్ని మరియు ఖచ్చితత్వాన్ని పెంచుకుంటున్నాయి—మీరు కూడా ఆటోమేషన్‌ను తదుపరి స్థాయికి తీసుకెళ్లండి.',
+  coboDetailCta: 'సేల్స్ టీమ్‌ను సంప్రదించండి',
+  coboVariantDropdownPlaceholder: 'మీ ఇష్టమైన వేరియంట్‌ను ఎంచుకోండి',
+  coboSearchPlaceholder: 'పేరు, వర్గం లేదా వివరణ ద్వారా కోబోట్‌ను శోధించండి...',
+  coboSearchNoResults: 'మీ శోధనకు సరిపడే కోబోట్‌లు లేవు.',
+  coboSearchNoResultsHelper: 'వేరే కీలకపదాలను ప్రయత్నించండి లేదా అన్ని కోబోట్‌లను చూడండి.',
+  coboGalleryHeading: 'గ్యాలరీ',
 };
 

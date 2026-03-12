@@ -734,5 +734,24 @@ export const mr = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 किग्रॅ क्‍वाड्रुपेड, 100 TOPS AI, 4D व Hesai XT16 3D LiDAR, ड्युअल-ऑप्टिकल गिंबल; सुरक्षा/पेट्रोल भूमिकांसाठी योग्य.',
+  // Cobot pages
+  coboHeroTagline: 'हलके. नेमके. बुद्धिमान ऑटोमेशन.',
+  coboHeroHighlight: 'लाइटवेट रोबोटिक आर्म (कोबोट)',
+  coboHeroTitle: 'स्मार्ट ऑटोमेशनसाठी',
+  coboHeroDescription:
+    'कोबोट हे हलके वजनाचे, पण शक्तिशाली सहयोगी रोबोट हात आहेत जे असेंब्ली, पिक-आणि-प्लेस, तपासणी आणि पॅकेजिंगसारख्या पुनरावृत्तीच्या कामांमध्ये तुमचा वेग आणि अचूकता वाढवतात—आणि खर्च कमी ठेवतात.',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'लघुउद्योग, उत्पादन रेषा किंवा R&D—कोबोटचे स्मार्ट सेन्सर्स, सुरक्षा आणि जलद सेटअप तुमची उत्पादकता वाढवते. तुमच्या उपयोगासाठी सर्वोत्तम लाइटवेट आर्म निवडा.',
+  coboDetailHeading: 'बदलासाठी तयार',
+  coboDetailHeadingHighlight: 'आपली प्रोडक्शन लाइन?',
+  coboDetailDescription:
+    'हजारो व्यवसाय आमच्या हलक्या कोबोट्सद्वारे कार्यक्षमता, नेमकेपणा आणि ऑटोमेशनचा पुढचा स्तर घेत आहेत.',
+  coboDetailCta: 'सेल्स टीमशी संपर्क करा',
+  coboVariantDropdownPlaceholder: 'आपला पसंतीचा व्हेरिएंट निवडा',
+  coboSearchPlaceholder: 'नाव, श्रेणी किंवा वर्णनाद्वारे कोबोट शोधा...',
+  coboSearchNoResults: 'आपल्या शोधाशी जुळणारा कोबोट नाही.',
+  coboSearchNoResultsHelper: 'इतर कीवर्ड वापरा किंवा सर्व कोबोट पाहा.',
+  coboGalleryHeading: 'गॅलरी',
 };
 
