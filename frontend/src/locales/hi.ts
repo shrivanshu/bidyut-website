@@ -781,4 +781,24 @@ b2HeroHighlight: 'B2 एडवांस्ड इंडस्ट्रियल 
   go2wSpecNameGO2WU5: "GO2-W U5",
   go2wSpecDescGO2WU5:
     "18 किग्रा क्वाड्रुपेड, 100 TOPS एआई, 4D व Hesai XT16 3D LiDAR, ड्यूल-ऑप्टिकल गिम्बल, डेप्थ कैमरा; पेट्रोल/सुरक्षा अनुप्रयोगों के लिए उपयुक्त।",
+
+  // Cobo parts page
+  coboHeroTagline: "हल्का, सटीक, बुद्धिमान ऑटोमेशन।",
+  coboHeroHighlight: "लाइटवेट रोबोटिक आर्म (कोबोट)",
+  coboHeroTitle: "स्मार्ट ऑटोमेशन के लिए",
+  coboHeroDescription:
+    "यह कोबोट हर स्तर के व्यवसायों को शक्तिशाली ऑटोमेशन देने के लिए बनाया गया हल्का रोबोटिक आर्म है। सहज प्रोग्रामिंग, बिल्ट-इन सुरक्षा और कॉम्पैक्ट लचीले डिज़ाइन के साथ, यह किसी भी प्रोडक्शन लाइन में बिना बाधा के उत्पादकता बढ़ाता है।",
+  coboHeroLargeLabel: "Cobots",
+  coboHeroBottomDescription:
+    "बहुउद्देशीय और प्रदर्शन के लिए डिज़ाइन किए गए हमारे सहयोगी रोबोट देखें। Z1 Arm, D1 Robotic Arm और Franka Research 3 की तुलना करें और अपनी ज़रूरत का सर्वश्रेष्ठ लाइटवेट रोबोटिक आर्म चुनें।",
+  coboDetailHeading: "बदलाव के लिए तैयार",
+  coboDetailHeadingHighlight: "अपनी प्रोडक्शन लाइन?",
+  coboDetailDescription:
+    "हज़ारों व्यवसाय पहले से हमारे लाइटवेट कोबोट्स से दक्षता व सटीकता बढ़ा रहे हैं—आप भी ऑटोमेशन का अगला स्तर अपनाएँ।",
+  coboDetailCta: "सेल्स टीम से संपर्क करें",
+  coboVariantDropdownPlaceholder: "अपना पसंदीदा वैरिएंट चुनें",
+  coboSearchPlaceholder: "नाम, श्रेणी या विवरण से कोबोट खोजें...",
+  coboSearchNoResults: "आपकी खोज से कोई कोबोट नहीं मिला।",
+  coboSearchNoResultsHelper: "अन्य कीवर्ड आज़माएँ या सभी कोबोट देखें।",
+  coboGalleryHeading: "गैलरी",
 };

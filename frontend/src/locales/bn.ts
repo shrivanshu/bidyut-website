@@ -738,5 +738,25 @@ export const bn = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 কেজি কোয়াড্রুপেড, 100 TOPS AI, 4D ও Hesai XT16 3D LiDAR, ডুয়াল-অপটিক্যাল গিম্বল, ডেপথ ক্যামেরা; পেট্রোল/নিরাপত্তা কাজে উপযোগী।',
+
+  // Cobo parts page
+  coboHeroTagline: 'লাইটওয়েট। নির্ভুল। ইন্টেলিজেন্ট অটোমেশন।',
+  coboHeroHighlight: 'লাইটওয়েট রোবোটিক আর্ম (কোবট)',
+  coboHeroTitle: 'স্মার্ট অটোমেশনের জন্য',
+  coboHeroDescription:
+    'কোবট একটি উন্নত লাইটওয়েট রোবোটিক আর্ম যা সব আকারের ব্যবসায় শক্তিশালী অটোমেশন দেয়। সহজ প্রোগ্রামিং, নিরাপত্তা ও কমপ্যাক্ট ডিজাইনের সাথে এটি উৎপাদনে মসৃণভাবে একীভূত হয়।',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'বহুমুখী পারফরম্যান্সের জন্য তৈরি আমাদের সহযোগী রোবট দেখুন—Z1 Arm, D1 Robotic Arm এবং Franka Research 3 তুলনা করুন এবং সেরা লাইটওয়েট আর্ম বেছে নিন।',
+  coboDetailHeading: 'রূপান্তরের জন্য প্রস্তুত',
+  coboDetailHeadingHighlight: 'আপনার প্রোডাকশন লাইন?',
+  coboDetailDescription:
+    'হাজারো ব্যবসা আমাদের লাইটওয়েট কোবট দিয়ে দক্ষতা ও নির্ভুলতা বাড়াচ্ছে—আপনিও অটোমেশনকে পরবর্তী স্তরে নিন।',
+  coboDetailCta: 'সেলস দলের সাথে যোগাযোগ করুন',
+  coboVariantDropdownPlaceholder: 'পছন্দের ভ্যারিয়েন্ট নির্বাচন করুন',
+  coboSearchPlaceholder: 'নাম, বিভাগ বা বিবরণ দিয়ে কোবট খুঁজুন...',
+  coboSearchNoResults: 'আপনার খোঁজে কোনো কোবট পাওয়া যায়নি।',
+  coboSearchNoResultsHelper: 'ভিন্ন শব্দ চেষ্টা করুন বা সব কোবট ব্রাউজ করুন।',
+  coboGalleryHeading: 'গ্যালারি',
 };
 

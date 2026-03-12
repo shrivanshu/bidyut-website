@@ -818,6 +818,26 @@ export const en = {
   go2wSpecNameGO2WU5: 'GO2-W U5',
   go2wSpecDescGO2WU5:
     '18 kg quadruped with 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, dual-optical gimbal, depth camera, advanced obstacle avoidance; suited for patrol and security roles.',
+
+  // Cobo parts page
+  coboHeroTagline: 'Lightweight. Precise. Intelligent Automation.',
+  coboHeroHighlight: 'Lightweight Robotic Arm (Cobot)',
+  coboHeroTitle: 'for Smart Automation',
+  coboHeroDescription:
+    'The Cobot is an advanced lightweight robotic arm engineered to deliver powerful automation for businesses of every scale. Featuring intuitive programming, built-in safety systems, and a compact, flexible design, it integrates smoothly into any production line to enhance productivity without disrupting existing operations.',
+  coboHeroLargeLabel: 'Cobots',
+  coboHeroBottomDescription:
+    'Discover our range of collaborative robots engineered for versatility and performance. Compare the Z1 Arm, D1 Robotic Arm, and Franka Research 3 to choose the best lightweight robotic arm model for automation needs.',
+  coboDetailHeading: 'Ready to transform',
+  coboDetailHeadingHighlight: 'your production line?',
+  coboDetailDescription:
+    'Join thousands of businesses already using our lightweight cobots to boost efficiency, enhance precision, and take automation to the next level.',
+  coboDetailCta: 'Contact Sales Team',
+  coboVariantDropdownPlaceholder: 'Choose your preferred variants',
+  coboSearchPlaceholder: 'Search cobots by name, category, or description...',
+  coboSearchNoResults: 'No cobots found matching your search.',
+  coboSearchNoResultsHelper: 'Try different keywords or browse all cobots.',
+  coboGalleryHeading: 'Gallery',
 };
 
 
