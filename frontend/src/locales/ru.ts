@@ -36,7 +36,8 @@ export const ru = {
   
   // Chat / AI assistant
   chatSpeechBubbleGreeting: "Hi, I'm Buddy!",
-  offeringsIntro: 'At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics for schools and colleges that empower students with future-ready skills. From building and programming robots to exploring coding concepts and automation, our robotic labs for schools and colleges provide a dynamic, interactive learning environment that makes education engaging and impactful. Beyond education, we also design and provide advanced robotics solutions for industries, including robots for industrial applications helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.',
+  offeringsIntro:
+    'В Bidyut мы приносим робототехнику и программирование в классы через STREAM-лаборатории, практическое обучение и решении реальных задач, помогая школам и колледжам давать студентам навыки будущего. От сборки и программирования роботов до изучения кода и автоматизации наши лаборатории создают динамичную, интерактивную среду. Кроме образования, мы разрабатываем продвинутые решения для промышленности, чтобы автоматизировать процессы, повышать эффективность и внедрять передовые технологии.',
   altCollaborativeLearning: 'Collaborative robot (cobot) working safely alongside humans, designed for easy programming, flexibility, and increasing productivity in industrial settings',
   altCollaboration: 'Advanced humanoid robot interacting, assisting, and engaging with people in real-world environments',
   altLearningExperience: 'Students learning in a fully equipped robotics lab for STREAM education',

@@ -35,8 +35,9 @@ export const kn = {
   scheduleDemoCall: 'ಡೆಮೊ ಕರೆಯನ್ನು ನಿಗದಿ ಮಾಡಿ',
   
   // Chat / AI assistant
-  chatSpeechBubbleGreeting: "Hi, I'm Buddy!",
-  offeringsIntro: 'At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics for schools and colleges that empower students with future-ready skills. From building and programming robots to exploring coding concepts and automation, our robotic labs for schools and colleges provide a dynamic, interactive learning environment that makes education engaging and impactful. Beyond education, we also design and provide advanced robotics solutions for industries, including robots for industrial applications helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.',
+  chatSpeechBubbleGreeting: 'ಹಾಯ್, ನಾನು ಬಡಿ!',
+  offeringsIntro:
+    'Bidyut ನಲ್ಲಿ ನಾವು STREAM ಗೆ ಹೊಂದುವ ಲ್ಯಾಬ್‌ಗಳು, ಕೈ ಚಳಕದ ಕಲಿಕೆ ಮತ್ತು ಸಮಸ್ಯೆ ಪರಿಹಾರಗಳ ಮೂಲಕ ರೋಬೋಟಿಕ್ಸ್ ಮತ್ತು ಕೋಡಿಂಗ್ ಅನ್ನು ತರಗತಿಗಳಿಗೂ ಕಾಲೇಜುಗಳಿಗೂ ತರುತ್ತೇವೆ, ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಭವಿಷ್ಯಕ್ಕೆ ಸಜ್ಜಾಗಿಸಲು ಸಬಲಗೊಳಿಸುತ್ತೇವೆ. ರೋಬೋಟ್ಸ್ ನಿರ್ಮಿಸುವುದರಿಂದ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಮತ್ತು ಕೋಡಿಂಗ್ ಧಾರಣೆ/ಆಟೊಮೇಶನ್ ಅನ್ವೇಷಿಸುವವರೆಗೆ, ನಮ್ಮ ರೋಬೋಟಿಕ್ ಲ್ಯಾಬ್‌ಗಳು ಜೀವಂತ, ಸಂವಾದಾತ್ಮಕ ಕಲಿಕಾ ವಾತಾವರಣ ನೀಡುತ್ತವೆ. ಶಿಕ್ಷಣದ ಪಲಿತಾಂಶದಾಚೆ ನಾವು ಕೈಗಾರಿಕೆಗಳಿಗೂ ಉನ್ನತ ರೋಬೋಟಿಕ್ಸ್ ಪರಿಹಾರಗಳನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಿ ಒದಗಿಸುತ್ತೇವೆ, ಪ್ರಕ್ರಿಯೆಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸಲು, ಕಾರ್ಯಕ್ಷಮತೆ ಹೆಚ್ಚಿಸಲು ಮತ್ತು ಅತ್ಯಾಧುನಿಕ ತಂತ್ರಜ್ಞಾನದಿಂದ ಹೊಸತನ ತರಲು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.',
   altCollaborativeLearning: 'Collaborative robot (cobot) working safely alongside humans, designed for easy programming, flexibility, and increasing productivity in industrial settings',
   altCollaboration: 'Advanced humanoid robot interacting, assisting, and engaging with people in real-world environments',
   altLearningExperience: 'Students learning in a fully equipped robotics lab for STREAM education',
@@ -44,10 +45,12 @@ export const kn = {
   altRoboticSolutions: 'Quadruped four-legged wheeled robot for advanced mobility',
   altSchoolIntegration: 'Students actively engaged in hands-on learning during robotics courses in India',
   altComputerRoboticsBooksforSchools: 'Complete series of computer and robotics books for school children from kindergarten to class 8',
-  chatSpeechBubblePrompt: "Ask me anything 🚀",
+  chatSpeechBubblePrompt: 'ನನ್ನನ್ನೇನು ಬೇಕಾದರೂ ಕೇಳಿ 🚀',
   chatPlaceholder: "ನಿಮ್ಮ ಸಂದೇಶವನ್ನು ಟೈಪ್ ಮಾಡಿ...",
-  chatWelcomeBanner: "How can I help you today? Ask me anything about robotics, coding, or Bidyut Innovation!",
-  chatInitialMessage: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
+  chatWelcomeBanner:
+    'ಇಂದು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ? ರೋಬೋಟಿಕ್ಸ್, ಕೋಡಿಂಗ್ ಅಥವಾ Bidyut Innovation ಬಗ್ಗೆ ಏನಾದರೂ ಕೇಳಿ!',
+  chatInitialMessage:
+    "👋 ಹಾಯ್! ನಾನು ಬಡಿ, ನಿಮ್ಮ AI ಸಹಾಯಕ.\n\nನೀವು ಕೇಳಬಹುದು:\n• ರೋಬೋಟಿಕ್ಸ್ ತತ್ವಗಳು\n• ಕೋಡಿಂಗ್ ಸಹಾಯ\n• Bidyut Innovation ಕಾರ್ಯಕ್ರಮಗಳು\n\nಇಂದು ನಾನು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?",
 
   // Offerings
   ourOfferings: 'ನಮ್ಮ ಸೇವೆಗಳು',
@@ -799,4 +802,6 @@ export const kn = {
   coboFeatureDetailCompactLightweight:
     'ಒಟ್ಟು ತೂಕ ಸುಮಾರು 18 ಕಿಗ್ರಾ, ಸ್ಲಿಮ್ ಪ್ರೊಫೈಲ್ ಲ್ಯಾಬ್ ಇಂಟಿಗ್ರೇಷನ್ ಮತ್ತು ಮೊಬೈಲಿಟಿ ಸುಲಭಗೊಳಿಸುತ್ತದೆ.',
 };
+
+export default kn;
 

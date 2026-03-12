@@ -35,12 +35,14 @@ export const gu = {
   scheduleDemoCall: 'ડેમો કોલ સમયપત્રક બનાવો',
   
   // Chat / AI assistant
-  chatSpeechBubbleGreeting: "Hi, I'm Buddy!",
-  chatSpeechBubblePrompt: "Ask me anything 🚀",
+  chatSpeechBubbleGreeting: 'હાય, હું બડી છું!',
+  chatSpeechBubblePrompt: 'મને કંઈપણ પૂછો 🚀',
   chatPlaceholder: "તમારો સંદેશ ટાઇપ કરો...",
-  chatWelcomeBanner: "How can I help you today? Ask me anything about robotics, coding, or Bidyut Innovation!",
-  chatInitialMessage: "👋 Hi! I'm Buddy, your AI assistant.\n\nYou can ask me about:\n• Robotics concepts\n• Coding help\n• Bidyut Innovation programs\n\nHow can I assist you today?",
-  offeringsIntro: 'At Bidyut, we bring robotics and coding to classrooms through STREAM-aligned labs, hands-on learning, and applied problem-solving, offering robotics for schools and colleges that empower students with future-ready skills. From building and programming robots to exploring coding concepts and automation, our robotic labs for schools and colleges provide a dynamic, interactive learning environment that makes education engaging and impactful. Beyond education, we also design and provide advanced robotics solutions for industries, including robots for industrial applications helping businesses automate processes, improve efficiency, and innovate with cutting-edge technology.',
+  chatWelcomeBanner: 'હું આજે તમને કેવી રીતે મદદ કરી શકું? રોબોટિક્સ, કોડિંગ અથવા Bidyut Innovation વિશે કંઈ પણ પૂછો!',
+  chatInitialMessage:
+    "👋 હાય! હું બડી, તમારો AI સહાયક.\n\nતમે મને પૂછો શકો છો:\n• રોબોટિક્સ ધારણા\n• કોડિંગ મદદ\n• Bidyut Innovation કાર્યક્રમો\n\nહું આજે તમને કેવી રીતે મદદ કરી શકું?",
+  offeringsIntro:
+    'Bidyut ખાતે અમે STREAM અનુરૂપ લેબ, પ્રેક્ટિકલ શીખણ અને સમસ્યા ઉકેલ દ્વારા રોબોટિક્સ અને કોડિંગ વર્ગખંડ સુધી લાવીએ છીએ, જેથી વિદ્યાર્થીઓને ભવિષ્ય માટે તૈયાર કુશળતા મળે. રોબોટ બનાવતા અને પ્રોગ્રામ કરતા થી લઈને કોડિંગ સંકલ્પના અને ઓટોમેશન શોધતા સુધી, અમારી રોબોટિક લેબ એક ગતિશીલ અને ઇન્ટરેક્ટિવ શીખવાની વાતાવરણ આપે છે. શિક્ષણથી આગળ, અમે ઉદ્યોગો માટે અદ્યતન રોબોટિક્સ ઉકેલ પણ ડિઝાઇન કરીએ છીએ, જે પ્રક્રિયાઓ ઓટોમેટ કરી, કાર્યક્ષમતા વધારી અને નવીનતા માટે મદદરૂપ થાય છે.',
   altCollaborativeLearning: 'Collaborative robot (cobot) working safely alongside humans, designed for easy programming, flexibility, and increasing productivity in industrial settings',
   altCollaboration: 'Advanced humanoid robot interacting, assisting, and engaging with people in real-world environments',
   altLearningExperience: 'Students learning in a fully equipped robotics lab for STREAM education',
@@ -401,6 +403,17 @@ export const gu = {
   schoolSeoTitle: 'શાળાઓ માટે Robotics Lab Setup | શિક્ષક તાલીમ | Bidyut',
   schoolSeoDescription: 'શાળાઓ માટે Robotics Lab Setup સાથે hands-on learning, શિક્ષક તાલીમ, workshops અને drone programs. STREAM અને AI education ને પ્રાયોગિક અને રસપ્રદ બનાવીએ છીએ.',
   blog: 'Blog',
+
+  // Common Labels (added for missing translations)
+  ' & ': ' & ',
+  accenture: 'Accenture',
+  acg: 'ACG',
+  hcl: 'HCL',
+  iisc: 'IISC',
+  iitKanpur: 'IIT Kanpur',
+  nxtwave: 'Nxtwave',
+  orica: 'Orica',
+  plaksha: 'Plaksha',
 
   // School Page
   schoolHeroHeading: 'રોબોટિક્સ લેબ સેટઅપ, એઆઈ અને ભવિષ્ય-તૈયાર લેબ્સ સાથે તમારા વર્ગખંડને બદલાવો',
@@ -812,4 +825,6 @@ export const gu = {
   coboFeatureDetailCompactLightweight:
     'કુલ વજન લગભગ 18 કિગ્રા, સ્લિમ પ્રોફાઇલ લેબ ઇન્ટિગ્રેશન અને મોબિલિટી સરળ બનાવે છે.',
 };
+
+export default gu;
 
