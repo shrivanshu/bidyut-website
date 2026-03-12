@@ -2,6 +2,11 @@ import React, { useState, useRef, useEffect, lazy, Suspense, useCallback, memo }
 import { useLanguage } from "../../contexts/OptimizedLanguageContext";
 
 const HeroHeading = lazy(() => import("../../Text_Animation/HomeHeroText"));
+const QUICK_QUESTIONS = [
+  "What is Bidyut Innovation?",
+  "What services do you provide?",
+  "How can I contact Bidyut?",
+];
 
 // --- Improved ChatBox component for better content, alignment, and responsiveness ---
 const ChatBox = memo(function ChatBox({
@@ -9,11 +14,13 @@ const ChatBox = memo(function ChatBox({
   onClose,
   messages,
   onSend,
+  quickQuestions,
 }: {
   open: boolean;
   onClose: () => void;
   messages: { from: "me" | "bot"; text: string }[];
   onSend: (msg: string) => void;
+  quickQuestions: string[];
 }) {
   const { t } = useLanguage();
   const [input, setInput] = useState("");
@@ -37,6 +44,10 @@ const ChatBox = memo(function ChatBox({
     setInput(e.target.value);
   }, []);
 
+  const handleQuickQuestion = useCallback((question: string) => {
+    onSend(question);
+  }, [onSend]);
+
   if (!open) return null;
   return (
     <div className="absolute bottom-16 right-2 z-50 w-80 max-w-[95vw] bg-white rounded-2xl shadow-2xl border border-[#0ACF83] flex flex-col animate-fade-in
@@ -58,6 +69,19 @@ const ChatBox = memo(function ChatBox({
       {/* Welcome Banner */}
       <div className="bg-[#0ACF83] text-white text-xs text-center py-1 px-2 font-medium rounded-b-lg rounded-t-none">
         {t('chatWelcomeBanner')}
+      </div>
+      {/* Quick Questions */}
+      <div className="px-3 pt-2 pb-1 bg-[#f8fefb] border-b border-[#e8f5ee] flex flex-wrap gap-2">
+        {quickQuestions.map((question) => (
+          <button
+            key={question}
+            type="button"
+            onClick={() => handleQuickQuestion(question)}
+            className="text-[11px] leading-tight px-2 py-1 rounded-full border border-[#0ACF83]/40 text-emerald-700 bg-white hover:bg-emerald-50 transition"
+          >
+            {question}
+          </button>
+        ))}
       </div>
       {/* Messages */}
       <div
@@ -273,6 +297,7 @@ const HeroSection: React.FC = () => {
             onClose={handleChatClose}
             messages={messages}
             onSend={handleSend}
+            quickQuestions={QUICK_QUESTIONS}
           />
         </div>
       </div>
