@@ -699,5 +699,40 @@ export const te = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'రొబోట్ డాగ్ GO2 యొక్క కాంపాక్ట్ పరిమాణం 70 × 31 × 40 సెం.మీ, బరువు 15 కిలోలు, పేలోడ్ 7 కిలోలు (గరిష్ఠం 10 కిలోలు), గరిష్ఠ వేగం 2.5 m/s, 8000 mAh బ్యాటరీతో 1–2 గంటల రన్‌టైం, 1280 × 720 px కెమెరా 120° FOVతో, 30° ఎత్తు ఎక్కగలదు, 15 సెం.మీ మెట్లు ఎక్కగలదు మరియు 4D LiDAR (360° × 90°) ద్వారా అడ్డంకులను తప్పిస్తుంది.',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'తదుపరి తరం అన్ని భూమి రోబోటిక్స్.',
+  go2wHeroHighlight: 'Unitree Go2 W రోబోట్ -',
+  go2wHeroTitle: 'మీ ఆల్-టెర్రెయిన్ రోబోటిక్ భాగస్వామి',
+  go2wHeroDescription:
+    'Unitree Go2 W రోబోట్ చక్రాల సమర్థతను కాలుల స్వేచ్ఛతో కలుపుతుంది. మెత్తని కారిడార్‌ల నుండి కఠిన ఫ్లోర్‌ల వరకు సులభంగా అలవాటు పడుతుంది—గవేషణ, పరిశీలన మరియు విభిన్న ఉపయోగాల కోసం అనువైనది.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'మా Unitree Go2 W రోబోట్ అధునాతన పరిశోధన, పరిశ్రమ మరియు విద్యా అనువర్తనాల కోసం రూపొందించబడింది. అధిక పనితీరు, బలమైన పేలోడ్ మరియు సవాలుతో కూడిన పరిసరాల్లో బహుముఖ ఆపరేషన్ కోసం.',
+  go2wDetailHeading: 'స్మార్ట్, వేగమైన రోబోటిక్స్ కోసం',
+  go2wDetailHeadingHighlight: 'సిద్ధమేనా?',
+  go2wDetailDescription:
+    'ఈరోజే సంప్రదించి Unitree Go2 W మీ వర్క్‌ఫ్లోని ఎలా మార్చగలదో చూడండి.',
+  go2wDetailCta: 'సేల్స్ టీమ్‌ను సంప్రదించండి',
+  go2wVariantDropdownPlaceholder: 'మీకు నచ్చిన వేరియంట్‌ను ఎంచుకోండి',
+  go2wSearchPlaceholder: 'పేరు, వర్గం లేదా వివరణ ద్వారా కోబోట్‌ను శోధించండి...',
+  go2wSearchNoResults: 'మీ శోధనకు సరిపడే కోబోట్లు లేవు.',
+  go2wSearchNoResultsHelper: 'వేరే కీవర్డ్స్ ప్రయత్నించండి లేదా అన్ని కోబోట్లను చూడండి.',
+  go2wGalleryHeading: 'గ్యాలరీ',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 సెం.మీ, 18 కిలోలు, ~3 కిలో పేలోడ్, 2.5 m/s, 16 జాయింట్ మోటార్లు, 40 TOPS, 35° గ్రేడియంట్, 70 సెం.మీ స్టెప్, 4D LiDAR (360° × 90°), 15000 mAh బ్యాటరీ 2–3 గంటలు; RealSense D435i మరియు రిమోట్/కాలిబ్రేటర్ కలిగి.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 సెం.మీ, 18 కిలోలు, ~3 కిలో, 2.5 m/s, 16 జాయింట్లు, 100 TOPS AI, 35° గ్రేడియంట్, 70 సెం.మీ ఎక్కే సామర్థ్యం, 4D LiDAR, 15000 mAh 2–3 గంటల రన్‌టైమ్.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D & 3D LiDAR, డెప్త్ కెమెరా, 100 TOPS AI—జటిల పరిశీలన/మ్యాపింగ్‌కు అనువైన మోడల్.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 కిలో క్వాడ్రూపెడ్, 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, డెప్త్ కెమెరా; కఠిన పరిసరాల్లో మెరుగైన అడ్డంకి నివారణ.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 కిలో, 100 TOPS AI, 4D & Hesai XT16 3D LiDAR, డ్యూయల్-ఆప్టికల్ గింబల్; భద్రత/పెట్రోల్ పాత్రలకు అనుకూలం.',
 };
 

@@ -688,5 +688,40 @@ export const ru = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'Робопёс GO2: компактные габариты 70 × 31 × 40 см, вес 15 кг, полезная нагрузка 7 кг (макс. 10 кг), максимальная скорость 2.5 м/с, аккумулятор 8000 мА·ч с запасом хода 1–2 часа, камера 1280 × 720 px с углом 120°, подъём по уклону 30°, преодоление ступени 15 см, обход препятствий с помощью 4D LiDAR (360° × 90°).',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'Робототехника нового поколения для бездорожья.',
+  go2wHeroHighlight: 'Робот Unitree Go2 W –',
+  go2wHeroTitle: 'ваш вседорожный робот-помощник',
+  go2wHeroDescription:
+    'Unitree Go2 W сочетает эффективность колёс и свободу ног. От гладких коридоров до неровных полов он быстро адаптируется — подходит для исследований, инспекций и реальных задач.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'Создан для научных, промышленных и учебных применений: высокая производительность, прочный пейлоуд и гибкая работа в сложных условиях.',
+  go2wDetailHeading: 'Готовы к умной, быстрой',
+  go2wDetailHeadingHighlight: 'робототехнике?',
+  go2wDetailDescription:
+    'Свяжитесь с нами и узнайте, как Unitree Go2 W может изменить ваш рабочий процесс.',
+  go2wDetailCta: 'Связаться с отделом продаж',
+  go2wVariantDropdownPlaceholder: 'Выберите нужный вариант',
+  go2wSearchPlaceholder: 'Ищите коботов по имени, категории или описанию...',
+  go2wSearchNoResults: 'Коботы по запросу не найдены.',
+  go2wSearchNoResultsHelper: 'Попробуйте другие слова или просмотрите все коботы.',
+  go2wGalleryHeading: 'Галерея',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 см, 18 кг, пейлоуд ~3 кг, 2.5 м/с, 16 приводов, 40 TOPS, подъём 35°, ступень 70 см, 4D LiDAR (360° × 90°), батарея 15000 мА·ч (2–3 ч), RealSense D435i в комплекте.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 см, 18 кг, ~3 кг, 2.5 м/с, 16 приводов, 100 TOPS AI, 35° уклон, 70 см ступень, 4D LiDAR, 15000 мА·ч 2–3 ч.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D и 3D LiDAR, depth-камера, 100 TOPS AI — для сложных инспекций и картирования.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 кг, 100 TOPS AI, 4D и Hesai XT16 3D LiDAR, depth-камера; улучшенное избегание препятствий.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 кг, 100 TOPS AI, 4D и Hesai XT16 3D LiDAR, двойной оптический подвес; подходит для охраны и патруля.',
 };
 

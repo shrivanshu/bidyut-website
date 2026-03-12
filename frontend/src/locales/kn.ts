@@ -687,5 +687,39 @@ export const kn = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'ರೋಬೋಟ್ ಡಾಗ್ GO2 ಯ ಕಿರಿದಾದ ಗಾತ್ರ 70 × 31 × 40 ಸೆಂ.ಮೀ, ತೂಕ 15 ಕೆಜಿ, ಪೇಲೋಡ್ 7 ಕೆಜಿ (ಗರಿಷ್ಠ 10 ಕೆಜಿ), ಗರಿಷ್ಠ ವೇಗ 2.5 m/s, 8000 mAh ಬ್ಯಾಟರಿ 1–2 ಗಂಟೆಯ ರನ್‌ಟೈಮ್ ಸಹಿತ, 1280 × 720 px ಕ್ಯಾಮೆರಾ 120° FOV ಜೊತೆ, 30° ಇಳಿಜಾರು ಏರಿಸು, 15 ಸೆಂ.ಮೀ ಮೆಟ್ಟಿಲು ಮತ್ತು 4D LiDAR (360° × 90°) ಮೂಲಕ ಅಡೆತಡೆ ತಪ್ಪಿಸು.',
+  // GO2-W Education Page
+  go2wHeroTagline: 'ಮುಂದಿನ ತಲೆಮಾರಿನ ಎಲ್ಲ ಭೂಮಿ ರೋಬೋಟಿಕ್ಸ್.',
+  go2wHeroHighlight: 'Unitree Go2 W ರೋಬೋಟ್ -',
+  go2wHeroTitle: 'ನಿಮ್ಮ ಆಲ್-ಟೆರೈನ್ ರೋಬೋಟಿಕ್ ಸಂಗಾತಿ',
+  go2wHeroDescription:
+    'Unitree Go2 W ರೋಬೋಟ್ ಚಕ್ರಗಳ ಪರಿಣಾಮಕಾರಿತ್ವ ಮತ್ತು ಕಾಲುಗಳ ಸ್ವಾತಂತ್ರ್ಯವನ್ನು ಮಿಶ್ರಣಗೊಳಿಸುತ್ತದೆ. ಸರಳ ಹಾಲ್‌ವೇಯಿಂದ ಕಠಿನ ನೆಲವರೆಗೆ ಸುಲಭವಾಗಿ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ—ಸಂಶೋಧನೆ, ಪರಿಶೀಲನೆ ಮತ್ತು ವಿಭಿನ್ನ ಅನ್ವಯಗಳಿಗೆ ಸೂಕ್ತ.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'ಉನ್ನತ ಸಂಶೋಧನೆ, ಕೈಗಾರಿಕಾ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಬಳಕೆಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಿದ ಯಂತ್ರ. ಹೆಚ್ಚು ಕಾರ್ಯಕ್ಷಮತೆ, ಬಲವಾದ ಪೇಲೋಡ್ ಮತ್ತು ಸವಾಲಿನ ಪರಿಸರಗಳಲ್ಲಿ ಬಹುಮುಖ ಕಾರ್ಯಾಚರಣೆ.',
+  go2wDetailHeading: 'ಸ್ಮಾರ್ಟ್, ವೇಗವಾದ ರೋಬೋಟಿಕ್ಸ್‌ಗೆ',
+  go2wDetailHeadingHighlight: 'ಸಿದ್ಧವೇ?',
+  go2wDetailDescription:
+    'ಇಂದೇ ಸಂಪರ್ಕಿಸಿ; Unitree Go2 W ರೋಬೋಟ್ ನಿಮ್ಮ ವರ್ಕ್‌ಫ್ಲೋವನ್ನು ಹೇಗೆ ಬದಲಾಯಿಸಬಹುದು ನೋಡಿ.',
+  go2wDetailCta: 'ಮಾರಾಟ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ',
+  go2wVariantDropdownPlaceholder: 'ನಿಮಗೆ ಇಷ್ಟದ ರೂಪಾಂತರ ಆಯ್ಕೆಮಾಡಿ',
+  go2wSearchPlaceholder: 'ಹೆಸರು, ವರ್ಗ ಅಥವಾ ವಿವರಣೆಯಿಂದ ಕೋಬೋಟ್ ಹುಡುಕಿ...',
+  go2wSearchNoResults: 'ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋಬೋಟ್ ಸಿಗಲಿಲ್ಲ.',
+  go2wSearchNoResultsHelper: 'ಬೇರೆ ಕೀವರ್ಡ್ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಕೋಬೋಟ್‌ಗಳನ್ನು ನೋಡಿ.',
+  go2wGalleryHeading: 'ಗ್ಯಾಲರಿ',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 ಸೆಂ.ಮೀ, 18 ಕೆಜಿ, ~3 ಕೆಜಿ ಪೇಲೋಡ್, 2.5 m/s, 16 ಜೋಡುಗಳ ಮೋಟಾರ್, 40 TOPS, 35° ಗ್ರೇಡಿಯಂಟ್, 70 ಸೆಂ.ಮೀ ಮೆಟ್ಟಿಲು, 4D LiDAR (360° × 90°), 15000 mAh ಬ್ಯಾಟರಿ 2–3 ಗಂಟೆ; RealSense D435i ಸಹಿತ.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 ಸೆಂ.ಮೀ, 18 ಕೆಜಿ, ~3 ಕೆಜಿ, 2.5 m/s, 16 ಜೋಡುಗಳು, 100 TOPS AI, 35° ಗ್ರೇಡಿಯಂಟ್, 70 ಸೆಂ.ಮೀ ಏರಿಕೆ, 4D LiDAR, 15000 mAh 2–3 ಗಂಟೆ.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D ಮತ್ತು 3D LiDAR, ಆಳ ಕ್ಯಾಮೆರಾ, 100 TOPS AI—ಸಂಕೀರ್ಣ ಪರಿಶೀಲನೆ/ಮ್ಯಾಪಿಂಗ್‌ಗೆ ಚುರುಕಾದ ಮಾದರಿ.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 ಕೆಜಿ ಕ್ವಾಡ್ರುಪೆಡ್, 100 TOPS AI, 4D ಮತ್ತು Hesai XT16 3D LiDAR, ಆಳ ಕ್ಯಾಮೆರಾ; ಕಠಿನ ಪರಿಸರಗಳಲ್ಲಿ ಅಡೆತಡೆ ನಿವಾರಣೆ ಉತ್ತಮ.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 ಕೆಜಿ, 100 TOPS AI, 4D ಮತ್ತು Hesai XT16 3D LiDAR, ಡ್ಯುಯಲ್-ಆಪ್ಟಿಕಲ್ ಗಿಂಬಲ್; ಸುರಕ್ಷತೆ/ಪೇಟ್ರೋಲ್ ಪಾತ್ರಗಳಿಗೆ ಸೂಕ್ತ.',
 };
 

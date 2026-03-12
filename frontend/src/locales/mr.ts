@@ -699,5 +699,40 @@ export const mr = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'रोबोट डॉग GO2 चे कॉम्पॅक्ट परिमाण 70 × 31 × 40 सेमी, वजन 15 किग्रॅ, पेलोड 7 किग्रॅ (कमाल 10 किग्रॅ), कमाल वेग 2.5 m/s, 8000 mAh बॅटरीसह 1–2 तास रनटाइम, 1280 × 720 px कॅमेरा 120° FOV सह, 30° चढ चढणे, 15 सेमी पायरी चढणे आणि 4D LiDAR (360° × 90°) द्वारे अडथळा टाळणी.',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'ऑल-टेरेन रोबोटिक्सची पुढील पिढी.',
+  go2wHeroHighlight: 'Unitree Go2 W रोबोट -',
+  go2wHeroTitle: 'आपला ऑल-टेरेन रोबोटिक सहचर',
+  go2wHeroDescription:
+    'Unitree Go2 W रोबोट चाकांची कार्यक्षमता आणि पायांची लवचिकता एकत्र करतो. गुळगुळीत हॉलवेपासून खडबडीत फर्शपर्यंत सहज जुळवून घेतो—संशोधन, निरीक्षण आणि विविध वापरांसाठी योग्य.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'आमचा Unitree Go2 W रोबोट प्रगत संशोधन, औद्योगिक आणि शैक्षणिक वापरासाठी तयार आहे. उच्च कार्यक्षमता, मजबूत पेलोड आणि आव्हानात्मक वातावरणातील बहुउद्देशीय ऑपरेशनसाठी डिझाइन केलेला.',
+  go2wDetailHeading: 'स्मार्ट आणि जलद रोबोटिक्ससाठी',
+  go2wDetailHeadingHighlight: 'तयार आहात?',
+  go2wDetailDescription:
+    'आजच आमच्याशी संपर्क करा आणि Unitree Go2 W तुमचे वर्कफ्लो कसे बदलू शकते ते जाणून घ्या.',
+  go2wDetailCta: 'सेल्स टीमशी संपर्क करा',
+  go2wVariantDropdownPlaceholder: 'आपला पसंतीचा प्रकार निवडा',
+  go2wSearchPlaceholder: 'नाव, श्रेणी किंवा वर्णनाने कोबोट शोधा...',
+  go2wSearchNoResults: 'आपल्या शोधाशी जुळणारा कोबोट नाही.',
+  go2wSearchNoResultsHelper: 'भिन्न कीवर्ड वापरा किंवा सर्व कोबोट पहा.',
+  go2wGalleryHeading: 'गॅलरी',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 सेमी, 18 किग्रॅ, ~3 किग्रॅ पेलोड, 2.5 m/s, 16 जॉइंट मोटर्स, 40 TOPS, 35° ग्रेडियंट, 70 सेमी स्टेप, 4D LiDAR (360° × 90°), 15000 mAh बॅटरी 2–3 तास; RealSense D435i व रिमोट/कॅलिब्रेटर समाविष्ट.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 सेमी, 18 किग्रॅ, ~3 किग्रॅ पेलोड, 2.5 m/s, 16 जॉइंट मोटर्स, 100 TOPS AI, 35° ग्रेडियंट, 70 सेमी चढ, 4D LiDAR (360° × 90°), 15000 mAh बॅटरी 2–3 तास.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D आणि 3D LiDAR, डेप्थ कॅमेरा, 100 TOPS AI—जटिल निरीक्षण/मॅपिंगसाठी चपळ मॉडेल.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 किग्रॅ क्‍वाड्रुपेड, 100 TOPS AI, 4D व Hesai XT16 3D LiDAR, डेप्थ कॅमेरा; आव्हानात्मक परिसरात उन्नत अडथळा टाळणी.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 किग्रॅ क्‍वाड्रुपेड, 100 TOPS AI, 4D व Hesai XT16 3D LiDAR, ड्युअल-ऑप्टिकल गिंबल; सुरक्षा/पेट्रोल भूमिकांसाठी योग्य.',
 };
 

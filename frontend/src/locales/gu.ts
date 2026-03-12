@@ -699,5 +699,40 @@ export const gu = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'રોબોટ ડોગ GO2નું કોમ્પેક્ટ કદ 70 × 31 × 40 સે.મી., વજન 15 કિગ્રા, પેલોડ 7 કિગ્રા (મહત્તમ 10 કિગ્રા), મહત્તમ ગતિ 2.5 મી/સે., 8000 mAh બેટરી સાથે 1–2 કલાક રનટાઇમ, 1280 × 720 px કેમેરા 120° FOV સાથે, 30° ઢોળાણ ચઢાણ, 15 સે.મી. પગથિયાં ચઢાણ અને 4D LiDAR (360° × 90°) દ્વારા અવરોધ નિવારણ.',
+
+  // GO2-W Education Page
+  go2wHeroTagline: 'નેક્સ્ટ-જન ઓલ-ટેરેન રોબોટિક્સ.',
+  go2wHeroHighlight: 'Unitree Go2 W રોબોટ -',
+  go2wHeroTitle: 'તમારો ઓલ-ટેરેન રોબોટિક સાથી',
+  go2wHeroDescription:
+    'Unitree Go2 W રોબોટ ચકડાની કાર્યક્ષમતા અને પગની મુક્તિને જોડે છે. સમતલ કોરિડોરથી લઈ ખડકલા ફ્લોર સુધી સરળતાથી એડપ્ટ થાય છે—શોધ, ઇન્સ્પેક્શન અને વિવિધ વાસ્તવિક ઉપયોગ માટે યોગ્ય.',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    'અમારો Unitree Go2 W રોબોટ એડવાન્સ્ડ રિસર્ચ, ઉદ્યોગ અને શૈક્ષણિક ઉપયોગ માટે બનાવેલ છે. ઉચ્ચ પ્રદર્શન, મજબૂત પેલોડ અને પડકારજનક પરિસ્થિતિઓમાં બહુમુખી ઓપરેશન માટે ડિઝાઇન થયેલ.',
+  go2wDetailHeading: 'સ્માર્ટ અને ઝડપી રોબોટિક્સ માટે',
+  go2wDetailHeadingHighlight: 'તૈયાર છો?',
+  go2wDetailDescription:
+    'આજે જ જોડાઓ અને જુઓ કે Unitree Go2 W રોબોટ તમારું વર્કફ્લો કેવી રીતે બદલાવી શકે છે.',
+  go2wDetailCta: 'સેલ્સ ટીમને સંપર્ક કરો',
+  go2wVariantDropdownPlaceholder: 'તમારો પસંદીદા વેરિઅન્ટ પસંદ કરો',
+  go2wSearchPlaceholder: 'નામ, કેટેગરી અથવા વર્ણનથી કોબોટ શોધો...',
+  go2wSearchNoResults: 'તમારી શોધને અનુરૂપ કોઈ કોબોટ મળ્યો નથી.',
+  go2wSearchNoResultsHelper: 'બીજા કીવર્ડ અજમાવો અથવા બધા કોબોટ જુઓ.',
+  go2wGalleryHeading: 'ગેલેરી',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 સે.મી., 18 કિગ્રા, ~3 કિગ્રા પેલોડ, 2.5 m/s, 16 જોયન્ટ મોટર્સ, 40 TOPS કમ્પ્યુટ, 35° ગ્રેડિયન્ટ, 70 સે.મી. પગથિયો, 4D LiDAR (360° × 90°), 15000 mAh બેટરી 2–3 કલાક; RealSense D435i અને રિમોટ/કેલિબ્રેટર સાથે.',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 સે.મી., 18 કિગ્રા, ~3 કિગ્રા પેલોડ, 2.5 m/s, 16 જોયન્ટ મોટર્સ, 100 TOPS AI, 35° ગ્રેડિયન્ટ, 70 સે.મી. ક્લાઇમ્બ, 4D LiDAR (360° × 90°), 15000 mAh બેટરી 2–3 કલાક, RealSense D435i સહિત.',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D અને 3D LiDAR, ડેપ્થ કેમેરા, 100 TOPS AI સાથેનું અપગ્રેડેડ મોડલ—જટિલ ઇન્સ્પેક્શન/મૅપિંગ માટે ચપળ મૂવમેન્ટ.',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 કિગ્રા ક્વાડ્રુપેડ, 100 TOPS AI, 4D અને Hesai XT16 3D LiDAR, ડેપ્થ કેમેરા; પડકારજનક પરિસ્થિતિઓમાં અદ્યતન અવરોધ પરિહારમાં મદદરૂપ.',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 કિગ્રા ક્વાડ્રુપેડ, 100 TOPS AI, 4D અને Hesai XT16 3D LiDAR, ડ્યુઅલ-ઓપ્ટિકલ ગિમ્બલ, ડેપ્થ કેમેરા; પેટ્રોલ/સિક્યુરિટી ઉપયોગ માટે યોગ્ય.',
 };
 

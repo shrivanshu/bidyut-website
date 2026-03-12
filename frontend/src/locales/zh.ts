@@ -685,5 +685,40 @@ export const zh = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     '机器人犬 GO2 的紧凑尺寸为 70 × 31 × 40 cm，重量 15 kg，载荷 7 kg（最大 10 kg），最高速度 2.5 m/s，8000 mAh 电池可续航 1–2 小时，1280 × 720 px 相机，120° 视角，爬坡 30°，可跨越 15 cm 台阶，4D LiDAR（360° × 90°）实现障碍规避。',
+
+  // GO2-W Education Page
+  go2wHeroTagline: '新一代全地形机器人。',
+  go2wHeroHighlight: 'Unitree Go2 W 机器人 -',
+  go2wHeroTitle: '您的全地形机器人伙伴',
+  go2wHeroDescription:
+    'Unitree Go2 W 将车轮效率与四足灵活性结合。从平滑走廊到崎岖地面都能自如适应，适合科研、巡检和多场景应用。',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    '为高级科研、工业与教育应用打造，高性能、强负载，在复杂环境下亦能稳定多样运行。',
+  go2wDetailHeading: '准备好更智能、更快速的',
+  go2wDetailHeadingHighlight: '机器人了吗？',
+  go2wDetailDescription:
+    '立即联系我们，了解 Unitree Go2 W 如何改善您的工作流程。',
+  go2wDetailCta: '联系销售团队',
+  go2wVariantDropdownPlaceholder: '选择您喜欢的型号',
+  go2wSearchPlaceholder: '按名称、类别或描述搜索机器人…',
+  go2wSearchNoResults: '未找到符合条件的机器人。',
+  go2wSearchNoResultsHelper: '换个关键词或浏览全部机器人。',
+  go2wGalleryHeading: '画廊',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W：70 × 43 × 50 cm，18 kg，载荷约 3 kg，最高 2.5 m/s，16 关节电机，40 TOPS，35° 爬坡，70 cm 跨越，4D LiDAR（360° × 90°），15000 mAh 电池续航 2–3 小时，含 RealSense D435i。',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 cm，18 kg，载荷约 3 kg，2.5 m/s，16 关节，100 TOPS AI，35° 爬坡，70 cm 跨越，4D LiDAR，15000 mAh 续航 2–3 小时。',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '配备 4D 与 3D LiDAR、深度相机、100 TOPS AI，适合复杂巡检与建图。',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 kg，100 TOPS AI，4D 与 Hesai XT16 3D LiDAR，深度相机；高级障碍规避。',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 kg，100 TOPS AI，4D 与 Hesai XT16 3D LiDAR，双光学云台；适合安防巡逻。',
 };
 

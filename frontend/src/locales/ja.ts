@@ -684,5 +684,40 @@ export const ja = {
   go2SpecNameGO2AIR: 'GO2-AIR',
   go2SpecDescGO2AIR:
     'ロボットドッグ GO2 のコンパクトサイズは 70 × 31 × 40 cm、重量 15 kg、ペイロード 7 kg（最大 10 kg）、最高速度 2.5 m/s、8000 mAh バッテリーで 1–2 時間駆動、1280 × 720 px カメラ（120° FOV）、30° の勾配登坂、15 cm の段差を乗り越え、4D LiDAR（360° × 90°）で障害物回避。',
+
+  // GO2-W Education Page
+  go2wHeroTagline: '次世代のオールテレインロボティクス。',
+  go2wHeroHighlight: 'Unitree Go2 W ロボット -',
+  go2wHeroTitle: 'あなたのオールテレインロボットパートナー',
+  go2wHeroDescription:
+    'Unitree Go2 W は車輪の効率と脚の自由さを兼ね備えています。滑らかな廊下から荒れた床までスムーズに適応し、研究・点検・多用途アプリに最適です。',
+  go2wHeroLargeLabel: 'GO2-W Robot',
+  go2wHeroBottomDescription:
+    '高性能・高ペイロードで、厳しい環境でも多目的に運用できるよう設計された研究・産業・教育向けロボットです。',
+  go2wDetailHeading: 'よりスマートで高速な',
+  go2wDetailHeadingHighlight: 'ロボティクスへ準備OK？',
+  go2wDetailDescription:
+    '今すぐご連絡ください。Unitree Go2 W がワークフローをどう変えるかご案内します。',
+  go2wDetailCta: '営業チームに相談する',
+  go2wVariantDropdownPlaceholder: 'お好みのバリアントを選択',
+  go2wSearchPlaceholder: '名前・カテゴリ・説明でコボットを検索...',
+  go2wSearchNoResults: '条件に合うコボットが見つかりませんでした。',
+  go2wSearchNoResultsHelper: '別のキーワードを試すか、一覧を確認してください。',
+  go2wGalleryHeading: 'ギャラリー',
+  go2wSpecNameGO2WU1: 'GO2-W U1',
+  go2wSpecDescGO2WU1:
+    'Unitree Go2 W: 70 × 43 × 50 cm、18 kg、ペイロード約 3 kg、最高 2.5 m/s、16 関節モーター、40 TOPS、勾配 35°、段差 70 cm、4D LiDAR (360° × 90°)、15000 mAh バッテリー 2–3 時間、RealSense D435i 付属。',
+  go2wSpecNameGO2WU2: 'GO2-W U2',
+  go2wSpecDescGO2WU2:
+    '70 × 43 × 50 cm、18 kg、約 3 kg、2.5 m/s、16 関節、100 TOPS AI、35° 勾配、70 cm 段差、4D LiDAR、15000 mAh で 2–3 時間。',
+  go2wSpecNameGO2WU3: 'GO2-W U3',
+  go2wSpecDescGO2WU3:
+    '4D & 3D LiDAR、深度カメラ、100 TOPS AI を備え、複雑な点検・マッピング向け。',
+  go2wSpecNameGO2WU4: 'GO2-W U4',
+  go2wSpecDescGO2WU4:
+    '18 kg、100 TOPS AI、4D & Hesai XT16 3D LiDAR、深度カメラ; 高度な障害回避。',
+  go2wSpecNameGO2WU5: 'GO2-W U5',
+  go2wSpecDescGO2WU5:
+    '18 kg、100 TOPS AI、4D & Hesai XT16 3D LiDAR、デュアル光学ジンバル; 警備・巡回に適するモデル。',
 };
 
