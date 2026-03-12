@@ -740,5 +740,62 @@ export const zh = {
   coboSearchNoResults: '未找到符合条件的 Cobot。',
   coboSearchNoResultsHelper: '换个关键词或浏览全部 Cobot。',
   coboGalleryHeading: '画廊',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 机械臂',
+  coboSpecDescZ1Arm:
+    'Z1 机械臂是一款高精度、轻量化的协作臂，配备谐波减速机、工业级交叉滚子轴承和先进的力矩控制，适用于工业与科研场景的高精度、稳定表现。',
+  coboFeatureLabelHighTorqueAccuracy: '高扭矩与高精度',
+  coboFeatureDetailHighTorqueAccuracy:
+    '最大扭矩 33N·m，约 0.2N·m 力控精度，约 6 角分背隙',
+  coboFeatureLabelCommunicationControl: '通信与控制',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 通信，1KHz 控制频率，力矩与角度控制指令',
+  coboFeatureLabelLightweightCompact: '轻量与紧凑',
+  coboFeatureDetailLightweightCompact:
+    '重量 405g，Ø65×52mm 尺寸，配工业级交叉滚子轴承的谐波减速机',
+  coboFeatureLabelAdvancedSensing: '高级感知',
+  coboFeatureDetailAdvancedSensing:
+    '力矩、角度、角速度反馈，15 位编码器分辨率',
+  coboFeatureLabelPowerControlCommands: '电源与控制指令',
+  coboFeatureDetailPowerControlCommands:
+    '推荐 24V 供电，支持刚度与阻尼控制',
+
+  coboSpecNameD1Arm: 'D1 机械臂',
+  coboSpecDescD1Arm:
+    'D1 机械臂采用 6 轴 + 1 夹爪配置，提供高灵活性和宽广运动范围。轻量、紧凑设计并具多种接口，适合工业与科研中的精确控制。',
+  coboFeatureLabelLightweightDesign: '轻量化设计',
+  coboFeatureDetailLightweightDesign:
+    '约 2.37kg，紧凑便携，适用多场景',
+  coboFeatureLabelHighFlexibility: '高灵活性',
+  coboFeatureDetailHighFlexibility:
+    '6 轴 + 1 夹爪，±135° 与 ±90° 关节运动',
+  coboFeatureLabelPayloadReach: '负载与臂展',
+  coboFeatureDetailPayloadReach:
+    '负载 500g，臂展 550mm（无夹爪），670mm（带夹爪）',
+  coboFeatureLabelPowerInterface: '电源与接口',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A（最大 5A）供电，DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: '电机与功率',
+  coboFeatureDetailMotorPower:
+    '总线伺服电机，额定功率 60W，性能稳定',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 是一款先进的 7 自由度协作臂，面向前沿机器人研究与人机协作。卓越的力觉、模块化控制架构和轻量优雅的设计，让其在实验室与自动化单元中实现安全、精准的操作。',
+  coboFeatureLabelHighSensitivityCompliance: '高灵敏与顺从',
+  coboFeatureDetailHighSensitivityCompliance:
+    '各关节力矩传感器提供亚牛顿级精度，确保对人安全的柔顺交互。',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF 灵巧度',
+  coboFeatureDetailSevenDOFDexterity:
+    '七个旋转关节带来类人臂的臂展与冗余，胜任复杂任务。',
+  coboFeatureLabelPayloadReachFR3: '负载与臂展',
+  coboFeatureDetailPayloadReachFR3:
+    '负载最高 3 kg，臂展 855 mm，兼顾精细与远距操作。',
+  coboFeatureLabelPowerConnectivity: '供电与连接',
+  coboFeatureDetailPowerConnectivity:
+    '24V DC 供电；内置以太网与实时接口，支持 ROS 与自定义控制。',
+  coboFeatureLabelCompactLightweight: '紧凑轻量',
+  coboFeatureDetailCompactLightweight:
+    '总重约 18 kg，纤薄外形便于实验室集成与移动。',
 };
 

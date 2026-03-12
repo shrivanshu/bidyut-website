@@ -754,5 +754,62 @@ export const ta = {
   coboSearchNoResults: 'உங்கள் தேடலுக்கு ஏற்ற கோபோட் இல்லை.',
   coboSearchNoResultsHelper: 'வேறு சொற்களை முயற்சிக்கவும் அல்லது அனைத்து கோபோட்களையும் பார்க்கவும்.',
   coboGalleryHeading: 'காட்சியகம்',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'Z1 Arm ஒரு உயர் துல்லிய, இலகுரக ரோபோட்டிக் கை; ஹார்மோனிக் ரிட்யூசர், தொழில்துறை தரமான கிராஸ்-ரோலர் பேரிங் மற்றும் மேம்பட்ட டார்க் கட்டுப்பாடு கொண்டது. தொழில் மற்றும் ஆராய்ச்சிக்காக நிலையான, நுணுக்கமான செயல்திறன் வழங்குகிறது.',
+  coboFeatureLabelHighTorqueAccuracy: 'உயர் டார்க் & துல்லியம்',
+  coboFeatureDetailHighTorqueAccuracy:
+    'அதிகபட்ச டார்க் 33N·m, ~0.2N·m புலன் கட்டுப்பாட்டு துல்லியம், ~6 arcmin பின்விளைவுத்தன்மை',
+  coboFeatureLabelCommunicationControl: 'தொடர்பு & கட்டுப்பாடு',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 தொடர்பு, 1KHz கட்டுப்பாட்டு அதிர்வெண், டார்க் மற்றும் கோணம் கட்டளைகள்',
+  coboFeatureLabelLightweightCompact: 'இலகுரக & சுருக்கமானது',
+  coboFeatureDetailLightweightCompact:
+    'எடை 405g, Ø65×52mm அளவு, தொழில்துறை கிராஸ்-ரோலர் பேரிங்குடன் ஹார்மோனிக் ரிட்யூசர்',
+  coboFeatureLabelAdvancedSensing: 'மேம்பட்ட உணர்வு',
+  coboFeatureDetailAdvancedSensing:
+    'டார்க், கோணம், கோண வேகம் பிரதிபலிப்பு (15-பிட் என்கோடர் தீர்மானம்)',
+  coboFeatureLabelPowerControlCommands: 'பவர் & கட்டுப்பாட்டு கட்டளைகள்',
+  coboFeatureDetailPowerControlCommands:
+    'பரிந்துரைக்கப்பட்ட 24V மின்னழுத்தம், ஸ்டிஃப்னஸ் மற்றும் டாம்பிங் கட்டுப்பாடு ஆதரவு',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'D1 ரோபோட்டிக் கை 6-அச்சு + 1 கிரிப்பர் அமைப்புடன் வருகிறது; உயர் நெகிழ்வுத்தன்மை மற்றும் பரந்த இயக்க வரம்பை அளிக்கிறது. இலகுரக, சுருக்கமான வடிவம் மற்றும் பல இடைமுகங்கள் தொழில்/ஆராய்ச்சி பயன்பாடுகளுக்கு துல்லிய கட்டுப்பாட்டை வழங்குகின்றன.',
+  coboFeatureLabelLightweightDesign: 'இலகுரக வடிவம்',
+  coboFeatureDetailLightweightDesign:
+    'சுமார் 2.37 கிலோ, பல்துறை பயன்பாட்டுக்கு சுருக்கமானதும் எடுத்துச் செல்லக்கூடியதும்',
+  coboFeatureLabelHighFlexibility: 'உயர் நெகிழ்வு',
+  coboFeatureDetailHighFlexibility:
+    '6-அச்சு + 1 கிரிப்பர், ±135° மற்றும் ±90° இணை இயக்கங்கள்',
+  coboFeatureLabelPayloadReach: 'சுமை & ரீச்',
+  coboFeatureDetailPayloadReach:
+    'சுமை 500g, ரீச் 550mm (கிரிப்பர் இல்லாமல்), 670mm (கிரிப்பருடன்)',
+  coboFeatureLabelPowerInterface: 'பவர் & இடைமுகங்கள்',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A (அதிகபட்சம் 5A) பவர், DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: 'மோட்டார் & சக்தி',
+  coboFeatureDetailMotorPower:
+    'பஸ் சர்வோ மோட்டார், 60W மதிப்பிடப்பட்ட சக்தி நம்பகத்தன்மைக்காக',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 ஒரு முன்னேற்றமான 7-DOF ரோபோட்டிக் கை; மேம்பட்ட ரோபோட்டிக்ஸ் ஆராய்ச்சி மற்றும் மனித-ரோபோட் தொடர்புக்கு உருவாக்கப்பட்டது. மிகுந்த புலன் உணர்வு, மாடுலர் கட்டுப்பாடு மற்றும் இலகுரக வடிவமைப்பு லேப்கள் மற்றும் ஆட்டோமேஷன் செல்-களில் பாதுகாப்பான, துல்லியமான கையாள்தலை வழங்குகிறது.',
+  coboFeatureLabelHighSensitivityCompliance: 'உயர் உணர்திறன் & இணக்கம்',
+  coboFeatureDetailHighSensitivityCompliance:
+    'ஒவ்வொரு இணைப்பிலும் டார்க் சென்சார்கள், மனிதருக்கு பாதுகாப்பான தொடர்புடன் சப்-நியூட்டன் துல்லியம் அளிக்கின்றன.',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF திறமை',
+  coboFeatureDetailSevenDOFDexterity:
+    'ஏழு சுழற்சி இணைப்புகள் மனிதக் கைக்கு ஒத்த ரீச் மற்றும் அதிக redundancies வழங்குகின்றன.',
+  coboFeatureLabelPayloadReachFR3: 'சுமை & ரீச்',
+  coboFeatureDetailPayloadReachFR3:
+    'அதிகபட்சம் 3 kg சுமை, 855 mm ரீச்—நுணுக்கமும் நீளமும் கொண்ட பணிகளுக்கு ஏற்றது.',
+  coboFeatureLabelPowerConnectivity: 'பவர் & இணைப்பு',
+  coboFeatureDetailPowerConnectivity:
+    '24V DC சப்ளை; ROS மற்றும் தனிப்பயன் கட்டுப்பாட்டுக்கு Ethernet/நேரடி இடைமுகங்கள் இணைக்கப்பட்டுள்ளது.',
+  coboFeatureLabelCompactLightweight: 'காம்பாக்ட் & இலகுரக',
+  coboFeatureDetailCompactLightweight:
+    'மொத்த எடை சுமார் 18 kg; ஸ்லிம் ப்ரொஃபைல் லேப் ஒருங்கிணைப்பு மற்றும் சுலபமான இயக்கத்தை உருவாக்குகிறது.',
 };
 

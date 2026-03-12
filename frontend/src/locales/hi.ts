@@ -801,4 +801,62 @@ b2HeroHighlight: 'B2 एडवांस्ड इंडस्ट्रियल 
   coboSearchNoResults: "आपकी खोज से कोई कोबोट नहीं मिला।",
   coboSearchNoResultsHelper: "अन्य कीवर्ड आज़माएँ या सभी कोबोट देखें।",
   coboGalleryHeading: "गैलरी",
+
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: "Z1 आर्म",
+  coboSpecDescZ1Arm:
+    "Z1 आर्म एक उच्च-सटीक, हल्का रोबोटिक आर्म है जिसमें हार्मोनिक रिड्यूसर, इंडस्ट्रियल-ग्रेड क्रॉस‑रोलर बेयरिंग्स और एडवांस्ड टॉर्क कंट्रोल है। यह उच्च शुद्धता, स्थिर प्रदर्शन और औद्योगिक तथा शोध उपयोगों के लिए मजबूत संचार प्रदान करता है।",
+  coboFeatureLabelHighTorqueAccuracy: "उच्च टॉर्क और शुद्धता",
+  coboFeatureDetailHighTorqueAccuracy:
+    "33N·m अधिकतम टॉर्क, लगभग 0.2N·m फोर्स कंट्रोल शुद्धता, लगभग 6 आर्कमिन बैकलैश",
+  coboFeatureLabelCommunicationControl: "कम्युनिकेशन और कंट्रोल",
+  coboFeatureDetailCommunicationControl:
+    "RS 485 संचार, 1KHz कंट्रोल फ्रीक्वेंसी, टॉर्क और एंगल कंट्रोल कमांड्स",
+  coboFeatureLabelLightweightCompact: "हल्का और कॉम्पैक्ट",
+  coboFeatureDetailLightweightCompact:
+    "वज़न 405g, Ø65×52mm आकार, इंडस्ट्रियल-ग्रेड क्रॉस‑रोलर बेयरिंग्स वाला हार्मोनिक रिड्यूसर",
+  coboFeatureLabelAdvancedSensing: "उन्नत सेंसर",
+  coboFeatureDetailAdvancedSensing:
+    "टॉर्क, कोण, कोणीय वेग फीडबैक 15‑बिट एन्कोडर रेज़ोल्यूशन के साथ",
+  coboFeatureLabelPowerControlCommands: "पावर और कंट्रोल कमांड्स",
+  coboFeatureDetailPowerControlCommands:
+    "अनुशंसित 24V वोल्टेज, स्टिफनेस और डैम्पिंग कंट्रोल सपोर्ट",
+
+  coboSpecNameD1Arm: "D1 रोबोटिक आर्म",
+  coboSpecDescD1Arm:
+    "D1 रोबोटिक आर्म 6‑एक्सिस + 1 ग्रिपर कॉन्फ़िगरेशन देता है जो उच्च लचीलापन और व्यापक रेंज प्रदान करता है। कॉम्पैक्ट डिज़ाइन, हल्के निर्माण और कई इंटरफ़ेस विकल्पों के साथ यह औद्योगिक और शोध उपयोगों के लिए सटीक नियंत्रण देता है।",
+  coboFeatureLabelLightweightDesign: "हल्का डिज़ाइन",
+  coboFeatureDetailLightweightDesign:
+    "लगभग 2.37 किग्रा वज़न, बहुउपयोगी अनुप्रयोगों के लिए कॉम्पैक्ट और पोर्टेबल",
+  coboFeatureLabelHighFlexibility: "उच्च लचीलापन",
+  coboFeatureDetailHighFlexibility:
+    "6‑एक्सिस + 1 ग्रिपर कॉन्फ़िगरेशन, ±135° और ±90° जॉइंट मूवमेंट",
+  coboFeatureLabelPayloadReach: "पेलोड और रीच",
+  coboFeatureDetailPayloadReach:
+    "पेलोड 500g, रीच 550mm (बिना ग्रिपर), 670mm (ग्रिपर के साथ)",
+  coboFeatureLabelPowerInterface: "पावर और इंटरफ़ेस",
+  coboFeatureDetailPowerInterface:
+    "24V 2.5A (मैक्स 5A) पावर सप्लाई, DC5.5‑2.1 + RJ45 + Type‑C इंटरफ़ेस",
+  coboFeatureLabelMotorPower: "मोटर और पावर",
+  coboFeatureDetailMotorPower:
+    "बस सर्वो मोटर प्रकार, 60W पावर रेटिंग विश्वसनीय प्रदर्शन के लिए",
+
+  coboSpecNameFR3Arm: "Franka Research 3",
+  coboSpecDescFR3Arm:
+    "Franka Research 3 एक अत्याधुनिक 7‑DOF रोबोटिक आर्म है जो उन्नत रोबोटिक्स रिसर्च और मानव‑रोबोट इंटरैक्शन के लिए बनाया गया है। उत्कृष्ट फोर्स सेंसिटिविटी, मॉड्यूलर कंट्रोल आर्किटेक्चर और हल्के, सुंदर डिज़ाइन के साथ यह लैब, ऑटोमेशन सेल और AI प्रोजेक्ट्स में सुरक्षित, सटीक हेरफेर सक्षम करता है।",
+  coboFeatureLabelHighSensitivityCompliance: "उच्च संवेदनशीलता और अनुपालन",
+  coboFeatureDetailHighSensitivityCompliance:
+    "हर जॉइंट में टॉर्क सेंसर सब‑न्यूटन सटीकता और सुरक्षित मानव‑अनुकूल इंटरैक्शन देते हैं।",
+  coboFeatureLabelSevenDOFDexterity: "7‑DOF डेक्स्टेरिटी",
+  coboFeatureDetailSevenDOFDexterity:
+    "सात रोटेशनल जॉइंट्स मानव‑बांह जैसी पहुँच और जटिल कार्यों के लिए अतिरिक्त स्वतंत्रता देते हैं।",
+  coboFeatureLabelPayloadReachFR3: "पेलोड और रीच",
+  coboFeatureDetailPayloadReachFR3:
+    "3 किग्रा तक पेलोड, 855 mm रीच—सटीक और विस्तारित दोनों तरह के कार्यों के लिए उपयुक्त।",
+  coboFeatureLabelPowerConnectivity: "पावर और कनेक्टिविटी",
+  coboFeatureDetailPowerConnectivity:
+    "24V DC सप्लाई पर चलता है; ROS और कस्टम कंट्रोल के लिए इंटीग्रेटेड ईथरनेट और रियल‑टाइम इंटरफ़ेस।",
+  coboFeatureLabelCompactLightweight: "कॉम्पैक्ट और हल्का",
+  coboFeatureDetailCompactLightweight:
+    "करीब 18 किग्रा कुल वज़न, स्लिम प्रोफ़ाइल के साथ लैब एकीकरण और मोबाइलिटी आसान।",
 };

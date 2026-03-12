@@ -838,6 +838,64 @@ export const en = {
   coboSearchNoResults: 'No cobots found matching your search.',
   coboSearchNoResultsHelper: 'Try different keywords or browse all cobots.',
   coboGalleryHeading: 'Gallery',
+
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'The Z1 Arm is a high-precision, lightweight robotic arm with a harmonic reducer, industrial-grade cross-roller bearings, and advanced torque control. It delivers high accuracy, stable performance, and robust communication for industrial and research applications.',
+  coboFeatureLabelHighTorqueAccuracy: 'High Torque & Accuracy',
+  coboFeatureDetailHighTorqueAccuracy:
+    '33N·m maximum torque, ~0.2N·m force control accuracy, ~6 arcmin backlash',
+  coboFeatureLabelCommunicationControl: 'Communication & Control',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 communication, 1KHz control frequency, torque & angle control commands',
+  coboFeatureLabelLightweightCompact: 'Lightweight & Compact',
+  coboFeatureDetailLightweightCompact:
+    'Weight 405g, Ø65×52mm size, harmonic reducer with industrial-grade cross-roller bearings',
+  coboFeatureLabelAdvancedSensing: 'Advanced Sensing',
+  coboFeatureDetailAdvancedSensing:
+    'Torque, angle, angular velocity feedback with 15-bit encoder resolution',
+  coboFeatureLabelPowerControlCommands: 'Power & Control Commands',
+  coboFeatureDetailPowerControlCommands:
+    'Recommended 24V voltage, supports stiffness and damping control',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'The D1 Robotic Arm offers a 6-axis + 1 gripper configuration for high flexibility and a wide range of motion. With compact design, lightweight build, and multiple interface options, it provides precise control for industrial and research applications.',
+  coboFeatureLabelLightweightDesign: 'Lightweight Design',
+  coboFeatureDetailLightweightDesign:
+    'Approx. 2.37 kg weight, compact and portable for versatile applications',
+  coboFeatureLabelHighFlexibility: 'High Flexibility',
+  coboFeatureDetailHighFlexibility:
+    '6-axis + 1 gripper configuration, ±135° and ±90° joint movements',
+  coboFeatureLabelPayloadReach: 'Payload & Reach',
+  coboFeatureDetailPayloadReach:
+    'Payload 500g, reach 550mm (without gripper), 670mm (with gripper)',
+  coboFeatureLabelPowerInterface: 'Power & Interface',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A (max 5A) power supply, DC5.5‑2.1 + RJ45 + Type‑C interfaces',
+  coboFeatureLabelMotorPower: 'Motor & Power',
+  coboFeatureDetailMotorPower:
+    'Bus servo motor type, 60W power rating for reliable performance',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 is a state-of-the-art 7-DOF robotic arm for advanced robotics research and human–robot interaction. With exceptional force sensitivity, modular control architecture, and an elegant lightweight design, it enables safe, precise manipulation in labs, automation cells, and AI-driven projects.',
+  coboFeatureLabelHighSensitivityCompliance: 'High Sensitivity & Compliance',
+  coboFeatureDetailHighSensitivityCompliance:
+    'Torque sensors in every joint provide sub-newton precision and soft, human-safe interaction.',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF Dexterity',
+  coboFeatureDetailSevenDOFDexterity:
+    'Seven rotational joints offer human-arm-like reach and redundancy for complex tasks.',
+  coboFeatureLabelPayloadReachFR3: 'Payload & Reach',
+  coboFeatureDetailPayloadReachFR3:
+    'Payload up to 3 kg with an 855 mm reach for both delicate and extended manipulation.',
+  coboFeatureLabelPowerConnectivity: 'Power & Connectivity',
+  coboFeatureDetailPowerConnectivity:
+    'Runs on 24 V DC supply; integrated Ethernet and real-time interfaces for ROS and custom control.',
+  coboFeatureLabelCompactLightweight: 'Compact & Lightweight',
+  coboFeatureDetailCompactLightweight:
+    'Approx. 18 kg total weight with a slim profile for easy lab integration and mobility.',
 };
 
 

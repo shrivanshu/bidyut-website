@@ -758,5 +758,62 @@ export const bn = {
   coboSearchNoResults: 'আপনার খোঁজে কোনো কোবট পাওয়া যায়নি।',
   coboSearchNoResultsHelper: 'ভিন্ন শব্দ চেষ্টা করুন বা সব কোবট ব্রাউজ করুন।',
   coboGalleryHeading: 'গ্যালারি',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 আর্ম',
+  coboSpecDescZ1Arm:
+    'Z1 আর্ম একটি উচ্চ-নির্ভুল, হালকা রোবোটিক আর্ম; এতে হারমোনিক রিডিউসার, ইন্ডাস্ট্রিয়াল ক্রস-রোলার বেয়ারিং ও উন্নত টর্ক কন্ট্রোল রয়েছে। এটি শিল্প ও গবেষণায় উচ্চ নির্ভুলতা ও স্থিতিশীল পারফরম্যান্স দেয়।',
+  coboFeatureLabelHighTorqueAccuracy: 'উচ্চ টর্ক ও নির্ভুলতা',
+  coboFeatureDetailHighTorqueAccuracy:
+    '৩৩N·m সর্বোচ্চ টর্ক, ~০.২N·m ফোর্স কন্ট্রোল নির্ভুলতা, ~৬ আর্কমিন ব্যাকল্যাশ',
+  coboFeatureLabelCommunicationControl: 'যোগাযোগ ও নিয়ন্ত্রণ',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 যোগাযোগ, 1KHz নিয়ন্ত্রণ ফ্রিকোয়েন্সি, টর্ক ও অ্যাঙ্গেল কমান্ড',
+  coboFeatureLabelLightweightCompact: 'হালকা ও কমপ্যাক্ট',
+  coboFeatureDetailLightweightCompact:
+    'ওজন ৪০৫g, Ø65×52mm আকার, ইন্ডাস্ট্রিয়াল ক্রস-রোলার বেয়ারিংসহ হারমোনিক রিডিউসার',
+  coboFeatureLabelAdvancedSensing: 'উন্নত সেন্সিং',
+  coboFeatureDetailAdvancedSensing:
+    'টর্ক, কোণ, কৌণিক বেগ ফিডব্যাক ১৫-বিট এনকোডার রেজোলিউশনসহ',
+  coboFeatureLabelPowerControlCommands: 'পাওয়ার ও কন্ট্রোল কমান্ড',
+  coboFeatureDetailPowerControlCommands:
+    'প্রস্তাবিত ২৪V ভোল্টেজ, স্টিফনেস ও ড্যাম্পিং কন্ট্রোল সমর্থন',
+
+  coboSpecNameD1Arm: 'D1 রোবোটিক আর্ম',
+  coboSpecDescD1Arm:
+    'D1 রোবোটিক আর্ম ৬-অক্ষ + ১ গ্রিপার কনফিগারেশন দেয়, যা উচ্চ নমনীয়তা ও বিস্তৃত গতি নিশ্চিত করে। কমপ্যাক্ট ও হালকা ডিজাইন এবং বহু ইন্টারফেস বিকল্পসহ শিল্প ও গবেষণায় নির্ভুল নিয়ন্ত্রণ দেয়।',
+  coboFeatureLabelLightweightDesign: 'হালকা ডিজাইন',
+  coboFeatureDetailLightweightDesign:
+    'প্রায় ২.৩৭ কেজি, বহুমুখী ব্যবহারের জন্য কমপ্যাক্ট ও পোর্টেবল',
+  coboFeatureLabelHighFlexibility: 'উচ্চ নমনীয়তা',
+  coboFeatureDetailHighFlexibility:
+    '৬-অক্ষ + ১ গ্রিপার, ±১৩৫° ও ±৯০° জয়েন্ট মুভমেন্ট',
+  coboFeatureLabelPayloadReach: 'পেলোড ও রিচ',
+  coboFeatureDetailPayloadReach:
+    'পেলোড ৫০০g, রিচ ৫৫০mm (গ্রিপার ছাড়া), ৬৭০mm (গ্রিপারসহ)',
+  coboFeatureLabelPowerInterface: 'পাওয়ার ও ইন্টারফেস',
+  coboFeatureDetailPowerInterface:
+    '২৪V ২.৫A (সর্বোচ্চ ৫A) সাপ্লাই, DC5.5‑2.1 + RJ45 + Type‑C ইন্টারফেস',
+  coboFeatureLabelMotorPower: 'মোটর ও পাওয়ার',
+  coboFeatureDetailMotorPower:
+    'বাস সার্ভো মোটর টাইপ, ৬০W রেটেড পাওয়ার নির্ভরযোগ্য পারফরম্যান্সের জন্য',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 একটি আধুনিক ৭-DOF রোবোটিক আর্ম, উন্নত রোবোটিক্স গবেষণা ও মানব-রোবট ইন্টারঅ্যাকশনের জন্য। অসাধারণ ফোর্স সংবেদনশীলতা, মডুলার কন্ট্রোল এবং হালকা আকারে এটি ল্যাব ও অটোমেশন সেলে নিরাপদ, সূক্ষ্ম ম্যানিপুলেশন সক্ষম করে।',
+  coboFeatureLabelHighSensitivityCompliance: 'উচ্চ সংবেদনশীলতা ও কমপ্লায়েন্স',
+  coboFeatureDetailHighSensitivityCompliance:
+    'প্রতিটি জয়েন্টে টর্ক সেন্সর সাব-নিউটন নির্ভুলতা ও নিরাপদ মানব-অনুকূল ইন্টারঅ্যাকশন দেয়।',
+  coboFeatureLabelSevenDOFDexterity: '৭-DOF দক্ষতা',
+  coboFeatureDetailSevenDOFDexterity:
+    'সাতটি রোটেশনাল জয়েন্ট মানব-বাহুর মতো রিচ ও জটিল কাজে অতিরিক্ত স্বাধীনতা দেয়।',
+  coboFeatureLabelPayloadReachFR3: 'পেলোড ও রিচ',
+  coboFeatureDetailPayloadReachFR3:
+    '৩ কেজি পর্যন্ত পেলোড, ৮৫৫ mm রিচ—নাজুক ও বিস্তৃত উভয় কাজে উপযোগী।',
+  coboFeatureLabelPowerConnectivity: 'পাওয়ার ও কানেক্টিভিটি',
+  coboFeatureDetailPowerConnectivity:
+    '২৪V DC সাপ্লাইয়ে চলে; ROS ও কাস্টম কন্ট্রোলের জন্য ইন্টিগ্রেটেড ইথারনেট ও রিয়েল-টাইম ইন্টারফেস।',
+  coboFeatureLabelCompactLightweight: 'কমপ্যাক্ট ও হালকা',
+  coboFeatureDetailCompactLightweight:
+    'মোট ওজন প্রায় ১৮ কেজি; স্লিম প্রোফাইল ল্যাব ইন্টিগ্রেশন ও মবিলিটি সহজ করে।',
 };
 

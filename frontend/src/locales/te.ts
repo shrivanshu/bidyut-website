@@ -754,5 +754,62 @@ export const te = {
   coboSearchNoResults: 'మీ శోధనకు సరిపడే కోబోట్‌లు లేవు.',
   coboSearchNoResultsHelper: 'వేరే కీలకపదాలను ప్రయత్నించండి లేదా అన్ని కోబోట్‌లను చూడండి.',
   coboGalleryHeading: 'గ్యాలరీ',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'Z1 Arm ఒక అధిక-నిర్దిష్టత, తేలికపాటి రోబోటిక్ భుజం; హార్మోనిక్ రిడ్యూసర్, ఇండస్ట్రియల్ క్రాస్-రోలర్ బేరింగ్స్ మరియు అడ్వాన్స్‌డ్ టార్క్ కంట్రోల్ కలిగి ఉంది. పరిశ్రమ మరియు పరిశోధన అవసరాల కోసం ఖచ్చితమైన, స్థిరమైన పనితీరు అందిస్తుంది.',
+  coboFeatureLabelHighTorqueAccuracy: 'అధిక టార్క్ & ఖచ్చితత్వం',
+  coboFeatureDetailHighTorqueAccuracy:
+    'గరిష్ట టార్క్ 33N·m, ~0.2N·m ఫోర్స్ కంట్రోల్ ఖచ్చితత్వం, ~6 arcmin బ్యాక్‌లాష్',
+  coboFeatureLabelCommunicationControl: 'కమ్యూనికేషన్ & కంట్రోల్',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 కమ్యూనికేషన్, 1KHz కంట్రోల్ ఫ్రీక్వెన్సీ, టార్క్/కోణ కమాండ్లు',
+  coboFeatureLabelLightweightCompact: 'తేలిక & కాంపాక్ట్',
+  coboFeatureDetailLightweightCompact:
+    'బరువు 405g, Ø65×52mm పరిమాణం, క్రాస్-రోలర్ బేరింగ్స్‌తో హార్మోనిక్ రిడ్యూసర్',
+  coboFeatureLabelAdvancedSensing: 'అడ్వాన్స్‌డ్ సెంసింగ్',
+  coboFeatureDetailAdvancedSensing:
+    'టార్క్, కోణం, కోణీయ వేగం ఫీడ్‌బ్యాక్ (15-బిట్ ఎన్‌కోడర్ రిజల్యూషన్)',
+  coboFeatureLabelPowerControlCommands: 'పవర్ & కంట్రోల్ కమాండ్లు',
+  coboFeatureDetailPowerControlCommands:
+    'సిఫారసు 24V వోల్టేజ్, స్టిఫ్‌నెస్ మరియు డాంపింగ్ కంట్రోల్ మద్దతు',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'D1 రోబోటిక్ భుజం 6-అక్షలు + 1 గ్రిప్పర్ కన్ఫిగరేషన్‌తో వస్తుంది; ఎక్కువ సౌలభ్యం మరియు విస్తృత కదలిక శ్రేణి అందిస్తుంది. తేలిక, కాంపాక్ట్ డిజైన్ మరియు బహుళ ఇంటర్‌ఫేస్ ఎంపికలు పరిశ్రమ/పరిశోధనకు ఖచ్చిత నియంత్రణ ఇస్తాయి.',
+  coboFeatureLabelLightweightDesign: 'తేలికైన డిజైన్',
+  coboFeatureDetailLightweightDesign:
+    'దాదాపు 2.37 కిలోలు, బహుముఖ వినియోగానికి కాంపాక్ట్ మరియు పోర్టబుల్',
+  coboFeatureLabelHighFlexibility: 'అధిక సౌలభ్యం',
+  coboFeatureDetailHighFlexibility:
+    '6-అక్షలు + 1 గ్రిప్పర్, ±135° మరియు ±90° జాయింట్ మూవ్‌మెంట్లు',
+  coboFeatureLabelPayloadReach: 'పేలొడ్ & రీచ్',
+  coboFeatureDetailPayloadReach:
+    'పేలొడ్ 500g, రీచ్ 550mm (గ్రిప్పర్ లేకుండా), 670mm (గ్రిప్పర్‌తో)',
+  coboFeatureLabelPowerInterface: 'పవర్ & ఇంటర్‌ఫేస్',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A (గరిష్టం 5A) పవర్, DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: 'మోటార్ & పవర్',
+  coboFeatureDetailMotorPower:
+    'బస్ సర్వో మోటార్, నమ్మదగిన పనితీరుకు 60W రేటెడ్ పవర్',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 ఒక ఆధునిక 7-DOF రోబోటిక్ భుజం; అధునాతన రోబోటిక్స్ పరిశోధన మరియు మానవ-రోబోట్ సంభాషణ కోసం రూపొందించబడింది. అత్యుత్తమ ఫోర్స్ సెన్సిటివిటీ, మాడ్యులర్ కంట్రోల్ మరియు తేలికైన డిజైన్‌తో ల్యాబ్, ఆటోమేషన్ సెల్ మరియు AI ప్రాజెక్టుల్లో సురక్షిత, ఖచ్చిత హ్యాండ్లింగ్‌ను అందిస్తుంది.',
+  coboFeatureLabelHighSensitivityCompliance: 'అధిక సున్నితత్వం & అనువర్తనత',
+  coboFeatureDetailHighSensitivityCompliance:
+    'ప్రతి జాయింట్‌లో టార్క్ సెన్సర్లు సబ్-న్యూటన్ ఖచ్చితత్వం మరియు మానవానికి సురక్షిత సంభాషణను అందిస్తాయి.',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF నైపుణ్యం',
+  coboFeatureDetailSevenDOFDexterity:
+    'ఏడు రోటేషనల్ జాయింట్లు మానవ చేతి వంటి రీచ్ మరియు సంక్లిష్ట పనుల కోసం అదనపు స్వేచ్ఛను ఇస్తాయి.',
+  coboFeatureLabelPayloadReachFR3: 'పేలొడ్ & రీచ్',
+  coboFeatureDetailPayloadReachFR3:
+    '3 కిలోల వరకు పేలొడ్, 855 mm రీచ్—సూక్ష్మ మరియు విస్తృత పనులకు అనుకూలం.',
+  coboFeatureLabelPowerConnectivity: 'పవర్ & కనెక్టివిటీ',
+  coboFeatureDetailPowerConnectivity:
+    '24V DC సరఫరాపై నడుస్తుంది; ROS మరియు కస్టమ్ కంట్రోల్ కోసం ఈథర్నెట్/రియల్-టైమ్ ఇంటర్‌ఫేస్‌లు ఉన్నాయి.',
+  coboFeatureLabelCompactLightweight: 'కాంపాక్ట్ & తేలిక',
+  coboFeatureDetailCompactLightweight:
+    'మొత్తం బరువు సుమారు 18 కిలోలు; స్లిమ్ ప్రొఫైల్ ల్యాబ్ ఏకీకరణ మరియు మొబిలిటీని సులభం చేస్తుంది.',
 };
 

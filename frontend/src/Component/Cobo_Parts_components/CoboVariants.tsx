@@ -104,10 +104,10 @@ const robotSpecs: RobotSpec[] = [
   },
   {
     id: 'D1-Arm',
-    name: 'Join thousands of businesses already using our lightweight cobots to boost efficiency, enhance precision, and take automation to the next level.',
+    name: 'D1 Robotic Arm',
     description:
-      'The D1 Robotic Arm offers 6-axis + 1 gripper configuration for high flexibility and wide range of motion. With a compact design, lightweight build, and multiple interface options, it provides precise control for industrial and research applications.',
-    gallery: ['/Cobo/D1-arm.webp', '/Cobo/d1-arm.webp'],
+      'Join thousands of businesses already using our lightweight cobots to boost efficiency, enhance precision, and take automation to the next level.',
+    gallery: ['/Cobo/d1-arm.webp'],
     features: [
       {
         label: 'Lightweight Design',
@@ -284,45 +284,47 @@ function CoboVariants () {
   const { isDark } = useTheme()
   const { t } = useLanguage()
   const translateWithFallback = (key: string, fallback: string) => {
-    const translated = t(key);
-    return translated === key ? fallback : translated;
-  };
-  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '');
+    const translated = t(key)
+    return translated === key ? fallback : translated
+  }
+  const sanitizeKey = (value: string) => value.replace(/[^a-zA-Z0-9]/g, '')
   const toCamelKey = (value: string) => {
-    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean);
-    if (!parts.length) return sanitizeKey(value);
+    const parts = value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
+    if (!parts.length) return sanitizeKey(value)
     return parts
       .map((part, idx) =>
-        idx === 0 ? part.toLowerCase() : part.charAt(0).toUpperCase() + part.slice(1)
+        idx === 0
+          ? part.toLowerCase()
+          : part.charAt(0).toUpperCase() + part.slice(1)
       )
-      .join('');
-  };
+      .join('')
+  }
   const toPascalKey = (value: string) => {
-    const camel = toCamelKey(value);
-    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel;
-  };
+    const camel = toCamelKey(value)
+    return camel ? camel.charAt(0).toUpperCase() + camel.slice(1) : camel
+  }
   const translateWithKeyVariants = (
     prefix: string,
     id: string,
     fallback: string,
     extraIds: string[] = []
   ) => {
-    const baseIds = [id, ...extraIds];
-    const candidates: string[] = [];
-    baseIds.forEach((value) => {
+    const baseIds = [id, ...extraIds]
+    const candidates: string[] = []
+    baseIds.forEach(value => {
       candidates.push(
         `${prefix}${sanitizeKey(value)}`,
         `${prefix}${toCamelKey(value)}`,
         `${prefix}${toPascalKey(value)}`,
         `${prefix}${value}`
-      );
-    });
+      )
+    })
     for (const key of candidates) {
-      const translated = t(key);
-      if (translated !== key) return translated;
+      const translated = t(key)
+      if (translated !== key) return translated
     }
-    return fallback;
-  };
+    return fallback
+  }
   const [selectedVariant, setSelectedVariant] = useState('go2-basic')
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -347,12 +349,17 @@ function CoboVariants () {
   // Derive display data from either selected search item or current variant
   const displayName =
     selectedCobot?.name ??
-    translateWithKeyVariants('coboSpecName', currentSpec.id, currentSpec.name, [currentSpec.name])
-  const displayDescription =
-    selectedCobot?.description ??
-    translateWithKeyVariants('coboSpecDesc', currentSpec.id, currentSpec.description, [
+    translateWithKeyVariants('coboSpecName', currentSpec.id, currentSpec.name, [
       currentSpec.name
     ])
+  const displayDescription =
+    selectedCobot?.description ??
+    translateWithKeyVariants(
+      'coboSpecDesc',
+      currentSpec.id,
+      currentSpec.description,
+      [currentSpec.name]
+    )
   const displayGallery = selectedCobot?.gallery?.length
     ? selectedCobot.gallery
     : currentSpec.gallery
@@ -533,10 +540,16 @@ function CoboVariants () {
               {filteredCobots.length === 0 && (
                 <div className='text-center py-12'>
                   <div className='text-gray-400 dark:text-gray-500 text-lg'>
-                    {translateWithFallback('coboSearchNoResults', 'No cobots found matching your search.')}
+                    {translateWithFallback(
+                      'coboSearchNoResults',
+                      'No cobots found matching your search.'
+                    )}
                   </div>
                   <p className='text-gray-500 dark:text-gray-400 text-sm mt-2'>
-                    {translateWithFallback('coboSearchNoResultsHelper', 'Try different keywords or browse all cobots.')}
+                    {translateWithFallback(
+                      'coboSearchNoResultsHelper',
+                      'Try different keywords or browse all cobots.'
+                    )}
                   </p>
                 </div>
               )}
@@ -586,7 +599,10 @@ function CoboVariants () {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <SelectValue
-                placeholder={translateWithFallback('coboVariantDropdownPlaceholder', 'Choose your preferred variants')}
+                placeholder={translateWithFallback(
+                  'coboVariantDropdownPlaceholder',
+                  'Choose your preferred variants'
+                )}
                 value={selectedVariant}
               />
               <ChevronDown className='h-4 w-4 md:h-5 md:w-5 opacity-50 dark:opacity-70' />
@@ -623,7 +639,10 @@ function CoboVariants () {
                 {displayName}
               </h2>
               <h3 className='text-lg sm:text-xl md:text-2xl font-subheading text-gray-700 dark:text-gray-400 font-medium'>
-                {translateWithFallback('technicalSpecifications', 'Technical Specifications')}
+                {translateWithFallback(
+                  'technicalSpecifications',
+                  'Technical Specifications'
+                )}
               </h3>
               <p className='text-sm sm:text-base md:text-lg font-subheading text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl'>
                 {displayDescription}
@@ -780,7 +799,12 @@ function CoboVariants () {
                             : 'text-gray-900 dark:text-gray-100'
                         }`}
                       >
-                        {translateWithKeyVariants('coboFeatureLabel', feature.label, feature.label, [currentSpec.id])}
+                        {translateWithKeyVariants(
+                          'coboFeatureLabel',
+                          feature.label,
+                          feature.label,
+                          [currentSpec.id]
+                        )}
                       </div>
                       <div
                         className={`text-xs text-gray-600 dark:text-gray-400 leading-tight transition-opacity ${
@@ -789,10 +813,12 @@ function CoboVariants () {
                             : 'opacity-70'
                         }`}
                       >
-                        {translateWithKeyVariants('coboFeatureDetail', feature.detail, feature.detail, [
-                          feature.label,
-                          currentSpec.id
-                        ])}
+                        {translateWithKeyVariants(
+                          'coboFeatureDetail',
+                          feature.detail,
+                          feature.detail,
+                          [feature.label, currentSpec.id]
+                        )}
                       </div>
                     </div>
                   </div>

@@ -739,5 +739,62 @@ export const ja = {
   coboSearchNoResults: '条件に合うコボットが見つかりませんでした。',
   coboSearchNoResultsHelper: '別のキーワードを試すか、一覧を確認してください。',
   coboGalleryHeading: 'ギャラリー',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'Z1 Arm は高精度で軽量なロボティックアームです。ハーモニック減速機、産業用クロスローラーベアリング、先進のトルク制御を備え、産業・研究用途で高い精度と安定した性能を提供します。',
+  coboFeatureLabelHighTorqueAccuracy: '高トルクと高精度',
+  coboFeatureDetailHighTorqueAccuracy:
+    '最大トルク 33N·m、~0.2N·m の力制御精度、~6 arcmin バックラッシュ',
+  coboFeatureLabelCommunicationControl: '通信と制御',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 通信、1KHz 制御周波数、トルク/角度制御コマンド',
+  coboFeatureLabelLightweightCompact: '軽量・コンパクト',
+  coboFeatureDetailLightweightCompact:
+    '重量 405g、Ø65×52mm サイズ、産業用クロスローラーベアリング付きハーモニック減速機',
+  coboFeatureLabelAdvancedSensing: '高度センシング',
+  coboFeatureDetailAdvancedSensing:
+    'トルク・角度・角速度フィードバック（15 ビットエンコーダ分解能）',
+  coboFeatureLabelPowerControlCommands: '電源・制御コマンド',
+  coboFeatureDetailPowerControlCommands:
+    '推奨 24V 電圧、剛性および減衰制御をサポート',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'D1 ロボティックアームは 6 軸 + 1 グリッパー構成で高い柔軟性と広い可動域を実現。コンパクトで軽量、複数インターフェースにより産業・研究用途で精密な制御を提供します。',
+  coboFeatureLabelLightweightDesign: '軽量設計',
+  coboFeatureDetailLightweightDesign:
+    '重量 約 2.37kg、幅広い用途向けにコンパクト＆ポータブル',
+  coboFeatureLabelHighFlexibility: '高い柔軟性',
+  coboFeatureDetailHighFlexibility:
+    '6 軸 + 1 グリッパー、±135° / ±90° ジョイント動作',
+  coboFeatureLabelPayloadReach: 'ペイロードとリーチ',
+  coboFeatureDetailPayloadReach:
+    'ペイロード 500g、リーチ 550mm（グリッパー無）、670mm（グリッパー有）',
+  coboFeatureLabelPowerInterface: '電源とインターフェース',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A（最大 5A）電源、DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: 'モーターと電力',
+  coboFeatureDetailMotorPower:
+    'バスサーボモーター、信頼性のため 60W 定格',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 は先進的な 7-DOF ロボティックアームで、先端ロボティクス研究や人協調に適します。優れた力覚、モジュラー制御、軽量で洗練されたデザインにより、ラボや自動化セルで安全かつ精密な操作を可能にします。',
+  coboFeatureLabelHighSensitivityCompliance: '高感度・コンプライアンス',
+  coboFeatureDetailHighSensitivityCompliance:
+    '各関節のトルクセンサーがサブニュートン精度と人に安全なインタラクションを提供。',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF 器用さ',
+  coboFeatureDetailSevenDOFDexterity:
+    '7 つの回転関節が人の腕に近いリーチと冗長性を実現し、複雑作業に対応。',
+  coboFeatureLabelPayloadReachFR3: 'ペイロードとリーチ',
+  coboFeatureDetailPayloadReachFR3:
+    'ペイロード最大 3kg、リーチ 855 mm—繊細作業から拡張操作まで対応。',
+  coboFeatureLabelPowerConnectivity: '電源と接続性',
+  coboFeatureDetailPowerConnectivity:
+    '24V DC 電源で動作；ROS やカスタム制御向け Ethernet/リアルタイム IF を内蔵。',
+  coboFeatureLabelCompactLightweight: 'コンパクト・軽量',
+  coboFeatureDetailCompactLightweight:
+    '総重量約 18kg、スリムなプロファイルでラボ統合と可搬性が容易。',
 };
 

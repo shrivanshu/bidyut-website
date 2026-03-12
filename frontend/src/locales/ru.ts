@@ -743,5 +743,62 @@ export const ru = {
   coboSearchNoResults: 'Коботы по запросу не найдены.',
   coboSearchNoResultsHelper: 'Попробуйте другие слова или просмотрите все коботы.',
   coboGalleryHeading: 'Галерея',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'Z1 Arm — высокоточный лёгкий роботизированный манипулятор с гармоническим редуктором, промышленными крестовыми роликовыми подшипниками и продвинутым управлением моментом. Обеспечивает точность и стабильность для промышленных и исследовательских задач.',
+  coboFeatureLabelHighTorqueAccuracy: 'Высокий момент и точность',
+  coboFeatureDetailHighTorqueAccuracy:
+    'Макс. момент 33 N·m, точность управления силой ~0.2 N·m, люфт ~6 arcmin',
+  coboFeatureLabelCommunicationControl: 'Связь и управление',
+  coboFeatureDetailCommunicationControl:
+    'RS 485, частота управления 1 kHz, команды момента и угла',
+  coboFeatureLabelLightweightCompact: 'Лёгкий и компактный',
+  coboFeatureDetailLightweightCompact:
+    'Масса 405 г, размер Ø65×52 мм, гармонический редуктор с промышленными подшипниками',
+  coboFeatureLabelAdvancedSensing: 'Продвинутая сенсорика',
+  coboFeatureDetailAdvancedSensing:
+    'Обратная связь по моменту, углу и угловой скорости с энкодером 15 бит',
+  coboFeatureLabelPowerControlCommands: 'Питание и команды управления',
+  coboFeatureDetailPowerControlCommands:
+    'Рекомендуемое питание 24V, поддержка жесткости и демпфирования',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'D1 — 6-осевой манипулятор с дополнительным грейфером, обеспечивающий гибкость и большой диапазон движений. Компактный, лёгкий и с множеством интерфейсов для точного управления в промышленности и исследованиях.',
+  coboFeatureLabelLightweightDesign: 'Лёгкая конструкция',
+  coboFeatureDetailLightweightDesign:
+    'Около 2.37 кг, компактный и портативный',
+  coboFeatureLabelHighFlexibility: 'Высокая гибкость',
+  coboFeatureDetailHighFlexibility:
+    '6 осей + грейфер, движения ±135° и ±90°',
+  coboFeatureLabelPayloadReach: 'Грузоподъёмность и вылет',
+  coboFeatureDetailPayloadReach:
+    'Груз 500 г, вылет 550 мм (без грейфера) / 670 мм (с грейфером)',
+  coboFeatureLabelPowerInterface: 'Питание и интерфейсы',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A (макс. 5A), DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: 'Мотор и мощность',
+  coboFeatureDetailMotorPower:
+    'Шинный серводвигатель, номинальная мощность 60W',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 — современный 7-DOF манипулятор для исследований и человеко‑роботного взаимодействия. Исключительная чувствительность, модульная архитектура и лёгкий дизайн дают безопасное и точное управление в лабораториях и ячейках автоматизации.',
+  coboFeatureLabelHighSensitivityCompliance: 'Высокая чувствительность и комплаенс',
+  coboFeatureDetailHighSensitivityCompliance:
+    'Датчики момента в каждом суставе обеспечивают суб-ньютоновую точность и мягкое взаимодействие с человеком.',
+  coboFeatureLabelSevenDOFDexterity: 'Манёвренность 7 DOF',
+  coboFeatureDetailSevenDOFDexterity:
+    '7 вращательных суставов дают «человеческую» кинематику и избыточность для сложных задач.',
+  coboFeatureLabelPayloadReachFR3: 'Грузоподъёмность и вылет',
+  coboFeatureDetailPayloadReachFR3:
+    'До 3 кг при вылете 855 мм — для деликатных и дальнодействующих операций.',
+  coboFeatureLabelPowerConnectivity: 'Питание и подключение',
+  coboFeatureDetailPowerConnectivity:
+    'Работает от 24V DC; встроенный Ethernet и интерфейсы реального времени для ROS и пользовательского управления.',
+  coboFeatureLabelCompactLightweight: 'Компактный и лёгкий',
+  coboFeatureDetailCompactLightweight:
+    'Масса около 18 кг, тонкий профиль упрощает интеграцию и мобильность.',
 };
 

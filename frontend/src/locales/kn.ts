@@ -741,5 +741,62 @@ export const kn = {
   coboSearchNoResults: 'ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಕೋಬೋಟ್ ಸಿಗಲಿಲ್ಲ.',
   coboSearchNoResultsHelper: 'ಬೇರೆ ಕೀವರ್ಡ್ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಕೋಬೋಟ್‌ಗಳನ್ನು ನೋಡಿ.',
   coboGalleryHeading: 'ಗ್ಯಾಲರಿ',
+  // Cobot Variants (Z1, D1, FR3)
+  coboSpecNameZ1Arm: 'Z1 Arm',
+  coboSpecDescZ1Arm:
+    'Z1 Arm ಒಂದು ಹೆಚ್ಚು ನಿಖರವಾದ, ತೂಕ ಕಡಿಮೆ ರೋಬೋಟಿಕ್ ಕೈ; ಹಾರ್ಮೋನಿಕ್ ರಿಡ್ಯೂಸರ್, ಇಂಡಸ್ಟ್ರಿಯಲ್ ಕ್ರಾಸ್-ರೋಲರ್ ಬೇರಿಂಗ್ ಮತ್ತು ಅತ್ಯಾಧುನಿಕ ಟಾರ್ಕ್ ನಿಯಂತ್ರಣ ಹೊಂದಿದೆ. ಕೈಗಾರಿಕಾ ಮತ್ತು ಸಂಶೋಧನಾ ಕಾರ್ಯಗಳಿಗೆ ಸ್ಥಿರ, ನಿಖರ ಪ್ರದರ್ಶನ ನೀಡುತ್ತದೆ.',
+  coboFeatureLabelHighTorqueAccuracy: 'ಹೈ ಟಾರ್ಕ್ ಮತ್ತು ನಿಖರತೆ',
+  coboFeatureDetailHighTorqueAccuracy:
+    'ಗರಿಷ್ಠ ಟಾರ್ಕ್ 33N·m, ~0.2N·m ಫೋರ್ಸ್ ನಿಯಂತ್ರಣ ನಿಖರತೆ, ~6 arcmin ಬ್ಯಾಕ್‌ಲ್ಯಾಶ್',
+  coboFeatureLabelCommunicationControl: 'ಸಂವಹನ ಮತ್ತು ನಿಯಂತ್ರಣ',
+  coboFeatureDetailCommunicationControl:
+    'RS 485 ಸಂವಹನ, 1KHz ನಿಯಂತ್ರಣ ಫ್ರೀಕ್ವೆನ್ಸಿ, ಟಾರ್ಕ್ ಮತ್ತು ಕೋನ ಕಮಾಂಡ್‌ಗಳು',
+  coboFeatureLabelLightweightCompact: 'ತೂಕ ಕಡಿಮೆ ಮತ್ತು ಸಂಕುಚಿತ',
+  coboFeatureDetailLightweightCompact:
+    'ತೂಕ 405g, Ø65×52mm ಗಾತ್ರ, ಇಂಡಸ್ಟ್ರಿಯಲ್ ಕ್ರಾಸ್-ರೋಲರ್ ಬೇರಿಂಗ್ ಇರುವ ಹಾರ್ಮೋನಿಕ್ ರಿಡ್ಯೂಸರ್',
+  coboFeatureLabelAdvancedSensing: 'ಅಡ್ವಾನ್ಸ್ಡ್ ಸೆನ್ಸಿಂಗ್',
+  coboFeatureDetailAdvancedSensing:
+    'ಟಾರ್ಕ್, ಕೋನ, ಕೋಣೀಯ ವೇಗ ಫೀಡ್‌ಬ್ಯಾಕ್ (15-ಬಿಟ್ ಎಂಕೋಡರ್ ರೆಸೊಲ್ಯೂಶನ್)',
+  coboFeatureLabelPowerControlCommands: 'ಪವರ್ ಮತ್ತು ನಿಯಂತ್ರಣ ಕಮಾಂಡ್‌ಗಳು',
+  coboFeatureDetailPowerControlCommands:
+    'ಶಿಫಾರಸು 24V ವೋಲ್ಟೇಜ್, ಸ್ಟಿಫ್‌ನೆಸ್ ಮತ್ತು ಡ್ಯಾಂಪಿಂಗ್ ನಿಯಂತ್ರಣ ಬೆಂಬಲ',
+
+  coboSpecNameD1Arm: 'D1 Robotic Arm',
+  coboSpecDescD1Arm:
+    'D1 ರೋಬೋಟಿಕ್ ಕೈ 6-ಅಕ್ಷ + 1 ಗ್ರಿಪರ್ ವಿನ್ಯಾಸ ಹೊಂದಿದ್ದು, ಹೆಚ್ಚು ಲವಚಿಕತೆ ಮತ್ತು ವ್ಯಾಪಕ ಚಲನವಲನ ನೀಡುತ್ತದೆ. ಹಗುರ ಮತ್ತು ಕಾಂಪ್ಯಾಕ್ಟ್ ವಿನ್ಯಾಸ, ಅನೇಕ ಇಂಟರ್ಫೇಸ್ ಆಯ್ಕೆಗಳು ಕೈಗಾರಿಕಾ ಮತ್ತು ಸಂಶೋಧನಾ ಬಳಕೆಗೆ ನಿಖರ ನಿಯಂತ್ರಣ ಕೊಡುತ್ತವೆ.',
+  coboFeatureLabelLightweightDesign: 'ಹಗುರ ವಿನ್ಯಾಸ',
+  coboFeatureDetailLightweightDesign:
+    'ಸುಮಾರು 2.37 ಕಿಗ್ರಾ, ಬಹುಮುಖ ಬಳಕೆಗೆ ಕಾಂಪ್ಯಾಕ್ಟ್ ಮತ್ತು ಪೋರ್ಟೇಬಲ್',
+  coboFeatureLabelHighFlexibility: 'ಉನ್ನತ ಲವಚಿಕತೆ',
+  coboFeatureDetailHighFlexibility:
+    '6-ಅಕ್ಷ + 1 ಗ್ರಿಪರ್, ±135° ಮತ್ತು ±90° ಸಂಯೋಜಕ ಚಲನೆ',
+  coboFeatureLabelPayloadReach: 'ಪೇಲೋಡ್ ಮತ್ತು ರೀಚ್',
+  coboFeatureDetailPayloadReach:
+    'ಪೇಲೋಡ್ 500g, ರೀಚ್ 550mm (ಗ್ರಿಪರ್ ಇಲ್ಲ), 670mm (ಗ್ರಿಪರ್ ಜೊತೆಯಲ್ಲಿ)',
+  coboFeatureLabelPowerInterface: 'ಪವರ್ ಮತ್ತು ಇಂಟರ್ಫೇಸ್',
+  coboFeatureDetailPowerInterface:
+    '24V 2.5A (ಗರಿಷ್ಠ 5A) ಪವರ್, DC5.5‑2.1 + RJ45 + Type‑C',
+  coboFeatureLabelMotorPower: 'ಮೋಟರ್ ಮತ್ತು ಪವರ್',
+  coboFeatureDetailMotorPower:
+    'ಬಸ್ ಸರ್ವೋ ಮೋಟರ್ ಪ್ರಕಾರ, 60W ರೇಟಿಂಗ್ ವಿಶ್ವಾಸಾರ್ಹ ಕಾರ್ಯಕ್ಕೆ',
+
+  coboSpecNameFR3Arm: 'Franka Research 3',
+  coboSpecDescFR3Arm:
+    'Franka Research 3 ಅತ್ಯಾಧುನಿಕ 7-DOF ರೋಬೋಟಿಕ್ ಕೈವಾಗಿದ್ದು, ಸುಧಾರಿತ ರೋಬೋಟಿಕ್ಸ್ ಸಂಶೋಧನೆ ಮತ್ತು ಮಾನವ-ರೋಬೋಟ್ ಸಂವಹನಕ್ಕೆ ಸೂಕ್ತ. ಅತಿಸೂಕ್ಷ್ಮ ಫೋರ್ಸ್ ಸೆನ್ಸಿಂಗ್, ಮಾಪನೀಯ ನಿಯಂತ್ರಣ ಮತ್ತು ಹಗುರ ವಿನ್ಯಾಸದಿಂದ ಲ್ಯಾಬ್ ಮತ್ತು ಆಟೋಮೇಷನ್ ಸೆಲ್‌ಗಳಲ್ಲಿ ಸುರಕ್ಷಿತ, ನಿಖರ ಹ್ಯಾಂಡ್ಲಿಂಗ್ ಸಾಧ್ಯವಾಗುತ್ತದೆ.',
+  coboFeatureLabelHighSensitivityCompliance: 'ಹೈ ಸೆನ್ಸಿಟಿವಿಟಿ ಮತ್ತು ಕಾಂಪ್ಲಯನ್ಸ್',
+  coboFeatureDetailHighSensitivityCompliance:
+    'ಪ್ರತಿ ಜೋಡಿನಲ್ಲಿ ಟಾರ್ಕ್ ಸೆನ್ಸರ್‌ಗಳು, ಸಬ್-ನ್ಯೂಟನ್ ನಿಖರತೆ ಮತ್ತು ಮಾನವ-ಸುರಕ್ಷಿತ ಸಂವಹನ ನೀಡುತ್ತವೆ.',
+  coboFeatureLabelSevenDOFDexterity: '7-DOF ಚುರುಕುತನ',
+  coboFeatureDetailSevenDOFDexterity:
+    'ಏಳು ರೋಟರಿ ಜೋಡಿಗಳು ಮಾನವ ಕೈಸಮಾನ ರೀಚ್ ಮತ್ತು ಜಟಿಲ ಕಾರ್ಯಗಳಿಗೆ ಹೆಚ್ಚುವರಿ ಸ್ವಾತಂತ್ರ್ಯ ನೀಡುತ್ತವೆ.',
+  coboFeatureLabelPayloadReachFR3: 'ಪೇಲೋಡ್ ಮತ್ತು ರೀಚ್',
+  coboFeatureDetailPayloadReachFR3:
+    'ಪೇಲೋಡ್ 3 ಕಿಗ್ರಾ ತನಕ, 855 mm ರೀಚ್—ಸೂಕ್ಷ್ಮ ಹಾಗೂ ದೂರದ ಕಾರ್ಯಗಳಿಗೆ ಸೂಕ್ತ.',
+  coboFeatureLabelPowerConnectivity: 'ಪವರ್ ಮತ್ತು ಸಂಪರ್ಕ',
+  coboFeatureDetailPowerConnectivity:
+    '24V DC ಪೂರೈಕೆಯಲ್ಲಿ ಕಾರ್ಯ; ROS ಮತ್ತು ಕಸ್ಟಮ್ ನಿಯಂತ್ರಣಕ್ಕಾಗಿ ಈಥರ್‌ನೆಟ್ ಮತ್ತು ರಿಯಲ್-ಟೈಮ್ ಇಂಟರ್ಫೇಸ್ ಒಳಗೊಂಡಿದೆ.',
+  coboFeatureLabelCompactLightweight: 'ಕಾಂಪ್ಯಾಕ್ಟ್ ಮತ್ತು ಹಗುರ',
+  coboFeatureDetailCompactLightweight:
+    'ಒಟ್ಟು ತೂಕ ಸುಮಾರು 18 ಕಿಗ್ರಾ, ಸ್ಲಿಮ್ ಪ್ರೊಫೈಲ್ ಲ್ಯಾಬ್ ಇಂಟಿಗ್ರೇಷನ್ ಮತ್ತು ಮೊಬೈಲಿಟಿ ಸುಲಭಗೊಳಿಸುತ್ತದೆ.',
 };
 
