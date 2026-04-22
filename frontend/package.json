@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc ; vite build",
     "preview": "vite preview",
     "test": "vitest",
     "validate-translations": "tsc -p tsconfig.validate.json && node -e \"require('fs').renameSync('dist-validate/scripts/validateTranslations.js','dist-validate/scripts/validateTranslations.cjs');\" && node dist-validate/scripts/validateTranslations.cjs"

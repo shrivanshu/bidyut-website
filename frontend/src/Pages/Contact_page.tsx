@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "../Component/Header";
 import { useTheme } from "../contexts/ThemeContext";
@@ -244,12 +244,12 @@ export default function ContactPage() {
                   <h4 className="font-semibold text-[#00F5A0] mb-1">{t("addressLabel")}</h4>
                   <p>901 Clifton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
                 </div>
-                <div>
+                {/* <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
                     <Phone className="w-4 h-4" /> {t("phoneLabel")}
                   </h4>
                   <p><a href="tel:+919370782979">+91 9370782979</a></p>
-                </div>
+                </div> */}
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
                     <Mail className="w-4 h-4" /> {t("emailLabel")}

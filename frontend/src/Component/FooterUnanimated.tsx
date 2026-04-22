@@ -106,10 +106,10 @@ export default function FooterUnanimated() {
                   <p>Aranya Nagar, VijayNagar, Indore</p>
                   <p>Madhya Pradesh – 452010</p>
                 </div>
-                <div>
+              {/*  <div>
                   <p className="font-semibold title-color">{t("Phone")}</p>
                   <p>+91 9370782979</p>
-                </div>
+                </div> */}
                 <div>
                   <p className="font-semibold title-color">{t("Email")}</p>
                   <p>Info@bidyutrobotics.com</p>
