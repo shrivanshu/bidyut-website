@@ -291,7 +291,7 @@ const HeroSection: React.FC = () => {
           </button>
         )}
         {/* ChatBox (robot ke pass, absolute position, only when open) */}
-        <div className="relative w-full flex justify-end">
+        <div className="relative w-full text-left flex justify-end">
           <ChatBox
             open={chatOpen}
             onClose={handleChatClose}
