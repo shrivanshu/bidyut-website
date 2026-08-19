@@ -101,7 +101,7 @@ export default function FooterUnanimated() {
               <div className="space-y-5 text-sm sm:text-base body-color">
                 <div>
                   <p className="font-semibold title-color">{t("address")}</p>
-                  <p>901 Clifton Corporate Park</p>
+                  <p>901 Cliffton Corporate Park</p>
                   <p>11/6, AB Road, Sector A, Slice 6</p>
                   <p>Aranya Nagar, VijayNagar, Indore</p>
                   <p>Madhya Pradesh – 452010</p>

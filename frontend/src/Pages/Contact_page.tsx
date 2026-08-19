@@ -65,7 +65,7 @@ export default function ContactPage() {
             },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "901 Clifton Corporate Park",
+              "streetAddress": "901 Cliffton Corporate Park",
               "addressLocality": "Indore",
               "addressRegion": "Madhya Pradesh",
               "postalCode": "452010",
@@ -242,7 +242,7 @@ export default function ContactPage() {
               <div className={`space-y-6 text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1">{t("addressLabel")}</h4>
-                  <p>901 Clifton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
+                  <p>901 Cliffton Corporate Park,<br />Indore, Madhya Pradesh 452010</p>
                 </div>
                 {/* <div>
                   <h4 className="font-semibold text-[#00F5A0] mb-1 flex items-center gap-2">
